@@ -1,0 +1,112 @@
+.cmp-indexed-list {
+  position: relative;
+  border-top: solid 1px #e3e3e3;
+  border-bottom: solid 1px #e3e3e3;
+  overflow: hidden;
+  background-color: #fafafa;
+
+  cursor: default;
+}
+.cmp-indexed-list-inner {
+  margin: 0px;
+  padding: 0px;
+  overflow-y: auto;
+  border: none;
+}
+.cmp-indexed-list-inner::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+.cmp-indexed-list-empty-alert,
+.cmp-indexed-list-inner.empty ul {
+  display: none;
+}
+.cmp-indexed-list-inner.empty .cmp-indexed-list-empty-alert {
+  display: block;
+}
+.cmp-indexed-list-empty-alert {
+  padding: 30px 15px;
+  text-align: center;
+  color: #ccc;
+  padding-right: 45px;
+}
+.cmp-ios .cmp-indexed-list-inner {
+  width: calc(100% + 10px);
+}
+.cmp-indexed-list-group,
+.cmp-indexed-list-item {
+  padding-right: 45px;
+}
+.cmp-ios .cmp-indexed-list-group,
+.cmp-ios .cmp-indexed-list-item,
+.cmp-ios .cmp-indexed-list-empty-alert {
+  padding-right: 55px;
+}
+.cmp-indexed-list-group {
+  background-color: #f7f7f7;
+}
+.cmp-indexed-list-group {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.cmp-indexed-list-search {
+  border-bottom: solid 1px #e3e3e3;
+  z-index: 15;
+}
+.cmp-indexed-list-search.cmp-search:before {
+  margin-top: -10px;
+}
+.cmp-indexed-list-search input {
+  border-radius: 0px;
+  margin: 0px;
+  background-color: #fafafa;
+}
+.cmp-indexed-list-bar {
+  width: 23px;
+  background-color: lightgrey;
+  position: absolute;
+  height: 100%;
+  z-index: 10;
+  right: 0px;
+  -webkit-transition: .2s;
+}
+.cmp-indexed-list-bar a {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  padding: 0px;
+  margin: 0px;
+  line-height: 15px;
+  color: #aaa;
+}
+.cmp-indexed-list-bar.active {
+  background-color: rgb(200,200,200);
+}
+.cmp-indexed-list-bar.active a {
+  color: #333;
+}
+.cmp-indexed-list-bar.active a.active {
+  color: #007aff;
+}
+.cmp-indexed-list-alert {
+  position: absolute;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 35px;
+  color: #fff;
+  display: none;
+  -webkit-transition: .2s;
+}
+.cmp-indexed-list-alert.active {
+  display: block;
+}

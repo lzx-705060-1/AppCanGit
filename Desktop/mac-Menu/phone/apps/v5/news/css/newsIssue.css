@@ -1,0 +1,120 @@
+#news_header{padding-top:20px;height: 64px;}
+#news-type{width: 100%;height:100%;background-color: #fff;top:0px;}
+#news-type .news-exe{position: relative;height: 50px;line-height: 50px;margin-left: 16px;}
+#news-type .news-exe:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#news-type .news-exe .news-exe-name{font-size: 16px;color: #333;margin-left: 3px;}
+#news-type .news-exe-detail{position: relative;padding-left: 16px;line-height: 50px;display: none;background-color: #f8f8f8;}
+#bul-type .bul-exe-detail-block{position: relative;height: 50px;}
+#news-type .news-exe-detail .news-exe-detail-line1{position: relative;height: 50px;margin-left: -16px;padding-left: 16px;}
+#news-type .news-exe-detail .news-exe-detail-line1:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#news-type .news-exe-detail .news-exe-detail-line2{position: relative;height: 75px;padding-top: 12px;display: none;margin-left: -16px;padding-left: 16px;}
+#news-type .news-exe-detail .news-exe-detail-line2:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+
+#news-choose{position: fixed;bottom: 0;width: 100%;height: 58px;z-index: 11;background-color: #fff;}
+#news-choose .news-choose-btn{width: 34%;height: 34px;border-radius: 20px;background-color: #3aadfb;line-height: 34px;margin: 0 auto;text-align: center;}
+#news-choose .news-choose-publish,.news-choose-approval{font-size: 16px;color: #fff;}
+#news-choose:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+.news-name{font-size: 14px;color: #333;display: inline-block;float: left;}
+.news-icon{margin-left: 8px;display: inline-block;float: left;font-size: 18px;color: #c9c9c9;}
+
+#news-choose .news-div-btn{width: 100%;margin-top: 8px;}
+#news-choose .news-div-btn .news-choose-btn1{float: left;margin-left: 11%;border: 1px solid #4A90E2;background-color: #fff;}
+#news-choose .news-div-btn .news-choose-btn2{float: right;margin-right: 11%;background-color: #3aadfb;}
+#news-choose .news-div-btn .news-choose-btn1 .news-choose-publish{color:#4A90E2;}
+/*2017年2月22日11:33:33*/
+.news-exe .news-radio{font-size: 20px;color: #c9c9c9;}
+
+#news_header:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#news-choose .footer_block{
+    width: 100%;
+    height: 8px;
+    background-color: #f4f4f4;
+    position: relative;
+}
+#news-choose .footer_block:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+#news-choose .footer_block:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#news_header a{font-size: 14px;}

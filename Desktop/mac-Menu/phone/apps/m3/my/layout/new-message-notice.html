@@ -1,0 +1,105 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>新消息通知</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/new-message-notice.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-picker.css">
+</head>
+
+<body class="bg_gray flex-v">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <!-- header -->
+    <header class="m3-header flexbox-h flex-cross-center border_bottom m3-iosx">
+        <a class="m3-back">
+            <span class="see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </a>
+        <h1 class="flex-1" id="topbar-btn"><i18n key="my.m3.h5.newMsg"></i18n></h1>
+        <a class="app-save opacity-0"><i18n key="my.m3.h5.save"></i18n></a>
+    </header>
+    <!-- content -->
+    <div class="m3-content flex-1">
+        <!-- main switich -->
+        <div class="switch-li flex-h bg-white flex-cross-center">
+            <span class="switch-text flex-1"><i18n key="my.m3.h5.acceptNewInformation"></i18n></span>
+            <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="mainSwitch">
+                <div class="cmp-switch-handle"></div>
+            </div>
+        </div>
+        <!-- tip msg -->
+        <h3><i18n key="my.m3.h5.InfoTip"></i18n></h3>
+        <!-- sound，shake，receive time -->
+        <ul class="bg-white">
+            <li class="switch-li flex-h flex-cross-center">
+                <span class="switch-text flex-1"><i18n key="my.m3.h5.soundCues"></i18n></span>
+                <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="ring">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+            <li class="switch-li flex-h flex-cross-center">
+                <span class="switch-text flex-1"><i18n key="my.m3.h5.vibrationCues"></i18n></span>
+                <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="shake">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+            <li class="switch-li flex-h flex-cross-center" id="data">
+                <span class="switch-text flex-1"><i18n key="my.m3.h5.receiveTime"></i18n></span>
+                <div class="cmp-pull-right">
+                    <span class="data-time" data-options='{"type":"timeInterval","value":"00:00-23:59"}'>00:00-23:59</span>
+                </div>
+            </li>
+        </ul>
+        <!-- tip msg -->
+        <h3><i18n key="my.m3.h5.receiveTip"></i18n></h3>
+        <!-- app switch -->
+        <ul class="bg-white data-box"></ul>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-picker.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-dtPicker.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/new-message-notice.js')</script>
+</body>
+
+</html>

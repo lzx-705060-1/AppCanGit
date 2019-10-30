@@ -1,0 +1,127 @@
+
+
+/*默认文档中心图标*/
+.cmp-icon-document{width: 40px;height: 40px;background: url("../../../../cmp/img/document_type@3x.png")no-repeat;
+    display: inline-block;background-size: 600% 500%;
+}
+
+/*默认附件图标*/
+.cmp-icon-accessory{width: 44px;height: 44px;background: url("../../../../cmp/img/accessory@3x.png")no-repeat;
+    display: inline-block;background-size: 600% 500%;
+}
+
+/* 类似iphone 4 DPR1*/
+@media (min-device-width : 320px) and (max-device-width : 480px) and (-webkit-min-device-pixel-ratio :1){
+    .cmp-icon-document{background: url("../../../../cmp/img/document_type@1x.png")no-repeat;
+        background-size: 600% 500%;}
+    .cmp-icon-accessory{background: url("../../../../cmp/img/accessory@1x.png")no-repeat;
+        background-size: 600% 500%;}
+}
+/* 类似iphone 5 DPR2*/
+@media (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-min-device-pixel-ratio : 2){
+    .cmp-icon-document{background: url("../../../../cmp/img/document_type@2x.png")no-repeat;
+        background-size: 600% 500%;}
+    .cmp-icon-accessory{background: url("../../../../cmp/img/accessory@2x.png")no-repeat;
+        background-size: 600% 500%;}
+}
+/* 类似iphone 6 DPR2*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    .cmp-icon-document{background: url("../../../../cmp/img/document_type@2x.png")no-repeat;
+        background-size: 600% 500%;}
+    .cmp-icon-accessory{background: url("../../../../cmp/img/accessory@2x.png")no-repeat;
+        background-size: 600% 500%;}
+}
+/*/!* 类似iphone6 plus DPR3*!/*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    .cmp-icon-document{background: url("../../../../cmp/img/document_type@3x.png")no-repeat;
+        background-size: 600% 500%;}
+    .cmp-icon-accessory{background: url("../../../../cmp/img/accessory@3x.png")no-repeat;
+        background-size: 600% 500%;}
+}
+
+
+
+
+/*文档文件图标样式库===============================================*/
+/*start-------------------------*/
+/*x3----*/
+.cmp-icon-document.doc{background-position: /*-1px 0;*/ 0 0;}
+.cmp-icon-document.xls{background-position: /*-121px 0;*/ 20% 0;}
+.cmp-icon-document.ppt{background-position: /*-241px 0;*/ 40% 0;}
+.cmp-icon-document.pdf{background-position:/* -361px 0;*/ 60% 0;}
+.cmp-icon-document.cvs{background-position: /*-481px 0;*/ 80% 0;}
+.cmp-icon-document.et{background-position: /*-601px 0;*/ 100% 0;}
+
+.cmp-icon-document.img{background-position: /*-1px -120px;*/ 0 25% ;}
+.cmp-icon-document.music{background-position: /*-121px -120px;*/ 20% 25%;}
+.cmp-icon-document.video{background-position: /*-241px -120px;*/ 40% 25%;}
+.cmp-icon-document.rar{background-position: /*-361px -120px;*/ 60% 25%;}
+.cmp-icon-document.wps{background-position: /*-481px -120px;*/ 80% 25%;}
+.cmp-icon-document.html{background-position: /*-601px -120px;*/ 100% 25%;}
+
+.cmp-icon-document.meet{background-position: /*-1px -240px;*/ 0 50%;}
+.cmp-icon-document.synergy{background-position: /*-121px -240px;*/ 20% 50%;}
+.cmp-icon-document.emptyfile{background-position: /*-241px -240px;*/ 40% 50%;}
+.cmp-icon-document.record{background-position: /*-361px -240px;*/ 60% 50%;}
+.cmp-icon-document.sms{background-position: /*-481px -240px;*/ 80% 50%;}
+.cmp-icon-document.txt{background-position: /*-601px -240px;*/ 100% 50%;}
+
+.cmp-icon-document.minvideo{background-position: /*-1px -360px;*/ 0 75%;}
+.cmp-icon-document.flag{background-position: /*-121px -360px;*/ 20% 75%;}
+.cmp-icon-document.confirm{background-position: /*-241px -360px;*/ 40% 75%;}
+.cmp-icon-document.pie{background-position: /*-361px -360px*/ 60% 75%;}
+.cmp-icon-document.news{background-position: /*-481px -360px;*/ 80% 75%;}
+.cmp-icon-document.cal{background-position: /*-601px -360px;*/ 100% 75%;}
+
+.cmp-icon-document.squares{background-position: /*-1px -480px;*/ 0 100%;}
+.cmp-icon-document.confirmto{background-position: /*-121px -480px;*/ 20% 100%;}
+.cmp-icon-document.approval{background-position: /*-241px -480px;*/ 40% 100%;}
+.cmp-icon-document.message{background-position: /*-361px -480px;*/ 60% 100%;}
+.cmp-icon-document.link{background-position: /*-481px -480px;*/ 80% 100%;}
+.cmp-icon-document.folder{background-position: /*-601px -480px;*/ 100% 100%;}
+
+
+/*end-----------------------*/
+
+
+/*附件文件图标样式库=========================================================*/
+/*start-------------------------*/
+/*x3----*/
+.cmp-icon-accessory.doc{background-position: 0 0;}
+.cmp-icon-accessory.xls{background-position: 20% 0; /*-132px 0*/;}
+.cmp-icon-accessory.ppt{background-position: 40% 0; /*-264px 0*/;}
+.cmp-icon-accessory.pdf{background-position:60% 0; /*-396px 0*/;}
+.cmp-icon-accessory.cvs{background-position:80% 0; /*-528px 0*/;}
+.cmp-icon-accessory.et{background-position:100% 0; /*-660px 0*/;}
+
+.cmp-icon-accessory.img{background-position: /*0 -132px;*/ 0 26%;}
+.cmp-icon-accessory.music{background-position: /*-132px -132px;*/ 20% 26%;}
+.cmp-icon-accessory.video{background-position: /*-264px -132px;*/40% 26%;}
+.cmp-icon-accessory.rar{background-position: /*-396px -132px;*/60% 21%;}
+.cmp-icon-accessory.wps{background-position:/* -528px -132px;*/80% 25%;}
+.cmp-icon-accessory.html{background-position: /*-660px -132px;*/100% 25%;}
+
+.cmp-icon-accessory.meet{background-position: /*0 -264px;*/0 50%;}
+.cmp-icon-accessory.synergy{background-position: /*-132px -264px;*/20% 50%;}
+.cmp-icon-accessory.emptyfile{background-position: /*-264px -264px;*/40% 50%;}
+.cmp-icon-accessory.record{background-position: /*-396px -264px;*/60% 50%;}
+.cmp-icon-accessory.sms{background-position: /*-528px -264px;*/80% 50%;}
+.cmp-icon-accessory.txt{background-position: /*-660px -264px;*/100% 50%;}
+
+.cmp-icon-accessory.minvideo{background-position: /*0 -396px;*/0 75%;}
+.cmp-icon-accessory.flag{background-position: /*-132px -396px;*/20% 75%;}
+.cmp-icon-accessory.confirm{background-position: /*-264px -396px;*/40% 75%;}
+.cmp-icon-accessory.pie{background-position: /*-396px -396px;*/60% 75%;}
+.cmp-icon-accessory.news{background-position: /*-528px -396px;*/80% 75%;}
+.cmp-icon-accessory.cal{background-position: /*-660px -396px;*/100% 75%;}
+
+.cmp-icon-accessory.squares{background-position: /*0 -528px;*/0 101%;}
+.cmp-icon-accessory.confirmto{background-position: /*-132px -528px;*/20% 100%;}
+.cmp-icon-accessory.approval{background-position: /*-264px -528px;*/40% 100%;}
+.cmp-icon-accessory.message{background-position: /*-396px -528px;*/60% 100%;}
+.cmp-icon-accessory.link{background-position: /*-528px -528px;*/80% 100%;}
+/*.debug-icon-accessory.folder{background-position: -660px -528px;}*/
+
+/*end-----------------------*/
+
+

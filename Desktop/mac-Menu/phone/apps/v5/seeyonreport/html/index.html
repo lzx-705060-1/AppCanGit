@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172620"  />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172620"/>
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/seeyonreport/css/seeyonreport.css?buildversion=181210172620"/>
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172620">
+	<title></title>
+</head>
+<body class="cmp-fullscreen">
+	<script>var _seeyonbasepath = "/seeyon";
+ var _seeyonReportPath = "";</script>
+<header id="page_header" class="cmp-bar cmp-bar-nav cmp-flex-header cmp-after-line">
+    <div id="goBackBtn" class="cmp-action-back cmp-header-left">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text"><i18n key="seeyonreport.label.back"></i18n></span>
+    </div>
+    <h1 class="cmp-title"><i18n key="seeyonreport.label.title"></i18n></h1>
+    <div class="cmp-header-right nav-icon-one"></div>
+</header>
+<div class="cmp-content" id="pageContent">
+    <!-- 面包屑 -->
+    <div class="cmp-crumbs-content">
+    	<div class="cmp-scroll-wrapper" id="boxscrolll">
+    		<div class="cmp-scroll" id="breadTop">
+    			<a href='javascript:void(0);' class='local'><i18n key="seeyonreport.label.title"></i18n></a>
+    			<a class="cmp-icon cmp-icon-arrowright right-icon"></a>
+    			<div id="breadcrumb" style="display:inline-block"></div>
+    		</div>
+        </div>
+    </div>
+    <!-- 模板分类&模板 -->
+    <div class="cmp-control-content cmp-active">
+        <div id="allPending" class="cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <ul id="list_content" class="cmp-list-content cmp-table-view file-index-content"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模板 -->
+<script type="text/html" id="content-tpl">
+<% for(var i = 0; i < this.length; i ++) {						%>
+	<% var e = this[i];            								%>
+	<% if (!e.type) {                      						%>
+		<li class="cmp-list-cell list-content-li" id="<%=e.id%>" folder="true" name="<%=e.name.escapeHTML()%>">
+			<div class="cmp-list-cell-img cmp-left doc-yesFolder">
+				<div class="cmp-icon-document folder"></div>
+			</div>
+			<div class="cmp-list-cell-info">
+				<span class="cmp-ellipsis cmp-pull-left list_title_name"><%=e.name.escapeHTML()%></span>
+				<span class="cmp-ellipsis cmp-pull-right cmp-h5 list_count"></span>         
+			</div>
+			<div class="cmp-list-navigate">
+				<a href="javascript:void(0);" class="cmp-icon cmp-icon-arrowright"></a>
+			</div>
+		</li>
+	<% } else {                                 				%>
+		<li class="cmp-list-cell list-content-li" id="<%=e.id%>" folder="false" name="<%=e.name.escapeHTML()%>">
+			<div class="cmp-list-cell-img cmp-left doc-yesFolder">
+				<span class="see-icon-v5-common-statement noFolder"></span>
+			</div>
+			<div class="cmp-list-cell-info">
+				<span class="cmp-ellipsis cmp-pull-left list_title_name"><%=e.name.escapeHTML()%></span>
+				<span class="cmp-ellipsis cmp-pull-right cmp-h5 list_count"></span>         
+			</div>
+			<div class="cmp-list-navigate">
+				<a href="javascript:void(0);" class="cmp-icon cmp-icon-arrowright"></a>
+			</div>    
+		</li>
+	<% }														%>
+<% }%>
+</script>
+<!-- 公共参数 -->
+
+<script type="text/javascript"  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172620"></script>
+<script type="text/javascript"  src="/seeyon/m3/apps/v5/seeyonreport/i18n/seeyonreport_zh_CN.js?buildversion=181210172620"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/seeyonreport/i18n/", "seeyonreport", function(){
+		document.title = cmp.i18n("seeyonreport.label.title");	
+    });
+</script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172620"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/seeyonreport/js/seeyonreport-jssdk.js?buildversion=181210172620"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172620" id="__jsdktag"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172620"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/seeyonreport/js/index.js?buildversion=181210172620"></script>
+<script type="text/javascript">
+	cmp.ready(function(){
+		reportIndex.init(cmp.href.getParam());
+	});
+</script>
+</body>
+</html>

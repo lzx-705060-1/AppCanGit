@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>项目列表</title>
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172452"/>
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172452"/>
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css">
+</head>
+<body>
+
+	<header class="cmp-bar cmp-bar-nav">
+		<a class="project_account_back cmp-action-back cmp-icon cmp-icon-left-nav cmp-pull-left"></a>
+		<h1 class="cmp-title index-title"><i18n key="commons.title.associated"></i18n></h1>
+	</header>
+
+<div class="cmp-content position_relative">
+	<div class="cmp-segmented_title_content">
+		<div class="project_account_search position_relative"></div>
+	</div>
+
+	<div class="cmp-control-content cmp-active">
+		<div class="project_account_scroll cmp-scroll-wrapper">
+			<div class="cmp-scroll content_details">
+				<ul class="project_account_list cmp-table-view cmp-table-view-radio"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script type="text/html" class="project_account_tpl">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <% var obj = this[i]; %>
+		<li class="project_account_li cmp-table-view-cell cmp-media <%if(obj.selected === true){%>cmp-selected<%}%>" projectId="<%=obj.id %>">
+			<a class="cmp-navigate-right">
+				<div class="cmp-media-body cmp-ellipsis">
+					<span><%=obj.projectName %></span>
+				</div>
+			</a>
+        </li>
+        <% } %>
+		<%if(this.length == 0){%>
+		<p style="text-align:center"><i18n key="commons.note.noData"></i18n></p>
+		<%}%>
+	</script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172452"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172452"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172452"></script>
+            
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.js?buildversion=181210172452"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172452"></script>
+
+	<script type="text/javascript">
+	cmp.ready(function(){
+		var param = cmp.href.getParam();
+		var projectId = param.projectId ? param.projectId : null;
+		var fromUrl = param.fromUrl;
+		if(fromUrl == null){
+			cmp.notification.alert(cmp.i18n("commons.note.missingParameter"), function() {
+				// 点击确定后的操作
+		 	}, "error", [ cmp.i18n("commons.label.confirm") ]);
+		 	return;
+		}
+		
+		$ProjectAccountList.init({
+			selectedId:projectId,
+			eventBack : function(){
+				cmp.href.next(fromUrl, {selected:false,from:"ProjectAccountList"});
+			},
+			eventSelected : function(selectedId,selectedName){
+				cmp.href.next(fromUrl, {"selected":true,"selectedId":selectedId,"selectedName":selectedName,"from":"ProjectAccountList"});
+			}
+		});
+	});
+	</script>
+</body>
+</html>

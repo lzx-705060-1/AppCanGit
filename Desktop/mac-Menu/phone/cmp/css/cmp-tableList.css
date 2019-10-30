@@ -1,0 +1,37 @@
+.main_wrapper{height: 100%;position: relative;z-index: 1;}
+.table-content2 tr:last-child.table-placeholder{
+  background: #fff;
+}
+.main-content{
+  background:#ffffff ;
+}
+/*.link-content.bgw{background: #fff;}*/
+.link-content .div-placeholder{width: 100%;}
+.cmp-pull-bottom-pocket2{
+  position: absolute;
+  bottom: 0;
+}
+/*表单查询列表*/
+.table-content .table_head .table-th .th-item{white-space:nowrap;overflow:hidden;word-break:break-all;text-overflow:ellipsis}
+.table-content{font-size: 15px;text-align: center;overflow-x: hidden;background: #fff; }
+.table-content table{ }
+.table-content .table_body{position: relative;overflow-y:auto;}
+.table-content td{font-weight: normal;border: none; }
+.table-content td.arrow{color: #cccccc}
+.table-content .table-content tr{overflow: hidden;}
+.table-content .table-content td{float: left;display: -webkit-box;overflow: hidden;white-space: normal !important;text-overflow: ellipsis;word-wrap: break-word;-webkit-line-clamp: 3;-webkit-box-orient: vertical; word-break: break-all;}
+.cmp-table-list-lock-img{width: 10px;position: absolute;margin-top:4px;}
+.table-content-list-default{
+    background: #f9f9f9;
+    color: #787878;
+}
+.table-content-list-default:nth-child(2n){
+    background: #f1f1f1;
+    color:#787878;
+}
+.table-content .div-cover-up{position: absolute;top:0;left: 0}
+.cmp-pull-bottom-pocket.tablelist{position: absolute!important;background: #e7e7e8!important;height: 50px!important;line-height: 50px;z-index:2;}
+
+
+
+

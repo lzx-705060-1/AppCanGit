@@ -1,0 +1,52 @@
+var bulletinApi = (function() {
+    
+    var BulletinApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/bulletin";
+    }
+    
+     /**
+     * 跳转到公告查看页面
+     * @param bulId : 公告ID
+     * @param comeFrom : 来源	0	>>>	公告列表 	
+     *							1	>>>	文档中心
+     * @param 页面的返回信息，即打开公告页面以后，点返回按钮的跳转页面信息，backPageInfo对象包含"url","data"两个属性，跳转的时候采用（ cmp.href.next（url,data）的方式跳转，如果没传递
+     *         该参数，则默认采用cmp.href.back()的方式跳转）
+     * @param isNav : 是否是新开页面
+     */
+    BulletinApi.prototype.jumpToBulletin = function(bulId, comeFrom, backPageInfo , fromXz, isNav) {
+    	var  _backPageInfo = typeof(backPageInfo) == 'undefined' ? ''  : backPageInfo;
+        var paramData = {
+            'comeFrom' : comeFrom,
+            'fromXz' : typeof(fromXz) == 'undefined' ? false  : fromXz,
+            'bulId' : bulId,
+            'isNav' : isNav
+        };
+        var option = {};
+        if(isNav === true){
+            option.openWebViewCatch = true;
+        }
+        cmp.href.next(this.basePath + "/html/bulView.html?cmp_orientation=auto", paramData, option);
+    }    
+    
+    /**
+	 * 打开公告(消息穿透)
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]	option.id		公告id										
+	 * @param  {string} parms   [其他可选参数]
+	 */
+    BulletinApi.prototype.openApp = function(type, backUrl, option, obj) {
+        var comeFrom = type == "todo" ? 2 : 0;
+        var affairId = typeof(option.affairId) == 'undefined' ? false  : option.affairId;
+        var paramData = {
+        	'type' : type,
+            'comeFrom' : comeFrom,
+            'affairId': affairId,
+            'bulId' : option.id
+        };
+        cmp.href.next(this.basePath + "/html/bulView.html?cmp_orientation=auto", paramData);
+    }   
+    
+    return new BulletinApi();
+    
+})();

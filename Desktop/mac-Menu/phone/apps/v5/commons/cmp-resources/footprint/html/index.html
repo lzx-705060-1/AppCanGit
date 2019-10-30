@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>协同个人足迹</title>
+
+    <link rel="stylesheet" href="../css/M1FootPrint.css"/>
+    <link rel="stylesheet" href="../css/animated.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css"/>
+    <style>
+
+    #canvas{background: url("../img/userlogo.png")no-repeat;}
+    </style>
+</head>
+<body class="fullPage">
+
+<div class="header">
+    <span class="icon back"><span class="iconfont icon-iconfontzuojiantou"></span></span>
+    <span class="title">协同足迹,一段人生旅程</span>
+    <span class="icon more">...</span>
+</div>
+
+<div class="container" id="fullpage">
+
+     <div class="section item1  ">
+         <img class="background" src="../img/item1.png" alt=""/>
+         <div class="cmp-alert-typical">
+             <div class="content content-typical" >
+                 <div class="logo Animated fadein">
+                     <div class="imgLogo">
+                         <img src="../img/userlogo.png" alt=""/>
+                     </div>
+                     <p>曾静良</p>
+                 </div>
+                 <div class="text Animated fadein">
+                     <p class="day">今天是<span>2016年4月25日</span></p>
+                     <p class="use">是您使用协同的第<span class="ColorGer">1345</span>天</p>
+                 </div>
+                 <div class="select" id="toGo">
+                     <div class="option">
+                         <select name="" class="select_container">
+                             <option>2016年3月</option>
+                             <option>2016年4月</option>
+                             <option>2016年5月</option>
+                             <option>2016年6月</option>
+                         </select>
+                         <!--<span>2016年3月</span>-->
+                         <div class="icon_down_pos">
+                             <img src="../img/jiantou.png" alt=""/>
+                             <!--<span class="icon_down"></span>-->
+                         </div>
+                     </div>
+                     <p>查看我的行为绩效</p>
+                 </div>
+
+             </div>
+         </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+     <div class="section item2">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item2.png" alt=""/>
+         <div class="cmp-alert-typical">
+             <div class="content content-typical">
+                 <div class="spread Animated bottom-go">
+                     <img class="bg" src="../img/page/page2-1.png" alt=""/>
+                     <img class="as" src="../img/page/page2-0.png" alt=""/>
+                     <div class="pos center ColorGer">680</div>
+                     <div class="pos top">沟通协作</div>
+                     <div class="pos left">企业文化</div>
+                     <div class="pos right">审批流程</div>
+                     <div class="pos bottomleft">知识积累</div>
+                     <div class="pos bottomright">日常工作</div>
+                 </div>
+                 <div class="rank">全单位排名<span class="ColorGer">34/555</span></div>
+                 <div class="info ">
+                     <div class="Animated left-go">
+                         <span class="ColorGer">2016</span>年<span class="ColorGer">3</span>
+                         月您的协同行为绩效
+                     </div>
+                     <div class="Animated right-go">
+                         内观自我,是进步的源泉
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+     <div class="section item3 ">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item7.png" alt=""/>
+         <div class="content">
+             <div class="center"><img class="img1" src="../img/page/page3-1.png" alt=""/></div>
+             <div class="circle circle1 rotateInfinite">
+                 <img class="bg_circle" src="../img/page/page3-circle0.png" alt=""/>
+                 <img class="img1 rotateOutInfinite" src="../img/page/page3-4.png" alt=""/>
+             </div>
+             <div class="circle circle2 rotateInfinite">
+                 <img class="bg_circle" src="../img/page/page3-circle1.png" alt=""/>
+                 <div></div>
+                 <img class="img1 rotateOutInfinite" src="../img/page/page3-2.png" alt=""/>
+                 <img class="img2 rotateOutInfinite" src="../img/page/page3-3.png" alt=""/>
+             </div>
+             <div class="circle circle3  ">
+                 <img class="bg_circle" src="../img/page/page3-circle2.png" alt=""/>
+                 <div class="img1 text  ">
+                     <span>
+                         退出<span class="ColorGer">最晚</span>的时间
+                         <span class="ColorGer">3</span>月
+                         <span class="ColorGer">24</span>日
+                         <span class="ColorGer">16:36</span>
+                     </span>
+                 </div>
+                 <div class="img2 text  ">
+                     <span>您登录系统<span class="ColorGer">160</span>次</span>
+                     移动端占比<span class="ColorGer">30%</span>
+                 </div>
+             </div>
+             <div class="circle circle4  ">
+                 <img class="bg_circle" src="../img/page/page3-circle3.png" alt=""/>
+                 <div class="img1 text  ">
+                     <span >登陆<span class="ColorGer">最早</span>的时间
+                        <span class="ColorGer">3</span>月
+                         <span class="ColorGer">24</span>日
+                         <span class="ColorGer">16:36</span>
+                     </span>
+                 </div>
+                 <div class="img2 text  ">
+                     <span>PC工作时长<span class="ColorGer">198</span>小时
+                        M1工作时长<span class="ColorGer">98</span>小时
+                     </span>
+
+                 </div>
+             </div>
+         </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+
+     <div class="section item4">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item3.png" alt=""/>
+          <div class="content">
+              <div class="headBg">
+                  <img src="../img/page/page4-1.png" alt=""/>
+                  <div class="Animated top-go TextInfo1">
+                      不<span class="ColorGer">苦</span>不<span class="ColorGer">获</span>,
+                      辛苦的人<span class="ColorGer">收益多</span>
+                  </div>
+              </div>
+              <div class="bodyInfo">
+                  <div class="    TextInfo2 top">
+                      <img class="node Animated fadein" src="../img/page/page4-2.png" alt=""/>
+                      <div class="text Animated right-go">
+                          您发送流程<span class="ColorGer">261</span>
+                      </div>
+                  </div>
+                  <div class="hr one">
+                      <hr class="Animated AutoWidth"/>
+                  </div>
+                  <div class=" TextInfo2 center">
+                      <div class="text Animated left-go">
+                          <p>您处理流程<span class="ColorGer">23</span></p>
+                          <p>平均处理时长<span class="ColorGer">3</span>天<span class="ColorGer">2</span>小时</p>
+                          <p>全单位排名<span class="ColorGer">23/113</span></p>
+                      </div>
+                      <img class="node Animated fadein" src="../img/page/page4-2.png" alt=""/>
+                  </div>
+                  <div class="hr two">
+                      <hr  class="Animated AutoWidth"/>
+                  </div>
+                  <div class="TextInfo2 bottom">
+                      <img class="node Animated fadein" src="../img/page/page4-2.png" alt=""/>
+                      <div class="text Animated right-go">
+                          您使用最多的模板是 <br>
+                          <span class="book_title"> 《<span class="ColorGer">产品BUG单</span>》</span>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+     <div class="section item5">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item5.png" alt=""/>
+         <div class="content">
+             <div class="headBg">
+                 <img src="../img/page/page4-1.png" alt=""/>
+                 <div class="Animated top-go TextInfo1">
+                     <span>这一路,有<span class="ColorGer">付出</span>也有<span class="ColorGer">收获</span></span>
+                 </div>
+             </div>
+
+             <div class="Animated left-go move left">
+                 <img src="../img/page/page5-1.png" alt=""/>
+                 <div class="text ellipsis">
+                     <p>流程中</p>
+                     <div class="getJodie">
+                         <span>您获赞<span class="ColorGer" id="receivePraiseNum"></span>个</span>
+                         <span>点赞<span class="ColorGer"></span>个</span> <br>
+                         <span>同事的认可亦是一种<span class="ColorGer">财富</span>!</span>
+                     </div>
+
+                 </div>
+             </div>
+             <div class="Animated right-go move right">
+                 <div class="text ellipsis">
+                     <p>分享文档<span class="ColorGer" id="praiseNum"></span>篇</p>
+                     <p>阅读文档<span class="ColorGer"></span>篇</p>
+                     <!--<span>赞许让人更有<span class="ColorGer">动力</span>!</span>-->
+                 </div>
+                 <img src="../img/page/zan.png" alt=""/>
+             </div>
+         </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+     <div class="section item6">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item5.png" alt=""/>
+         <div class="content">
+             <div class="headBg">
+                 <img src="../img/page/page4-1.png" alt=""/>
+                 <div class="Animated top-go TextInfo1">
+                     <span>融入与<span class="ColorGer">关注</span>,释放<span CLASS="ColorGer">能量</span></span>
+                  </div>
+             </div>
+             <div class="CircleCont new  Animated fadein">
+                 <!--<img src="img/page/page6-2.png" alt=""/>-->
+                 <div class="info ">
+                    <span>您阅读新闻公告<span class="ColorGer">74</span>篇   <br>
+                        阅读量<span class="ColorGer">45%</span></span>
+                 </div>
+             </div>
+
+             <div class="CircleCont dis  Animated fadein">
+                 <!--<img src="img/page/page6-2.png" alt=""/>-->
+                 <div class="info">
+                    <span>参与讨论<span class="ColorGer">13</span>次  <br>
+                    秀出照片<span class="ColorGer">22</span>张</span> <br>
+                     <small>在《<span class="book_name">深夜加班秀深夜加班秀</span>》中秀得最多</small>
+                 </div>
+             </div>
+
+         </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+
+     <div class="section item7">
+         <!--修改：img的路径-->
+         <img class="background" src="../img/item6.png" alt=""/>
+         <div class="content">
+             <div class="feeling">
+                <div class="text Animated left-go">
+                    <p>工作是一份路途</p>
+                    <p>每一份努力</p>
+                    是为遇见<span class="ColorGer">更好的自己</span>
+                </div>
+                 <div class="text Animated left-go">
+                    <p>协同的足迹</p>
+                    <p>每一份坚持</p>
+                    是为<span class="ColorGer">梦想看得见</span>
+                 </div>
+             </div>
+             <div class="share">
+                 <div class="box">
+                     <div class="but">分享</div>
+                     <p>协同大数据每月更新,更多内容请登录PC端查看</p>
+                 </div>
+             </div>
+
+         </div>
+         <div class="Touch_Move_Top opacityShowHide"></div>
+     </div>
+</div>
+
+<div class="cmp-popover">
+    <div class="cmp-popover-arrow "></div>
+    <div class="track">
+        <ul>
+            <li>12133</li>
+            <li>12133</li>
+            <li>12133</li>
+            <li>12133</li>
+        </ul>
+
+    </div>
+
+
+</div>
+
+<canvas id="canvas"></canvas>
+
+<!--<script src="../../debug/js/debug.js"></script>-->
+<script src="../js/javascript.fullPage.js"></script>
+<script>
+
+    //	如果是在微信端浏览器
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    };
+
+    if(isWeiXin()){
+        var header=document.querySelector('.header');
+        var contentAll=document.querySelectorAll('.content');
+        header.style.paddingTop=0;
+        for(var i=0;i<contentAll.length;i++){
+            contentAll[i].style.paddingTop='44px';
+        }
+
+    }
+
+
+
+
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(/(window)/i.test(navigator.userAgent)){
+                        docEl.style.fontSize = 10 * (clientWidth / 960) + 'px';
+                    }
+                    if(/(ipad)/i.test(navigator.userAgent)){
+                        console.log('pad')
+                        docEl.style.fontSize = 20 * (clientWidth / 768) + 'px';
+                    }else{
+                        docEl.style.fontSize = 20 * (clientWidth / 640) + 'px';
+                    }
+
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+
+
+
+//    document.getElementsByTagName('html')[0].style.fontSize = Math.min(window.innerWidth*12/320,40)+"px";
+
+    fullpage.initialize('#fullpage', {
+        anchors : [ 'firstPage', 'secondPage', '3rdPage', '4thpage',
+            'lastPage', 'sixpage', 'sevenpage' ], //绑定菜单
+        menu : '#menu',
+        css3 : true,
+        afterLoad:function(anchorLink ,index){
+            var sectionLen=document.querySelectorAll('.fp-section').length;
+            var startY,endY;
+            setTimeout(function(){
+                if(anchorLink=="sevenpage" && index==sectionLen){
+                    document.body.addEventListener("touchstart",function(e){
+                        startY= e.touches[0].pageY;
+                    },false);
+                    document.body.addEventListener('touchend',function(e){
+                        endY= e.changedTouches[0].pageY;
+                        var number=endY-startY;
+                        if(number<0){   //往上拖
+                           var link=document.location.toString();
+                            window.location.href=link.split('#')[0];
+                        }
+                    },false);
+                }
+            },500);
+        }
+    });
+
+
+    //    var togo=document.getElementById('toGo');
+//    togo.addEventListener('click',function(){
+//        fullpage.moveSectionDown();
+//    },false);
+
+//    var item1=document.querySelector('.item1');
+//    var icon_down=item1.querySelector('.icon_down');
+//    if(/windows/i.test(navigator.userAgent)){
+//        icon_down.style.display='none';
+//    }else{
+//        icon_down.style.display='inline-block';
+//    }
+
+//    var fullpage=document.querySelector('#fullpage');
+//    var header=document.querySelector('.header');
+//    fullpage.style.height=window.innerHeight-header.offsetHeight+"px";
+//    fullpage.style.top=44+'px';
+
+//    var more=header.querySelector('.more');
+    var popover=document.querySelector('.cmp-popover');
+//    more.addEventListener('click',function(e){
+//        popover.classList.add('active');
+//        e.stopPropagation();
+//    },false);
+
+
+     document.addEventListener('click',function(){
+         popover.classList.remove('active');
+     },false);
+
+</script>
+
+</body>
+</html>

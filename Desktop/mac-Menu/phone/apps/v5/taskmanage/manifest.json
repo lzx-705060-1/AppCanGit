@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"任务管理",
+	"splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.taskmanage",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  	"cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"html/task_index.html?useNativebanner=1",
+		"jsapi":"taskmanage_m_api.s3js",
+        "openAppMethod":"taskmanageApi.openApp"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"30",
+	"urlSchemes":"taskmanage.v5.cmp",
+	"bundleName":"taskmanage",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

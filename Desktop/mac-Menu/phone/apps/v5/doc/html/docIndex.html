@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+    <title id="title"></title>
+    <style>
+        .cmp-table-view:before {
+            height: 0;
+        }
+        
+        .cmp-table-view:after {
+            height: 0;
+        }
+        
+        .cmp-grid-view.cmp-grid-9 .cmp-table-view-cell:last-child {
+            border-right: none;
+        }
+
+        .spanWH {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .lineHeight {
+            line-height: 65px !important;
+        }
+        #scroll{
+            background-color: white;
+        }
+        .cmp-media-body span{
+            font-size: 14px;
+        }
+        @media screen and (max-width: 350px) {
+            .cmp-media-body span{
+                font-size: 14px;
+            }
+        }
+        .cmp-grid-view.cmp-grid-9:before{
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<!-- <header id="doc_common_header" class="cmp-bar cmp-bar-nav">
+    <div id="prev" style="display:inline-block;">
+		<a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+		<div class="doc-back">
+			<span><i18n key="doc.h5.back"></i18n></span>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+    <h1 class="cmp-title"><span style="font-size: 18px;"><i18n key="doc.h5.docCenter"></i18n></span></h1>
+</header> -->
+<div class="cmp-content position_relative cmp-content-none">
+    <div id="control_content" class="cmp-control-content cmp-active"></div>
+</div>
+<script type="text/html" id = "pageContent_tpl" >
+    <div id="scroll" class="  cmp-scroll-wrapper ">
+        <div class="cmp-scroll">
+            <div class="document_center_content">
+                <ul class="cmp-table-view cmp-grid-view cmp-grid-9">
+                    <% for(var i = 0,len = this.length;i < len; i++){ %>
+                    <% var obj = this[i];
+                    var user = "cmp-icon-documentIndex user";
+                    var unit = "cmp-icon-documentIndex unit";
+                    var cat = "cmp-icon-documentIndex cat";
+                    var project = "cmp-icon-documentIndex project";
+                    var collect = "cmp-icon-documentIndex collect";
+                    var folder = "cmp-icon-documentIndex folder";
+                    %>
+                    <%if(i+1==this.length && (this.length%3==1 || this.length%3==2)){%>
+                    	<li class="cmp-table-view-cell cmp-media cmp-col-xs-4 cmp-col-sm-4"  id="<%=obj.doclib_id%>" name="<%=obj.doclib_name%>" style="padding-top: 34px;padding-bottom: 35px;height: 125px;border-right: 1px #eff0f3 solid;">
+                    <%}else{%>
+                    	<li class="cmp-table-view-cell cmp-media cmp-col-xs-4 cmp-col-sm-4"  id="<%=obj.doclib_id%>" name="<%=obj.doclib_name%>" style="padding-top: 34px;padding-bottom: 35px;height: 125px;">
+                    <%}%>
+						<%if(obj.doclib_type == 1){%>
+                        <div class="application"><span class="see-icon-v5-common-document-my spanWH" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}else if(obj.doclib_type == 5){%>
+                        <div class="application"><span class="see-icon-v5-common-document-integration spanWH" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}else if(obj.doclib_type == 2){%>
+                        <div class="application"><span class="see-icon-v5-common-document-unit spanWH" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}else if(obj.doclib_type == 4){%>
+                        <div class="application"><span class="see-icon-v5-common-document-project spanWH" style="font-size: 22px;" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}else if(obj.doclib_type == 3){%>
+                        <div class="application"><span class="see-icon-v5-common-document-official spanWH" style="font-size: 30px;" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}else {%>
+                        <div class="application"><span class="see-icon-v5-common-document-other spanWH" style="font-size: 26px;" cmp-data='<%=cmp.toJSON(obj) %>'></span></div>
+                        <%}%>
+
+                        <%if(obj.doclib_type == 4){%>
+                            <%if(obj.doclib_name.length>4){%>
+                            <div class="cmp-media-body" style="margin-top: 11px;width: 100%;height: auto;"><span style="color: #999;line-height: 18px!important;"><%=obj.doclib_name.getLimitLength('14','...')%></span></div>
+                            <%}else{%>
+                            <div class="cmp-media-body" style="margin-top: 11px;width: 100%;height: auto;"><span style="color: #999;line-height: 18px!important;"><%=obj.doclib_name%></span></div>
+                            <%}%>
+                        <%}else{%>
+                            <%if(obj.doclib_name.length>4){%>
+                            <div class="cmp-media-body" style="margin-top: 10px;width: 100%;height: auto;"><span style="color: #999;line-height: 18px!important;"><%=obj.doclib_name.getLimitLength('14','...')%></span></div>
+                            <%}else{%>
+                            <div class="cmp-media-body" style="margin-top: 10px;width: 100%;height: auto;"><span style="color: #999;line-height: 18px!important;"><%=obj.doclib_name%></span></div>
+                            <%}%>
+                        <%}%>
+                    </li>
+                    <%}%>
+                </ul></div></div></div>
+</script>
+<script src="/seeyon/m3/apps/v5/doc/i18n/Doc_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/doc/i18n/","Doc",null,"?buildversion=181210172443");</script>
+<script type="text/javascript">
+    var _docPath = "/seeyon/m3/apps/v5/doc";
+  var _cmpPath = "/seeyon/m3/cmp";
+  var _colPath = "/seeyon/m3/apps/v5/collaboration";
+</script>	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/common.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script type="text/javascript">
+  var _buildversion = "?buildversion=181210172443";
+</script>                               
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/apps/v5/doc/js/docIndex.js?buildversion=181210172443"></script>
+</body>
+</html>

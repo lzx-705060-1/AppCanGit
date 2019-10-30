@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<title>致信</title>
+	<meta charset="utf-8" />
+	<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucIndex.css?buildversion=181210172652" />
+	<script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+	<!--全局变量-->
+	
+</head>
+<body>
+	<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+	    <div class="cmp-header-left cmp-action-back" id="prev">
+			<span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+			<span class="nav-text">返回</span>
+		</div>
+		<div class="cmp-title">致信</div>
+		<div class="cmp-header-right nav-icon-one">
+			<span id="add" class="cmp-icon see-icon-add-circle"></span>
+		</div>
+
+	    <!-- <h1 class="cmp-title" id="title">致信</h1>
+	    <button class="cmp-action-back cmp-btn cmp-btn-blue cmp-btn-link cmp-btn-nav cmp-pull-left" id="prev">
+	        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>返回
+	    </button>
+	    <a class="cmp-icon see-icon-add-circle cmp-pull-right" id="add"></a> -->
+	</header>
+	<div class="cmp-control-content cmp-active">
+		<div id="all_uc" class="cmp-scroll-wrapper">
+			<div class="cmp-scroll">
+				<ul class="cmp-table-view" id="message_list"></ul>
+			</div>
+		</div>
+	</div>
+	<div class="uc-add">
+		<!-- <div class="calendar">
+            <div>
+                <span id="year"></span> /
+                <span id="month"></span> /
+                <div id="week"></div>
+            </div>
+            <div id="day"></div>
+	    </div> -->
+		<div class="uc-chat-way">
+			<div class="uc-alone-chat" id="aloneChat">
+				<div class="uc-chat-bg uc-alone-chat-bg">
+					<i class="uc-chat-icon iconfont icon-uc-icon-create-alone"></i>
+				</div>
+				<span>发起单人交流</span>
+			</div>
+			<div class="uc-group-chat" id="groupChat">
+				<div class="uc-chat-bg uc-group-chat-bg">
+					<i class="uc-chat-icon iconfont icon-create-group"></i>
+				</div>
+				<span>发起群组交流</span>
+			</div>
+		</div>
+		<div class="uc-close see-icon-error"></div>
+	</div>
+	
+	<script type="text/html" id="ms_list_li">
+	    <% var obj = this; %>
+	    <% if(obj.toTop){ %>
+			    <li class="cmp-table-view-cell cmp-media uc-top" id="<%=obj.toId%>" data-type="<%=obj.type%>" data-toName="<%=obj.toname%>" data-gn="<%=obj.gn%>" data-stime="<%=obj.s_time%>" data-timestamp="<%=obj.timestamp%>" data-block="<%=obj.block%>">
+		<% }else{ %>
+				<li class="cmp-table-view-cell cmp-media" id="<%=obj.toId%>" data-type="<%=obj.type%>" data-toName="<%=obj.toname%>" data-gn="<%=obj.gn%>" data-timestamp="<%=obj.timestamp%>" data-block="<%=obj.block%>">
+				
+		<% } %>
+					<div class="cmp-slider-handle">
+						<div class="uc-head">
+							<% if(obj.gn == ""){ %>
+								<img id ="h_<%=obj.toId%>" class="cmp-media-object" src="<%=obj.imgsrc%>" />
+							<% }else{ %>
+								<img class="cmp-media-object" src="<%=obj.imgsrc%>" />
+							<% } %>
+						</div>
+						<div class="cmp-media-body">
+							<div class="uc-title">
+								<span class="uc-title-l"><%=obj.toname%></span>
+								<span class="uc-date"><%=obj.time%></span>
+							</div>
+							<div class="uc-info">
+								<% if(obj.hasEdit){ %>
+									<span class="cmp-ellipsis uc-list-draft-style">[草稿] 
+										<span class="uc-common-text"><%=obj.hisc%></span>
+									</span>
+							<% }else{%>
+									<% 
+									var context = "";
+									if(obj.type == "microtalk"){
+										context="[语音]";
+									}else if(obj.type == "image"){
+										context="[图片]";
+									}else if(obj.type == "filetrans"){ 
+										context="[文件]";
+									}else{ 
+										context=obj.content;
+									} 
+									%>
+									<% if(obj.from == cmp.member.id){ %>
+										<span class="cmp-ellipsis"><%=context%></span>
+									<% 
+									}else { 
+										if(obj.gn){
+											if(obj.type == "system"){
+												context="系统消息："+context;
+											}else{
+												context=obj.name+"："+context;
+											}
+										}
+									%>
+									<span class="cmp-ellipsis"><%=context%></span>
+									<% } %>
+								<%}%> 
+								<% if(obj.count > 0){ %>
+									<% if(obj.block == "1"){ %>
+										<% if(obj.count > 99){ %>
+											<span id="count_<%=obj.toId%>" class="cmp-badge cmp-badge-grey">99+</span>
+										<% }else{ %>
+											<span id="count_<%=obj.toId%>" class="cmp-badge cmp-badge-grey"><%=obj.count%></span>
+										<% } %>
+									<% }else{ %>
+										<% if(obj.count > 99){ %>
+											<span id="count_<%=obj.toId%>" class="cmp-badge cmp-badge-danger">99+</span>
+										<% }else{ %>
+											<span id="count_<%=obj.toId%>" class="cmp-badge cmp-badge-danger"><%=obj.count%></span>
+										<% } %>
+									<% } %>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</li>
+	</script>
+		<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172652"></script>
+	<!--<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172652"></script>-->
+	<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script>    <script src="/seeyon/m3/apps/v5/uc/js/im/jsjac.js?buildversion=181210172652"></script>
+    <script src="/seeyon/m3/apps/v5/uc/js/im_send_message.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/im_send_iq.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucEmojiUtil-debug.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucCommonUtil-debug.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucDB.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucIndex.js?buildversion=181210172652"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<title></title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172714"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-visitingCard.css?buildversion=181210172714"/>
+</head>
+<body >
+
+<div class="bg_gray cmp-visiting-card">
+	<div class="person_header">
+		<div id="back_btn" class="cmp-pull-left cmp-icon cmpCommonPageBackBtn cmp-hidden">
+			<span class="see-icon-v5-common-arrow-left"><i18n key="cmp.visitingCard.btn_back"></i18n></span>
+		</div>
+		<h1 class="cmp-hidden"><i18n key="cmp.visitingCard.title_pInformation"></i18n></h1>
+		<!--头像-->
+		<div class="person_info">
+			<div class="person_head">
+				<img id="header" src="../img/def_member.png">
+			</div>
+			<div id="name" class="name"></div>
+		</div>
+		<!--通讯录人员信息（5个icon）-->
+		<div class="person_icon  ">
+			<!--发协同-->
+			<div class="item ">
+				<div id="coordination"><span class="  m3-icon-coordination-fill"></span></div>
+				<p><i18n key="cmp.visitingCard.btn_sendCollaboration"></i18n></p>
+			</div>
+			<!--发消息-->
+			<!--<div class="item" id="talk">-->
+				<!--<div><span class="m3-icon-msg-fill  "></span></div>-->
+				<!--<p>发消息</p>-->
+			<!--</div>-->
+			<!--打电话-->
+			<!--<div class="item" id="tel">-->
+				<!--<div><span class="m3-icon-phone-fill  "></span></div>-->
+				<!--<p>打电话</p>-->
+			<!--</div>-->
+			<!--&lt;!&ndash;发短信&ndash;&gt;-->
+			<!--<div class="item " id="sms">-->
+				<!--<div><span class="m3-icon-email-fill  "></span></div>-->
+				<!--<p>发短信</p>-->
+			<!--</div>-->
+			<!--&lt;!&ndash;发邮件&ndash;&gt;-->
+			<!--<div class="item" id="mail">-->
+				<!--<div><span class="m3-icon-email-fill  "></span></div>-->
+				<!--<p>发邮件</p>-->
+			<!--</div>-->
+		</div>
+	</div>
+
+	<div class="cmp-content scroll"  >
+		<!--列表-->
+		<ul class="cmp-table-view" >
+			<li class="cmp-table-view-cell">
+				<div class="cmp-pull-left department"><i18n key="cmp.visitingCard.property_department"></i18n></div>
+				<div id="department" class="cmp-pull-right cmp-ellipsis value" ></div>
+			</li>
+            <li class="cmp-table-view-cell cmp-hidden">
+                <div class="cmp-pull-left vj_account"><i18n key="cmp.visitingCard.vj_account"></i18n></div>
+                <div id="vj_account" class="cmp-pull-right cmp-ellipsis value" ></div>
+            </li>
+			<li class="cmp-table-view-cell">
+				<div class="cmp-pull-left post"><i18n key="cmp.visitingCard.property_post"></i18n></div>
+				<div id="post" class="cmp-pull-right  cmp-ellipsis value" ></div>
+			</li>
+			<li class="cmp-table-view-cell noclear">
+				<div class="cmp-pull-left level"><i18n key="cmp.visitingCard.property_level"></i18n></div>
+				<div id="level" class="cmp-pull-right  cmp-ellipsis value" ></div>
+			</li>
+			<!--<li class="cmp-table-view-cell" id="code">-->
+				<!--<div class="cmp-pull-left">二维码</div>-->
+				<!--<div class="cmp-pull-right">-->
+					<!--<span class="see-icon-v5-common-qrcode "></span>-->
+					<!--<span class="see-icon-v5-common-arrow-right "></span>-->
+				<!--</div>-->
+			<!--</li>-->
+		</ul>
+		<ul class="cmp-table-view margin_top15">
+			<li class="cmp-table-view-cell officenumber noclear">
+				<div class="cmp-pull-left phone"><i18n key="cmp.visitingCard.property_phone"></i18n></div>
+				<div id="phone" class="cmp-pull-right  cmp-ellipsis value" id="officeNumber"></div>
+			</li>
+			<li class="cmp-table-view-cell phone">
+				<div class="cmp-pull-left cellphone"><i18n key="cmp.visitingCard.property_cellphone"></i18n></div>
+				<div class="cmp-pull-right  cmp-ellipsis value" id="cellphone"></div>
+			</li>
+			<li class="cmp-table-view-cell email">
+				<div class="cmp-pull-left mail"><i18n key="cmp.visitingCard.property_mail"></i18n></div>
+				<div class="cmp-pull-right  cmp-ellipsis value" id="mail"></div>
+			</li>
+		</ul>
+
+	</div>
+
+
+</div>
+<script src="/seeyon/m3/cmp/i18n/cmp-visitingCard_zh_CN.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172714"></script>
+<script>
+    cmp.i18n.init('/seeyon/m3/cmp/i18n/', 'cmp-visitingCard',null,"?buildversion=181210172714");
+    var cmpVisitingCardI18nLoaded = true;
+	var collaborationPath = "/seeyon/m3/apps/v5/collaboration";
+</script>
+
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/page/js/cmp-visitingCard-page.js?buildversion=181210172714"></script>
+
+</body>
+</html>

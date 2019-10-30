@@ -1,0 +1,88 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-27 03:51:56
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:28:35
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="http://commons.m3.cmp/v/js/flexible.js"></script>
+    <title>消息列表</title>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css">
+    <link rel="stylesheet" href="http://message.m3.cmp/v/css/message-detail.css" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+</head>
+
+<body>
+    <div class="filter display_none"></div>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header ">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="message.m3.h5.return"></i18n></span>
+        </div>
+        <div class="cmp-title"></div>
+        <div class="cmp-header-right align_r">
+            <span class="cmp-icon iconfont see-icon-m3-set"></span>
+        </div>
+    </header>
+    <div class="cmp-content">
+        <div class="cmp-control-content cmp-active">
+            <div class="page_null display_none">
+                <span class="iconfont see-icon-m3-page-null"></span>
+                <div>
+                    <i18n key="message.m3.h5.noMsg"></i18n>
+                </div>
+            </div>
+            <div id="pullrefresh" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll display-none">
+                    <ul class="toDo_listes">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="cmp-bar cmp-bar-footer message-footer display_none flex cmp-before-line">
+            <span id="entryCollaboration" class="entryCollaboration flex1"><i18n key="message.m3.h5.entryCollaboration"></i18n></span>
+            <!-- <span id="allread" class="allread flex1"><i18n key="message.m3.h5.allread"></i18n></span> -->
+        </footer>
+
+    </div>
+    <script src="http://message.m3.cmp/v1.0.0/i18n/message_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://message.m3.cmp/v/i18n/", "message");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v/js/cmp.js"></script>
+    <script src="http://cmp/v/js/cmp-app.js"></script>
+    <script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+    <script src="http://cmp/v/js/cmp-server.js"></script>
+    <script src="http://cmp/v/js/cmp-imgCache.js"></script>
+    <script src="http://cmp/v/js/cmp-listView.js"></script>
+    <script src="http://cmp/v/js/cmp-gestureLock.js"></script>
+    <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+    <script src="http://cmp/v/js/cmp-chat.js"></script>
+
+    <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://message.m3.cmp/v/js/message-detail.js')</script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+.voice_info {
+    margin-top: 1.493rem;
+    text-align: center;
+}
+
+.voice_info .see-icon-m3-voice {
+    font-size: 100px;
+    line-height: 100px;
+}
+
+.title {
+    font-size: 22px;
+    color: #333;
+    margin-top: 0.533rem;
+}
+
+.cmp-table-view {
+    margin-top: 1.866rem;
+    background: none;
+}
+
+.cmp-table-view .cmp-table-view-cell {
+    height: 1.333rem;
+    line-height: .9rem;
+    font-size: 16px;
+    color: #333;
+}
+
+.tip {
+    height: 0.96rem;
+    line-height: 0.96rem;
+    font-size: 14px;
+    color: #666;
+    background: #f4f4f4;
+    padding-left: 15px;
+}
+
+.see-icon-m3-arrow-right {
+    color: #bdbdbd;
+    font-size: 16px;
+}
+
+.cmp-table-view-cell:after {
+    left: 0;
+}
+
+.voice_p {
+    font-size: 16px;
+    color: #999;
+    margin: 1.066rem 1.4rem 2.4rem;
+}
+
+.btn {
+    width: 6.4rem;
+    height: 1.066rem;
+    line-height: 1.066rem;
+    margin: 0 auto;
+    border: 1px solid #3AADFB;
+    font-size: 16px;
+    color: #3AADFB;
+    background: #fff;
+    text-align: center;
+    border-radius: 50px;
+}

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>选择重复表数据</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172644">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/index.css?buildversion=181210172644">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/form/css/index.css?buildversion=181210172644"/>
+    
+
+    <style>
+        .cmp-fullscreen{background: #fff;}
+        .cmp-btn{width: -webkit-calc(100% - 160px);width: calc(100% - 160px);}
+    </style>
+</head>
+
+<body class="cmp-fullscreen">
+
+<div class="cmp-content cmp-content-none background_white">
+    <div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted mytab" style="display:none;">
+        <div id="tabs"></div>
+    </div>
+
+    <div id="scroll" style="overflow-y: scroll;">
+      <div  id="contentDiv"> </div>
+    </div>
+</div>
+<!--列表容器-->
+
+<footer id="footer" class="cmp-bar cmp-bar-footer" >
+    <div class="cmp-btn cmp-btn-primary" id="ok"><i18n key="unflowform.ok"></i18n></div>
+</footer>
+
+</body>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/unflowform_zh_CN.js?buildversion=181210172644" ></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/unflowform_zh_CN.js?buildversion=181210172644" ></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+	    <script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-handWriteSignature.js?buildversion=181210172644"></script>
+<script type="text/html" id="views_tab_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i]; %>
+    <% if(i==0) {%>
+        <a class="cmp-control-item cmp-active" id="tab_<%=i %>" href="#tablelist<%=i %>">
+    <%}else {%>
+        <a class="cmp-control-item" id="tab_<%=i %>"  href="#tablelist<%=i %>">
+    <%}%>
+    <%=obj.extraMap.viewTitle %>
+    </a>
+    <% } %>
+</script>
+
+<script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script><script type="text/javascript">
+    var buildversion="?buildversion=181210172644";
+    var _collaboration_path = "/seeyon/m3/apps/v5/collaboration";
+    var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+    cmp.i18n.init(_unflowformpath+"/i18n/", "unflowform");
+    cmp.i18n.load(_common_v5_path+"/i18n/", "Commons");    
+</script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/relationSubForm.js?buildversion=181210172644"></script>
+
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.min.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/dataService.js?buildversion=181210172644"></script>
+<!--<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/sui.js?buildversion=181210172644"></script>-->
+
+<!--关联项目，关联表单接口的JS引用-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/unflowform_m_api.s3js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172644" ></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172644"></script>
+
+</html>

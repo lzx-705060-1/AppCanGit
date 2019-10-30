@@ -1,0 +1,192 @@
+<!--
+@Author: linguang <mars>
+@Date:   2017-02-15 20:20:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>语音小致</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-picker.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-listView.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-vocie-xiaoZhi.css">
+</head>
+
+<body class="bg_gray" style="overflow-y:auto; ">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <i18n key="my.m3.h5.xiaoZhi"></i18n>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content message xiaozhi-common-content">
+        <div class="cmp-control-content cmp-active">
+            <div class="xiaozhiServerStop">
+                <!-- 语音小致 -->
+                <ul class="cmp-table-view">
+                    <!--智能助手开关 start-->
+                    <li class="cmp-table-view-cell">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaoZhiSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini" id="masterSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="masterSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <p class="pl_0375">
+                        <i18n key="my.m3.h5.notWorking"></i18n>
+                    </p>
+                    <!--智能助手开关 end-->
+
+                    <!--显示小致图标开关 start-->
+                    <li class="cmp-table-view-cell">
+                        <div class="cell-title"><i18n key="my.m3.h5.showXiaoZhi"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini sub-switch" id="showXiaoZhi">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="showXiaoZhi_div" class="cover_switch"></div>
+
+                    </li>
+                    <p class="pl_0375">
+                        <i18n key="my.m3.h5.noAvatar"></i18n>
+                    </p>
+                    <!--显示小致图标开关 end-->
+
+                    <!--语音唤醒小致开关 start-->
+                    <li class="cmp-table-view-cell">
+                        <div class="cell-title"><i18n key="my.m3.h5.voiceWakeUp"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini sub-switch" id="voiceWakeUp">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="voiceWakeUp_div" class="cover_switch"></div>
+                    </li>
+                    <p class="pl_0375">
+                        <i18n key="my.m3.h5.voiceWakeUpClose"></i18n>
+                    </p>
+                    <!--显示小致图标开关 end-->
+
+                    <!--智能消息提醒开关  start-->
+                    <li class="cmp-table-view-cell">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhi.message.mainSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini sub-switch" id="mainSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="mainSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <p class="pl_0375">
+                        <i18n key="my.m3.h5.xiaozhi.message.closeTips"></i18n>
+                    </p>
+
+                    <li class="cmp-table-view-cell message-sub-li">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhi.message.arrangeSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini message-sub-switch" id="arrangeSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="arrangeSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <li class="cmp-table-view-cell message-sub-li">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhi.message.chartSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini message-sub-switch" id="chartSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="chartSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <li class="cmp-table-view-cell message-sub-li">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhi.message.statisticsSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini message-sub-switch" id="statisticsSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="statisticsSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <li class="cmp-table-view-cell message-sub-li">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhi.message.cultureSwitch"></i18n></div>
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini message-sub-switch" id="cultureSwitch">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                        <div id="cultureSwitch_div" class="cover_switch"></div>
+                    </li>
+                    <!--智能消息提醒开关  end-->
+
+
+                    <!--小致开启时间段 start-->
+                    <li class="cmp-table-view-cell message-sub-li btnn">
+                        <div class="cell-title cmp-pull-left"><i18n key="my.m3.h5.startTime"></i18n></div>
+                        <span class="cmp-pull-right result " id="demo8"></span>
+                    </li>
+                    <p class="pl_0375">
+                        <i18n key="my.m3.h5.workingTime"></i18n>
+                    </p>
+                    <!--显示小致图标开关 end-->
+
+                </ul>
+
+            </div>
+            <!-- 小致服务到期时间 -->
+            <div class="clear xiaozhiServer items">
+                <ul class="cmp-table-view">
+                    <li class="cmp-table-view-cell">
+                        <div class="cell-title"><i18n key="my.m3.h5.xiaozhiServerStopText"></i18n></div>
+                        <!-- <span class="cmp-pull-right"></span> -->
+                        <div class="cmp-switch cmp-hidden"></div>
+                    </li>
+                </ul>
+                <p class="pl_0375" id="xiaozhiTime"></p>
+            </div>
+
+            <div class="xiaozhiServerStop-text"></div>
+        </div>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-picker.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-dtPicker.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-push.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-listView.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-speechRobot.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-vocie-xiaoZhi.js')</script>
+</body>
+
+</html>

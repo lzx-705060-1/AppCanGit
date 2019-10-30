@@ -1,0 +1,478 @@
+var collApi = (function(){
+    function transObj2Url(obj){
+        var url = "?", split="";
+        for(var key in obj){
+            var v = obj[key] || "";
+            url += split + key + "=" + v;
+            if(split == ""){
+                split = "&";
+            }
+        }
+        return url;
+    }
+    
+    var CollaborationApi = function(){
+         
+        this.basePath = "/seeyon/m3/apps/v5/collaboration";
+        this.commonPath = "/seeyon/m3/apps/v5/commons";
+        this.workflowPath = "/seeyon/m3/apps/v5/workflow";
+        this.fastProcessJSLoaded = false;
+        this.fastBatchProcessJSLoaded = false;
+        this.m3batchOperJSLoaded = false;
+        this.docPath = "/seeyon/m3/apps/v5/doc";
+    }
+     
+    /**
+     * 跳转到协同列表<br/>
+     * ------------------------
+     * @deprecated 请使用 {@link #openList}
+     */
+    CollaborationApi.prototype.jumpToColList = function(templateIds,_listTitle,openFrom){
+    
+        collApi.openList({
+            'templeteIds' : templateIds,
+            'listTitle' : _listTitle,
+            'openFrom' : openFrom
+        })
+    }
+    
+    /**
+     * M3TODO删除<br/>
+     * [{affairId,summaryId,subState,templateId,canDeleteORarchive,canReMove,workitemId,processId}]
+     * 
+     * ------------------------
+     */
+    CollaborationApi.prototype.deleteProcess = function(paramObj){
+    
+    	var deletehandle = function(paramObj) {
+        	_deleteList(paramObj);
+    	}
+    	var _this = this;
+	    if (!this.m3batchOperJSLoaded) {
+	    	cmp.i18n.load(this.basePath + '/i18n/', 'Collaboration');
+	        //加载页面
+	        cmp.asyncLoad.js([
+	        	this.basePath + '/js/common.js',
+	        	this.docPath + '/js/doc-jssdk.js',
+	        	this.workflowPath + '/js/workflow-jssdk.js',
+		        this.basePath + '/js/collaboration-jssdk.js',
+		        this.basePath + '/js/m3todo.js',
+		        this.docPath +'/js/docNewPigeonhole.js',
+		        this.commonPath + '/m3-jssdk.js'
+	        ], function() {
+	            deletehandle(paramObj);
+	            _this.m3batchOperJSLoaded = true;
+	        });
+	    } else {
+	        deletehandle(paramObj);
+	    }
+    }
+    
+    /**
+     * M3TODO归档<br/>
+     * [{affairId,templateId,canDeleteORarchive,workitemId,processId}]
+     * 
+     * ------------------------
+     */
+    CollaborationApi.prototype.archiveProcess = function(paramObj){
+    
+    	var archivehandle = function(paramObj) {
+        	archivePigeonhole(paramObj);
+    	}
+    	var _this = this;
+    	cmp.asyncLoad.css([
+				this.docPath + '/css/docNewPigeonhole.css'
+			]);
+	    if (!this.m3batchOperJSLoaded) {
+	   	 	cmp.i18n.load(this.basePath + '/i18n/', 'Collaboration');
+	        //加载页面
+	        cmp.asyncLoad.js([
+	        	this.basePath + '/js/common.js',
+	        	this.docPath + '/js/doc-jssdk.js',
+	        	this.workflowPath + '/js/workflow-jssdk.js',
+		        this.basePath + '/js/collaboration-jssdk.js',
+		        this.basePath + '/js/m3todo.js',
+		        this.docPath +'/js/docNewPigeonhole.js',
+		        this.commonPath + '/m3-jssdk.js'
+	        ], function() {
+	            archivehandle(paramObj);
+	            _this.m3batchOperJSLoaded = true;
+	        });
+	    } else {
+	        archivehandle(paramObj);
+	    }
+    }
+    
+    /**
+     * M3TODO转发<br/>
+     * [{affairId,summaryId,templateId}]
+     * 
+     * ------------------------
+     */
+    CollaborationApi.prototype.forwardProcess = function(paramObj){
+    
+    	var forwardhandle = function(paramObj) {
+        	listForwards(paramObj);
+    	}
+    	var _this = this;
+	    if (!this.m3batchOperJSLoaded) {
+	    	cmp.i18n.load(this.basePath + '/i18n/', 'Collaboration');
+	        //加载页面
+	        cmp.asyncLoad.js([
+	        	this.basePath + '/js/common.js',
+	        	this.docPath + '/js/doc-jssdk.js',
+		        this.basePath + '/js/collaboration-jssdk.js',
+		        this.workflowPath + '/js/workflow-jssdk.js',
+		        this.basePath + '/js/m3todo.js',
+		        this.docPath +'/js/docNewPigeonhole.js',
+		        this.commonPath + '/m3-jssdk.js'
+	        ], function() {
+	            forwardhandle(paramObj);
+	            _this.m3batchOperJSLoaded = true;
+	        });
+	    } else {
+	        forwardhandle(paramObj);
+	    }
+    }
+    
+    /**
+     * 快速提交<br/>
+     * paramObj 包含两个属性 1是affairId  2是attitude是态度意见
+     * collaboration.dealAttitude.agree 同意
+     * collaboration.dealAttitude.disagree 不同意
+     * collaboration.dealAttitude.haveRead 已阅
+     * ------------------------
+     */
+    CollaborationApi.prototype.fastProcess = function(paramObj){
+    	var _this = this;
+    	var handle = function() {
+        	$s.Coll.quickfinishWorkItem({},paramObj,{
+    				success : function(result) {
+						if(result && result.message != "" ){
+							cmp.router.notify('M3ProcessFinish', {
+								type: 'fastProcess',
+								success: false,
+								message: result.message
+							});
+							
+						}else{
+							 //快捷处理完成,通知M3待办页面（成功的情况）
+							cmp.router.notify('M3ProcessFinish', {
+								type: 'fastProcess',
+								success: true
+							});
+						}
+    					
+    				},
+    				error : function(result){
+    					var cmpHandled = cmp.errorHandler(error);
+                        if (cmpHandled) {
+                            //cmp处理了这个错误
+                        } else {
+                            //走自己的处理错误的逻辑
+        					//快捷处理完成,通知M3待办页面（失败的情况）
+    				        cmp.router.notify('M3ProcessFinish', {
+    				            type: 'fastProcess',
+    				            success: false,
+    				            message: '异常message'
+    				        });
+        				}
+    				}
+    		});
+    	}
+	    if (!this.fastProcessJSLoaded) {
+	        //加载页面
+	        cmp.asyncLoad.js([
+		        this.basePath + '/js/collaboration-jssdk.js',
+		        this.commonPath + '/m3-jssdk.js'
+	        ], function() {
+	            handle();
+	            _this.fastProcessJSLoaded = true;
+	        });
+	    } else {
+	        handle();
+	    }
+    }
+    
+    /**
+     * 批处理 需要同时引入batch.js<br/>
+     * [{affairId,subject,category,summaryId}]
+     * ------------------------
+     */
+    CollaborationApi.prototype.batchProcess = function(param){
+		var _this = this;
+		var bacthDealFun = function(paramObj){
+        			var rows = paramObj;
+        		    if(rows.length < 1) {
+        		        _alert(cmp.i18n("collaboration.batch.alert.select"));
+        		        return;
+        		    }
+        		    var process = new BatchProcess();
+        		    for(var i = 0 ; i < rows.length; i++) {
+        		        var affairId = rows[i].affairId;
+        		        var subject = rows[i].subject;
+        		        var category =  rows[i].category||"1";
+        		        var summaryId =  rows[i].summaryId;
+        		        if(process.batchOpinion == "0" || process.batchOpinion == null) {
+        		        	process.batchOpinion = rows[i].disAgreeOpinionPolicy == null ? "0": rows[i].disAgreeOpinionPolicy=="1" ? "3":"0";//意见是否必填，3,不同意时，意见必填
+        		        }
+        		        process.addData(affairId,summaryId,category,subject);
+        		    }
+        		    if(!process.isEmpty()){
+        			     var r = process.doBatch({"m3todo":true});
+        		    }
+            	}
+		if (!this.fastBatchProcessJSLoaded) {
+	        //加载页面
+	        cmp.asyncLoad.js([
+				this.basePath + '/js/common.js',
+				this.basePath + '/js/ArrayList.js',
+			], function() {
+				 cmp.asyncLoad.js([
+					 _this.basePath + '/js/collaboration-jssdk.js',
+					 _this.basePath + '/js/batch.js',
+					 _this.commonPath + '/m3-jssdk.js'
+			], function() {
+				bacthDealFun(param);
+				_this.fastBatchProcessJSLoaded = true;
+				});
+			});
+	    } else {
+	        bacthDealFun(param);
+	    }
+    }
+    
+    
+    /**
+     * 新建协同接口
+     * @deprecated 请使用 {@link #newColl}
+     */
+    CollaborationApi.prototype.jumpToNewtemplateIndex = function(templateId) {
+        
+        collApi.newColl({
+            'templateId' : templateId
+        });
+    }
+    
+    
+    /**
+     * 跳转到协同查看页面
+     * @param summaryId : 协同ID
+     * @param openFrom : 来源（参考ColOpenFrom.java,例如来自文档中心此处传递"docLib"）
+     * @param operationId : 表单操作权限（非必填）
+     * @deprecated 请使用 {@link #openSummary}
+     */
+    CollaborationApi.prototype.jumpToColSummary = function(summaryId,openFrom,operationId){
+    
+        collApi.openSummary({
+            'openFrom' : !openFrom ? 'docLib' : openFrom,
+            'summaryId' : summaryId,
+            'operationId' : operationId || ""
+        });
+    }
+    
+    
+    /**
+     * 新建协同接口<br/>
+     * -------------------
+     * params = {
+     *     templateId : "1111", //非必填， 模板ID
+     *     newWebView : false //非必填， 是否使用新webview打开
+     * }
+     */
+    CollaborationApi.prototype.newColl = function(params){
+        
+        var newWebView = params.newWebView === true;
+        var paramData = {
+                'templateId' : params.templateId
+            };
+        
+        if(newWebView && cmp.platform.CMPShell){
+            cmp.href.next(this.basePath + "/html/newCollaboration.html", paramData, {openWebViewCatch:1});
+        }else{
+            
+         // 触发事件
+            cmp.event.trigger("beforepageredirect", document);
+            cmp.href.next(this.basePath + "/html/newCollaboration.html",paramData);
+        }
+    }
+    
+    
+    /**
+     * 打开协同列表 <br/>
+     * -------------------------------
+     * params = {
+     *     templeteIds : "", //非必填， 模板ID， 用于查询直接模板的数据，多个模板ID使用 , 分隔
+     *     listTitle : "", //非必填， 自定义标题
+     *     openFrom : "", //非必填， 定位到那个页签, listPending, listDone,listSent,listWaitSend
+     *     newWebView : false //非必填， 是否使用新webview打开
+     * }
+     * 
+     */
+    CollaborationApi.prototype.openList = function(params){
+        
+        var newWebView = params.newWebView === true;
+        var nextPageData = {
+                'templeteIds' : params.templeteIds || "",
+                'listTitle' : params.listTitle || "",
+                'openFrom' : params.openFrom || ""
+            };
+        
+        if(newWebView && cmp.platform.CMPShell){
+            cmp.href.next(this.basePath + "/html/colAffairs.html", nextPageData, {openWebViewCatch:1});
+        }else{
+         // 触发事件
+            cmp.event.trigger("beforepageredirect", document);
+            cmp.href.next(this.basePath + "/html/colAffairs.html", nextPageData);
+        }
+    }
+    
+    /**
+     * 打开协同
+     * params.summaryId 和affairId至少有一个必填  协同ID
+     * params.affairId 和summaryId至少有一个必填  人员事项ID
+     * params.openFrom 必填 来源
+     * params.operationId 非必填 表单的权限ID
+     * params.pigeonholeType 非必填 归档类型
+     * params.backIndex 非必填 回退时跳过几个页面
+     * params.docResId 非必填 文档ID
+     * params.baseObjectId 非必填 关联文档属于的数据ID
+     * params.baseApp 非必填 关联文档属于的数据所在的模块
+     * params.taskId 非必填 任务ID
+     * 
+     * ----------------------------------------
+     * 
+     * params.newWebView 非必填，是否新开webview打开
+     * 
+     */
+    CollaborationApi.prototype.openSummary = function(params){
+    
+        var openWin, url;
+        
+        var paramData = {
+        
+            "openFrom" : params.openFrom || "glwd",
+            "affairId" : params.affairId,
+            "summaryId" : params.summaryId,
+            "operationId" : params.operationId || "",//表单权限ID，非必传
+            "pigeonholeType" : params.pigeonholeType || "",//归档类型， 非必传
+            "backIndex" : params.backIndex || 0,//向前返回页面数量
+            "fromXz" : params.fromXz || false,//特殊处理，加一个参数表示从语音小志进入的协同
+            "docResId" : params.docResId || "",//文档ID，用于权限验证 
+            "baseObjectId" : params.baseObjectId || "",// 关联文档属于的数据ID
+            "baseApp" : params.baseApp || "",//关联文档属于的数据所在的模块
+            "taskId" : params.taskId || "",
+            "designId" : params.designId || ""// CAP4查询ID
+        };
+        
+        openWin = params.newWebView === true;
+        url = this.basePath + "/html/details/summary.html";
+        
+        if(cmp.platform.CMPShell && openWin){
+            cmp.href.open(url + transObj2Url(paramData));
+        }else{
+         // 触发事件
+            cmp.event.trigger("beforepageredirect", document);
+            cmp.href.next(url, paramData);
+        }
+    }
+    
+	/**
+	 * [打开应用]
+	 * @param  {string} type              [message代表消息模块,todo代表待办模块]
+	 * @param  {obj}    option           [待办/消息穿透所需要的json格式实体对象]
+	 * 			id: //协同id
+	 * 			affairId: //待办id，有就传，没有可不传
+	 *      	proxyId: //代理人id，有就传，没有不传
+	 */
+	CollaborationApi.prototype.openApp = function(type,backUrl,option,obj) {
+	    if(!option) {
+            return false;
+        }
+	    if(option && option["linkType"] && option["linkType"] == "message.link.ai.processed.list"){ //AI的消息列表
+	    	//pc URL:/collaboration/collaboration.do?method=listDone&openFrom=aiProcess&beginTime={0}&endTime={1}
+	    	//linkParam0:"2018-04-02 00:00:00" linkParam1 "2018-04-02 23:59:59"
+	    	var dealDate = option["linkParam0"].slice(0,10)+"#" +option["linkParam1"].slice(0,10);
+	    	var paramData = {
+				'openFrom': "listDone",
+				'dealDate': dealDate,
+				'aiProcessing' : "true"
+		    };
+	    	// 触发事件
+	        cmp.event.trigger("beforepageredirect", document);
+	       	cmp.href.next(this.basePath + "/html/colAffairs.html", paramData);
+	    }
+		else if(type=="message" || type=="todo") {
+			if(type=="message") {
+				//linkType为空时，屏蔽链接
+				if(!option.linkType || option.linkType=="null") {
+					return false;
+				}
+				//linkType为督办消息时，屏蔽链接
+				if(option.linkType=="message.link.col.supervise") {
+					return false;
+				}
+				//linkType为流程表单结束时自动触发的消息时，屏蔽链接
+				if(option.linkType=="message.link.formtrigger.msg.flow") {
+					return false;
+				}
+				/*if(option.linkType=="message.link.col.supervise") {//判断是否督办消息，督办消息第一个参数是summaryId
+					openFrom = "supervise";
+					option.id = option.affairId;
+					option.affairId = "-1";
+				}*/
+			}
+			var openFrom = "listPending";//暂时这么处理
+			if(option.openFrom && option.openFrom!="") {//检索等使用
+				openFrom = option.openFrom;
+			}
+			if("todo" == type){
+			   openFrom ="listPending";
+			}
+			var paramData = {
+				'openFrom': openFrom,
+				'summaryId' : !option.id ? '-1' : option.id,
+				'affairId' : !option.affairId ? '-1' : option.affairId,
+				'proxyId' : !option.proxyId ? '0' : option.proxyId
+		    };
+			// 触发事件
+	        cmp.event.trigger("beforepageredirect", document);
+	       	cmp.href.next(this.basePath + "/html/details/summary.html?cmp_orientation=auto",paramData);	
+		} else if(type=="shortcut" || type=="xiaozhiSpeechInput") {//快捷链接
+			if(option.openFrom=="newCollaboration") {//新建协同
+				var paramData = {
+					'openFrom': openFrom,
+					"members" : option.members || "",
+					"initFormData" : option.initFormData || null,
+					"templateId" : option.templateId || ""
+			    };
+				// 触发事件
+		        cmp.event.trigger("beforepageredirect", document);
+		       	cmp.href.next(this.basePath + "/html/newCollaboration.html",paramData);	
+			} else if(option.openFrom=="templateIndex") {////新建表单审批
+			 // 触发事件
+		        cmp.event.trigger("beforepageredirect", document);
+		       	cmp.href.next(this.basePath + "/html/templateIndex.html", {});
+			} else {//协同链接
+				var paramData = {
+					'openFrom': option.openFrom
+			    };
+				// 触发事件
+		        cmp.event.trigger("beforepageredirect", document);
+		       	cmp.href.next(this.basePath + "/html/colAffairs.html", paramData);
+			}
+		}else if(type=="barCode"){//给移动门户提供的二维码接口，扫描二维码打开单据
+			var paramData = {
+	            'openFrom' : option.openFrom,
+	            'affairId' : option.affairId,
+	            'operationId' : option.operationId
+	        };
+			// 触发事件
+	        cmp.event.trigger("beforepageredirect", document);
+	        cmp.href.next(this.basePath + "/html/details/summary.html",paramData);
+		}
+		
+	}
+    
+    return new CollaborationApi();
+})();

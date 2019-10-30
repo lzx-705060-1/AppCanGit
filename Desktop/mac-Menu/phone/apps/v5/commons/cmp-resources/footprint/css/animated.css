@@ -1,0 +1,181 @@
+
+/*<!--CSS3-->*/
+/*动画弹出模块*/
+.Animated{transition: transform 3s, opacity 3s;
+    -webkit-transition: -webkit-transform 3s, opacity 3s; opacity: 0;}
+
+.Animated.left-go{
+    transition: transform 3s, opacity 3s;
+    -webkit-transition: -webkit-transform 3s, opacity 3s;opacity: 0;
+    transform: translate3d(-100%,0,0); -webkit-transform: translate3d(-100%,0,0);}
+.Animated.right-go{transform: translate3d(100%,0,0);-webkit-transform: translate3d(100%,0,0);}
+.Animated.top-go{transform: translate3d(0,-100%,0);-webkit-transform: translate3d(0,-100%,0);}
+.Animated.bottom-go{
+    transition: transform 4s, opacity 4s;
+    -webkit-transition: -webkit-transform 4s, opacity 4s;opacity: 0;
+    transform: translate3d(0,100%,0);-webkit-transform: translate3d(0,100%,0);
+    -webkit-animation: 1s 3s infinite;
+    -moz-animation: 1s 3s infinite;
+    -o-animation: 1s 3s infinite;
+    animation: 1s 3s infinite;
+}
+
+
+/*<!--item1-->*/
+.item1.active .Animated{transform:scale(1);-webkit-transform:scale(1);opacity: 1;}
+.item6.active .Animated{transform:scale(1);-webkit-transform:scale(1);opacity: 1;}
+.item3.active .Animated{transform:scale(1);-webkit-transform:scale(1);opacity: 1;}
+
+/*item2*/
+.item2.active .Animated{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);
+    opacity: 1;}
+/*.item4.active .Animated{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);*/
+/*opacity: 1;}*/
+.item5.active .Animated{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);
+    opacity: 1;}
+.item7.active .Animated{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);
+    opacity: 1;}
+
+
+
+/*一会儿显示一会儿隐藏*/
+.opacityShowHide{
+    -webkit-animation:2.5s linear 0s normal none infinite opacity;
+    -moz-animation:2.5s linear 0s normal none infinite opacity;
+    -o-animation:2.5s linear 0s normal none infinite opacity;
+    animation: 2.5s linear 0s normal none infinite opacity;
+}
+@-webkit-keyframes opacity{from{opacity: 0;}to{opacity: 1;}}
+
+
+
+
+
+
+
+
+.item4.active .Animated.top-go{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);opacity: 1;}
+.item4.active .Animated.right-go{ animation: 10.5s linear 10s forwards;-webkit-animation: 10.5s linear 10s forwards;}
+
+.Animated.fadein{-webkit-transform:scale(0);transform:scale(0);}
+
+.Animated.AutoWidth{
+    width: 1%;
+}
+
+/*.item4.active .Animated.fadein{*/
+/*-webkit-transform:scale(1);transform:scale(1);*/
+
+/*}*/
+
+.item4.active .TextInfo2.top .fadein{
+
+    animation-delay:0s!important;
+    -webkit-animation-delay:0s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 0s forwards fadeinObj;
+    animation:1s linear 0s forwards fadeinObj;
+}
+
+.item4.active .TextInfo2.center .fadein{
+    animation:1s linear 2s forwards fadeinObj;
+    animation-delay:2s!important;
+    -webkit-animation-delay:2s!important;
+    animation-fill-mode:backwards;
+    -webkit-animation-fill-mode:backwards;
+    -webkit-animation:1s linear 2s forwards fadeinObj;
+
+}
+.item4.active .TextInfo2.bottom .fadein{
+    animation:1s linear 5s forwards fadeinObj;
+    animation-delay:5s!important;
+    -webkit-animation-delay:5s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 5s forwards fadeinObj;
+
+}
+
+@-webkit-keyframes fadeinObj{
+    0%{-webkit-transform:scale(0);transform:scale(0);}
+    100%{ -webkit-transform:scale(1);transform:scale(1);opacity: 1;}
+}
+
+
+.item4.active .TextInfo2.top .right-go{
+    animation:1s linear 1s forwards translateRight-go;
+    animation-delay:1s!important;
+    -webkit-animation-delay:1s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 1s forwards translateRight-go;
+}
+
+.item4.active .TextInfo2.center .left-go{
+    animation:1s linear 3s forwards translateLeft-go;
+    animation-delay:3s!important;
+    -webkit-animation-delay:3s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 3s forwards translateLeft-go;
+}
+.item4.active .TextInfo2.bottom .right-go{
+    animation:1s linear 5s forwards translateRight-go;
+    animation-delay:5s!important;
+    -webkit-animation-delay:5s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation: 1s linear 5s forwards translateRight-go;
+}
+
+
+
+@-webkit-keyframes translateRight-go{
+    0%{transform: translate3d(100%,0,0);-webkit-transform: translate3d(100%,0,0);
+        opacity: 0;}
+    100%{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);
+        opacity: 1;}
+}
+@-webkit-keyframes translateLeft-go{
+    0%{transform: translate3d(-100%,0,0); -webkit-transform: translate3d(-100%,0,0);
+        opacity: 0;}
+    100%{transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);
+        opacity: 1;}
+}
+
+
+@-webkit-keyframes animateObj {
+    from{
+        transition: transform 3s, opacity 3s;
+        -webkit-transition: -webkit-transform 3s, opacity 3s;
+    }
+    to{
+        transition: transform 3s, opacity 3s;
+        -webkit-transition: -webkit-transform 3s, opacity 3s;opacity: 1;
+    }
+
+}
+
+
+.item4.active .hr.one .AutoWidth{
+    animation:1s linear 2s forwards AutoWidth;
+    animation-delay:2s!important;
+    -webkit-animation-delay:2s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 2s forwards AutoWidth;
+}
+.item4.active .hr.two .AutoWidth{
+    animation:1s linear 4s forwards AutoWidth;
+    animation-delay:4s!important;
+    -webkit-animation-delay:4s!important;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation:1s linear 4s forwards AutoWidth;
+}
+
+@-webkit-keyframes AutoWidth{
+    0%{width: 1%; }
+    100%{width: 53%;opacity: 1; }
+}

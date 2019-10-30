@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+    <title>相关数据</title>
+    <style type="text/css">
+    	.outSystem {}
+    	.templateDeal {}
+    	.traceWorkflow {}
+    	.project {}
+    	.doc {}
+        .sec-template > li{
+            font-size:16px;
+            color:#222;
+        }
+        .see-icon-accessory{
+        	color : #3AADFB;
+        }
+        .sec-template > li:before, .list-page-unread:before{
+            display:none
+        }
+        .sec-template > li{
+            padding-left:5px;
+        }
+
+        .chart-div{
+            margin:5px 15px
+        }
+    </style>
+</head>
+<body class="flexbox-v">
+
+<div id="dataRelationInfo" class="page-content flex-1">
+</div>
+</body>
+<script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-v5.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/dataRelation.js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/edoc/edoc_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bulletin/bulletin_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/news/news_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/bbs_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/inquiry/inquiry_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/echarts3/echarts.min.js?buildversion=181210172433"></script>
+
+<!-- 总分类模板 -->
+<script type="text/html" id="html_modelName">
+    <% var leftColor = ["83CDF7","B6D91D","B09BFF","FFC740","FFA2A2"]; %>
+    <% for(var i = 0 ; i < this.length ; i++){ %>
+    <% var obj = this[i];%>
+        <% if(obj.dataTypeName == "formSearch" || obj.dataTypeName == "formStat"){ %>
+            <section class="sec-table">
+        <% }else if(obj.dataTypeName == "outSystem"){ %>
+            <section class="sec-outer">
+        <% }else{ %>
+            <section>
+        <% } %>
+            <div class="flexbox sec-title">
+                <h3 class="flex-1 textover title-blue" style="border-left-color:#<%=leftColor[i%5]%>;"><%=escapeStringToHTML(obj.subject, true)%></h3>
+                <% if(obj.dataTypeName != "traceWorkflow" && obj.showMore){ %>
+                    <a class="see-icon-v5-common-arrow-right" formQueryId="<%=obj.formQueryId%>" id="<%=obj.id%>" title="<%=escapeStringToHTML(obj.subject, true)%>" capType="<%=obj.capType%>"  modelType="<%=obj.dataTypeName%>" style="color:#C0C0C0;"></a>
+                <% } %>
+            </div>
+			<% if(obj.dataTypeName == "outSystem"){ %>
+            	<div id="model_<%=obj.id%>" class="outSystem" url="<%=obj.url%>"></div>
+			<% }else{ %>
+				<div id="model_<%=obj.id%>"></div>
+			<% } %>
+			<% if(obj.dataTypeName == "formStat" && obj.showChart == "1"){ %>
+                <% for(var j = 0 ; j < obj.chartItemList.length ; j++){ %>
+				<div id="img_<%=obj.id%>_<%=j%>" style="height:400px;"></div>
+                <% } %>
+			<% } %>
+        </section>
+    <% } %>
+</script>
+<!-- 模板数据 模板-->
+<script type="text/html" id="html_templateDeal">
+    <ul class="sec-template padlr-10">
+        <% for(var i = 0 ; i < this.length ; i++){ %>
+        <li class="flexbox flex-cross-center templateDeal" sendtoother="<%=this.sendtoother%>" summaryId="<%=this[i].summaryId%>" affairId="<%=this[i].affairId%>">
+            <% var importantLevel = this[i].importantLevel - 1; %>
+            <% if(importantLevel != 0){ %>
+                <a class="see-icon-v5-common-important-<%=importantLevel%>" style="color: red;"></a>
+            <% } %>
+            <span class="textover"><%=this[i].subject%></span>
+            <% if(this[i].hasAttsFlag){ %>
+                <a class="see-icon-accessory"></a>
+            <% } %>
+        </li>
+        <% } %>
+    </ul>
+</script>
+<!-- 模板数据 模板-->
+<script type="text/html" id="html_traceWorkflow">
+    <ul class="sec-template padlr-10">
+        <% for(var i = 0 ; i < this.length ; i++){ %>
+        <li class="flexbox flex-cross-center traceWorkflow" openFrom="<%=this.openFrom%>" summaryId="<%=this[i].originalModuleId%>" affairId="<%=this[i].affairId%>">
+            <% var importantLevel = this[i].importantLevel - 1; %>
+            <% if(importantLevel != 0){ %>
+                <a class="see-icon-v5-common-important-<%=importantLevel%>" style="color: red;"></a>
+            <% } %>
+            <span class="textover"><%=this[i].subject%></span>
+            <% if(this[i].hasAttsFlag){ %>
+                <a class="see-icon-accessory"></a>
+            <% } %>
+        </li>
+        <% } %>
+    </ul>
+</script>
+<!-- 模板数据(新建) 模板-->
+<script type="text/html" id="html_templateSend">
+    <ul class="sec-template padlr-10">
+        <% for(var i = 0 ; i < this.length ; i++){ %>
+        <li style="position:relative" class="flexbox flex-cross-center templateDeal" summaryId="<%=this[i].summaryId%>">
+            <% var importantLevel = this[i].importantLevel - 1; %>
+            <% if(importantLevel != 0){ %>
+                <a class="see-icon-v5-common-important-<%=importantLevel%>" style="color: red;"></a>
+            <% } %>
+            <span class="textover"><%=this[i].subject%></span>
+            <% if(this[i].hasAttsFlag){ %>
+                <a class="see-icon-accessory"></a>
+            <% } %>
+        </li>
+        <% } %>
+    </ul>
+</script>
+<!-- 表单查询  通用模板-->
+<script type="text/html" id="html_formSearch">
+    <div class="box padlr-10">
+        <table>
+            <% for(var i = 0 ; i < this.length ; i++){ %>
+                <% var obj_tr = this[i]; %>
+                <tr>
+                    <% for(var j = 0 ; j < obj_tr.length ; j++){ %>
+                        <% if(i == 0){%>
+                            <th>
+                                <%=obj_tr[j]%>
+                            </th>
+                        <% }else{ %>
+                            <td colspan="<%=obj_tr[j].colspan%>" rowspan="<%=obj_tr[j].rowspan%>" >
+                                <span>
+                                    <%=obj_tr[j]%>
+                                </span>
+                            </td>
+                        <% } %>
+                    <% } %>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</script>
+<!-- cap3 表单统计 -->
+<script type="text/html" id="html_formCap3">
+    <div class="box padlr-10">
+        <table>
+            <% for(var i = 0 ; i < this.length ; i++){ %>
+                <% var obj_tr = this[i]; %>
+                <tr>
+                    <% for(var j = 0 ; j < obj_tr.length ; j++){ %>
+                        <% if(i == 0){%>
+                            <th colspan="<%=obj_tr[j].colSpan%>" rowspan="<%=obj_tr[j].rowSpan%>" >
+                                <%=obj_tr[j].display%>
+                            </th>
+                        <% }else{ %>
+                            <td colspan="<%=obj_tr[j].colspan%>" rowspan="<%=obj_tr[j].rowspan%>" >
+                                <span>
+                                    <%=obj_tr[j].display%>
+                                </span>
+                            </td>
+                        <% } %>
+                    <% } %>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</script>
+<script type="text/html" id="html_formCap4">
+    <div class="box padlr-10">
+        <table>
+            <% for(var i = 0 ; i < this.length ; i++){ %>
+                <% var obj_tr = this[i]; %>
+                <tr>
+                   
+                        <% if(obj_tr.th){%>
+ 							<% for(var j = 0 ; j < obj_tr.cells.length ; j++){ %>
+								 <th colspan="<%=obj_tr.cells[j].colSpan%>" rowspan="<%=obj_tr.cells[j].rowSpan%>">
+                               		 <%=obj_tr.cells[j].display%>
+                           		 </th>
+							<%}%>
+                           
+                        <% }else{ %>
+							<% for(var j = 0 ; j < obj_tr.cells.length ; j++){ %>
+								<td colspan="<%=obj_tr.cells[j].colSpan%>" rowspan="<%=obj_tr.cells[j].rowSpan%>" >
+                                	<span>
+                                     <%=obj_tr.cells[j].display%>
+                               		</span>
+                           		</td>
+							<%}%>
+                            
+                        <% } %>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</script>
+<!-- 外部系统 模板-->
+<script type="text/html" id="html_outSystem">
+    <% if(this.imgSrc == undefined){ %>
+        <h5 class="padlr-10"><%=this.subject%></h5>
+        <p class="padlr-10"><%=this.content%></p>
+    <% }else{ %>
+        <ul class="sec-list padlr-10">
+            <li class="flexbox flex-cross-center">
+                <% var srcUrl = cmp.serverIp + "/seeyon/commonimage.do?method=showImage&id=" + this.imgSrc + "&size=custom&w=100&h=60"; %>
+                <img src="<%=srcUrl%>"/>
+                <span class="flex-1 textover-3"><%=this.subject%></span>
+            </li>
+        </ul>
+    <% } %>
+</script>
+<!-- 项目 模板-->
+<script type="text/html" id="html_project">
+    <ul class="sec-template padlr-10">
+        <% for(var i = 0 ; i < this.length ; i++){ %>
+        <li class="flexbox flex-cross-center project">
+            <span class="flex-1 textover" style="text-indent: 5px;"><%=this[i].projectName%></span>
+        </li>
+        <% } %>
+    </ul>
+</script>
+<!-- 文档中心 模板-->
+<script type="text/html" id="html_doc">
+	<ul class="sec-document">
+	<%
+	var folder = "cmp-icon-document folder";
+    var doc = "cmp-icon-document doc";
+    var xls = "cmp-icon-document xls";
+    var ppt = "cmp-icon-document ppt";
+    var pdf = "cmp-icon-document pdf";
+    var wps = "cmp-icon-document wps";
+    var html = "cmp-icon-document html";
+    var rar = "cmp-icon-document rar";
+    var et = "cmp-icon-document et";
+    var img = "cmp-icon-document img";
+    var emptyfile = "cmp-icon-document emptyfile";
+    var calender = "cmp-icon-document calender";
+    var link = "cmp-icon-document link";
+    var squares = "cmp-icon-document squares";
+    var synergy = "cmp-icon-document synergy";
+    var flag = "cmp-icon-document flag";
+    var meet = "cmp-icon-document meet";
+    var txt = "cmp-icon-document txt";
+    var music = "cmp-icon-document music";
+    var video = "cmp-icon-document video";
+    var news = "cmp-icon-document news";
+    var confirm = "cmp-icon-document confirm";
+    var minvideo = "cmp-icon-document minvideo";
+    var message = "cmp-icon-document message";
+	%>
+
+	<% for(var i = 0 ; i < this.length ; i++){ %>
+		<% var obj = this[i]; %>
+		<li class="flexbox flex-cross-center padlr-10 doc" sourceId="<%=obj.sourceId%>" frType="<%=obj.frType%>" id="<%=obj.id%>" mimeTypeId="<%=obj.mimeTypeId%>" frName="<%=obj.frName%>">
+		<%if(obj.folder){%>
+			<span class="<%=folder%>"></span>
+		<%}else if(obj.frType==22){%>
+			<span class="<%=html%>"></span>
+        <%}else if(obj.frType==51){%>
+			<span class="<%=link%>"></span>
+        <%}else if(obj.frType==9){%>
+			<span class="<%=squares%>"></span>
+        <%}else if(obj.frType==1){%>
+			<span class="<%=synergy%>"></span>
+        <%}else if(obj.frType==2){%>
+			<span class="<%=flag%>"></span>
+        <%}else if(obj.frType==5){%>
+			<span class="<%=news%>"></span>
+        <%}else if(obj.frType==4){%>
+			<span class="<%=meet%>"></span>
+        <%}else if(obj.frType==6){%>
+			<span class="<%=minvideo%>"></span>
+        <%}else if(obj.frType==7){%>
+			<span class="<%=confirm%>"></span>
+        <%}else if(obj.frType==8){%>
+			<span class="<%=message%>"></span>
+        <%}else if(obj.mimeTypeId==101||obj.mimeTypeId==23||obj.mimeTypeId==25){%>
+			<span class="<%=doc%>"></span>
+        <%}else if(obj.mimeTypeId==102||obj.mimeTypeId==24||obj.mimeTypeId==26){%>
+			<span class="<%=xls%>"></span>
+        <%}else if(obj.mimeTypeId==103){%>
+			<span class="<%=pdf%>"></span>
+        <%}else if(obj.mimeTypeId==104){%>
+			<span class="<%=ppt%>"></span>
+        <%}else if(obj.mimeTypeId==105){%>
+			<span class="<%=txt%>"></span>
+        <%}else if(obj.mimeTypeId==107||obj.mimeTypeId==108){%>
+			<span class="<%=html%>"></span>
+        <%}else if(obj.mimeTypeId==119){%>
+			<span class="<%=rar%>"></span>
+        <%}else if(obj.mimeTypeId==120){%>
+			<span class="<%=et%>"></span>
+        <%}else if(obj.mimeTypeId==121){%>
+			<span class="<%=wps%>"></span>
+        <%}else if(obj.mimeTypeId==109||obj.mimeTypeId==110||obj.mimeTypeId==111||obj.mimeTypeId==112||obj.mimeTypeId==117||obj.mimeTypeId==118){%>
+			<img src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.sourceId%>&size=custom&h=40&w=36" width="36" height="40"/>
+        <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp3"){%>
+			<span class="<%=music%>"></span>
+        <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp4"){%>
+			<span class="<%=video%>"></span>
+        <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".arm"){%>
+			<span class="<%=video%>"></span>
+        <%}else{%>
+			<span class="<%=emptyfile%>"></span>
+		<%}%>
+			<p class="flex-1">
+				<span class="textover-2"><%=obj.frName%></span>
+				<span class="textover-1 data-info">
+					<i class="textover"><%=obj.createUserName%></i>
+					<i><%=obj.showCreateTime%></i>
+					<% if(obj.frSize != 0){ %>
+						<i><%=bytesToSize(obj.frSize)%></i>
+					<% } %>
+				</span>
+			</p>
+		<%if(obj.folder){%>
+			<span class="see-icon-v5-common-arrow-right" style="color:#C0C0C0;"><%=obj.docNum%></span>
+		<%}%>
+		</li>
+	<% } %>
+	</ul>
+</script>
+
+</html>

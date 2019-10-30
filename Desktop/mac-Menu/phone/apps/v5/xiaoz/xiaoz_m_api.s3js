@@ -1,0 +1,48 @@
+var xiaozApi = (function(){
+     var dependPath = {
+        xiaoz:"/seeyon/m3/apps/v5/xiaoz",
+        cmp:"/seeyon/m3/cmp"
+     };
+     var api = {
+            openApp:function(type,backUrl,options,obj){
+                var gotoParams = JSON.parse(options);
+                cordova.exec(
+                            function success(res){
+                            },
+                            function error(error){
+                               // alert(error);
+                            },
+                            "CMPSpeechRobotConfigPlugin",
+                            "openRobot",
+                            [{
+                                "params":{"intentId":gotoParams.intentId}
+                            }]
+                        );
+                /**
+                _loadSpeechRootJS({
+                    success:function(){
+                        cmp.speechRobot.openRobot({
+                            success:function(){},
+                            error:function(){},
+                            params:{"intentId":options.intentId}
+                        });
+                    },
+                    error:function(){
+                        cmp.alert("加载小致组件js资源失败")
+                    }
+                });
+                **/
+            }
+     }
+     function _loadSpeechRootJS(options){
+        if(!cmp.speechRobot){
+            var onload = options.success,onerror = options.error;
+            var script = document.createElement("script");
+                    script.onload = onload;
+                    script.onerror = onerror;
+                    script.src = dependPath.cmp + "/js/cmp-speechRobot.js";
+                    document.head.appendChild(script);
+        }
+     }
+     return api;
+})();

@@ -1,0 +1,14 @@
+/*
+   ms  code
+
+*/
+/*新页签样式 38*/
+.cmp-content div.new-tab-nav{height: 38px;background-color: white;}
+.cmp-content div.new-tab-nav .cmp-control-item.cmp-active{color: #3aadfb;border-bottom: 2px solid #3aadfb;}
+.cmp-content div.new-tab-nav  .cmp-control-item{color: #666666;font-size: 16px;height: 36px;line-height: 36px;} 
+/*新页签高度48*/
+.cmp-content div.new-tab-nav-count{height: 48px;background-color: white;}
+.cmp-content div.new-tab-nav-count .cmp-control-item{line-height: initial;color: #666666;font-size: 12px;}
+.cmp-content div.new-tab-nav-count .cmp-control-item.cmp-active{color: #3aadfb;border-bottom: 2px solid #3aadfb;background: none;}
+.cmp-content div.new-tab-nav-count .cmp-control-item .title{height: 16px; margin-top: 8px; display: block; width: 100%; font-size: 14px;}
+.cmp-content div.new-tab-nav-count .cmp-control-item .sub{line-height: 20px; display: block; height: 22px; font-size: 12px;bottom: 0px;}

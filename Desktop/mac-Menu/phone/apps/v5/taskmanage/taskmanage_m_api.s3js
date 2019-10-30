@@ -1,0 +1,74 @@
+var taskmanageApi = (function(){
+	
+	var taskmanageApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/taskmanage";
+	}
+	
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [id:任务记录id]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    taskmanageApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	var _basePath = this.basePath;
+		
+		if(type=="message"){
+			var param = {
+           		'taskId' : option.id,
+           		'openType' : type,
+           		'backUrl' : backUrl,
+           		'obj' : obj
+        	};
+        	if(option.linkType == "message.link.taskmanage.viewfeedback"){
+        		//进展消息跳转到进展页面
+        		cmp.href.next(_basePath + "/html/taskFeedbackList.html", param);
+        	} else if(option.linkType == "message.link.taskmanage.status"){
+        		//进入任务首页
+        		param.listType = option.linkParam0;
+        		param.status = 'overdue';
+        		cmp.href.next(_basePath + "/html/task_index.html", param);
+        	} else{
+        		//跳转到详情页面
+        		cmp.href.next(_basePath + "/html/taskEditor.html", param);
+        	}
+		}else if(type=="shortcut"){
+			if(option.openFrom=="taskCreate") {// 新建任务
+		       	cmp.href.next(_basePath + "/html/taskEditor.html", {});
+			} 
+		}
+		
+	}
+	/**
+	 * @description 新建任务
+	 * @method createApp
+	 * @param {any} params 新建时需要的参数
+	 * @param {string} from 来源
+	 */
+	taskmanageApi.prototype.createApp = function(params, from) {// 带有回填参数的新建任务
+		if("uc" == from){
+			params.createType = "newTaskWithParams";
+			cmp.href.go(this.basePath + "/html/taskEditor.html", params);
+		}else{
+			cmp.href.next(this.basePath + "/html/taskEditor.html", params);
+		}
+	};
+    /**
+     * 跳转到任务页面
+     * @param {Object} params
+     * eg:会议任务{
+     * 	 sourceType : 6
+     * 	 sourceId : meetingId
+     * }
+     */
+    taskmanageApi.prototype.jumpToTask = function(params){
+    	var options = new Object();
+    	if(params && params.openWebview){
+    		options.openWebViewCatch = 1;
+    	}
+    	cmp.href.next(this.basePath + "/html/task_index.html",params,options);
+    }
+	return new taskmanageApi();
+})();

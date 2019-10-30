@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+<link rel="stylesheet" href="http://cmp/css/cmp.css"/>
+<link rel="stylesheet" href="http://commons.v5.cmp/cmp-resources/M1H5.s3csss"/>
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css">
+<title>处理</title>
+<style>
+
+
+</style>
+</head>
+<body>
+
+<header class="cmp-bar cmp-bar-nav M1_search_result_title">
+    <a class="cmp-icon  cmp-icon-left-nav  "></a>
+    <a href="#topPopover" class="cmp-icon cmp-see-see-icon-more cmp-pull-right"></a>
+    <h1 class="cmp-title">处理</h1>
+</header>
+<div class="cmp-content position_relative">
+    <div class="cmp-handle-btn-content " id="button_list_nav">
+        <button class="cmp-btn cmp-btn-primary cmp-btn-outlined handle cmp-active">已阅</button>
+        <button class="cmp-btn cmp-btn-primary cmp-btn-outlined handle  ">同意</button>
+        <button class="cmp-btn cmp-btn-primary cmp-btn-outlined handle  ">不同意</button>
+    </div>
+    <div class="replay_opinion_content border_bottom">
+        <div class="information">
+            <textarea id="textarea" rows="5" placeholder="请输入处理意见"></textarea>
+            <div class="text_and_accessory">
+                <h5 class=" ">124</h5>
+            </div>
+        </div>
+    </div>
+    <div class="StatusContainer">
+        <span class="cmp-icon iconfont see-see-icon-v5-common-searchnocontent"></span>
+        <span class="text">页面无内容</span>
+    </div>
+    <div class="StatusContainer">
+        <span class="cmp-icon iconfont see-see-icon-v5-common-searchnoresults"></span>
+        <span class="text">搜索无结果</span>
+    </div>
+    <div class="StatusContainer">
+        <span class="cmp-icon iconfont see-icon-loadfail"></span>
+        <span class="text">加载失败</span>
+    </div>
+
+</div>
+
+<div id="topPopover" class="cmp-popover cmp-popover-custom reply_to_papers_content">
+    <div class="cmp-popover-arrow"></div>
+    <div class="container">
+        <ul class="reply_to_papers">
+            <li class="cell">加签</li>
+            <li class="cell">当前会签</li>
+            <li class="cell">知会</li>
+            <li class="cell">意见隐藏<span class="tak">关</span></li>
+            <li class="cell">追踪 <span class="tak cmp-active">开</span></li>
+        </ul>
+    </div>
+
+</div>
+
+<div id="picture" class="cmp-popover cmp-popover-action     " >
+    <div   class="cmp-popover-container replay_accessory_list_content  ">
+        <ul class="overflow_hidden ">
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory photo"></div>
+                    <p>拍照</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory record"></div>
+                    <p>语音</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory document"></div>
+                    <p>关联文档</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory localFile"></div>
+                    <p>本地文件</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory takePhotos"></div>
+                    <p>本地图片</p>
+                </div>
+            </li>
+        </ul>
+        <div class="cmp-text-center">
+            <button id="close" class="cmp-btn cancel ">取消</button>
+        </div>
+    </div>
+</div>
+
+<!--IOS 模拟V5.6常用语弹出容器-->
+<div class="GM_Alert_Content Animated-Container top-go animated">
+    <header class="cmp-bar cmp-bar-nav  ">
+        <span class="cmp-icon  cmp-icon-left-nav  "></span>
+        <h1 class="cmp-title">常用语</h1>
+    </header>
+    <div class="GM_item_container">
+        <ul class="cmp-table-view ">
+            <li class="cmp-table-view-cell">OK,全力支持</li>
+            <li class="cmp-table-view-cell">同意,按规定办理</li>
+            <li class="cmp-table-view-cell">按流程办理</li>
+            <li class="cmp-table-view-cell">交相关部门处理</li>
+            <li class="cmp-table-view-cell">按单位相关规章制度办理</li>
+            <li class="cmp-table-view-cell">保留意见</li>
+        </ul>
+    </div>
+    <footer class="cmp-bar cmp-bar-footer">按单位相关规章制度办理</footer>
+</div>
+
+<div class="text_and_accessory fixed">
+    <div class="cmp-badge cmp-pull-right replay_badge badge_custom ">
+        <a href="#picture" class="cmp-icon-synergy-list accessory1 linkObj"></a>
+        <span id="praise" class="cmp-icon iconfont icon-appreciatefill"></span>
+        <a id="useful"  class="cmp-h6 useful">常用语</a>
+    </div>
+</div>
+<footer class="cmp-bar cmp-bar-footer footer_custom footer_replay">
+
+    <button type="button" class="cmp-btn cmp-btn-primary cmp-btn-block display_inline-block hold">暂存待办</button>
+    <button type="button" class="cmp-btn cmp-btn-primary cmp-btn-block display_inline-block">发送</button>
+
+</footer>
+
+
+
+<script src="http://cmp/js/cmp.js"></script>
+    
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js"></script>
+<script>
+cmp.ready(function(){
+
+    cmp.toggle();
+
+
+//整个常用语弹出事件
+    (function(){
+        var useful=document.getElementById('useful');
+        var useful_alert_content=document.querySelector('.GM_Alert_Content');
+        var header=useful_alert_content.querySelector('header');
+        var useful_item_container=document.querySelector('.GM_item_container');
+        var navLeft=useful_alert_content.querySelector('.cmp-icon-left-nav');
+//    点击常用语
+        useful.addEventListener('click',function(){
+            useful_alert_content.classList.add('cmp-active');
+            useful_item_container.style.height=useful_alert_content.offsetHeight-header.offsetHeight+"px";
+//        cmp('#middlePopover').popover('toggle');
+        });
+//    点击常用语弹出容器的回退按钮
+        navLeft.addEventListener('click',function(){
+            SwitchActive();
+        });
+//    点击常用语列表，收回弹出容器
+        cmp('body').on('tap','.GM_item_container .cmp-table-view-cell',function(){
+            SwitchActive();
+        });
+        function SwitchActive(){
+            useful_alert_content.classList.contains('cmp-active')
+            ?useful_alert_content.classList.remove('cmp-active')
+            :useful_alert_content.classList.add('cmp-active');
+        }
+    })(window);
+
+
+
+//    cmp.listView('#useful_scroll');
+//    点击赞
+    var praise=document.getElementById('praise');
+    praise.addEventListener('click',function(){
+       this.classList.contains('cmp-active')
+       ?this.classList.remove('cmp-active')
+       :this.classList.add('cmp-active');
+    });
+//    导航右侧更多按钮
+    var reply_to_papers_content=document.querySelector('.reply_to_papers_content');
+    var tak=reply_to_papers_content.querySelectorAll('.tak');
+    for(var i= 0,len=tak.length;i<len;i++){
+        (function(_){
+            tak[_].addEventListener('tap',function(){
+              for(var j= 0,l=tak.length;j<l;j++){
+                  tak[j].classList.remove('cmp-active');
+              }
+                this.classList.add('cmp-active');
+                this.innerHTML=='关'?this.innerHTML='开':this.innerHTML='关';
+            },false);
+        })(i);
+    }
+
+//    顶部按钮的切换点击
+    var cmp_handle=document.querySelector('.cmp-handle-btn-content');
+    var handle=cmp_handle.querySelectorAll('.handle');
+    for(var k= 0,len2=handle.length;k<len2;k++){
+        (function(_){
+            handle[_].addEventListener('tap',function(){
+                for(var m= 0,n=handle.length;m<n;m++){
+                    handle[m].classList.remove('cmp-active');
+                }
+                this.classList.add('cmp-active');
+            },false);
+        })(k);
+    }
+//        点击取消按钮
+    cmp('body').on('tap', '.cmp-popover-action .item', function() {
+        var a = this,parent;
+        //根据点击按钮，反推当前是哪个actionsheet
+        for (parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
+            if (parent.classList.contains('cmp-popover-action')) {
+                break;
+            }
+        }
+        //关闭actionsheet
+        cmp('#' + parent.id).popover('toggle');
+    });
+});
+
+
+(function(_){
+    _.toggle=function(){
+        var href_show=document.querySelectorAll('a');
+        for(var i=0,len=href_show.length;i<len;i++){
+            (function(index){
+                href_show[index].addEventListener('click',function(){
+                    var thisId=this.href.toString().split('#')[1];
+                    var content= document.getElementById(thisId);
+                    if(content==null)return;
+                    content.classList.contains('display_none')
+                    ?content.classList.remove('display_none')
+                    :content.classList.add('display_none');
+                })
+            })(i);
+        }
+    }
+})(cmp);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172613" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172613" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/mycollection/css/mycollection.css?buildversion=181210172613" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172613" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172613">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172613">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172613">
+<title id="title"></title>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<!-- <header id="doc_common_header" class="cmp-bar cmp-bar-nav">
+    <div id="prev" style="display:inline-block;">
+        <a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+        <div class="doc-back">
+            <span><i18n key="mycollection.h5.back"></i18n></span>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <h1 class="cmp-title"><span style="font-size: 18px;"><i18n key="mycollection.h5.mycollection"></i18n></span></h1>
+</header> -->
+<div class="cmp-content position_relative cmp-content-none" id="list">
+    <div>
+        <div>
+            <div id="search" class="position_relative boder_bottom">
+                <div class="position_relative cmp-v5-search-content">
+                  <div>
+                    <div class="cmp-content-title-search m1_search_title ">
+                      <div id="cmp_search_textHandler" class="cmp-input-row cmp-search search_handler cmp-v5-transition-width-return" style="border-radius:35px;width: 100%; display: inline-block;">
+                        <span class="cmp-icon cmp-icon-search search-btn cmp-hidden"></span>
+                        <form id="cmp-search-input" onsubmit="return false;"></form>
+                        <input type="search" disabled name="search" form="cmp-search-input" class="btn cmp-input-clear cmp-v5-search-textBtn">
+                        <span class="cmp-icon cmp-icon-clear cmp-hidden"></span>
+                        <span class="cmp-placeholder" style="top: 5px">
+                          <span class="cmp-icon cmp-icon-search"></span>
+                          <span><i18n key="mycollection.h5.search"></i18n></span>
+                        </span>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div id="reSearch" class="position_relative cmp-search-content" style="display: none;">
+            <div class="cmp-segmented-control cmp-search-title ">
+              <div class="cmp-search-item">
+                <span class="title" id="cmp_search_title"></span>
+              </div>
+              <div id="toSearch" class="cmp-search-item">
+                <div id="searchText" class="item text cmp-active">
+                  <input id="searchTextValue" type="text" readonly="readonly">
+                </div>
+              </div>
+              <div class="cmp-search-item">
+                <span id="cancelSearch" class="gotoSearch"><i18n key="mycollection.h5.cancel"></i18n></span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="cmp-control-content cmp-active">
+        <div id="allPending" class="  cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <ul class="cmp-list-content cmp-table-view file-index-content cmp-before-line" id="list_content">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="pageContent_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i];
+    var doc = "cmp-icon-document doc";
+    var xls = "cmp-icon-document xls";
+    var ppt = "cmp-icon-document ppt";
+    var pdf = "cmp-icon-document pdf";
+    var wps = "cmp-icon-document wps";
+    var html = "cmp-icon-document html";
+    var rar = "cmp-icon-document rar";
+    var et = "cmp-icon-document et";
+    var img = "cmp-icon-document img";
+    var emptyfile = "cmp-icon-document emptyfile";
+    var calender = "cmp-icon-document calender";
+    var link = "cmp-icon-document link";
+    var squares = "cmp-icon-document squares";
+    var synergy = "cmp-icon-document synergy";
+    var flag = "cmp-icon-document flag";
+    var meet = "cmp-icon-document meet";
+    var txt = "cmp-icon-document txt";
+    var music = "cmp-icon-document music";
+    var video = "cmp-icon-document video";
+    var news = "cmp-icon-document news";
+    var confirm = "cmp-icon-document confirm";
+    var minvideo = "cmp-icon-document minvideo";
+    var message = "cmp-icon-document message";
+    %>
+    <li class="cmp-table-view-cell cmp-list-cell file_indie" cmp-data='<%=cmp.toJSON(obj).escapeHTML() %>'>
+        <div class="cmp-slider-right cmp-disabled">
+            <a class="cmp-btn cmp-btn-red" id="<%=obj.fr_id%>" source_id="<%=obj.source_id%>"><i18n key="mycollection.h5.cancle.col"></i18n></a>
+        </div>
+        <div class="cmp-slider-handle">
+            <div class="cmp-list-cell-img cmp-left">
+                <%if(obj.fr_mine_type==22){%>
+                <div class="<%=html%>"></div>
+                <%}else if(obj.fr_mine_type==51){%>
+                <div class="<%=link%>"></div>
+                <%}else if(obj.fr_mine_type==9){%>
+                <div class="<%=squares%>"></div>
+                <%}else if(obj.fr_mine_type==1){%>
+                <div class="<%=synergy%>"></div>
+                <%}else if(obj.fr_mine_type==2){%>
+                <div class="<%=flag%>"></div>
+                <%}else if(obj.fr_mine_type==5){%>
+                <div class="<%=news%>"></div>
+                <%}else if(obj.fr_mine_type==4){%>
+                <div class="<%=meet%>"></div>
+                <%}else if(obj.fr_mine_type==6){%>
+                <div class="<%=minvideo%>"></div>
+                <%}else if(obj.fr_mine_type==7){%>
+                <div class="<%=confirm%>"></div>
+                <%}else if(obj.fr_mine_type==8){%>
+                <div class="<%=message%>"></div>
+                <%}else if(obj.fr_mine_type==101||obj.fr_mine_type==23||obj.fr_mine_type==25){%>
+                <div class="<%=doc%>"></div>
+                <%}else if(obj.fr_mine_type==102||obj.fr_mine_type==24||obj.fr_mine_type==26){%>
+                <div class="<%=xls%>"></div>
+                <%}else if(obj.fr_mine_type==103){%>
+                <div class="<%=pdf%>"></div>
+                <%}else if(obj.fr_mine_type==104){%>
+                <div class="<%=ppt%>"></div>
+                <%}else if(obj.fr_mine_type==105){%>
+                <div class="<%=txt%>"></div>
+                <%}else if(obj.fr_mine_type==107||obj.fr_mine_type==108){%>
+                <div class="<%=html%>"></div>
+                <%}else if(obj.fr_mine_type==119){%>
+                <div class="<%=rar%>"></div>
+                <%}else if(obj.fr_mine_type==120){%>
+                <div class="<%=et%>"></div>
+                <%}else if(obj.fr_mine_type==121){%>
+                <div class="<%=wps%>"></div>
+                <%}else if(obj.fr_mine_type==109||obj.fr_mine_type==110||obj.fr_mine_type==111||obj.fr_mine_type==112||obj.fr_mine_type==117||obj.fr_mine_type==118){%>
+                <div class="<%=img%>"></div>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp3"){%>
+                <div class="<%=music%>"></div>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp4"){%>
+                <div class="<%=video%>"></div>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".arm"){%>
+                <div class="<%=video%>"></div>
+                <%}else{%>
+                <div class="<%=emptyfile%>"></div>
+                <%}%>
+            </div>
+            <div class="cmp-list-cell-info null_pel_time" style="width: 84%!important;">
+                <span class="cmp-ellipsis-2 cmp-pull-left  list_title_name"><a><%=escapeStringToHTML(obj.fr_name)%></a></span>
+                <h5 class="list_cont_info">
+                    <div class="cmp-ellipsis" style="max-width: 40%;min-width:15%;float: left;padding-right:10px;">
+                        <span><%=obj.fr_create_username%></span>
+                    </div>
+                    <div style="width: 54%;display:inline-block;">
+                        <span><%=obj.fr_create_time%></span>
+                    </div>
+                    <div style="clear: both;"></div>
+				</h5>
+			</div>
+		</div>
+	</li>
+	<%}%>
+</script>	   
+<script src="/seeyon/m3/apps/v5/mycollection/i18n/MyCollection_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/mycollection/i18n/","MyCollection",null,"?buildversion=181210172613");</script>
+<script type="text/javascript">
+    var _mycollectionPath = "/seeyon/m3/apps/v5/mycollection";
+  var _docPath = "/seeyon/m3/apps/v5/doc";
+</script><script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172613" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172613" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172613" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172613" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172613"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172613"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172613"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172613"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172613"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172613"></script>
+
+<script async="async" src="/seeyon/m3/apps/v5/mycollection/js/myCollection.js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/edoc/edoc_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/bulletin/bulletin_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/news/news_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/bbs/bbs_m_api.s3js?buildversion=181210172613"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/inquiry/inquiry_m_api.s3js?buildversion=181210172613"></script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************-->

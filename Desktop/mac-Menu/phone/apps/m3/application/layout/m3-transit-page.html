@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta name="format-detection" content="telephone=no,email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta http-equiv="Content-Security-Policy" />
+        <meta name="author" content="Clyne" />
+        <title>中转页面</title>
+        <!--cmp样式-->
+        <link rel="stylesheet" href="http://cmp/v/css/cmp.css" />
+        <style>
+            body {
+                background: #fff;
+            }
+            header {
+                height: 44px;
+                line-height: 44px;
+                text-align: center;
+                color: rgb(54, 54, 54);
+                font-size: 16px;
+                border-bottom: 1px solid #dfdfdd;
+            }
+            .cmp-ios header {
+                padding-top: 20px;
+            }
+            .download {
+                width: 70%;
+                height: 190px;
+                margin: 30% auto 0 auto;
+            }
+            .download > span {
+                display: block;
+            }
+            .icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+                background-size: 100% 100%;
+            }
+            .name {
+                height: 30px;
+                line-height: 30px;
+                margin: 10px 0 0 0;
+                text-align: center;
+            }
+            .progress {
+                height: 3px;
+                border-radius: 3px;
+                margin-top: 40px;
+                background: #ddd;
+            }
+            .progress > span{
+                height: 3px;
+                width: 0;
+                display: block;
+                background-image: linear-gradient(-90deg, #00AEFF 0%, #4E54E5 100%);
+            }
+            p {
+                margin-top: 5px;
+                text-align: center;
+                color: #8D9BAF;
+            }
+            .display-none {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="display-none m3-iosx"></header>
+        <div class="download display-none">
+            <span class="icon"></span>
+            <span class="name"></span>
+            <div class="progress">
+                <span></span>
+            </div>
+            <p><span class="setup">正在安装</span><span class="precent" style="width: 0;">0%</span></p>
+        </div>
+        <script src="http://application.m3.cmp/v/i18n/application_zh_CN.js"></script>
+        <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+        <script src="http://cmp/v/js/cmp-i18n.js"></script>
+        <script>
+            cmp.i18n.init("http://application.m3.cmp/v/i18n/", "application");
+            cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+        </script>
+        <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+        <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+        <script src="http://cmp/v/js/cmp.js"></script>
+        <script src="http://cmp/v/js/cmp-app.js"></script>
+        <script src="http://cmp/v/js/cmp-att.js"></script>
+        <script src="http://cmp/v/js/cmp-chat.js"></script>
+        <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+        <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+        <!-- seajs -->
+        <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+        <script src="http://commons.m3.cmp/v/config.js"></script>
+        <!-- 模块入口 -->
+        <script>seajs.use('http://application.m3.cmp/v/js/m3-transit-page.js')</script>
+    </body>
+</html>

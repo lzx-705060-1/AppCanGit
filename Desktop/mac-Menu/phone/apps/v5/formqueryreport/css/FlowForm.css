@@ -1,0 +1,67 @@
+
+
+/*FlowForm1*/
+.FlowForm_Container{background-color: #fff;padding-top: 44px;}
+.FlowForm_Search{height: 44px;padding: 5px;background-color: #f1f1f1;border-bottom: 1px #dfdfdd solid;
+    overflow: hidden;line-height: 34px;}
+.FlowForm_Search .Search_text{float: left;display: inline-block;width: 30%;font-size: 15px;
+    color: #8e8393;padding-left: 10px;position: relative;}
+.FlowForm_Search .Search_text .iconfont{font-size: 13px;}
+.FlowForm_Search .Search_text .pos{position: absolute;right: 5px;top:0;}
+.FlowForm_Search .Search_text .pos2{position: absolute;right:5px;top:5px;}
+.FlowForm_Search .Search_input{float: left;display: inline-block;width: 69%;}
+.FlowForm_Search .Search_input input{padding-left: 10px;font-size: 13px;color: #c7c7ca;
+    border: none;width: 100%;height: 30px;border-radius: 10px;}
+.FlowForm_view{overflow: auto;}
+.FlowForm_view ul{padding: 0px;margin-top: -1px;}
+.FlowForm_view .FlowForm_List{overflow: hidden;border-bottom: 1px #eee solid;}
+.FlowForm_view .FlowForm_List .FlowForm_Title{width: 30%;}
+.FlowForm_view .FlowForm_List .info{font-size: 15px;color: #333333;float: left;height: 100px;overflow: hidden;}
+.FlowForm_view .FlowForm_List .list{height: 35px;line-height: 35px;
+    overflow: hidden;white-space: nowrap;text-overflow: ellipsis; }
+
+.FlowForm_view .FlowForm_List .FlowForm_Title .list{text-align: center;padding-left: 10px;}
+.FlowForm_view .FlowForm_List .list:first-child{font-weight: bold;color: #333333!important;}
+.FlowForm_view .FlowForm_List .FlowForm_Cont{width: 69%;padding-left: 5px;}
+.FlowForm_view .FlowForm_List .FlowForm_Cont .list{color: #999999;text-align: left;padding-left: 5px;}
+
+.FlowForm_view .FlowForm_List .more{display: block;height: 30px;line-height: 30px;text-align: right;
+    clear: both;padding-right: 10px;color: #999999;}
+.FlowForm_view .FlowForm_List .more span{font-size: 25px;margin-right: 10px;vertical-align: middle;}
+.FlowForm_view .FlowForm_List .more .icon-fanhui{transform: rotate(90deg);display: inline-block;;
+    -webkit-transform: rotate(90deg);-ms-transform: rotate(90deg);-moz-transform: rotate(90deg);}
+.FlowForm_view .FlowForm_List .more.active .icon-fanhui{transform: rotate(-90deg);display: inline-block;;
+    -webkit-transform: rotate(-90deg);-ms-transform: rotate(-90deg);-moz-transform: rotate(-90deg);}
+
+
+/*FlowForm2*/
+.FlowForm2 .FlowForm_List{padding-left: 5px;padding-top: 7px;}
+.FlowForm2 .FlowForm_Img{width: 25%;padding-top: 5px;padding-bottom: 5px;}
+.FlowForm2 .FlowForm_Img img{width: 100%;height: 100%;border-radius: 3px;}
+.FlowForm2 .FlowForm_Title{width: 25%!important;}
+.FlowForm2 .FlowForm_Cont{width: 50%!important;}
+.FlowForm2 .FlowForm_List .list{height: 25px!important;line-height: 25px!important;}
+
+.float_more{position: absolute;right: 10px;bottom: 10px;width: 45px;height: 45px;line-height: 45px;text-align: center;
+    background-color:#4A90E2;border-radius: 100%;border: 1px #fff solid;box-shadow:0 0 5px 3px #ccc;}
+.float_more .icon-close{font-size: 35px;color: #fff;transform: rotate(-45deg);display: inline-block;;
+    -webkit-transform: rotate(-45deg);-ms-transform: rotate(-45deg);-moz-transform: rotate(-45deg);}
+
+
+/*�ͻ���ѯ*/
+.user_select{}
+.user_select .FlowForm_List{position: relative;padding-top: 5px;padding-bottom: 5px;}
+.user_select .info{}
+.user_select .list{text-align: left!important;height: 25px!important;line-height: 25px!important;}
+
+.user_select .more{width: 30px;height: 20px!important;line-height: 20px!important;;position: absolute;
+    right: 10px;bottom:5px;}
+.user_select .FlowForm_Title .list{font-weight: bold;}
+.user_select .FlowForm_Cont .list:first-child{font-weight: 400!important;color: #999999!important;}
+
+.user_search{text-align: center;padding-top: 10px;;}
+.user_search input{width: 80%;border:1px #eee solid;border-radius: 5px;;padding: 5px;padding-left: 10px;}
+.user_search button{width: 120px;height: 30px;line-height: 30px;text-align: center;color: #fff;
+    background-color:#4891E2;border: none;outline: none;border-radius: 5px;margin: 10px;}
+
+.user_select .FlowForm_List:first-child{border-top: 1px #eee solid;}

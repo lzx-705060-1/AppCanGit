@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-dateCalender.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/portal.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=181210172728">
+</head>
+
+<body>
+    <!-- 内容区 -->
+    <div id="portalBody" class="wrapper"></div>
+    <!-- 个性化设置,暂时注释掉,勿删~~~ -->
+    <div id="spaceSelectionSort" style="z-index: 11; display: none;" class="GM_Alert_Content Animated-Container bottom-go animated">
+    </div>
+    <!-- 栏目的tpl模板，含标题区和内容区，不含数据 -->
+    <script type="text/html" id="columnTpl">
+        <div class="columnSection" id="columnSection_<%= this.id %>">
+            <% if(this.showHeader){ %>
+            <div class="column_header" id="columnHeader_<%= this.id %>" style="display:none">
+                <div class="column_header_title cmp-ellipsis" id="columnTitle_<%= this.id %>"><%= this.items[0].name %></div>
+                <div class="column_header_more"  id="columnMore_<%= this.id %>">
+                    <% if(this.items[0].sectionId != "shortCutIconSection"){ %>
+                    <i class="icon iconfont icon-arrowRight"></i>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+            <div class="column_body" id="columnBody_<%= this.id %>"></div>
+        </div>
+    </script>
+    <!-- 未知的栏目类型 -->
+    <script id="columnTpl_other" type="text/html">
+        <div class="column_noData">
+            <div class="noDataIcon">
+                <i class="icon iconfont icon-noData"></i>
+            </div>
+            <div class="noDataText"><i18n key="portal.label.unknown_error"></i18n></div>
+        </div>
+    </script>
+
+    <script id="columnTpl_multiRowVariableColumnTemplete" type="text/html">
+        <div style="height: 60px;text-align: center;">待开发模版</div>
+    </script>
+	
+    <! -- 国际化顺序 1应用的国际化 2cmp-i18n.js 3去国际化 4加载cmp -->
+    <script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172728"></script>
+    <script>
+        var scrollText;
+        cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal",function(){
+            scrollText = {
+                "pullDownLable": cmp.i18n("portal.page.down_fresh"),
+                "pullingDownLable": cmp.i18n("portal.page.release_fresh"),
+                "pullUpLable": cmp.i18n("portal.page.up_load"),
+                "pullingUpLable": cmp.i18n("portal.page.release_load"),
+                "loadingLable": cmp.i18n("portal.page.loading"),
+                "pullDownSuccess": cmp.i18n("portal.page.load_success"),
+                "nomore": "<div class='showOperateArea'><div class='showOperate'><i class='iconfont icon-set'></i></div><span class='showOperateText'>"+cmp.i18n("portal.page.custom_column")+"</span></div>"
+            }
+        });
+    </script>
+    <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172728"></script>
+
+    <script type="text/javascript">
+        var $verstion = "?buildversion=181210172728";
+        window.cordova = window.parent.cordova;
+    </script>
+	<script type="text/javascript">
+     
+                            var _cmpPath = "/seeyon/m3/cmp";
+                            var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+        					var _colPath = "/seeyon/m3/apps/v5/collaboration";
+        					var _docPath = "/seeyon/m3/apps/v5/doc";
+  
+        					var _formqueryreportPath = "/seeyon/m3/apps/v5/formqueryreport";
+ 
+        					var _unflowformPath = "/seeyon/m3/apps/v5/unflowform";
+        					var _workflowPath = "/seeyon/m3/apps/v5/workflow";
+        					var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+        					var _newsPath = "/seeyon/m3/apps/v5/news";
+        					var _mycollectionPath = "/seeyon/m3/apps/v5/mycollection";
+        					var _edocPath = "/seeyon/m3/apps/v5/edoc";
+        					var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+        					var _bbsPath = "/seeyon/m3/apps/v5/bbs";
+        					var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+        					var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";
+        					var _calendarPath = "/seeyon/m3/apps/v5/calendar";
+        					var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+        					var _attendancePath = "/seeyon/m3/apps/v5/attendance";
+        					var _hrPath = "/seeyon/m3/apps/v5/hr";
+        					var _footprintPath = "/seeyon/m3/apps/v5/footprint";
+        					var _showPath = "/seeyon/m3/apps/v5/show";
+        					var _portalPath = "/seeyon/m3/apps/v5/portal";
+        					var _cap4Path = "/seeyon/m3/apps/v5/cap4";
+        					var _vreportPath = "/seeyon/m3/apps/v5/vreport";
+        					var _bizPath = "/seeyon/m3/apps/v5/biz";
+        					var _fullsearch = "/seeyon/m3/apps/v5/fullsearch";
+        					</script>	
+	<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172728"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172728"></script>
+
+    <!-- 部分栏目会调用里面的rest接口 -->
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/apps/v5/taskmanage/taskmanage_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>    <!--↓↓↓↓ 磁贴调用js ↓↓↓↓-->
+    <script src="/seeyon/m3/cmp/js/cmp-ajax-fast.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-barcode.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/apps/v5/biz/biz_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/portal/portal_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/vreport/vreport_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/doc/doc_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+    <!--↑↑↑↑ 磁贴调用js （vreport 依赖 formq/portal/cap4/） ↑↑↑↑-->
+    <script src="/seeyon/m3/apps/v5/portal/js/iscroll-probe.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/apps/v5/portal/js/portal.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-sortable.js?buildversion=181210172728"></script>
+    <!-- <script src="/seeyon/m3/apps/v5/portal/js/spaceSelectionSort.js?buildversion=181210172728"></script> 空间排序 -->
+
+    
+    <!-- <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/debug.css?buildversion=181210172728">
+    <script src="/seeyon/m3/apps/v5/portal/js/m3-debug.js?buildversion=181210172728"></script> 小蜘蛛调试-->
+
+</body>
+
+</html>

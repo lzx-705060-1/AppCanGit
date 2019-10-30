@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172443">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172443">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172443">
+    <title id="title"></title>
+    <style>
+        .cmp-h5 {
+            font-size: 16px;
+            color: #666666;
+        }
+        #list_content li{
+            position: relative;
+            padding-left: 0!important;
+            padding-right: .4rem!important;
+            border-bottom: none;
+            padding-top: 10px;
+            padding-bottom: 0;
+            margin-left: .4rem;
+        }
+        #list_content .cmp-list-cell-info{
+            float: left;
+            padding-left: .27rem;
+            margin-top: 12px;
+        }
+        #list_content .null_pel_time{
+            margin-top: 0;
+        }
+        #list_content .cmp-list-navigate{
+            width: .26rem;
+            text-align: right;
+            float: left;
+            margin-left: .26rem;
+        }
+        .file-index-content .cmp-list-cell-info{
+            width: 7.6rem !important;
+        }
+        @media screen and (max-width: 360px) {
+            #list_content .cmp-list-navigate{
+                width: 6%;
+                text-align: right;
+            }
+            .file-index-content .cmp-list-cell-info{
+                width: 78% !important;
+            }
+        }
+
+        #list_content .cmp-list-navigate a{
+            margin-right: 0;
+            color: #c7c7c7;
+            margin-top: 10px;
+            margin-left: -.18rem;
+        }
+        .cmp-crumbs-content{
+            width: 100%;
+            height: 30px;
+        }
+        .cmp-crumbs-content:before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            /* background-color: #d4d4d4; */
+            -webkit-transform: scale(1,0.5);
+            transform: scale(1,0.5);
+            -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        #breadTop{
+            margin: 10px 12px 4px 12px;
+            line-height: 16px;
+            /* bottom: 12px; */
+        }
+        #breadTop .right-icon{
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        #breadcrumb .right-icon{
+             margin-left: 7px;
+             margin-right: 7px;
+         }
+        #breadTop .local{
+            color: #3aadfb;
+            font-size: 16px;
+        }
+        #breadTop .bread-target{
+            margin-left: 7px;
+            font-size: 16px;
+            color: #c7c7c7;
+        }
+        #breadTop a.no-text{
+             /*margin-left: 10px;*/
+             font-size: 16px;
+             color: #999999;
+         }
+        #breadTop a.on-text{
+            /*margin-left: 10px;*/
+            font-size: 16px;
+            color: #3aadfb;
+        }
+        .cmp-segmented_title_content{
+            background-color: #ffffff;
+            padding: 0 12px;
+        }
+        #list_content li.file_indie{
+            padding-left: 0!important;
+            padding-right: .4rem!important;
+            border-bottom: none;
+            padding-top: 10px;
+            padding-bottom: 0;
+        }
+        #list_content li.file_indie .list_title_name a{
+            font-size: 16px;
+            color: #333;
+        }
+        #list_content li.file_indie .list_cont_info{
+            font-size: 14px;
+            line-height: 24px;
+            color: #666;
+        }
+        #list_content li.file_indie .cmp-list-navigate .text_info{
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        #list_content li.file_indie .cmp-list-navigate .text_info_null{
+            font-size: 14px;
+            margin-top: 24px;
+        }
+        #list_content li.file_indie .cmp-list-navigate{
+            line-height: 14px;
+        }
+        #allPending{
+            background-color: white;
+        }
+        #boxscrolll{
+            background-color: #fff;
+        }
+        .cmp-table-view-cell:after{
+            height: 0;
+        }
+        .list_count{
+            width: 20%;
+            text-align: right;
+        }
+        .cmp-v5-search-content .cmp-content-title-search{
+            border-bottom: none!important;
+        }
+        .noAttar{
+            margin-top: 22px!important;
+        }
+        input[disabled]{
+            background-color: white!important;
+            opacity: 1;
+        }
+
+        /**/
+        /*#add{
+            padding-top: 13px;
+        }*/
+        .addDivFilter{
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -ms-filter: blur(5px);
+            -o-filter: blur(5px);
+            filter: blur(5px);
+        }
+        #addDiv{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 51;
+            background: rgba(255,255,255,.7);
+        }
+        #addDiv .add-upload{
+            width: 85%;
+            margin-left: 7.5%;
+            margin-top: 75%;
+        }
+        #addDiv .add-upload .add-upload-pic,#addDiv .add-upload .add-upload-doc,#addDiv .add-upload .add-upload-folder{
+            float: left;width: 33%;
+        }
+        #addDiv .add-upload .add-upload-pic .add-upload-pic-back{
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            background: #929def;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #addDiv .add-upload .add-upload-pic .add-upload-pic-back span{
+            margin-top: 22px;
+            font-size: 38px;
+            color: #ffffff;
+        }
+        #addDiv .add-upload .add-upload-doc .add-upload-doc-back{
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            background: #6dc666;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #addDiv .add-upload .add-upload-doc .add-upload-doc-back span{
+            margin-top: 22px;
+            font-size: 38px;
+            color: #ffffff;
+        }
+        #addDiv .add-upload .add-upload-folder .add-upload-folder-back{
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            background: #4fb2fc;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #addDiv .add-upload .add-upload-folder .add-upload-folder-back span{
+            margin-top: 22px;
+            font-size: 38px;
+            color: #ffffff;
+        }
+        #addDiv .add-upload .add-upload-pic .add-upload-pic-type{
+            text-align: center;
+            margin-top: 10px;
+            line-height: 14px;
+        }
+        #addDiv .add-upload .add-upload-pic .add-upload-pic-type span{
+            font-size: 14px;
+            color: #333333;
+        }
+        #addDiv .add-upload .add-upload-doc .add-upload-doc-type{
+            text-align: center;
+            margin-top: 10px;
+            line-height: 14px;
+        }
+        #addDiv .add-upload .add-upload-doc .add-upload-doc-type span{
+            font-size: 14px;
+            color: #333333;
+        }
+        #addDiv .add-upload .add-upload-folder .add-upload-folder-type{
+            text-align: center;
+            margin-top: 10px;
+            line-height: 14px;
+        }
+        #addDiv .add-upload .add-upload-folder .add-upload-folder-type span{
+            font-size: 14px;
+            color: #333333;
+        }
+        #addDiv .add-remain{
+            text-align: center;
+            margin-top: 60px;
+            line-height: 14px;
+        }
+        #addDiv .add-remain span{
+            font-size: 14px;
+            color: #999;
+        }
+        #addDiv .add-close{
+            text-align: center;
+            margin-top: 54px;
+        }
+        #addDiv .add-close span{
+            color: #3aadfb;
+            font-size: 30px;
+        }
+        /**/
+        .cmp-list-cell .cmp-list-cell-img{
+            float: left;
+        }
+        .cmp-list-cell .cmp-list-cell-img .noFolder{
+            width: 39px!important;
+            height: 40px!important;
+            margin-left: .13rem;
+        }
+        .cmp-list-cell .cmp-list-cell-img .folder{
+            width: 38px!important;
+            height: 34px!important;
+        }
+        @media screen and (max-width: 320px) {
+            .cmp-list-cell .cmp-list-cell-img .noFolder{
+                width: 30px!important;
+                height: 34px!important;
+                margin-left: 5px;
+            }
+            .cmp-list-cell .cmp-list-cell-img .folder{
+                width: 34px!important;
+                height: 30px!important;
+            }
+        }
+        .file-index-content .cmp-list-cell-info .text_info{
+            width: auto;
+        }
+        .file-index-content .cmp-list-cell-info .doc-list-username span,
+        .file-index-content .cmp-list-cell-info .doc-list-time span,
+        .file-index-content .cmp-list-cell-info .doc-list-size span{
+            font-size: 12px;
+            color: #999;
+        }
+        #list_content li:before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #d4d4d4;
+            -webkit-transform: scale(1,0.5);
+            transform: scale(1,0.5);
+            -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        .file-index-content .file_indie .cmp-list-navigate{
+            width: 5%!important;
+        }
+        .file-index-content .file_indie .cmp-list-cell-info{
+            width: 84%!important;
+        }
+        .cmp-table-view:before{
+            height: 0;
+        }
+        .cmp-list-content{
+            border-top: none;
+        }
+        .cmp-crumbs-content{
+            border-bottom: none;
+        }
+        .cmp-content-title-search input{
+            border: none;
+        }
+        .cmp-search .cmp-placeholder{
+            height: 28px;
+            line-height: 28px;
+        }
+        .cmp-search .cmp-placeholder{
+            font-size: 14px;
+        }
+        .cmp-list-navigate .see-icon-accessory{
+            color: #c7c7cc;
+        }
+        #list_content .cmp-list-navigate-accessory{
+            margin-left: 4px;
+            margin-top: 15px;
+            position: absolute;
+            right: 30px;
+            bottom: 6px;
+            padding-top: 5px;
+        }
+        .cmp-list-cell-img img{
+            width: 34px;
+        }
+        @media (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 667px) and (min-device-width: 375px){
+            .cmp-icon-document.html {
+                background-position: /*-601px -120px;*/ 101% 25%;
+            }
+        }
+
+        header.cmp-bar.cmp-bar-nav.cmp-att-header.cmp-att-ios-header{
+            background-color: rgba(255,255,255,0.9)!important;
+        }
+        span#v5UploadBtn.submit_text.att.cmp-pull-right{
+            color: #3aadfb!important;;
+        }
+        .cmp-att-basicDiv h1.cmp-title{
+            color: #333!important;
+            font-size: 18px!important;
+        }
+        span#v5UploadCloseBtn.cmp-icon.iconfont.see-icon-v5-common-arrow-back.cmp-pull-left{
+            color: #3aadfb!important;
+        }
+        .cmp-att-header:after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #d4d4d4;
+            -webkit-transform: scale(1,0.5);
+            transform: scale(1,0.5);
+            -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        @media screen and (min-width: 767px) {
+            .file-index-content .cmp-list-cell-info{
+                width: 12rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<!-- <header id="doc_common_header" class="cmp-bar cmp-bar-nav">
+    <div id="prev" style="display:inline-block;">
+        <a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+        <div class="doc-back">
+            <span><i18n key="doc.h5.back"></i18n></span>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    
+    
+    <h1 class="cmp-title"><span style="font-size: 18px;"><i18n key="doc.h5.docCenter"></i18n></span></h1>
+</header> -->
+<div class="cmp-content position_relative cmp-content-none" id="list">
+    <div>
+        <div class="cmp-crumbs-content">
+            <div class="cmp-scroll-wrapper" id="boxscrolll">
+                <div class="cmp-scroll" id="breadTop">
+                    <a href='javascript:void(0)' class='local'><i18n key="doc.h5.docCenter"></i18n></a>
+                    <a class="cmp-icon cmp-icon-arrowright right-icon"></a>
+                    <div id="breadcrumb" style="display:inline-block"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="search" class="position_relative boder_bottom">
+                <div class="position_relative cmp-v5-search-content">
+                  <div class="cmp-segmented_title_content ">
+                    <div class="cmp-content-title-search m1_search_title ">
+                      <div id="cmp_search_textHandler" class="cmp-input-row cmp-search search_handler cmp-v5-transition-width-return" style="width: 100%; display: inline-block;">
+                        <span class="cmp-icon cmp-icon-search search-btn cmp-hidden"></span>
+                        <form id="cmp-search-input" onsubmit="return false;"></form>
+                        <input type="search" disabled name="search" form="cmp-search-input" class="btn cmp-input-clear cmp-v5-search-textBtn">
+                        <span class="cmp-icon cmp-icon-clear cmp-hidden"></span>
+                        <span class="cmp-placeholder" style="top: 5px;">
+                          <span class="cmp-icon cmp-icon-search"></span>
+                          <span><i18n key="doc.h5.search"></i18n></span>
+                        </span>
+                      </div>
+                      <a id="add" class="cmp-icon see-icon-v5-common-add-circle cmp-pull-right" style="font-size: 22px;display: none;padding-top: 8px;color: #3aadfb;"></a>
+                      <a id="cancel" class="cmp-pull-right" style="margin-right: 5px;display: none;padding-top: 6px;"><i18n key="doc.h5.cancel"></i18n></a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div id="reSearch" class="position_relative cmp-search-content" style="display: none;">
+            <div class="cmp-segmented-control cmp-search-title ">
+              <div class="cmp-search-item">
+                <span class="title" id="cmp_search_title"></span>
+              </div>
+              <div id="toSearch" class="cmp-search-item">
+                <div id="searchText" class="item text cmp-active">
+                  <input id="searchTextValue" type="text" readonly="readonly">
+                </div>
+                <div id="searchDate" class="item date">
+                  <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+                  <span>-</span>
+                  <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+                </div>
+              </div>
+              <div class="cmp-search-item">
+                <span id="cancelSearch" class="gotoSearch"><i18n key="doc.h5.cancel"></i18n></span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="cmp-control-content cmp-active">
+        <div id="allPending" class="  cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <ul class="cmp-list-content cmp-table-view file-index-content" id="list_content">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploadFile"></div>
+<script type="text/html" id="pageContent_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i];
+    var folder = "cmp-icon-document folder";
+    var doc = "cmp-icon-document doc noFolder";
+    var xls = "cmp-icon-document xls noFolder";
+    var ppt = "cmp-icon-document ppt noFolder";
+    var pdf = "cmp-icon-document pdf noFolder";
+    var wps = "cmp-icon-document wps noFolder";
+    var html = "cmp-icon-document html noFolder";
+    var rar = "cmp-icon-document rar noFolder";
+    var et = "cmp-icon-document et noFolder";
+    var img = "cmp-icon-document img noFolder";
+    var emptyfile = "cmp-icon-document emptyfile noFolder";
+    var calender = "cmp-icon-document calender noFolder";
+    var link = "cmp-icon-document link noFolder";
+    var squares = "cmp-icon-document squares noFolder";
+    var synergy = "cmp-icon-document synergy noFolder";
+    var flag = "cmp-icon-document flag noFolder";
+    var meet = "cmp-icon-document meet noFolder";
+    var txt = "cmp-icon-document txt noFolder";
+    var music = "cmp-icon-document music noFolder";
+    var video = "cmp-icon-document video noFolder";
+    var news = "cmp-icon-document news noFolder";
+    var confirm = "cmp-icon-document confirm noFolder";
+    var minvideo = "cmp-icon-document minvideo noFolder";
+    var message = "cmp-icon-document message noFolder";
+    %>
+    <%if(obj.is_folder){%>
+    <li class="cmp-list-cell" cmp-data='<%=cmp.toJSON(obj).escapeHTML() %>'>
+        <div class="cmp-list-cell-img cmp-left doc-yesFolder">
+            <div class="<%=folder%>"></div>
+        </div>
+        <div class="cmp-list-cell-info null_pel_time">
+            <span class="cmp-ellipsis cmp-pull-left  list_title_name">
+                <%=escapeStringToHTML(obj.fr_name)%>
+            </span>
+            <div class="list_cont_info" style="clear:both;">
+                <div class="doc-list-username cmp-ellipsis" style="width: 2.5rem;float: left;padding-top: .15rem;">
+                    <span><i18n key="doc.h5.doc"></i18n>：<%=obj.next_Doc_Num%></span>
+                </div>
+                <div class="doc-list-time cmp-ellipsis" style="width: 3.2rem;float: left;padding-left: .3rem;padding-top: .15rem;">     <span><i18n key="doc.h5.folder"></i18n>：<%=obj.next_Folder_Num%></span>
+                </div>
+
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <div class="cmp-list-navigate">
+            <a id="<%=obj.fr_id%>" class="cmp-icon cmp-icon-arrowright"></a>
+        </div>
+        <%}else if(obj.fr_mine_type==22
+        ||obj.fr_mine_type==51||obj.fr_mine_type==9||obj.fr_mine_type==1||obj.fr_mine_type==2||obj.fr_mine_type==4
+        ||obj.fr_mine_type==5||obj.fr_mine_type==6||obj.fr_mine_type==7||obj.fr_mine_type==8){%>
+    <li class="cmp-list-cell file_indie" cmp-data='<%=cmp.toJSON(obj).escapeHTML() %>'>
+        <div class="cmp-list-cell-img cmp-left">
+            <%if(obj.fr_mine_type==22){%>
+            <div class="<%=html%>"></div>
+            <%}else if(obj.fr_mine_type==51){%>
+            <div class="<%=link%>"></div>
+            <%}else if(obj.fr_mine_type==9){%>
+            <div class="<%=squares%>"></div>
+            <%}else if(obj.fr_mine_type==1){%>
+            <div class="<%=synergy%>"></div>
+            <%}else if(obj.fr_mine_type==2){%>
+            <div class="<%=flag%>"></div>
+            <%}else if(obj.fr_mine_type==5){%>
+            <div class="<%=news%>"></div>
+            <%}else if(obj.fr_mine_type==4){%>
+            <div class="<%=meet%>"></div>
+            <%}else if(obj.fr_mine_type==6){%>
+            <div class="<%=minvideo%>"></div>
+            <%}else if(obj.fr_mine_type==7){%>
+            <div class="<%=confirm%>"></div>
+            <%}else if(obj.fr_mine_type==8){%>
+            <div class="<%=message%>"></div>
+            <%}%>
+        </div>
+        <div class="cmp-list-cell-info null_pel_time" <%if(obj.hasAtt){%>style="width:78%!important"<%}%>>
+            <span class="cmp-ellipsis-2 cmp-pull-left  list_title_name"><a><%=escapeStringToHTML(obj.fr_name)%></a></span>
+            <div class="list_cont_info">
+                <div class="doc-list-username cmp-ellipsis" style="width: 1.5rem;float: left;margin-left: 2px;">
+                    <span><%=obj.fr_create_username%></span>
+                </div>
+                <div class="doc-list-time cmp-ellipsis-2" style="width: 3.2rem;float: left;padding-left: .3rem;">
+                    <span><%=obj.fr_create_time%></span>
+                </div>
+                <div class="doc-list-size cmp-ellipsis-2" style="width: 1.5rem;float: left;padding-left: .3rem;">
+                    <%if(obj.fr_size == 0){%>
+                    <span class="cmp-h5 text_info_null "></span>
+                    <%}else{%>
+                    <span class="cmp-h5 text_info cmp-ellipsis-2"><%=bytesToSize(obj.fr_size) %></span>
+                    <%}%>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <%if(obj.hasAtt){%>
+            <div class="cmp-list-navigate cmp-list-navigate-accessory">
+                <span class="cmp-h5 cmp-icon see-icon-accessory" style="display: block;"></span>
+            </div>
+        <%}else{%>
+            <div class="cmp-list-navigate cmp-list-navigate-accessory" style="display: none;">
+                <span class="cmp-h5 cmp-icon see-icon-accessory" style="display: block;"></span>
+            </div>
+        <%}%>
+    </li>
+    <%}else{%>
+    <li class="cmp-list-cell treatment file_indie" cmp-data='<%=cmp.toJSON(obj).escapeHTML() %>'>
+        <!-- 左滑下载屏蔽
+            <%if(cmp.system.filePermission()){%>
+            <div class="cmp-slider-right cmp-disabled">
+                <div class="cmp-slider-after-handle cmp-btn" id="<%=obj.file_id%>" name="<%=obj.file_name%>">
+                    <div class="cmp-icon-synergy relay conduct"><span class="text">保存</div></span>
+                </div>
+            </div>
+            <%}%>
+        -->
+        <div class="cmp-slider-handle">
+            <div class="cmp-list-cell-img cmp-left">
+                <%if(obj.fr_mine_type==101||obj.fr_mine_type==23||obj.fr_mine_type==25){%>
+                <div class="<%=doc%>"></div>
+                <%}else if(obj.fr_mine_type==102||obj.fr_mine_type==24||obj.fr_mine_type==26){%>
+                <div class="<%=xls%>"></div>
+                <%}else if(obj.fr_mine_type==103){%>
+                <div class="<%=pdf%>"></div>
+                <%}else if(obj.fr_mine_type==104){%>
+                <div class="<%=ppt%>"></div>
+                <%}else if(obj.fr_mine_type==105){%>
+                <div class="<%=txt%>"></div>
+                <%}else if(obj.fr_mine_type==107||obj.fr_mine_type==108){%>
+                <div class="<%=html%>"></div>
+                <%}else if(obj.fr_mine_type==119){%>
+                <div class="<%=rar%>"></div>
+                <%}else if(obj.fr_mine_type==120){%>
+                <div class="<%=et%>"></div>
+                <%}else if(obj.fr_mine_type==121){%>
+                <div class="<%=wps%>"></div>
+                <%}else if(obj.fr_mine_type==109||obj.fr_mine_type==110||obj.fr_mine_type==111||obj.fr_mine_type==112||obj.fr_mine_type==117||obj.fr_mine_type==118){%>
+                <img src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.file_id%>&size=custom&h=40&w=36" width="36" height="40"/>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp3"){%>
+                <div class="<%=music%>"></div>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".mp4"){%>
+                <div class="<%=video%>"></div>
+                <%}else if(canOpen(escapeStringToHTML(obj.fr_name),true)==".arm"){%>
+                <div class="<%=video%>"></div>
+                <%}else{%>
+                <div class="<%=emptyfile%>"></div>
+                <%}%>
+            </div>
+            <div class="cmp-list-cell-info null_pel_time" <%if(obj.hasAtt){%>style="width:78%!important"<%}%>>
+                <span class="cmp-ellipsis-2 cmp-pull-left  list_title_name"><a><%=escapeStringToHTML(obj.fr_name)%></a></span>
+                <div class="list_cont_info">
+                    <div class="doc-list-username cmp-ellipsis" style="width: 1.5rem;float: left;margin-left: 2px;">
+                        <span><%=obj.fr_create_username%></span>
+                    </div>
+                    <div class="doc-list-time cmp-ellipsis-2" style="width: 3.2rem;float: left;padding-left: .3rem;">
+                        <span><%=obj.fr_create_time%></span>
+                    </div>
+                    <div class="doc-list-size cmp-ellipsis-2" style="width: 1.5rem;float: left;padding-left: .3rem;">
+                        <%if(obj.fr_size == 0){%>
+                        <span class="cmp-h5 text_info cmp-ellipsis-2">0KB</span>
+                        <%}else{%>
+                        <span class="cmp-h5 text_info cmp-ellipsis-2"><%=bytesToSize(obj.fr_size) %></span>
+                        <%}%>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <%if(obj.hasAtt){%>
+                <div class="cmp-list-navigate cmp-list-navigate-accessory">
+                    <span class="cmp-h5 cmp-icon see-icon-accessory" style="display: block;"></span>
+                </div>
+            <%}else{%>
+                <div class="cmp-list-navigate cmp-list-navigate-accessory" style="display: none;">
+                    <span class="cmp-h5 cmp-icon see-icon-accessory" style="display: block;"></span>
+                </div>
+            <%}%>
+        </div>
+        <%}%>
+    </li>
+    <%}%>
+</script>
+<script src="/seeyon/m3/apps/v5/doc/i18n/Doc_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/doc/i18n/","Doc",null,"?buildversion=181210172443");</script>
+<script type="text/javascript">
+    var _docPath = "/seeyon/m3/apps/v5/doc";
+  var _cmpPath = "/seeyon/m3/cmp";
+  var _colPath = "/seeyon/m3/apps/v5/collaboration";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/common.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script type="text/javascript">
+    var _buildversion = "?buildversion=181210172443";
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172443"></script>	
+<script async="async" src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/cmp/js/cmp-camera.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/apps/v5/doc/js/docList.js?buildversion=181210172443"></script>
+<script async="async" src="/seeyon/m3/apps/v5/doc/js/flexible.js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/edoc/edoc_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/bulletin/bulletin_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/news/news_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/bbs/bbs_m_api.s3js?buildversion=181210172443"></script>
+<script async="async" type="text/javascript" src="/seeyon/m3/apps/v5/inquiry/inquiry_m_api.s3js?buildversion=181210172443"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,370 @@
+.my_index .cmp-pull-left div {
+    display: inline-block;
+    position: relative;
+    width: 23px;
+    height: 23px;
+    line-height: 1.7;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.my_index .cmp-pull-left div~span {
+    margin-left: 0.32rem;
+    color: #333;
+    font-size: 16px;
+}
+
+.my_index .cmp-pull-left span.iconfont,.my_index .cmp-pull-left span.icon{
+    font-size: 14px;
+    color: #fff;
+}
+
+
+.my_index .cmp-pull-left span#xiaoZhi_span {
+    font-size: 16px;
+}
+
+.my_index .cmp-pull-left div.myfile {
+    background: #FF9D9D;
+}
+
+.my_index .cmp-pull-left div.mycollect {
+    background: #FFD371;
+}
+.my_index .cmp-pull-left div.mymoney {
+    background: #FF5E5E;
+}
+.my_index .cmp-pull-left div.mycustomerservice {
+    background: #12d0a0;
+}
+.my_index .cmp-pull-left div.person {
+    background: #3eb0ff;
+}
+
+.my_index .cmp-pull-left div.company {
+    background: #12d0a0;
+}
+
+.my_index .cmp-pull-left div.customer {
+    background: #767BE4;
+}
+
+.my_index .cmp-pull-left div.help {
+    background: #27e1b7;
+}
+
+.my_index .cmp-pull-left div.account {
+    background: #ff7faa;
+}
+
+.my_index .cmp-pull-left div.xiaoZhi {
+    background: #009cff;
+}
+
+.my_index .cmp-pull-left div.set {
+    background: #74D856;
+}
+
+.my_index .cmp-pull-left div.about {
+    background: #b865d4;
+}
+.my_index .myindexcell .arrow-icon{
+    position: relative;top:2px;color: #D4D4D4;
+}
+
+.cmp-table-view-cell:after {
+    left: 56px;
+}
+
+.person_head {
+    position: relative;
+    z-index: 5;
+    /*background-image: url('http://my.m3.cmp/v/img/myPerson.jpg');*/
+    background-size: cover;
+    background-position: center center;
+}
+
+.blur_bg {
+    background-size: no-repeat;
+    background-position: center;
+}
+.my_module .cmp-table-view .cmp-table-view-cell:after{
+    /* display: none; */
+}
+.cmp-table-view::after{display: none;}
+.cmp-table-view::before{display: none;}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { 
+    .person_info{height: 3.8rem;}
+}
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+.wave > span {
+    position: relative;
+    left: 0;
+    display: block;
+    background-repeat: no-repeat;
+}
+.wave > .cloud-1 {
+    height: 40px;
+    background-image: url(../img/cloud-01.png);
+    background-position: 0 0;
+    background-size: 1100px 40px;
+    bottom: -40px;
+    z-index: 3;
+}
+.wave > .cloud-2 ,
+.wave > .cloud-3 {
+    height: 80px;
+    background-image: url(../img/cloud-02.png);
+    background-size: 1100px 80px;
+}
+.wave > .cloud-2 {
+    bottom: 40px;
+    z-index: 2;
+    background-position: -1000px 0;
+}
+.wave > .cloud-3 {
+    bottom: 120px;
+    z-index: 1;
+    background-position: -120px 0;
+}
+/* wave active */
+@-webkit-keyframes waveMove1{
+    0%{
+        background-position: 0 0;
+    }
+    
+    100%{
+        background-position: -690px 0;
+    }
+}
+@-webkit-keyframes waveMove2{
+    0%{
+        background-position: 0 0;
+    }
+    
+    100%{
+        background-position: -560px 0;
+    }
+}
+@-webkit-keyframes waveMove3{
+    0%{
+        background-position: -120 0;
+    }
+    
+    100%{
+        background-position: -700px 0;
+    }
+}
+.wave-active > .cloud-1 {
+    -webkit-animation: waveMove1 18s linear both infinite;
+}
+.wave-active > .cloud-2 {
+    -webkit-animation: waveMove2 30s linear both infinite;
+}
+.wave-active > .cloud-3 {
+    -webkit-animation: waveMove3 22s linear both infinite;
+}
+.person_info {
+    position: relative;
+    z-index: 5;
+}
+.person_header {
+    padding-top: .22rem;
+    color: #333;
+    position: relative;
+    z-index: 10;
+    background-color:#A6DBFF;
+    margin: 10px;border-radius: 8px;overflow: hidden;box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    height: 160px;margin-top: 30px;
+}
+body.cmp-android .person_header{margin-top: 20px;}
+.cmp-ios-x .person_header{margin-top: 50px;}
+.cmp-ios .person_header {
+     /* height: 5.28rem!important;  */
+    /* padding-top: .8rem; */
+
+}
+
+.person_header .cmp-icon {
+    padding: 0 15px 12px 10px;
+    color: #3aadfb;
+}
+
+.person_header h1 {
+    height: 18px;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 24%;
+    margin-top: 4px;
+}
+
+.person_header span.left_word {
+    font-family: "Microsoft Yahei", sans-serif;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: -8px;
+    margin-top: 6px;
+}
+
+.person_head {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+    /* border: 1px solid #d4d4d4; */
+    position: absolute;right: 24px;top:35px;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.50);
+    /* border: 2px solid rgba(255,255,255,0.50); */
+}
+.person_head_layer{    
+    display: inline-block;box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.50);
+    width: 78px;
+    height: 78px;
+    border-radius: 100%;
+    /* border: 2px solid rgba(255, 255, 255, 0.5); */
+    margin: auto;
+    position: absolute;
+    top: 1px;
+    left: 1px;}
+.person_head img {
+    position: relative;
+}
+.person_info {
+    height: 125px;
+}
+.person_info .name {
+    font-size: 22px;
+    color: #333;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;vertical-align: middle;max-width: 80%;font-weight: bold;
+}
+
+.person_icon {
+    display: table;
+    width: 100%;
+}
+
+.person_icon .item {
+    display: table-cell;
+    width: 20%;
+    text-align: center;
+    margin-top: .64rem;
+}
+
+.person_icon .item div {
+    width: 1.066rem;
+    height: 1.066rem;
+    line-height: 1.066rem;
+    background: #3AADFB;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: .64rem;
+}
+
+.person_icon .disable div {
+    background: #b7b7b7;
+}
+
+.person_icon .item div .iconfont {
+    font-size: 22px;
+    color: #fff;
+}
+
+.person_icon .item p {
+    font-size: 14px;
+    color: #3AADFB;
+    margin-top: .266rem;
+    margin-bottom: 0;
+}
+
+.person_icon .disable p {
+    color: #989898;
+}
+.mask_wt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.8rem;
+    background: rgba(255, 255, 255, 0.61);
+    /* background-color:#fff; */
+    z-index: 5;
+}
+.blur_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.8rem;
+    background-size: cover;
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    -webkit-transform: scale(1.2, 1);
+    transform: scale(1.2, 1);
+    overflow: hidden;
+    /*margin-top: -.4rem;*/
+}
+.person-header-title{position: fixed;height: 44px;left: 0;top:0;;width: 100%;z-index:11;line-height: 44px;
+    display: none;
+    }
+body.cmp-ipad .person-header-title{padding-top: 20px;}
+.cmp-ios.cmp-iphone .person-header-title{padding-top: 20px;}
+.person_header .cmp-icon{line-height: 35px;}
+.person_header h1{height: 44px;line-height: 40px;}
+/*横屏*/
+@media all and (orientation : landscape) { 
+    .wave > .cloud-1 {
+        background-size: 1658px 40px;
+    }
+    .wave > .cloud-2 ,
+    .wave > .cloud-3 {
+        background-size: 1658px 80px;
+    }
+    .person-header-title{background-color: rgb(182, 217, 235);}
+} 
+/*竖屏*/
+@media all and (orientation : portrait){ 
+    .wave > .cloud-1 {
+        background-size: 1658px 40px;
+    }
+    .wave > .cloud-2 ,
+    .wave > .cloud-3 {
+        background-size: 1658px 80px;
+    }
+
+} 
+.person_header .person_info .person_userInfo{
+    position: absolute;padding-top: 10px;;
+    left: 24px;
+    top: 35px;
+    width: 63%;
+    height: 50%;
+    line-height: 35px;
+}
+.person_header .person_info .person_userInfo .qrcode{font-size: 18px;opacity: 0.2;color: #000;
+vertical-align: middle;margin-left: 15px;}
+.person_header .person_info .person_userInfo .station{font-size: 12px;color: #666;}
+
+body.isOther.cmp-android .person_header{margin-top: 50px;}
+body.isOther.cmp-iphone .person_header{margin-top: 70px;}
+body.isOther.cmp-ipad .person_header{margin-top: 70px;}
+body.isOther.cmp-ios-x .person_header{margin-top: 90px;}
+
+/* 根据showHeader类名，加载header是否显示 */
+body .cmp-flex-header{display:none;}
+body.showHeader .cmp-flex-header{display:-webkit-flex;display: flex; z-index: 11}
+.cmp-before-hidden::before{display: none;}

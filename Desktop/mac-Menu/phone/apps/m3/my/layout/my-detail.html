@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>个人信息</title>
+    <script src="http://commons.m3.cmp/v/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v/css/my-person2.css"></head>
+<body class="body_person cmp-fullscreen">
+<script type="text/javascript">
+    // @description 优化IphoneX的头部交互，组织去抖动
+    ;(function() {
+        if (window.navigator.userAgent.toUpperCase().match(/IPHONEX/)) {document.body.className += ' cmp-ios-x ';}
+    })();
+</script>
+<div class="cmp-content position_relative scroll my_module topImportant">
+    <!-- <div class="cmp-control-content cmp-active"> -->
+    <div id="isother" class="">
+        <div class="person_header">
+            <div class=" cmp-icon backBtn" id="otherhead">
+                <span class="see-icon-v5-common-arrow-back"></span>
+                <span class="left_word"><i18n key="my.m3.h5.back"></i18n></span>
+            </div>
+            <!--头像-->
+            <div class="person_info">
+                <div class="person_head"></div>
+                <div class="person_userInfo">
+                    <div class="name cmp-ellipsis-2"></div>
+                </div>
+            </div>
+            <div class="wave wave-active">
+                <span class="cloud-1"></span>
+                <span class="cloud-2"></span>
+                <span class="cloud-3"></span>
+            </div>
+        </div>
+    </div>
+    <div id="cmp-listview-scroll" class="cmp-listview-scroll">
+        <div class="scroll-move ">
+            <!--列表-->
+            <ul class="cmp-table-view new_list userDefined fixedField">
+                <!-- 新固定字段 -->
+                <!-- 部门 -->
+                <li class="cmp-table-view-cell" id="deptLi">
+                    <div class="cmp-pull-left">
+                        <div class="datainfo departmentText"></div>
+                        <div class="text"><i18n key="my.m3.h5.department"></i18n></div>
+                    </div>
+                    <div class="cmp-pull-right arrow-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+                </li>
+                <!-- 主岗 -->
+                <li class="cmp-table-view-cell" id="mainpostLi">
+                    <div class="cmp-pull-left">
+                        <div class="datainfo mainpostText"></div>
+                        <div class="text"><i18n key="my.m3.h5.mainpost"></i18n></div>
+                    </div>
+                </li>
+                <!-- 职务级别 -->
+                <li class="cmp-table-view-cell" id="vjoinConf">
+                    <div class="cmp-pull-left">
+                        <div class="datainfo positionText"></div>
+                        <div class="text"><i18n key="my.m3.h5.position"></i18n></div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="cmp-table-view new_list margin_top14 userDefined userInfoItems" id="userInfoItems">
+
+            </ul>
+            <ul class="cmp-table-view new_list margin_top14 userDefined" id="userDefined">
+
+            </ul>
+        </div>
+    </div>
+    <!-- </div> -->
+
+</div>
+<script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+<script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script>
+    cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+    cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+</script>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v/js/cmp.js"></script>
+<!-- cmp组件 -->
+<script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+<!-- <script src="http://cmp/v/js/cmp-listView.js"></script> -->
+<script src="http://cmp/v/js/cmp-server.js"></script>
+<!-- <script src="http://cmp/v/js/cmp-att.js"></script> -->
+<script src="http://cmp/v/js/cmp-app.js"></script>
+<!-- <script src="http://cmp/v/js/cmp-camera.js"></script> -->
+<script src="http://cmp/v/js/cmp-chat.js"></script>
+<!-- <script src="http://cmp/v/js/cmp-telmail.js"></script> -->
+<!-- <script src="http://cmp/v/js/cmp-gestureLock.js"></script> -->
+<script src="http://cmp/v/js/cmp-watermark.js"></script>
+<!-- <script src="http://cmp/v/js/cmp-encrypt.js"></script> -->
+<script src="http://cmp/v/js/cmp-head2base64.js"></script>
+<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+
+<script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v/config.js"></script>
+<!-- 模块入口 -->
+<script>seajs.use('http://my.m3.cmp/v/js/my-person2.js')</script>
+</body>
+</html>

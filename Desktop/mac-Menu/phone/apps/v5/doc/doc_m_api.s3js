@@ -1,0 +1,223 @@
+var docApi = (function() {
+    var DocApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/doc";
+    }
+        /**
+         * 打开文档
+         * @param  {string} type    [todo:待办模块;message:消息模块]
+         * @param  {string} backUrl [后退地址]
+         * @param  {obj}    option  [消息对象]	option.id		文档id										
+         * @param  {string} parms   [其他可选参数]
+         */
+	DocApi.prototype.openApp = function(type, backUrl, option, obj) {
+		cmp.i18n.load("/seeyon/m3/apps/v5/doc/i18n/", "Doc",function(){
+	        var isOfflineMsg = (type == "message") && (option.returnParms != null);
+	        var pageInfo = {
+	            "url": backUrl,
+	            "data": obj
+	        };
+	        var entranceType = 6;
+	        if(type == "message"){
+	        	entranceType = 11;
+	        }
+	        cmp.ajax({
+	            type: "GET",
+	            dataType: 'json',
+	            url: cmp.seeyonbasepath + '/rest/doc/docView?drId=' + option.id + '&option.n_a_s=1',
+	            async: true,
+	            headers: {
+	                'Accept': 'application/json; charset=UTF-8',
+	                'Accept-Language': 'zh-CN',
+	                'Content-type': 'application/json;charset=UTF-8',
+					'token':cmp.token
+	            },
+	            success: function(result) {
+	            	if(result.isExist == false){
+	            		cmp.notification.toast(cmp.i18n("doc.h5.no.exist.folder"));
+	            		if(isOfflineMsg){
+	            		    setTimeout("cmp.href.close();",2000);
+	            		}else{
+		                    return;
+	            		}
+	            	}
+	                var frType = result.fr_mine_type;
+	                cmp.ajax({
+	                    type: "GET",
+	                    dataType: 'json',
+	                    url: cmp.seeyonbasepath + '/rest/doc/canOppen?drId=' + option.id + "&frType=" + frType + "&entranceType="+entranceType ,
+	                    async: true,
+	                    headers: {
+	                        'Accept': 'application/json; charset=UTF-8',
+	                        'Accept-Language': 'zh-CN',
+	                        'Content-type': 'application/json;charset=UTF-8',
+							'token':cmp.token
+	                    },
+	                    success: function(data) {
+	                        if (data == "1") {
+	                            cmp.notification.toast(cmp.i18n("doc.h5.no.exist.folder"));
+	                            if(isOfflineMsg){
+	            		            setTimeout("cmp.href.close();",2000);
+	                            }else{
+	                                return;
+	                            }
+	                        } else if (data == "2") {
+	                            cmp.notification.toast(cmp.i18n("doc.h5.noAuthoir"));
+	                            if(isOfflineMsg){
+	            		            setTimeout("cmp.href.close();",2000);
+	                            }else{
+	                                return;
+	                            }
+	                        } else if (data == "0") {
+	                            var sourceId = result.sourceId;
+	                            if (frType == 51) {
+	                                cmp.ajax({
+	                                    type: "GET",
+	                                    dataType: 'json',
+	                                    url: cmp.seeyonbasepath + '/rest/docs/getDosBySourceId/' + sourceId,
+	                                    async: true,
+	                                    headers: {
+	                                        'Accept': 'application/json; charset=UTF-8',
+	                                        'Accept-Language': 'zh-CN',
+	                                        'Content-type': 'application/json;charset=UTF-8',
+											'token':cmp.token
+	                                    },
+	                                    success: function(docData) {
+	                                        sourceId = docData.id;// 已经是原文档了
+	                                        frType = docData.frType;
+	                                        openDoc(sourceId, frType, option, type, pageInfo, true);
+	                                    }
+	                                });
+	                            } else {
+	                                openDoc(sourceId, frType, option, type, pageInfo, false);
+	                            }
+	                        }
+	                    }
+	                });
+	            },
+	            error: function(e) {
+	                cmp.notification.toast(cmp.i18n("doc.h5.doc.netError"));
+	                if(isOfflineMsg){
+	                    setTimeout("cmp.href.close();",2000);
+	                }else{
+	                    return;
+	                }
+	            }
+	        });
+ 		})
+ 	}
+    
+    return new DocApi();
+})();
+function openDoc(sourceId, frType, option, type, pageInfo, endFlag) {
+    if (frType == 1 || frType == 9) { // 协同、表单
+        if (cmp.platform.CMPShell) {
+            var colloption = {
+                appId: "1",
+                success: function(appRes) {
+                    if (m3.penetratedHandle(appRes.openAppMethod.replace(".openApp", ""), appRes.jsapiurl)) {
+                        //m3.s3Caller(appRes.openAppMethod, [options.type, "", options.sendParms, options.returnParms], "", "");
+                        collApi.openSummary({
+                            summaryId: sourceId,
+                            openFrom: "docLib",
+                            operationId: "1",
+                            docResId: option.id
+                        });
+                    }
+                },
+                error: function(res) {
+                    cmp.notification.toast(cmp.i18n("doc.h5.doc.colDownloadFail"));
+                    return;
+                }
+            };
+            cmp.app.getJSAPIUrl(colloption);
+        }else{//微信端
+            collApi.openSummary({
+                summaryId : sourceId,
+                openFrom : "docLib",
+                operationId : "1",
+                docResId : option.id
+            });
+        }
+    } else if (frType == 2) { // 公文
+      if (cmp.platform.CMPShell) {
+          var edoc = {
+              appId: "4",
+              success: function(appRes) {
+                  if (m3.penetratedHandle(appRes.openAppMethod.replace(".openApp", ""), appRes.jsapiurl)) {
+                      //m3.s3Caller(appRes.openAppMethod, [options.type, "", options.sendParms, options.returnParms], "", "");
+                      edocApi.openSummary({
+                          summaryId: sourceId,
+                          openFrom: "lenPotent",
+                          docResId: option.id
+                      });
+                  }
+              },
+              error: function(res) {
+                  cmp.notification.toast(cmp.i18n("doc.h5.doc.edocDownloadFail"));
+                  return;
+              }
+          };
+          cmp.app.getJSAPIUrl(edoc);
+      } else {
+          edocApi.openSummary({
+              summaryId : sourceId,
+              openFrom : "lenPotent",
+              docResId : option.id
+          });
+      }
+    } else if (frType == 4) { // 会议
+        var paramData = {
+            'listType': "glwd",
+            'openFrom': 'glwd',
+            'meetingId': sourceId,
+            'pageInfo': pageInfo
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/meeting" + "/html/meetingDetail.html", paramData);
+    } else if (frType == 5) { // 新闻
+        var paramData = {
+            'type': type,
+            'pageInfo': pageInfo,
+            'comeFrom': 1,
+            'newsId': sourceId
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/news" + "/html/newsView.html?cmp_orientation=auto", paramData);
+    } else if (frType == 6) { // 公告
+        var paramData = {
+            'type': type,
+            'pageInfo': pageInfo,
+            'comeFrom': 1,
+            'bulId': sourceId,
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/bulletin" + "/html/bulView.html?cmp_orientation=auto", paramData);
+    } else if (frType == 7) { // 调查
+        var paramData = {
+            'type': type,
+            'pageInfo': pageInfo,
+            'comeFrom': 1,
+            'inquiryId': sourceId
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/inquiry" + "/html/inquiryView.html?cmp_orientation=auto", paramData);
+    } else if (frType == 8) { // 讨论
+        var paramData = {
+            'type': type,
+            'pageInfo': pageInfo,
+            'from': 'pigeonhole',
+            'bbsId': sourceId,
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/bbs" + "/html/bbsView.html?cmp_orientation=auto", paramData);
+    } else if ((frType >= 101 && frType <= 122) || (frType >= 21 && frType <= 26)) {
+        var endId = option.id;
+        if (endFlag) {
+            endId = sourceId;
+        }
+        var paramData = {
+            'type': type,
+            'pageInfo': pageInfo,
+            "drId": endId
+        };
+        cmp.href.next("/seeyon/m3/apps/v5/doc" + "/html/docView.html?cmp_orientation=auto", paramData);
+    } else {
+        cmp.notification.toast(cmp.i18n("doc.h5.doNotSupport"));
+        return;
+    }
+}

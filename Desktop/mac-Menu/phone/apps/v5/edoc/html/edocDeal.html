@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+  	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/edoc/css/cmp-edoc.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+  	<title></title>
+  	<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/edoc/css/custom.css?buildversion=181210172510">
+    
+    <!-- 
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172510">
+  	<link href="/seeyon/m3/apps/v5/workflow/css/wf.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172510">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172510">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172510">
+	 -->
+	<style type="text/css">
+		.fold_footer_content{padding-left: 0;padding-right: 0;}
+		.fold_footer_content .item  {display: inline-block;text-align: center;}
+		.fold_footer_content .item .cmp-icon{color: blue;}
+		.fold_footer_content .item .deal{font-size: 14px;}
+		.fold_footer_content .item:first-child{border-right: 1px #ccc solid;}
+	 	.cmp-input-row.respose_areacontent textarea{overflow-y:auto;height:120px;}
+	 	
+	 	/*附件列表小图标*/
+	 	.cmp-icon-accessory{width: 30px;height: 30px;display: inline-block;}
+	 	.cmp-v5-file-pageShow .cmp-content{
+	 		position: relative;
+	 	}
+	</style>
+  </head>
+<body class="cmp-fullscreen">
+	<!--中间内容-->
+	<div class="cmp-content cmp-scroll-wrapper cmp-content-none">
+		<div class="device-content">
+			<div id="attribute" class="cmp-handle-btn-content col comment-states" style="display:none; height:45px;">
+				<ul>
+					<li id="read" style="display:none" class="cmp-btn-outlined">
+						<button value="1" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle cmp-active"><i18n key="Edoc.attitude.normal"></i18n></button>
+					</li>
+					<li id="agree" style="display:none" class="cmp-btn-outlined">
+						<button value="2" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle"><i18n key="Edoc.attitude.agree"></i18n></button>
+					</li>
+					<li id="disagree" style="display:none" class="cmp-btn-outlined">
+						<button value="3" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle"><i18n key="Edoc.attitude.unagree"></i18n></button>
+					</li>
+				</ul>
+               </div>
+			<div class=" cmp-input-row respose_areacontent" id="commonPhraseDiv" style="top:0px;">
+				<div class="opinion-wrap">
+					<div id="opinionDiv" class="opinion-wrap-input" style="display:none">
+					    <!-- 与流程有关的字段 -->
+					    <input type="hidden" name="workflow_last_input" id="workflow_last_input"/>
+						<textarea maxlength="2000" id="edoc_deal_content"></textarea>
+					</div>	
+					
+					<div style="height: 40px" class="text_and_accessory col fixed">
+						<h5 id="edoc_deal_count" class="edoc_deal_count" style="float: left;margin-left: 15px; display:none;line-height: 30px;">2000</h5>
+						<div id="btns" class="cmp-badge cmp-pull-right replay_badge badge_custom handle-zan" style="display:none">
+							<a id="attchmentFile" class="see-icon-accessory"></a>
+					     	<span id="attCount" class="attCount"></span>
+					     	<a id="phrasesBtn" class="cmp-h6 useful" style="display:none;line-height: 24px;"><i18n key="Edoc.dialog.commonLanguage"></i18n></a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		<div>
+			<!-- 加载等待效果-->
+			<span id="loading" style="margin-left:50%;margin-top:50%;display: none" class="cmp-spinner" ></span>
+		</div>
+	</div>
+	
+	
+	<footer id="footerBtns" class="cmp-bar cmp-bar-footer footer_custom footer_replay col send-colla-div border_t">
+	    <span  id="more"  class="see-icon-more" style=" font-size: 24px;width:50px;display: inline-block;height: 50px;line-height: 50px;margin-left: -20px;color:#3AADFB;" href="#topPopover"> </span>
+	    <button id="zcdb" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block hold" style="display:none; background-color: white;color: #3AADFB; "><i18n key="Edoc.action.zancundaiban"></i18n></button>
+	    <button id="submit" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block"><i18n key="Edoc.action.submit"></i18n></button>
+		<button id="actionSubmit" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block hold" style="display:none;"><i18n key="Edoc.page.dialog.OK"</i18n></button>
+	</footer>
+	<!-- 附件 -->
+	<div id="picture" class="cmp-popover cmp-popover-action" ></div>
+	<!-- 开关 -->
+	<div id="topPopover" class="cmp-popover" style="background-color: rgba(255,255,255,0); ">
+		<div class="cmp-popover-arrow"></div>
+		<div id="topScroll" class="cmp-scroll-wrapper">
+			<div class="cmp-scroll">
+				<ul id="switchs_ul" class="cmp-table-view">
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--IOS 模拟V5.6常用语弹出容器-->
+	<div id="phrases_container" class="GM_Alert_Content Animated-Container bottom-go animated">
+	    <div id="phrases_div" style="overflow-y: auto;">
+	        <ul id="phrases_ul" class="cmp-table-view white " style=" margin-top: 1px; ">
+	        </ul>
+	    </div>
+	</div>
+     
+<script src="/seeyon/m3/apps/v5/edoc/js/edocUtil.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edoc-jssdk.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/i18n/EdocResources_zh_CN.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/m3-jssdk.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172510"></script>
+<script type="text/javascript">
+  cmp.i18n.init("/seeyon/m3/apps/v5/edoc/i18n/", "EdocResources");
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edocDeal.js?buildversion=181210172510"></script>
+
+<!-- 
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flowV5.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-zoom.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172510></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172510"></script>
+
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172510"></script>
+
+<script src="/seeyon/m3/apps/v5/commons/widget/ContentEdit-debug.js?buildversion=181210172510"></script>
+ -->
+
+<script type="text/html" id="phrases_template">
+<%
+for(var i = 0, len = this.length;i<len;i++){
+%>
+<li class="cmp-table-view-cell li_height"><%=this[i]%></li>
+<%
+}
+%>
+</script>
+<!-- js模版 -->
+<script type="text/html" id="edoc_pharse_tpl">
+        <% for(var i=0;i<this.length;i++){ %>           
+    <li class="cmp-table-view-cell">
+            <a href="javascript:void(0)"><%=this[i]%></a>
+    </li>
+        <%}%>
+</script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************--!>

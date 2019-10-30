@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>门户列表，测试页面</title>
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1811131851">
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/portal.css?buildversion=1811131851">
+<style type="text/css">
+.portalListTitle{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+}
+.portalList{
+    width: 100%;
+    float: left;
+}
+.portalList li{
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: solid 1px #aaa;
+    border-radius: 6px;
+    color: #bbb;
+}
+.portalName {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+}
+.portalList li p:last-child{
+    margin-bottom: 0;
+}
+</style>
+</head>
+
+<body>
+<div class="portalListTitle">门户列表</div>
+<ul class="portalList" id="portalList"></ul>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=1811131851"></script>
+<script type="text/javascript">
+//获取门户列表数据
+var CMP_V5_TOKEN = window.localStorage.CMP_V5_TOKEN;
+var _url = "/seeyon/rest/mobilePortal/portals/mobile";
+cmp.ajax({
+    type: "GET",
+    url: _url,
+    headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Language': "zh-CN",
+        "token": CMP_V5_TOKEN || ""
+    },
+    dataType: "json",
+    success: function(result) {
+        renderPortalList(result);
+    },
+    error: function(result) {
+        console.log(result);
+    }
+});
+
+//渲染门户列表
+var renderPortalList = function(result) {
+    if(result.data && result.data.length){
+        //创建DOM
+        var _tempHtml = "";
+        for (var i = 0 , len = result.data.length ; i < len; i++) {
+            var _thisPortal = result.data[i];
+            _tempHtml += "<li><p class='portalName'>" + _thisPortal.portalName + "</p><p>ID: " + _thisPortal.portalId + "</p></li>";
+        }
+        document.getElementById("portalList").innerHTML = _tempHtml;
+        //绑定链接
+        for (var i = 0 , len = result.data.length ; i < len; i++) {
+            var _currentDom = document.querySelectorAll("#portalList li")[i];
+            var _currentPortalId = result.data[i].portalId;
+            bindLink(_currentDom,_currentPortalId);
+        }
+    }
+}
+
+//绑定链接
+var bindLink = function(_currentDom,_currentPortalId){
+    cmp.event.click(_currentDom, function() {
+        cmp.href.next("/seeyon/m3/apps/v5/portal/html/portalIndex.html",{"portalId":_currentPortalId});
+    })
+}
+</script>
+</body>
+</html>

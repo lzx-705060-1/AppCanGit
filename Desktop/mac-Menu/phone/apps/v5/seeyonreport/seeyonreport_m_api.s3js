@@ -1,0 +1,32 @@
+var seeyonreportApi = (function(){
+	var seeyonreportApi = function(){
+		this.basePath = "";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [id:任务记录id]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+	seeyonreportApi.prototype.openApp = function(type,backUrl,option,obj) {
+		
+	}
+	/**
+	 * 打开帆软报表
+	 * @param {Object} options
+	 * options:{
+	 * 		reportId : 报表id,
+	 * 		name : 报表名称
+	 * }
+	 */
+	seeyonreportApi.prototype.reportView = function(options){
+		if(!options.reportId){
+			return;
+		}
+		var url = cmp.seeyonbasepath + "/seeyonReport/seeyonReportController.do?method=redirectSeeyonReportH5&templateId=" + options.reportId;
+		cmp.href.open(url, options.name);
+	}
+	return new seeyonreportApi();
+})();

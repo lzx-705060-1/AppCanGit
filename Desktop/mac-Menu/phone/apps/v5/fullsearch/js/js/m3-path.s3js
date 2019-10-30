@@ -1,0 +1,9 @@
+(function() {
+    this.applicationUrl = 'http://application.m3.cmp/v';
+    this.myUrl = 'http://my.m3.cmp/v';
+    this.loginUrl = 'http://login.m3.cmp/v'
+    this.todoUrl = 'http://todo.m3.cmp/v';
+    this.messageUrl = 'http://message.m3.cmp/v';
+    this.commonsUrl = this.__baseUrl__ = '/seeyon/m3/apps/v5/fullsearch';
+    this.cmpUrl = 'http://cmp/v';
+})()

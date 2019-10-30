@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>表单查询统计</title>
+    <compilationdebug
+    ="true"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script type="text/javascript">
+        var MEETING_DETAILS_Text = "";
+        var MEETING_SUMMARY_Text = "";
+        var MEETING_RETURN_Text = "";
+        var MEETING_COMMENT_Text = "";
+        var MEETING_ATTEND_USERS_Text = "";
+        var MEETING_USERS_NAME_Text = "";
+        var base_server_url = "<s3:data name='base_server_url' />";
+        var currentuser_cmpBaseUrl = "<s3:data name='currentuser_cmpBaseUrl' />";
+        var buildversion="${data:buildversion}";
+    </script>
+    <s3:import type="css"></s3:import>
+
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-accDoc.css">-->
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-selectOrg.css">-->
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-att.css">-->
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-picker.css">-->
+    <link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-audio.css">
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-listView.css">-->
+    <link rel="stylesheet" href="${data:dependencies.cmp}/css/cmp-search.css">
+    <!--<link rel="stylesheet" href="${data:dependencies.cmp}/css/sui-filter.css">-->
+
+    <!-- Jquery -->
+    <!--<script type="text/javascript" src="<s3:data name='modulepath.v5.formqueryreport' /><s3:data name='version'/>apps/formqueryreport/common/js/jquery-1.10.2.min.js"></script>-->
+
+
+    <script type="text/template" id="tpl_report_chart">
+        <div class="frame">
+            <header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+                <div class="header_back back_link cmp-action-back cmp-header-left">
+                    <span class="see-icon-v5-common-arrow-back"></span>
+                    <span class="header_back_word nav-text">{%=I18Nmap.get(I18NConfigObj.STRING_BACK)%}</span>
+                </div>
+                <div class="header_text cmp-title">{%=gridData.reportName %}</div>
+                <div class="header_right right_list_link cmp-header-right nav-icon-one">
+                    <span class="cmp-icon iconfont_blue see-icon-v5-common-more-fill"></span>
+                </div>
+                <div class="chart_type_select">
+                    <div class="chart_type_select_item" rel="0">{%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_HISTOGRAM)
+                        %}
+                    </div>
+                    <div class="chart_type_select_item" rel="1">{%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_LINECHART)
+                        %}
+                    </div>
+                    <div class="chart_type_select_item" rel="2">
+                        {%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_RADARCHART) %}
+                    </div>
+                    <div class="chart_type_select_item" id="chart_type_select_of_pie" rel="3">
+                        {%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_PIECHART) %}
+                    </div>
+                </div>
+            </header>
+            <div id="report_chart_wrapper">
+                <div id="report_chart_scroller" class="scroller" style="height:90%;">
+                    <div class="topbale" style="height:100%;">
+                        <div id="container" style="position: relative; width:100%;height: 100%;">
+                            <!-- <canvas id="cvs_chart" width="1100" height="400">[No canvas support]</canvas> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="tpl_menu_list">
+        {% for (var i=0; i < menuTree.length; i++) { %}
+        {% if(menuTree[i].reportTreeItems==null || menuTree[i].reportTreeItems=='null'){ %}
+        <li class="link" rel="formReport/{%=menuTree[i].parentID %}/{%=menuTree[i].itemID %}">
+            <div class="listdiv">
+                <img src="/seeyon/m3/apps/v5/formqueryreport/img/ic_statistics.png" class="imgicon">
+
+                <div class="listitle">{%=menuTree[i].name %}</div>
+                <div class="zxicon"></div>
+            </div>
+        </li>
+        {% }else{ %}
+        <li class="link" rel="reportMenu/{%=menuTree[i].parentID %}/{%=menuTree[i].itemID %}_{%=menuTree[i].name %}">
+            <div class="listdiv">
+                <img src="/seeyon/m3/apps/v5/formqueryreport/img/ic_forder_35.png" class="imgicon">
+
+                <div class="listitle">{%=menuTree[i].name %}</div>
+                <div class="zxicon"></div>
+            </div>
+        </li>
+        {% } %}
+        {% } %}
+    </script>
+
+    <script type="text/template" id="tpl_blank_page">
+        <div id="blank_page_wrapper" class="wrapper">
+            <div id="scroller">
+                <div class="blank_page">
+                    {%=I18Nmap.get(I18NConfigObj.STRING_NOT_DATA) %}
+                </div>
+            </div>
+        </div>
+    </script>
+    <style>
+        .SearchCondition {
+        }
+
+        .SearchLable {
+            text-align: left;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+        }
+
+        .SearchData {
+            text-align: left;
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+        }
+    </style>
+    <s3:data name='cordova'/>
+    <script src="${data:dependencies.cmp}/js/cmp-i18n.js"></script>
+    <s3:import type="js"></s3:import>
+    <!--<script src="${data:dependencies.cmp}/js/cmp-app.js"></script>-->
+    <script src="${data:dependencies.cmp}/js/cmp-asyncLoad.js${data:buildversion}"></script>
+    <!--<script src="${data:dependencies.cmp}/js/cmp-tableList.js"></script>-->
+    <!--<script src="${data:dependencies.cmp}/js/cmp-listView.js"></script>-->
+    <script src="${data:dependencies.cmp}/js/cmp-lbs.js"></script>
+    <script src="${data:dependencies.cmp}/js/cmp-server.js"></script>
+	<script src="${data:dependencies.form}/js/lib/vue/vue.min.js"></script>
+	<script src="${data:dependencies.form}/filter/sui-filter.min.js"></script>
+    <script src="${data:dependencies.cmp}/js/cmp-headerFixed.js"></script>
+    <s3:initfunc function="update_UI" parameters="aPageData,aRefrushIds" refreshparam="aRefrushIds"></s3:initfunc>
+    <script>
+        var vueJSUrl = "${data:dependencies.form}/js/lib/vue/vue.min.js",
+            excanvasJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/excanvas/excanvas.js",
+            Chart_minJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/Chart.min.js",
+            RGraph_barJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/RGraph.bar.js",
+            RGraph_common_coreJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/RGraph.common.core.js",
+            RGraph_common_keyJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/RGraph.common.key.js",
+            RGraph_lineJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/RGraph.line.js",
+            RGraph_radarJSUrl = "${data:dependencies.formqueryreport}/js/RGraph/RGraph.radar.js",
+            selectOrgJSUrl = "${data:dependencies.cmp}/js/cmp-selectOrg.js",
+            sui_filterJSUrl = "${data:dependencies.form}/filter/sui-filter.js",
+            projectAccountListJSUrl = "${data:dependencies.common_v5_path}/cmp-resources/project/js/projectAccountList.js",
+            sui_filterCSSUrl = "${data:dependencies.form}/filter/sui-filter.css",
+            selectOrgCSSUrl="${data:dependencies.cmp}/css/cmp-selectOrg.css",
+            listViewJSUrl="${data:dependencies.cmp}/js/cmp-listView.js",
+            listViewCSSUrl="${data:dependencies.cmp}/css/cmp-listView.css",
+            dtPickerJSUrl="${data:dependencies.cmp}/js/cmp-dtPicker.js",
+            popPickerJSUrl="${data:dependencies.cmp}/js/cmp-popPicker.js",
+            pickerJSUrl="${data:dependencies.cmp}/js/cmp-picker.js",
+            imgCacheJSUrl="${data:dependencies.cmp}/js/cmp-imgCache.js",
+            echartsJSUrl = "${data:dependencies.common_v5_path}/echarts3/echarts.min.js",
+            pickerCSSUrl="${data:dependencies.cmp}/css/cmp-picker.css",
+            tableListCSSUrl="${data:dependencies.cmp}/css/cmp-tableList.css",
+            tableListJSUrl="${data:dependencies.cmp}/js/cmp-tableList.js",
+            SeeyonAttachmentJSUrl="${data:modulepath.v5.commons}/widget/SeeyonAttachment.s3js";
+    </script>
+    <script>
+        function closePage() {
+            cmp.href.closePage();
+        }
+    </script>
+
+</head>
+<body id="body" class="fullscreen">
+<div id="loading">
+    <header id="loadingHeader" class="cmp-bar cmp-bar-nav loading-header cmp-flex-header" style="height: 44px; padding-top: 0px;">
+        <div class="header_back loading_back_link cmp-action-back cmp-header-left">
+            <span class="see-icon-v5-common-arrow-back" >返回</span>
+        </div>
+        <div class="header_text cmp-title"> </div>
+        <div class="header_right right_list_link cmp-header-right nav-icon-one"></div>
+    </header>
+    <!--<div class="loading">
+        <img src="${data:modulepath.v5.formqueryreport}${data:version}img/loading.gif"/>
+    </div>-->
+</div>
+<div id="pageframe" class="frame">
+    <s3:dom id="pageframe" function="HomePageContainer@formqueryreport" parameters="aPageData"/>
+</div>
+
+<div class="unflowformPage" style="display: none">
+    <header id="header" class="cmp-bar cmp-bar-nav unflowformPage-header" style="height: 44px; padding-top: 0px;">
+        <div class="header_back cmp-icon cmp-pull-left unflowformPage_back_link">
+            <span class="see-icon-v5-common-arrow-back"></span>
+        </div>
+        <div class="header_text cmp-title">无流程表单</div>
+        <span class="icon float_right  see-icon-v5-common-switch-light-form" id="showPc_Btn"></span>
+    </header>
+    <div id="contentDiv"></div>
+</div>
+
+<div id="title-more" class="title-more">
+    <div class="title-info-bg"></div>
+    <div class="title-info">
+        <div id="title-info-txt" class="title-info-txt"></div>
+        <div class="nav nav-border"></div>
+        <div class="nav nav-background"></div>
+    </div>
+</div>
+
+</body>
+</html>

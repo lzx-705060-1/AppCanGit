@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>个人聊天详情页面</title>
+     <meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">     <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" />
+     <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+     <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172652" />
+     <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172652" />
+     <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=181210172652" />
+     <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+     <script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+     <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucChatDetailPage.css?buildversion=181210172652" />
+</head>
+<body>
+<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+    <div id="backBtn" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text"><i18n key="uc.m3.h5.return"></i18n></span>
+    </div>
+    <div class="cmp-title" id="title"><i18n key="uc.m3.h5.chatDetails"></i18n></div>
+    <div class="cmp-header-right">
+    </div>
+</header>
+<div class="cmp-content position_relative">
+    <div class="cmp-control-content cmp-active">
+        <div class="uc-chat-detail">
+            <div class="info info-photo">
+                <div class="img"></div>
+                <div class="name ellipsis" id="name"></div>
+            </div>
+            <div class="info" id="invite">
+                <div class="invite">
+                    <span class="iconfont icon-Addmembers color_blue"></span>
+                </div>
+                <div class="name color_blue"><i18n key="uc.m3.h5.invite"></i18n></div>
+            </div>
+        </div>
+        <div class="cmp-lists">
+            <a href="javascript:;" class="cmp-list">
+                <div class="content">
+                    <div class="left"><span class="c1"><i18n key="uc.m3.h5.stickyConversation"></i18n></span></div>
+                    <div class="right">
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini" id="top">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="javascript:;" class="cmp-list">
+                <div class="content">
+                    <div class="left"><span class="c1"><i18n key="uc.m3.h5.messageNotDisturb"></i18n></span></div>
+                    <div class="right">
+                        <div class="cmp-switch cmp-switch-blue cmp-switch-mini" id="notDisturb">
+                            <div class="cmp-switch-handle"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+          <!--  <a href="javascript:;" class="cmp-list" id="chatHistory">
+                <div class="content">
+                    <div class="left"><span class="c1">聊天记录查询</span></div>
+                    <div class="right"><i class="cmp-icon cmp-icon-forward"></i></div>
+                </div>
+            </a>-->
+            <a href="javascript:;" class="cmp-list" id="emptyRecords">
+                <div class="content">
+                    <div class="left"><span class="c1"><i18n key="uc.m3.h5.clearChatHistory"></i18n></span></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/seeyon/m3/apps/v5/uc/i18n/uc_zh_CN.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172652"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/uc/i18n/","uc");
+</script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-chat.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-visitingCard.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=181210172652"></script>
+
+<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script><script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucCommon.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucChatDetailPage.js?buildversion=181210172652"></script>
+</html>
+

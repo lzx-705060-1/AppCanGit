@@ -1,0 +1,133 @@
+.cmp-audio-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color:rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  z-index: 91;
+}
+
+.win_audio {
+  width: 280px;
+  background-color: #fff;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 95;
+  border-radius: 7px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+  text-align: center;
+  margin-left: -140px;
+  zoom: 1;
+  margin-top: -85px
+}
+
+.win_audio_title {
+  width: auto;
+  border-bottom: 1px solid #ccc;
+  padding: 10px
+}
+
+.win_audio_title span {
+  margin-left: 5%
+}
+
+.win_audio_cont {
+  width: 95%;
+  height: auto;
+  margin: auto;
+  padding: 10px 5px
+}
+
+.audio_cont {
+  width: auto;
+  height: auto;
+  float: left;
+  text-align: center;
+  margin-left: 10%
+}
+.cont_radius {
+  width: 50px;
+  height: 50px;
+  background-color: #BEBEBE;
+  border-radius: 50%;
+  font-size: 20px !important;
+  color: #fff
+}
+
+.cont_radius span {
+  font-size: 30px !important;
+  line-height: 50px;
+  text-align: center
+}
+
+.cont_left {
+  background-color: #48A0DE;
+}
+
+.cont_con {
+}
+
+.icon-bofang {
+  margin-left: 5px
+}
+
+.cont_right {
+  background-color: #48A0DE;
+}
+
+.win_audio_sub {
+  border-top-style: solid;
+  border-top-color: #BEBEBE;
+  border-top-width: 1px;
+
+}
+
+.win_audio_sub ul {
+  width: auto;
+  overflow: hidden;
+}
+
+.win_audio_sub ul li {
+  width: 49%;
+  height: 45px;
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  line-height: 50px
+}
+
+.win_audio_sub ul li:first-child {
+  border-right-style: solid;
+  border-right-color: #BEBEBE;
+  border-right-width: 1px
+}
+
+.win_audio_sub.play ul li {
+  width: 100%;
+  height: 45px;
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  line-height: 50px
+}
+
+.clear_left {
+  clear: left
+}
+
+.win_audio_sub button {
+  width: 100px
+}
+
+.luyintime {
+  display: block
+}

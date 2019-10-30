@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Cache-Control" content="max-age">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="telephone=no,email=no" name="format-detection">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    </head>
+    <body>
+        <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+        <script src="http://cmp/v/js/cmp-i18n.js"></script>
+        <script>
+            cmp.i18n.init("http://commons.m3.cmp/v/i18n/", "commons");
+        </script>
+        <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+        <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+        <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp-asyncLoad.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp-telmail.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp-barcode.js"></script>
+        <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+        <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+        <script>
+            ;(function() {
+                define('scan', function(require, exports, module) {
+                    //加载模块
+                    var m3 = require('m3');
+                        require('commons');
+                    cmp.ready(function() {
+                        m3.holdScan();
+                        document.addEventListener("closeHoldScan",function(){
+                            if (cmp.os.android) {
+                                setTimeout(function(){
+                                    cmp.href.back();//延时关闭，避免数据还没有存入localStorage，就关闭webview
+                                },1000);
+                            } else {
+                                cmp.barcode.holdScan.closeScan();
+                            }
+
+                        });
+                    });
+                });
+                seajs.use('scan', function() {});
+            })();
+        </script>
+    </body>
+</html>

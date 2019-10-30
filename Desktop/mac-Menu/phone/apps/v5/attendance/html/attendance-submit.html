@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<title></title>
+
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172358" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172358" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172358" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172358">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172358">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172358">
+
+	<!-- 这块本是致信的图标，本不该引用，回头要想办法沟通下 -->
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('iconfont.eot?t=1480993562');
+			/* IE9*/
+			src: url('../fonts/uc/iconfont.ttf?t=1480993562') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('../fonts/uc/iconfont.svg?t=1480993562#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+		
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-size: 16px;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			/*-webkit-text-stroke-width: 0.2px;*/
+			-moz-osx-font-smoothing: grayscale;
+		}
+		
+		.icon-address:before {
+			content: "\e60c";
+		}
+		
+		.icon-edit:before {
+			content: "\e60d";
+		}
+		
+		.icon-cancel-voice:before {
+			content: "\e60e";
+		}
+		
+		.icon-create-group:before {
+			content: "\e60f";
+		}
+		
+		.icon-alone-enter:before {
+			content: "\e610";
+		}
+		
+		.icon-group-folder:before {
+			content: "\e611";
+		}
+		
+		.icon-group-enter:before {
+			content: "\e612";
+		}
+		
+		.icon-me-voice:before {
+			content: "\e613";
+		}
+		
+		.icon-group-gg:before {
+			content: "\e614";
+		}
+		
+		.icon-me-voice1:before {
+			content: "\e615";
+		}
+		
+		.icon-other-voice:before {
+			content: "\e616";
+		}
+		
+		.icon-other-voice1:before {
+			content: "\e617";
+		}
+		
+		.icon-group-photo:before {
+			content: "\e618";
+		}
+		
+		.icon-other-voice2:before {
+			content: "\e619";
+		}
+		
+		.icon-voice:before {
+			content: "\e61a";
+		}
+		
+		.icon-me-voice2:before {
+			content: "\e61b";
+		}
+		
+		.icon-voice-loading:before {
+			content: "\e61c";
+		}
+		
+		.icon-voicing:before {
+			content: "\e61d";
+		}
+		
+		.icon-icon-file:before {
+			content: "\e61e";
+		}
+		
+		.icon-icon-create-alone:before {
+			content: "\e61f";
+		}
+		
+		.icon-icon-picture:before {
+			content: "\e620";
+		}
+		
+		.icon-icon-photograph:before {
+			content: "\e621";
+		}
+	</style>
+</head>
+
+<body class="cmp-fullscreen">
+<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>		
+	<div id="index-container" class="cmp-content position_relative submit-container "  style="border-bottom:8px solid #efeff4;">
+		<div class="index-today ">
+			<span class="cmp-icon see-icon-v5-common-time"></span>
+			<span class="years"></span><span class="week"></span>
+		</div>
+		<div class="index-location after-line">
+			<span class="cmp-icon checkinicon icon-checkin-adress"></span><span class="attendance-address"></span>
+			<span class="modify" style="display:none"><i18n key="Attendance.label.reset"></i18n></span>
+		</div>
+		<div class="submit-hr"></div>
+		<div class="submit-textarea before-line">
+			<textarea name="" id="submit_textarea" cols="30" rows="8" placeholder=""></textarea>
+		</div>
+
+
+		<!-- 新增个容器，控制里面的图片和语音文件过多的话，出现滚动条-->
+		<div class="submit-scroll  ">
+			<div class="submit-img">
+				<div class="img-all">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="attendFooter" class="cmp-bar cmp-bar-tab cmp-bar-footer submit-footer  before-line cmp-comment-footer">
+		<div class="submit-footer-action after-line"></div>
+		<div class="container-footer">
+			<button type='button' id="attendance-right" class='cmp-btn cmp-btn-primary2 cmp-btn-width40'><i18n key="Attendance.label.submit"></i18n></button>
+		</div>
+	</footer>
+	<!--常用语弹出容器-->
+	<div id="bottomPopover" class="cmp-popover cmp-popover-bottom submit-useful">
+		<div class="cmp-popover-arrow"></div>
+		<div id="topPopover" class="cmp-scroll-wrapper">
+			<div class="cmp-scroll">
+				<ul class="cmp-table-view">
+					<li class="cmp-table-view-cell"><a href="#"><i18n key="Attendance.label.startWork"></i18n></a></li>
+					<li class="cmp-table-view-cell"><a href="#"><i18n key="Attendance.label.arrived"></i18n></a></li>
+					<li class="cmp-table-view-cell"><a href="#"><i18n key="Attendance.label.workComplete"></i18n></a></li>
+					<li class="cmp-table-view-cell"><a href="#"><i18n key="Attendance.label.customerVisit"></i18n></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/html" id="img_tpl">
+	<div class="img-cell position_relative">
+    <div class="checkin-delete-icon" fileId="<%=this.fileId%>"><span class="see-icon-close-circle-fill"></span></div>
+    <img src="<%=this.src%>" alt=""/>
+    </div>
+	</script>
+
+	<script type="text/html" id="record_tpl">
+	<div class="submit-record-file position_relative">	
+		<div class="checkin-delete-icon"><span class="see-icon-close-circle-fill"></span></div>
+    	<div class="submit-record-file-a position_relative attendance-record-value" src="<%=this.src%>">
+    	<img class="record" src="../img/record_3.png" alt=""/>
+   	 	<span><%=this.times%>"</span>
+		</div>
+    </div>
+	</script>
+	
+	<script type="text/html" id="footer_tpl">
+	<% if(this.commonwordEnable == true){  	%>
+	<span class="cmp-pull-left useful"><a href="#bottomPopover"><i18n key="Attendance.label.commonWord"></i18n></a></span>
+	<% }	 								%>
+	<% if(this.recordEnable == true){  		%>
+	<div class="item point record"><span class="iconfont icon-voice"></span></div>
+	<% }	 								%>
+	<% if(this.cameraEnable == true){  		%>
+	<div class="item point"><span class="see-icon-v5-common-camera attendance-camera"></span></div>
+	<% }	 								%>
+	<% if(this.atEnable == true){  			%>
+	<div class="item component attendance-at"><span>@</span></div>
+	<% }	 								%>
+	</script>
+	<!--全局变量-->
+	
+	<script src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172358"></script>
+	<script src="/seeyon/m3/apps/v5/commons/i18n/Commons_zh_CN.js?buildversion=181210172358"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172358"></script>
+	<script>
+		var $buildversion = '?buildversion=181210172358';
+		var cmpPath = "/seeyon/m3/cmp";
+		var commonPath = "/seeyon/m3/apps/v5/commons";
+	    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance");
+	</script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172358"></script>
+	<script type="text/javascript" async="async" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172358"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172358"></script>
+	<script type="text/javascript" async="async" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172358" id="__jsdktag" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172358"></script>
+<!-- 	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=dced395ba47d88fd4dcf8ed6d846cbc7"></script> -->
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-submit-debug.js?buildversion=181210172358"></script>
+
+	<script type="text/javascript">
+    cmp.ready(function(){
+        AttendanceSubmit.init();
+    });
+    </script>
+</body>
+
+</html>

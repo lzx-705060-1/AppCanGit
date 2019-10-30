@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172558" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/news/css/news.css?buildversion=181210172558" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172558">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172558">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172558">
+    <title id="title"></title>
+    <style>
+        html{
+            overflow: visible;
+        }
+        .cmp-scroll.bg_auto{
+            background-color: #FFFFFF !important;
+        }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<div class="createFilter display_none"></div>
+<div class="cmp-content cmp-content-none position_relative">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <!-- 搜索框 -->
+        <div id="searchNews">
+            <div id="search" class="position_relative boder_bottom" style="background-color: white;">
+                <div class="cmp-segmented_title_content">
+                    <form action="#" onsubmit="return false;">
+                        <div class="cmp-content-title-search" style="padding-right: 9px;">
+                            <div class="cmp-input-row cmp-search">
+                                <input type="search" disabled placeholder="" class="cmp-input-clear ">
+                                <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+                                <span class="cmp-placeholder">
+                                        <span class="cmp-icon cmp-icon-search"></span>
+                                        <span class="text-search"><i18n key="news.h5.search"></i18n></span>
+                                        </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="reSearch" class="position_relative cmp-search-content" style="display: none;">
+                <div class="cmp-segmented-control cmp-search-title ">
+                    <div class="cmp-search-item">
+                        <span class="title" id="cmp_search_title"></span>
+                        <span class="cmp-icon cmp-icon-arrowdown icon_select"></span>
+                    </div>
+                    <div id="toSearch" class="cmp-search-item">
+                        <div id="searchText" class="item text cmp-active">
+                            <input id="searchTextValue" type="text" readonly>
+                            <span id="searchResultSpan" style="display:none;"></span>
+                        </div>
+                        <div id="searchDate" class="item date">
+                            <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly>
+                            <span>-</span>
+                            <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="cmp-search-item">
+                        <span id="cancelSearch" class="gotoSearch"><i18n key="news.h5.cancel"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表展示的 -->
+        <div class="newsType_title gradient position_relative">
+            <div class="float_l">
+                <div id="option" class="option">
+                </div>
+                <span class="sort-btn  display_none"><i18n key="news.h5.choose.type.label"></i18n></span>
+            </div>
+            <div class="float_r" style="float:right;">
+                <span class="see-icon-v5-common-setting setIcon"></span>
+            </div>
+        </div>
+        <div id="newsTypeDiv" class="display_none"></div>
+        <div id="all_news" class="cmp-scroll-wrapper" style="top:83px;">
+            <div class="cmp-scroll" style="background-color: #f1f1f1;">
+                <div class="news_content" id="news_listAll" style="">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="news_list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="news_list_li">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i]; %>
+    <% var liType = obj.imageFlag; %>
+    <li class="cmp-table-view-cell" style="padding-bottom: 0;padding-top: 0;"  newsId="<%=obj.stringId %>">
+        <div class="cmp-table">
+            <div class="cmp-table-cell cmp-col-xs-12" style="">
+                <!--纯文本-->
+                <% if(liType == 1){ %>
+                <div class="newsTitleRow">
+                    <h4 class="title newsTitle" id="news_list_title" <% if(obj.readFlag){ %>style="font-weight:normal;"<% }%>>
+                        <% if(obj.topNumberOrder!="0"){ %>
+                        <span class="title-sign sign-top"><i18n key="news.h5.top"></i18n></span>
+                        <%}%> <% if(obj.focusNews){%>
+                        <span class="title-sign sign-focus"><i18n key="news.h5.focus"></i18n></span>
+                        <%}%>
+                        <%=obj.title%>
+                    </h4>
+                    <h6 class="time_sector">
+                        <span><%=obj.showPublishName%></span>
+                        <span class="new-publishTime"><%=obj.publishTime %></span>
+                        <span class="cmp-ellipsis news_userInfo">
+                            <% if(obj.attachmentsFlag){ %>
+                            <span class="cmp-icon see-icon-accessory"></span>
+                            <% } %>
+                        </span>
+                        <span class="cmp-ellipsis news_readNum">
+                            <% if(obj.readCount > 9999){ %>
+                            <span>9999+</span>
+                            <% } else { %>
+                            <span><%=obj.readCount %></span>
+                            <% } %>
+                            阅读
+                        </span>
+                    </h6>
+                </div>
+                <% } %>
+
+                <!--小图-->
+                <% if(liType == 2){ %>
+                <div class="newsRowLeft" style="margin-right: 33%">
+                    <h4 class="title newsTitle" id="news_list_title" <% if(obj.readFlag){ %>style="font-weight:normal;"<% }%>>
+                        <% if(obj.topNumberOrder!="0"){ %>
+                        <span class="title-sign sign-top"><i18n key="news.h5.top"></i18n></span>
+                        <%}%>
+                        <% if(obj.focusNews){%>
+                        <span class="title-sign sign-focus"><i18n key="news.h5.focus"></i18n></span>
+                        <%}%>
+                        <%=obj.title%>
+                    </h4>
+                    <h6 class="time_sector">
+                        <span><%=obj.showPublishName%></span>
+                        <span class="new-publishTime"><%=obj.publishTime %></span>
+                        <span class="cmp-ellipsis news_userInfo">
+                            <% if(obj.attachmentsFlag){ %>
+                            <span class="cmp-icon see-icon-accessory"></span>
+                            <% } %>
+                        </span>
+                        <span class="cmp-ellipsis news_readNum">
+                            <% if(obj.readCount > 9999){ %>
+                            <span>9999+</span>
+                            <% } else { %>
+                            <span><%=obj.readCount %></span>
+                            <% } %>
+                            阅读
+                        </span>
+                    </h6>
+                </div>
+                <div class="newsRowRight">
+                    <img class="img cmp-img-cache" src="<%=cmp.origin+obj.imageUrl %>" alt=""  src-data="<%=cmp.origin+obj.imageUrl %>"/>
+                </div>
+                <% } %>
+                <!--三图-->
+                <% if(liType == 3){ %>
+                <div class="newsTitleRow" >
+                    <h4 class="title newsTitle" id="news_list_title" <% if(obj.readFlag){ %>style="font-weight:normal;"<% }%>>
+                    <% if(obj.topNumberOrder!="0"){ %>
+                    <span class="title-sign sign-top"><i18n key="news.h5.top"></i18n></span>
+                    <%}%>
+                    <% if(obj.focusNews){%>
+                    <span class="title-sign sign-focus"><i18n key="news.h5.focus"></i18n></span>
+                    <%}%>
+                    <%=obj.title%>
+                    </h4>
+                    <div class="newsThreeImgRow">
+                        <% var imgList = obj.imageUrl.split(",");%>
+                        <% for(var j = 0; j < 3; j++){%>
+                        <img class="img cmp-img-cache" src="<%=cmp.origin+imgList[j] %>" alt=""  src-data="<%=cmp.origin+imgList[j] %>"/>
+                        <% }%>
+                    </div>
+                    <h6 class="time_sector">
+                        <span><%=obj.showPublishName%></span>
+                        <span class="new-publishTime"><%=obj.publishTime %></span>
+                        <span class="cmp-ellipsis news_userInfo">
+                            <% if(obj.attachmentsFlag){ %>
+                            <span class="cmp-icon see-icon-accessory"></span>
+                            <% } %>
+                        </span>
+                        <span class="cmp-ellipsis news_readNum">
+                            <% if(obj.readCount > 9999){ %>
+                            <span>9999+</span>
+                            <% } else { %>
+                            <span><%=obj.readCount %></span>
+                            <% } %>
+                            阅读
+                        </span>
+                    </h6>
+                </div>
+
+                <% } %>
+
+                <!--大图-->
+                <% if(liType == 4){ %>
+                <div class="newsTitleRow" >
+                    <h4 class="title newsTitle" id="news_list_title" <% if(obj.readFlag){ %>style="font-weight:normal;"<% }%>>
+                    <% if(obj.topNumberOrder!="0"){ %>
+                    <span class="title-sign sign-top"><i18n key="news.h5.top"></i18n></span>
+                    <%}%>
+                    <% if(obj.focusNews){%>
+                    <span class="title-sign sign-focus"><i18n key="news.h5.focus"></i18n></span>
+                    <%}%>
+                    <%=obj.title%>
+                    </h4>
+                    <div class="newsBigImgRow">
+                        <img class="img cmp-img-cache" src="<%=cmp.origin+obj.imageUrl %>" alt=""  src-data="<%=cmp.origin+obj.imageUrl %>"/>
+                    </div>
+                    <h6 class="time_sector">
+                        <span><%=obj.showPublishName%></span>
+                        <span class="new-publishTime"><%=obj.publishTime %></span>
+                        <span class="cmp-ellipsis news_userInfo">
+                            <% if(obj.attachmentsFlag){ %>
+                            <span class="cmp-icon see-icon-accessory"></span>
+                            <% } %>
+                        </span>
+                        <span class="cmp-ellipsis news_readNum">
+                            <% if(obj.readCount > 9999){ %>
+                            <span>9999+</span>
+                            <% } else { %>
+                            <span><%=obj.readCount %></span>
+                            <% } %>
+                            阅读
+                        </span>
+                    </h6>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script type="text/html" id="newsTypeList">
+<div class="detail">
+    <ul class="newsTypeUl">
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="-1">
+                        <span class="isChoose" ></span>
+                        <span><i18n key="news.h5.type.all"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<% for (_newstype in this){
+    if(_newstype != "group" &&  _newstype != "account"){
+      continue;
+    }
+    var list = this[_newstype];
+    var titleName = _newstype;
+	if(_newstype == "group"){
+	 titleName = cmp.i18n("news.h5.type.group");
+	}else if(_newstype == "account"){
+	 titleName = cmp.i18n("news.h5.type.account");
+	}
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="newsTypeUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var newstype = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=newstype.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(newstype.typeName) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+
+<% for (_newstype in this){
+    if(_newstype == "all" || _newstype == "group" || _newstype == "account"){
+      continue;
+    }
+    var list = this[_newstype];
+    var titleName = _newstype;
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="newsTypeUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var newstype = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=newstype.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(newstype.typeName) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+</script>
+
+<script src="/seeyon/m3/apps/v5/news/i18n/News_zh_CN.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172558"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/news/i18n/","News",null,"?buildversion=181210172558");
+    var str = cmp.i18n("news.h5.news");
+    document.getElementById("title").innerHTML = str;
+</script>
+<script type="text/javascript">
+    var _newsPath = "/seeyon/m3/apps/v5/news";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/apps/v5/news/js/newsIndex.js?buildversion=181210172558"></script>
+</body>
+</html>

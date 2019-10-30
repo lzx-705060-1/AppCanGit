@@ -1,0 +1,69 @@
+var showApi = (function(){
+	
+	var ShowApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/show";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [id:秀主题id (目前只需要跳转到秀主题详情界面)]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    ShowApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	/**
+    	 * type	  : messgae-link.properties对应的类型,
+    	 * backUrl:	目前没用传过来是空，秀没有特殊场景
+    	 * option :
+    	 * {
+    	 * 		id: "-6741935608477629621",
+		 *		linkType: "message.link.show.showpost.settop",
+		 *		messageCategory: "40",
+		 *		messageType: "0",
+		 *		param1:,//对应message-link.propertis,的参数
+		 *		param2:,
+		 *		param3:
+    	 * },
+    	 * obj :	目前没用传过来是空，秀没有特殊场景
+    	 */
+    	var _basePath = this.basePath;
+		var param = {
+           'id' : option.id,
+           'openType' : type,
+        };
+		if("message" === type){
+			var options;
+			switch (option.linkType) {
+				case "message.link.show.newshowbar":
+					// /show/show.do?method=showbar&showbarId={0}&from={1}
+					options = { "from" : option.param1 };
+					break;
+				case "message.link.show.showReply":
+					// /show/show.do?method=showbar&showbarId={0}&showpostId={1}&commentId={2}&from={3}
+					options = {
+						"showpostId": option.param1,
+						"commentId" : option.param2,
+						"from" 		: option.param3
+					};
+					break;
+				case "message.link.show.showPraise":
+				case "message.link.show.showpost.settop":
+					// showPraise = /show/show.do?method=showbar&showbarId={0}&showpostId={1}&from={2}
+					// settop	  = /show/show.do?method=showbar&showbarId={0}&showpostId={1}&from={2}
+					options = {
+						"showpostId": option.param1,
+						"from" 		: option.param2
+					};
+					break;
+				default:
+					options = {};
+					break;
+			}
+			param.options = options;
+		}
+        cmp.href.next(_basePath + "/html/showbarDetail.html", param);  
+	}
+	return new ShowApi();
+	
+})();

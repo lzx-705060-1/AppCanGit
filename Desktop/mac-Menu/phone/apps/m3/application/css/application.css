@@ -1,0 +1,1003 @@
+/*
+* @Author: hbh
+* @Date:   2016-06-23 16:46:50
+* @Last Modified by:   think
+* @Last Modified time: 2016-08-12 11:10:46
+*/
+
+.banner_header {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 44px;
+    line-height: 44px;
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(244, 244, 244, 0.1));
+}
+
+.banner_header .cmp-icon {
+    margin-right: -10px;
+    margin-left: -10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    position: relative;
+    z-index: 20;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+
+.see-icon-m3-changeview {
+    font-size: 16px;
+}
+
+
+/*.app {
+    width: 100%;
+}*/
+
+.app_list {
+    padding-bottom: 50px;
+}
+
+.app div.headline,
+.message div.headline,
+.application-banner p.application-banner-title {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    padding: 0.373rem 0 0.266rem 0.373rem;
+}
+
+.app div.headline:first-child,
+.message div.headline {
+    top: 0;
+}
+
+.app .iconfont {
+    color: #fff;
+}
+
+.cmp-grid-view.cmp-grid-9 {
+    background: #fff;
+}
+
+.app_table ul li .img {
+    width: 1.386rem;
+    height: 1.386rem;
+    line-height: 1.386rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.app_table ul li .cmp-media-body {
+    font-size: 14px;
+    color: #333;
+    width: 1.386rem;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+
+/*.app_table div span.float_r,.app_table div span.float_r span,.banner-square .application-banner-title span,.message .headline span.float_r,.message .headline span.float_r span{
+    font-size: 14px;
+    color: #999;
+}*/
+
+.app_table div span.float_r span,
+.message .headline span.float_r span {
+    top: 0;
+}
+
+.app_table div span.float_r .see-icon-m3-arrow-right,
+.banner-square .application-banner-title .see-icon-m3-arrow-right,
+.message .see-icon-m3-arrow-right {
+    margin-left: 5px;
+}
+
+.app .message-todo {
+    background-color: #00dbee;
+}
+
+.app .message-teamwork {
+    background-color: #00b2ff;
+}
+
+.app .message-show {
+    background-color: #ff749d;
+}
+
+.app .message-metting {
+    background-color: #00e4b7;
+}
+
+.app .message-bulletin {
+    background-color: #ffa900;
+}
+
+.app .message-news {
+    background-color: #b0db32;
+}
+
+.app .message-metting {
+    background-color: #b6ea1d;
+}
+
+.app .message-report {
+    background-color: #00d7fc;
+}
+
+.app .message-system {
+    background-color: #ff4e83;
+}
+
+.cmp-icon.see-icon-m3-changeradius {
+    margin-right: 0.75rem;
+}
+
+.cmp-grid-view.cmp-grid-9 .cmp-table-view-cell {
+    margin: 0;
+    vertical-align: top;
+    border: none;
+    margin-bottom: .533rem;
+}
+
+.cmp-table-view.cmp-grid-view .cmp-table-view-cell {}
+
+.cmp-grid-view.cmp-grid-9 .cmp-table-view-cell > a:not(.cmp-btn) {
+    padding: 0 0 0.533rem;
+}
+
+.cmp-table-view.cmp-grid-view .cmp-table-view-cell .cmp-media-body {
+    font-size: 16px;
+    margin-top: 0.426rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333;
+    height: initial;
+    line-height: initial;
+}
+
+
+/*
+* @Author: 伟
+* @Date:   2016-06-24 15:23:08
+* @Last Modified by:   think
+* @Last Modified time: 2016-06-25 09:47:55
+*/
+
+.application_center .application_center_search {
+    background-color: #fff;
+    position: relative;
+}
+
+.application_center_search>span {
+    font-size: 16px;
+    color: #C4C1BB;
+}
+
+.cmp-content .cmp-control-content .cmp-scroll>div.application_center_search {
+    text-align: center;
+}
+
+.display-none {
+    display: none;
+}
+
+.message_left_icon {
+    width: 44px;
+    height:44px;
+    margin-right: 0.373rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.application_center span.see-icon-m3-search {
+    position: absolute;
+    left: 4.25rem;
+    top: 0.355rem;
+}
+
+.application_center span.see-icon-m3-voice-fill {
+    position: absolute;
+    right: 0.9rem;
+    top: 0.355rem;
+}
+
+
+/* 图标背景色 */
+
+
+/*默认*/
+
+.message-default {
+    /* background-color: #00bfcf; */
+    background-color: #3aadfb;
+    color: #ffffff;
+}
+
+
+/*协同*/
+
+.message-1 {
+    background-color: #3aadfb;
+    /*color: #63C0FF;*/
+}
+
+
+/*公告*/
+
+.message-7 {
+    background-color: #FFBE64;
+    /*color: #FFCD7F;*/
+}
+
+
+/*目标管理*/
+
+.message- {
+    background-color: #01d286;
+    /*color: #01d286;*/
+}
+
+
+/*文档*/
+
+.message-3 {
+    background-color: #FFBE64;
+    /*color:#63C0FF;*/
+}
+
+
+/*综合办公*/
+
+.message- {
+    background-color: #a990ed;
+    /*color: #a990ed;*/
+}
+
+
+/*会议*/
+
+.message-6 {
+    background-color: #6097F6;
+    /*color: #76A3FF*/
+}
+
+
+/*公文*/
+
+.message-4 {
+    background-color: #ff7979;
+    /*color: #F69292;*/
+}
+
+
+/*新闻*/
+
+.message-8 {
+    background-color: #3aadfb;
+    /*color:  #76A3FF;*/
+}
+
+
+/*讨论*/
+
+.message-9 {
+    background-color: #FFBE64;
+    /*color:  #76A3FF;*/
+}
+
+
+/*调查*/
+
+.message-10 {
+    background-color: #6097F6;
+    /*color: #76A3FF;*/
+}
+
+
+/*大秀*/
+
+.message-40 {
+    /*color: #76A3FF;*/
+    background-color: #6097F6;
+}
+
+
+/*行为绩效*/
+
+.message-42 {
+    background-color: #58C195;
+    /*color: #63C0FF;*/
+}
+
+
+/*足迹*/
+
+.message-46 {
+    background-color: #8db1ff;
+    /*color: #8db1ff;*/
+}
+
+
+/*工资条*/
+
+.message-17 {
+    background-color: #3aadfb;
+    /*color: #76A3FF;*/
+}
+
+
+/*系统消息*/
+
+.message- {
+    background-color: #1ecaa5;
+    /*color: #1ecaa5;*/
+}
+
+
+/*查询统计*/
+
+.message-48 {
+    background-color: #6097F6;
+    /*color: #6097F6;*/
+}
+
+
+/*致信*/
+
+.message-61 {
+    /*background-color: #5fa2e5;*/
+    /*color: #5fa2e5;*/
+}
+
+
+/*离线文档*/
+
+.message-9999 {
+    background-color: #ff7979;
+    /*color: #ff4848;*/
+}
+
+
+/*签到*/
+
+.message-36 {
+    background-color: #3aadfb;
+    /*color: #76A3FF;*/
+}
+/*全文检索*/
+.message-59 {
+    background-color: #58C195;
+    /*color: #76A3FF;*/
+}
+
+/*业务生成器*/
+
+
+/*.message-43 {*/
+/*background-color: #1ecaa5;*/
+/*}*/
+
+
+/*我的收藏*/
+
+.message-60 {
+    background-color: #FFBE64;
+    /*color: #FBCD6B;*/
+}
+
+/*报表中心*/
+.message-70{
+    background-color: #3aadfb;
+}
+/*报表分析*/
+
+.message-63 {
+    background-color: #3aadfb;
+    /*color: #76A3FF;*/
+}
+
+
+/*时间安排*/
+
+.message-11 {
+    background-color: #58C195;
+    /*color: #58C195;*/
+}
+
+
+/*工作任务*/
+
+.message-30 {
+    background-color: #6097F6;
+    /*color: #63C0FF;*/
+}
+
+/* todo */
+
+.message-58 {
+    background-color: rgb(118, 209, 137);
+    /*color: rgb(118, 209, 137);*/
+}
+/* 通讯录 */
+.message-62 {
+    background-color: #3aadfb;
+    /*color: #FBCD6B;*/
+}
+/* my */
+.message-56 {
+    background-color: #6FC5FF;
+    /*color: #6FC5FF;*/
+}
+/* xiaozi */
+.message-79 {
+    background-color: #6097F6;
+    /*color: #76A3FF;*/
+}
+/*!*协同*!*/
+
+/*.message-1 {*/
+    /*background-color: #3aadfb;*/
+/*}*/
+
+
+/*!*公告*!*/
+
+/*.message-7 {*/
+    /*background-color: #f7c028;*/
+/*}*/
+
+
+/*!*目标管理*!*/
+
+/*.message- {*/
+    /*background-color: #01d286;*/
+/*}*/
+
+
+/*!*文档*!*/
+
+/*.message-3 {*/
+    /*background-color: #4dd3fb;*/
+/*}*/
+
+
+/*!*综合办公*!*/
+
+/*.message- {*/
+    /*background-color: #a990ed;*/
+/*}*/
+
+
+/*!*会议*!*/
+
+/*.message-6 {*/
+    /*background-color: #8bd604;*/
+/*}*/
+
+
+/*!*公文*!*/
+
+/*.message-4 {*/
+    /*background-color: #ffd318;*/
+/*}*/
+
+
+/*!*新闻*!*/
+
+/*.message-8 {*/
+    /*background-color: #ff4848;*/
+/*}*/
+
+
+/*!*讨论*!*/
+
+/*.message-9 {*/
+    /*background-color: #8db1ff;*/
+/*}*/
+
+
+/*!*调查*!*/
+
+/*.message-10 {*/
+    /*background-color: #4788d8;*/
+/*}*/
+
+
+/*!*大秀*!*/
+
+/*.message-40 {*/
+    /*background-color: #ff7faa;*/
+/*}*/
+
+
+/*!*行为绩效*!*/
+
+/*.message-42 {*/
+    /*background-color: #31d2ea;*/
+/*}*/
+
+
+/*!*足迹*!*/
+
+/*.message-46 {*/
+    /*background-color: #8db1ff;*/
+/*}*/
+
+
+/*!*工资条*!*/
+
+/*.message-17 {*/
+    /*background-color: #ffb500;*/
+/*}*/
+
+
+/*!*系统消息*!*/
+
+/*.message- {*/
+    /*background-color: #1ecaa5;*/
+/*}*/
+
+
+/*!*查询统计*!*/
+
+/*.message-48 {*/
+    /*background-color: #31d2ea;*/
+/*}*/
+
+
+/*!*致信*!*/
+
+/*.message-61 {*/
+    /*background-color: #5fa2e5;*/
+/*}*/
+
+
+/*!*离线文档*!*/
+
+/*.message-9999 {*/
+    /*background-color: #ff4848;*/
+/*}*/
+
+
+/*!*签到*!*/
+
+/*.message-36 {*/
+    /*background-color: #61DC6D;*/
+/*}*/
+
+
+/*!*业务生成器*!*/
+
+
+/*!*.message-43 {*/
+    /*background-color: #1ecaa5;*/
+/*}*!*/
+/*!* 全文检索 *!*/
+/*.message-59 {*/
+    /*background-color: #02D286;*/
+/*}*/
+
+/*!*我的收藏*!*/
+
+/*.message-60 {*/
+    /*background-color: #ffd318;*/
+/*}*/
+
+
+/*!*报表分析*!*/
+
+/*.message-63 {*/
+    /*background-color: #01d286;*/
+/*}*/
+
+
+/*!*时间安排*!*/
+
+/*.message-11 {*/
+    /*background-color: #ffad74;*/
+/*}*/
+
+
+/*!*工作任务*!*/
+
+/*.message-30 {*/
+    /*background-color: #ffd318;*/
+/*}*/
+
+p.message_list_title {
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+p.notags {
+    line-height: 44px;
+}
+
+.message_list_title>span {
+    font-size: 12px;
+}
+
+#app_list ul li {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-top: 0.225rem;
+    padding-bottom: 0;
+}
+
+.message ul.cmp-table-view li p.cmp-ellipsis {
+    padding: 0.2rem 0 0.3rem;
+}
+
+#app_list ul li.list-top {
+    padding-top: 0.25rem
+}
+
+#app_list ul li>a {
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.message-read {
+    padding: 0;
+}
+
+.cmp-table-view-cell:after {
+    left: 1.812rem;
+}
+
+.message ul.cmp-table-view li div.message_left_icon {
+    text-align: center;
+    line-height: 44px;
+}
+
+.message ul.cmp-table-view li span.iconfont {
+    color: #fff;
+}
+
+
+/*倒角切换*/
+
+.message-range {
+    z-index: 1000;
+}
+
+.message-range .range-square {
+    position: absolute;
+    left: 0.25rem;
+    top: 0.55rem;
+    z-index: 2000;
+    width: 0.45rem;
+    height: 0.45rem;
+    border: 1px dotted #565be5;
+}
+
+.message-range>div.cmp-input-row {
+    position: absolute;
+    left: 0.95rem;
+    /*width:7.8rem;*/
+    top: 0.3rem;
+    right: 0.95rem;
+    padding-right: 0;
+    z-index: 1000;
+}
+
+.message-range .range-round {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.5rem;
+    z-index: 2000;
+    width: 0.45rem;
+    height: 0.45rem;
+    border: 1px dotted #565be5;
+    border-radius: 50%;
+}
+
+#range-long {
+    margin-top: 0.45rem;
+    height: 2px;
+    background-color: #D2CFCA;
+}
+
+#range-outline {
+    box-sizing: border-box;
+    width: 0.75rem;
+    height: 0.75rem;
+    position: absolute;
+    top: 0.075rem;
+    left: 2.925rem;
+    background-color: #fff;
+    z-index: 500;
+    border-radius: 50%;
+    border: 1px solid #D4D3D7;
+}
+
+#range-slide {
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: #4E5AE2;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.05rem;
+    left: 0.05rem;
+    z-index: 1000;
+}
+
+#range-short {
+    background-color: #4E5AE2;
+    height: 0.05rem;
+    width: 3.0rem;
+}
+
+/*.cmp-table-view {*/
+    /*bottom: 50px;*/
+/*}*/
+
+/*.message .cmp-table-view {*/
+    /*bottom: 0;*/
+/*}*/
+
+.menu {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    height: .96rem;
+    line-height: .96rem;
+    font-size: 16px;
+    color: #3AADFB;
+    background: #f4f4f4;
+}
+
+.menu .see-icon-m3-appcenter-fill {
+    font-size: 16px;
+    padding: 0 0.16rem 0 0.373rem;
+}
+
+.banner-square .menu .cmp-pull-right.see-icon-m3-arrow-right {
+    font-size: 16px;
+    position: static;
+}
+
+.scroll_inner {
+    overflow-y: auto;
+    background: #fff;
+}
+
+.cmp-slider .cmp-slider-group .cmp-slider-item {
+    height: 2.933rem;
+}
+
+.cmp-slider-item img {
+    width: 100%;
+}
+
+div.load {
+    width: 1.386rem;
+    height: 1.386rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 11px;
+    border-radius: 50%;
+    background: rgba(150, 150, 150, .7);
+    margin: 0 auto;
+}
+
+div.load div.filter_bom {
+    position: absolute;
+    width: .8rem;
+    height: .8rem;
+    left: 0.3rem;
+    top: 0.3rem;
+    border-radius: 50%;
+    border: 2px solid yellow;
+    z-index: 2000;
+}
+
+.space {
+    width: 100%;
+    height: .373rem;
+    background: #f4f4f4;
+}
+
+.cmp-switch {
+    margin-top: 7px;
+    margin-right: .06rem;
+}
+
+.my_app_center .open {
+    width: 1.866rem;
+    height: .693rem;
+    line-height: .693rem;
+    border: 1px solid #3aadfb;
+    font-size: 14px;
+    color: #3aadfb;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: .186rem;
+}
+
+.app_center_title {
+    height: .8rem;
+    line-height: .76rem;
+    background-color: #fefefe;
+    position: relative;
+}
+
+.app_center_title::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    content: '';
+    -webkit-transform: scale(1, .5);
+    transform: scale(1, .5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    background-color: #e7e7e7;
+}
+
+.cmp-android .app_center_title::after {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+
+.app_center_title span {
+    display: inline-block;
+    width: 32.6%;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+
+.app_center_title span.active {
+    color: #3aadfb;
+    border-bottom: 2px solid #3aadfb;
+}
+
+.cmp-slider-indicator {
+    bottom: .16rem;
+    text-align: right;
+    padding-right: .266rem;
+}
+
+.cmp-slider-indicator .cmp-indicator {
+    background: rgba(255, 255, 255, .3);
+    margin: 1px 2px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.iconfont.see-icon-m3-sign {
+    font-size: 22px;
+}
+
+.cmp-slider .see-icon-m3-close-fill {
+    position: absolute;
+    top: .266rem;
+    right: .266rem;
+    z-index: 5;
+    color: #aaa;
+}
+
+.cmp-grid-view.cmp-grid-9 .cmp-table-view-cell.cmp-active {
+    background-color: #fff;
+}
+
+
+/*首次进入应用提示*/
+
+.app_mask {
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.app_tip {
+    font-size: 16px;
+    color: #3aadfb;
+    padding: 16px;
+    background: rgba(255, 255, 255, .95);
+    border-radius: 8px;
+    position: absolute;
+}
+
+.app_tip .content::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, .95);
+}
+
+.app_tip .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .95);
+    position: absolute;
+}
+
+.app_tip1 {
+    top: 100px;
+    left: 50px;
+}
+
+.app_tip1 .content::after {
+    top: 52px;
+    left: 18px;
+}
+
+.app_tip1 .dot {
+    top: 80px;
+    left: 16px;
+}
+
+.app_tip2 {
+    top: 400px;
+    right: 50px;
+}
+
+.app_tip2 .content::after {
+    top: -23px;
+    right: 16px;
+}
+
+.app_tip2 .dot {
+    top: -32px;
+    right: 14px;
+}
+
+div.app_name {
+    font-size: 16px;
+    color: #000;
+    line-height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+span.tags {
+    font-size: 12px;
+    color: #999;
+    padding: 0 0.1rem;
+    margin-right: .266rem;
+    overflow: hidden;
+    max-width: 80px;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tags_wrapper {
+    line-height: 14px;
+    margin-top: .1rem;
+}
+/* banner */
+#app-banner {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+}

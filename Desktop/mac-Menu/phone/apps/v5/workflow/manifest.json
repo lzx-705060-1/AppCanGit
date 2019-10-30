@@ -1,0 +1,21 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"workflow",
+	"splashscreen":[],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.workflow",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"LIB",
+	"version":"1.0.0",
+	"entry":{"phone":""},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"45",
+	"urlSchemes":"workflow.v5.cmp",
+	"bundleName":"workflow",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

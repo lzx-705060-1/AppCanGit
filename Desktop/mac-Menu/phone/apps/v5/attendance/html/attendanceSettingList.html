@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+	    	
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172359"/>
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172359"/>
+    	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172359"/>
+    	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172359">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/attendanceSetting.css?buildversion=181210172359"/>
+	</head>
+	<body>
+		<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>
+		<div class="cmp-content position_relative">
+			<div id="listContainer" class="cmp-scroll-wrapper setting-list-container">
+	            <div class="cmp-scroll">
+	            	<ul class="cmp-table-view"></ul>
+	            </div>
+	        </div>
+		</div>
+		
+		<footer class="cmp-bar cmp-bar-tab cmp-bar-footer submit-footer  before-line cmp-comment-footer">
+			<div class="container-footer">
+				<button type='button' id="newBtn" class='cmp-btn cmp-btn-primary2 cmp-btn-width40'><i18n key="Attendance.label.add"></i18n></button>
+			</div>
+		</footer>
+		
+		<!--模板-->
+		<script type="text/html" id="pending_li_tpl">
+	        <% for(var i = 0,len = this.length;i < len; i++){ %>
+	        <% var obj = this[i];%>
+			<li id="<%=obj.id%>" class="cmp-table-view-cell">
+				<div class="cmp-slider-right cmp-disabled">
+					<a class="cmp-btn cmp-btn-red list-delete"><i18n key="Attendance.label.delete"></i18n></a>
+				</div>
+				<div class="cmp-slider-handle">
+					<a class="cmp-navigate-right">
+						<div class="cell-item">
+							<span class="see-icon-v5-common-location-fill icon-map"></span>
+							<span><%=obj.name%></span>
+							<div class="display_inline-block">
+								<%if(obj.available){%>
+								<span class="cmp-badge cmp-badge-purple"><i18n key="Attendance.label.enable"></i18n></span>
+								<%}else{%>
+								<span class="cmp-badge cmp-badge-purple noAttend"><i18n key="Attendance.label.disabled"></i18n></span>
+								<%}%>
+							</div>
+						</div>
+						<div class="cell-item remark cmp-ellipsis"><i18n key="Attendance.label.remarks"></i18n><%=(obj.remark ? obj.remark.escapeHTML() : "")%></div>
+					</a>
+				</div>
+			</li>
+	        <% } %>
+    	</script>
+		
+		<!--js引入-->
+		<script src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172359"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172359"></script>
+		<script>
+			var $buildversion = '?buildversion=181210172359';
+			var attendancePath = "/seeyon/m3/apps/v5/attendance";
+			var cmpPath = "/seeyon/m3/cmp";
+			var commonPath = "/seeyon/m3/apps/v5/commons";
+		    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance",function(){
+		    	document.title = cmp.i18n("Attendance.label.adressList");
+		    });
+		</script>
+		
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172359"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172359"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172359"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172359"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172359"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172359" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172359"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceSettingList.js?buildversion=181210172359"></script>
+	</body>
+</html>

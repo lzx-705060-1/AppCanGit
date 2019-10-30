@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	-ms-touch-action: none;
+}
+
+body,ul,li {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+body {
+	font-size: 16px;
+	font-family: helvetica, arial, ubuntu;
+	overflow: hidden;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	/* this is important to prevent the whole page to bounce */
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+.frame {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	top: 0px;
+	bottom: 0px;
+	overflow: auto;
+}

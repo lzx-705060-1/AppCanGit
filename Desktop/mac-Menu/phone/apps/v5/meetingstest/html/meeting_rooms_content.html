@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会议资源</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link href="/seeyon/m3/apps/v5/meetings/css/bootstrapDatetimepicker/bootstrap.min.css?buildversion=1559547182961" rel="stylesheet" media="screen"/>
+    <link href="/seeyon/m3/apps/v5/meetings/css/bootstrapDatetimepicker/bootstrap-datetimepicker.min.css?buildversion=1559547182961" rel="stylesheet" media="screen"/>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/jquery-1.7.2.min.js?buildversion=1559547182961"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/bootstrapDatetimepicker/bootstrap.min.js?buildversion=1559547182961"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/bootstrapDatetimepicker/bootstrap-datetimepicker.js?buildversion=1559547182961" charset="UTF-8"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/bootstrapDatetimepicker/bootstrap-datetimepicker.zh-CN.js?buildversion=1559547182961"
+            charset="UTF-8"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/meeting_rooms_content.js?buildversion=1559547182961"></script>
+     <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding-left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .div-header {
+            width: calc(100% - 1px);
+            height: 90px;
+            /*border: 1px solid #cccccc;*/
+            margin-top: 10px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            float: left;
+        }
+
+        .div-date {
+            width: calc(100% - 1px);
+            height: calc(50% - 2px);
+        }
+
+        .div-meeting {
+            width: calc(100% - 1px);
+            height: calc(50% - 2px);
+        }
+
+        .div-label {
+            float: left;
+            width: 78px;
+            height: 30px;
+            text-align: center;
+            /*border: 1px solid #cccccc;*/
+        }
+
+        .xing {
+            margin-left: 10px;
+            float: left;
+            color: red;
+        }
+
+        .div-bootstrap, .form_date {
+            float: left;
+            width: 180px;
+            height: 30px;
+        }
+
+        .input_form_date {
+            float: left;
+            width: 112px;
+        }
+
+        .btn-search {
+            float: right;
+            height: 31px;
+            width: 31px;
+            border-radius: 30%;
+        }
+
+        .input-search {
+            width: 130px;
+        }
+
+        /*内容部分*/
+        #div-content {
+            height: calc(100% - 1px);
+            width: calc(99% - 1px);
+            float: left;
+            border: 1px solid #cccccc;
+        }
+
+        .tab-div-message {
+            height: calc(100% - 1px);
+            width: calc(100% - 1px);
+            float: left;
+
+        }
+
+        .tab-room-name {
+            float: left;
+            width: calc(103px - 1px);
+            height: 76px;
+            border: 1px solid #cccccc;
+
+        }
+
+        .label-name {
+            text-align: center;
+            font-family: Microsoft YaHei;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000;
+        }
+
+        .room-name {
+            float: left;
+            width: calc(103px - 1px);
+            height: 29px;
+            border: 1px solid #cccccc;
+        }
+
+        .tab-datetime {
+            width: calc(100% - 1px);
+            height: 76px;
+        }
+
+        .tbody-td {
+            display: inline-block;
+            width: 85px;
+            height: 76px;
+            background-color: #eee;
+            position: relative;
+            border: 1px solid #999;
+            text-align: center;
+            margin-left: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 18px 0;
+            box-sizing: border-box;
+        }
+
+        .tbody-td-time {
+            width: 81px;
+            height: 29px;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+
+        .label-search {
+            font-size: 9px;
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        /*会议室数据*/
+        .label-th {
+            margin-top: 12px;
+            text-align: center;
+            font-family: Microsoft YaHei;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000;
+        }
+
+
+        table {
+            border: 1px;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap; /*显示滚动条*/
+        }
+
+
+        /*.td-hidden {*/
+        /*display: none;*/
+        /*}*/
+
+        /*提示框*/
+        .new_alert_hint {
+            right: 35%;
+            width: 140px;
+            height: 100px;
+            z-index: 4;
+            position: fixed;
+            left: 33%;
+            top: 39%;
+            opacity: 0.9;
+            display: none;
+        }
+
+        .new_alert_hint .content {
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            background-color: #555555;
+            font-size: 14px;
+            border-radius: 8px;
+            color: #fff;
+
+        }
+
+
+        .new_alert_hint .content .text {
+            width: 90%;
+            height: 5px;
+            text-align: center;
+            margin: auto;
+            border-bottom: 1px #fff solid;
+            padding: 8px;
+            /*display: none;*/
+        }
+
+        .message {
+            float: left;
+            width: 90px;
+            height: 37px;
+            margin-left: 28px;
+            margin-top: 4px;
+        }
+
+        .src_message_txt {
+            font-size: 20px;
+            font-family: Microsoft YaHei;
+            font-weight: normal;
+            margin-left: 1px;
+        }
+
+        .closes {
+            float: left;
+            width: 88%;
+            height: 14px;
+            text-align: right;
+            border-top: 1px #cccccc solid;
+            opacity: 0.8;
+            padding: 8px;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+
+        .src_text {
+            margin-top: -6px;
+        }
+
+        .src_message_hint_txt {
+            margin-top: 10px;
+        }
+
+        /*弹出框*/
+        .alert {
+            right: 35%;
+            width: 146px;
+            height: 161px;
+            z-index: 4;
+            position: fixed;
+            left: 23%;
+            top: 39%;
+            opacity: 0.9;
+            display: none;
+            background-color: #cccccc;
+        }
+
+
+        .alert_meeting {
+            width: 176px;
+            height: 140px;
+            margin: 0;
+            border: 0;
+            padding: 0;
+            /*background-color: #cccccc;*/
+        }
+
+        .div_close {
+            width: 180px;
+            height: 20px;
+            /*background-color: #1ba1e2;*/
+            text-align: center;
+
+        }
+
+    </style>
+    
+</head>
+<body onload="search()">
+<div class="div-header">
+    <div class="div-date">
+        <div class="div-label">
+            <label class="label-date">选择日期</label>
+        </div>
+        <div class="div-bootstrap">
+            <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy"
+                 data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <!--readonly 不能输入-->
+                <input size="16" type="text" readonly data-format="yyyy-MM-dd hh:mm:ss" value="" class="input_form_date"
+                       id="input_form_date">
+                <label class="add-on"><i class="icon-remove"></i></label>
+                <label class="add-on"><i class="icon-th"></i></label>
+            </div>
+        </div>
+    </div>
+    <div class="div-meeting">
+        <div class="div-label" on>
+            <label class="label-meeting"><label class="xing">*</label>会议室</label>
+        </div>
+        <div class="div-bootstrap">
+            <input type="text" class="input-search" id="input-search"
+                   style="border-left-style:none;border-right-style:none; border-top-style:none;" placeholder="请输入会议室"
+                   required="required"/>
+            <button class="btn-search" id="btn-search" onclick="search()"><label class="label-search">搜索</label>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="div-content">
+    <!--js拼接数据进来-->
+    <div class="content">
+    </div>
+
+</div>
+
+<!--提示框-->
+<div class="New_alert">
+    <!--js拼接-->
+    <div class="new_alert_hint col">
+        <div class="content">
+            <div class="text">
+                <div class="src_text">提示</div>
+            </div>
+            <div class="message">
+                <div class="src_message_hint_txt">内容内容内容</div>
+            </div>
+            <div class="closes" onclick="btnHidden(2)">
+                <div class="src__close">关闭</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert">
+    <!--js拼接-->
+    <!--<div class="alert_content">-->
+        <!--<div class="alert_meeting">-->
+            <!--<div class="Theme">主题:</div>-->
+            <!--<div class="ApplyName">申请人:</div>-->
+            <!--<div class="ApplyHone">电话:</div>-->
+            <!--<div class="meetingDateTime">会议时间:</div>-->
+        <!--</div>-->
+        <!--<div class="div_close" onclick="btnHidden(3)">-->
+            <!--<div class="alert_closes">关闭</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

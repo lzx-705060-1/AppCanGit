@@ -1,0 +1,58 @@
+html{
+    background-color: #efeff4;
+}
+.cmp-bar-nav{
+    box-shadow: none;
+    border-bottom: 1px solid rgba(200,199,204,.5);
+}
+.uc-chat-detail{
+    display: flex;
+    width: 100%;
+    margin-bottom: .26rem;
+    background-color: #fff;
+    font-size: 12px;
+}
+.info{
+    margin: .52rem 0;
+    width: 1.2rem;
+}
+.uc-chat-detail .info:first-child{
+    margin-left: .8rem;
+    margin-right: .58rem;
+}
+.img{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.name{
+    margin-top: .2rem;
+    text-align: center;
+}
+.invite{
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid #3aadfb;
+    border-radius: 50%;
+    text-align: center;
+}
+.iconfont.icon-Addmembers{
+    font-size: 20px;
+    display: inline-block;
+    margin-top: .3rem;
+}
+.cmp-lists .cmp-list:last-child{
+    margin-top: .26rem;
+}
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.color_blue{
+    color: #3aadfb;
+}

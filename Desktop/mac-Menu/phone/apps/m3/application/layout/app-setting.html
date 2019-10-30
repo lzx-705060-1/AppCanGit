@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta name="format-detection" content="telephone=no,email=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta http-equiv="Content-Security-Policy" />
+        <meta name="author" content="Clyne" />
+        <title>设置工作台</title>
+        
+        <!--cmp样式-->
+        <link rel="stylesheet" href="http://cmp/v/css/cmp.css" />
+        <!--基础样式-->
+        <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css" />
+        <!--图标样式-->
+        <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css" />
+        <!--业务样式-->
+        <link rel="stylesheet" href="http://application.m3.cmp/v/css/app-setting.css" />
+    </head>
+
+    <body class="flex-v">
+        <!-- iphoneX适配 -->
+        <script>
+            /**
+             * @description 优化IphoneX的头部交互，组织去抖动
+             */
+            ;(function() {
+                var ua = window.navigator.userAgent.toUpperCase();
+                if (ua.match(/IPHONEX/)) {
+                    document.body.className += ' cmp-ios-x ';
+                }
+            })();
+        </script>
+        <!-- header -->
+        <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+            <a class="cmp-header-left m3-back cmp-action-back">
+                <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+                <span class="nav-text"><i18n key="application.m3.h5.back"></i18n></span>
+            </a>
+            <h1 class="cmp-title" id="topbar-btn"><i18n key="application.m3.h5.portalSetting"></i18n></h1>
+            <a class="app-save opacity-0 cmp-header-right nav-text"><i18n key="application.m3.h5.save"></i18n></a>
+        </header>
+        
+        <!-- 内容 -->
+        <section class="m3-content flex-1">
+            <!-- 已添加 start -->
+            <h3><i18n key="application.m3.h5.addApp"></i18n></h3>
+            <ul class="app-active"></ul>
+            <!-- 已添加 end -->
+            
+            <!-- 未添加 start -->
+            <h3 class="unactive-title"><i18n key="application.m3.h5.noAddApp"></i18n></h3>
+            <ul class="app-unactive"></ul>
+            <!-- 未添加 end -->
+        </section>
+        <script src="http://application.m3.cmp/v/i18n/application_zh_CN.js"></script>
+        <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+        <script src="http://cmp/v/js/cmp-i18n.js"></script>
+        <script>
+            cmp.i18n.init("http://application.m3.cmp/v/i18n/", "application");
+            cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+        </script>
+        <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+        <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+        <script src="http://cmp/v/js/cmp.js"></script>
+        <script src="http://cmp/v/js/cmp-app.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+        <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+        <script src="http://cmp/v/js/cmp-sortable.js"></script>
+
+        <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+        <!-- seajs -->
+        <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+        <script src="http://commons.m3.cmp/v/config.js"></script>
+        <!-- 模块入口 -->
+        <script>seajs.use('http://application.m3.cmp/v/js/app-setting.js')</script>
+    </body>
+</html>

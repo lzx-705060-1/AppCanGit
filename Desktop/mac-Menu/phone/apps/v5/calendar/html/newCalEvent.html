@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017250">
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=18121017250">
+    <link media="none" onload="if(media!='all')media='all'" rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017250">
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/calendar/css/calender.css?buildversion=18121017250">
+    <title></title>
+</head>
+<body class="cmp-fullscreen">
+	<script>var _commonsPath = "/seeyon/m3/apps/v5/commons";
+ var _cmpPath = "/seeyon/m3/cmp";
+ var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage"; 
+ var _calendarPath = "/seeyon/m3/apps/v5/calendar";</script>
+    <!-- 内容区 -->
+    <div id="page_content" class="cmp-content sche-content background_F4 cmp-content-none" style="overflow-y: auto;bottom: 50px;">
+        <!-- 标题 -->
+        <div class="sche_title border_t border_b subject-box">
+            <div class="title_wrap">
+                <div class="name"><i18n key="calendar.word.title"></i18n></div>
+                <div class="text">
+                	<div id="subjectDiv" class="eclips" style=" visibility: visible;"></div>
+                    <textarea tabindex="1" id="subject" rows="1" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- 开始时间&结束时间 -->
+        <div class="sche_time border_t border_b">
+           <div class="cmp-lists">
+                 <a href="javascript:void(0);" class="cmp-list start-date-box">
+                     <div class="content">
+                         <div class="left">
+                         	<span class="cmp-icon iconfont see-icon-v5-common-time-start"></span>
+                         	<span class="c1"><i18n key="calendar.label.starttime"></i18n></span>
+                         </div>
+                         <div class="right">
+                         	<span class="c3 start-date"></span>
+                         	<i class="cmp-icon cmp-icon-forward"></i>
+                         </div>
+                     </div>
+                 </a>
+                 <a href="javascript:void(0);" class="cmp-list end-date-box">
+                     <div class="content">
+                         <div class="left">
+                         	<span class="cmp-icon iconfont see-icon-v5-common-time-end"></span>
+                         	<span class="c1"><i18n key="calendar.label.endtime"></i18n></span></div>
+                         <div class="right">
+                         	<span class="c3 end-date"></span>
+                         	<i class="cmp-icon cmp-icon-forward"></i>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+        </div>
+        <!-- 事件内容 -->
+        <div class="text_wrap border_t border_b">
+            <!-- <div id="contentDiv" class="content-div eclips" style=" visibility: visible;"></div> -->
+            <textarea id="content" rows="3" placeholder="" style="min-height: 97px; color: #333;" disabled="disabled"></textarea>
+        </div>
+        <!-- 提醒&开始前提醒&结束前提醒 -->
+        <div class="remind border_t border_b">
+            <div class="cmp-lists border_b relative remind-type-box">
+                 <a href="javascript:void(0);" class="cmp-list">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.label.remind"></i18n></span></div>
+                         <div class="right">
+                             <div class="cmp-switch cmp-switch-blue cmp-switch-mini">
+                                 <div class="cmp-switch-handle"></div>
+                             </div>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+            <div class="cmp-lists">
+                 <a href="javascript:void(0);" class="cmp-list hidden remind-start-time-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.tip.startremind"></i18n></span></div>
+                         <div class="right"><span class="c3 remind-start-time" data-option="5"><i18n key="calendar.tip.5min"></i18n></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+                 <a href="javascript:void(0);" class="cmp-list hidden remind-end-time-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.tip.ednremind"></i18n></span></div>
+                         <div class="right"><span class="c3 remind-end-time" data-option="0"><i18n key="calendar.label.none"></i18n></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+             </div>
+        </div>
+        <!-- 重复周期 & 重复选项 &　重复开始日期 &　重复结束日期 -->
+        <div class="repeat border_t border_b">
+            <div class="cmp-lists">
+                 <a href="javascript:void(0);" class="cmp-list repeat-type-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.label.repeat"></i18n></span></div>
+                         <div class="right"><span class="c3 repeat-type" data-option="0"><i18n key="calendar.label.none"></span>
+                         <i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+                 <a href="javascript:void(0);" class="cmp-list hidden repeat-option-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.tip.repeatop"></i18n></span></div>
+                         <div class="right"><span class="c3 repeat-option"></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+                 <a href="javascript:void(0);" class="cmp-list hidden repeat-start-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.tip.repeattime"></i18n></span></div>
+                         <div class="right"><span class="c3 repeat-start"></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+                 <a href="javascript:void(0);" class="cmp-list hidden repeat-end-box">
+                     <div class="content">
+                         <div class="left"><span class="c1"><i18n key="calendar.tip.endrepeattime"></i18n></span></div>
+                         <div class="right"><span class="c3 repeat-end"></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                     </div>
+                 </a>
+             </div>
+        </div>
+        <!-- 高级设置部分 -->
+        <div id="advanced-options" class="hidden">
+            <!-- 事件状态 -->
+            <div class="cmp-lists">
+                <a href="javascript:void(0);" class="cmp-list event-state-box">
+                 <div class="content">
+                     <div class="left"><span class="c1"><i18n key="calendar.label.eventstatus"></i18n></span></div>
+                     <div class="right"><span class="c3 event-state" data-option="3"><i18n key="calendar.label.processing"></i18n></span><i class="cmp-icon cmp-icon-forward"></i></div>
+                 </div>
+            	</a>
+            </div>
+            <!-- 附件&关联文档 -->
+            <div class="attachments border_t border_b attach-box hidden">
+                <div class="cmp-lists">
+                     <a href="javascript:void(0);" class="cmp-list">
+                         <div class="content">
+                             <div class="left"><span class="c1"><i18n key="calendar.label.attachment"></i18n>(<span class="attach">0</span>)<i18n key="calendar.label.relatedoc"></i18n>(<span class="documents">0</span>)</span></div>
+                             <div class="right"><i id="uploadAtt" class="m3-icon-attachment icon"></i></div>
+                         </div>
+                     </a>
+                 </div>
+                 <div>
+                 	<ul id="calEditorId" class="cmp-accessory-content hidden"></ul>
+                 </div>
+            </div>
+            <!-- 公开给他人 -->
+            <div class="public_wrap border_t border_b other-member-box">
+                <div class="people_wrap">
+                    <div class="name"><i18n key="calendar.label.disclose"></i18n></div>
+                    <div class="text other-member"></div>
+                    <span class="more cmp-icon cmp-icon-forward"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 收起&高级设置 -->
+        <div class="show_more" style="margin-top:0px;overflow: auto;">
+            <span id="show_toggle"><i18n key="calendar.label.advancedsetting"></i18n></span>
+            <span id="up_down" class="see-icon-v5-common-pull-arrow-down icon"></span>
+        </div>
+        <!-- 滑动到底部的锚点 -->
+    	<div id="end"></div>
+    </div>
+    <div id="calendar-oper" class="calendar-save-wapper">
+	       <!-- 保存 -->
+		<button id="saveBtn"   class="cmp-btn cmp-btn-primary2 save"><i18n key="calendar.label.savebtn"></button>
+	       <!-- 删除 -->
+		<button id="deleteBtn" class="cmp-btn cmp-btn-primary2 delete hidden"><i18n key="calendar.label.deletebtn"></i18n></button>
+	</div>
+    <!-- 周期选项 -->
+    <div class="weekchoice hidden">
+        <div class="cmp-content sche-content background_F4">
+              <ul class="week_wrap border_t">
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.sunday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="1"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.monday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="2"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.tuesday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="3"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.wednesday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="4"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.thursday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="5"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.friday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="6"></span>
+                  </li>
+                  <li class="border_b">
+                        <span class="name"><i18n key="calendar.date.saturday"></i18n></span>
+                        <span class="icon see-icon-succeed hidden" data-option="7"></span>
+                  </li>
+              </ul>
+          <div id="week-save" class="calendar-save-wapper">
+	        <!-- 保存 -->
+			<button id="week-right-btn"   class="cmp-btn cmp-btn-primary2 save"><i18n key="calendar.label.savebtn"></button>
+		  </div>    
+        </div>
+    </div>
+    <!-- 蒙层 -->
+    <div class="mask hidden"></div>
+    <!-- 修改弹出窗 -->
+    <div id="updateWrap" class="alert_wrap hidden">
+        <a href="javascript:void(0);" class="border_b tp1"><i18n key="calendar.label.modify"></i18n></a>
+        <a href="javascript:void(0);" class="border_b tp2"><i18n key="calendar.label.modifyall"></i18n></a>
+        <a href="javascript:void(0);" class="cancel"><i18n key="calendar.label.cancel"></i18n></a>
+    </div>
+    <!-- 删除弹出窗 -->
+    <div id="deleteWrap" class="alert_wrap hidden">
+        <a href="javascript:void(0);" class="border_b tp1"><i18n key="calendar.label.delete"></i18n></a>
+        <a href="javascript:void(0);" class="border_b tp2"><i18n key="calendar.label.deleteall"></i18n></a>
+        <a href="javascript:void(0);" class="cancel"><i18n key="calendar.label.cancel"></i18n></a>
+    </div>
+</body>
+	
+	<script src="/seeyon/m3/apps/v5/calendar/i18n/calendar_zh_CN.js?buildversion=18121017250"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017250"></script>
+	<script type="text/javascript">
+		var $buildversion  = '?buildversion=18121017250';
+		cmp.i18n.init("/seeyon/m3/apps/v5/calendar/i18n/", "calendar", function(){
+	    	document.querySelector("#subject").setAttribute("placeholder", cmp.i18n("calendar.tip.nomore50"));
+	    	document.querySelector("#content").setAttribute("placeholder", cmp.i18n("calendar.tip.content"));
+	    	/* document.querySelector("#newEventTitle").innerText = cmp.i18n("calendar.label.neweventsa");
+	    	document.querySelector("#editEventTitle").innerText = cmp.i18n("calendar.label.eventdetail"); */
+	    });
+	</script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/calendar/js/calendar-jssdk.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017250" id="__jsdktag"></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017250"></script>
+	<script type="text/javascript" async src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017250"></script>
+	<script type="text/javascript" async src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=18121017250"></script>
+	<script type="text/javascript" async src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017250"></script>
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/calendar/js/newCalEvent.js?buildversion=18121017250"></script>
+    <script type="text/javascript">
+    	var remindTimeMapper = {
+     		'0':"calendar.label.none",
+     		'5':"calendar.tip.5min",
+     		'10':"calendar.tip.10min",
+     		'15':"calendar.tip.15min",
+     		'30':"calendar.tip.30min",
+     		'60':"calendar.tip.1hour",
+     		'120':"calendar.tip.2hour",
+     		'180':"calendar.tip.3hour",
+     		'240':"calendar.tip.4hour",
+     		'720':"calendar.tip.hday",
+     		'1440':"calendar.tip.1day",
+     		'2880':"calendar.tip.2day",
+     		'4320':"calendar.tip.3day",
+     		'10080':"calendar.tip.oneweek"
+   		};
+    	var params = {};
+    	cmp.ready(function(){
+    		params = cmp.href.getParam() || {};
+			if(cmp.isEmptyObject(params)) {
+				params = getQueryParams();
+			}
+			/* params = {
+					subject:"日程标题",
+					content:"日程内容",
+					beginDate:"1533721588142",
+					endDate:"1533731588142",
+					from:"xiaozhiSpeechInput",
+					alarmDate:"5",
+					beforendAlarm:"10"
+			}; */
+			calEditor.initEditor(params);
+			
+			/** 获取URL的查询参数(兼容机器人) */
+			function getQueryParams(){
+		        var url = window.location.search,
+		            reg_url = /^\?([\w\W]+)$/, 
+		            reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g, 
+		            arr_url = reg_url.exec(url), 
+		            ret = {};
+		        if (arr_url && arr_url[1]) {
+		            var str_para = arr_url[1], result;
+		            while ((result = reg_para.exec(str_para)) != null) {
+		                ret[result[1]] = result[2];
+		            }
+		        }
+		        return ret;
+		    }
+    	});
+    </script>
+</html>

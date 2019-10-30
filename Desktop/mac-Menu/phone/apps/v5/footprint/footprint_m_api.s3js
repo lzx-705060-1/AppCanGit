@@ -1,0 +1,25 @@
+var footprintApi = (function(){
+	
+	var FootprintApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/footprint";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [暂时不需要参数]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    FootprintApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	var _basePath = this.basePath;
+		var param = {
+		   'openType' : type,
+           'backUrl' : backUrl,
+           'obj' : obj
+		};
+        cmp.href.next(_basePath + "/html/footPrintIndex.html", param);  
+	}
+	return new FootprintApi();
+	
+})();

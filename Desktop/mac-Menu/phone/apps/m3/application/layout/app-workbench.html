@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta http-equiv="Content-Security-Policy" />
+    <meta name="author" content="Clyne" />
+    <title>工作台</title>
+
+    <meta name = "cmp-screen-orientation" content = "all">
+    <!--cmp样式-->
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css" />
+    <!--<link rel="stylesheet" href="http://cmp/v/css/cmp-sliders.css" />-->
+    <!--基础样式-->
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css" />
+    <!--图标样式-->
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css" />
+    <!--业务样式-->
+    <link rel="stylesheet"  href="http://application.m3.cmp/v/css/app_application.css" />
+</head>
+
+<body class="flexbox-v app-workbench">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+
+    </script>
+    <!--头部-->
+    <header class="cmp-bar m3-cmp-bar cmp-bar-nav cmp-flex-header m3-iosx switch-app-header menu-into-header">
+        <div class="cmp-action-back cmp-header-left display_none page-into" id="backBtn">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text header-back"><i18n key="application.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title display_none">
+            <span class="header-back"><i18n key="application.m3.h5.Workbench"></i18n></span>
+        </div>
+        <div class="cmp-header-right back-erect-position page-into display_none">
+        </div>
+    </header>
+
+    <div class="no-network"></div>
+    <div class="menu-nav-bar opacity-hidden">
+        <div class="app-center app-setting">
+            <span class="iconfont see-icon-menhushezhi color_blue"></span>
+        </div>
+        <div class="m3-navbar m3-bg-transparent">
+
+            <!--<ul></ul>-->
+        </div>
+    </div>
+
+    <div class="workbench-box flex-v flex-1 opacity-hidden">
+        <!-- 九宫格 -->
+        <section class="workbench grid-type flex-1 noBanner display-none workbench-home">
+            <!--banner的容器-->
+            <div class="banner-warp">
+                <div id="app-banner" class="display-none"></div>
+            </div>
+
+            <!--应用中心的入口-->
+            <div class="app-center-link display-none">
+                <i class="iconfont see-icon-yingyongzhongxin"></i>
+                <i class="word-center"><i18n key="application.m3.h5.appCenter"></i18n></i>
+            </div>
+            <div class="icon-list-warp-group"></div>
+        </section>
+        <div class="portal display-none flex-v flex-1">
+            <!-- <iframe class="flex-1"></iframe> -->
+        </div>
+    </div>
+    <!-- cip套件 -->
+    <div class="m3-mask display-none opacity-hidden"></div>
+    <div class="cip-group grid-type display-none opacity-hidden"></div>
+</body>
+<script src="http://application.m3.cmp/v/i18n/application_zh_CN.js"></script>
+<script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script>
+    cmp.i18n.init("http://application.m3.cmp/v/i18n/", "application");
+    cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+</script>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script>
+    var defaultImg = 'http://commons.m3.cmp/v/imgs/default.png';
+</script>
+<script src="http://cmp/v/js/cmp.js"></script>
+<!--<script src="http://cmp/v/js/cmp-app.js"></script>-->
+<!--<script src="http://cmp/v1.0.0/js/cmp-server.js"></script>-->
+<!--<script src="http://cmp/v/js/cmp-chat.js"></script>-->
+<script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+<!--<script src="http://cmp/v/js/cmp-offlineContacts.js"></script>-->
+<!--<script src="http://cmp/v/js/cmp-tabBar.js"></script>-->
+<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+<!--<script src="http://cmp/v/js/cmp-sortable.js"></script>-->
+
+<script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v/config.js"></script>
+<!-- 模块入口 -->
+<script async src="http://application.m3.cmp/v/js/sea-app-workbench.js"></script>
+</html>

@@ -1,0 +1,189 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-27 12:58:56
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:31:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>待办事项</title>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css">
+    <link rel="stylesheet" href="http://todo.m3.cmp/v/css/app-animate.css">
+    <link rel="stylesheet" href="http://todo.m3.cmp/v/css/app-todo-list.css">
+</head>
+<body class="flex-v m3-todo">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase(),
+                curUrl = window.location.href,
+                isNeedShowHeader = curUrl.match(/ParamHrefMark|isfromnative/)
+            window.isNeedShowHeader = isNeedShowHeader;
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x';
+            } else if (ua.match(/IPHONE|IPAD|IPOD/)) {
+                document.body.className += ' cmp-ios';
+            }
+            if (isNeedShowHeader) {
+                document.body.className += ' showHeader';
+            }
+        })();
+    </script>
+    <header class="cmp-header flex-h cmp-bar cmp-bar-nav">
+        <div class="back cmp-action-back">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="todo.m3.h5.return"></i18n></span>
+        </div>
+        <h1 class="flex-1"><i18n key="todo.m3.h5.todo"></i18n></h1>
+        <div class="other-btns flex-h">
+            <a class="icon-search flex-1" id="search"></a><a class="icon-create flex-1" id="create"></a>
+        </div>
+    </header>
+    <!-- 一级页签 -->
+    <section class="header-nav flex-h menu-into other-btns-warp">
+        <div class="flex-1 header-nav-btn">
+            <!-- 待办 -->
+            <a class="active" id="todo" data-index="0"><i18n key="todo.m3.h5.todo"></i18n></a>
+            <!-- 任务 -->
+            <a class="display-none" id="task" data-index="1"><i18n key="todo.m3.h5.task"></i18n></a>
+            <!-- 日程 -->
+            <a class="display-none" id="schedule" data-index="2"><i18n key="todo.m3.h5.schedule"></i18n></a>
+        </div>
+        <div class="other-btns display-none flex-h">
+            <a class="icon-search flex-1" id="search1"></a><a class="icon-create flex-1" id="create1"></a>
+        </div>
+    </section>
+    <div class="no-net"></div>
+    <div class="flex-v flex-1 todo-box">
+        <div class="wapper flex-v flex-1" id="todo-wapper">
+            <!-- 二级待办页签 -->
+            <section class="todo-nav-wapper">
+                <div class="flex-h todo-second-nav">
+                    <div class="flex-1 over-hidden" id="nav-tabbar"></div>
+                    <a class="edit-nav iconfont see-icon-m3-spread" id="edit-nav"></a>
+                </div>
+            </section>
+        
+            <!-- 代办列表内容 -->
+            <section class="todo-list-content over-hidden flex-1"></section>
+        </div>
+        <div class="wapper flex-v flex-1 display-none" id="task-wapper">
+            <div class="todo-header flex-h task-header">
+                <!-- 未完成任务 -->
+                <span class="flex-1"><i18n key="todo.m3.h5.unDealTask"></i18n></span>
+                <!-- 更多任务 -->
+                <span class="iconfont see-icon-m3-arrow-right" id="task-app"><i18n key="todo.m3.h5.moreTask"></i18n></span>
+            </div>
+            <div class="todo-listview flex-1 over-hidden" id="task-list-view">
+                <div class="cmp-listview-scroll">
+                    <ul></ul>
+                    <div class="listview-bottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wapper flex-v flex-1 display-none">
+            <div class="todo-header flex-h">
+                <!-- 今日日程 -->
+                <span class="flex-1"><i18n key="todo.m3.h5.todaySchedule"></i18n></span>
+                <!-- 更多日程 -->
+                <span class="iconfont see-icon-m3-arrow-right" id="schedule-app"><i18n key="todo.m3.h5.moreSchedule"></i18n></span>
+            </div>
+            <div class="flex-1 over-hidden" id="schedule-list-view">
+                <div class="cmp-listview-scroll">
+                    <ul></ul>
+                    <div class="listview-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 已办，已发，待发入口 -->
+    <section class="todo-entry flex-h display-none">
+        <div class="flex1" data-target="listDone">
+            <span class="bg-green iconfont see-icon-m3-finishedmatter-fill"></span>
+            <!-- 已办 -->
+            <span class="textover-1"><i18n key="todo.m3.h5.coorDone"></i18n></span>
+        </div>
+        <div class="flex1" data-target="listSent">
+            <span class="bg-pink iconfont see-icon-m3-sendedmatter-fill"></span>
+            <!-- 已发 -->
+            <span class="textover-1"><i18n key="todo.m3.h5.coorSent"></i18n></span>
+        </div>
+        <div class="flex1" data-target="listWaitSend">
+            <span class="bg-red iconfont see-icon-m3-planmatter-fill"></span>
+            <!-- 待发 -->
+            <span class="textover-1"><i18n key="todo.m3.h5.coorSending"></i18n></span>
+        </div>
+    </section>
+    <!-- 透明层 -->
+    <section class="opacity-5 todo-entry-opacity display-none"></section>
+    <section class="opacity-5 nav-set-opacity display-none"></section>
+    <section class="opacity-5 doc-opacity display-none"></section>
+    <!-- 页签设置层 -->
+    <section class="nav-set display-none">
+        <div class="flex-h nav-set-title">
+            <span class="flex-1">
+                <!-- 待办类别 -->
+                <i><i18n key="todo.m3.h5.todoType"></i18n></i>
+                <!-- 选择进入分类 -->
+                <i class="nav-text"><i18n key="todo.m3.h5.selectEntryType"></i18n></i>
+            </span>
+            <!-- 编辑 -->
+            <span class="nav-edit"><i18n key="todo.m3.h5.edit"></i18n></span>
+        </div>
+        <ul class="nav-showlist" id="nav-show"></ul>
+        <div class="flex-h nav-set-title mar-30">
+            <span class="flex-1">
+                <!-- 更多类别 -->
+                <i><i18n key="todo.m3.h5.moreType"></i18n></i>
+                <!-- 点击添加分类 -->
+                <i class="nav-set-add display-none"><i18n key="todo.m3.h5.moreMsg"></i18n></i>
+            </span>
+        </div>
+        <ul class="nav-showlist" id="nav-hide"></ul>
+    </section>
+    <!-- 批处理 -->
+    <section class="batch-process-btn flex-h display-none">
+        <!-- 转发 -->
+        <a class="flex-1" id="batch-forword" data-method="forwardProcess"><i18n key="todo.m3.h5.processForward"></i18n></a>
+        <!-- 归档 -->
+        <a class="flex-1" id="batch-archive" data-method="archiveProcess"><i18n key="todo.m3.h5.processArchive"></i18n></a>
+        <!-- 删除 -->
+        <a class="flex-1" id="batch-delete" data-method="deleteProcess"><i18n key="todo.m3.h5.processDelete"></i18n></a>
+        <!-- 批处理 -->
+        <a class="flex-1" id="batch-process" data-method="batchProcess"><i18n key="todo.m3.h5.processBatch"></i18n></a>
+    </section>
+    <!-- 归档的容器 -->
+    <div id="docPigeonhole" class="GM_Alert_Content Animated-Container bottom-go animated"></div>
+    <script src="http://todo.m3.cmp/v/i18n/todo_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+        cmp.i18n.init("http://todo.m3.cmp/v/i18n/", "todo");
+    </script>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v/js/cmp.js"></script>
+    <script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+    <script src="http://cmp/v/js/cmp-sortable.js"></script>
+
+    <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('todo/js/app-todo.js')</script>
+</body>
+</html>

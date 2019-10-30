@@ -1,0 +1,195 @@
+
+/*CMP平台组件自定义样式*/
+
+.display_none{display: none;}
+.width_auto{width: 100%;}
+input{border-radius: 0!important;}
+
+/*普通按钮*/
+.cmp-btn.btn-block{
+    background-color: #1abc9c;
+    color: #fff;
+}
+.cmp-btn.btn-block.cmp-btn-cancel{
+    background-color: #BDC3C7;
+}
+.cmp-btn.btn-block.cmp-btn-warning{
+    background-color: red;
+}
+
+/*单选按钮*/
+.cmp-input-radio:checked:before{
+    color: black!important;
+}
+/*复选按钮*/
+.cmp-input-checkbox:checked:before{
+    color: red!important;
+}
+
+/*进度条自定义样式*/
+.cmp-progress{
+    margin-bottom: 20px;
+}
+/*根据CMP自添加CSS样式*/
+/*进度条  默认样式*/
+.cmp-progress{
+    width: auto;
+    height: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+.cmp-progress .cmp-progress-bar{
+    width: 10%;
+    height: 100%;
+    background-color: #337ab7;
+    text-align: center;
+    color: #fff;
+    line-height: 20px;
+}
+
+.cmp-list-input{
+    color: rgb(170, 170, 170);
+    border: 1px solid rgb(204, 204, 204);
+    height: 30px!important;
+    width: 134px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 0px!important;
+}
+
+/*底部导航*/
+.cmp-bar-tab{}
+.cmp-bar-tab a{border-right: 1px #ccc solid;color: black!important;}
+.cmp-bar-tab a:hover{background-color: #ccc;}
+
+/*底部预留内容*/
+.bar_panding{
+    width: 100%;
+    height: 50px;
+}
+
+
+/*自定义复选按钮*/
+/*复选按钮*/
+.cmp-cheked-custom{    position: relative; padding: 5px;}
+.cmp-cheked-custom input{  visibility: hidden;}
+.cmp-cheked-custom span{  display: inline-block;padding-left: 10px;}
+.cmp-cheked-custom label{  cursor: pointer; position: absolute; width: 25px;border-radius: 3px;;
+    height: 25px;top: 3px; left: 0; background: #eee; border:1px solid #ddd; }
+.cmp-cheked-custom label:after {
+    opacity: 0.2; content: ''; position: absolute; width: 9px;  height: 5px; background: transparent;
+    top: 6px;left: 7px; border: 3px solid #333; border-top: none;border-right: none;
+    -webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg);transform: rotate(-45deg);
+}
+.cmp-cheked-custom label:hover::after { opacity: 0.5; }
+.cmp-cheked-custom input[type=checkbox]:checked + label:after { opacity: 1;  }
+
+/*对文本框的清楚样式*/
+/*.clear-input-text { display: none; position: absolute; width: 16px; height: 16px; margin: 6px 0 0 -20px; background: url(img/car_img.png);}*/
+.cmp-input-text::-ms-clear { display: none; }
+.cmp-input-text:valid + .clear-input-text { display: inline; }
+
+
+
+/*日历的样式*/
+.calendar_title{width: 100%;margin: auto;height: auto;text-align: center;padding: 5px 0px;border-bottom: 1px solid #D0D0D0;overflow: hidden; }
+.calendar_title li{width: 13%;height: 25px; list-style-type: none;float: left;text-align: center;line-height: 12.5px;margin-left: 1%;}
+.calendar_title li:last-child{border: none!important;}
+.calendar_title li:first-child{border: none!important;}
+.calendar_con li:last-child{border: none!important;}
+.calendar_con li:first-child{border: none!important;}
+.calendar_con{ height: auto;text-align: center;background-color: #F0F0F0;overflow: hidden; }
+.calendar_con li{width: 13%;height: 50px; list-style-type: none;margin-top: 2%;float: left;text-align: center;line-height: 25px;margin-left: 1%;}
+.calendar_con li span{ position: relative;left:50%;top: 50%;margin-top: -12.5px;margin-left: -12.5px;display: block;
+    width: 25px;height: 25px;color: black; text-align: center;}
+.calendar_con li span{border-radius: 50%;}
+.calendar_con li span:hover{cursor: pointer;border: 1px solid red;}
+.calendar_con li span.li_red{background-color: red;border: 1px solid red!important;box-shadow: 0px 0px 3px red;;}
+.calendar_con li span.li_green{background-color: #6CC13D;border: 1px solid #6CC13D!important;box-shadow: 0px 0px 3px #6CC13D;;}
+
+
+
+/*分段选择按钮*/
+.button_list_nav{padding: 1px 5px;text-align: center;}
+.button_list_nav button:first-child{position: relative;left: -20px;}
+.button_list_nav button:last-child{position: relative;left: 10px;}
+.bottom_radius{border-radius: 20px!important;height: 40px;line-height: 10px!important;margin-top: 6px;margin-bottom: 5px;}
+.dispose_button{width: 25%;height: 25px;margin-left: 15px;border-radius: 10px!important;}
+.dispose_button.cmp-active{background-color: #48A0DE!important;border-color:#48A0DE!important;color: white!important; }
+
+
+
+/*协同搜索组件*/
+/*下拉控件*/
+
+.cmp-synergy-search{overflow: hidden;font-size: 12px; }
+.cmp-synergy-search .search_item{ float: left;}
+.cmp-synergy-search .info_content .data_time{overflow: hidden;}
+.cmp-synergy-search .search_item .data_time input{float: left;width: 50%;}
+.cmp-synergy-search input{height: 35px!important;margin: 0;padding: 0;border-radius: 0;font-size: 12px;
+    text-overflow: ellipsis;white-space: nowrap;overflow: hidden; }
+.cmp-synergy-search .info_content input{width: 100%;}
+.cmp-synergy-search .select_search_content{width: 20%;}
+.cmp-synergy-search .select_search_content .select_cont{width: 100%;}
+.cmp-synergy-search .select_search_content .select_cont input{border-right: none;padding-right: 10px;}
+.cmp-synergy-search .info_content{width: 65%;}
+.cmp-synergy-search .info_content .search input{border: 1px #ccc solid;}
+.cmp-synergy-search .confirm{width: 15%;height: 35px;border: 1px #ccc solid;border-left: none;text-align: center;line-height: 35px;cursor: pointer;}
+.cmp-synergy-search .confirm button{border:0;height: 35px;}
+
+
+/*下拉弹出模板*/
+.cmp-select-content{ width: 100%; display: inline-block;  height: 35px;  font-size: 13px;opacity: 1;box-shadow: none;position: relative; }
+.cmp-select-content .select{position: absolute;box-shadow: 0 0 15px rgba(0, 0, 0, .1); z-index: 99;}
+.cmp-select-content .select .point_to{margin: 0;padding: 0;top: -26px;}
+.cmp-select-content .select .point_to.center{left:47%;}
+.cmp-select-content .select .point_to.right{left:92%;}
+.cmp-select-content .select .point_to:after{background-color: rgb(236, 240, 241);}
+.cmp-select-content .cmp-icon{position: absolute;left: 14%;margin-top: 5px;}
+.cmp-select-content .select .option{  list-style-type: none;  background-color: rgb(236, 240, 241);padding-left: 10px;;
+    width: 100%;  height: 30px;  line-height: 30px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;  }
+.cmp-select-content .select .option:hover{cursor: pointer;background-color:#16a085;}
+/*原edocDealuser.css来*/
+/*处理人列表*/
+.handler-div{height: 68px; margin-left: 9px; border-bottom: 1px #D9D9D9 solid;font-size: 16px;position:relative;}
+.handler-div img{ height: 41px; width: 41px; border-radius: 20px; margin: 13px 11px 12px 3px; float: left;}
+.handler-div .handler-states{ width: 100px; height: 67px; color: #999; line-height: 67px; float: right;padding-right: 10px;text-align: center;}
+.handler-div .handler-states span.urge{padding: 5px 20px;border:1px solid #007aff;border-radius: 20px;color: #007aff;}
+.handler-div .handler-user{ margin-right: 100px; margin-left: 55px; height: 100%; overflow: hidden;padding: 8px 0px;}
+.handler-div .handler-user .handle-user-name{height: 25px;line-height: 25px;color: black;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.handler-div .handler-user .handle-user-job{height: 25px;line-height: 25px;color: #999;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.btn-urge{width: 142px;padding: inherit 40px;background-color: #4A90E2;}
+.urge-div{padding: 6px 0px;background-color: #fafafa; border: 2px solid #f5f5f5;}
+/*处理详情 人员处理状态*/
+.read-states {position: absolute; z-index: 10; top: 40px; left: 30px; width: 14px; height: 14px; border-radius: 8px; overflow: hidden;}
+.read-states .state-bg{  background: white; border-radius: 8px; width: 14px; height: 14px;line-height: 14px;}
+.read-states .state-bg .state-color{ font-size: 14px; width: 14px; height: 14px; display: block;}
+
+.has-haddle .state-bg .state-color{color: #36A946;}
+.has-read .state-bg .state-color{color: #286EB7;}
+.other .state-bg .state-color{color: #F08300;}
+/*原edocDealuser.css来*/
+
+
+/*c常用语*/
+.GM_Alert_Content .GM_item_container ul li.li_height:first-child{ padding: 10px 10px 0px 10px; }
+.GM_Alert_Content .GM_item_container ul li.li_height:after{ left: 0px; }
+.li_height{ height: 46px;line-height: 28px; }
+
+.cmp-popover .cmp-table-view .edocPop{
+    height:50px; 
+    line-height:50px; 
+    padding:0 14px;
+    color: #333;
+}
+
+
+
+
+
+
+

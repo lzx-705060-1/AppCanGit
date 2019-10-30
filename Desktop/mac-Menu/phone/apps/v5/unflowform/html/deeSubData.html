@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>交换任务从表数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172644">
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/deeDataList_zh_CN.js?buildversion=181210172644" ></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+		        <script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+        <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/deeDataList.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tableList.css?buildversion=181210172644">
+		<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-tableList.js?buildversion=181210172644"></script>
+
+	</head>
+
+	<body class="cmp-fullscreen">
+		<header class="cmp-bar cmp-bar-nav nav-bar nav-header">
+            <span class="icon see-icon-v5-common-arrow-back   cmp-pull-left" id="backBtn"></span>
+		    <h1 class="cmp-title" id="appTitle">交换任务从表数据</h1>
+		</header>
+		<div class="cmp-content">
+			<div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted">
+				<a class="cmp-control-item cmp-active" href="#item1mobile">
+					默认
+				</a>
+			</div>
+			<!--<div id="tablelist" class="cmp-control-content cmp-active">-->
+
+				<!--<div id="linkContainer0" class="container" >  &lt;!&ndash;第一步 定义列表容器&ndash;&gt;-->
+				<!--</div>-->
+			<!--</div>-->
+        </div>
+
+		<footer id="footer" class="cmp-bar cmp-bar-footer"  >
+			<div class="cmp-btn cmp-btn-primary" id="ok"><i18n key="deeDataList.page.lable.ok"></i18n></div>
+		</footer>
+	</body>
+
+
+	<script type="text/html" id="formson_tab_tpl">
+		<% for(var i = 0,len = this.fieldInfo.length;i < len; i++){ %>
+		<% var obj = this.fieldInfo[i]; %>
+		<% if(i==0) {%>
+		   <a class="cmp-control-item cmp-active" href="#tablelist<%=i %>">
+		<%}else {%>
+		  <a class="cmp-control-item" href="#tablelist<%=i %>">
+		<%}%>
+			<%=obj.tableName %>
+		</a>
+		<% } %>
+	</script>
+    <script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script>	<script type="text/javascript">
+		cmp.i18n.init(_unflowformpath+"/i18n/", "deeDataList");
+	</script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/deeSubData.js?buildversion=181210172644"></script>
+</html>

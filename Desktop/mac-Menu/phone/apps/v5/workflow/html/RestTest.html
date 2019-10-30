@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">   
+<title>Rest test</title>
+
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=187263512" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=187263512" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+function _$(selector, queryAll, pEl){
+    
+    var p = pEl ? pEl : document;
+    
+    if(queryAll){
+        return p.querySelectorAll(selector);
+    }else{
+        return p.querySelector(selector);
+    }
+}
+
+function doExe(){
+    
+    var method = _$("#method").value;
+    var url = _$("#url").value;
+    var postVal = _$("#postVal").value;
+    
+    var params = "";
+    var body = "";
+    
+    if(postVal){
+        
+        postVal = (new Function("return " + postVal))();
+        
+        if(method == "get"){
+            params = postVal;
+            body = "";
+        }
+        if(method == "post"){
+            body = postVal;
+        }
+    }
+    
+    SeeyonApi.Rest[method](url, params,body,cmp.extend({},{
+        success : function(ret){
+            _$("#render").value = cmp.toJSON(ret);
+        },
+        error :function(e){
+            if(e){
+                if(typeof e == "string" ){
+                    _$("#render").value = e;
+                }else if(e.code){
+                    _$("#render").value = cmp.toJSON(e);
+                }else{
+                    _$("#render").value = "" + e;
+                }
+            }else{
+                alert("error unkown!");
+            }
+        }
+    }));
+}
+
+</script>
+</head>
+<body>
+
+<h1>URL</h1>
+<input id="url" type="text">
+<hr>
+<h1>Request Content</h1>
+<textarea id="postVal" rows="5" cols="" style="width: 100%;"></textarea>
+<hr>
+<select id="method">
+<option value="post">POST</option>
+<option value="get">GET</option>
+</select> <button type="button" onclick="doExe()">Exeute</button>
+<hr>
+<h1>Response Content</h1>
+<textarea id="render" rows="5" cols="" style="width: 100%;"></textarea>
+</body>
+</html>

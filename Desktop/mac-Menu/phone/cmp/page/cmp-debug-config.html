@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css??buildversion=181210172713"/>
+    <!-- css样式 -->
+    <style>
+
+        .mw-header .cmp-title {
+            font-size: 20px !important;
+            font-weight: 400;
+        }
+        .cmp-content{
+            position: relative;
+        }
+        .cmp-segmented-control{
+            background-color: #fff;
+        }
+        .mw-card{
+            height: auto!important;
+        }
+        .mw-label{
+            width: 100%!important;
+        }
+        .mw-input{
+            width: 100%!important;
+            float: left;!important;
+        }
+        .cmp-input-row input::-webkit-input-placeholder{
+            font-size: 10px;
+        }
+        .cmp-input-row input::-webkit-input-placeholder{
+            color: rgb(197, 197, 197)!important;
+        }
+        .mw-ul{
+            padding: 8px 10px;
+        }
+        .mw-ul li{
+            padding: 5px 0;
+        }
+        .mw-ul li div{
+            display: inline-block;
+        }
+        .mw-tips{
+            padding-left: 20px;
+            font-size: 12px;
+            color: #672e40;
+        }
+        .cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active:before{
+            color: #6e7173!important;
+            border-bottom: 2px solid #6e7173!important;
+            width: 100%;
+            left: 0;
+        }
+        .cmp-segmented-control{
+            background: transparent;
+        }
+        .mw-icon{
+            color: #000b15!important;
+            font-size: 32px!important;
+        }
+        .mw-li-group{
+            margin-top: 10px;
+        }
+        .cmp-table-view{
+            background-color: transparent;
+        }
+        .cmp-table-view-cell{
+            background: #fff;
+        }
+        .mw-cell:after{
+            display: none;
+        }
+        .cmp-input-row label{
+            padding: 0 0!important;
+        }
+        .mw-value{
+            color: #9c9c9c!important;
+            float: right;
+        }
+        #deviceInfo li div{
+            display: inline-block;
+        }
+        .mw-text-blue{
+            color: #428bca;
+        }
+        .mw-text-green{
+            color: #4D9208;
+        }
+
+    </style>
+    <title>CMP调试设置页面</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header">
+    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn">
+        <span class="cmp-icon cmp-icon-closeempty mw-icon"></span>
+    </div>
+    <div class="cmp-title">CMP调试配置</div>
+    <!--<div class="cmp-header-right">-->
+        <!--<span id="saveBtn" class="nav-text">保存</span>-->
+    <!--</div>-->
+</header>
+
+<div id="content" class="cmp-content">
+    <div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted">
+        <a class="cmp-control-item cmp-active" href="#switch">
+            开关
+        </a>
+        <a class="cmp-control-item" href="#info" >
+            信息
+        </a>
+    </div>
+    <div id="switch" class="cmp-control-content cmp-active" >
+        <ul class="cmp-table-view">
+            <li class='cmp-table-view-cell mw-cell'>
+                <span>调试模式</span>
+                <div class='cmp-switch cmp-switch-mini '  id="debugSwitch">
+                    <div class='cmp-switch-handle'></div>
+                </div>
+            </li>
+            <li class='cmp-table-view-cell mw-li-group'>
+                <span>在线资源映射路径</span>
+                <div class='cmp-switch cmp-switch-mini '  id="mappingSwitch">
+                    <div class='cmp-switch-handle'></div>
+                </div>
+            </li>
+            <li class='cmp-table-view-cell mw-cell cmp-hidden' id="mappingInput">
+                <div  class="cmp-input-row disabled mw-card">
+                    <label class="mw-label">输入配置文件路径</label>
+                    <input class="mw-input" type="text" placeholder="如：http://172.20.2.20/seeyon/m3/cmp/page/mapping.json" id="mappingConfig">
+                </div>
+            </li>
+            <li class='cmp-table-view-cell mw-li-group mw-cell' >
+                <span>扫码加载页面功能</span>
+                <div class='cmp-switch cmp-switch-mini ' id="barcodeSwitch">
+                    <div class='cmp-switch-handle'></div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div id="info" class="cmp-control-content" >
+        <ul class="cmp-table-view" id="deviceInfo">
+            <li class="cmp-table-view-cell"><div>设备平台：</div><div class="mw-value" id="platform"></div></li>
+            <li class="cmp-table-view-cell"><div>Android版本号：</div ><div class="mw-value" id="version"></div></li>
+            <li class="cmp-table-view-cell mw-li-group"><div>设备uiid：</div><div class="mw-value" id="uuid"></div></li>
+            <li class="cmp-table-view-cell"><div>设备型号：</div><div class="mw-value" id="model"></div></li>
+            <li class="cmp-table-view-cell mw-li-group"><div>设备生产厂家：</div><div class="mw-value" id="manufacturer"></div></li>
+            <li class="cmp-table-view-cell"><div>设备英文牌子：</div><div class="mw-value" id="enbrand"></div></li>
+            <li class="cmp-table-view-cell"><div>设备中文牌子：</div><div class="mw-value" id="cnbrand"></div></li>
+            <li class="cmp-table-view-cell mw-li-group"><div>App壳版本号：</div><div class="mw-value" id="cmpshell"></div></li>
+        </ul>
+    </div>
+    <footer class="cmp-bar cmp-bar-footer cmp-accDoc-footer cmp-accDoc-footer_replay">
+        <button id="saveBtn" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block display_inline-block hold">保存</button>
+    </footer>
+</div>
+
+ <!--导入cordova相关-->
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js??buildversion=181210172713"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/page/js/cmp-debug-config.js??buildversion=181210172713"></script>
+
+</body>
+</html>
+

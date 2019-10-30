@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.0",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"capqrcode",
+	"splashscreen":[],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"LIB",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"html/selectRight.html",
+		"jsapi":"capqrcode_m_api.s3js",
+		"openAppMethod":"capQRCodeApi.openApp"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"80",
+	"urlSchemes":"capqrcode.v5.cmp",
+	"bundleName":"capqrcode",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

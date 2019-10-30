@@ -1,0 +1,146 @@
+/*公共样式*/
+html,body{ width: 100%;height: 100%;background-color: white;overflow: hidden; }
+.sche-content::-webkit-scrollbar{width:0; height:0; }
+.absolute{ position: absolute; }
+.relative{ position: relative; }
+.background_F4{ background-color: #F4F4F4;}
+.border_b{ position: relative; }
+.border_t{ position: relative; }
+/*.border_t:before{ content: ''; width: 100%; left: 0; top:0px; height: 1px; display: inline-block; position: absolute; background-color: #d4d4d4; -webkit-transform: scale(1,0.5); transform: scale(1,0.5); -webkit-transform-origin: center bottom; transform-origin: center bottom; z-index: 9;}*/
+/*.border_b:after{content: ''; width: 100%; left: 0; height: 1px; display: inline-block; position: absolute; background-color: #d4d4d4; -webkit-transform: scale(1,0.5); transform: scale(1,0.5); -webkit-transform-origin: center bottom; transform-origin: center bottom; bottom:0px; z-index: 9;}*/
+textarea{ border: none; }
+ul li{ list-style: none; }
+.head-style{ background-color: rgba(254,254,254,0.9);color: #333333;box-shadow:none;-webkit-box-shadow:none;}
+.head-style .cmp-title{ font-size: 18px;color: #333333;line-height: 38px;right: 80px;left: 80px; }
+.head-style .left-btn{ height: 38px;line-height: 38px; font-size: 14px;color: #3AADFB;width: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;position: relative; } 
+.head-style .left-btn span{ position: relative;top: 2px;font-size: 17px;/*margin-right:5px;*/}
+.head-style .right-btn{ height: 38px;line-height: 38px; font-size: 14px;color: #3AADFB;width: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;position: relative; text-align: right;} 
+.head-style .right-btn span{ position: relative;font-size: 22px;display: inline-block;height: 38px;line-height: 38px;padding-left: 8px; } 
+.head-style .right-btn span.left-icon{ padding-left: 20px;}
+.head-style .three_icon { width: 120px; }
+.head-style .three_icon span{ width: 40px;text-align: center;padding: 0px;position: relative; }
+.head-style .three_icon span.left-icon{ width: 40px;text-align: center;padding: 0px; }
+.mask{ position: absolute;top: 0px;bottom: 0px;width: 100%;background-color: rgba(0,0,0,0.2);z-index: 11;}
+.cmp-table-view:after{ height: 0px; }
+.empty{ display: block; padding: 15px; text-align: center; font-size: 16px; background-color: #f4f4f4; }
+.alert_wrap{ position: absolute;top: 50%;margin-top: -69px;z-index: 12;width: 270px;border-radius: 12px;background-color: rgba(252,252,252,1);left: 50%;margin-left: -135px;}
+.alert_wrap a { display: block;font-size: 16px;color: #3AADFB;height: 45px; line-height: 45px; text-align: center;width: 100%;}
+.alert_wrap a.cancel{ color: #333; }
+/*日程视图样式*/
+.sche-content{ position: absolute;bottom: 0px;width: 100%;}
+.schedule_list{ overflow: auto; background-color: white;}
+.schedule_list::-webkit-scrollbar{width:0; height:0; }
+.filter_wrap{ position: absolute;top: 50px; bottom: 0px; z-index: 12;width: 100%;background-color: white;color: #333333;font-size: 16px; }
+.filter_wrap .up{ width: 0; height: 0; border-left: solid 10px transparent; border-right: solid 10px transparent; border-bottom: solid 10px #fff; overflow: hidden; position: absolute; top: -10px; right: 57px; z-index: 1; }
+.filter_wrap .item_wrap{ position: relative;padding-bottom: 10px; }
+.filter_wrap .item_wrap .title{ height: 40px; padding: 15px 15px 7px 15px;color: #333333;font-size: 16px; margin-bottom: 0px;}
+.filter_wrap .item_wrap ul{ overflow: hidden; padding: 0px 5px; }
+.filter_wrap .item_wrap ul li.item{ height: 24px;line-height: 22px;text-align: center;background-color: #e4e4e4;margin: 7px; border-radius: 100px;font-size: 14px;color: #333333;float: left;display: inline-block;padding: 0px 8px;}
+.filter_wrap .item_wrap ul li.item.active{ border: 1px solid #3AADFB;background-color: white;color: #3AADFB; }
+.filter_wrap .item_wrap ul li.item span.icon{ display: none; }
+.filter_wrap .item_wrap ul li.item.active span.icon{ display: inline; font-size: 10px; margin-right: 4px;}
+.btn_wrap{ position: absolute;bottom: 0px; width: 100%; overflow: hidden; background-color: white;}
+.btn_wrap .left_btn{ height: 50px; width: 50%;float: left; padding: 8px 0px;}
+.btn_wrap .left_btn span{ height: 34px; width: 150px;display: block;margin: 0 auto;font-size: 16px;color: #3AADFB;border: 1px solid #3AADFB;line-height: 32px;text-align: center;border-radius: 48px; }
+.btn_wrap .right_btn{ height: 50px; width: 50%;float: right; padding: 8px 0px;}
+.btn_wrap .right_btn span{ height: 34px; width: 150px;display: block;margin: 0 auto;font-size: 16px;color: white;border: 1px solid #3AADFB;line-height: 32px;text-align: center;border-radius: 48px;background-color: #3AADFB; }
+
+.synchronous {position: absolute;top:50px; bottom: 0px; z-index: 12;width: 100%;background-color: #f9f9f9;color: #333333;font-size: 16px;}
+.synchronous .up{ width: 0; height: 0; border-left: solid 10px transparent; border-right: solid 10px transparent; border-bottom: solid 10px #fff; overflow: hidden; position: absolute; top: -10px; right: 101px; z-index: 1; }
+.synchronous .mission{ position: relative; }
+.content .icon{ width: 34px;height: 34px;border-radius: 17px;text-align: center;line-height: 34px;margin-right: 10px;color: white;display: inline-block;}
+.content .text{ color: #333333;font-size: 16px; }
+.content span.m3-icon-meeting-fill{ background-color: #27E0B8; }
+.content span.m3-icon-task{ background-color: #14A1CB; }
+.content span.m3-icon-plan{ background-color: #4DD3FB; }
+.content span.m3-icon-schedule{ background-color: #74D856; }
+.content span.m3-icon-coordination-fill{ background-color: #3eb0ff; }
+.content span.m3-icon-document{ background-color: #ffd142; }
+.cmp-list-file .cmp-checkbox2{ font-size: 25px;width: 35px;padding: 5px 10px 10px 0px; color:#d9d9d9;vertical-align: middle;display: inline-block;padding: 0px;margin: 0px;line-height: 1;height: 35px;}
+.cmp-radio2:checked, .cmp-checkbox2:checked{color: #3aadfb;}
+.cmp-list-file .content{ height: 50px;padding-right: 0px; display: inline-block;line-height: 50px;}
+/*新建日程样式*/
+.hidden{display: none!important;}
+.sche_title{ position: relative; margin-top: 10px;background-color: white;font-size: 16px;color: #666666;}
+.sche_title .title_wrap{ display: inline-block;width:100%;overflow:hidden; }
+.sche_title .title_wrap .name { width: 48px;margin-left: 15px; height: 46px; line-height: 46px;display: inline-block;float:left;}
+.sche_title .title_wrap .text { width:80%;display: inline-block; padding: 13px 13px 13px 0px;float:left;}
+.sche_title .title_wrap .text textarea{ min-height: 20px;line-height: 20px; padding: 0px; overflow-y: hidden;word-break: break-all;}
+.sche_title .title_wrap .text div{ min-height: 20px;line-height: 20px; padding: 0px; overflow: hidden; word-break: break-all; letter-spacing: 1px; position: absolute;width: 252px; }
+.sche_time{ position: relative;margin-top: 10px; }
+.sche_time .icon{ font-size: 20px;margin-right: 6px;}
+.text_wrap{ position: relative;margin-top: 10px;background-color: white; }
+.text_wrap .input{ min-height: 97px;background-color: white;padding: 15px;color: #333333; }
+.text_wrap .input:empty:before{ content: attr(placeholder);color: #999999; }
+.text_wrap .input:focus{ content: none; }
+.remind{ position: relative;margin-top: 10px; }
+.repeat{ position: relative;margin-top: 10px; }
+.handle_wrap{ position: relative;margin-top: 10px; }
+.handle_wrap .icon{ color: #3AADFB;display: none; }
+.handle_wrap .icon.active{ display: block; }
+.state{ height: 30px;line-height: 30px;font-size: 12px;color: #666666;padding: 0px 15px; }
+.attachments{ position: relative; }
+.attachments .icon{ color: #3AADFB;}
+.public_wrap{ position: relative;margin-top: 10px;background-color: white; min-height: 50px;line-height: 50px;}
+.public_wrap .people_wrap{ display: flex; color: #666666;padding: 0px 15px;}
+.public_wrap .people_wrap .name{ width: 80px;font-size: 16px;color: #333333; }
+.public_wrap .people_wrap .text{ flex: 1;line-height: 22px;padding: 15px 0px 10px 10px; color: #666666;text-align: right;}
+.public_wrap .people_wrap .more{ width: 15px;font-size: 20px; color: #c7c7cc;line-height: 50px;}
+.show_more{ position: relative;margin-top: 10px;background-color: white; height: 50px;line-height: 50px;text-align: center;}
+.show_more .icon{ font-size: 14px; color: #c7c7cc; margin-left: 8px; position: relative;top: -2px;}
+.eclips{ overflow-y: hidden;text-overflow: ellipsis;white-space: nowrap; }
+.content-div{min-height: 97px; line-height: 97px; padding: 0px; overflow-y: auto; word-break: break-all; letter-spacing: 1px; position: absolute;width: 252px;}
+.cmp-list .content:after{
+	height: 0;
+}
+.cmp-list .content{
+	border-bottom: solid 1px rgba(212,212,212,0.5);
+}
+
+/* +号  */
+.shortcut{ position: absolute;top: 0;bottom: 0;right: 0;left: 0;z-index: 10;background-color: rgba(255,255,255,0.8); }
+.wrap{	width: 100%;	height: 100%; 	display: -webkit-flex; /* Safari */    display: flex;    align-items:center;    -webkit-align-items:center;    text-align: center;    -webkit-box-pack:center;      -ms-justify-content:center; -webkit-justify-content:center;    justify-content:center;}
+.wrap .li_wrap{ text-align: center; }
+.wrap .li_wrap .cell{ display: inline-block;   margin-right: 0.93rem; text-align: center; }
+.wrap .li_wrap .cell:last-child{ margin-right: 0; }
+.wrap .li_wrap .cell .icon{ display: inline-block; height: 76px; line-height: 76px; width: 76px;border-radius: 38px;font-size: 32px;color: white; }
+.wrap .li_wrap .cell .name{ display: block; width: 100%;    overflow: hidden;    font-size: 14px;    color: #333;    text-overflow: ellipsis;    white-space: nowrap;    line-height: 1;    margin-top: 10px;}
+.wrap .li_wrap .cell .icon.m3-icon-schedule{ background-color: #74D856;}
+.wrap .li_wrap .cell .icon.m3-icon-meeting-fill{ background-color: #0AB9F5;}
+.wrap .li_wrap .cell .icon.m3-icon-task{ background-color: #9979E6;}
+.shortcut .close{ position: absolute;	bottom: 70px;	width: 100%;	text-align: center;	color: #3AADFB;}
+.shortcut .close span{ font-size:24px;}
+.blur{ -webkit-filter: blur(5px); -moz-filter: blur(5px); -ms-filter: blur(5px); -o-filter: blur(5px); filter: blur(5px); filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false);}
+/*周期选项*/
+.weekchoice{ position: absolute;top: 0px; bottom: 0px;width: 100%;background-color: white;z-index: 14; }
+.week_wrap{ margin-top: 8px; background-color: white;height: 100%; }
+.week_wrap li{ height: 45px;line-height: 45px;color: #666666;font-size: 14px;padding: 0px 15px; position: relative;}
+.week_wrap li .name{ display: inline-block;height: 45px; }
+.week_wrap li .icon{ position: absolute;top: 0px;right: 15px;color: #3AADFB; }
+
+.add_border{ height: 1px; position:absolute;left: 0px;bottom: 0px;background-color: rgba(255,255,255,0); width: 100%;z-index: 19;}
+.waring{ padding: 5px 10px; }
+.cmp-list-file{ position: relative; }
+
+.ul-table-list li.time-nodata{padding-top: 44px;height: 56px;text-align: center;color: #ccc;}
+.time-nodata p.empty{background-color:#fff;}
+.cmp-flex-header{box-shadow:none;-webkit-box-shadow:none;}
+
+body.cmp-dd header.cmp-flex-header{height: 44px!important;padding-top: 0!important;}
+
+#calendar-oper {width:100%;height:50px;position:fixed;z-index:11;bottom:0;background-color:#fff}
+#calendar-oper:before{position:absolute;content:'';width:100%;left:0;top:0;height:1px;background-color:#d4d4d4;-webkit-transform:scale(1,.5);transform:scale(1,.5);-webkit-transform-origin:top center;transform-origin:top center}
+#week-save {width:100%;height:50px;position:fixed;z-index:11;bottom:0;background-color:#fff}
+.calendar-save-wapper{padding:10px;text-align: center;}
+.calendar-save-wapper .cmp-btn{border-radius: 34px;width: 40%;}
+
+
+.portalFooter{position:fixed;bottom:0;left:0;width:100%;height:50px;background:#f9f9f9;z-index:10;}
+.portalFooter:before{position:absolute;content:'';width:100%;left:0;top:0;height:1px;background-color:#d4d4d4;-webkit-transform:scale(1,.5);transform:scale(1,.5);-webkit-transform-origin:top center;transform-origin:top center}
+.portalFooter .block{width:25%;float:left;padding-top:8px}
+.portalFooter .block.qywx{width:33%}
+.portalFooter .block .pIcon{height:24px;line-height:21px;font-size:24px;color:#979797;text-align:center}
+.portalFooter .block .pIcon span{font-size:28px;color:#979797}
+.portalFooter .block .pIconChoose span{color:#5294df}
+.portalFooter .block .pName{height:21px;line-height:21px;font-size:10px;color:#979797;text-align:center}
+.portalFooter .block .pNameChoose{color:#5294df}

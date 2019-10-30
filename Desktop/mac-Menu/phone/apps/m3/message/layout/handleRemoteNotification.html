@@ -1,0 +1,74 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-30 05:47:35
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-09-06 07:23:02
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <title>离线消息穿透</title>
+</head>
+<style>
+.transition_bg {
+    width: 200px;
+    height: 200px;
+    background: url('http://message.m3.cmp/v/img/guodu.gif') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -160px;
+}
+
+.cmp-content {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: relative;
+}
+</style>
+
+<body>
+    <div class="cmp-content">
+        <div class="transition_bg"></div>
+    </div>
+</body>
+<script src="http://commons.m3.cmp/v1.0.0/js/m3-debug.js"></script>
+<script src="http://message.m3.cmp/v1.0.0/i18n/message_zh_CN.js"></script>
+<script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script>
+    cmp.i18n.init("http://message.m3.cmp/v/i18n/", "message");
+    cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+</script>
+<script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp.js"></script>
+<script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp-push.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+<script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v/config.js"></script>
+<script>seajs.use('http://message.m3.cmp/v1.0.0/js/message-handleRemoteNotification.js')</script>
+<!-- 模块入口 -->
+
+</html>

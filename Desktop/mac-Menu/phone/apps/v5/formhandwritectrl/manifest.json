@@ -1,0 +1,25 @@
+{
+  "buildVersion":"1.0.0",
+  "iconFiles":{"default":"","multi":[]},
+  "appName":"formhandwritectrl",
+  "splashscreen":["",""],
+  "update":{"checkUpdateUrl":""},
+  "bundleIdentifier":"com.seeyon.v5.formhandwritectrl",
+  "serviceProvidear":"seeyon",
+  "team":"v5",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+  "packageType":"LIB",
+  "version":"1.0.0",
+  "entry":{
+    "phone":"htmls/test/main.html",
+    "jsapi":"formhandwritectrl_m_api.s3js",
+    "openAppMethod":"formhandwritectrlApi.openApp"
+  },
+  "compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+  "appType":"default",
+  "appId":"78",
+  "urlSchemes":"formhandwritectrl.v5.cmp",
+  "bundleName":"formhandwritectrl",
+  "supportedPlatforms":["iOS_6.0","android_4.0"],
+  "desc":"formhandwritectrl"
+}

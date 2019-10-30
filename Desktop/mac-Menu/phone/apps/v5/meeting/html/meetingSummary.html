@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017266">
+    <!-- 
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=18121017266">
+  	正文组件样式css
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=18121017266">
+     -->
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view-cell:after{ left: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-content back_f2 relative cmp-content-none">
+		<div class="cmp-control-content cmp-active">
+			<div id="scroller" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<div class="meeting-detail">
+						<div class="title" id="summaryTitle"></div>
+						<div class="date-wrap"><span class="name" id="meetingCreater"></span>
+							<span class="date" id="mtCreateDate"></span>
+							<span class="time" id="mtCreateTime"></span>
+						</div>
+					</div>
+					<div class="text-area">
+						<div class="text min-height" id="listView">
+						</div>
+					</div>
+					<div class="meeting-list">
+						<ul class="cmp-table-view">
+							<li class="cmp-table-view-cell">
+								<div class="list_item">
+									<!-- 会议时间 -->
+									<div class="left_title attend"><i18n key="meeting.page.lable.meetingTime"></i18n></div>
+									<div class="right_text" id="mtTime"></div>
+								</div>
+							</li>
+							<li class="cmp-table-view-cell">
+								<div class="list_item" id="goUserListBtn">
+									<!-- 实际与会人员 -->
+									<div class="left_title attend"><i18n key="meeting.meetingCreate.actualConferees"></i18n></div>
+									<div class="right_text one">
+										<span id="actualMName"></span>
+									</div>
+									<div><span class="see-icon-v5-common-arrow-right icon-arrow"></span></div>
+								</div>
+							</li>
+							<li class="cmp-table-view-cell">
+								<div class="list_item">
+									<!-- 会议地点 -->
+									<div class="left_title attend"><i18n key="meeting.page.lable.place"></i18n></div>
+									<div class="right_text" id="mtPlace"></div>
+								</div>
+							</li>
+							<li class="cmp-table-view-cell">
+								<div class="list_item">
+									<!-- 主持人 -->
+									<div class="left_title attend"><i18n key="meeting.page.lable.host"></i18n></div>
+									<div class="right_text" id="emcee"></div>
+								</div>
+							</li>
+							<li class="cmp-table-view-cell">
+								<div class="list_item">
+									<!-- 记录人 -->
+									<div class="left_title attend"><i18n key="meeting.page.lable.recorderId"></i18n></div>
+									<div class="right_text" id="recordUser"></div>
+								</div>
+							</li>
+							<li id="meetingTask" class="cmp-table-view-cell" style="display:none; ">
+								<div class="list_item">
+									<!-- 任务 -->
+									<div class="left_title attend"><i18n key="meeting.page.label.meetingTask"></i18n></div>
+									<div class="right_text one">
+										<span id="meetingTaskNum"></span>
+									</div>
+									<div><span class="see-icon-v5-common-arrow-right icon-arrow"></span></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="attachment-wrap">
+						<div class="attach-title" id="attTitleDiv">
+						</div>
+						<div class="atatch-text" id="attListUl"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	  
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+<script type="text/javascript">
+       var $verstion = "?buildversion=18121017266";
+       var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+       var _collPath = "/seeyon/m3/apps/v5/collaboration";  
+       var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+       var _cmpPath = "/seeyon/m3/cmp";
+       cmp.i18n.init("/seeyon/m3/apps/v5/meeting/i18n/", "MeetingResources");
+    </script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/apps/v5/taskmanage/taskmanage_m_api.s3js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/meeting/js/meetingSummary.js?buildversion=18121017266"></script>
+    
+    <!-- 
+	<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=18121017266"></script>
+     -->
+     
+	<script type="text/javascript">
+		cmp.ready(function(){
+			cmp.listView("#scroller");
+		});
+	</script>
+<script type="text/html" id="attTitleTpl">
+    <span>
+		<%=cmp.i18n("meeting.page.lable.attachment")%>
+	</span>
+	<span>(<%=this.summary.summaryAttCount%>)</span>
+	<span>
+		<%=cmp.i18n("meeting.page.lable.associatedDocument")%>
+	</span>
+	<span>(<%=(this.summary.summaryAttmentList.length-this.summary.summaryAttCount)%>)</span>
+	<span id="attIcon" class="cmp-icon cmp-icon-arrowup cmp-pull-right"></span>
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+/*
+   ms  code
+
+*/
+html,body{height: 100%;width: 100%;background-color: #fff;overflow: hidden;}
+p{font-size: 16px;margin-bottom: 0px;color: black;overflow: hidden;}
+.hidden{display: none;}
+.back_white{background-color: #FFF;}
+.left{float: left;}
+.right{float: right;}
+.white{background-color: white;}
+.default-btn{height: 30px;line-height: 30px;overflow: hidden;font-size: 16px;color: white;text-align: center;border-radius: 15px;border:none; background-color: #007aff; margin: 0 auto;padding: 0px 15px;display: block;}
+ul li{list-style: none;}
+.common-title{    height: 44px; line-height: 37px; margin-right: 40px; margin-left: 40px; font-size: 20px; padding: 0px; margin: 0px 40px; text-align: center;}
+.ab_positon_0{top: 64px; position: absolute; bottom: 0px; width: 100%;background-color: #f3f3f3;}
+.ab_positon_44{top: 64px; position: absolute; bottom: 44px; width: 100%;}
+.conmmon-b{bottom: 0px;padding: 0;}
+.margin_l_6{margin-left: 6px;}
+.margin_r_6{margin-right: 6px;}
+.margin_t_6{margin-top: 6px;}
+.margin_t_8{margin-top: 8px;}
+.color_333{color: #333333;}
+.count_num{float: right;margin-right: 30px; color: #4A90E2;}
+/*more page css*/
+header{background-color: #4A90E2!important;}
+
+
+.wh100{width: 100%;height: 100%}
+
+
+
+.cmp-segmented-control.cmp-segmented-control-inverted.col{border-bottom: 1px #dcdcdc solid;height: 48px;overflow: hidden;}
+.cmp-segmented-control.cmp-segmented-control-inverted.col .cmp-control-item{color:#8f8f94 ;height: 46px;line-height: 46px;}
+.cmp-segmented-control.cmp-segmented-control-inverted.col .cmp-control-item .sub{line-height: 22px; display: block; height: 22px;}
+
+
+
+.cmp-content-title-search.col .cmp-input-row.cmp-search:before{top: 20px;color: #999;}
+
+/*搜索组件*/
+
+#cmp_search_textHandler:before{top:25px;}
+
+
+/*会议详情 页面css*/
+
+.listviewbox .cmp-content-padded{padding: 15px;margin: 0px;}
+
+.meet_list_detail.col ul li .people{width: 63%;display: inline-block;vertical-align: middle;}
+
+
+
+.fold_content.col .cmp-list-cell{border-bottom: none;border-top:none;}
+
+
+.fold_content.col .cmp-list-opinion-reply .replay-content{background-color: rgba(240, 240, 240, 0.8);
+    border: 1px #aaa solid;border-radius: 3px; margin-top: -1px;margin-bottom: 10px;}
+
+
+
+
+
+/*回复意见页面CSS   start*/
+
+
+
+.replay_opinion_content.col .information textarea{padding: 10px 15px;margin-bottom: 0; border-radius: 0;border: none;position: absolute;top: 0px;bottom: 37px;}
+
+
+
+
+
+
+
+
+
+
+.footer_replay.col button{width: 40%;height: 25px;top:10px!important;line-height: 0;border-radius: 15px;}
+
+.m1-details-content.col .cmp-list-cell{border-bottom: 1px #ccc solid!important;padding-bottom: 10px;}
+
+.m1-details-title.col { background-color: #CEE1F2; }
+
+.m1-details-title.col .cmp-list-cell{padding: 13px 11px;border-bottom: none;}
+
+.m1-details-title.col .cmp-list-cell{padding: 13px 11px;}
+
+.m1-details-title.col .list_cont_info span span:first-child{margin-right: 9px; color:#48A0DE;}
+
+/*回复意见页面CSS  end*/
+
+/*文档，文件夹页面*/
+
+
+.my_work_content.col .cmp-list-cell{border-bottom: none;position: relative;padding: 12px;}
+
+.my_work_content.col .cmp-list-cell-info{height: 40px;;line-height: 24px;padding-left: 10px;}
+
+/*底部导航样式*/
+
+/*底部导航中间的按钮*/
+
+
+.footer_shortcut.col.shortcut{width: 30px; ;;z-index: 999;background-color: #fff; text-align: center;line-height: 65px;display: inline-block;position: relative;top: 5px;  }
+
+.footer_shortcut.col .but{width: 44px!important;height: 44px!important;display: inline-block;border-radius: 100%; position: relative;font-size: 44px;z-index: 999;color: rgba(0, 0, 255, 0.8); }
+.shortcut_button.col{position: absolute;bottom:7px;left: 50%;margin-left: -20px;z-index: 9999;}
+
+
+/*正文页签进行固定宽度*/
+
+.ControlItemFormat.col.cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item{max-width: 25%;min-height: 25%;padding: 0 0!important;width: 100%;line-height: 38px;
+
+}
+
+
+.approval_list_content.col .content_info .opinion .responses{font-size: 12px;transform: rotate(-45deg)scale(0.8);}
+
+
+
+.approval_list_content.col .cmp-list-cell-info .cmp-badge-success{ max-width: 80px; overflow: hidden;vertical-align: middle;z-index: 99;padding: 2px 7px; color: #fc4906;border: 1px #fc4906 solid;background-color: transparent;line-height: 0; }
+
+
+
+
+
+
+
+/*催办页面*/
+
+.content_details.col{background-color: #FFF;}
+
+
+
+
+
+
+/*协同消息列表顶部弹出*/
+
+
+
+
+.message-eject ul li:after{content:'';display: inline-block;width: 85%;height: 2px; background-color: rgba(238, 238, 238, 0.24);position: absolute;bottom: 0;left: 10px;}
+
+
+
+/*新建协同*/
+.new_synergy_content.col{background-color:#EFEFF4;}
+.new_synergy_content.col .new_header_content .cmp-table-view-cell{padding: 7px 15px;overflow: hidden; min-height: 44px; line-height: 34px;}
+
+.new_synergy_content.col .new_header_content .add_accepter.see-icon-accessory{padding: 3px;right: 15px;color: #4A90E2;margin-right: 0px;}
+
+.new_synergy_content.col .new_header_content .cmp-table-view-cell .receiver .add_accepter{right: 0px; margin-top: 10px;margin-right:0px;}
+/*新建协同的提示容器*/
+.new_synergy_hint.col {position: absolute;width: 140px;left: 5px;top:44px;z-index: 9999;}
+
+
+
+
+/*处理界面*/
+.cmp-handle-btn-content.col{padding: 10px 15px;text-align: center;border-bottom: 1px #ccc solid;}
+.cmp-handle-btn-content.col .handle:first-child{position: relative;left: -24px;}
+
+.text_and_accessory.col .badge_custom{padding:3px 15px;background-color: transparent!important;border: 1px #ccc solid;; margin-bottom: 10px;}
+.text_and_accessory.col .badge_custom a{vertical-align: middle;width: 18px;height: 18px;margin-right: 8px;color: #6E6E6E;}
+
+/*处理页面查看流程*/
+.check-process{height: 40px;background: #d4f1fc;width: 100%;}
+.check-process span{color: #59aae2;display: inline-block;padding: 0px 15px;height: 40px;line-height: 40px;}
+
+/*处理界面的常用语弹出*/
+
+/*处理界面底部按钮*/
+
+
+
+
+/*常用语弹出*/
+
+/*动画弹出模块*/
+
+/*选择执行人*/
+
+
+
+/*页面顶部搜索下面的面包屑*/
+
+
+/*文档中心*/
+
+/*转发界面*/
+
+
+/*协同列表图标*/
+/*!文件背景图标!*/
+/*默认文档中心图标*/
+
+
+/*各种小图标*/
+
+/*协同列表图标*/
+
+
+
+/*上传附件的图标*/
+
+/*协同导航列表*/
+#col-nav{display: -webkit-flex; display: flex;height: 38px; line-height: 38px; margin-bottom: 10px;background: white;font-size: 16px;}
+#col-nav .col-nav-list{-webkit-flex:1; flex:1;}
+#col-nav .col-nav-list .nav-list-span{color:#666;display: inline-block;width: 100%;height: 38px; line-height: 38px; text-align: center;padding-bottom: 2px;}
+#col-nav .col-nav-list span.current{border-bottom: 2px solid #4A90E2;padding-bottom: 0px;color: #4A90E2;}
+/*新建协同页面*/
+/*#content{position: absolute; top: 0px; bottom: 0px; margin-bottom: 0px;margin-top: 8px;}*/
+.send-colla-div {height: 44px;position: absolute;bottom: 0px;left: 0px;right:0px; background: #fafafa; border-top: 1px solid #D3D3D3;}
+.send-colla-div .send-colla{width: 142px;height: 30px; line-height: 30px; display: block; padding: 0px; margin: 7px auto;text-align: center;color: #FFF;background-color: #4a90e2;border-radius: 15px;border: 1px solid #4a90e2;}
+.impot-level{position: absolute; z-index: 99; position: absolute; z-index: 99; top: 6px; right: 7px; width: 192px; height: 72px; background: rgba(87,88,97,0.7);border-radius: 5px;}
+.impot-level li.cmp-table-view-cell{height: 35px;line-height: 35px;padding: 0px;padding-left: 15px;border-radius: 5px;overflow: visible;}
+.impot-level li.cmp-table-view-cell a{margin: 0px;padding: 0px;}
+.impot-level li.cmp-table-view-cell a ul{height: 35px;line-height: 35px;color: white;}
+.impot-level li.cmp-table-view-cell a ul li:first-child{float: left;width: 110px;list-style-type: none;}
+.impot-level li.cmp-table-view-cell a ul li:last-child{float: left;width: 47px;list-style-type:none;text-align: right;padding-right: 12px;}
+.impot-level .cmp-table-view-cell:after{right: 15px;}
+.impot-level .cmp-table-view-cell .triangle-nav{width: 0; height: 0; border-left: solid 10px transparent; border-right: solid 10px transparent; border-bottom: solid 10px rgba(87,88,97,0.7); overflow: hidden; position: absolute; top: -7px; right: 10px; z-index: 1;}
+/*协同详情页面 137*/
+#col_summary >.cmp-active{position: absolute;top: 137px;bottom: 0px;width: 100%;background-color: white;}
+/*协同处理页面*/
+.cmp-bar-nav{box-shadow: none;}
+.cmp-bar-nav~.cmp-content .replay_opinion_content{position: absolute; width: 100%; bottom: 0px; top: 86px;background: white;}
+.cmp-bar-nav~.cmp-content .replay_opinion_content .information .text_and_accessory{position: absolute; bottom: 0px; left: 0px; width: 100%; overflow: hidden; padding: 0 15px; padding-bottom: 13px;}
+/*新建协同页面*/
+.impot-level{position: absolute; z-index: 99; position: absolute; z-index: 99; top: 6px; right: 7px; width: 172px; height: 72px; background: rgba(87,88,97,0.7);border-radius: 5px;}
+.impot-level .cmp-table-view-cell:after{right: 15px;}
+.impot-level .cmp-table-view-cell .triangle-nav{width: 0; height: 0; border-left: solid 10px transparent; border-right: solid 10px transparent; border-bottom: solid 10px rgba(87,88,97,0.7); overflow: hidden; position: absolute; top: -7px; right: 10px; z-index: 1;}
+/*协同详情页面*/
+
+.attach-wrap .attach-title{  height: 36px; line-height: 36px; background-color: #f0f0f0; padding: 0px 15px; font-size: 16px; border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6;margin-top: 10px;}
+.attach-wrap .attach-title span.iconfont{margin: 10px 0px;}
+.attach-wrap .attach-title .new-attach{   border: 1px solid #629ee4; color: #629ee4; border-radius: 12px; padding: 2px 8px;}
+.attach-wrap-div{ width: 100%;padding-top: 1px;}
+.attach-wrap-div .attach-body{   height: 43px; background-color: #e2eaf2; border: 1px solid #c0cbd7; border-radius: 5px; margin: 10px 10px 0px 10px;}
+.attach-wrap-div img{  width: 28px; height: 31px; margin: 5px; margin-left: 12px; float: left;}
+.attach-wrap-div .upload{ margin: 13px;}
+.attach-wrap-div .attach-name-div{  margin-left: 49px; margin-right: 50px; height: 43px;font-size: 14px; color: black;}
+.attach-wrap-div .attach-name-div p{ margin-bottom: 0px;color: inherit;}
+.script-div{  padding: 8px 15px 0px 15px; overflow: hidden; width: 100%; line-height: 28px; font-size: 16px; color: black;border-top: 1px solid #f2f2f3;}
+.script-div p{font-size: inherit;margin-bottom: 0px; color: inherit; }
+.script-time-div{padding: 8px 15px 0px 15px;}
+.script-time{ font-size: 14px; color: #666666;}
+
+.opinion-wrap-div{ padding-top: 1px;background-color: #f3f3f3;border-bottom: 1px solid #dedee0;}
+.opinion-wrap-div .user-info{font-size: 14px; margin-top: 7px; height: 41px; border-top: 1px solid #dddde0;  border-bottom: 2px solid #f2f2f3;background-color: white;}
+.opinion-wrap-div .user-info img.user-img{  float: left; width: 27px; height: 27px; margin: 6px 12px; border-radius: 13px;}
+.opinion-wrap-div .user-info span.states{  float: right; height: 20px; margin: 10px 15px;color: rgb(74,144,226);}
+.opinion-wrap-div .user-info .user-name{  margin-left: 50px; margin-right: 50px; height: 20px; line-height: 20px; margin: 10px 0px;overflow: hidden;color: #666666;}
+.opinion-wrap-div .opinion-div {padding: 10px 15px;min-height: 20px;padding-bottom: 0px;background-color: white;}
+
+.opinion-time-div{padding: 0px 15px;height: 40px;background-color: white;}
+.opinion-time-div .zan-div{float: right; height: 20px;width: 65px;margin: 10px 0px;text-align: right;color: cadetblue;}
+.opinion-time-div .opinion-time{margin-right: 65px; line-height: 40px;}
+.opinion-time-div .opinion-time p span{font-size: 14px;color: #666666;}
+.opinion-time-div .opinion-time p span:first-child{margin-right: 10px;}
+
+.comment-div{background-color: white;overflow: hidden;}
+.comment-div .comment-body{margin: 0px 15px;border: 1px solid #dde0e4; background-color: #eef6fb; border-radius: 5px;margin-bottom: 15px;}
+.comment-div .comment-p{padding: 0px 15px;height: 35px;line-height: 35px;color: #8f8f94;}
+.comment-div .comment-p span{margin-right: 8px;font-size: 14px;}
+.comment-div .comment{padding: 0px 15px;color: black;}
+
+.handle-div{height: 43px;border-top: 1px solid #bec8cf;background-color: #e7ecf2; color: black; }
+.handle-div .handle-colla{margin-right: 64px; text-align: center;line-height: 43px;height: 43px;}
+.handle-div .handle-more{ float: right; height: 29px; line-height: 29px; text-align: center; overflow: hidden; margin: 7px;width: 64px;border-left: 1px solid #bec8cf;}
+
+/*处理人列表*/
+.handler-div{height: 68px; margin-left: 9px; border-bottom: 1px #D9D9D9 solid;font-size: 16px;position: relative;}
+.handler-div img{ height: 41px; width: 41px; border-radius: 20px; margin: 13px 11px 12px 3px; float: left;}
+.handler-div .handler-states{ width: 100px; height: 67px; color: #999; line-height: 67px; float: right;padding-right: 10px;text-align: center;}
+.handler-div .handler-states span.urge{padding: 5px 20px;border:1px solid #007aff;border-radius: 20px;color: #007aff;}
+.handler-div .handler-user{ margin-right: 100px; margin-left: 55px; height: 100%; overflow: hidden;padding: 8px 0px;}
+.handler-div .handler-user .handle-user-name{height: 25px;line-height: 25px;color: black;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.handler-div .handler-user .handle-user-job{height: 25px;line-height: 25px;color: #999;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.btn-urge{width: 142px;padding: inherit 40px;background-color: #4A90E2;}
+.urge-div{padding: 6px 0px;background-color: #fafafa; border: 2px solid #f5f5f5;}
+
+
+.txt-body{padding: 15px;min-height: 20px;}
+
+
+
+/*新样式711*/
+.cmp-content{bottom: 0px;   width: 100%;background-color: #F3F3F3;}
+
+/*下拉面板样式控制*/
+
+/**/
+.opinion-body{position: absolute; width: 100%; top: 50px; bottom: 0px;}
+/**/
+.sub{line-height: 22px; display: block; height: 22px;}
+
+
+
+/*处理详情 人员处理状态*/
+.read-states {position: absolute; z-index: 10; top: 40px; left: 30px; width: 14px; height: 14px; border-radius: 8px; overflow: hidden;}
+.read-states .state-bg{  background: white; border-radius: 8px; width: 14px; height: 14px;line-height: 14px;}
+.read-states .state-bg .state-color{ font-size: 14px; width: 14px; height: 14px; display: block;}
+.has-haddle .state-bg .state-color{color: #36A946;}
+.has-read .state-bg .state-color{color: #286EB7;}
+.other .state-bg .state-color{color: #F08300;}
+
+/*新样式*/
+.col-list{background-color: #F3F3F3;}
+.col-list .cmp-list-cell:first-child{padding-top: 10px;}
+.col-list .cmp-list-cell .cmp-slider-handle{border-top:1px rgba(204, 204, 204, 0.59) solid;border-bottom: 1px rgba(204, 204, 204, 0.59) solid;}
+.col-list .cmp-list-cell .cmp-slider-handle .mark .text{ bottom: 33px; transform: rotateZ(45deg) scale(.8); -webkit-transform: rotateZ(45deg) scale(0.8);}
+.col-list-cell-info .content_info .list_title_name{font-size: 16px;color: #000000;padding: 4px 0px 0px 0px;}
+.col-list-cell-info .content_info {padding-top: 0px;}
+.col-list-cell-info .plaint {padding: 8px 0px 10px 0px;}
+.col-list-cell-info .content_info .padding_5_0{padding: 10px 0px;height: 44px;}
+.col-list-cell-info .content_info .padding_5_0 .send-name{width: 71px;}
+.col-list-cell-info .plaint .see-icon-v5-common-replies{color: #858E99;}
+.col-list-cell-info .plaint .reply-info{color: #666666;}
+
+
+.new-colla-div{position: absolute; bottom: 14px; right: 12px; z-index: 99; width: 54px; border: none; height: auto; padding: 2px;overflow: visible;}
+.new-colla-div >span{display: inline-block; width: 50px; height: 50px; background: #4a90e2; color: #FFF; border-radius: 25px; box-shadow: -1px -1px 2px 1px rgba(204,204,204,0.5),1px 1px 2px 1px rgba(204,204,204,0.5),1px -1px 2px 1px rgba(204,204,204,0.5),-1px 1px 2px 1px rgba(204,204,204,0.5); border: 1px solid #FFF; font-size: 22px; padding-left: 12px; padding-top: 12px;margin-top: 12px;}
+.new-colla-div .shortup{position: absolute;width: 90px;height: 27px; line-height: 27px; color: white;background-color: rgba(0,0,0,0.7);border-radius: 13px;text-align: center;box-shadow: -1px -1px 2px 1px rgba(204,204,204,0.5),1px 1px 2px 1px rgba(204,204,204,0.5),1px -1px 2px 1px rgba(204,204,204,0.5),-1px 1px 2px 1px rgba(204,204,204,0.5);font-size: 14px;}
+.new-colla-div .shortup.creatFreeCollBtn{top: 25px;left: -103px;}
+.new-colla-div .shortup.createTemplateColBtn{top: 87px;left: -103px;}
+/*附件图标色值*/
+#attBtn.none-attach{color: #6E6E6E;}
+#attBtn.has-atttach{color: #4A90E2;}
+.newcolla-bg{background-color: #EFEFF4;}
+.new-colla-title .cmp-table-view-cell .headline{font-size: 16px;}
+
+.cmp-action-back,.see-icon-v5-common-search {
+    line-height: 44px;
+}

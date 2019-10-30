@@ -1,0 +1,95 @@
+.cmp-chart-basicDiv{width:100%;height:100%;position: relative;margin: 0;background-color: #fff;border-color: #e5e5e5 #eee #eee;border-style: solid;border-width: 1px 0;}
+.cmp-chart-title{text-align: center;font-weight: bold;font-size: 16px;color: #6F6E6E;}
+.cmp-chart-legend{display:inline-block;zoom:1;*display:inline;vertical-align:middle;text-align:center;padding:5px;border-radius: 4px;position: relative;margin-top: 10px;}
+.cmp-chart-glyphlinex{white-space:nowrap;padding-right:10px;display: inline;text-align:center;font-family: 'Glyphicons Halflings';font-style: normal;font-weight: 400;font-size: 12px;}
+.cmp-chart-basicDiv canvas{margin-top: 10px;}
+.cmp-chart-arrow-container {
+    border-radius: 4px;
+    border: 1px solid #C0392B;
+    background: #C0392B;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+}
+
+.cmp-chart-arrow-container:after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -20px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: 20px;
+    border-bottom-color: #C0392B;
+}
+
+.cmp-chart-div-show {
+    animation-name : cmp-chart-div-show;
+    animation-duration : 0.5s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-chart-div-show;
+    -webkit-animation-duration : 0.5s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+}
+@keyframes cmp-chart-div-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes cmp-chart-div-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.cmp-chart-div-hidden{
+    animation-name : cmp-chart-div-hidden;
+    animation-duration : 0.5s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-chart-div-hidden;
+    -webkit-animation-duration : 0.5s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+}
+@keyframes cmp-chart-div-hidden{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes cmp-chart-div-hidden{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+.cmp-chart-detail-container-parent {
+    position: absolute;
+    position: fixed;
+    left: -100%;
+    right: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 80;
+    text-align: center;
+}
+
+.cmp-chart-detail-container-parent:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+    margin-top: -28%;
+}
+.cmp-chart-detail-container-parent .cmp-chart-detail-container{
+    width: auto;border-radius: 3px;border: 1px solid #b9b4b6; font-size: 12px;height: 50px; display: inline-block;  text-align: center;
+      position: relative;  right: -100%;  padding: 5px;  background: rgba(250,250,250,0.8);
+
+}
+

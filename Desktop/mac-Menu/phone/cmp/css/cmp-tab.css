@@ -1,0 +1,416 @@
+/*************
+ * 搜索
+ ************/
+.cmp-topSearch {
+  height: 44px;
+  width: 100%;
+  box-sizing: content-box;
+  background: #fff;
+  position: relative;
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.cmp-topSearch:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #D4D4D4;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.cmp-topSearch.noBorder:after {
+  height: 0px;
+}
+.cmp-topSearch .see-icon-v5-common-arrow-back {
+  color: #3AADFB;
+  font-size: 17px;
+  padding: 5px 10px;
+}
+.cmp-topSearch .inputBox {
+  -webkit-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  flex: 1;
+  margin-left: 8px;
+  background: rgba(3, 3, 3, 0.09);
+  border-radius: 5px;
+  height: 28px;
+  position: relative;
+}
+.cmp-topSearch .inputBox .m3-icon-search {
+  color: #7A797B;
+  font-size: 13px;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  padding: 2px 8px;
+  transform: translate(0px, -50%);
+  -webkit-transform: translate(0px, -50%);
+}
+.cmp-topSearch .inputBox .m3-icon-close-fill {
+  color: #8F8E94;
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  padding: 2px 8px;
+  transform: translate(0px, -50%);
+  -webkit-transform: translate(0px, -50%);
+}
+.cmp-topSearch .inputBox .input {
+  background: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  color: #333;
+  line-height: 28px;
+  font-size: 14px;
+  padding: 0px 30px 0px 30px;
+}
+.cmp-topSearch .right {
+  color: #3AADFB;
+  font-size: 17px;
+  padding: 5px 9px;
+}
+/*************
+ * 头部
+ ************/
+.cmp-header {
+  height: 44px;
+  line-height: 44px;
+  background: #fff;
+  width: auto;
+  box-sizing: content-box;
+  position: relative;
+}
+.cmp-header:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #D4D4D4;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.cmp-header.noBorder:after {
+  height: 0px;
+}
+.cmp-header .left,
+.cmp-header .right {
+  color: #3AADFB;
+  height: 44px;
+  line-height: 44px;
+  position: absolute;
+  bottom: 0px;
+}
+.cmp-header .left .icon,
+.cmp-header .right .icon {
+  color: #3AADFB;
+  font-size: 17px;
+}
+.cmp-header .left {
+  left: 0px;
+}
+.cmp-header .left .text {
+  font-size: 14px;
+  position: relative;
+  top: -2px;
+}
+.cmp-header .left .icon {
+  padding: 5px 0px 5px 10px;
+}
+.cmp-header .left .img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+.cmp-header .right {
+  right: 0px;
+  text-align: right;
+}
+.cmp-header .right .icon {
+  font-size: 21px;
+  padding: 5px 10px 5px 0px;
+}
+.cmp-header .center {
+  padding: 0px 50px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cmp-header .center .cmp-tabNav {
+  margin-top: 7px;
+}
+/*************
+ * 选项卡
+ ************/
+.cmp-tabNav {
+  border-radius: 4px;
+  border: 2px solid #3AADFB;
+  height: 30px;
+  width: 160px;
+  display: inline-block;
+  line-height: 25px;
+  overflow: hidden;
+}
+.cmp-tabNav .a {
+  text-align: center;
+  color: #3AADFB;
+  height: 100%;
+  width: 50%;
+  float: left;
+  font-size: 14px;
+  background: #fff;
+  display: block;
+}
+.cmp-tabNav .a.selected {
+  background: #3AADFB;
+  color: #fff;
+}
+/*************
+ * 页签
+ ************/
+.cmp-tab-do {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  display: inline-block;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 50px;
+}
+.cmp-tab-do .li {
+  list-style-type: none;
+  text-align: center;
+  font-size: 16px;
+  color: #3aadfb;
+  width: 32%;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+}
+.cmp-tab-do .li label{color: #3aadfb;}
+.cmp-tab-do .cmp-radio2 {
+  color: #3aadfb;
+  background: none;
+  font-size: 20px;
+  width: 22px;
+}
+.cmp-tab-doState {
+  background: rgba(254, 254, 254, 0.91);
+  line-height: 1;
+  position: relative;
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.cmp-tab-doState:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #D4D4D4;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.cmp-tab-doState .c1 {
+  color: #3aadfb;
+}
+.cmp-tab-doState .c2 {
+  color: #f7a023;
+}
+.cmp-tab-doState .li {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px 0px 5px;
+  -webkit-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cmp-tab-doState:after{background-color: #c8c7cc;}
+.cmp-tab-doState .li.selected {
+  position: relative;
+  z-index: 2;
+  border-bottom: 2px solid #2EAEF7;
+}
+.cmp-tab-doState .m3-icon-app {
+  font-weight: bold;
+}
+.cmp-tab-doState .icon {
+  font-size: 26px;
+}
+.cmp-tab-doState .num {
+  font-size: 30px;
+  margin-left: 4px;
+}
+.cmp-tab-doState .title {
+  font-size: 14px;
+  margin-top: 4px;
+}
+/*************
+ * 数字页签
+ ************/
+.cmp-tabNum {
+  background: #fff;
+  line-height: 1;
+  width: 100%;
+  padding: 5px 14px 0px;
+  position: relative;
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.cmp-tabNum:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #D4D4D4;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.cmp-tabNum .li {
+  list-style-type: none;
+  text-align: center;
+  -webkit-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.cmp-tabNum .underline {
+  color: #333;
+  padding: 5px 25px;
+  display: inline-block;
+}
+.cmp-tabNum .underline.selected {
+  color: #2EAEF7;
+  border-bottom: 2px solid #2EAEF7;
+  position: relative;
+  z-index: 2;
+}
+.cmp-tabNum .text {
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cmp-tabNum .num {
+  font-size: 12px;
+  margin-top: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*************
+ * 文字页签
+ ************/
+.cmp-tabText {
+  background: #fff;
+  line-height: 1;
+  width: 100%;
+  position: relative;
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.cmp-tabText:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #D4D4D4;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.cmp-tabText .li {
+  list-style-type: none;
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+  -webkit-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.cmp-tabText .li.selected {
+  color: #2EAEF7;
+  border-bottom: 2px solid #2EAEF7;
+  position: relative;
+  z-index: 2;
+}
+.cmp-tabText .underline {
+  color: #666;
+  padding: 0 20px;
+  display: inline-block;
+}
+.cmp-tabText .underline.selected {
+  color: #2EAEF7;
+  border-bottom: 2px solid #2EAEF7;
+  position: relative;
+  z-index: 2;
+}
+.cmp-tabText .text {
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*************
+ * 导航文字
+ ************/
+.cmp-navText {
+  background: #fff;
+  padding: 12px 10px 8px 20px;
+}
+.cmp-navText .a {
+  color: #3AADFB;
+  font-size: 16px;
+}
+.cmp-navText .a:last-child {
+  color: #999;
+}
+/*ios头部20px*/
+.cmp-ios .cmp-topSearch,
+.cmp-ios .cmp-header {
+  padding-top: 20px;
+}
+/*# sourceMappingURL=cmp-tab.css.map */

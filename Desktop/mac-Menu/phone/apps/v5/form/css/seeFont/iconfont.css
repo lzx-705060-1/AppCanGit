@@ -1,0 +1,143 @@
+
+@font-face {font-family: "see-icon-v5-form";
+  src: url('iconfont.eot?t=1495610877402'); /* IE9*/
+  src: url('iconfont.eot?t=1495610877402#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1495610877402') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1495610877402') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1495610877402#see-icon-v5-form') format('svg'); /* iOS 4.1- */
+}
+
+.see-icon-v5-form {
+  font-family:"see-icon-v5-form" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.see-icon-v5-form-close:before { content: "\e60f"; }
+
+.see-icon-v5-form-location-fill:before { content: "\e635"; }
+
+.see-icon-v5-form-ok-circle-fill:before { content: "\e639"; }
+
+.see-icon-v5-form-close-circle-fill:before { content: "\e600"; }
+
+.see-icon-v5-form-close-circle:before { content: "\e601"; }
+
+.see-icon-v5-form-add-circle-fill:before { content: "\e602"; }
+
+.see-icon-v5-form-add-circle:before { content: "\e603"; }
+
+.see-icon-v5-form-add:before { content: "\e610"; }
+
+.see-icon-v5-form-checkbox-checked:before { content: "\e616"; }
+
+.see-icon-v5-form-radio-checked:before { content: "\e604"; }
+
+.see-icon-v5-form-pull-down:before { content: "\e614"; }
+
+.see-icon-v5-form-checkbox-unchecked:before { content: "\e617"; }
+
+.see-icon-v5-form-accessory:before { content: "\e605"; }
+
+.see-icon-v5-form-qrcode:before { content: "\e611"; }
+
+.see-icon-v5-form-doc-relation:before { content: "\e634"; }
+
+.see-icon-v5-form-take-photo:before { content: "\e637"; }
+
+.see-icon-v5-form-picture:before { content: "\e606"; }
+
+.see-icon-v5-form-new-circle:before { content: "\e607"; }
+
+.see-icon-v5-form-search:before { content: "\e638"; }
+
+.see-icon-v5-form-copy-circle:before { content: "\e608"; }
+
+.see-icon-v5-form-arrow-right:before { content: "\e609"; }
+
+.see-icon-v5-form-camera-fill:before { content: "\e636"; }
+
+.see-icon-v5-form-delete-circle:before { content: "\e612"; }
+
+.see-icon-v5-form-remove-circle:before { content: "\e60a"; }
+
+.see-icon-v5-form-import-img:before { content: "\e613"; }
+
+.see-icon-v5-form-arrow-down:before { content: "\e60b"; }
+
+.see-icon-v5-form-arrow-up:before { content: "\e60c"; }
+
+.see-icon-v5-form-arrow-left:before { content: "\e60d"; }
+
+.see-icon-v5-form-radio-unchecked:before { content: "\e60e"; }
+
+.see-icon-v5-form-pull-right:before { content: "\e615"; }
+
+.see-icon-v5-form-ic-combine-fill:before { content: "\e618"; }
+
+.see-icon-v5-form-ic-ann-fill:before { content: "\e619"; }
+
+.see-icon-v5-form-ic-col-fill:before { content: "\e61a"; }
+
+.see-icon-v5-form-ic-comment-fill:before { content: "\e61b"; }
+
+.see-icon-v5-form-ic-doc-fill:before { content: "\e61c"; }
+
+.see-icon-v5-form-ic-et-fill:before { content: "\e61d"; }
+
+.see-icon-v5-form-ic-form-fill:before { content: "\e61e"; }
+
+.see-icon-v5-form-ic-html-fill:before { content: "\e61f"; }
+
+.see-icon-v5-form-ic-mail-fill:before { content: "\e620"; }
+
+.see-icon-v5-form-ic-metting-fill:before { content: "\e621"; }
+
+.see-icon-v5-form-ic-mp3-fill:before { content: "\e622"; }
+
+.see-icon-v5-form-ic-mp4-fill:before { content: "\e623"; }
+
+.see-icon-v5-form-ic-news-fill:before { content: "\e624"; }
+
+.see-icon-v5-form-ic-offdoc-fill:before { content: "\e625"; }
+
+.see-icon-v5-form-ic-pdf-fill:before { content: "\e626"; }
+
+.see-icon-v5-form-ic-image-fill:before { content: "\e627"; }
+
+.see-icon-v5-form-ic-plan-fill:before { content: "\e628"; }
+
+.see-icon-v5-form-ic-ppt-fill:before { content: "\e629"; }
+
+.see-icon-v5-form-ic-schedule-fill:before { content: "\e62a"; }
+
+.see-icon-v5-form-ic-survey-fill:before { content: "\e62b"; }
+
+.see-icon-v5-form-ic-task-fill:before { content: "\e62c"; }
+
+.see-icon-v5-form-ic-txt-fill:before { content: "\e62d"; }
+
+.see-icon-v5-form-ic-unknown-fill:before { content: "\e62e"; }
+
+.see-icon-v5-form-ic-voice-fill:before { content: "\e62f"; }
+
+.see-icon-v5-form-ic-vsd-fill:before { content: "\e630"; }
+
+.see-icon-v5-form-ic-wps-fill:before { content: "\e631"; }
+
+.see-icon-v5-form-ic-xls-fill:before { content: "\e632"; }
+
+.see-icon-v5-form-ic-zip-fill:before { content: "\e633"; }
+
+.see-icon-v5-form-relation-to:before { content: "\e63b"; }
+
+.see-icon-v5-form-table-collect:before { content: "\e63c"; }
+
+.see-icon-v5-form-qrscan:before { content: "\e63d"; }
+
+.see-icon-v5-form-edit-circle:before { content: "\e63f"; }
+
+.see-icon-v5-form-relation-doc:before { content: "\e640"; }
+

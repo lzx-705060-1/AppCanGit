@@ -1,0 +1,25 @@
+{
+    "buildVersion":"1.0.0",
+    "iconFiles":{"default":"","multi":[]},
+    "appName":"项目跟投",
+    "splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+    "update":{"checkUpdateUrl":""},
+    "bundleIdentifier":"com.seeyon.v5.xmgt",
+    "serviceProvidear":"seeyon",
+    "team":"v5",
+    "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+    "packageType":"APP",
+    "version":"2.0.56",
+    "entry":{
+        "phone":"html/xmgtlist.html?useNativebanner=1",
+        "jsapi":"xmgt_m_api.s3js",
+        "openAppMethod":"xmgtApi.openApp"
+    },
+    "compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+    "appType":"default",
+    "appId":"3013",
+    "urlSchemes":"xmgt.v5.cmp",
+    "bundleName":"xmgt",
+    "supportedPlatforms":[ "iOS_6.0","android_4.0"],
+    "desc":""
+}

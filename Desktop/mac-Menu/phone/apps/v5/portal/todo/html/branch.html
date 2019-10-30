@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172727"/>
+    <!--导入cmp模块的样式文件，${data:dependencies.cmp}即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.control.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.icon.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-base.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-box.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-color.css?buildversion=181210172727">
+    <title>待办分支列表页面</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">
+    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn" style="display: none">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title">
+        选择节点执行人
+    </div>
+    <div class="cmp-header-right">
+    </div>
+	<style>
+	input::-webkit-input-placeholder{
+color:#686868;
+	</style>
+</header>
+<!-- 内容-->
+<div id="content">
+    <div id="mayList"></div>
+    <div class="ub umar-a ub-ac"></div>
+    <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uhide"  id="submit">
+        同意
+    </div>
+
+</div>
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172727"></script><!--导入cmp国际化组件-->
+<script>
+    
+</script> <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172727"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/jquery-1.7.2.min.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/branch.js?buildversion=181210172749"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/yajule.js?buildversion=181210172727"></script>
+</body>
+
+</html>

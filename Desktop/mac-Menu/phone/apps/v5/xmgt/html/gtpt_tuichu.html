@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1559547182958"/>
+    <!--导入cmp模块的样式文件，/seeyon/m3/cmp即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/appcan.control.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/appcan.icon.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-base.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-box.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-color.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/gtpt_tuichu.css?buildversion=1559547182958">
+    <title>我的退出收益</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<!--<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">-->
+<!--    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn">-->
+<!--        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>-->
+<!--        <span class="nav-text"><i18n key="xmgt.label.back"></i18n></span>-->
+<!--    </div>-->
+<!--    <div class="cmp-title">-->
+<!--        <i18n key="xmgt.label.home"></i18n>-->
+<!--    </div>-->
+<!--    <div class="cmp-header-right">-->
+<!--    </div>-->
+<!--</header>-->
+<!-- 内容-->
+<div id="content">
+    <div style="height: 1em;width: 90%"></div>
+    <div style="width: 90%;border: 1px solid #00AEE1;border-radius: 1.5em;height: 1.5em;margin: auto;margin-bottom: 0.5em;">
+        <img src="../img/gt-sousuo.png?buildversion=c04dd78" style="height: 1em;width: 1em;float: left;margin-top: 0.25em;margin-left: 0.5em;" />
+        <input id ="infoName" type="text" style="width: 74%;border: none;font-size: 1em;line-height: 1.5em;background: none;margin-left: 0.3em;" placeholder="输入项目名搜索:" />
+        <div style="width: 14%;display: inline-block;font-size: 0.8em;border-left: 1px solid;text-align: center;" onclick="select()">
+            搜索
+        </div>
+    </div>
+    <div style="height: 4em;margin-left: 2%;">
+        <div style="height: 1.8em;">
+            <div style="line-height: 1.5em; font-size: 0.9em;text-align: right;margin-top: 0.2em;color :#000000;float: left;width: 21%;margin-left: 0.5em;padding-right: 0.5em;">
+                投入金额
+            </div>
+            <div id="zongtouru" style="float: left;height: 1em;background-color: #F4941D;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+            <div id="zongtourunum" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #F4941D;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+        </div>
+
+        <div style="height: 1.8em;">
+            <div style="line-height: 1.5em; font-size: 0.9em;text-align: right;margin-top: 0.2em;color :#000000;float: left;width: 21%;margin-left: 0.5em;padding-right: 0.5em;">
+                <span>退出收益</span>
+            </div>
+            <div id="zongfenhong" style="float: left;height: 1em;background-color: #00AEE1;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+            <div id="fenhong" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #00AEE1;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+        </div>
+
+        <!-- <div style="height: 1.8em;">
+             <div style="line-height: 1.5em; color :#00AEE1;float: left;width: 26%;margin-left: 1em;">
+                 配资金额：
+             </div>
+             <div id="zongpeizijine" style="float: left;height: 1em;background-color: #00AEE1;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+             <div id="zongpeizijinenum" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #00AEE1;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+         </div>
+
+         <div style="height: 1.8em;">
+             <div style="line-height: 1.5em; color :#00AEE1;float: left;width: 26%;margin-left: 1em;">
+                 配资分红：
+             </div>
+             <div id="zongpeizifenhong" style="float: left;height: 1em;background-color: #00AEE1;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+             <div id="zongpeizifenhongnum" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #00AEE1;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+         </div>-->
+    </div>
+    <div id ="gt_yufenhong" calss="gt_fanben_content" style="overflow:auto; width: 96%;height:78%; margin-left:2%;margin-right:2%;">
+        <ul id="gt_yufenhonglistview" class="gt_listview"></ul>
+    </div>
+</div>
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/apps/v5/xmgt/i18n/xmgt_zh_CN.js?buildversion=1559547182958"></script><!--导入本应用的中文国际化资源-->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=1559547182958"></script><!--导入cmp国际化组件-->
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/xmgt/i18n/", "xmgt");
+    <!--初始化国际化资源-->
+    var xmgtBasePath = "/seeyon/m3/apps/v5/xmgt";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script>
+ <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=1559547182958"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/gtpt_tuichu.js?buildversion=1559547182958"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/jquery-1.7.2.min.js?buildversion=1559547182958"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/yajule.js?buildversion=1559547182958"></script>
+</body>
+
+</html>

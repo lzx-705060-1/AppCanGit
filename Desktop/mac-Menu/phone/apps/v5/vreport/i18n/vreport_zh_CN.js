@@ -1,0 +1,32 @@
+if(typeof fI18nData == "undefined"){
+    fI18nData = {}
+}
+fI18nData["vreport.page.label.loosentorefresh"] = "松开刷新";
+fI18nData["vreport.page.label.cancel"] = "取消";
+fI18nData["vreport.page.label.allReports"] = "所有报表";
+fI18nData["vreport.page.label.confirm"] = "确定";
+fI18nData["vreport.page.label.quit"] = "返回上一页！";
+fI18nData["vreport.page.label.creator"] = "创建人：";
+fI18nData["vreport.page.tips.servererror"] = "服务器出小差!";
+fI18nData["vreport.page.message.noContent"] = "您还没有关注报表，请先关注您需要的报表！";
+fI18nData["vreport.page.label.reportCenter"] = "报表中心";
+fI18nData["vreport.page.label.tips"] = "提示";
+fI18nData["vreport.page.label.queryPlaceholder"] = "输入报表名称查询";
+fI18nData["vreport.page.label.followList"] = "我关注的";
+fI18nData["vreport.page.tips.noauth"] = "你没有查看数据的权限！";
+fI18nData["vreport.page.message.unfollowReport"] = "取消关注后该报表将不在“我关注的”下显示";
+fI18nData["vreport.page.label.fileReport"] = "文件报表";
+fI18nData["vreport.page.demo"] = "本报表为示例，您可根据实际需要制作类似的数据报表，如人事报表、财务报表、研发报表,具体需求可与管理员联系。";
+fI18nData["vreport.page.label.pulltorefresh"] = "下拉刷新";
+fI18nData["vreport.page.message.reportNotExist"] = "报表不存在";
+fI18nData["vreport.page.label.refreshing"] = "正在刷新...";
+fI18nData["vreport.page.label.unfollow"] = "取消关注";
+fI18nData["vreport.page.demo.report"] = "示例报表";
+fI18nData["vreport.page.label.view"] = "查看";
+fI18nData["vreport.page.demo.iknow"] = "我知道了";
+fI18nData["vreport.page.label.size"] = "文件大小：";
+fI18nData["vreport.page.label.follow"] = "关注";
+fI18nData["vreport.page.message.noData"] = "暂无数据";
+fI18nData["vreport.page.label.back"] = "返回";
+fI18nData["vreport.page.label.uptomore"] = "上拉显示更多";
+fI18nData["vreport.head.demoTitle"] = "报表示例";

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>交换任务数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172644">
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/deeDataList_zh_CN.js?buildversion=181210172644" ></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+		        <script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+		
+        <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/deeDataList.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tableList.css?buildversion=181210172644">
+		<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-tableList.js?buildversion=181210172644"></script>
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172644">
+		<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172644"></script>
+
+	</head>
+
+	<body class="cmp-fullscreen">
+		<header class="cmp-bar cmp-bar-nav nav-bar nav-header">
+            <span class="icon see-icon-v5-common-arrow-back   cmp-pull-left" id="backBtn"></span>
+		    <h1 class="cmp-title" id="appTitle">交换任务</h1>
+			<span class="cmp-icon float_right cmp-icon-search search-btn" id="header_search_btn"></span>
+		</header>
+		<div class="cmp-content">
+            <div class="cmp-segmented_title_content">
+                <div id="search" class="position_relative" style="display:none;"></div>
+            </div>
+
+            <div class="cmp-control-content cmp-active">
+                <div id="linkContainer" class="container" >  <!--第一步 定义列表容器-->
+                </div>
+            </div>
+        </div>
+
+		<footer id="footer" class="cmp-bar cmp-bar-footer"  >
+			<div class="cmp-btn cmp-btn-primary" id="ok"><i18n key="deeDataList.page.lable.ok"></i18n></div>
+		</footer>
+	</body>
+
+
+	<script type="text/html" id="search_li_tpl">
+		<% for(var i = 0,len = this.search.length;i < len; i++){ %>
+		<% var obj = this.search[i]; %>
+		<li class="cmp-table-view-cell" id="<%=obj.name %>"><a href="#"><%=obj.value %></a>
+		</li>
+		<% } %>
+	</script>
+    <script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script>	<script type="text/javascript">
+		cmp.i18n.init(_unflowformpath+"/i18n/", "deeDataList");
+	</script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/deeDataList.js?buildversion=181210172644"></script>
+</html>
+

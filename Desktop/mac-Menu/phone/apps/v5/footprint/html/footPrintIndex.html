@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html style="overflow: hidden;height: 100%;">
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172520" />
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172520" />
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/footprint/css/footPrintIndex.css?buildversion=181210172520" />
+	</head>
+
+	<body>
+		<div class="body-hidden">
+			<div class="container" id="fullpage">
+				<section class="section item1 active" id="item1">
+					<div class="fp-content width100">
+						<div class="fp-user-content">
+							<div class="fp-user">
+								<div class="user-img">
+									<img class="img" src="" alt="" />
+								</div>
+								<span class="user-name"></span>
+							</div>
+						</div>
+
+						<div class="fp-content-center">
+							<div class="fp-center-logo"></div>
+							<div class="fp-content-select">
+								<div class="fp-content-button text-align-center">
+									<span id="selectDate" class="year"></span>
+									<span class="arrow"></span>
+								</div>
+							</div>
+							<div class="fp-content-text"><i18n key="footprint.label.new.footprint"></i18n></div>
+						</div>
+						<div class="fp-buttom-content">
+							<span class="font14"><i18n key="footprint.label.new.viewMyPerformance"></i18n></span>
+						</div>
+					</div>
+
+				</section>
+
+				<section class="section item2" id="item2">
+					<div class="fp-content-top">
+						<div class="fp-content-top-center">
+							<div class="fp-text">
+								<span class="font32"><i18n key="footprint.label.new.you"></i18n></span><i18n key="footprint.label.new.use"></i18n><span class="font22"><i18n key="footprint.label.new.collaboration"></i18n></span>
+								<br/><br/><span class="font32"><i18n key="footprint.label.new.days"></i18n></span><span class="font22"><i18n key="footprint.label.new.number"></i18n></span>
+							</div>
+							<div class="items-landscape">
+								<ul class="ul">
+									<li class="day-number li"><span class="number-text"></span></li>
+									<li class="day-number li"><span class="number-text"></span></li>
+									<li class="day-number li"><span class="number-text"></span></li>
+									<li class="day-number li"><span class="number-text"></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="fp-content-bottom">
+						<div class="pel-float">
+							<div class="pel-left"></div>
+							<div class="pel-right">
+								<div class="font22"><i18n key="footprint.label.new.collaboration"></i18n></div>
+								<div style="margin: 10px 0;"><i18n key="footprint.label.new.walkWith"></i18n></div>
+								<div>
+									<div class="insetNumber"></div>
+									<span><i18n key="footprint.label.new.years"></i18n></span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+				<section class="section item3" id="item3">
+					<div class="fp-content-top">
+						<div class="fp-content-top-center">
+							<div class="title"><div><i18n key="footprint.label.new.accountRank"></i18n></div><div><i18n key="footprint.label.new.accountRank2"></i18n></div></div>
+							<div class="ranking">
+								<span class="thisNumber"></span>
+								<span class="allNumber"><span>/</span><span class="allNumber-real"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="fp-item3-content-bottom">
+						<div class="fp-content-chart">
+							<canvas id="chart-radar"></canvas>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item4" id="item4">
+					<div class="fp-content-top">
+						<div class="fp-content-top-center">
+							<div class="text-align-center">
+								<div class="max-iphone"></div>
+								<div class="percent-content">
+									<div class="font64 percent"></div>
+									<div class="font18 percent-word"><i18n key="footprint.label.new.percentOfMobile"></i18n></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="fp-content-bottom">
+						<div class="display-flex fp-content-logins">
+							<div class="item display-flex1">
+								<div class="min-computer"></div>
+							</div>
+							<div class="item display-flex2">
+								<div id="pcCount" class="font26"></div><span class="text"><i18n key="footprint.label.new.loginTimesPc"></i18n></span></div>
+							<div class="item display-flex2">
+								<div id="pcTime" class="font26"></div><span class="text"><i18n key="footprint.label.new.workTimePc"></i18n></span></div>
+						</div>
+						<br/>
+						<div class="display-flex fp-content-logins">
+							<div class="item display-flex1">
+								<div class="min-iphone"></div>
+							</div>
+							<div class="item display-flex2">
+								<div id="mobileCount" class="font26"></div><span class="text"><i18n key="footprint.label.new.loginTimesMobile"></i18n></span></div>
+							<div class="item display-flex2">
+								<div id="mobileTime" class="font26"></div><span class="text"><i18n key="footprint.label.new.workTimeMobile"></i18n></span></div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item5" id="item5">
+					<div class="fp-content-top">
+						<div class="fp-content-top-center">
+							<div class="card-content">
+								<div class="card-title">
+									<span class="font32"><i18n key="footprint.label.new.earliest"></i18n></span>
+									<span class="font14"><i18n key="footprint.label.new.login"></i18n> <span id="earliestDay"></span></span>
+								</div>
+								<div id="earliestDayNumber" class="card-number">
+									<div class="cell cell1"></div>
+									<div class="cell cell2"></div>
+									<div class="cell cell3"></div>
+									<div class="cell cell4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="fp-content-bottom">
+						<div class="fp-content-top-center">
+							<div class="card-content">
+								<div class="card-title">
+									<span class="font32"><i18n key="footprint.label.new.latest"></i18n></span>
+									<span class="font14"><i18n key="footprint.label.new.logout"></i18n> <span id="latestDay"></span></span>
+								</div>
+								<div id="latestDayNumber" class="card-number">
+									<div class="cell cell1"></div>
+									<div class="cell cell2"></div>
+									<div class="cell cell3"></div>
+									<div class="cell cell4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item6" id="item6">
+					<div class="fp-content content">
+						<div class="text-align-right">
+							<div class="box-border-6"><i18n key="footprint.label.new.exameEffort"></i18n></div>
+						</div>
+						<div class="content-time">
+							<div class="rocket left"></div>
+							<div class="content right">
+								<div class="user-handle">
+									<span id="handleTime-days" class="font60"></span><span class="font32"><i18n key="footprint.label.new.day"></i18n></span>
+									<span id="handleTime-hours" class="font60"></span><span class="font32"><i18n key="footprint.label.new.hour"></i18n></span>
+								</div>
+								<div class="average"><i18n key="footprint.label.new.avgProcessTime"></i18n></div>
+							</div>
+						</div>
+						
+						<div class="account-rank">
+							<div class="company">
+								<span id="account-rank-self" class="font32"></span><span class="font22">/</span>
+								<span id="account-rank-all" class="font22"></span>
+							</div>
+							<div class="average"><i18n key="footprint.label.new.unitRanking"></i18n></div>
+						</div>
+
+						<div class="box-item">
+							<div class="item">
+								<span id="sendNum" class="font26"></span>
+								<div class="font14"><i18n key="footprint.label.new.sendProcess"></i18n></div>
+							</div>
+							<div class="middle-line"></div>
+							<div class="item">
+								<span id="handNum" class="font26"></span>
+								<div class="font14"><i18n key="footprint.label.new.dealProcess"></i18n></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item7" id="item7">
+					<div class="fp-content">
+						<div class="text-align-right">
+							<div class="box-border-7"><i18n key="footprint.label.new.socialCorper"></i18n></div>
+						</div>
+						<div class="fp-content-top">
+							<div class="text-align-center">
+								<div class="xin"></div>
+							</div>
+							<div class="display-flex praise">
+								<div class="display-flex1">
+									<div id="receivePraiseNum" class="font42 text-projection"></div>
+									<span class="font14"><i18n key="footprint.label.new.praised"></i18n></span>
+								</div>
+								<div class="display-flex1">
+									<div id="praiseNum" class="font42 text-projection"></div>
+									<span class="font14"><i18n key="footprint.label.new.likes"></i18n></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="display-flex fp-content-bottom">
+							<div class="display-flex1">
+								<span id="showPicNum" class="font32 text-projection"></span>
+								<div class="show-photo-1">
+									<span class="font14"><i18n key="footprint.label.new.showPictures"></i18n></span>
+								</div>
+							</div>
+							<div class="display-flex1">
+								<span id="bbsNum" class="font32 text-projection"></span>
+								<div class="show-photo">
+									<span class="font14"><i18n key="footprint.label.new.talkTimes"></i18n></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item8" id="item8">
+					<div class="fp-content">
+						<div class="text-align-right">
+							<div class="box-border-8"><i18n key="footprint.label.new.knowlageCulture"></i18n></div>
+						</div>
+						<div class="content">
+							<div class="display-flex box-content box-content1">
+								<div class="display-flex1 left">
+									<div class="read-doc-bg icon-img"></div>
+								</div>
+								<div class="display-flex2 right">
+									<span id="docReadNum" class="font58"></span>
+									<div class="font14 read-doc"><i18n key="footprint.label.new.readDocTimes"></i18n></div>
+								</div>
+							</div>
+
+							<div class="display-flex box-content box-content2">
+								<div class="display-flex1 left">
+									<div class="praise-doc-bg icon-img"></div>
+								</div>
+								<div class="display-flex2 right">
+									<span id="docShareNum" class="font58"></span>
+									<div class="font14 praise-doc"><i18n key="footprint.label.new.shareArticle"></i18n></div>
+								</div>
+							</div>
+
+							<div class="display-flex box-content box-content3">
+								<div class="display-flex1 left">
+									<div class="read-new-bg icon-img"></div>
+								</div>
+								<div class="display-flex2 right1">
+									<span id="readTotal" class="font58"></span>
+									<div class="font14 read-new"><i18n key="footprint.label.new.readNews"></i18n></div>
+									<div class="font14 read-new"><i18n key="footprint.label.new.readNewPercent"></i18n><span id="readPct"></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section item9" id="item9">
+					<div class="fp-content">
+						<div class="fp-content-top">
+							<div class="text-title">
+								<span class="font42"><i18n key="footprint.label.new.meet"></i18n></span><span class="font32"> <i18n key="footprint.label.new.betterSelf"></i18n></span>
+							</div>
+							<div class="line"></div>
+							<div class="text-box">
+								<div class="text1"><i18n key="footprint.label.new.timePassed"></i18n><br/><i18n key="footprint.label.new.lateAwareness"></i18n></div>
+								<div class="text2"><i18n key="footprint.label.new.footprint"></i18n><br/><i18n key="footprint.label.new.sumaryWork"></i18n><br/><i18n key="footprint.label.new.toMeetBetterSelf"></i18n></div>
+							</div>
+						</div>
+
+						<div class="fp-content-bottom">
+							<div class="button-content">
+								<div id="shareBtn" class="praise-button" style="display: none;"><i18n key="footprint.label.new.share"></i18n></div>
+								<div class="remind-text"><i18n key="footprint.label.new.dailyUpdate"></i18n></div>
+								<div class="remind-text"><i18n key="footprint.label.new.forMore"></i18n></div>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="/seeyon/m3/apps/v5/footprint/i18n/footprint_zh_CN.js?buildversion=181210172520"></script>  
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172520"></script>
+		<script>
+			var footprintPath = "/seeyon/m3/apps/v5/footprint";
+			var $buildversion = '?buildversion=181210172520';
+		    cmp.i18n.init("/seeyon/m3/apps/v5/footprint/i18n/","footprint",function(){
+		    	document.title = cmp.i18n("footprint.label.titleNew");
+		    });
+		</script>
+		
+		<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-share.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-fullPage.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172520"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172520"></script>
+		
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/footprint-jssdk.js?buildversion=181210172520"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172520"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172520?buildversion=181210172520" id="__jsdktag" ></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/commonUtil.js?buildversion=181210172520"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/ShareRecord.js?buildversion=181210172520" async="async" ></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/index.js?buildversion=181210172520"></script>
+
+		<script type="text/javascript">
+			//	如果是在微信端浏览器
+			function isWeiXin() {
+				var ua = window.navigator.userAgent.toLowerCase();
+				if(ua.match(/MicroMessenger/i) == 'micromessenger') {
+					return true;
+				} else {
+					return false;
+				}
+			};
+
+			//    if(isWeiXin()){
+			//        var header=document.querySelector('.header');
+			//        var contentAll=document.querySelectorAll('.content');
+			//        header.style.paddingTop='0';
+			//        for(var i=0;i<contentAll.length;i++){
+			//            contentAll[i].style.paddingTop='44px';
+			//        }
+			//
+			//    }
+
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' :
+					'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth)
+							return;
+						if(/(window)/i.test(navigator.userAgent)) {
+							docEl.style.fontSize = 10 * (clientWidth / 960) + 'px';
+						} else {
+							docEl.style.fontSize = 18 * (clientWidth / 640) + 'px';
+						}
+
+					};
+				if(!doc.addEventListener)
+					return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+
+	</body>
+
+</html>

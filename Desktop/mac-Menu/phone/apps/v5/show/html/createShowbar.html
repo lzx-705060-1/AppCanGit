@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172659"/>
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172659"/>
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172659">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/show/css/show.css?buildversion=181210172659"/>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="cmp-fullscreen" onselectstart="return true" oncopy="return true">
+<script>var _showPath = "/seeyon/m3/apps/v5/show";</script>
+<div class="cmp-content position_relative">
+	<div class="publish_content">
+		<div class="huge_show_content">
+			<div class="huge_show_title">
+				<div id="slider" class="cmp-slider">
+					<div class="marking  animate active cmp-slider-indicator" style="z-index: 999">
+						<span class="animate cmp-number">
+							<span for="text" id="slider_index">0</span>/<label for="text" id="slider_total">0</label>
+						</span>
+					</div>
+				
+				</div>
+			</div>
+			<input type="hidden" id="showbar_id" value="" /> 
+			<input type="hidden" id="cover_pictrue_id" value="-1" /> 
+			<input type="hidden" id="opera_type" value="new" />
+		</div>
+
+		<div class="pub_more create_showbar">
+			<ul class="cmp-table-view">
+				<li class="cmp-table-view-cell">
+					<span><i18n key="Show.page.label.name"></i18n><span class="color_red">*</span></span> 
+					<input type="text" class="createName" id="showbar_name" placeholder="" value="" />
+				</li>
+				<li class="cmp-table-view-cell public_range_li">
+					<a class="cmp-navigate-right" id="public_range"> 
+						<span><i18n key="Show.page.label.range"></i18n>
+							<span class="color_red">*</span>
+						</span> 
+						<span class="more_text" id="range_text"><i18n key="Show.page.label.all"></i18n></span> 
+						<input type="hidden" id="range_value" value="All" /> 
+						<input type="hidden" id="showbar_auth" value="" /> 
+						<input type="hidden" id="showbar_auth_str" value="" /> 
+						<input type="hidden" id="isA8Group" value="" />
+				</a></li>
+				<li class="cmp-table-view-cell" id="summary_li">
+					<a class="cmp-navigate-right" id="summary_btn"> 
+						<span><i18n key="Show.page.label.summary"></i18n></span> 
+						<input type="hidden" id="showbar_summary" value="" />
+					</a>
+				</li>
+
+			</ul>
+			<ul class="cmp-table-view">
+				<li class="cmp-table-view-cell cmp-before-line">
+					<a class="cmp-navigate-right" id="location_btn"> 
+						<span class="cmp-icon iconfont see-icon-v5-common-location-fill" id="location_icon"></span> 
+						<span id="location"><i18n key="Show.page.label.place"></i18n></span> 
+						<input type="hidden" id="showbar_location" value="" />
+					</a>
+				</li>
+				<li class="cmp-table-view-cell sponsor">
+					<span class="vertical_middle"><i18n key="Show.page.label.launchTime"></i18n></span>
+					<div class="timeInputCont">
+						<input type="text" readonly="readonly" id="startDate" placeholder="" data-options='{"type":"date"}' /> 
+						<span class="gan">-</span> 
+						<input type="text" readonly="readonly" id="endDate" placeholder="" data-options='{"type":"date"}' />
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div  class="csp-button-wapper"> 
+	<span id="create_btn" class="cmp-btn cmp-btn-primary2"></span> 
+</div> 
+<!-- 简介子页面 start -->
+<div id="summary_content" class="Animated-Container top-go animated" style="background: #fff;">
+	<div class="showbar-summary-content">
+		<textarea id="textarea" class="pub_text" placeholder=""></textarea>
+	</div>
+	<div  class="csp-button-wapper"> 
+		<span id="show-summary-send" class="cmp-btn cmp-btn-primary2"><i18n key="Show.page.button.confirm"></i18n></span> 
+	</div> 
+</div>
+<!-- 简介子页面 end -->
+
+<!-- 地理位置子页面start -->
+<div id="location_content" class="Animated-Container top-go animated">
+	<div class="cmp-content position_relative">
+		<div class="cmp-control-content cmp-active">
+			<div id="location_scroll" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<div class="cursor_content">
+						<ul class="cmp-table-view cmp-table-view-radio" id="not_pos_btn">
+							<li class="cmp-table-view-cell cmp-media"><a class="cmp-navigate-right">
+									<div class="cmp-media-body not_pos">
+										<span><i18n key="Show.page.label.noLocation"></i18n></span>
+									</div>
+							</a></li>
+						</ul>
+						<ul class="cmp-table-view cmp-table-view-radio" id="location_list"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="location_li_tpl">
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+		<% var obj = this[i]; %>
+			<li class="cmp-table-view-cell cmp-media <%if(obj.selected){%>cmp-selected <%}%>" id="<%=obj.name %>">
+				<a class="cmp-navigate-right">
+					<div class="cmp-media-body">
+						<span><%=obj.name %></span>
+						<p class="cmp-ellipsis"><%=obj.address %></p>
+					</div>
+				</a>
+			</li>
+		<% } %>
+	</script>
+</div>
+<!-- 地理位置子页面end -->
+
+<!-- 秀吧范围start -->
+<div id="showbar-scope" class="Animated-Container top-go animated">
+	<div class="cmp-content position_relative content_details">
+		<div class="cmp-control-content cmp-active">
+			<div class="ShowRange">
+				<ul class="cmp-table-view cmp-table-view-radio margin_top_10">
+					<li class="cmp-table-view-cell cmp-media" id="All">
+						<a class="cmp-navigate-right include">
+							<span><i18n key="Show.page.label.unitLabel"></i18n></span> <span class="take"><i18n key="Show.page.label.external"></i18n></span>
+
+						</a>
+					</li>
+					<li class="cmp-table-view-cell cmp-media" id="All_extend_externalStaff" >
+						<a class="cmp-navigate-right include">
+							<span><i18n key="Show.page.label.unitLabel"></i18n></span><span class="take"><i18n key="Show.page.label.noExternal"></i18n></span>
+						</a>
+					</li>
+					<li class="cmp-table-view-cell cmp-media" id="All_group" style="display:none;">
+						<a class="cmp-navigate-right include">
+							<span><i18n key="Show.page.label.group"></i18n></span>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="cmp-table-view cmp-table-view-radio">
+					<li class="selectPeople" id="select-member">
+						<a class="cmp-navigate-right"><i18n key="Show.page.label.selectUser"></i18n></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 秀吧范围end -->
+
+</body>
+	<script type="text/javascript">
+		//路径变量
+		var $buildversion  = '?buildversion=181210172659';
+		var cmpPath = '/seeyon/m3/cmp';
+		var showPath = '/seeyon/m3/apps/v5/show';
+		//封面高度提前计算，避免页面在重绘高度
+		var showCoverHeight = 0.27 * (document.body.offsetWidth);
+		document.querySelector('#slider').style.height = showCoverHeight + "px";
+		//页面高度初始化提前
+		var windowH = window.innerHeight;
+	    var headerH=document.querySelector('.cmp-bar-nav').offsetHeight;
+	    document.querySelector('#container1').style.height=windowH-headerH+"px";
+	</script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/i18n/show_zh_CN.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172659"></script>
+	<script type="text/javascript">
+		//国际化
+		cmp.i18n.init("/seeyon/m3/apps/v5/show/i18n/", "show",function(){
+			document.title = cmp.i18n("Show.page.label.themeOperation");
+			document.querySelector("#showbar_name").placeholder = cmp.i18n("Show.page.label.enterTile");
+			document.querySelector("#startDate").placeholder = cmp.i18n("Show.page.label.startTime");
+			document.querySelector("#endDate").placeholder = cmp.i18n("Show.page.label.endTime");
+			document.querySelector("#textarea").placeholder = cmp.i18n("Show.interactive.enterSummary");
+		});
+	</script>
+	
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172659" defer="defer"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-jssdk.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172659" id="__jsdktag" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-common-util-debug.js?buildversion=181210172659" ></script>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=dced395ba47d88fd4dcf8ed6d846cbc7"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/showbar-editor-debug.js?buildversion=181210172659"></script>
+</html>

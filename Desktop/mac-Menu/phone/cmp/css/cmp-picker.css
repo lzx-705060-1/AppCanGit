@@ -1,0 +1,129 @@
+.cmp-pciker-list li,.cmp-picker,.cmp-picker-inner{box-sizing:border-box;overflow:hidden}
+.cmp-picker{background-color:#fff;position:relative;height:200px;border:1px solid rgba(0,0,0,.1);-webkit-user-select:none;user-select:none}
+.cmp-dtpicker,.cmp-poppicker{left:0;background-color:#fff; /* box-shadow:0 -5px 7px 0 rgba(0,0,0,.1);*/-webkit-transition:.3s;width:100%}
+.cmp-picker-inner{position:relative;width:100%;height:100%;-webkit-mask-box-image:-webkit-linear-gradient(bottom,transparent,transparent 5%,#fff 20%,#fff 80%,transparent 95%,transparent);-webkit-mask-box-image:linear-gradient(top,transparent,transparent 5%,#fff 20%,#fff 80%,transparent 95%,transparent)}
+.cmp-pciker-list,.cmp-pciker-rule{box-sizing:border-box;padding:0;margin:-18px 0 0;width:100%;height:36px;line-height:36px;position:absolute;left:0;top:50%}
+.cmp-pciker-rule-bg{z-index:0}
+.cmp-pciker-rule-ft{z-index:2;border-top:solid 1px #cdcdcd;border-bottom:solid 1px #cdcdcd;}
+/*.cmp-pciker-list{z-index:1;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:perspective(750pt) rotateY(0) rotateX(0);transform:perspective(750pt) rotateY(0) rotateX(0)}*/
+.cmp-pciker-list li{width:100%;height:100%;
+  /*position:absolute;*/
+  text-align:center;vertical-align:middle;-webkit-backface-visibility:hidden;backface-visibility:hidden;font-size:1pc;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#888;white-space:nowrap;-webkit-text-overflow:ellipsis;text-overflow:ellipsis;cursor:default;visibility:hidden}
+.cmp-pciker-list li.highlight,.cmp-pciker-list li.visible{visibility:visible}
+.cmp-pciker-list li.highlight{color:#222}
+.cmp-poppicker{position:fixed;z-index:91;bottom:0;-webkit-transform:translateY(300px)}
+.cmp-poppicker.cmp-active{-webkit-transform:translateY(0)}
+.cmp-android-5-1 .cmp-poppicker{bottom:-300px;-webkit-transition-property:bottom;-webkit-transform:none}
+.cmp-android-5-1 .cmp-poppicker.cmp-active{bottom:0;-webkit-transition-property:bottom;-webkit-transform:none}
+.cmp-poppicker-header{padding:2px;font-size:14px;color:#888;position: relative;height: 42px;border-bottom: 1px #d9d9d9 solid;width: 100%;}
+.cmp-poppicker-header .cmp-btn{border: none;outline: none;background-color: #fff;color: #38adff;font-size: 16px;padding: 5px 10px;margin: 2px;position:absolute;}
+.cmp-poppicker-btn-cancel{position: absolute;left: 10px;}.cmp-poppicker-btn-ok{position: absolute;right: 10px;}
+.cmp-poppicker-clear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden}
+.cmp-poppicker-body{position:relative;width:100%;height:200px;}
+.cmp-poppicker-body .cmp-picker{width:100%;height:100%;margin:0;border:none;float:left}
+.cmp-dtpicker{position:fixed;z-index:91;border-top:solid 1px #fff;bottom:0;-webkit-transform:translateY(300px)}
+.cmp-dtpicker.cmp-active{-webkit-transform:translateY(0)}
+.cmp-dtpicker-active-for-page{overflow:hidden!important}
+
+.cmp-android-5-1 .cmp-dtpicker{bottom:-300px;-webkit-transition-property:bottom;-webkit-transform:none}
+.cmp-android-5-1 .cmp-dtpicker.cmp-active{bottom:0;-webkit-transition-property:bottom;-webkit-transform:none}
+.cmp-dtpicker-header{padding:6px;font-size:14px;color:#888;position: relative;height: 41px;border-bottom: 1px #d9d9d9 solid;}
+.cmp-dtpicker-header button{font-size:9pt;padding:5px 10px}
+.cmp-dtpicker-header button:last-child{float:right}
+.cmp-dtpicker-body{position:relative;width:100%;height:200px}
+.cmp-ios .cmp-dtpicker-body{-webkit-perspective:75pc;perspective:75pc;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
+.cmp-dtpicker-title h5{display:inline-block;width:20%;margin:0;padding:8px;text-align:center;border-top:solid 1px #ddd;background-color:#f0f0f0;border-bottom:solid 1px #ccc}
+
+[data-type=hour] [data-id=title-i],
+[data-type=hour] [data-id=picker-i],
+[data-type=hour] [data-id=picker-hTwo],
+[data-type=hour] [data-id=picker-iTwo],
+[data-type=month] [data-id=title-i],
+[data-type=month] [data-id=picker-d],
+[data-type=month] [data-id=title-d],
+[data-type=month] [data-id=picker-h],
+[data-type=month] [data-id=title-h],
+[data-type=month] [data-id=picker-i],
+[data-type=month] [data-id=picker-hTwo],
+[data-type=month] [data-id=picker-iTwo],
+[data-type=time] [data-id=picker-y],
+[data-type=time] [data-id=picker-m],
+[data-type=time] [data-id=picker-d],
+[data-type=time] [data-id=picker-hTwo],
+[data-type=time] [data-id=picker-iTwo],
+[data-type=time] [data-id=title-y],
+[data-type=time] [data-id=title-m],
+[data-type=time] [data-id=title-d],
+[data-type=date] [data-id=title-i],
+[data-type=date] [data-id=picker-h],
+[data-type=date] [data-id=title-h],
+[data-type=date] [data-id=picker-i],
+[data-type=date] [data-id=picker-hTwo],
+[data-type=date] [data-id=picker-iTwo],
+/*[data-type=datetime] [data-id=picker-hTwo],*/
+/*[data-type=datetime] [data-id=picker-iTwo],*/
+[data-type=timeInterval] [data-id=picker-y],
+[data-type=timeInterval] [data-id=picker-m],
+[data-type=timeInterval] [data-id=picker-d]
+{display:none}
+
+.cmp-dtpicker .cmp-picker{width:20%;height:100%;margin:0;float:left;border:none}
+[data-type=hour] [data-id=picker-h],
+[data-type=hour] [data-id=title-h],
+[data-type=datetime] [data-id=picker-h],
+[data-type=datetime] [data-id=title-h]{} /*border-left:dotted 1px #ccc  去掉了时间右边的边框线*/
+[data-type=datetime].cmp-picker,[data-type=time].cmp-dtpicker-title h5{width:20%}
+[data-type=date]
+.cmp-dtpicker-title h5,[data-type=date] .cmp-picker{width:33.3%}
+[data-type=hour].cmp-dtpicker-title h5,[data-type=hour] .cmp-picker{width:25%}
+[data-type=timeInterval] .cmp-picker{width:25%}
+[data-type=month].cmp-dtpicker-title h5,[data-type=month] .cmp-picker,[data-type=time]
+.cmp-dtpicker-title h5,[data-type=time] .cmp-picker{width:50%}
+
+[data-type=date] .cmp-dtpicker-body [data-id=picker-y] li{
+  text-align: right;padding-right: 10px;
+}
+[data-type=date] .cmp-dtpicker-body [data-id=picker-d] li{
+  text-align: left;padding-left: 10px;
+}
+
+/*//日期弹出组件特别设置*/
+.cmp-dtpicker-header{padding:0 9px;background-color: #fff;width: 100%;}
+.cmp-dtpicker-header button{border: none;outline: none;background-color: #fff;color: #38adff;font-size: 16px;
+  height: 40px;}
+.cmp-dtpicker-body .cmp-picker{background-color: #fff;}
+.cmp-dtpicker .cmp-pciker-list li{overflow: hidden;}
+.cmp-poppicker .cmp-pciker-list li{overflow: hidden;max-width: 90%;left: 20px;}
+.cmp-pciker-list li div{display: inline-block;overflow: hidden;width: 100%;white-space: nowrap;text-overflow: ellipsis;}
+.cmp-pciker-list li.highlight{color: #333;}
+/*//选择日期时间*/
+.cmp-dtpicker .cmp-picker{position: relative;}
+.cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-y]{left: 5px;margin-left:7%;}
+.cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-m]{width: 15%;}
+.cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-d]{width: 13%;}
+.cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-h]{width: 16%;margin-left: 22px;}
+.cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-i]{width: 13%;}
+/*//选择时间*/
+.cmp-dtpicker[data-type=time] .cmp-dtpicker-body .cmp-picker[data-id=picker-h]{padding-right: 20px;}
+/*//选择时间段*/
+.cmp-dtpicker[data-type=hour] .cmp-dtpicker-body .cmp-picker[data-id=picker-y]{margin-left:8%;}
+.cmp-dtpicker[data-type=hour] .cmp-dtpicker-body .cmp-picker[data-id=picker-m]{width: 17%;}
+.cmp-dtpicker[data-type=hour] .cmp-dtpicker-body .cmp-picker[data-id=picker-d]{width: 17%;}
+.cmp-dtpicker[data-type=hour] .cmp-dtpicker-body .cmp-picker[data-id=picker-h]{width:20%;margin-left: 20px;}
+/*//选择时间段区间*/
+.cmp-dtpicker[data-type=timeInterval] .cmp-dtpicker-body .cmp-picker[data-id=picker-h]{width: 20%;margin-left: 9%;}
+.cmp-dtpicker[data-type=timeInterval] .cmp-dtpicker-body .cmp-picker[data-id=picker-i]{width:15%;}
+.cmp-dtpicker[data-type=timeInterval] .cmp-dtpicker-body .cmp-picker[data-id=picker-hTwo]{width: 20%;margin-left: 30px;}
+.cmp-dtpicker[data-type=timeInterval] .cmp-dtpicker-body .cmp-picker[data-id=picker-iTwo]{width:15%;}
+
+/*//日期弹出组件新增的hr水平线*/
+.cmp-dtpicker .cmp-pciker-rule-ft{border-top: none;border-bottom: none;}
+.cmp-dtpicker-body .cmp-picker-hr{position: absolute;width: 100%;height: 1px;background-color:#cdcdcd;
+  display: inline-block;z-index: 1;}
+.cmp-dtpicker-body .cmp-picker-hr-top{top: 80px;}
+.cmp-dtpicker-body .cmp-picker-hr-bottom{top: 117px;}
+@media (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-min-device-pixel-ratio : 2){ /* 兼容iphone5 */
+  .cmp-dtpicker[data-type=datetime] .cmp-dtpicker-body .cmp-picker[data-id=picker-m]{width: 15%;}
+}
+.cmp-poppicker .cmp-poppicker-btn-cancel{left: 12px;}
+.cmp-poppicker .cmp-poppicker-btn-ok{right: 12px;}

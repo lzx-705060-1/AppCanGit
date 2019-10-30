@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+	    
+	    <!-- css -->
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172358"/>
+	    <link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172358"/>
+    	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172358"/>
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172358">
+	</head>
+	<body class="cmp-fullscreen overflow_hidden">
+		<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>
+		<div class="cmp-content position_relative">
+			<div class="checkin-map position_relative">
+				<div id="amapListContainer" style="height:100%"></div>
+			</div>
+			<div class="checkin-all">
+				<div id="slide-container" class="slider_block">
+					<div class="hr"></div>
+				</div>
+				<div class="foot-container">
+					<div class="user-container">
+						<div class="user-logo">
+							<img class="img cmp-img-cache" src="" alt="" />
+						</div>
+						<div class="user-info">
+							<div class="date"></div>
+							<div class="name cmp-ellipsis"></div>
+						</div>
+					</div>
+					<div class="foot-table-cell">
+						<div class="amap-list-scroll cmp-scroll-wrapper">
+							<div class="cmp-scroll">
+								<ul class="cmp-table-view"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- listView模版 -->
+		<script type="text/html" id="pending_li_tpl">
+	        <% for(var i = 0,len = this.data.length;i < len; i++){ %>
+	        <% var obj = this.data[i];var rowNum = this.rowNum - i; %>
+	        <% var signType = obj.type != 3 ? obj.type == 1 ? cmp.i18n("Attendance.label.attendance") : cmp.i18n("Attendance.label.offWork") : cmp.i18n("Attendance.label.businessTrip"); %>
+	        <% var modifyNumI18n = cmp.i18n("Attendance.label.modifyNum",obj.modifyNum); %>
+			<li class="attendance-map-mine" id="<%=obj.id%>">
+	            <div class="checkin-map-cell-container">
+	                <div class="address">
+	                    <div class="mark"><%=rowNum%></div>
+	                    <div class="info">
+	                        <span><%=attendanceCommon.getCurrentTime(obj.signTime)%></span>
+	                        <span style="font-size: 12px;color: #999999;"><%=signType%></span>
+	                    </div>
+						<% if(obj.modifyNum > 0){ %>
+							<span class="modify" signTime="<%=obj.signTime%>" type="<%=obj.type%>" ownerName="<%=obj.ownerName%>" memberId="<%=obj.ownerId%>" imgPath = "<%=obj.ownerImgPath%>"><%=modifyNumI18n%></span>
+						<% } %>
+	                    <div class="right-arrow">
+	                        <div class="text cmp-ellipsis">
+			                    <%if(obj.source == "1"){%>
+			                	<span class="checkinicon icon-checkin-computer"></span>
+			                	<%}else{%>
+			                	<span class="checkinicon icon-checkin-adress"></span>	
+			                	<%}%>
+	                            <span><%=obj.sign %></span>
+	                        </div>
+	                        <div class="navigate">
+	                        	<span class="navigate-arrow see-icon-v5-common-arrow-right"></span>
+	                        </div>
+	                    </div>
+	                    <p class="file-icon">
+	                    	<%if(obj.recordNum && parseInt(obj.recordNum) > 0){%>
+	                        	<span class="checkinicon icon-checkin-voice"></span>
+	                        <%}%>
+	                        <%if(obj.imgNum && parseInt(obj.imgNum) > 0){%>
+	                        	<span class="checkinicon icon-checkin-img"></span>
+	                        <%}%>
+	                        <%if(obj.remark){%>
+		                		<span class="checkinicon icon-checkin-text-file"></span>
+		                	<%}%>
+	                    </p>
+	                </div>
+	            </div>
+	        </li>
+	        <% } %>
+    	</script>
+		
+		<!-- js引入 -->
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172358"></script>
+		<script>
+		    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance");
+		</script>
+		
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceSlide.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172358" id="__jsdktag" ></script>
+		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=dced395ba47d88fd4dcf8ed6d846cbc7"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/amapComponent.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceMapOfMine.js?buildversion=181210172358"></script>
+	</body>
+</html>

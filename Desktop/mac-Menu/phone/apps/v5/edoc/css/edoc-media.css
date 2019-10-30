@@ -1,0 +1,14 @@
+
+
+/*横屏*/
+@media all and (orientation : landscape) {
+     #summary_titile_container{display: none;}
+     #edocSummary{display: none;}
+     /* #edocBody{display: none;} */
+} 
+/*竖屏*/
+@media all and (orientation : portrait){
+    #summary_titile_container{display: block;}
+    #edocSummary{display: block;}
+    /* #edocBody{display: block;} */
+} 

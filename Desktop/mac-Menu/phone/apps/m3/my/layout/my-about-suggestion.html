@@ -1,0 +1,122 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:29:31
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>意见反馈</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-att.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-sliders.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-about-suggestion.css" />
+</head>
+
+<body class="bg_gray">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav m3-iosx">
+        <div class="cmp-pull-left cmp-icon cmp-action-back" id="backBtn">
+            <span class="see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-pull-right cmp-icon" id="send">
+            <span class="left_word"><i18n key="my.m3.h5.send"></i18n></span>
+        </div>
+        <h1 class="cmp-title"><i18n key="my.m3.h5.suggestions"></i18n></h1>
+    </header>
+    <div class="cmp-content message">
+        <div class="cmp-control-content cmp-active">
+            <div class="question-title">
+                <i18n key="my.m3.h5.questionsAndComments"></i18n>
+            </div>
+            <div class="question-body">
+                <div class="detail">
+                    <textarea name="" cols="30" rows="10" placeholder="您的宝贵意见，是我们完善产品的重要保证" id="question" maxlength="255"></textarea>
+                </div>
+                <div class="pic-title">
+                    <i18n key="my.m3.h5.screenshot"></i18n>
+                </div>
+                <ul class="question-img">
+                    <li class="add"><span class="iconfont see-icon-m3-add-big"></span></li>
+                </ul>
+            </div>
+            <div class="question-phone">
+                <i18n key="my.m3.h5.contactInformation"></i18n>
+            </div>
+            <div class="phone">
+                <textarea rows="1" placeholder="您的手机号，我们会第一时间通知您" maxlength="20" id="phone"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="delete-pic display_none">
+        <header class="cmp-bar cmp-bar-nav">
+            <div class="cmp-pull-left cmp-icon" id="close">
+                <span class="iconfont see-icon-m3-arrow-left"></span>
+                <span class="left_word"><i18n key="my.m3.h5.return"></i18n></span>
+            </div>
+            <div class="cmp-pull-right cmp-icon" id="delete">
+                <span class="iconfont see-icon-m3-delete-fill"></span>
+            </div>
+            <h1 class="cmp-title"><span id="current"></span>/<span id="total"></span></h1>
+        </header>
+        <div id="slider" class="cmp-slider">
+            <div class="cmp-slider-group">
+            </div>
+            <div class="cmp-slider-indicator display_none">
+            </div>
+        </div>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/zepto-1.2.0.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-att.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-emoji.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-camera.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-headerFixed.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-att.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-sliders.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3Route.s3js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3Ajax.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3DB.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3i18n.js"></script>
+    <script src="http://my.m3.cmp/v1.0.0/js/my-about-suggestion.js"></script>
+</body>
+
+</html>

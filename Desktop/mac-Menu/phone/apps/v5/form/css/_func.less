@@ -1,0 +1,93 @@
+/**
+ * Created by yangchao on 2016/6/1.
+ */
+
+
+.display-flex() {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.display-inline-flex(){
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+.flex(@arguments){
+  -webkit-box-flex: @arguments;
+  -webkit-flex: @arguments;
+  flex: @arguments;
+}
+
+.appearance (@arguments) {
+  -webkit-appearance: @arguments;
+  -moz-appearance: @arguments;
+}
+
+.calc-width (@arguments) {
+  width: e('calc(@{arguments})');
+  width: e('-webkit-calc(@{arguments})');
+  width: e('-moz-calc(@{arguments})');
+}
+
+.calc-top(@arguments) {
+  top: e('calc(@{arguments})');
+  top: e('-webkit-calc(@{arguments})');
+  top: e('-moz-calc(@{arguments})');
+}
+
+.calc-left(@arguments) {
+  left: e('calc(@{arguments})');
+  left: e('-webkit-calc(@{arguments})');
+  left: e('-moz-calc(@{arguments})');
+}
+
+.calc-line-height (@arguments) {
+  line-height: e('calc(@{arguments})');
+  line-height: e('-webkit-calc(@{arguments})');
+  line-height: e('-moz-calc(@{arguments})');
+}
+
+.animate (...) {.animation(@arguments);}
+.animation-name(...) {
+  -webkit-animation-name: @arguments;
+  -moz-animation: @arguments;
+  -o-animation: @arguments;
+  animation-name: @arguments;
+}
+.animation-duration(...) {
+  -webkit-animation-duration: @arguments;
+  -moz-animation-duration: @arguments;
+  -o-animation-duration: @arguments;
+  animation-duration: @arguments;
+}
+.animation-timing-function(...) {
+  -webkit-animation-timing-function: @arguments;
+  -moz-animation-timing-function: @arguments;
+  -o-animation-timing-function: @arguments;
+  animation-timing-function: @arguments;
+}
+.animation-delay(...) {
+  -webkit-animation-delay: @arguments;
+  -moz-animation-delay: @arguments;
+  -o-animation-delay: @arguments;
+  animation-delay: @arguments;
+}
+.animation-iteration-count(...) {
+  -webkit-animation-iteration-count: @arguments;
+  -moz-animation-iteration-count: @arguments;
+  -o-animation-iteration-count: @arguments;
+  animation-iteration-count: @arguments;
+}
+.animation-direction(...) {
+  -webkit-animation-direction: @arguments;
+  -moz-animation-direction: @arguments;
+  -o-animation-direction: @arguments;
+  animation-direction: @arguments;
+}
+.animation-fill-mode(...) {
+  -webkit-animation-fill-mode: @arguments;
+  -moz-animation-fill-mode: @arguments;
+  -o-animation-fill-mode: @arguments;
+  animation-fill-mode: @arguments;
+}

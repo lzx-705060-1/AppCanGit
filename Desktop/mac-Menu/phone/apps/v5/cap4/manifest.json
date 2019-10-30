@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.0",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"cap4",
+	"splashscreen":["",""],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.cap4",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+    "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"htmls/test/main.html",
+		"jsapi":"cap4_m_api.s3js",
+		"openAppMethod":"cap4Api.openBizInfo"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"66",
+	"urlSchemes":"cap4.v5.cmp",
+	"bundleName":"cap4",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":"cap4"
+}

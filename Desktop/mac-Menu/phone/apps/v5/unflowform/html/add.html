@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无流程表单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/unflowform_zh_CN.js?buildversion=181210172644" ></script>
+    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+    <script src="/seeyon/m3/cmp/js/cmp-ajax-fast.js?buildversion=181210172644"></script>
+	    <script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/index.css?buildversion=181210172644">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/form/css/index.css?buildversion=181210172644"/>
+    <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-scrollBox.js?buildversion=181210172644"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-handWriteSignature.js?buildversion=181210172644"></script>
+
+
+    <style>
+        .cmp-fullscreen{background: #fff;}
+        .unflowform-btn{width:32%;}
+    </style>
+</head>
+
+<body class="cmp-fullscreen">
+
+<header class="cmp-bar cmp-bar-nav cmp-flex-header ">
+    <span id="backBtn" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text"><i18n key="unflowform.back"></i18n></span>
+	</span>
+
+    <div class="cmp-title" id="appTitle"></div>
+
+    <div class="cmp-header-right nav-icon-one">
+        <span id="showPc_Btn" class="cmp-icon see-icon-v5-common-switch-light-form"></span>
+    </div>
+
+    <!--<span class="icon float_right  see-icon-v5-common-switch-light-form" id="showPc_Btn"></span>-->
+</header>
+
+<div class="cmp-content position_relative background_white">
+    <div id="title-more" class="title-more">
+        <div class="title-info-bg"></div>
+        <div class="title-info">
+            <div id="title-info-txt" class="title-info-txt"></div>
+            <div class="nav nav-border"></div>
+            <div class="nav nav-background"></div>
+        </div>
+    </div>
+    <div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted mytab" style="display:none;">
+        <div id="tabs"></div>
+    </div>
+
+    <div id="scroll" style="overflow-y: scroll;">
+      <div  id="contentDiv"> </div>
+    </div>
+
+    <iframe id="contentFrame" style="width: 100%;height: 100%;overflow: hidden;border: none;display:none;" ></iframe>
+
+</div>
+<!--列表容器-->
+
+<div id="formStyle_button_hint" class="formStyle_button_hint col display_none">
+    <i class="circle"></i><i class="line"></i>
+    <div class="content">
+        <div class="text">
+            <span><i18n key="unflowform.hint"></i18n><!-- 点击可返回轻表单样式 --></span>
+        </div>
+        <div class="btn" id="btn1"><i18n key="unflowform.hint_btn"></i18n><!-- 知道了 --></div>
+        <div class="btn" id="btn2"><i18n key="unflowform.hint_btn"></i18n><!-- 知道了 --></div>
+    </div>
+</div>
+
+<footer id="footer" class="cmp-bar cmp-bar-footer" style="display:none;">
+    <div class="cmp-btn cmp-btn-primary unflowform-btn" id="save_new" style="display:none;"><i18n key="unflowform.save_new"></i18n></div>
+    <div class="cmp-btn cmp-btn-primary unflowform-btn" id="save_copy" style="display:none;"><i18n key="unflowform.save_copy"></i18n></div>
+    <div class="cmp-btn cmp-btn-primary unflowform-btn" id="save"><i18n key="unflowform.save"></i18n></div>
+</footer>
+
+</body>
+<script type="text/html" id="views_tab_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i]; %>
+    <% if(i==0) {%>
+        <a class="cmp-control-item cmp-active" id="tab_<%=i %>" href="#tablelist<%=i %>">
+    <%}else {%>
+        <a class="cmp-control-item" id="tab_<%=i %>"  href="#tablelist<%=i %>">
+    <%}%>
+    <%=obj.extraMap.viewTitle %>
+    </a>
+    <% } %>
+</script>
+
+<script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script><script type="text/javascript">
+    var buildversion="?buildversion=181210172644";
+    cmp.i18n.init(_unflowformpath+"/i18n/", "unflowform");
+</script>
+
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/add.js?buildversion=181210172644"></script>
+
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/dataService.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/sui.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/form/s3utils.js?buildversion=181210172644"></script>
+<script type="text/javascript">
+    bindBackBtnEvent();
+    params=cmp.href.getParam();
+
+    if(params==undefined){
+        params=cmp.href.getBackParam("back_page_params");
+    }
+    if(params==undefined) {
+        params= GetRequest();
+    }
+    if(params.openFrom=="search"){ //来自全文检索
+        //$s.CapForm.findSourceInfo4Index({}, {sourceId:params.moduleId}, {
+        sendFastAjax("post","/seeyon/rest/capForm/findSourceInfo4Index?&option.n_a_s=1",{sourceId:params.moduleId},{
+            repeat:true,   //当网络掉线时是否自动重新连接
+            success: function (ret) {
+                params.formId=ret.formId;
+                params.contentAllId=params.moduleId;
+                params.rightId=ret.rightId;
+                params.moduleType=ret.moduleType;
+                initParam();
+            },
+            error:function(e){
+                var cmpHandled = cmp.errorHandler(e);
+                if(cmpHandled) {
+                    cmp.href.back();
+                }else {
+                    cmp.notification.alert(e.message, function () {
+                        cmp.href.back();
+                    }, " ", cmp.i18n('unflowform.ok'));
+                }
+            }
+        });
+    }else{
+        initParam();
+    }
+
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+</script>
+  <!--关联项目，关联表单接口的JS引用-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/unflowform_m_api.s3js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172644" ></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172644"></script>
+</html>

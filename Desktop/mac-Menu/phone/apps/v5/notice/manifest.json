@@ -1,0 +1,25 @@
+{
+    "buildVersion":"1.2.23",
+    "iconFiles":{"default":"","multi":[]},
+    "appName":"通知公告",
+    "splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+    "update":{"checkUpdateUrl":""},
+    "bundleIdentifier":"com.seeyon.v5.notice",
+    "serviceProvidear":"seeyon",
+    "team":"v5",
+    "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+    "packageType":"APP",
+    "version":"1.2.23",
+    "entry":{
+        "phone":"html/mtbd.html?useNativebanner=1",
+        "jsapi":"notice_m_api.s3js",
+        "openAppMethod":"noticeApi.openApp"
+    },
+    "compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+    "appType":"default",
+    "appId":"3020",
+    "urlSchemes":"notice.v5.cmp",
+    "bundleName":"notice",
+    "supportedPlatforms":[ "iOS_6.0","android_4.0"],
+    "desc":""
+}

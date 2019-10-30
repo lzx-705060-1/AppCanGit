@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel=stylesheet type='text/css' href="/seeyon/m3/apps/v5/unflowform/FlowForm/dev/new_style/m1-newCalendar.css?buildversion=181210172644"/>
+    <script type="text/javascript">_locale = "en";</script>
+    <script type="text/javascript">
+        var cmp=top.cmp;
+        var clientType = "iphone";
+        var version = "6.0.0";
+        var m_documentType = "1";
+        var serverPath="";
+        var form={};
+        var myscroll;
+        var formData;
+    </script>
+
+    <script type="text/javascript">canSignatuer = true;</script>
+    <script type='text/javascript'>var style = '1';</script>
+    <link rel=stylesheet type="text/css" href="m1-common.css?buildversion=181210172644"/>
+
+</head>
+<body style="overflow:hidden;margin: 0;">
+<div id="content1" style="margin-left: 2px;margin-top:2px;overflow:hidden;">
+    <script></script>
+    <input type="hidden" id="_currentDiv" value="0"><script type="text/javascript">var flowForm=true; var pendingFlag = "true"; var m_contentType = "1";var m1FileDownloadURL = "http://10.5.6.208/seeyon/servlet/SeeyonMobileBrokerServlet;jsessionid=8CD1DC08B078A0DE223A1005B10F5E0C?serviceProcess=A6A8_File&method=download&";</script>
+
+    <!--******************************正文开始-->
+    <div id="wrapper"  style="overflow:hidden;background: #FFFFFF;">
+        <div id="mainbodyHtmlDiv_0" style="display: inline-block;" >
+
+        </div>
+        <div id="mainbodyDataDiv_0" style="display: none">
+            <input type="hidden" id="id" name="id" value='-1' />
+            <input type="hidden" id="createId" name="createId" value='0' />
+            <input type="hidden" id="createDate" name="createDate" value='2016-08-22 11:15:43.0' />
+            <input type="hidden" id="modifyId" name="modifyId" value='2908150921582364753' />
+            <input type="hidden" id="modifyDate" name="modifyDate" value='2016-08-22 11:16:24.0' />
+            <input type="hidden" id="moduleType" name="moduleType" value='1' />
+            <input type="hidden" id="moduleId" name="moduleId" value='-1' />
+            <input type="hidden" id="contentType" name="contentType" value='20' />
+            <input type="hidden" id="moduleTemplateId" name="moduleTemplateId" value='8987737907576720868' />
+            <input type="hidden" id="contentTemplateId" name="contentTemplateId" value='5484460532989971898' />
+            <input type="hidden" id="sort" name="sort" value='1' />
+            <input type="hidden" id="title" name="title" value='位置定位' />
+            <input type="hidden" id="content" name="content" value='' />
+            <input type="hidden" id="rightId" name="rightId" value='-4819574030653437249' />
+            <input type="hidden" id="editable" name="editable" value='true' />
+            <input type="hidden" id="status" name="status" value='STATUS_RESPONSE_VIEW' />
+            <input type="hidden" id="viewState" name="viewState" value='1' />
+            <input type="hidden" id="contentDataId" name="contentDataId" value='4925056606222864366' />
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    proxyServerAddr = "";
+    var summaryID = "";
+    function setContentSize(){
+        var parentWindow = parent.window;
+        var frm1W = parentWindow.document.getElementById("frm1").style.width;
+        var frm1H = parentWindow.document.getElementById("frm1").style.height;
+        frm1H = parseInt(frm1H.replace("px",""));
+        document.getElementById("wrapper").style.height=(frm1H-10)+"px";//适配小强意见区的margin-top 10px
+        document.getElementById("wrapper").style.width=frm1W;
+    }
+    function contentScroll(){
+        setContentSize();
+        if(parent.params.viewState !="2"){
+            createScroll();
+            console.log("pcformend-"+new Date().getTime());
+            top.cmp.dialog.loading(false);
+            setTimeout(function(){
+                disableEditInput();
+                setTimeout(function(){
+                    disableEditInput();
+                },5000);
+            },1000);
+        }else {
+            createScroll();
+            console.log("pcformend-"+new Date().getTime());
+            top.cmp.dialog.loading(false);
+//                setTimeout(function() {
+//                    createScroll();
+//                },3000);
+        }
+
+        lbsHighlight ();
+    }
+    function createScroll(){
+        var percent=document.getElementById("wrapper").offsetWidth/document.getElementById("mainbodyHtmlDiv_0").offsetWidth;
+        var scrollEndActionTime = 0,scrollYMax = false;
+        myscroll=new IScroll("#wrapper",{zoom:true,scrollX: true,
+            scrollY: true,
+            mouseWheel: true,
+            zoomStart:1,
+            zoomMin:percent,
+            preventDefaultException:{tagName: /^(INPUT|SPAN|IMG|A|TEXTAREA|SELECT)$/ },
+            zoomMax:1,
+            mouseWheel: true,
+            wheelAction: 'zoom',
+            onScrollEnd: function () {
+                // top.cmp.notification.toast("已经到底了","center");
+            }
+        });
+        myscroll.on('scrollEnd', function(){
+            if(parent.params.onScrollEnd){
+                if(scrollYMax) {
+                    if(scrollEndActionTime > 0) {
+                        console.log('bottom');
+                        eval("top."+parent.params.onScrollEnd+"()");
+                        scrollEndActionTime = 0;
+                    }else {
+                        scrollEndActionTime ++;
+                    }
+                }
+            }
+        });
+
+        myscroll.on("scroll", function(e){
+            if(parent.params.onScrollTop){
+                eval("top."+parent.params.onScrollTop+"(-myscroll.y, myscroll.directionY)");
+            }
+            if(myscroll.y <= (myscroll.maxScrollY-10)) {
+                scrollYMax = true;
+            }else {
+                scrollYMax = false;
+            }
+        });
+        myscroll.zoom(percent);
+        if(parent.params.dataLoadedCallback){
+            top.cmp.dialog.loading(false);
+            console.log("callback-"+new Date().getTime());
+            eval("top."+parent.params.dataLoadedCallback+"(parent.showPcform)") ;
+        }else{
+            top.cmp.dialog.loading(false);
+            console.log("callback-"+new Date().getTime());
+        }
+        var tsY,tsT,wrapperMove = false;
+        document.getElementById("wrapper").addEventListener("touchstart",function(e){
+            if(myscroll.scale < 1 && e.targetTouches.length == 1) {
+                tsY = e.touches[0].pageY;
+                tsT = e.timeStamp;
+                wrapperMove = true;
+            }else {
+                wrapperMove = false;
+            }
+        });
+        document.getElementById("wrapper").addEventListener("touchend",function(e){
+            var teY = e.changedTouches[0].pageY;
+            var teT = e.timeStamp;
+            if(wrapperMove == true) {
+                if((teY - tsY) > 10 && (teT - tsT) >300 && myscroll.y == 0){
+                    if(parent.params.onScrollTop){
+                        eval("top."+parent.params.onScrollTop+"(-5, -1)");
+                    }
+                }
+            }
+        });
+
+    }
+    function disableEditInput(){
+        $("img[src^=ic_form]").each(function(){
+            if($(this).attr("src")!="ic_form_erweima.png"
+                    &&  $(this).attr("src")!="ic_form_delete.png"
+                    && $(this).attr("src") != "ic_form_copy.png"
+                    && $(this).attr("src") != "ic_form_new.png"
+                    && $(this).attr("src") != "ic_form_ass_form.png"
+                    && $(this).attr("src") != "ic_form_delete_row.png"){
+                $(this).remove();
+            }
+        });
+        //屏蔽计算控件及重复表参与计算不允许添加删除行
+        var formson=parent.formData.results.metadata.children;
+        $("input[incondition='true'],input[incalculate='true'],select[incondition='true'],select[incalculate='true'],textarea[incondition='true'],textarea[incalculate='true'],span[incondition='true'],span[incalculate='true']").each(function(){
+            var input=$(this);
+            var validate=input.attr("validate");
+
+            if(input.css("display")=='none' ){
+                input=$("#"+input.attr("id")+"_txt");
+            }
+
+            if(validate){
+                if(validate.indexOf("notNull:true")==-1 && input[0].tagName!="SPAN"){ //非必填的置灰
+                    input.css("background", "#e8e8e0");
+                }
+            }
+
+            input.attr("readonly","readonly");
+
+            if(input.attr("type")=="checkbox" || input.attr("type")=="radio"){
+                //input.unbind("click").bind("click",function(){return false;});
+                input.disable();
+            }else if(input[0].tagName=="SELECT"){
+                input.disable();
+            }
+
+
+            for(key in formson) {
+                if (key.indexOf("formson_")!=-1) {
+                    if(formson[key]["fieldInfo"][input.attr("id").replace("_txt","")]){ //重复表中找到此字段，禁用重复表添加删除
+                        input.closest("table").attr("allowAddDelete",false);
+                    }
+                }
+            }
+        });
+
+    }
+    function lbsHighlight () {
+        $("span[fieldval*='maplocate'],span[fieldval*='mapmarked']").addClass('lbs-highlight');
+    }
+</script>
+
+<!--******************************正文结束-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/FlowForm/jquery-debug.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/FlowForm/Moo-debug.js?buildversion=181210172644"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/FlowForm/jsonGateway-debug.js?buildversion=181210172644"></script>
+<script type="text/javascript">var ajaxUrl = "http://10.5.6.208/seeyon/servlet/SeeyonMobileBrokerServlet;jsessionid=8CD1DC08B078A0DE223A1005B10F5E0C?serviceProcess=A6A8_Common&ctpJSONPCallback=?&method=ajaxAction&managerName=";var mFormAjaxManager=RJS.extend({
+    jsonGateway:ajaxUrl+"mFormAjaxManager",addOrDelDataSubBean:function(){return this.c(arguments,"addOrDelDataSubBean");},calculate:function(){return this.c(arguments,"calculate");},checkTemplateCanUse:function(){return this.c(arguments,"checkTemplateCanUse");},dealFormRelation:function(){return this.c(arguments,"dealFormRelation");},dealLbsFieldRelation:function(){return this.c(arguments,"dealLbsFieldRelation");},dealMemberFieldRelation:function(){return this.c(arguments,"dealMemberFieldRelation");},dealMultiEnumRelation:function(){return this.c(arguments,"dealMultiEnumRelation");},dealProjectFieldRelation:function(){return this.c(arguments,"dealProjectFieldRelation");},decodeBarCode:function(){return this.c(arguments,"decodeBarCode");},deleteBarCode:function(){return this.c(arguments,"deleteBarCode");},generageSubData:function(){return this.c(arguments,"generageSubData");},getBarCodeAttachment:function(){return this.c(arguments,"getBarCodeAttachment");},getBarcodeParams:function(){return this.c(arguments,"getBarcodeParams");},getFormatDateValStr:function(){return this.c(arguments,"getFormatDateValStr");},getMArchiveByIDForForm:function(){return this.c(arguments,"getMArchiveByIDForForm");},getMemberIsignaturKey:function(){return this.c(arguments,"getMemberIsignaturKey");},getSignatureList:function(){return this.c(arguments,"getSignatureList");},getSignatureListForForm:function(){return this.c(arguments,"getSignatureListForForm");},preSubmitFormData:function(){return this.c(arguments,"preSubmitFormData");},removeSessionMasterData:function(){return this.c(arguments,"removeSessionMasterData");},showFormRelationRecord:function(){return this.c(arguments,"showFormRelationRecord");},showInscribeSignetPic:function(){return this.c(arguments,"showInscribeSignetPic");},showMore:function(){return this.c(arguments,"showMore");}});
+;</script>
+
+</body>
+</html>

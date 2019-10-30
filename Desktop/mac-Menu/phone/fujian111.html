@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+   
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">
+    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn" style="display: none">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title">
+        附件
+    </div>
+    <div class="cmp-header-right" style="display: none">
+    </div>
+</header>
+<!-- 内容-->
+<div id="content">
+    <div class="ub ub-ver" id="listview"></div>
+
+</div>
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172727"></script><!--导入cmp国际化组件-->
+<script>
+    //var olddaibanBasePath = "http://todo.m3.cmp/v";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script> <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172727"></script>
+<!--导入cmp平台的基础js-->
+
+</body>
+<script>
+cmp.ready(function(){
+	if(!cmp.platform.CMPShell) cmp.platform.wechatOrDD = true;
+/*cmp.att.read({
+        //path:"http://10.1.9.144/phone/css/icons/icon-add.png",//文件的服务器地址
+		//path:"http://10.1.9.144/phone/123.txt",
+		path:"http://10.1.9.144/phone/css/icons/icon-add.png",
+        filename:"123.txt",//附件名称
+        edit:false,  //是否可以进行修改编辑
+        extData:{
+            
+        },
+        success:function(result){
+            //返回的数据格式如下：
+            result = "/storage/emulated/0/m3/files/图片.jpeg";
+
+        },
+        error:function(error){
+            //do something
+        }
+    });*/
+
+	cmp.att.download({
+         url:"http://10.1.9.144/phone/css/icons/icon-add.png",
+         title:"111.png",
+         extData:{
+             
+         },
+         isSaveToLocal:true,
+         progress:function(result){
+             //do something with progress result
+         },
+         success:function(result){
+             //返回的数据格式如下：
+             console.log(result)
+               
+         },
+         error:function(error){
+             //do something with error obj
+         }
+    });
+})
+    
+
+
+</script>
+
+</html>

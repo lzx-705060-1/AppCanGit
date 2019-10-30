@@ -1,0 +1,44 @@
+var ygzzApi = (function(){  //api定义的名字和manifest中的openAppMethod字段相对应
+
+    
+    var ygzzApi = function(){
+         
+        this.basePath = "/seeyon/m3/apps/v5/ygzz";//编辑本模块的路径
+    }
+
+    
+	/**
+	 * [打开除了入口页面的其他页面]
+	 * @param  {string} type              [message代表消息模块,todo代表待办模块]
+	 * @param  {obj}    option           [待办/消息穿透所需要的json格式实体对象]<!--此处的数据格式是一个模拟的格式，真实的消息数据数据格式是根据真实情况来的-->
+	 * 			id: //数据id
+	 * 			xxId: //xxId
+	 *          dataType://数据类型
+	 */
+	ygzzApi.prototype.openApp = function(type,backUrl,option,obj) {
+	    
+	    if(!option) {
+            return false;
+        }
+	    var params = {};
+	    var penetrateUrl = "";//数据穿透页面地址
+		if(type=="message") {   //如果数据来自消息
+        	params.from = "message";
+        }
+
+        if("todo" == type){  //如果数据来自待办
+        	params.from = "todo";
+        }
+        var params.dataId = option.id;
+        var params.xxId = option.xxId;
+        if(option.dataType == "chooseCustomer"){//如果数据类型是打开选择客户页面
+             penetrateUrl = this.basePath + "/html/chooseCustomer.html";
+        }else if(option.dataType == "register"){//如果数据是打开外勤签到记录页面
+             penetrateUrl = this.basePath + "/html/register.html";
+        }
+        cmp.href.next(penetrateUrl,params);
+	}
+    
+    return new ygzzApi();
+})();
+

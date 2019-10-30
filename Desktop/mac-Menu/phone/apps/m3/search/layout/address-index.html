@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="http://commons.m3.cmp/v/js/flexible.js"></script>
+    <title>通讯录首页</title>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <!-- <link rel="stylesheet" href="http://cmp/v/css/cmp-search.css"> -->
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/m3-template.css">
+    <link rel="stylesheet" href="http://search.m3.cmp/v/css/my-person.css" />
+    <link rel="stylesheet" href="http://search.m3.cmp/v/css/organization.css" />
+	<link rel="stylesheet" href="http://search.m3.cmp/v/css/address-index.css" />
+</head>
+
+<body class="bg_gray flex-v">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase(),
+                curUrl = window.location.href,
+                isNeedShowHeader = curUrl.match(/ParamHrefMark|isfromnative/)
+            window.isNeedShowHeader = isNeedShowHeader;
+            var isFromApp = curUrl.match(/xiaozhiSpeechInput/);
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x';
+            } else if (ua.match(/IPHONE|IPAD|IPOD/)) {
+                document.body.className += ' cmp-ios';
+            }
+            if (isNeedShowHeader) {
+                document.body.className += ' from-page';
+            } else {
+                document.body.className += ' from-app';
+            }
+            if(isFromApp){
+                document.body.className += " fromApp";
+            }
+        })();
+    </script>
+    <header class="cmp-bar m3-cmp-bar before-none cmp-bar-nav cmp-flex-header m3-iosx cmp-header-backHandle">
+        <div class="cmp-action-back cmp-header-left">
+            <span class="cmp-icon see-icon-v5-common-arrow-back header-back icon-left"></span>
+            <span class="nav-text header-back"><i18n key="search.m3.h5.return"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <span class="header-back"><i18n key="search.m3.h5.searchPeople"></i18n></span>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    
+    <div class="cmp-content position_relative" style="top:0;">
+        <!-- 搜索 -->
+        <div class="cmp-segmented_title_content scroll_up_zone">
+            <div class="cmp-bar m3-cmp-bar cmp-bar-nav m3-search">
+                <span class="search-btn">
+                    <i class="cmp-icon cmp-icon-search"></i>
+                    <i class="placeholder"><i18n key="search.m3.h5.inputPrompt"></i18n></i>
+                </span>
+            </div>
+            <!-- <form action="#" onsubmit="return false;">
+                <div class="cmp-content-title-search cmp-content-search-add">
+                    <div class="cmp-input-row see-icon-search cmp-search">
+                        <input type="search" placeholder="" class="cmp-input-clear ">
+                        <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+                        <span class="cmp-placeholder" id="search">
+                            <span class="cmp-icon cmp-icon-search"></span>
+                            <span class="text-search">请输入姓名/手机号</span>
+                        </span>
+                    </div>
+                    <div class="search-title-cancel cmp-icon cmp-icon-plus"></div>
+                </div>
+            </form> -->
+        </div>
+        <!-- 快捷入口 -->
+        <div class="cmp-segmented-control cmp-segmented-control-inverted scroll_up_zone">
+            <div class="flex quick-content">
+                <div class="flex1" id="myDepartment">
+                    <img class="quick-icon" src="http://search.m3.cmp/v/img/my-department.png" alt="">
+                    <!-- <span class="quick-icon iconfont see-icon-department"></span> -->
+                    <span class="txt cmp-ellipsis"><i18n key="search.m3.h5.myDepart"></i18n></span>
+                </div>
+                <div class="flex1" id="aspersonel">
+                        <img class="quick-icon" src="http://search.m3.cmp/v/img/my-aspersonel.png" alt="">
+                    <!-- <span class="quick-icon iconfont see-icon-follow-person"></span> -->
+                    <span class="txt cmp-ellipsis"><i18n key="search.m3.h5.AssociatedPersonnel"></i18n></span>
+                </div>
+                <div class="flex1" id="group">
+                        <img class="quick-icon" src="http://search.m3.cmp/v/img/my-group.png" alt="">
+                    <!-- <span class="quick-icon iconfont see-icon-m3-mygroup-fill"></span> -->
+                    <span class="txt cmp-ellipsis"><i18n key="search.m3.h5.groupChart"></i18n></span>
+                </div>
+                <div class="flex1" id="projectTeam">
+                        <img class="quick-icon" src="http://search.m3.cmp/v/img/my-projectTeam.png" alt="">
+                    <!-- <span class="quick-icon iconfont see-icon-m3-projectteam"></span> -->
+                    <span class="txt cmp-ellipsis"><i18n key="search.m3.h5.projectTeam"></i18n></span>
+                </div>
+            </div>
+        </div>
+        <!-- 组织架构 -->
+        <div class="cmp-control-content cmp-active">
+            <div id="indexListView" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <div class="search-person flex-v flex-1">
+                        <!-- 公司列表 -->
+                        <ul class="cmp-table-view search-company"></ul>
+                        <!--列表-->
+                        <ul class="cmp-table-view search-depart flex-1"></ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="http://search.m3.cmp/v/i18n/search_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://search.m3.cmp/v/i18n/", "search");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v/js/cmp.js"></script>
+    <script src="http://cmp/v/js/cmp-listView.js"></script>
+    <script src="http://cmp/v/js/cmp-app.js"></script>
+    <script src="http://cmp/v/js/cmp-chat.js"></script>
+    <script src="http://cmp/v/js/cmp-server.js"></script>
+    <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+
+    <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://search.m3.cmp/v/js/organization.js')</script>
+</body>
+
+</html>

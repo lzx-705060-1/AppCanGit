@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172635" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172635" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/apps/v5/office/css/cmp-col.css?buildversion=181210172635" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/apps/v5/office/css/common.css?buildversion=181210172635" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/apps/v5/workflow/css/wf.css?buildversion=181210172635" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172635">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172635">
+    <title id="title">办公设备审批</title>
+    <style>
+        .cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active::before {
+            width: 0 !important;
+        }
+    </style>
+</head>
+<body>
+<div id="body_content_div" class="cmp-content cmp-col-content cmp-content-none"  style="position: absolute;bottom: 0px; width: 100%;">
+    <!-- 正文流程页签 -->
+    <div style="padding: 0 25px;background-color: #fff;">
+        <div id="contentAndWfTags" class="cmp-segmented-control cmp-segmented-control-inverted col new-tab-nav">
+            <a id="A_summary_info" href="#summary_info" class="cmp-control-item cmp-active"><i18n key="office.h5.body"></i18n></a><!--正文-->
+            <a id="A_workflow" href="#workflow" class="cmp-control-item"><i18n key="office.h5.workflow"></i18n></a><!--流程-->
+        </div>
+    </div>
+
+    <div id="summary_info" class="cmp-control-content cmp-active main-content white tab_selector" style="overflow-y: auto;overflow-x: hidden;padding-top: 10px;background-color: #f3f3f3;">
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform1"></i18n></span><!--使用人-->
+            </div>
+            <div class="rightNameInput">
+                <input id="applyUserName" type="text" disabled value="">
+                <input id="applyUserId" type="hidden" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform2"></i18n></span><!--使用部门-->
+            </div>
+            <div class="rightNameInput">
+                <input id="applyDeptName" class="cmp-scroll" style="z-index: 10" type="text" disabled value="">
+                <input id="applyDept" type="hidden" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform3"></i18n></span><!--使用时间-->
+            </div>
+            <div class="rightNameInput">
+                <input class="fontFamilyNum" id="useTime1" type="text" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform4"></i18n></span><!--至-->
+            </div>
+            <div class="rightNameInput">
+                <input class="fontFamilyNum" id="useTime2" type="text" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameRadio cmp-ellipsis" style="height: 40px">
+                <span></span>
+            </div>
+            <div class="rightNameCheckbox cmp-checkbox" style="height: 40px">
+                <div style="position: relative;margin-top: 8px">
+                    <label style="padding-left: 42px;"><span><i18n key="office.h5.assetform5"></i18n></span><!--长期--></label>
+                    <input id="isOften" type="checkbox" name="carType" disabled>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform6"></i18n></span><!--设备编号-->
+            </div>
+            <div class="rightNameSpan">
+                <span id="assetNum"  style="z-index: 10" ></span>
+                <input id="assetInfoId" type="hidden" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform7"></i18n></span><!--设备分类-->
+            </div>
+            <div class="rightNameSpan">
+                <span id="assetTypeName" style="z-index: 10"></span>
+                <input id="assetType" type="hidden" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform8"></i18n></span><!--名称-->
+            </div>
+            <div class="rightNameSpan">
+                <span id="assetName"  style="z-index: 10" ></span>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform9"></i18n></span><!--品牌-->
+            </div>
+            <div class="rightNameSpan">
+                <span id="assetBrand" style="z-index: 10" ></span>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform10"></i18n></span><!--型号-->
+            </div>
+            <div class="rightNameSpan">
+                <span id="assetModel" style="z-index: 10"></span>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: start;">
+            <div class="leftNameTextarea cmp-ellipsis-2">
+                <span><i18n key="office.h5.assetform11"></i18n></span><!--设备描述-->
+            </div>
+            <div class="rightNameTextarea" style="overflow-y: auto;background-color: #fff">
+                <textarea id="assetDesc" disabled></textarea>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform12"></i18n></span><!--当前库存-->
+            </div>
+            <div class="rightNameInput">
+                <input class="fontFamilyNum" id="currentCount" type="text" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: center;">
+            <div class="leftNameInput cmp-ellipsis">
+                <span><i18n key="office.h5.assetform13"></i18n></span><!--申请数量-->
+            </div>
+            <div class="rightNameInput">
+                <input class="fontFamilyNum" id="applyAmount" type="text" disabled value="">
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: start;">
+            <div class="leftNameTextarea cmp-ellipsis-2">
+                <span><i18n key="office.h5.assetform14"></i18n></span><!--申请理由-->
+            </div>
+            <div class="rightNameTextarea" style="overflow-y: auto;background-color: #fff">
+                <textarea id="ApplyDesc" disabled style="overflow: hidden"></textarea>
+            </div>
+        </div>
+        <div style="width: 100%;display:-webkit-box;-webkit-box-align: start;">
+            <div class="leftNameTextarea cmp-ellipsis-2">
+                <span><i18n key="office.h5.opinion"></i18n></span><!--审批意见-->
+            </div>
+            <div class="rightNameTextarea" style="overflow-y: auto;background-color: #fff">
+                <textarea id="auditContent" disabled></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div id="workflow"  class="cmp-control-content cmp-tab-list-content white tab_selector">
+        <!--<div style="width: 100%;height: 10px;background: rgb(243, 243, 243);"></div>-->
+        <div id="workflowDetail" _loadStatus="0"></div>
+    </div></div>
+<footer class="cmp-bar cmp-bar-footer" id="footer_num">
+    <div class="topInput">
+        <input id="auditOpinion" type="text">
+    </div>
+    <div class="bottomBtn">
+        <div id="noPass" style="width: 50%;">
+            <div class="bottomLeftBtn">
+                <span><i18n key="office.h5.disagree"></i18n></span><!--不同意-->
+            </div>
+        </div>
+        <div id="pass" style="width: 50%;">
+            <div class="bottomRightBtn">
+                <span><i18n key="office.h5.agree"></i18n></span><!--同意-->
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    var _officePath = "/seeyon/m3/apps/v5/office";
+</script><script src="/seeyon/m3/apps/v5/office/i18n/Office_zh_CN.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172635"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/office/i18n/","Office",null,"?buildversion=181210172635");
+</script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172635" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172635" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/office/js/office-jssdk.js?buildversion=181210172635" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172635" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172635" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172635" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-zoom.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flowV5.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/apps/v5/office/js/asset.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/apps/v5/office/js/workflow.js?buildversion=181210172635"></script>
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172635"></script>
+
+</body>
+</html>

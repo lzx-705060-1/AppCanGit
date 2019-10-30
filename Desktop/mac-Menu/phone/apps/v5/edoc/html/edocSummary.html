@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/edoc/css/cmp-edoc.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<!-- 正文组件样式css -->
+<link type="text/css" rel="stylesheet" href="/seeyon/m3/apps/v5/edoc/css/infopath.css?buildversion=181210172510">
+<link type="text/css" rel="stylesheet" href="/seeyon/m3/apps/v5/edoc/css/edoc-media.css?buildversion=181210172510">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172510">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172510">
+<!-- 
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=181210172510">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172510">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172510">
+ -->
+ 
+<title>公文详情</title>
+<style type="text/css">
+	/*附件列表小图标*/
+	.cmp-icon-accessory{width: 30px;height: 30px;display: inline-block;}
+</style>
+</head>
+<body id="edocSummaryBody" class="cmp-fullscreen">
+
+ <div id="body_content_div" class="cmp-content position_relative cmp-content-none">
+        <!-- 标题区域 -->
+        <div id="summary_titile_container" class="cmp-segmented_title_content main-title" style="overflow: hidden; ">
+            <ul class="cmp-table-view m1-details-title col" style="background-color: #E8F5FF; ">
+                <li class="cmp-list-cell">
+                    <div class="cmp-list-cell-info" id="title_div" style="width:100%;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 正文流程页签 -->
+        <div id="edocSummary" class="cmp-segmented-control cmp-segmented-control-inverted col new-tab-nav" style="background-color:#f8f7f7;">
+            <a id="formTab" href="#edocFrom" class="cmp-control-item cmp-active"><i18n key="Edoc.label.wendan"></i18n></a>
+            <a id="edocBody_Tab" href="#edocBody" class="cmp-control-item"><i18n key="Edoc.label.text"></i18n></a>
+            <a id="workflog_tab" href="#edocWorkFlow" class="cmp-control-item"><i18n key="Edoc.label.flow"></a>
+        </div>
+        <div id="edocFrom" class="cmp-control-content cmp-active white cmp-user-select-auto">
+               <!-- 正文 -->
+            <div id="content_div" class="infopath" style="overflow:hidden;">
+            </div>
+            <div id="hideArea" style="height:36px; width: 90%; position:relative; z-index:2;" onclick="showOrHide();"></div>
+            <div id="edoc_form_wrapper" class="cmp-scroll-wrapper" style="position: absolute;top:40px">
+                <div style="min-height: 100%;" class="cmp-scroll">
+                    <!-- 如果有意见，意见显示在这块区域 -->
+                    <!-- 附件 -->
+                    <div id="attachment_container" class="attach-wrap add-new-div display_none">
+                        <div class="attach-title dropdown add-new-title">
+                            <span><i18n key="Edoc.page.lable.attachment"></i18n></span><span>(</span><span id="att_file_count">0</span><span>)</span><span>&amp;</span>
+                            <span><i18n key="Edoc.page.lable.relateDoc"></i18n></span><span>(</span><span id="att_ass_count">0</span><span>)</span><span>：</span>
+                            <span class="see-icon-v5-common-arrow-top right jiantou"></span>
+                        </div>
+                        <div class="attach-body">
+                            <ul id="attchemntFileList" class="cmp-list-content cmp-accessory-content margin_top-1 wh100"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	    <div id="edocBody" class="cmp-control-content white" style="overflow:auto;width: 100%">
+	    </div>
+	    <div id="edocWorkFlow" style="overflow: hidden;position:relative;" _loadStatus="0" class="cmp-control-content cmp-tab-list-content white"></div>
+    </div>
+    <footer id="footer_btns" class="cmp-bar conmmon-b cmp-bar-footer border_t display_none">
+    </footer>
+      
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172510"></script>
+    <!-- <script  src="/seeyon/m3/apps/v5/edoc/js/edocUtil.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/i18n/EdocResources_zh_CN.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/js/edoc-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+ -->
+    
+<script src="/seeyon/m3/apps/v5/edoc/js/edocUtil.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edoc-jssdk.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/i18n/EdocResources_zh_CN.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/m3-jssdk.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172510"></script>
+  <script type="text/javascript">
+  cmp.i18n.init("/seeyon/m3/apps/v5/edoc/i18n/", "EdocResources");
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edocSummary.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172510"></script>
+
+<!-- 
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flowV5.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-zoom.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-handWriteSignature.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-contentEdit.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172510"></script>
+附件
+正文编辑
+<script src="/seeyon/m3/apps/v5/commons/widget/ContentEdit-debug.js?buildversion=181210172510"></script>
+ -->
+
+ <!-- 标题区域模板 -->
+ <script type="text/html" id="summary_title_tpl">
+ <span class="list_title_name">
+ <%if(this.edocSummary.urgentLevel && this.edocSummary.urgentLevel > 1 && this.edocSummary.urgentLevel < 6){%>
+ <span style="color: #FF0000;font-size:15px;position:relative;top:-1px;" class="cmp-icon iconfont see-icon-v5-common-important-<%=(this.edocSummary.urgentLevel - 1)%>"></span>
+ <%}%>
+ <%=this.edocSummary.subject.escapeHTML()%>
+ </span>
+ <h5 class="cmp-ellipsis list_cont_info">
+     <span class="cmp-pull-left">
+         <span style="color:#999999; max-width:200px; width:auto;"><%=this.memberdName%></span>
+         <span style="color:#999999;"><%=this.createTime%></span>
+     </span>
+     <span class="cmp-pull-right">
+         <a class="href_show">
+             <% if(this.attachmentList.length>0){ %>
+                 <span class="cmp-icon iconfont see-icon-accessory" style="margin-right:5px;"></span>
+                 <span class="blue-color font-16"><%=this.attachmentList.length%></span>
+             <%}%>
+         </a>
+     </span>
+ </h5>
+ </script>
+ 
+ <!-- 意见区域模板 -->
+ <script type="text/html" id="summary_opinions_tpl">
+ <ul class="cmp-table-view cmp-table-view-chevron">
+ <% if(this.opinions.sendOpinionStr.length !=0 ) { %>
+ <div id="sender_comment_container" class="attach-wrap add-new-div">
+	<div class="attach-title dropdown add-new-title"> 
+        <span><%=cmp.i18n("Edoc.colForward.fuyan")%></span><span>(</span> <span id="sender_comment_count"><%=this.opinions.sendOpinionStr.length%></span> <span>)</span><span>：</span>
+		<span class="see-icon-v5-common-arrow-top right jiantou"></span>
+	</div>
+    <ul id="sender_comment_ul" class="attach-list white">
+         <% for(var i=0 ;i < this.opinions.sendOpinionStr.length; i++){ %>
+             <li class="attach-lisy-li">
+				<div> 
+                   	<div class="script-div" style="word-break: break-word;"> 
+                       	<p class="script-name"><%=escapeStringToHTML(this.opinions.sendOpinionStr[i].content,false)%></p> 
+                    </div>
+                    <div id="attLabel<%=this.opinions.sendOpinionStr[i].id %>"></div>
+                  	<div class="script-time-div"> 
+                      	<span class="script-time"><%=this.opinions.sendOpinionStr[i].strCreateTime %></span> 
+                    </div> 
+                 </div> 
+             </li>
+        <%}%>
+    </ul>
+ </div>
+ <%}%>
+ <%if(this.opinions.opinions.length != 0){%>
+	<div id="comments_container" class="attach-wrap add-new-div">
+		<div class="attach-title dropdown add-new-title"> 
+      		<span><%=cmp.i18n("Edoc.label.opinion")%></span>
+			<span class="see-icon-v5-common-arrow-top right jiantou"></span>
+		</div>
+ 	<% for(var i=0 ; i<this.opinions.opinions.length ; i++){ %>
+    	 <% var opinion = this.opinions.opinions[i]; %>
+     	 <%if(opinion[0] == "otherOpinion"){ %>
+ 	        <li class="cmp-collapse cmp-active" style="word-break: break-word;">
+  	           <ul class="cmp-table-view cmp-table-view-chevron">
+  	               <li>
+  	                   <%= opinion[1]%>
+  	               </li>
+  	           </ul>
+  	        </li>
+  	     <%}%>
+	 <%}%>
+	 </div>
+ <%}%>
+ </ul>
+</script>
+
+<!-- 底部按钮模板 -->
+<script type="text/html" id="summary_footer_tpl">
+<% if(this.ctpAffair.state==1){ %>
+    <h1 class="warning"><%=cmp.i18n("Edoc.label.text.warn")%></h1>
+<%  var footer_btns = document.getElementById("footer_btns");
+	footer_btns.className += " " + "warning-wrap";
+	}else if(isInArray(this.actions, "EdocExchangeType") && this.ctpAffair.state != 4 && this.ctpAffair.state != 2){
+%>
+	<h1 class="warning"><%=cmp.i18n("Edoc.label.text.warn1")%></h1>
+<% 
+	var footer_btns = document.getElementById("footer_btns");
+	footer_btns.className += " " + "warning-wrap";
+    }else{ 
+        if(this.ctpAffair.state == 3){
+            var _showMore = true, dealMarginRight = "70";
+            if(!isInArray(this.actions, "Return") && !isInArray(this.actions, "Terminate") && !isInArray(this.actions, "Cancel")){
+                _showMore = false;
+                dealMarginRight = "0";
+            }
+%>
+     <div id="handleBtns" class="handle-div" style="height:44px;">
+<%
+            if(_showMore){
+%>
+         <a href="#picture">
+             <div class="handle-more" id="more" style="margin: 7px 7px 7px 0px;">
+                <span class="cmp-icon iconfont see-icon-more" style="padding:4px;"></span>
+             </div>
+         </a>
+<%
+            }  
+			if(pageX.validationStepback) {
+%>
+         <div class="handle-colla" id="deal" style="margin-right:<%=dealMarginRight%>px;">
+            <span class="see-icon-v5-common-note-fill" style="color: #55a1e5;padding:10px;"></span><%=cmp.i18n("Edoc.action.deal")%>
+         </div>
+     </div>
+<%     
+			}	
+        }
+ 
+        if(this.ctpAffair.state == 4 || this.ctpAffair.state == 2){
+            var id_, i18n_, class_;
+			if(this.ctpAffair.state == 4  && !finished){
+               	id_ = 'takeBack'; 
+               	i18n_ = cmp.i18n("Edoc.label.text.back");
+				class_ = "see-icon-v5-common-getback";
+            }else if(this.ctpAffair.state == 2){
+				if(!finished) {
+               		id_ = 'revoke'; 
+               		i18n_ = cmp.i18n("Edoc.action.revoke");
+					class_ = "see-icon-v5-common-rollback";
+				}
+            }
+     
+            if(id_){
+ %>
+         <span class="cmp-pull-left item deal" style="border-right: 1px solid #bec8cf"  id="<%=id_%>">
+            <span class="<%=class_%>" style="color:#4a90e2"></span><span class="deal"><%=i18n_%></span>
+        </span>
+<%
+           } 
+		 if (!finished) {
+%>
+        <span class="cmp-pull-right item more" id="trackButton">
+            <span id="trackClass" class="see-icon-v5-common-tracking-cancel" style="color:#4a90e2"></span>
+            <span class="deal" id="trackSpan"><%= (this.ctpAffair.track == 0 ? cmp.i18n("Edoc.info.track") : cmp.i18n("Edoc.info.cancleTrack"))%>
+            </span>
+        </span>
+        
+<%     }  }  
+   }      
+%>
+</script>
+</body>
+</html>

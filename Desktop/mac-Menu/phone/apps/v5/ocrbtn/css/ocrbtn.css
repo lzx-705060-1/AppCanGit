@@ -1,0 +1,16 @@
+.section-ocr .cap4-attach__right .cap4-attach__real--ret .cap4-attach__item{
+	border-radius: 3px;
+}
+.section-ocr .cap4-attach__right .cap4-attach__real--ret .cap4-attach__item .cap4-attach__item--left{
+	position: relative;
+	margin-right: 16px;
+}
+.section-ocr .cap4-attach__right .cap4-attach__real--ret .cap4-attach__item .cap4-attach__item--left .icon{
+	position: absolute;
+	font-size: 32px;
+	top: 5px;
+	left: 6px;
+}
+.section-ocr .cap4-images__right .cap4-images__items .cap4-images__holder{
+	color: #3aadfb;
+}

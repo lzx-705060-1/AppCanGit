@@ -1,0 +1,84 @@
+/*新增修改页面*/
+body.cmp-ios-c .cmp-content{
+	top: 0!important;
+}
+#mapContainer {
+	height: 100%; 
+}
+.amap-overlays{
+	z-index: 1 !important;
+}
+.queryContainer{
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 5px;
+	width: 60%;
+	box-shadow: 2px 3px 6px #888888;
+}
+.queryContainer input{
+	width: 100%;
+	line-height: 24px;
+	border-radius: 2px 0 0 2px;
+	background-color: #FFFFFF;
+}
+.markerContainer{
+	
+}
+.markerContainer .marker{
+	background: url(../img/mark_b.png) no-repeat;
+    height: 31px;
+    width: 31px;
+	position: relative;
+    cursor: pointer;
+    left: 5px;
+	top: 8px;
+    text-align: center;
+    color: #fff;
+    font: 12px arial,simsun,sans-serif;
+    padding-top: 5px;
+	padding-left: 5px;
+	background-size: 100%;
+}
+.infoContainer{
+	padding: 0;
+    position: relative;
+    background-color: #fff;
+    margin: 8px;
+}
+.infoContainer .infoTitle{
+	line-height: 22px;
+    font-size: 14px;
+    border-bottom: 1px #99adce solid;
+    padding-right: 15px;
+}
+.infoContainer .infoContent{
+	padding-top: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    zoom: 1;
+}
+.centerContainer{
+	height: 100%;
+}
+.saveContainer{
+	text-align: center;
+}
+.delete-handler.hidden{
+	display: none;
+}
+.edit-container{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+.setEdit-container .center-input{
+	border: 0;
+	text-align: right;
+}
+
+/*列表*/
+.cmp-scroll-wrapper .cmp-table-view .cell-item{
+	margin: 4px;
+}

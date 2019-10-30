@@ -1,0 +1,79 @@
+var inquiryApi = (function() {
+    
+    var InquiryApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/inquiry";
+    }
+    
+     /**
+     * 跳转到调查详情页面
+     * @param inquiryId : 调查ID
+     * @param comeFrom : 来源	0	>>>	调查列表 	
+     *							1	>>>	文档中心
+     *							2	>>> 待办
+     * @param 页面的返回信息，即打开调查页面以后，点返回按钮的跳转页面信息，backPageInfo对象包含"url","data"两个属性，跳转的时候采用（ cmp.href.next（url,data）的方式跳转，如果没传递
+     *         该参数，则默认采用cmp.href.back()的方式跳转）
+     * @param isNav : 是否是新开页面
+     */
+    InquiryApi.prototype.jumpToInquiry = function(inquiryId, comeFrom, backPageInfo, fromXz, isNav) {
+    	var  _backPageInfo = typeof(backPageInfo) == 'undefined' ? ''  : backPageInfo;
+        var paramData = {
+            'comeFrom' : comeFrom,
+            'fromXz' : typeof(fromXz) == 'undefined' ? false  : fromXz,
+            'inquiryId' : inquiryId,
+            'isNav' : isNav
+        };
+        var option = {};
+        if(isNav === true){
+            option.openWebViewCatch = true;
+        }
+        cmp.href.next(this.basePath + "/html/inquiryView.html", paramData, option);
+    }
+    
+     /**
+	 * 打开调查(消息穿透)
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]	option.id		调查id									
+	 * @param  {string} parms   [其他可选参数]
+	 */
+    InquiryApi.prototype.openApp = function(type,backUrl,option,obj) {
+        var _basePath = this.basePath;
+        cmp.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: cmp.seeyonbasepath + '/rest/inquiry/state/' + option.id,
+            async: true,
+            repeat:true,
+            headers: {
+                'Accept': 'application/json; charset=UTF-8',
+                'Accept-Language': 'zh-CN',
+                'Content-type': 'application/json;charset=UTF-8',
+				'token':cmp.token
+            },
+            success: function(result) {
+                    var affairId = typeof(option.affairId) == 'undefined' ? false  : option.affairId;
+                    var comeFrom = type == "todo" ? 2 : 3;
+                    var affairState = option.subApp == 0 ? 4 : 3;//4：待审核调查   3：待填写调查
+                    var paramData = {
+                        'type' : type,
+                        'comeFrom' : comeFrom,
+                        'inquiryId' : option.id,
+                        'affairId': affairId,
+                        'affairState' : affairState
+                    };
+                    cmp.href.next(_basePath + "/html/inquiryView.html", paramData);
+            },
+            error:function(error){
+                var cmpHandled = cmp.errorHandler(error);
+                if(cmpHandled){
+                    //cmp处理了这个错误
+                }else {
+                    //customHandle(error) ;//走自己的处理错误的逻辑
+                }
+            }
+        });
+    }      
+    
+    return new InquiryApi();
+    
+})();

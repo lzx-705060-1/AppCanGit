@@ -1,0 +1,21 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"我的收藏",
+	"splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.mycollection",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+    "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{"phone":"html/mycollectionIndex.html?useNativebanner=1","jsapi":"mycollection_m_api.s3js","openAppMethod":"mycollectionApi.openApp"},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"60",
+	"urlSchemes":"mycollection.v5.cmp",
+	"bundleName":"mycollection",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

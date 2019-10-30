@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="telephone=no,email=no" name="format-detection">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <title>消息设置</title>
+        <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+        <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+        <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+        <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+        <link rel="stylesheet" href="http://message.m3.cmp/v1.0.0/css/message-setting.css">
+    </head>
+
+    <body class="bg_gray flex-v">
+        <script>
+            /**
+             * @description 优化IphoneX的头部交互，组织去抖动
+             */
+            ;(function() {
+                var ua = window.navigator.userAgent.toUpperCase();
+                if (ua.match(/IPHONEX/)) {
+                    document.body.className += ' cmp-ios-x ';
+                }
+            })();
+        </script>
+        <!-- header -->
+        <header class="m3-header flexbox-h flex-cross-center border_bottom m3-iosx">
+            <a class="m3-back">
+                <span class="see-icon-v5-common-arrow-back"></span>
+                <span class="nav-text"><i18n key="message.m3.h5.return"></i18n></span>
+            </a>
+            <h1 class="flex-1" id="topbar-btn"></h1>
+            <a class="app-save opacity-0"></a>
+        </header>
+        <!-- content -->
+        <div class="m3-content flex-1">
+            <div class="flex-h msg-title">
+                <span class="icon"></span>
+                <span class="flex-1"></span>
+            </div>
+            <ul class="bg-white">
+                <li class="switch-li flex-h flex-cross-center bd-bottom">
+                    <span class="switch-text flex-1"><i18n key="message.m3.h5.toTop"></i18n></span>
+                    <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="top">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </li>
+                <li class="switch-li flex-h flex-cross-center bd-bottom">
+                    <span class="switch-text flex-1"><i18n key="message.m3.h5.noDisturb"></i18n></span>
+                    <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="disturb">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </li>
+                <li class="switch-li flex-h flex-cross-center display-none">
+                    <span class="switch-text flex-1"><i18n key="message.m3.h5.combine"></i18n></span>
+                    <div class="cmp-pull-right cmp-switch-blue cmp-switch-mini cmp-switch" id="combine">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </li>
+            </ul>
+            <a class="clear-all"><i18n key="message.m3.h5.clearAll"></i18n></a>
+        </div>
+        <script src="http://message.m3.cmp/v1.0.0/i18n/message_zh_CN.js"></script>
+        <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+        <script src="http://cmp/v/js/cmp-i18n.js"></script>
+        <script>
+            cmp.i18n.init("http://message.m3.cmp/v/i18n/", "message");
+            cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+        </script>
+        <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+        <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+        <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+        <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+        <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+        <!-- seajs -->
+        <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+        <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+        <!-- 模块入口 -->
+        <script>seajs.use('http://message.m3.cmp/v1.0.0/js/message-setting.js')</script>
+    </body>
+
+</html>

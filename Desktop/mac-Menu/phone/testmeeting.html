@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>测试页面</title>
+</head>
+<body>
+<input type="button" value="测试" onclick="test();"
+</body>
+</html>
+
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172434"></script>
+<!--<script src="/seeyon/m3/apps/v5/collaboration/js/jquery-1.7.2.min.js?buildversion=181210172452"></script>-->
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172434"></script>
+<!--<script src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/form/js/sui.js?buildversion=181210172434"></script>
+
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172434"></script>-->
+
+<script>
+function test (){
+	var fillBackData = [{
+	id: "511120495315862790",
+	name: "程志坚",
+	type: "member"
+	}]
+	var tempLabel = ["dept","org","post","team","extp","vjOrg"]
+	var maxSize = 1
+	var orgSelectType = "member"
+	var vj = false;
+	var metadata = {
+		ctrlId: "master|field0016",
+		desc: null,
+		digitNum: "0",
+		display: "直接上司",
+		externalType: "0",
+		fieldLength: "255",
+		fieldStyle: "",
+		fieldType: "VARCHAR",
+		fieldValueStyle: "",
+		finalInputType: "member",
+		formatType: "",
+		id: null,
+		inCalc: false,
+		inCondition: false,
+		inputType: "relation",
+		masterField: true,
+		name: "field0016",
+		ownerTableName: "formmain_0383",
+		recordId: 0,
+		recordIndex: 0
+	}
+
+		cmp.selectOrgJump("select-jump",{
+				type:2,             //选人组件的类型1、流程选人；2、轻表单选人
+				fillBackData:fillBackData,    //第一次调用时的回填值
+				maxSize:maxSize,    //只要不等于1，都认为是多选
+				minSize:-1,
+				debug: null,
+				_proxyServer: "",
+				_targetServer: "",
+				_sessionId: "",
+				label : tempLabel,
+				selectType: orgSelectType,//选人类型：1、'member':选人；2、'department':选部门；3、'account':选单位；4、'post':选岗位；5、'level':选职务级别
+				vj: vj,
+				pageKey: "",
+				metadata: metadata
+			});
+}
+
+					</script>

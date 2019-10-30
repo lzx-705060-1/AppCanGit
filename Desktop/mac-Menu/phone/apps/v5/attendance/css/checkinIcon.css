@@ -1,0 +1,57 @@
+
+@font-face {font-family: "checkinicon";
+  src:url('../fonts/checkin/iconfont.ttf?t=1481624495066') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/checkin/iconfont.svg?t=1481624495066#checkinicon') format('svg'); /* iOS 4.1- */
+}
+.checkinicon {
+  font-family:"checkinicon" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-checkin-arrow-left:before { content: "\e60f"; }
+
+.icon-checkin-cancel-voice:before { content: "\e60e"; }
+
+.icon-checkin-voice:before { content: "\e619"; }
+
+.icon-checkin-time:before { content: "\e601"; }
+
+.icon-checkin-adress:before { content: "\e602"; }
+
+.icon-checkin-signin:before { content: "\e67d"; }
+
+.icon-checkin-legwork:before { content: "\e67e"; }
+
+.icon-checkin-siginout:before { content: "\e67f"; }
+
+.icon-checkin-text-file:before { content: "\e680"; }
+
+.icon-checkin-accredit:before { content: "\e681"; }
+
+.icon-checkin-computer:before { content: "\e683"; }
+
+.icon-checkin-map:before { content: "\e604"; }
+
+.icon-checkin-accredit-active:before { content: "\e687"; }
+
+.icon-checkin-check-voice:before { content: "\e688"; }
+
+.icon-checkin-camera:before { content: "\e68a"; }
+
+.icon-checkin-delete:before { content: "\e605"; }
+
+.icon-checkin-img:before { content: "\e6a5"; }
+
+.icon-checkin-tape-left:before { content: "\e6a7"; }
+
+.icon-checkin-tape-right:before { content: "\e6a8"; }
+
+.icon-checkin-record-vol:before { content: "\e6a9"; }
+
+.icon-checkin-tanhao:before { content: "\e6ad"; }
+
+.icon-checkin-success:before { content: "\e6ae"; }
+

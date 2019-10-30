@@ -1,0 +1,13 @@
+.search{
+		      position:fixed;
+		      top:0em; 
+		      width: 100%;
+		      z-index: 2;
+		      background-color: #EEEEEE;
+		    }
+		    #search {
+		        padding: .2em 0.9em;
+		        min-height: 0em;
+		        font-size: 1em;
+		        text-align: center;
+		    }

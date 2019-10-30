@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <title>cap4</title>
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv=X-UA-Compatible content="ie=edge">
+    <meta name=format-detection content="telephone=no">
+</head>
+<body>
+    <!--<script>
+        var jsArr = null;
+        var jsArrBefore = null;
+        var jsArrCordova = null;
+        var jsArrCmp = null;
+        jsArrBefore = [
+            'http://cmp/v1.0.0/js/cmp-i18n.js',
+            'http://cmp/v1.0.0/js/cmp-ajax-fast.js'
+        ];
+        jsArrCordova = [
+            'http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js',
+            'http://cmp/v1.0.0/js/cordova/cordova-plugins.js'
+        ];
+        jsArrCmp = [
+            'http://cmp/v1.0.0/js/cmp.js',
+            'http://cmp/v1.0.0/js/cmp-app.js',
+            'http://cap4.v5.cmp/v1.0.0/htmls/downloadApp/js/downloadApp.js'
+        ];
+        if (window.location.href.indexOf('workbench') !== -1) {
+            jsArrCordova = [];
+        }
+        jsArr = jsArrBefore.concat(jsArrCordova,jsArrCmp);
+        jsArr.forEach(function(v){
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = false;
+            script.src = v;
+            document.getElementsByTagName('body')[0].appendChild(script);
+        });
+	</script>-->
+	<script>
+		(function () {
+			var href = window.location.href;
+			if (window.location.href.indexOf('workbench') !== -1) {
+				window.location.href = href.replace('downloadApp.html','workbench.html');			
+			}else{
+				window.location.href = href.replace('downloadApp.html','nomal.html');
+			}
+		})();
+		
+	</script>
+<script>
+
+</script>
+</body>
+</html>
+

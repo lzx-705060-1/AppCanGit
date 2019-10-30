@@ -1,0 +1,4 @@
+var biz;
+if (typeof biz=="undefined"){
+  biz={};
+}

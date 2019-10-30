@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172423" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/bulletin/css/bulletin.css?buildversion=181210172423" rel="stylesheet" type="text/css" />
+    <title id="title"></title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172423">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172423">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172423">
+    <style>
+        html{
+            overflow: visible;
+        }
+        .cmp-scroll.bg_auto{
+            background-color: #FFFFFF !important;
+        }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<div class="createFilter display_none"></div>
+<div class="cmp-content cmp-content-none position_relative ">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <div id="searchBul">
+            <div id="search" class="position_relative boder_bottom" style="background-color: white;">
+                <div class="cmp-segmented_title_content">
+                    <form action="#" onsubmit="return false;">
+                        <div class="cmp-content-title-search" style="padding-right: 9px;">
+                            <div class="cmp-input-row cmp-search">
+                                <input type="search" disabled placeholder="" class="cmp-input-clear ">
+                                <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+                                <span class="cmp-placeholder">
+                                    <span class="cmp-icon cmp-icon-search"></span>
+                                    <span class="text-search"><i18n key="bulletin.h5.search"></i18n></span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="reSearch" class="position_relative cmp-search-content" style="display: none;">
+                <div class="cmp-segmented-control cmp-search-title ">
+                    <div class="cmp-search-item">
+                        <span class="title" id="cmp_search_title"></span>
+                        <span class="cmp-icon cmp-icon-arrowdown icon_select"></span>
+                    </div>
+                    <div id="toSearch" class="cmp-search-item">
+                        <div id="searchText" class="item text cmp-active">
+                            <input id="searchTextValue" type="text" readonly="readonly">
+                            <span id="searchResultSpan" style="display:none;">
+                        </div>
+                        <div id="searchDate" class="item date">
+                            <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+                            <span>-</span>
+                            <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="cmp-search-item">
+                        <span id="cancelSearch" class="gotoSearch"><i18n key="bulletin.h5.cancel"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表展示的 -->
+        <div class="bulType_title gradient position_relative">
+            <div class="float_l">
+                <div id="option" class="option">
+                </div>
+                <span class="sort-btn  display_none"><i18n key="bulletin.h5.choose.type.label"></i18n></span>
+            </div>
+            <div class="float_r" style="float:right;">
+                <span class="see-icon-v5-common-setting setIcon"></span>
+            </div>
+        </div>
+        <div id="bulTypeDiv" class="display_none"></div>
+        <div id="all_bul" class="cmp-scroll-wrapper" style="top:83px;">
+            <div class="cmp-scroll" style="background-color: #f1f1f1;">
+                <div class="news_content" id="bul_listAll">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="bul_list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="bul_list_li">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i]; %>
+    <li class="cmp-table-view-cell" style="padding-bottom: 0;" bulId="<%=obj.stringId %>">
+         <div class="cmp-table">
+             <div class="cmp-table-cell cmp-col-xs-12">
+                 <h4 class="cmp-ellipsis-2 title " id="bul_list_title" <% if(obj.readFlag){ %>
+                      style="font-weight:normal;"
+                    <% }else{%>style="color:#222222;"<%} %>>
+                    <%if(obj.topOrder != "0"){%><span class="title-sign sign-fine"><i18n key="bulletin.h5.top"></i18n></span><%}%>
+                    <%=obj.title%>
+                 </h4>
+                 <h5 class="time_sector">
+                     <span class="cmp-ellipsis" style="display: inline-block;color: #333333;max-width:53%;">
+                         <% if(obj.showPublishUserFlag){%>
+                             <%=obj.publishMemberName%>
+                         <%}else{%>
+                             <%=escapeStringToHTML(obj.publishDeptName) %>
+                         <% } %>
+                     </span>
+                     <span style="display: inline-block;vertical-align: top;color: #B4B4B4;margin-left:1em;"><%=obj.publishDateFormat%></span>
+                     <!--<% if(obj.attachmentsFlag){ %>-->
+                       <!--<span class="cmp-icon see-icon-accessory" style="display:none;margin-left:1em;vertical-align: top;"></span>-->
+                       <!--</span>-->
+                     <!--<% } %>-->
+                 </h5>
+                 <%if(!(obj.dataFormat=="HTML"&&(obj.content==null||obj.content==""))){%>
+                 <div class="cmp-h6 cmp-ellipsis-2" style="font-size: 14px;color: #666666;-webkit-line-clamp: 4;">
+                     <% if(obj.dataFormat=="HTML"){ %>
+                     <%= escapeStringToHTML(obj.content)%>
+                     <% }else if(obj.dataFormat=="OfficeWord"){
+                     if(obj.ext5){%>
+                     [Pdf]
+                     <%}else{%>
+                     [OfficeWord]
+                     <%}%>
+                     <% }else{%>
+                     [<%= obj.dataFormat%>]
+                     <%} %>
+                 </div>
+                 <%}else{%>
+                 <div class="cmp-h6 cmp-ellipsis-2 content-null"></div>
+                 <%}%>
+             </div>
+         </div>
+         <div class="cmp-navigate-right">
+              <span class="cmp-btn" style="padding-left: 0">
+                <% if(obj.readCount > 9999){ %>
+                  <span>9999+</span>
+                <% } else { %>
+                  <span><%=obj.readCount %></span>
+                <% } %>
+                  <span >阅读</span>
+
+              </span>
+              <span class="cmp-h5 cmp-pull-right text" id="bul_list_a"><i18n key="bulletin.h5.readBulletin"></i18n></span>
+         </div>
+    </li>
+    <% } %>
+</script>
+<script type="text/html" id="bulTypeList">
+<div class="detail">
+    <ul class="bulTypeUl">
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="-1">
+                        <span class="isChoose" ></span>
+                        <span><i18n key="bulletin.h5.type.all"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<% for (_bulletintype in this){
+    if(_bulletintype != "group" &&  _bulletintype != "account"){
+       continue;
+    }
+    var list = this[_bulletintype];
+    var titleName = _bulletintype;
+	if(_bulletintype == "group"){
+	 titleName = cmp.i18n("bulletin.h5.type.group");
+	}else if(_bulletintype == "account"){
+	 titleName = cmp.i18n("bulletin.h5.type.account");
+	}
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="bulTypeUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var bulletintype = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=bulletintype.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(bulletintype.typeName) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+<% for (_bulletintype in this){
+    if(_bulletintype == "all" ||_bulletintype == "group" || _bulletintype == "account"){
+      continue;
+    }
+    var list = this[_bulletintype];
+    var titleName = _bulletintype;
+	if(_bulletintype == "group"){
+	 titleName = cmp.i18n("bulletin.h5.type.group");
+	}else if(_bulletintype == "account"){
+	 titleName = cmp.i18n("bulletin.h5.type.account");
+	}
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="bulTypeUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var bulletintype = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=bulletintype.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(bulletintype.typeName) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+</script>
+
+<script src="/seeyon/m3/apps/v5/bulletin/i18n/Bulletin_zh_CN.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172423"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/bulletin/i18n/","Bulletin",null,"?buildversion=181210172423");
+    var str = cmp.i18n("bulletin.h5.bulletin");
+    document.getElementById("title").innerHTML = str;
+</script>
+<script type="text/javascript">
+    var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/apps/v5/bulletin/js/bulIndex.js?buildversion=181210172423"></script>
+</body>
+</html>
+
+
+<!--******************** auto import check  ****************--!>

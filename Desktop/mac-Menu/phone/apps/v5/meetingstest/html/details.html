@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/meetings/js/jquery-1.7.2.min.js?buildversion=1559547182963"></script>
+    <style type="text/css">
+      * {
+            width: calc(99% - 1px);
+            font-size: 15px;
+            text-decoration: none;
+            font-family: Microsoft YaHei;
+            font-weight: normal;
+            color: #0e0e0e;
+        }
+
+        .table-details {
+            max-width: 100%;
+            background-color: transparent;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .td-message {
+            font-size: 15px;
+            text-decoration: none;
+            font-family: Microsoft YaHei;
+            font-weight: normal;
+            color: #1ba1e2;
+            width: 120px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="div-details">
+    <!--<table border="1" class="table-details">-->
+    <!--<tbody>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>会议室所在地:</th>-->
+    <!--<td class="td-message">雅居乐中心会议室</td>-->
+    <!--<th>会议主题:</th>-->
+    <!--<td class="td-message">测试一下</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>申请人:</th>-->
+    <!--<td class="td-message">某某</td>-->
+    <!--<th>申请部门:</th>-->
+    <!--<td class="td-message">信息部</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>发起日期:</th>-->
+    <!--<td class="td-message">2019-09-17 10:47</td>-->
+    <!--<th>申请人联系电话:</th>-->
+    <!--<td class="td-message">17388715001</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>会议时间:</th>-->
+    <!--<td class="td-message">2019-8-22 16:7 -2019-8-23 16:7</td>-->
+    <!--<th>会议组织者:</th>-->
+    <!--<td class="td-message">某某</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>会议主持者:</th>-->
+    <!--<td class="td-message">某某</td>-->
+    <!--<th>会议记录者:</th>-->
+    <!--<td class="td-message">某某</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>议程/议题:</th>-->
+    <!--<td class="td-message">是/否</td>-->
+    <!--<th>是否邀请控股L1领导:</th>-->
+    <!--<td class="td-message">150</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>会议出席人数:</th>-->
+    <!--<td class="td-message">非固定会议</td>-->
+    <!--<th>会议形式::</th>-->
+    <!--<td class="td-message">是/否</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>是否有外单位参加:</th>-->
+    <!--<td class="td-message">某某</td>-->
+    <!--<th>会议类型:</th>-->
+    <!--<td class="td-message">视频</td>-->
+    <!--</tr>-->
+    <!--<tr class="tr-message">-->
+    <!--<th>参会人员:</th>-->
+    <!--<td class="td-message">测试发起</td>-->
+    <!--<th>备注:</th>-->
+    <!--<td class="td-message">刘权,李志雄</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        // var url = "http://localhost:63342/TestWeb/details.html?from=details&summaryid=-8529009969868354641"
+        var url = location.search;
+        var str = url.split('summaryid=');
+        var newurl = str[str.length - 1];
+        var summaryId = newurl;
+        // var summaryId = '3755789919315315352';
+        console.log(summaryId);
+        var memberId = "";
+        var id = "";
+        var token = getToken("rest", "123456");
+        var url = "http://10.1.19.170";
+        var subMenu = "";
+        $.ajax({
+            url: (url + "/seeyon/rest/meeting/colSummary/" + summaryId + "/?token=" + token),
+            type: "GET",
+            dataType: "JSON",
+            contentType: "application/json",
+            async: false,
+            processData: false,
+            success: function (date) {
+                console.log(date)
+                if (date == "") {
+                    $.ajax({
+                        url: (url + "/seeyon/rest/meeting/activity/" + summaryId + "/?token=" + token),
+                        type: "GET",
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        async: false,
+                        processData: false,
+                        success: function (res) {
+                            console.log(res);
+                            res.forEach(function (value, index) {
+                                var waiqi = res[index].FIELD0008;
+                                var meetingtype = res[index].FIELD0039;
+                                var apply = res[index].FFIELD0053;
+                                var startDateTime = res[index].FFIELD0007;
+                                var endDateTime = res[index].FFIELD0030;
+                                var start = startDateTime.slice(2, 19);
+                                var end = endDateTime.slice(2, 19);
+                                var applys = apply.slice(2, 19);
+                                subMenu += "<table border=\"1\" class=\"table-details\">";
+                                subMenu += "<tbody>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>会议室所在地:</th>";
+                                subMenu += "<td class=\"td-message\">雅居乐会议中心</td>";
+                                subMenu += "<th>会议主题:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0005 + "</td>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>申请人:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0003_NAME + "</td>";
+                                subMenu += "<th>申请部门:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].OUNAME + "</td>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>发起日期:</th>";
+                                subMenu += "<td class=\"td-message\">" + applys + "</td>";
+                                subMenu += "<th>申请人联系电话:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0010 + "</td>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>会议时间:</th>";
+                                subMenu += "<td class=\"td-message\">" + start + "<br/>" + end + "</td>";
+                                subMenu += "<th>会议组织者:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0009_NAME + "</td>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>会议主持者:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0040_NAME + "</td>";
+                                subMenu += "<th>会议记录者:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0038_NAME + "</td>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>议程/议题:</th>";
+                                var yiti = res[index].FIELD0046;
+                                if (yiti == '' || yiti == undefined) {
+                                    subMenu += "<td class=\"td-message\">未填</td>";
+                                } else {
+                                    subMenu += "<td class=\"td-message\"><div style=\"width:100%;height:100px;overflow-x:hidden;overflow-y:scroll\">" + yiti + "</div></td>";
+                                }
+                                subMenu += "<th>是否邀请控股L1领导:</th>";
+                                if (res[index].FIELD0031 == '-608269136254057737') {
+                                    subMenu += "<td class=\"td-message\">是</td>";
+                                } else if (res[index].FIELD0031 == '-4067160942763881636') {
+                                    subMenu += "<td class=\"td-message\">否</td>";
+                                } else if (res[index].FIELD0031 == null) {
+                                    subMenu += "<td class=\"td-message\">未填</td>";
+                                }
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>会议出席人数:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0011 + "</td>";
+                                subMenu += "<th>会议形式:</th>";
+                                var type = res[index].FIELD0058;
+                                if (type == '-7400262493883379753') {
+                                    subMenu += "<td class=\"td-message\">现场</td>";
+                                } else if (type == '-6266237119449510811') {
+                                    subMenu += "<td class=\"td-message\">视频</td>";
+                                } else if (type == '-2165911456725906503') {
+                                    subMenu += "<td class=\"td-message\">现场+视频</td>";
+                                }
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>是否有外单位参加:</th>";
+                                if (waiqi == '-608269136254057737') {
+                                    subMenu += "<td class=\"td-message\">是</td>";
+                                } else if (waiqi == '-4067160942763881636') {
+                                    subMenu += "<td class=\"td-message\">否</td>";
+                                } else if (waiqi == null || waiqi == undefined) {
+                                    subMenu += "<td class=\"td-message\">未填</td>";
+                                }
+                                subMenu += "<th>会议类型:</th>";
+                                if (meetingtype == '-288312812531596042') {
+                                    subMenu += "<td class=\"td-message\">固定会议</td>";
+                                } else if (meetingtype == '-9140242611314146983') {
+                                    subMenu += "<td class=\"td-message\">非固定会议</td>";
+                                }
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>参会人员:</th>";
+                                subMenu += "<td class=\"td-message\">" + res[index].FIELD0032_NAME + "</td>";
+                                subMenu += "<th>留言:</th>";
+                                subMenu += "<td class=\"td-message\"></td>";
+                                subMenu += "</tr>";
+                                subMenu += "</tr>";
+                                subMenu += "<tr class=\"tr-message\">";
+                                subMenu += "<th>状态:</th>";
+                                subMenu += "<td class=\"td-message\">审批中</td>";
+                                subMenu += "<th>备注:</th>";
+                                if (res[index].FIELD0012 == "" || res[index].FIELD0012 == undefined) {
+                                    subMenu += "<td class=\"td-message\">未填</td>";
+                                } else {
+                                    subMenu += "<td class=\"td-message\">" + res[index].FIELD0012 + "</td>";
+                                }
+                                subMenu += "</tr>";
+                                subMenu += "</tbody>";
+                                subMenu += "</table>";
+                                $(".div-details").html(subMenu);
+                            })
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log("发起[ ERROR ]" + textStatus + ":" + errorThrown);
+                            hint("查询失败");
+                        }
+                    });
+                } else {
+                    date.forEach(function (value, index) {
+                        var waiqi = date[index].FIELD0008;
+                        var meetingtype = date[index].FIELD0039;
+                        var apply = date[index].FFIELD0053;
+                        var startDateTime = date[index].FFIELD0007;
+                        var endDateTime = date[index].FFIELD0030;
+                        var start = startDateTime.slice(2, 19);
+                        var end = endDateTime.slice(2, 19);
+                        var applys = apply.slice(2, 19);
+                        var Perm = date[index].EXT_ATT1;
+                        if (Perm == "collaboration.dealAttitude.agree") {
+                            subMenu += "<table border=\"1\" class=\"table-details\">";
+                            subMenu += "<tbody>";
+                            subMenu += "<tr class=\"tr-message\">";
+                            subMenu += "<th>会议主题:</th>";
+                            subMenu += "<td class=\"td-message\" colspan='3'>" + date[index].FIELD0005 + "</td>";
+                            subMenu += "</tr>";
+                            subMenu += "<tr class=\"tr-message\">";
+                            subMenu += "<th>组织者:</th>";
+                            subMenu += "<td class=\"td-message\">" + date[index].FIELD0009_NAME + "</td>";
+                            subMenu += "<th>申请部门:</th>";
+                            subMenu += "<td class=\"td-message\">" + date[index].OUNAME + "</td>";
+                            subMenu += "</tr>";
+                            subMenu += "<tr class=\"tr-message\">";
+                            subMenu += "<th>会议时间:</th>";
+                            subMenu += "<td class=\"td-message\">" + start + "<br/>" + end + "</td>";
+                            subMenu += "<th>会议室:</th>";
+                            subMenu += "<td class=\"td-message\">" + date[index].FIELD0065 + "</td>";
+                            subMenu += "</tr>";
+                            subMenu += "<tr class=\"tr-message\">";
+                            subMenu += "<th>议程/议题:</th>";
+                            if (date[index].FIELD0046 == '' || date[index].FIELD0046 == undefined) {
+                                subMenu += "<td class=\"td-message\" colspan='3'>未填</td>";
+                            } else {
+                                subMenu += "<td class=\"td-message\" colspan='3'><div style=\"width:100%;height:100px;overflow-x:hidden;overflow-y:scroll\">" + date[index].FIELD0046 + "</div></td>";
+                            }
+                            subMenu += "</tbody>";
+                            subMenu += "</table>";
+                            $(".div-details").html(subMenu);
+
+                        } else if (Perm == "collaboration.dealAttitude.disagree") {
+                            subMenu += "<table border=\"1\" class=\"table-details\">";
+                            subMenu += "<tbody>";
+                            subMenu += "<tr class=\"tr-message\">";
+                            subMenu += "<th>状态:</th>";
+                            subMenu += "<td class=\"td-message\">不同意</td>";
+                            subMenu += "<th>意见:</th>";
+                            subMenu += "<td class=\"td-message\">" + date[index].CONTENT + "</td>";
+                            subMenu += "</tr>";
+                            subMenu += "</tbody>";
+                            subMenu += "</table>";
+                            $(".div-details").html(subMenu);
+                        }
+
+                    });
+                }
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("发起[ ERROR ]" + textStatus + ":" + errorThrown);
+                hint("查询失败");
+            }
+        })
+
+        function getToken(username, password) {
+
+            var url = "http://10.1.19.170";
+            var token = null;
+
+            $.ajax({
+                url: (url + "/seeyon/rest/token"),
+                type: "POST",
+                dataType: "json",
+                async: false,
+                data: '{"userName":"' + username + '", "password":"' + password + '"}"}',
+                processData: false,
+                headers: {"Accept": "application/json", "Content-Type": "application/json"},
+                success: function (data) {
+                    token = data.id;
+                    console.log("getToken:", data)
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    NewAlert("token有误！");
+                }
+            });
+            return token;
+        }
+    }
+
+</script>
+</body>
+</html>

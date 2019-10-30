@@ -1,0 +1,114 @@
+var edocApi = (function() {
+    
+    var EdocApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/edoc";
+    }
+    
+     /**
+     * 跳转到公文查看页面
+     * @param summaryId : 协同ID
+     * @param openFrom : 来源（参考ColOpenFrom.java,例如来自文档中心此处传递"docLib"）
+     */
+    EdocApi.prototype.jumpToEdocSummary = function(summaryId, openFrom) {
+        
+        edocApi.openSummary({
+            'openFrom' : openFrom,
+            'summaryId' : summaryId
+        });
+    }    
+    
+    /**
+     * 打开公文
+     * params.summaryId 和affairId有一个必填 公文ID
+     * params.affairId 和summaryId有一个必填 待办事项ID
+     * params.openFrom 打开来源 必填
+     */
+    EdocApi.prototype.openSummary = function(params) {
+        
+        var paramData = {
+            "affairId" : params.affairId,
+            "summaryId" : params.summaryId,
+            "openFrom": params.openFrom,
+            "docResId" : params.docResId || "",
+            "baseObjectId" : params.baseObjectId || "",
+            "fromXz" : params.fromXz || false,//特殊处理，加一个参数表示从语音小志进入的
+            "baseApp" : params.baseApp || ""
+        };
+        cmp.href.next(this.basePath + "/html/edocSummary.html?cmp_orientation=auto", paramData);
+    }
+    
+    /**
+	 * [打开应用]
+	 * @param  {string} type              [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option           [待办/消息穿透所需要的json格式实体对象]
+	 * 			id: //会议id
+	 * 			affairId: //待办id，有就传，没有可不传
+	 *      	proxyId: //代理人id，有就传，没有不传
+	 * 			app: 模块类型
+	 * 			subApp: 模块子类型
+	 * @param  {string} obj               [其他可选参数]
+	 */
+	EdocApi.prototype.openApp = function(type,backUrl,option,obj) {
+	    
+	    if(!option) {
+            return false;
+        }
+	    
+	    var openFrom = !option.openFrom ? "listPending" : option.openFrom;
+		if(type=="message") {
+			/*if(option.linkType=="message.link.edoc.supervise.detail") {//判断是否督办消息，督办消息第一个参数是summaryId
+				openFrom = "supervise";
+				option.id = option.affairId;
+				option.affairId = "-1";
+			} else {//不能穿透*/
+				
+				//linkType为空时，屏蔽链接
+				if(!option.linkType || option.linkType=="null") {
+					return false;
+				}
+				
+				//不能穿透的链接数组
+				var i = 0;
+				var noLinkTypeArray = [];
+				noLinkTypeArray[i++] = "message.link.edoc.supervise.detail";//督办详细界面
+				noLinkTypeArray[i++] = "message.link.edoc.supervise.main";//督办主页
+				noLinkTypeArray[i++] = "message.link.exchange.distribute";//分发
+				noLinkTypeArray[i++] = "message.link.exchange.receive";//签收
+				noLinkTypeArray[i++] = "message.link.exchange.register.govpending";//政务版登记
+				noLinkTypeArray[i++] = "message.link.exchange.register.pending";//A8 登记
+				noLinkTypeArray[i++] = "message.link.exchange.register.receive";//A8 登记签收
+				noLinkTypeArray[i++] = "message.link.exchange.registered";//登记
+				noLinkTypeArray[i++] = "message.link.exchange.send";//交换-发送
+				noLinkTypeArray[i++] = "message.link.exchange.sent";//交换-发送
+				
+				for(i=0; i<noLinkTypeArray.length; i++) {
+					if(option.linkType == noLinkTypeArray[i]) {
+						return false;
+					}
+				}
+			//}
+		} else if(type=="todo") {
+		    
+		    //协同也是这么写的搞不懂， 为了恶心的全文检索进来
+		    openFrom = "listPending";
+		    
+			if(option.app && (option.app==22 || option.app==23 || option.app==24)) {
+				cmp.notification.alert(cmp.i18n("todo.m3.h5.not.suport"), null, cmp.i18n("todo.m3.h5.dialog.note"), cmp.i18n("todo.m3.h5.dialog.ok"));
+				return false;
+			}
+		}
+		
+		var paramData = {
+			'openFrom': openFrom,
+			'summaryId' : !option.summaryId ? '-1' : option.summaryId,
+			'affairId' : !option.affairId ? '-1' : option.affairId,
+			'proxyId' : !option.proxyId ? '0' : option.proxyId,
+			'isTODO' : type
+	    };
+       	cmp.href.next(this.basePath + "/html/edocSummary.html?cmp_orientation=auto", paramData);       	
+	}
+    
+    return new EdocApi();
+    
+})();

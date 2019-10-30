@@ -1,0 +1,115 @@
+{
+  "templateFolder": "3898013953332823388",
+  "columns": [
+    {
+      "columnId": "-4570946969632421255",
+      "elements": [
+        {
+          "elementId": "8172636424363196997",
+          "name": "无流程列表",
+          "dynamicKey": "6785E155-9F30-42B9-99B3-CBA6034BDC93",
+          "type": 6
+        }
+      ],
+      "name": "无流程栏目-卡片式",
+      "state": "1",
+      "type": 6
+    }
+  ],
+  "name": "无流程模板",
+  "type": "5",
+  "templateId": "3898013953332823388"
+}
+
+{
+  "listTitle": {
+    "dataKey": "formmain_0014_id",
+    "formType": 6,
+    "baseUrl": "/seeyon/common/cap4/template/display/pc/form/dist/index.html#/browse?&rightId=4937244096134332991.1416260835885532592_1513686500281828985.5581211894933111072&moduleId={moduleId}&moduleType=42",
+    "formName": "被关联表单",
+    "rightId": "4937244096134332991.1416260835885532592_1513686500281828985.5581211894933111072",
+    "designId": "-361680938439522400",
+    "showFields": [
+      {
+        aliasDisplay: 文本1,
+        aliasTableName: formmain_0014,
+        name: field0001,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 数字1,
+        aliasTableName: formmain_0014,
+        digitNum: 0,
+        formatType:,
+        name: field0002,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 下拉1,
+        aliasTableName: formmain_0014,
+        name: field0003,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 文本域1,
+        aliasTableName: formmain_0014,
+        name: field0004,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 日期时间1,
+        aliasTableName: formmain_0014,
+        name: field0005,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 单选1,
+        aliasTableName: formmain_0014,
+        name: field0009,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 文本域2,
+        aliasTableName: formmain_0014,
+        name: field0012,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选人1,
+        aliasTableName: formmain_0014,
+        name: field0013,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选多人1,
+        aliasTableName: formmain_0014,
+        name: field0014,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选岗位1,
+        aliasTableName: formmain_0014,
+        name: field0015,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选多岗位1,
+        aliasTableName: formmain_0014,
+        name: field0016,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选部门1,
+        aliasTableName: formmain_0014,
+        name: field0017,
+        penetrateEnable: false
+      },
+      {
+        aliasDisplay: 选多部门1,
+        aliasTableName: formmain_0014,
+        name: field0018,
+        penetrateEnable: false
+      }
+    ]
+  }
+}

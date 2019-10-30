@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>业务首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172415">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/biz/css/biz.css?buildversion=181210172415">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/biz/css/iconfont.css?buildversion=181210172415">
+	</head>
+
+	<body class="fullscreen" style="overflow: hidden;">
+	<div class="cmp-content cmp-content-none">
+		<span id="head_Btn" class="switchIcon see-icon-v5-common-switch-list" style="display: none;"></span>
+		<div class="head-content">
+
+		</div>
+		<div class="body-content " style="position:relative;">
+			<div  id="scrollerContainer" class="cmp-scroll-wrapper" >
+				<div class="cmp-scroll" >
+					<div class="background" id="imgArea" style="display: none;">
+						<div class="ground img-placeholder" ></div><!-- 使用占位符替换 -->
+					</div>
+					<div  id="indicatorContainer" style="display: none;"></div>
+					<div class="list-content" id="listContent">
+						<ul id="menu_content"></ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/biz/i18n/biz_zh_CN.js?buildversion=181210172415" ></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172415"></script>
+        		<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172415" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/biz/js/biz-jssdk.js?buildversion=181210172415" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172415" type="text/javascript"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172415"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172415"></script>
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172415">
+        <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172415"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172415"></script>
+        
+		<script type="text/javascript">
+    var _bizPath = "/seeyon/m3/apps/v5/biz";
+</script>		<script type="text/javascript">
+			cmp.i18n.init(_bizPath+"/i18n/", "biz");
+		</script>
+
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172415" ></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172415" ></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/biz/js/bizInfo.js?buildversion=181210172415" ></script>
+		<script  type="text/template" id="tpl_indicator">
+			<% var outoflength=false; %>
+			<% for(var s = 0;s< this.length;s++){ %>
+			  <% if(this[s].data.length>=10){
+			   outoflength=true;
+			  }%>
+			<% } %>
+
+			<% for(var i = 0;i< this.length;i++){ %>
+			<div class="indicator-item" info='<%=cmp.toJSON(this[i]) %>'><div  class="box"><span class="indicator-value" style=" <% if(outoflength){ %> font-size:12px;line-height: 15px;<% }%> "><%=this[i].data %></span><span class="indicator-text"><%=this[i].name %></span></div></div>
+			<% } %>
+		</script>
+		<script  type="text/template" id="tpl_menu_content_config">
+			<% for(var i = 0;i< this.length;i++){ %>
+			<% var menu = this[i];menu.name=menu.name.replace(/&quot;/g,'').replace(/'/g,'').replace(/"/g,''); %>
+			<% var sourceType = menu.sourceType; %>
+			<% if(sourceType == 15){ %>
+			<li class="first-level" ><span><%=menu.name %></span></li>
+			<% }else { %>
+			<li info='<%=cmp.toJSON(menu) %>'
+			<% if(!this.mobileConfig || this.mobileConfig == false){ %>
+			class="item"
+			<%  } %>
+			><span cmp-index="imgCacheIndex<%=i %>" class="cmp-img-cache <% if(!this.mobileConfig || this.mobileConfig == false){ %> loading2 <% }else{ %> loading<% } %>" cmp-data="<%=menu.iconId %>" ></span><span class="menu-name"><%=menu.name %></span><a class="menu-right"></a></li>
+			<% } %>
+			<% } %>
+		</script>
+		
+</html>

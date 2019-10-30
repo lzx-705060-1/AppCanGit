@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>表单查询统计</title>
+    <compilationdebug
+    ="true"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script type="text/javascript">
+        var MEETING_DETAILS_Text = "";
+        var MEETING_SUMMARY_Text = "";
+        var MEETING_RETURN_Text = "";
+        var MEETING_COMMENT_Text = "";
+        var MEETING_ATTEND_USERS_Text = "";
+        var MEETING_USERS_NAME_Text = "";
+        var base_server_url = "";
+        var currentuser_cmpBaseUrl = "";
+        var buildversion="?buildversion=181210172537";
+    </script>
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/formqueryreport/css/base.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/formqueryreport/css/iconfont.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/formqueryreport/css/page_platform.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/formqueryreport/css/formqueryreport_self.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/formqueryreport/css/FlowForm.css?buildversion=181210172537" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172537">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172537">
+    <script type="text/template" id="tpl_report_chart">
+        <div class="frame">
+            <div id="header" class="cmp-bar cmp-bar-nav cmp-flex-header chart-header" style="height:40px;background:#fff;display: flex;justify-content: flex-end;align-items:center">
+                <div class="chart_type_select_item" onclick="chartSelect(this)" rel="0">{%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_HISTOGRAM)
+                    %}
+                </div>
+                <div class="chart_type_select_item" onclick="chartSelect(this)" rel="1">{%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_LINECHART)
+                    %}
+                </div>
+                <div class="chart_type_select_item" onclick="chartSelect(this)" rel="2">
+                    {%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_RADARCHART) %}
+                </div>
+                <div class="chart_type_select_item" onclick="chartSelect(this)" id="chart_type_select_of_pie" rel="3">
+                    {%=I18Nmap.get(I18NConfigObj.STRING_CHARTTYPE_PIECHART) %}
+                </div>
+            </div>
+            <div class="cmp-content">
+                <div id="report_chart_wrapper">
+                    <div id="report_chart_scroller" class="scroller" style="height:90%;">
+                        <div class="topbale" style="height:100%;">
+                            <div id="container" style="position: relative; width:100%;height: 100%;">
+                                <!-- <canvas id="cvs_chart" width="1100" height="400">[No canvas support]</canvas> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="tpl_menu_list">
+        {% for (var i=0; i < menuTree.length; i++) { %}
+        {% if(menuTree[i].reportTreeItems==null || menuTree[i].reportTreeItems=='null'){ %}
+        <li class="link" rel="formReport/{%=menuTree[i].parentID %}/{%=menuTree[i].itemID %}">
+            <div class="listdiv">
+                <img src="/seeyon/m3/apps/v5/formqueryreport/img/ic_statistics.png" class="imgicon">
+
+                <div class="listitle">{%=menuTree[i].name %}</div>
+                <div class="zxicon"></div>
+            </div>
+        </li>
+        {% }else{ %}
+        <li class="link" rel="reportMenu/{%=menuTree[i].parentID %}/{%=menuTree[i].itemID %}_{%=menuTree[i].name %}">
+            <div class="listdiv">
+                <img src="/seeyon/m3/apps/v5/formqueryreport/img/ic_forder_35.png" class="imgicon">
+
+                <div class="listitle">{%=menuTree[i].name %}</div>
+                <div class="zxicon"></div>
+            </div>
+        </li>
+        {% } %}
+        {% } %}
+    </script>
+
+    <script type="text/template" id="tpl_blank_page">
+        <div id="blank_page_wrapper" class="wrapper">
+            <div id="scroller">
+                <div class="blank_page">
+                    {%=I18Nmap.get(I18NConfigObj.STRING_NOT_DATA) %}
+                </div>
+            </div>
+        </div>
+    </script>
+    <style>
+        .SearchCondition {
+        }
+
+        .SearchLable {
+            text-align: left;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+        }
+
+        .SearchData {
+            text-align: left;
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+        }
+        .chartChoose{
+            color: #666!important;
+        }
+    </style>
+        <script src="/seeyon/m3/apps/v5/formqueryreport/i18n/formqueryreport_zh_CN.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172537"></script>
+    <script type="text/javascript">
+        cmp.i18n.init("/seeyon/m3/apps/v5/formqueryreport/i18n/","formqueryreport",null,"?buildversion=181210172537");
+    </script>
+    <script  src="/seeyon/m3/apps/v5/formqueryreport/js/formqueryreport.s3js" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/s3utils.js" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/jquery-1.10.2.min.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/seeyon-cmp-common.min.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/index_html_Initpage.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/jquery.json.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/cmp-scroll.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/jssdk_wechat.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/unflowform_m_api.s3js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/form/js/dataService.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/jquery.i18n.properties-min-1.0.9.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/M1-i18n-Config.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/HashMap.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/fastclick.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/utils.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/page_platform.js?buildversion=181210172537" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/formqueryreport/js/index_html_loaddata_test.js?buildversion=181210172537" type="text/javascript"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-tableList.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-tableList.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172537"></script>
+	<script src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.min.js?buildversion=181210172537"></script>
+	<script src="/seeyon/m3/apps/v5/form/filter/sui-filter.min.js?buildversion=181210172537"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172537"></script>
+    
+<script type="text/javascript">
+function update_UI(aPageData,aRefrushIds){
+  var fDomItem,fRefresh;
+  fDomItem=document.getElementById("pageframe");
+  fRefresh=s3utils.isRefreshOrAppend(aRefrushIds,"pageframe");
+  s3utils.refreshElement(fDomItem, fRefresh, formqueryreport.HomePageContainer(aPageData), false);
+
+}
+</script>
+    <script>
+        var vueJSUrl = "/seeyon/m3/apps/v5/form/js/lib/vue/vue.min.js?buildversion=181210172537",
+            excanvasJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/excanvas/excanvas.js?buildversion=181210172537",
+            Chart_minJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/Chart.min.js?buildversion=181210172537",
+            RGraph_barJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/RGraph.bar.js?buildversion=181210172537",
+            RGraph_common_coreJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/RGraph.common.core.js?buildversion=181210172537",
+            RGraph_common_keyJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/RGraph.common.key.js?buildversion=181210172537",
+            RGraph_lineJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/RGraph.line.js?buildversion=181210172537",
+            RGraph_radarJSUrl = "/seeyon/m3/apps/v5/formqueryreport/js/RGraph/RGraph.radar.js?buildversion=181210172537",
+            selectOrgJSUrl = "/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172537",
+            sui_filterJSUrl = "/seeyon/m3/apps/v5/form/filter/sui-filter.js?buildversion=181210172537",
+            projectAccountListJSUrl = "/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172537",
+            sui_filterCSSUrl = "/seeyon/m3/apps/v5/form/filter/sui-filter.css?buildversion=181210172537",
+            selectOrgCSSUrl="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172537",
+            listViewJSUrl="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172537",
+            listViewCSSUrl="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172537",
+            dtPickerJSUrl="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172537",
+            popPickerJSUrl="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172537",
+            pickerJSUrl="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172537",
+            imgCacheJSUrl="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172537",
+            echartsJSUrl = "/seeyon/m3/apps/v5/commons/echarts3/echarts.min.js?buildversion=181210172537",
+            pickerCSSUrl="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172537",
+            tableListCSSUrl="/seeyon/m3/cmp/css/cmp-tableList.css?buildversion=181210172537",
+            tableListJSUrl="/seeyon/m3/cmp/js/cmp-tableList.js?buildversion=181210172537",
+            SeeyonAttachmentJSUrl="/seeyon/m3/apps/v5/commons/v/widget/SeeyonAttachment.s3js?buildversion=181210172537";
+    </script>
+    <script>
+        function closePage() {
+            cmp.href.closePage();
+        }
+        function chartSelect(e){
+            console.log('chartSelect2');
+            var target = Number(e.getAttribute('rel'));
+            var select = $('.chart_type_select_item');
+            for(var i = 0;i < select.length; i ++){
+                if(select[i].classList.contains('chartChoose')){
+                    select[i].classList.remove('chartChoose')
+                }
+                if(i===target){
+                    select[i].classList.add('chartChoose');
+                }
+            }
+        }
+    </script>
+
+</head>
+<body id="body" class="fullscreen">
+<div id="loading">
+    <!--<header id="loadingHeader" class="cmp-bar cmp-bar-nav loading-header cmp-flex-header" style="height: 44px; padding-top: 0px;">
+        <div class="header_back loading_back_link cmp-action-back cmp-header-left">
+            <span class="loading-header-back see-icon-v5-common-arrow-back" ></span>
+        </div>
+        <div class="header_text cmp-title"> </div>
+        <div class="header_right right_list_link cmp-header-right nav-icon-one"></div>
+    </header>-->
+    <!--<div class="loading">
+        <img src="/seeyon/m3/apps/v5/formqueryreport/img/loading.gif"/>
+    </div>-->
+</div>
+<div id="pageframe" class="frame">
+    <div id="pageframe"  ></div>
+</div>
+
+<div class="unflowformPage" style="display: none">
+    <header id="header" class="cmp-bar cmp-bar-nav unflowformPage-header" style="height: 44px; padding-top: 0px;">
+        <div class="header_back cmp-icon cmp-pull-left unflowformPage_back_link">
+            <span class="see-icon-v5-common-arrow-back"></span>
+        </div>
+        <div class="header_text cmp-title">无流程表单</div>
+        <span class="icon float_right  see-icon-v5-common-switch-light-form" id="showPc_Btn"></span>
+    </header>
+    <div id="contentDiv"></div>
+</div>
+
+<div id="title-more" class="title-more">
+    <div class="title-info-bg"></div>
+    <div class="title-info">
+        <div id="title-info-txt" class="title-info-txt"></div>
+        <div class="nav nav-border"></div>
+        <div class="nav nav-background"></div>
+    </div>
+</div>
+
+</body>
+</html>

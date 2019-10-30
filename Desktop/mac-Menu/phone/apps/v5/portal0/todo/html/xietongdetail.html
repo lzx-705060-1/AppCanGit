@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172727"/>
+    <!--导入cmp模块的样式文件，/seeyon/m3/cmp即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/font-awesome.min.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.control.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.icon.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-base.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-box.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-color.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/xietongdetail.css?buildversion=181210172727">
+    <style>
+        td{
+            white-space:nowrap;
+            /*word-break: break-all;*/
+            /*max-width: 100px;*/
+        }
+    </style>
+    <title>旧oa待办协同页面</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">
+   <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn" style="display: none">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">更多待办</span>
+    </div>
+    <div class="cmp-title">
+        协同详细页面
+    </div>
+    <div class="cmp-header-right">
+        <div class="t-btn-w1 ub-img nav-btn nav-bt" style="background-position:right;height: 90%;margin-right: 0.8em"></div>
+    </div>
+</header>
+<!-- 内容-->
+<div class="cmp-content">
+    <div class="cmp-control-content cmp-active">
+
+    <div id="container" class="cmp-scroll-wrapper">
+        <div class="cmp-scroll">
+            <span id="tempContentData" data-xml='' data-input_xml='' data-selPeople='' data-bodytype=''></span>
+            <div class="t-gra tx-l uinn ulev-app1 ulh-a content" id="content" ></div>
+        </div>
+    </div>
+
+    <!--<div id="container" class="" style="width: 100%;overflow: auto;">
+        <div class="t-gra tx-l uinn ulev-app1 ulh-a content" id="content" style="width: 100%;"></div>
+    </div>-->
+
+    <div id="new_content" style="display: none;"></div>
+    <div id="message" style="position: fixed;top: 0;left: 0;width:100%;height:100%;z-index: 999;display:none;word-break : break-all;">
+        <div id="close" style="width: 100%;height: 100%; opacity: 0.5;background-color: black;">
+
+        </div>
+        <div id="xiangqing" class="xiangqing"style="height: 8em;width: 80%;background-color: white;top: 30%;position: absolute;"></div>
+    </div>
+    </div>
+</div>
+<!--定义对应选项卡按钮-->
+<footer class="cmp-bar cmp-bar-tab cmp-bar-footer  cmp-bar-tabview " >
+    <a class="cmp-tab-item  cmp-tabview-item cmp-active" id="fujian" >
+        <span class="cmp-icon fa fa-building-o"></span>
+        <span class="cmp-tab-label">附件</span>
+    </a>
+    <a class="cmp-tab-item  cmp-tabview-item" id="yijian" >
+        <span class="cmp-icon fa fa-user"></span>
+        <span class="cmp-tab-label">意见</span>
+    </a>
+</footer>
+
+
+
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172727"></script><!--导入cmp国际化组件-->
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/portal/todo/i18n/", "todo",null,"?buildversion=181210172727");
+    <!--初始化国际化资源-->
+	cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal",null,"?buildversion=181210172727");
+</script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-zoom.js?buildversion=181210172727"></script>
+
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/jquery-1.7.2.min.js?buildversion=181210172727"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/xietongdetail.js?buildversion=181210172752"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/yajule.js?buildversion=181210172727"></script>
+<script>
+    //放大缩小
+    /*cmp.zoom("#container",{
+        zoomMin:0.4,
+        initZoom:1,
+        zoomMax:4,
+        doubleTapZoom:true,
+        onZoomStart:function(){},
+        onZoom:function(){},
+        onZoomEnd:function(){}
+    });*/
+</script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"调查",
+	"splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.inquiry",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{"phone":"html/inquiryIndex.html?useNativebanner=1","jsapi":"inquiry_m_api.s3js","openAppMethod":"inquiryApi.openApp"},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"10",
+	"urlSchemes":"inquiry.v5.cmp",
+	"bundleName":"inquiry",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

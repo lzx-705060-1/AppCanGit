@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name = "format-detection" content = "telephone=no">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172659"/>
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172659">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/show/css/show.css?buildversion=181210172659"/>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    	.hide{display: none;}
+		.huge_show_content .huge_show_title .huge_title_info{bottom: 0px;}
+		.viewAllShow{margin: 10px 5px;text-align: center; height: 40px; border: 1px solid #E2E1DE; background: #e2e1de; padding-top: 10px; border-radius: 5px; color: #999; border-bottom-color: #C4C3C0;box-shadow: 2px 3px 4px #ddd;font-size: 14px;}
+    </style>
+</head>
+<body class="content_details">
+<script>var _showPath = "/seeyon/m3/apps/v5/show";</script>
+<!-- 
+ <header   class="cmp-bar cmp-bar-nav cmp-flex-header cmp-after-line  ">
+	<div id="back_btn" class="cmp-action-back cmp-header-left   ">
+		<span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+		<span class="nav-text"><i18n key="Show.backhome"></i18n></span>
+	</div>
+	<div class="cmp-title showbar-title"><i18n key="Show.page.label.themeDetail"></i18n></div>
+	  
+	<div class="cmp-header-right BigAdd nav-icon-one"> 
+		 <span id="sd_add_btn" class="cmp-icon see-icon-v5-common-add-circle hide"></span>
+	</div> 
+</header>
+ -->
+
+<div class="cmp-content">
+	<!-- 没有权限视图 -->
+	<div class="hasNoViewAuth hide"></div>
+	<!-- 数据列表 -->
+	<div class="cmp-control-content cmp-active zIndex0 showContentArea" style="min-height: 160px;">
+		<div id="scroll" class="cmp-scroll-wrapper content_details">
+			<div class="cmp-scroll">
+				<div class="huge_show_content">
+					<div class="show-detail-add hide" id="sd_add_btn"> 
+						 <span class="cmp-icon see-icon-add-circle-fill "></span>
+					</div> 
+					<!--顶部-->
+					<div class="huge_show_title">
+						<div class="wall_huge_container">
+							<img class="wall_img" src="" alt="" id="showbar_cover" />
+							<div class="huge_title_info">
+								<span class="cmp-h5 title cmp-ellipsis-2" id="showbar_title"></span>
+								<h5 id="showbar_date_location_h5">
+									<span id="showbar_date"></span> <span class="cmp-icon iconfont see-icon-v5-common-location-fill cmp-ellipsis" id="location"></span>
+								</h5>
+							</div>
+						</div>
+					</div>
+					<!--页签-->
+					<div class="huge_show_nav">
+						<a href="#" class="huge_item"> <span class="number" id="view_number">0</span> <span class="text"><i18n key="Show.page.label.browses"></i18n></span></a> <a href="#" class="huge_item"> <span class="number" id="picture_number">0</span> <span class="text"><i18n key="Show.page.label.pictures"></i18n></span></a> <a href="#" class="huge_item"> <span class="number" id="praise_number">0</span> <span class="text"><i18n key="Show.page.label.likes"></i18n></span></a> <a href="#" class="huge_item"> <span class="number" id="comment_number">0</span> <span class="text"><i18n key="Show.page.label.comments"></i18n></span></a>
+					</div>
+					<!--被折叠容器-->
+					<div class="showbar_about_flod" style="margin-top: -124px;">
+						<div class="flod_cont">
+							<div class="about">
+								<i18n key="Show.page.label.synopsis"></i18n>
+							</div>
+							<div class="about_info" id="showbar_content" style="z-index:1;"></div>
+						</div>
+						<div class="flod_switch" id="expand_btn">
+							<span class="cmp-icon cmp-icon-bars lap_icon"></span>
+						</div>
+					</div>
+
+				</div>
+				<div id="showpost_list" class="wall_container showpost_list"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 首页秀模板 -->
+<script type="text/html" id="showpost_list_tpl">
+<% for(var i = 0,len = this.length;i < len; i++){ %>
+	<% 
+		var obj = this[i]; 
+		var lazyImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC';
+		var nolazyLoad = obj.nolazyLoad ? true : false;
+	%>
+	<div class="BigContent show-emoji-mini1" id="showpost<%=obj.id %>">
+		<%if(obj.canDelete || obj.canTransfer || obj.canSetTop){%>
+				<div class="mark" settop="<%=obj.setTop%>" canDelete="<%=obj.canDelete%>" canSetTop="<%=obj.canSetTop%>" settop="<%=obj.settop%>" canTransfer="<%=obj.canTransfer%>" cmp-data="<%=obj.id %>">
+					<span class="cmp-icon cmp-icon-arrowdown chek"></span>
+				</div>
+		<%}%>			
+		<div class="big_title_content">
+			<div class="big_user logo">
+				<img class="img cmp-img-cache" cmp-data="<%=obj.createUserPicUrl %>" src="<% if(nolazyLoad){ %> <%=obj.createUserPicUrl %> <% }else{ %> <%=lazyImage %> <% } %>" alt="" />
+			</div>
+			<div class="big_user info">
+				<div class="line-one">
+					<!-- 是否为置顶的秀 -->
+					<%if(obj.setTop) {%>
+	            		 	<span class="cmp-icon iconfont see-icon-v5-common-stick-round top"></span>
+					<%}%>	
+	                <div class="where showpostCreator"><%=obj.createUserName %></div>
+	            </div>
+	            
+				<!--发布的文本内容-->
+				<div class="big_info_content">
+					<%if(obj.content != ""){%>
+					<h5 class="cmp-ellipsis-5" id="s<%=obj.id %>">
+						<span id="content_<%=obj.id %>" style="word-break: break-all;padding-right: 35px;"><%=obj.content %></span>
+					</h5>
+					<%}else{%>	
+						<div style="height:5px;"></div>
+					<%}%>	
+					<h6 id="put_<%=obj.id %>" class="where put cmp-hidden"><i18n key="Show.page.label.all"></i18n></h6>
+					<!--发布的图片内容-->
+					<%if(obj.images.length > 0){%>
+					<div class="big_img_content" id="img_content_<%=obj.id %>">
+						<% for(var j = 0,imgLen = obj.images.length;j < imgLen; j++){ %>
+						<% var img = obj.images[j]; %>
+						<img class="img cmp-img-cache" style="width:<%=imageWidth %>px;height:<%=imageWidth %>px" 
+							cmp-data="<%=img.showpostPicUrl %>" src="<% if(nolazyLoad){ %> <%=img.showpostPicUrl %> <% }else{ %> <%=lazyImage %> <% } %>" 
+							alt="" index-data="<%=j %>" src-data="<%=img.showpostPicOriginal %>" src-data-source="<%=img.showpostPicSource %>"/>
+						<% } %>
+					</div>
+					<%}%>
+					<%if(obj.showpostPubAddress != null && obj.showpostPubAddress != "" ){%>
+					<div class="big_position">
+						<span class="cmp-icon iconfont see-icon-v5-common-location-fill"></span>
+						<span><%=obj.showpostPubAddress %></span>
+					</div>
+					<%}%>
+					<div class="big_position" style="padding-bottom: 0px;"> 
+						<span><%=obj.showpostPubTime %></span>
+						<div class="showMoreActions" showpostId="<%=obj.id %>">
+							<span class="cmp-icon iconfont see-icon-v5-common-comment-fill"></span>
+						</div>
+						<div class="postActions" id="postActions<%=obj.id %>">
+							<div class="doPraise" showpostId="<%=obj.id %>">
+								<span class="cmp-icon iconfont see-icon-v5-common-praise-fill"></span>
+								<span class="label"> <% if(obj.like){ %> <i18n key="Show.comment.cancel"></i18n>  <% }else{ %> <i18n key="Show.comment.like"></i18n> <% } %> </span>
+							</div>
+							<div class="doComment" showpostId="<%=obj.id %>" createUserId="<%=obj.createUserId %>">
+								<span class="cmp-icon iconfont see-icon-v5-common-comment-fill"></span>
+								<span ><i18n key="Show.comment.comment"></i18n></span>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+		
+				<!--点赞和回复按钮-->
+				<div class="extends show-emoji-mini">
+					<div class="praises <% if(obj.likeNames == "" ){ %> show-hide  <% } %> " id="praises<%=obj.id %>">
+						<span class="cmp-icon iconfont see-icon-v5-common-praise-fill "></span>
+						<span class="likes" id="likes<%=obj.id %>"><%=obj.likeNames %></span>
+					</div>
+					<div class="comments <% if(obj.comments.length == 0){ %> show-hide  <% } %>" id="comments<%=obj.id %>">
+						<% 
+							var comments = obj.comments;
+							for(var ci = 0,clen = comments.length;ci < clen; ci++){ 
+								var comment = comments[ci];
+						%>
+							<div class="comment-item" replyId="<%=comment.replyId %>" 
+								commentId="<%=comment.id %>" 
+								rootId="<%=comment.rootId %>" 
+								deleAuth="<%=comment.deleAuth %>"
+								showPostId="<%=comment.showPostId %>">
+								<span class="username"><%=comment.replyName.escapeHTML(true) %></span>
+								<%if(comment.pId != "0" ){%>
+									<span class="replyTo"><i18n key="Show.comment.reply"></i18n></span>
+									<span class="username"><%=comment.replyToName.escapeHTML(true) %></span>
+								<% } %>
+								<span class="replyContent">:<%=ShowComment.$comment_emoji.covert(comment.content.escapeHTML(true)) %></span>
+							</div>
+						<% }	%>
+					<div>
+				</div>
+	            
+            </div>
+		</div>
+
+		</div>
+	</div>
+</div>
+<% } %>
+</script>
+
+
+</body>
+	<script type="text/javascript">
+		var $buildversion  = '?buildversion=181210172659';
+	    var cmpPath = "/seeyon/m3/cmp";
+	    var showPath = "/seeyon/m3/apps/v5/show";
+	    var commonsPath = "/seeyon/m3/apps/v5/commons";
+	    //秀吧的封面先初始化
+		var width = document.body.offsetWidth;
+		var height = 0.27*width;
+		document.querySelector(".huge_show_title").style.height = height + "px";
+		document.querySelector("#showbar_cover").style.height = height + "px";
+	</script>
+	<script src="/seeyon/m3/apps/v5/show/i18n/show_zh_CN.js?buildversion=181210172659"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172659"></script>
+	<script type="text/javascript" >
+		//国际化初始化
+	    cmp.i18n.init("/seeyon/m3/apps/v5/show/i18n/","show",function(){
+	    	document.title = cmp.i18n("Show.page.label.themeDetail");
+	    });
+	</script>
+	
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-jssdk.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172659?buildversion=181210172659" id="__jsdktag" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-common-util-debug.js?buildversion=181210172659" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-emoji-util-debug.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-comment-debug.js?buildversion=181210172659" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/showbar-detail-debug.js?buildversion=181210172659" ></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172659" defer="defer"></script>
+</html>

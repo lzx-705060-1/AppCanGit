@@ -1,0 +1,2819 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{
+	-webkit-user-select:none;
+	-webkit-touch-callout:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-text-size-adjust:none;
+}
+/*防止textarea获取焦点后变成白色*/
+
+.clearFix {
+    zoom: 1;
+    display: block;
+    _height: 1px;
+}
+.clearFix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearFlow {
+    overflow: hidden;
+    *zoom: 1;
+}
+
+.overflow_hidden{
+    overflow: hidden;
+}
+
+.left{float:left;}
+.right{float:right;}
+/*.w1em {*/
+/*display: inline-block;*/
+/*width: 1em;*/
+/*}*/
+.border_b {
+    border: solid 1px #C9C9C9;
+}
+
+.color_red {
+    color: red;
+}
+
+.color_blue {
+    color: blue;
+}
+.font_blod {
+    font-weight: bold;
+}
+
+.ui-mobile .padding_0 {
+    padding: 0px;
+}
+.ui-mobile .padding_5 {
+    padding: 5px;
+}
+.ui-mobile .padding_10 {
+    padding: 10px;
+}
+.ui-mobile .padding_15 {
+    padding: 15px;
+}
+.ui-mobile .padding_20 {
+    padding: 20px;
+}
+.ui-mobile .padding_25 {
+    padding: 25px;
+}
+.ui-mobile .padding_30 {
+    padding: 30px;
+}
+.ui-mobile .padding_40 {
+    padding: 40px;
+}
+.ui-mobile .padding_l_0 {
+    padding-left: 0px;
+}
+.ui-mobile .padding_l_5 {
+    padding-left: 5px;
+}
+.ui-mobile .padding_l_10 {
+    padding-left: 10px;
+}
+.ui-mobile .padding_l_15 {
+    padding-left: 15px;
+}
+.ui-mobile .padding_l_20 {
+    padding-left: 20px;
+}
+.ui-mobile .padding_l_25 {
+    padding-left: 25px;
+}
+.ui-mobile .padding_l_30 {
+    padding-left: 30px;
+}
+.ui-mobile .padding_l_60 {
+    padding-left: 60px;
+}
+.ui-mobile .padding_r_0 {
+    padding-right: 0px;
+}
+.ui-mobile .padding_r_5 {
+    padding-right: 5px;
+}
+.ui-mobile .padding_r_10 {
+    padding-right: 10px;
+}
+.ui-mobile .padding_r_15 {
+    padding-right: 15px;
+}
+.ui-mobile .padding_r_20 {
+    padding-right: 20px;
+}
+.ui-mobile .padding_r_30 {
+    padding-right: 30px;
+}
+.ui-mobile .padding_r_80 {
+    padding-right: 80px;
+}
+.ui-mobile .padding_t_0 {
+    padding-top: 0px;
+}
+.ui-mobile .padding_t_5 {
+    padding-top: 5px;
+}
+.ui-mobile .padding_t_10 {
+    padding-top: 10px;
+}
+.ui-mobile .padding_t_15 {
+    padding-top: 15px;
+}
+.ui-mobile .padding_t_20 {
+    padding-top: 20px;
+}
+.ui-mobile .padding_t_30 {
+    padding-top: 30px;
+}
+.ui-mobile .padding_b_0 {
+    padding-bottom: 0px;
+}
+.ui-mobile .padding_b_5 {
+    padding-bottom: 5px;
+}
+.ui-mobile .padding_b_10 {
+    padding-bottom: 10px;
+}
+.ui-mobile .padding_b_15 {
+    padding-bottom: 15px;
+}
+.ui-mobile .padding_b_20 {
+    padding-bottom: 20px;
+}
+.ui-mobile .padding_b_30 {
+    padding-bottom: 30px;
+}
+.ui-mobile .margin_0 {
+    margin: 0px;
+}
+.ui-mobile .margin_5 {
+    margin: 5px;
+}
+.ui-mobile .margin_10 {
+    margin: 10px;
+}
+.ui-mobile .margin_15 {
+    margin: 15px;
+}
+.ui-mobile .margin_20 {
+    margin: 20px;
+}
+.ui-mobile .margin_30 {
+    margin: 30px;
+}
+.ui-mobile .margin_l_0 {
+    margin-left: 0px;
+}
+.ui-mobile .margin_l_5 {
+    margin-left: 5px;
+}
+.ui-mobile .margin_l_10 {
+    margin-left: 10px;
+}
+.ui-mobile .margin_l_15 {
+    margin-left: 15px;
+}
+.ui-mobile .margin_l_20 {
+    margin-left: 20px;
+}
+.ui-mobile .margin_l_25 {
+    margin-left: 25px;
+}
+.ui-mobile .margin_l_30 {
+    margin-left: 30px;
+}
+.ui-mobile .margin_l_40 {
+    margin-left: 40px;
+}
+.ui-mobile .margin_l_50 {
+    margin-left: 50px;
+}
+.ui-mobile .margin_r_0 {
+    margin-right: 0px;
+}
+.ui-mobile .margin_r_5 {
+    margin-right: 5px;
+}
+.ui-mobile .margin_r_10 {
+    margin-right: 10px;
+}
+.ui-mobile .margin_r_15 {
+    margin-right: 15px;
+}
+.ui-mobile .margin_r_20 {
+    margin-right: 20px;
+}
+.ui-mobile .margin_r_30 {
+    margin-right: 30px;
+}
+.ui-mobile .margin_r_40 {
+    margin-right: 40px;
+}
+.ui-mobile .margin_t_0 {
+    margin-top: 0px;
+}
+.ui-mobile .margin_t_5 {
+    margin-top: 5px;
+}
+.ui-mobile .margin_t_10 {
+    margin-top: 10px;
+}
+.ui-mobile .margin_t_15 {
+    margin-top: 15px;
+}
+.ui-mobile .margin_t_20 {
+    margin-top: 20px;
+}
+.ui-mobile .margin_t_25{
+    margin-top: 25px;
+}
+.ui-mobile .margin_t_30 {
+    margin-top: 30px;
+}
+.ui-mobile .margin_b_0 {
+    margin-bottom: 0px;
+}
+.ui-mobile .margin_b_5 {
+    margin-bottom: 5px;
+}
+.ui-mobile .margin_b_10 {
+    margin-bottom: 10px;
+}
+.ui-mobile .margin_b_15 {
+    margin-bottom: 15px;
+}
+.ui-mobile .margin_b_20 {
+    margin-bottom: 20px;
+}
+.ui-mobile .margin_b_30 {
+    margin-bottom: 30px;
+}
+.ui-mobile .padding_lr_0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.ui-mobile .padding_lr_5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.ui-mobile .padding_lr_10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.ui-mobile .padding_lr_15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.ui-mobile .padding_lr_20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.ui-mobile .padding_lr_50 {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.ui-mobile .padding_tb_0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.ui-mobile .padding_tb_5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.ui-mobile .padding_tb_10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.ui-mobile .padding_tb_15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.ui-mobile .padding_tb_20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.ui-mobile .margin_lr_0 {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.ui-mobile .margin_lr_5 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.ui-mobile .margin_lr_10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.ui-mobile .margin_lr_15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.ui-mobile .margin_lr_20 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.ui-mobile .margin_lr_50 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.ui-mobile .margin_tb_0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.ui-mobile .margin_tb_5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.ui-mobile .margin_tb_10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ui-mobile .margin_tb_15{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.ui-mobile .margin_tb_20{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.ui-mobile .margin_tb_25{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+.ico14{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(../images/icon-ipad14.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_pad_16{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-ipad16.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_phone_16{
+    /*display: inline-block;*/
+    /*width: 16px;*/
+    /*height: 16px;*/
+    /*background: url(../images/icon-iphone16.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: url(../images/icon-iphone16.png) no-repeat;
+    vertical-align: middle;
+    background-size: 80px 80px;
+}
+.ico24{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../images/icon-ipad24.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_phone_22{
+    /*display: inline-block;*/
+    /*width: 22px;*/
+    /*height: 22px;*/
+    /*background: url(../images/icon-iphone22.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background: url(../images/icon-iphone22.png) no-repeat;
+    vertical-align: middle;
+    background-size: 110px 110px;
+}
+.ico_phone_list_16{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-ipad32.png) no-repeat;
+    vertical-align: middle;
+    background-size: 160px 160px;
+}
+.ico_none_22{
+	display: inline-block;
+    width: 11px;
+    height: 11px;
+}
+.ico_pad_22{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(../images/icon-ipad22.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_phone_28{
+    /*display: inline-block;*/
+    /*width: 28px;*/
+    /*height: 28px;*/
+    /*background: url(../images/icon-iphone28.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(../images/icon-iphone28.png) no-repeat;
+    vertical-align: middle;
+    background-size: 140px 140px;
+}
+.ico_pad_28{
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: url(../images/icon-ipad28.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico32{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url(../images/icon-ipad32.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico35{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url(../images/icon-ipad35.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico40{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(../images/icon-ipad40.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico44{
+    /*display: inline-block;*/
+    /*width: 44px;*/
+    /*height: 44px;*/
+    /*background: url(../images/icon-iphone44.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(../images/icon-iphone44.png) no-repeat;
+    vertical-align: middle;
+    background-size: 220px 220px;
+}
+.ico_pad_48{
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: url(../images/icon-ipad48.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_phone_48{
+    /*display: inline-block;*/
+    /*width: 48px;*/
+    /*height: 48px;*/
+    /*background: url(../images/icon-iphone48.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../images/icon-iphone48.png) no-repeat;
+    vertical-align: middle;
+    background-size: 240px 240px;
+}
+.ico50{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../images/icon-ipad50.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_pad_70{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: url(../images/icon-ipad70.png) no-repeat;
+    vertical-align: middle;
+    background-position: 0 0;
+}
+.ico_phone_70{
+    /*display: inline-block;*/
+    /*width: 70px;*/
+    /*height: 70px;*/
+    /*background: url(../images/icon-iphone70.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url(../images/icon-iphone70.png) no-repeat;
+    vertical-align: middle;
+    background-size: 350px 350px;
+}
+.ico80{
+    /*display: inline-block;*/
+    /*width: 80px;*/
+    /*height: 80px;*/
+    /*background: url(../images/icon-iphone80.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(../images/icon-iphone80.png) no-repeat;
+    vertical-align: middle;
+    background-size: 400px 400px;
+}
+.ico94{
+    /*display: inline-block;*/
+    /*width: 94px;*/
+    /*height: 94px;*/
+    /*background: url(../images/icon-iphone94.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 47px;
+    height: 47px;
+    background: url(../images/icon-iphone94.png) no-repeat;
+    vertical-align: middle;
+    background-size: 470px 470px;
+}
+.ico96{
+    /*display: inline-block;*/
+    /*width: 96px;*/
+    /*height: 96px;*/
+    /*background: url(../images/icon-iphone96.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: url(../images/icon-iphone96.png) no-repeat;
+    vertical-align: middle;
+    background-size: 480px 480px;
+}
+.ico100{
+    /*display: inline-block;*/
+    /*width: 100px;*/
+    /*height: 100px;*/
+    /*background: url(../images/icon-iphone100.png) no-repeat;*/
+    /*vertical-align: middle;*/
+    /*background-position: 0 0;*/
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../images/icon-iphone100.png) no-repeat;
+    vertical-align: middle;
+    background-size: 500px 500px;
+}
+
+
+
+
+
+
+
+/*
+*
+* ipad图标14×14
+*
+**/
+
+
+/*参加会议*/
+.attend_meeting_14{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_14{
+    background-position: -14px 0;
+}
+/*会议纪要*/
+.meeting_summary_14{
+    background-position: -28px 0;
+}
+/*消息提示*/
+.message_hint_14{
+    background-position: -42px 0;
+}
+/*未读*/
+.unread_14{
+    background-position: -56px 0;
+}
+/*重要*/
+.important_14{
+    background-position: -70px 0;
+}
+/*非常重要*/
+.most_important_14{
+    background-position: -84px 0;
+}
+/*附件*/
+.accessory_14{
+    background-position: -98px 0;
+}
+
+
+/* ipad图标14×14结束*/
+
+
+
+/*
+*
+* ipad图标16×16
+*
+**/
+
+/*下拉按钮*/
+.drop_down_btn_16{
+    background-position: 0 0;
+}
+/*未处理*/
+.untreated_16{
+    background-position: -16px 0;
+}
+/*已查看*/
+.before_see_16{
+    background-position: -32px 0;
+}
+/*暂存待办*/
+.temporary_pending_16{
+    background-position: -48px 0;
+}
+/*已办*/
+.before_transact_16{
+    background-position: -64px 0;
+}
+/*终止*/
+.stop_16{
+    background-position: -80px 0;
+}
+/*处理时间*/
+.dispose_time_16{
+    background-position: -96px 0;
+}
+/*上拉按钮*/
+.drop_up_btn_16{
+    background-position: -112px 0;
+}
+
+
+/* ipad图标16×16结束*/
+
+
+/*
+*
+* ipad图标22×22
+*
+**/
+
+/*手工分支*/
+.handwork_branch_22{
+    background-position: 0 0;
+}
+/*自动条件分支*/
+.automatic_condition_22{
+    background-position: -22px 0;
+}
+/*强制自动条件分支*/
+.force_automatic_condition_22{
+    background-position: -44px 0;
+}
+/*自动表单条件分支*/
+.automatic_form_condition_22{
+    background-position: -66px 0;
+}
+/*强制自动表单条件分支*/
+.force_automatic_form_condition_22{
+    background-position: -88px 0;
+}
+
+
+/* ipad图标22×22结束*/
+
+/*
+*
+* ipad图标24×24
+*
+**/
+
+/*竞争执行*/
+.compete_execute_24{
+    background-position: 0 0;
+}
+/*钩(分支选人)*/
+.hook_24{
+    background-position: -24px 0;
+}
+/*叉(分支选人)*/
+.fork_24{
+    background-position: -48px 0;
+}
+/*叉-禁用(分支选人)*/
+.fork_disabled_24{
+    background-position: -72px 0;
+}
+/*显示分支条件-banner上(分支选人)*/
+.branch_condition_24{
+    background-position: -96px 0;
+}
+/*分支节点图标-流程图中(分支选人)*/
+.branch_node_24{
+    background-position: -120px 0;
+}
+
+
+
+/* ipad图标24×24结束*/
+
+
+
+
+/*
+*
+* ipad图标28×28
+*
+**/
+
+
+/*清空*/
+.delete_all_28{
+    background-position: 0 0;
+}
+/*刷新*/
+.refresh_28{
+    background-position: -28px 0;
+}
+/*搜索图标*/
+.search_icon_28{
+    background-position: -56px 0;
+}
+/*取消上传*/
+.cancel_upload_28{
+    background-position: -84px 0;
+}
+/*搜索*/
+.search_28{
+    background-position: -112px 0;
+}
+/*返回*/
+.return_28{
+    background-position: -140px 0;
+}
+/*关闭*/
+.close_28{
+    background-position: -168px 0;
+}
+/*新建*/
+.new_built_28{
+    background-position: -196px 0;
+}
+/*查看列表*/
+.check_list_28{
+    background-position: -224px 0;
+}
+/*查看缩略图*/
+.check_thumbnail_28{
+    background-position: -252px 0;
+}
+/*设置-banner上(业务生成器)*/
+.set_up_28{
+    background-position: 0 -28px;
+}
+/*柱状图-banner上(业务生成器)*/
+.histogram_28{
+    background-position: -28px -28px;
+}
+/*饼图-banner上(业务生成器)*/
+.pie_chart_28{
+    background-position: -56px -28px;
+}
+/*折线图-banner上(业务生成器)*/
+.line_chart_28{
+    background-position: -84px -28px;
+}
+/*展开按钮-向上(业务生成器)*/
+.spread_top_28{
+    background-position: -112px -28px;
+}
+/*展开按钮-向下(业务生成器)*/
+.spread_bottom_28{
+    background-position: -140px -28px;
+}
+/*新建(业务生成器)*/
+.business_new_built_28{
+    background-position: -168px -28px;
+}
+/*退出*/
+.quit_28{
+    background-position: -196px -28px;
+}
+/*同步(时间安排)*/
+.cogradient_28{
+    background-position: -224px -28px;
+}
+/*扩展按钮-向右*/
+.spread_right_28{
+    background-position: -252px -28px;
+}
+
+
+
+
+
+
+
+
+/* ipad图标28×28结束*/
+
+
+
+
+
+/*
+*
+* ipad图标32×32
+*
+**/
+
+
+
+/*参加会议*/
+.attend_meeting_32{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_32{
+    background-position: -32px 0;
+}
+/*待定*/
+.unsure_32{
+    background-position: -64px 0;
+}
+/*消息中心(工具导航)*/
+.message_center_32{
+    background-position: -96px 0;
+}
+/*协同(工具导航)*/
+.collaborative_32{
+    background-position: -128px 0;
+}
+/*公文(工具导航)*/
+.bumf_32{
+    background-position: -160px 0;
+}
+/*统计(工具导航)*/
+.statistics_32{
+    background-position: -192px 0;
+}
+/*新闻(工具导航)*/
+.news_32{
+    background-position: -224px 0;
+}
+/*公告(工具导航)*/
+.announcement_32{
+    background-position: -256px 0;
+}
+/*文档(工具导航)*/
+.doc_32{
+    background-position: -288px 0;
+}
+/*更多(工具导航)*/
+.more_32{
+    background-position: 0 -32px;
+}
+/*日程(工具导航)*/
+.schedule_32{
+    background-position: -32px -32px;
+}
+/*会议(工具导航)*/
+.meeting_32{
+    background-position: -64px -32px;
+}
+/*通讯录(工具导航)*/
+.address_book_32{
+    background-position: -96px -32px;
+}
+/*设置(工具导航)*/
+.set_32{
+    background-position: -128px -32px;
+}
+/*IM(工具导航)*/
+.im_32{
+    background-position: -160px -32px;
+}
+/*业务管控(工具导航)*/
+.business_control_32{
+    background-position: -192px -32px;
+}
+/*附件(协同)*/
+.accessory_32{
+    background-position: -224px -32px;
+}
+/*设置(协同)*/
+.set_up_32{
+    background-position: -256px -32px;
+}
+/*更多(协同)*/
+.more_to_collaborative_32{
+    background-position: -288px -32px;
+}
+/*录音(协同)*/
+.record_32{
+    background-position: 0 -64px;
+}
+/*停止(协同)*/
+.halt_32{
+    background-position: -32px -64px;
+}
+/*播放(协同)*/
+.broadcast_32{
+    background-position: -64px -64px;
+}
+/*播放-禁止(协同)*/
+.broadcast_disabled_32{
+    background-position: -96px -64px;
+}
+/*编辑文件名(协同)*/
+.edit_file_name_32{
+    background-position: -128px -64px;
+}
+/*暂停(协同)*/
+.pause_32{
+    background-position: -160px -64px;
+}
+/*插入图片*/
+.insert_picture_32{
+    background-position: -192px -64px;
+}
+
+/* ipad图标32×32结束*/
+
+
+/*
+*
+* ipad图标35×35
+*
+**/
+
+/*word(.doc/)*/
+.word_suffix_doc_35{
+    background-position: 0 0;
+}
+/*word(.docx)*/
+.word_suffix_docx_35{
+    background-position: 0 0;
+}
+/*excel(.xls)*/
+.excel_suffix_xls_35{
+    background-position: -35px 0;
+}
+/*excel(.xlsx)*/
+.excel_suffix_xlsx_35{
+    background-position: -35px 0;
+}
+/*ppt(.ppt)*/
+.ppt_suffix_ppt_35{
+    background-position: -70px 0;
+}
+/*ppt(.pptx)*/
+.ppt_suffix_pptx_35{
+    background-position: -70px 0;
+}
+/*visio(.vsd)*/
+.visio_suffix_vsd_35{
+    background-position: -105px 0;
+}
+/*visio(.vsdx)*/
+.visio_suffix_vsdx_35{
+    background-position: -105px 0;
+}
+/*图片后缀-jpg*/
+.pic_suffix_jpg_35{
+    background-position: -140px 0;
+}
+/*图片后缀-png*/
+.pic_suffix_png_35{
+    background-position: -140px 0;
+}
+/*图片后缀-bmp*/
+.pic_suffix_bmp_35{
+    background-position: -140px 0;
+}
+/*图片后缀-gif*/
+.pic_suffix_gif_35{
+    background-position: -140px 0;
+}
+/*音频格式-amr(android)*/
+.audio_amr_35{
+    background-position: -175px 0;
+}
+/*音频格式-caf(ios)*/
+.audio_caf_35{
+    background-position: -175px 0;
+}
+/*mp3*/
+.mp3_35{
+    background-position: -210px 0;
+}
+/*mp4*/
+.mp4_35{
+    background-position: -245px 0;
+}
+/*wps*/
+.wps_35{
+    background-position: -280px 0;
+}
+/*et*/
+.et_35{
+    background-position: -315px 0;
+}
+/*txt*/
+.txt_35{
+    background-position: 0 -35px;
+}
+/*htm*/
+.htm_35{
+    background-position: -35px -35px;
+}
+/*html*/
+.html_35{
+    background-position: -70px -35px;
+}
+/*rar*/
+.rar_35{
+    background-position: -105px -35px;
+}
+/*zip*/
+.zip_35{
+    background-position: -140px -35px;
+}
+/*tif*/
+.tif_35{
+    background-position: -175px -35px;
+}
+/*pdf*/
+.pdf_35{
+    background-position: -210px -35px;
+}
+/*协同*/
+.collaborative_35{
+    background-position: -245px -35px;
+}
+/*公文*/
+.bumf_35{
+    background-position: -280px -35px;
+}
+/*计划*/
+.plan_35{
+    background-position: -315px -35px;
+}
+/*会议*/
+.meeting_35{
+    background-position: 0 -70px;
+}
+/*新闻*/
+.news_35{
+    background-position: -35px -70px;
+}
+/*公告*/
+.announcement_35{
+    background-position: -70px -70px;
+}
+/*调查*/
+.research_35{
+    background-position: -105px -70px;
+}
+/*讨论*/
+.discuss_35{
+    background-position: -140px -70px;
+}
+/*表单*/
+.form_35{
+    background-position: -175px -70px;
+}
+/*邮件*/
+.email_35{
+    background-position: -210px -70px;
+}
+/*文档(未知格式)*/
+.doc_unknown_35{
+    background-position: -245px -70px;
+}
+/*文件夹*/
+.folder_35{
+    background-position: -280px -70px;
+}
+/*关联文档*/
+.associate_doc_35{
+    background-position: -315px -70px;
+}
+/*关联文档*/
+.doc_ass_pad_35{
+    background-position: -0px -105px;
+}
+
+
+/* ipad图标35×35结束*/
+
+/*
+*
+* ipad图标40×40
+*
+**/
+
+/*默认个人(流程)*/
+.default_person_40{
+    background-position: 0 0;
+}
+/*离职人员(流程)*/
+.dimission_person_40{
+    background-position: -40px 0;
+}
+/*相对角色(流程)*/
+.relative_role_40{
+    background-position: -80px 0;
+}
+/*组(流程)*/
+.group_40{
+    background-position: -120px 0;
+}
+/*单位(流程)*/
+.unit_40{
+    background-position: -160px 0;
+}
+/*部门(流程)*/
+.department_40{
+    background-position: -200px 0;
+}
+/*岗位(流程)*/
+.quarters_40{
+    background-position: -240px 0;
+}
+/*系统(流程)*/
+.system_40{
+    background-position: -280px 0;
+}
+/*节点配置(流程)*/
+.node_allocation_40{
+    background-position: -320px 0;
+}
+/*角色(流程)*/
+.role_40{
+    background-position: -360px 0;
+}
+/*分支条件节点*/
+.branch_condition_node_40{
+    background-position: 0 -40px;
+}
+/*职务级别*/
+.job_level_40{
+    background-position: -40px -40px;
+}
+/*空节点*/
+.empty_node_40{
+    background-position: -80px -40px;
+}
+/*前置节点*/
+.pre_node_40{
+    background-position: -120px -40px;
+}
+/*后置节点*/
+.post_node_40{
+    background-position: -160px -40px;
+}
+/*流程结束*/
+.process_end_40{
+    background-position: -200px -40px;
+}
+/*word(.doc/)*/
+.word_suffix_doc_40{
+    background-position: -240px -40px;
+}
+/*word(.docx)*/
+.word_suffix_docx_40{
+    background-position: -240px -40px;
+}
+/*excel(.xls)*/
+.excel_suffix_xls_40{
+    background-position: -280px -40px;
+}
+/*excel(.xlsx)*/
+.excel_suffix_xlsx_40{
+    background-position: -280px -40px;
+}
+/*ppt(.ppt)*/
+.ppt_suffix_ppt_40{
+    background-position: -320px -40px;
+}
+/*ppt(.pptx)*/
+.ppt_suffix_pptx_40{
+    background-position: -320px -40px;
+}
+/*visio(.vsd)*/
+.visio_suffix_vsd_40{
+    background-position: -360px -40px;
+}
+/*visio(.vsdx)*/
+.visio_suffix_vsdx_40{
+    background-position: -360px -40px;
+}
+/*图片后缀-jpg*/
+.pic_suffix_jpg_40{
+    background-position: 0 -80px;
+}
+/*图片后缀-png*/
+.pic_suffix_png_40{
+    background-position: 0 -80px;
+}
+/*图片后缀-bmp*/
+.pic_suffix_bmp_40{
+    background-position: 0 -80px;
+}
+/*图片后缀-gif*/
+.pic_suffix_gif_40{
+    background-position: 0 -80px;
+}
+/*音频格式-amr(android)*/
+.audio_amr_40{
+    background-position: -40px -80px;
+}
+/*音频格式-caf(ios)*/
+.audio_caf_40{
+    background-position: -40px -80px;
+}
+/*mp3*/
+.mp3_40{
+    background-position: -80px -80px;
+}
+/*mp4*/
+.mp4_40{
+    background-position: -120px -80px;
+}
+/*wps*/
+.wps_40{
+    background-position: -160px -80px;
+}
+/*et*/
+.et_40{
+    background-position: -200px -80px;
+}
+/*txt*/
+.txt_40{
+    background-position: -240px -80px;
+}
+/*htm*/
+.htm_40{
+    background-position: -280px -80px;
+}
+/*html*/
+.html_40{
+    background-position: -320px -80px;
+}
+/*rar*/
+.rar_40{
+    background-position: -360px -80px;
+}
+/*zip*/
+.zip_40{
+    background-position: 0 -120px;
+}
+/*tif*/
+.tif_40{
+    background-position: -40px -120px;
+}
+/*pdf*/
+.pdf_40{
+    background-position: -80px -120px;
+}
+/*协同*/
+.collaborative_40{
+    background-position: -120px -120px;
+}
+/*公文*/
+.bumf_40{
+    background-position: -160px -120px;
+}
+/*计划*/
+.plan_40{
+    background-position: -200px -120px;
+}
+/*会议*/
+.meeting_40{
+    background-position: -240px -120px;
+}
+/*新闻*/
+.news_40{
+    background-position: -280px -120px;
+}
+/*公告*/
+.announcement_40{
+    background-position: -320px -120px;
+}
+/*调查*/
+.research_40{
+    background-position: -360px -120px;
+}
+/*讨论*/
+.discuss_40{
+    background-position: 0 -160px;
+}
+/*表单*/
+.form_40{
+    background-position: -40px -160px;
+}
+/*邮件*/
+.email_40{
+    background-position: -80px -160px;
+}
+/*文档(未知格式)*/
+.doc_unknown_40{
+    background-position: -120px -160px;
+}
+/*文件夹*/
+.folder_40{
+    background-position: -160px -160px;
+}
+/*统计图*/
+.statistics_chart_40{
+    background-position: -200px -160px;
+}
+/*日程*/
+.schedule_40{
+    background-position: -240px -160px;
+}
+/*任务*/
+.task_40{
+    background-position: -280px -160px;
+}
+/*附件下载*/
+.accessory_download_40{
+    background-position: -320px -160px;
+}
+
+
+
+/* ipad图标40×40结束*/
+
+
+/*
+*
+* ipad图标48×48
+*
+**/
+
+/*当前节点*/
+.current_node_48{
+    background-position: 0 0;
+}
+/*需选人节点*/
+.select_people_48{
+    background-position: -48px 0;
+}
+/*未完成选节点*/
+.unselect_people_48{
+    background-position: -96px 0;
+}
+/*标准协同*/
+.standard_collaborative_48{
+    background-position: -144px 0;
+}
+
+
+
+/* ipad图标48×48结束*/
+
+
+
+/*
+*
+* ipad图标50×50
+*
+**/
+
+
+
+/*参加会议*/
+.attend_meeting_50{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_50{
+    background-position: -50px 0;
+}
+/*待定*/
+.unsure_50{
+    background-position: -100px 0;
+}
+/*拍照*/
+.photo_50{
+    background-position: -150px 0;
+}
+/*拍照协同*/
+.photo_collaborative_50{
+    background-position: -150px 0;
+}
+/*语音*/
+.voice_50{
+    background-position: -200px 0;
+}
+/*语音协同*/
+.voice_collaborative_50{
+    background-position: -200px 0;
+}
+/*表单模板*/
+.form_model_50{
+    background-position: -250px 0;
+}
+/*已阅*/
+.look_over_50{
+    background-position: -300px 0;
+}
+/*同意*/
+.agreement_50{
+    background-position: -350px 0;
+}
+/*不同意*/
+.disagreement_50{
+    background-position: -400px 0;
+}
+/*本地文件*/
+.local_files_50{
+    background-position: -450px 0;
+}
+/*关联文档*/
+.associate_doc_50{
+    background-position: 0 -50px;
+}
+
+/* ipad图标50×50结束*/
+
+/*
+*
+* ipad图标70×70
+*
+**/
+
+/*word(.doc/)*/
+.word_suffix_doc_pad_70{
+    background-position: 0 0;
+}
+/*word(.docx)*/
+.word_suffix_docx_pad_70{
+    background-position: 0 0;
+}
+/*excel(.xls)*/
+.excel_suffix_xls_pad_70{
+    background-position: -70px 0;
+}
+/*excel(.xls/.xlsx)*/
+.excel_suffix_xlsx_pad_70{
+    background-position: -70px 0;
+}
+/*ppt(.ppt)*/
+.ppt_suffix_ppt_pad_70{
+    background-position: -140px 0;
+}
+/*ppt(.pptx)*/
+.ppt_suffix_pptx_pad_70{
+    background-position: -140px 0;
+}
+/*visio(.vsd)*/
+.visio_suffix_vsd_pad_70{
+    background-position: -210px 0;
+}
+/*visio(.vsdx)*/
+.visio_suffix_vsdx_pad_70{
+    background-position: -210px 0;
+}
+/*图片后缀-jpg*/
+.pic_suffix_jpg_pad_70{
+    background-position: -280px 0;
+}
+/*图片后缀-png*/
+.pic_suffix_png_pad_70{
+    background-position: -280px 0;
+}
+/*图片后缀-bmp*/
+.pic_suffix_bmp_pad_70{
+    background-position: -280px 0;
+}
+/*图片后缀-gif*/
+.pic_suffix_gif_pad_70{
+    background-position: -280px 0;
+}
+/*音频格式-amr(android)*/
+.audio_amr_pad_70{
+    background-position: -350px 0;
+}
+/*音频格式-caf(ios)*/
+.audio_caf_pad_70{
+    background-position: -350px 0;
+}
+/*mp3*/
+.mp3_pad_70{
+    background-position: -420px 0;
+}
+/*mp4*/
+.mp4_pad_70{
+    background-position: -490px 0;
+}
+/*wps*/
+.wps_pad_70{
+    background-position: -560px 0;
+}
+/*et*/
+.et_pad_70{
+    background-position: -630px 0;
+}
+/*txt*/
+.txt_pad_70{
+    background-position: 0 -70px;
+}
+/*htm*/
+.htm_pad_70{
+    background-position: -70px -70px;
+}
+/*html*/
+.html_pad_70{
+    background-position: -140px -70px;
+}
+/*rar*/
+.rar_pad_70{
+    background-position: -210px -70px;
+}
+/*zip*/
+.zip_pad_70{
+    background-position: -280px -70px;
+}
+/*tif*/
+.tif_pad_70{
+    background-position: -350px -70px;
+}
+/*pdf*/
+.pdf_pad_70{
+    background-position: -420px -70px;
+}
+/*协同*/
+.collaborative_pad_70{
+    background-position: -490px -70px;
+}
+/*公文*/
+.bumf_pad_70{
+    background-position: -560px -70px;
+}
+/*计划*/
+.plan_pad_70{
+    background-position: -630px -70px;
+}
+/*会议*/
+.meeting_pad_70{
+    background-position: 0 -140px;
+}
+/*新闻*/
+.news_pad_70{
+    background-position: -70px -140px;
+}
+/*公告*/
+.announcement_pad_70{
+    background-position: -140px -140px;
+}
+/*调查*/
+.research_pad_70{
+    background-position: -210px -140px;
+}
+/*讨论*/
+.discuss_pad_70{
+    background-position: -280px -140px;
+}
+/*表单*/
+.form_pad_70{
+    background-position: -350px -140px;
+}
+/*邮件*/
+.email_pad_70{
+    background-position: -420px -140px;
+}
+/*文档(未知格式)*/
+.doc_unknown_pad_70{
+    background-position: -490px -140px;
+}
+/*文件夹*/
+.folder_pad_70{
+    background-position: -560px -140px;
+}
+/*无流程表单(菜单)*/
+.unprocessed_form_pad_70{
+    background-position: -630px -140px;
+}
+/*有流程表单(菜单)*/
+.process_list_pad_70{
+    background-position: 0 -210px;
+}
+/*有流程新建(菜单)*/
+.process_to_build_pad_70{
+    background-position: -70px -210px;
+}
+/*统计图(菜单)*/
+.statistics_menu_pad_70{
+    background-position: -140px -210px;
+}
+/*文档(菜单)*/
+.doc_menu_pad_70{
+    background-position: -210px -210px;
+}
+/*新闻(菜单)*/
+.news_menu_pad_70{
+    background-position: -280px -210px;
+}
+/*公告(菜单)*/
+.announcement_menu_pad_70{
+    background-position: -350px -210px;
+}
+/*信息管理表单(菜单)*/
+.info_management_form_pad_70{
+    background-position: -420px -210px;
+}
+/*基础数据表单(菜单)*/
+.base_data_form_pad_70{
+    background-position: -490px -210px;
+}
+
+/* ipad图标70×70结束*/
+
+
+
+/*
+*
+* iphone图标8×8
+*
+**/
+
+
+
+/*日期(表单)*/
+.date_16{
+    background-position: 0 0;
+}
+/*附件上传(表单)*/
+.accessory_upload{
+    background-position: -8px 0;
+}
+/*删除(表单)*/
+.delete_16{
+    background-position: -16px 0;
+}
+/*图片上传(表单)*/
+.picture_upload_16{
+    background-position: -24px 0;
+}
+/*关联文档(表单)*/
+.associate_doc_16{
+    background-position: -32px 0;
+}
+/*人员增加(表单)*/
+.person_add_16{
+    background-position: -40px 0;
+}
+/*新增行(表单)*/
+.line_add_16{
+    background-position: -48px 0;
+}
+/*重复行(表单)*/
+.repeat_line_16{
+    background-position: -56px 0;
+}
+/*删除行(表单)*/
+.delete_line_16{
+    background-position: -64px 0;
+}
+/*关联项目(表单)*/
+.associate_project_16{
+    background-position: -72px 0;
+}
+/*签批(表单)*/
+.sign_16{
+    background-position: 0 -8px;
+}
+/*关联表单(表单)*/
+.associate_form_16{
+    background-position: -8px -8px;
+}
+/*查找(表单)*/
+.look_up_16{
+    background-position: -16px -8px;
+}
+/*交换(表单)*/
+.exchange_16{
+    background-position: -24px -8px;
+}
+
+/* iphone图标16×16结束*/
+
+
+/*
+*
+* iphone图标22×22
+*
+**/
+
+/*参加会议*/
+.attend_meeting_22{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_22{
+    background-position: -11px 0;
+}
+/*会议纪要*/
+.meeting_summary_22{
+    background-position: -22px 0;
+}
+/*锁定图标*/
+.lock_icon_22{
+    background-position: -33px 0;
+}
+/*处理时间*/
+.dispose_time_22{
+    background-position: -44px 0;
+}
+/*男*/
+.man_22{
+    background-position: -55px 0;
+}
+/*女*/
+.women_22{
+    background-position: -66px 0;
+}
+/*短信图标*/
+.sms_icon_22{
+    background-position: -77px 0;
+}
+/*未处理*/
+.untreated_22{
+    background-position: -88px 0;
+}
+/*已查看*/
+.before_see_22{
+    background-position: -99px 0;
+}
+/*暂存待办*/
+.temporary_pending_22{
+    background-position: 0 -11px;
+}
+/*已办*/
+.before_transact_22{
+    background-position: -11px -11px;
+}
+/*终止*/
+.stop_22{
+    background-position: -22px -11px;
+}
+/*附件-白色*/
+.accessory_white_22{
+    background-position: -33px -11px;
+}
+/*下拉按钮*/
+.drop_down_btn_22{
+    background-position: -44px -11px;
+}
+/*消息提示*/
+.message_hint_22{
+    background-position: -55px -11px;
+}
+/*附件*/
+.accessory_22{
+    background-position: -66px -11px;
+}
+.accessory_16{
+    background-position: -112px -16px;
+}
+/*未读*/
+.unread_22{
+    background-position: -77px -11px;
+}
+/*上拉按钮*/
+.drop_up_btn_22{
+    background-position: -88px -11px;
+}
+
+
+/* iphone图标22×22结束*/
+
+
+/*
+*
+* iphone图标28×28
+*
+**/
+
+
+
+/*查看*/
+.see_28{
+    background-position: 0 0;
+}
+/*未查看*/
+.unseen_28{
+    background-position: -14px 0;
+}
+
+/* iphone图标28×28结束*/
+
+/*
+*
+* iphone图标44×44
+*
+**/
+
+/*手工分支*/
+.handwork_branch_44{
+    background-position: 0 0;
+}
+/*自动条件分支*/
+.automatic_condition_44{
+    background-position: -22px 0;
+}
+/*强制自动条件分支*/
+.force_automatic_condition_44{
+    background-position: -44px 0;
+}
+/*自动表单条件分支*/
+.automatic_form_condition_44{
+    background-position: -66px 0;
+}
+/*强制自动表单条件分支*/
+.force_automatic_form_condition_44{
+    background-position: -88px 0;
+}
+
+
+
+/*
+*
+* iphone图标48×48
+*
+**/
+
+/*待定*/
+.unsure_48{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_48{
+    background-position: -24px 0;
+}
+/*参加会议*/
+.attend_meeting_48{
+    background-position: -48px 0;
+}
+/*钩(分支选人)*/
+.hook_48{
+    background-position: -72px 0;
+}
+/*叉(分支选人)*/
+.fork_48{
+    background-position: -96px 0;
+}
+/*叉-禁用(分支选人)*/
+.fork_disabled_48{
+    background-position: -120px 0;
+}
+/*显示分支条件-banner上(分支选人)*/
+.branch_condition_48{
+    background-position: -144px 0;
+}
+/*分支节点图标-流程图中(分支选人)*/
+.branch_node_48{
+    background-position: -168px 0;
+}
+/*插入图片*/
+.insert_picture_48{
+    background-position: -192px 0;
+}
+/*展开按钮-向下(业务生成器)*/
+.spread_bottom_48{
+    background-position: -216px 0;
+}
+/*展开按钮-向上(业务生成器)*/
+.spread_top_48{
+    background-position: 0 -24px;
+}
+/*折线图-banner上(业务生成器)*/
+.line_chart_48{
+    background-position: -24px -24px;
+}
+/*饼图-banner上(业务生成器)*/
+.pie_chart_48{
+    background-position: -48px -24px;
+}
+/*柱状图-banner上(业务生成器)*/
+.histogram_48{
+    background-position: -72px -24px;
+}
+/*设置-banner上(业务生成器)*/
+.set_up_48{
+    background-position: -96px -24px;
+}
+/*签章*/
+.signature_48{
+    background-position: -120px -24px;
+}
+/*删除签章*/
+.delete_signature_48{
+    background-position: -144px -24px;
+}
+/*全部删除*/
+.delete_all_48{
+    background-position: -168px -24px;
+}
+/*画笔颜色-蓝(表单)*/
+.brush_blue_48{
+    background-position: -192px -24px;
+}
+/*画笔颜色-黑(表单)*/
+.brush_black_48{
+    background-position: -216px -24px;
+}
+/*画笔颜色-红(表单)*/
+.brush_red_48{
+    background-position: 0 -48px;
+}
+/*删除(消息中心)*/
+.delete_48{
+    background-position: -24px -48px;
+}
+/*word(.doc/)*/
+.word_suffix_doc_48{
+    background-position: -48px -48px;
+}
+/*word(.docx)*/
+.word_suffix_docx_48{
+    background-position: -48px -48px;
+}
+/*excel(.xls)*/
+.excel_suffix_xls_48{
+    background-position: -72px -48px;
+}
+/*excel(.xls/.xlsx)*/
+.excel_suffix_xlsx_48{
+    background-position: -72px -48px;
+}
+/*ppt(.ppt)*/
+.ppt_suffix_ppt_48{
+    background-position: -96px -48px;
+}
+/*ppt(.pptx)*/
+.ppt_suffix_pptx_48{
+    background-position: -96px -48px;
+}
+/*visio(.vsd)*/
+.visio_suffix_vsd_48{
+    background-position: -120px -48px;
+}
+/*visio(.vsdx)*/
+.visio_suffix_vsdx_48{
+    background-position: -120px -48px;
+}
+/*图片后缀-jpg*/
+.pic_suffix_jpg_48{
+    background-position: -144px -48px;
+}
+/*图片后缀-png*/
+.pic_suffix_png_48{
+    background-position: -144px -48px;
+}
+/*图片后缀-bmp*/
+.pic_suffix_bmp_48{
+    background-position: -144px -48px;
+}
+/*图片后缀-gif*/
+.pic_suffix_gif_48{
+    background-position: -144px -48px;
+}
+/*音频格式-amr(android)*/
+.audio_amr_48{
+    background-position: -168px -48px;
+}
+/*音频格式-caf(ios)*/
+.audio_caf_48{
+    background-position: -168px -48px;
+}
+/*mp3*/
+.mp3_48{
+    background-position: -192px -48px;
+}
+/*mp4*/
+.mp4_48{
+    background-position: -216px -48px;
+}
+/*wps*/
+.wps_48{
+    background-position: 0 -72px;
+}
+/*et*/
+.et_48{
+    background-position: -24px -72px;
+}
+/*txt*/
+.txt_48{
+    background-position: -48px -72px;
+}
+/*htm*/
+.htm_48{
+    background-position: -72px -72px;
+}
+/*html*/
+.html_48{
+    background-position: -96px -72px;
+}
+/*rar*/
+.rar_48{
+    background-position: -120px -72px;
+}
+/*zip*/
+.zip_48{
+    background-position: -144px -72px;
+}
+/*tif*/
+.tif_48{
+    background-position: -168px -72px;
+}
+/*pdf*/
+.pdf_48{
+    background-position: -192px -72px;
+}
+/*协同*/
+.collaborative_48{
+    background-position: -216px -72px;
+}
+/*公文*/
+.bumf_48{
+    background-position: 0 -96px;
+}
+/*计划*/
+.plan_48{
+    background-position: -24px -96px;
+}
+/*会议*/
+.meeting_48{
+    background-position: -48px -96px;
+}
+/*新闻*/
+.news_48{
+    background-position: -72px -96px;
+}
+/*公告*/
+.announcement_48{
+    background-position: -96px -96px;
+}
+/*调查*/
+.research_48{
+    background-position: -120px -96px;
+}
+/*讨论*/
+.discuss_48{
+    background-position: -144px -96px;
+}
+/*表单*/
+.form_48{
+    background-position: -168px -96px;
+}
+/*邮件*/
+.email_48{
+    background-position: -192px -96px;
+}
+/*文档(未知格式)*/
+.doc_unknown_48{
+    background-position: -216px -96px;
+}
+/*文件夹*/
+.folder_48{
+    background-position: 0 -120px;
+}
+/*交流*/
+.interflow_48{
+    background-position: -24px -120px;
+}
+/*竞争执行*/
+.compete_execute_48{
+    background-position: -48px -120px;
+}
+/*并发(选人)*/
+.parallel_send_48{
+    background-position: -72px -120px;
+}
+/*并发-禁用(选人)*/
+.parallel_send_disabled_48{
+    background-position: -96px -120px;
+}
+/*串发(选人)*/
+.serial_send_48{
+    background-position: -120px -120px;
+}
+/*串发-禁用(选人)*/
+.serial_send_disabled_48{
+    background-position: -144px -120px;
+}
+/*下一部门(选人)*/
+.next_department_48{
+    background-position: -168px -120px;
+}
+/*新建(banner)*/
+.new_built_48{
+    background-position: -192px -120px;
+}
+/*关闭/取消(banner)*/
+.close_48{
+    background-position: -216px -120px;
+}
+/*返回(banner)*/
+.return_48{
+    background-position: 0 -144px;
+}
+/*搜索(banner)*/
+.search_48{
+    background-position: -24px -144px;
+}
+/*取回*/
+.recaption_48{
+    background-position: -48px -144px;
+}
+/*取消跟踪*/
+.cancel_tracing_48{
+    background-position: -72px -144px;
+}
+/*撤销*/
+.rescind_48{
+    background-position: -96px -144px;
+}
+/*搜索图标*/
+.search_icon_48{
+    background-position: -120px -144px;
+}
+/*已阅*/
+.look_over_48{
+    background-position: -144px -144px;
+}
+/*同意*/
+.agreement_48{
+    background-position: -168px -144px;
+}
+/*不同意*/
+.disagreement_48{
+    background-position: -192px -144px;
+}
+/*附件*/
+.accessory_48{
+    background-position: -216px -144px;
+}
+/*设置*/
+.set_up_48{
+    background-position: 0 -168px;
+}
+/*新建流程*/
+.new_flow_48{
+    background-position: -24px -168px;
+}
+/*更多*/
+.more_48{
+    background-position: -48px -168px;
+}
+/*取消上传*/
+.cancel_upload_48{
+    /*background-position: -144px -336px;*/
+    background-position: -72px -168px;
+}
+/*重新上传*/
+.anew_upload_48{
+    background-position: -96px -168px;
+}
+/*编辑文件名*/
+.edit_file_name_48{
+    background-position: -120px -168px;
+}
+/*暂停*/
+.pause_48{
+    background-position: -144px -168px;
+}
+/*播放-禁止*/
+.broadcast_disabled_48{
+    background-position: -168px -168px;
+}
+/*播放*/
+.broadcast_48{
+    background-position: -192px -168px;
+}
+/*停止*/
+.halt_48{
+    background-position: -216px -168px;
+}
+/*录音*/
+.record_48{
+    background-position: 0 -192px;
+}
+/*展开按钮-向右*/
+.spread_right_48{
+    background-position: -24px -192px;
+}
+/*快速回执*/
+.rapid_receipt_48{
+    background-position: -48px -192px;
+}
+/*回执*/
+.return__receipt_48{
+    background-position: -72px -192px;
+}
+/*回复*/
+.reply_48{
+    background-position: -96px -192px;
+}
+/*回复(按下)*/
+.reply_down_48{
+    background-position: -120px -192px;
+}
+/*附件下载*/
+.accessory_download_48{
+    background-position: -144px -192px;
+}
+/*关联文档*/
+.associate_doc_phone_48{
+    background-position: -168px -192px;
+}
+/*文档关联文档图标*/
+.doc_ass_phone_48{
+    background-position: -192px -192px;
+}
+/* iphone图标48×48结束*/
+
+
+/*
+*
+* iphone图标70×70
+*
+**/
+
+
+/*参加会议*/
+.attend_meeting_phone_70{
+    background-position: 0 0;
+}
+/*不参加会议*/
+.unattended_meeting_phone_70{
+    background-position: -35px 0;
+}
+/*待定*/
+.unsure_phone_70{
+    background-position: -70px 0;
+}
+/*日程*/
+.schedule_phone_70{
+    background-position: -105px 0;
+}
+/*任务*/
+.task_phone_70{
+    background-position: -140px 0;
+}
+/*统计图（列表图标）*/
+.statistics_chart_phone_70{
+    background-position: -175px 0;
+}
+/*基础数据表单（菜单）*/
+.base_data_form_phone_70{
+    background-position: -210px 0;
+}
+/*信息管理表单（菜单）*/
+.info_management_form_phone_70{
+    background-position: -245px 0;
+}
+/*公告（菜单）*/
+.announcement_menu_phone_70{
+    background-position: -280px 0;
+}
+/*新闻（菜单）*/
+.news_menu_phone_70{
+    background-position: -315px 0;
+}
+/*文档（菜单）*/
+.doc_menu_phone_70{
+    background-position: 0 -35px;
+}
+/*统计（菜单）*/
+.statistics_menu_phone_70{
+    background-position: -35px -35px;
+}
+/*有流程新建（菜单）*/
+.process_to_build_phone_70{
+    background-position: -70px -35px;
+}
+/*有流程列表（菜单）*/
+.process_list_phone_70{
+    background-position: -105px -35px;
+}
+/*无流程表单（菜单）*/
+.unprocessed_form_phone_70{
+    background-position: -140px -35px;
+}
+/*弹窗颜色-红*/
+.popup_red_phone_70{
+    background-position: -175px -35px;
+}
+/*弹窗颜色-黑*/
+.popup_black_phone_70{
+    background-position: -210px -35px;
+}
+/*弹窗颜色-蓝*/
+.popup_blue_phone_70{
+    background-position: -245px -35px;
+}
+/*word(.doc/)*/
+.word_suffix_doc_phone_70{
+    background-position: -280px -35px;
+}
+/*word(.docx)*/
+.word_suffix_docx_phone_70{
+    background-position: -280px -35px;
+}
+/*excel(.xls)*/
+.excel_suffix_xls_phone_70{
+    background-position: -315px -35px;
+}
+/*excel(.xls/.xlsx)*/
+.excel_suffix_xlsx_phone_70{
+    background-position: -315px -35px;
+}
+/*ppt(.ppt)*/
+.ppt_suffix_ppt_phone_70{
+    background-position: 0 -70px;
+}
+/*ppt(.pptx)*/
+.ppt_suffix_pptx_phone_70{
+    background-position: 0 -70px;
+}
+/*visio(.vsd)*/
+.visio_suffix_vsd_phone_70{
+    background-position: -35px -70px;
+}
+/*visio(.vsdx)*/
+.visio_suffix_vsdx_phone_70{
+    background-position: -35px -70px;
+}
+/*图片后缀-jpg*/
+.pic_suffix_jpg_phone_70{
+    background-position: -70px -70px;
+}
+/*图片后缀-png*/
+.pic_suffix_png_phone_70{
+    background-position: -70px -70px;
+}
+/*图片后缀-bmp*/
+.pic_suffix_bmp_phone_70{
+    background-position: -70px -70px;
+}
+/*图片后缀-gif*/
+.pic_suffix_gif_phone_70{
+    background-position: -70px -70px;
+}
+/*音频格式-amr(android)*/
+.audio_amr_phone_70{
+    background-position: -105px -70px;
+}
+/*音频格式-caf(ios)*/
+.audio_caf_phone_70{
+    background-position: -105px -70px;
+}
+/*mp3*/
+.mp3_phone_70{
+    background-position: -140px -70px;
+}
+/*mp4*/
+.mp4_phone_70{
+    background-position: -175px -70px;
+}
+/*wps*/
+.wps_phone_70{
+    background-position: -210px -70px;
+}
+/*et*/
+.et_phone_70{
+    background-position: -245px -70px;
+}
+/*txt*/
+.txt_phone_70{
+    background-position: -280px -70px;
+}
+/*htm*/
+.htm_phone_70{
+    background-position: -315px -70px;
+}
+/*html*/
+.html_phone_70{
+    background-position: 0 -105px;
+}
+/*rar*/
+.rar_phone_70{
+    background-position: -35px -105px;
+}
+/*zip*/
+.zip_phone_70{
+    background-position: -70px -105px;
+}
+/*tif*/
+.tif_phone_70{
+    background-position: -105px -105px;
+}
+/*pdf*/
+.pdf_phone_70{
+    background-position: -140px -105px;
+}
+/*协同*/
+.collaborative_phone_70{
+    background-position: -175px -105px;
+}
+/*公文*/
+.bumf_phone_70{
+    background-position: -210px -105px;
+}
+/*计划*/
+.plan_phone_70{
+    background-position: -245px -105px;
+}
+/*会议*/
+.meeting_phone_70{
+    background-position: -280px -105px;
+}
+/*新闻*/
+.news_phone_70{
+    background-position: -315px -105px;
+}
+/*公告*/
+.announcement_phone_70{
+    background-position: 0 -140px;
+}
+/*调查*/
+.research_phone_70{
+    background-position: -35px -140px;
+}
+/*讨论*/
+.discuss_phone_70{
+    background-position: -70px -140px;
+}
+/*表单*/
+.form_phone_70{
+    background-position: -105px -140px;
+}
+/*邮件*/
+.email_phone_70{
+    background-position: -140px -140px;
+}
+/*文档(未知格式)*/
+.doc_unknown_phone_70{
+    background-position: -175px -140px;
+}
+/*文件夹*/
+.folder_phone_70{
+    background-position: -210px -140px;
+}
+/*同意*/
+.agreement_phone_70{
+    background-position: -245px -140px;
+}
+/*已阅*/
+.look_over_phone_70{
+    background-position: -280px -140px;
+}
+/*不同意*/
+.disagreement_phone_70{
+    background-position: -315px -140px;
+}
+/*不同意*/
+/*.disagreement_phone_70{*/
+/*background-position: -630px -280px;*/
+/*}*/
+/*本地文件*/
+.local_files_phone_70{
+    background-position: 0 -175px;
+}
+/*拍照*/
+.photo_phone_70{
+    background-position: -35px -175px;
+}
+/*拍照协同*/
+.photo_collaborative_phone_70{
+    background-position: -35px -175px;
+}
+/*语音*/
+.voice_phone_70{
+    background-position: -70px -175px;
+}
+/*语音协同*/
+.voice_collaborative_phone_70{
+    background-position: -70px -175px;
+}
+/*关联文档*/
+.associate_doc_phone_70{
+    background-position: -105px -175px;
+}
+/*标准协同*/
+.standard_collaborative_phone_70{
+    background-position: -140px -175px;
+}
+/*表单模板*/
+.form_model_phone_70{
+    background-position: -175px -175px;
+}
+/* iphone图标70×70结束*/
+
+
+/*
+*
+* ipad图标80×80
+*
+**/
+
+/*默认个人(流程)*/
+.default_person_80{
+    background-position: 0 0;
+}
+/*离职人员(流程)*/
+.dimission_person_80{
+    background-position: -40px 0;
+}
+/*相对角色(流程)*/
+.relative_role_80{
+    background-position: -80px 0;
+}
+/*相对角色-组织(流程)*/
+.relative_role_organize_80{
+    background-position: -120px 0;
+}
+/*组(流程)*/
+.group_80{
+    background-position: -160px 0;
+}
+/*单位(流程)*/
+.unit_80{
+    background-position: -200px 0;
+}
+/*部门(流程)*/
+.department_80{
+    background-position: -240px 0;
+}
+/*岗位(流程)*/
+.quarters_80{
+    background-position: -280px 0;
+}
+/*系统(流程)*/
+.system_80{
+    background-position: -320px 0;
+}
+/*节点配置(流程)*/
+.node_allocation_80{
+    background-position: -360px 0;
+}
+/*角色(流程)*/
+.role_80{
+    background-position: 0 -40px;
+}
+/*分支条件节点*/
+.branch_condition_node_80{
+    background-position: -40px -40px;
+}
+/*职务级别*/
+.job_level_80{
+    background-position: -80px -40px;
+}
+/*空节点*/
+.empty_node_80{
+    background-position: -120px -40px;
+}
+/*前置节点*/
+.pre_node_80{
+    background-position: -160px -40px;
+}
+/*后置节点*/
+.post_node_80{
+    background-position: -200px -40px;
+}
+/*流程结束*/
+.process_end_80{
+    background-position: -240px -40px;
+}
+
+/* iphone图标80×80结束*/
+
+
+
+/*
+*
+* iphone图标94×94
+*
+**/
+
+/*当前节点*/
+.current_node_94{
+    background-position: 0 0;
+}
+
+/* iphone图标94×94结束*/
+
+
+/*
+*
+* iphone图标96×96
+*
+**/
+
+/*需选人节点*/
+.select_people_96{
+    background-position: 0 0;
+}
+/*未完成选节点*/
+.unselect_people_96{
+    background-position: -48px 0;
+}
+
+
+/* iphone图标96×96结束*/
+
+
+/*
+*
+* iphone图标100×100
+*
+**/
+
+
+/*消息中心*/
+.message_center_100{
+    background-position: 0 0;
+}
+/*协同*/
+.collaborative_100{
+    background-position: -50px 0;
+}
+/*公文*/
+.bumf_100{
+    background-position: -100px 0;
+}
+/*统计*/
+.statistics_100{
+    background-position: -150px 0;
+}
+/*新闻*/
+.news_100{
+    background-position: -200px 0;
+}
+/*公告*/
+.announcement_100{
+    background-position: -250px 0;
+}
+/*文档*/
+.doc_100{
+    background-position: -300px 0;
+}
+/*日程*/
+.schedule_100{
+    background-position: -350px 0;
+}
+/*会议*/
+.meeting_100{
+    background-position: -400px 0;
+}
+/*通讯录*/
+.address_book_100{
+    background-position: -450px 0;
+}
+/*设置*/
+.set_100{
+    background-position: 0 -50px;
+}
+/*IM*/
+.im_100{
+    background-position: -50px -50px;
+}
+/*业务管控*/
+.business_control_100{
+    background-position: -100px -50px;
+}
+/* iphone图标100×100结束*/
+
+
+/*
+*   ipad图标单选
+**/
+
+
+.ipad_radio{
+    display: inline-block;
+}
+
+
+.ico_pad_radio30{
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+    border: 1px solid #B5B5B5;
+    vertical-align: top;
+}
+.ico_pad_radio_checked30{
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+    border: 1px solid #B5B5B5;
+}
+.ico_pad_radio_checked30:after{
+    display: inline-block;
+	content: "";
+    margin-top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #2572C5;
+}
+
+/*
+*   ipad图标单选结束
+**/
+
+/*
+*   iphone图标单选
+**/
+.ico_phone_radio30{
+    display: inline-block;
+    margin-top: -1px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+    border: 1px solid #B5B5B5;
+    vertical-align: middle;
+}
+.ico_phone_radio_checked30{
+    display: inline-block;
+    margin-top: -1px;
+    width: 14px;
+    height: 14px;
+    line-height: 12px;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+    border: 1px solid #B5B5B5;
+    text-align: center;
+    vertical-align: middle;
+}
+.ico_phone_radio_checked30:after{
+    display: inline-block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #2572C5;
+}
+/*
+*   iphone图标单选结束
+**/
+
+.hidden{
+	display: none;
+}
+
+
+.ui-flipswitch{
+	border:none!important;
+}
+
+

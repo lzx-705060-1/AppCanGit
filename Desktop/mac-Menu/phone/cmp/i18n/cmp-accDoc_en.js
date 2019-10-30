@@ -1,0 +1,33 @@
+if(typeof fI18nData == "undefined"){
+    fI18nData = {}
+}
+fI18nData["cmp.accDoc.ok"] = "OK";
+fI18nData["cmp.accDoc.cancel"] = "Cancel";
+fI18nData["cmp.accDoc.back"] = "Back";
+fI18nData["cmp.accDoc.tips"] = "Prompt";
+fI18nData["cmp.accDoc.search"] = "Search";
+fI18nData["cmp.accDoc.title"] = "Title";
+fI18nData["cmp.accDoc.pullUpToloadMore"] = "Display more";
+fI18nData["cmp.accDoc.pullDownToRefresh"] = "Pull refresh";
+fI18nData["cmp.accDoc.releaseToLoad"] = "Loosen refresh";
+fI18nData["cmp.accDoc.loading"] = "Loading...";
+fI18nData["cmp.accDoc.noMoreData"] = "No Data";
+fI18nData["cmp.accDoc.listPending"] = "ToDo";
+fI18nData["cmp.accDoc.listDoneAll"] = "Done";
+fI18nData["cmp.accDoc.listSent"] = "Sent";
+fI18nData["cmp.accDoc.listZcdb"] = "Doing";
+fI18nData["cmp.accDoc.requestError"] = "request error";
+fI18nData["cmp.accDoc.requestPluginsError"] = "request plugins error";
+fI18nData["cmp.accDoc.doc"] = "Doc";
+fI18nData["cmp.accDoc.edoc"] = "Edoc";
+fI18nData["cmp.accDoc.collaboration"] = "Collaboration";
+fI18nData["cmp.accDoc.send"] = "Send";
+fI18nData["cmp.accDoc.receive"] = "Receive";
+fI18nData["cmp.accDoc.report"] = "Report";
+fI18nData["cmp.accDoc.zhankai"] = "Open";
+fI18nData["cmp.accDoc.sender"] = "Sender";
+fI18nData["cmp.accDoc.createData"] = "Create data";
+fI18nData["cmp.accDoc.creator"] = "Creator";
+fI18nData["cmp.accDoc.noAccess"] = "No access to see";
+fI18nData["cmp.accDoc.maxNum"] = "Choose {0} at most";
+fI18nData["cmp.accDoc.widgetTitle"] = "accDoc";

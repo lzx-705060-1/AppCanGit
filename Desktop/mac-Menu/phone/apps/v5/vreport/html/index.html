@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172734">
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/vreport/css/vreport.css?buildversion=181210172734">
+		<title>报表中心</title>
+	</head>
+	<body class="cmp-fullscreen">
+		<div class="vreport-content">
+			<div class="vreport-header">
+				<div class="cmp-segmented_title_content">
+					<form action="#" onsubmit="return false;">
+						<div class="cmp-content-title-search">
+							<div class="cmp-input-row cmp-search">
+								<input type="search" class="cmp-input-clear" placeholder="搜索" disabled="disabled">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="vreport-menu">
+				<div class="vreport-menu-item" id="vreport-list-attend">
+					<div class="menu-icon gradient-color1">
+						<div class="menu-icon-left">
+							<span class="cmp-icon see-icon-v5-common-reportform-follow"></span>
+						</div>
+						<div class="menu-icon-right">
+							<div class="vreport-num vreport-num-attend">-</div>
+							<div class="menu-title">我关注的</div>
+						</div>
+					</div>
+				</div>
+				<div class="vreport-menu-item" id="vreport-list-space">
+					<div class="menu-icon gradient-color2">
+						<div class="menu-icon-left">
+							<span class="cmp-icon see-icon-v5-common-reportportal"></span>
+						</div>
+						<div class="menu-icon-right">
+							<div class="vreport-num vreport-num-space">-</div>
+							<div class="menu-title">报表空间</div>
+						</div>
+					</div>
+				</div>
+				<div class="vreport-menu-item" id="vreport-list-unread">
+					<div class="menu-icon gradient-color3">
+						<div class="menu-icon-left">
+							<span class="cmp-icon see-icon-v5-common-report-unread"></span>
+						</div>
+						<div class="menu-icon-right">
+							<div class="vreport-num vreport-num-unread">-</div>
+							<div class="menu-title">未读报表</div>
+						</div>
+					</div>
+				</div>
+				<div class="vreport-menu-item" id="vreport-list-all">
+					<div class="menu-icon gradient-color4">
+						<div class="menu-icon-left">
+							<span class="cmp-icon see-icon-v5-common-reportform"></span>
+						</div>
+						<div class="menu-icon-right">
+							<div class="vreport-num vreport-num-all">-</div>
+							<div class="menu-title">我的报表</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="bottom-container">
+				<div class="list-title">
+					最近阅读的报表
+				</div>
+				<div class="list-container">
+					<div id="vreportReadList" class="cmp-scroll-wrapper">
+	                    <div class="cmp-scroll">
+	                        <ul class="cmp-table-view"></ul>
+	                    </div>
+	                </div>
+		            <div class="common-list-empty cmp-hidden">
+		            	<div>
+		            		<img src="../img/noContent.png"/>
+		            	</div>
+						<span>暂无数据</span>					
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="vreport-example cmp-hidden">
+			<img src="../img/demo.png"/>
+			<div class="favour-demo-tip cmp-hidden">
+				<div class="favour-demo-tip-content"><i18n key = "vreport.page.demo"></i18n></div>
+				<div class="favour-demo-tip-btn"><u style="text-decoration:none"><i18n key = "vreport.page.demo.iknow"></i18n></u></div>
+			</div>
+		</div>
+		
+		
+		<script src="/seeyon/m3/apps/v5/vreport/i18n/vreport_zh_CN.js?buildversion=181210172734"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172734"></script>
+		<script type="text/javascript">
+			cmp.i18n.init("/seeyon/m3/apps/v5/vreport/i18n/","vreport",function(){
+				document.title = cmp.i18n("vreport.page.label.reportCenter");
+			});
+			var vreportPath  = '/seeyon/m3/apps/v5/vreport';
+		</script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreport-jssdk.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172734" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/portal_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/vreport/js/vreportCommon.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreportCommon.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreportHome.js?buildversion=181210172734"></script>
+	</body>
+</html>

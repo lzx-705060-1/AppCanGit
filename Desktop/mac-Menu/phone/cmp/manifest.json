@@ -1,0 +1,21 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"cmp",
+	"splashscreen":[],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.cmp",
+	"serviceProvidear":"seeyon",
+	"team":"cmp",
+  	"cmpShellVersion":{"ios":"2.5.0","android":"2.5.0"},
+	"packageType":"LIB",
+	"version":"1.0.0",
+	"entry":{"phone":""},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"0",
+	"appId":"49",
+	"urlSchemes":"cmp",
+	"bundleName":"cmp",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172627" />
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/taskmanage/css/taskmanage.css?buildversion=181210172627" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172627" />    
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172627" />  
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172627">  
+    <title></title>
+</head>
+<body class="cmp-fullscreen">
+<script>var _cmpPath = "/seeyon/m3/cmp"; var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";</script>
+<!-- <header id="page_header" class="cmp-bar cmp-bar-nav">
+    <div style="display:block;">
+        <div id="goAheadBtn" style="display:inline-block;">
+            <a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+            <div class="task-back">
+                <span><i18n key="Taskmanage.label.back"></i18n></span>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <h1 class="cmp-title common-title">
+            <span id='showTitle'><i18n key="Taskmanage.label.evolve"></i18n></span>
+        </h1>
+    </div>
+</header> -->
+<div id="body_content_div" class="cmp-content position_relative task-feedback-header" style="overflow-y: auto;">
+    <div id="task_feedback_list" class="cmp-control-content cmp-active main-content white tab_selector" style="background: #fff;">
+	    <div class="cmp-scroll">
+                <ul class="cmp-table-view"></ul>
+        </div>
+    </div>
+</div>
+</body>
+	<!-- 进展列表模板 -->
+	<script type="text/html" id="task_feedback_tpl">
+		<% for(var i = 0; i < this.length; i++){ 		%>
+		<% 		var feed = this[i];               		%>
+				<div class="
+		<%			if(feed.isOverdue){					%>task_feedback-item-overdue
+		<%			}else {								%>
+		<%      		if (feed.status == 1){         	%>task_feedback-item-notstarted
+		<%				}else if(feed.status == 2){		%>task_feedback-item-marching
+		<%				}else if(feed.status == 4){		%>task_feedback-item-finished
+		<%				}else if(feed.status == 5){		%>task_feedback-item-canceled
+		<%				}								%>
+		<%			}									%>"
+		<%			if (i > 0){							%>style="margin-top: 13px;"
+		<%			}									%>
+			   	>
+					<div class="task_feedback-item-time">
+        <%				var createTime = new Date(new Number(feed.createTime));	%>      		
+						<div class="task_feedback-item-time-min">
+                    		<span><%= createTime.format("hh:mm") %></span>
+                		</div>
+                		<div class="task_feedback-item-time-date">
+                    		<span><%= createTime.format("MM-dd") %></span>
+                		</div>
+            		</div>
+					<div class="task_feedback-item-tag">
+                		<div class="task_feedback-item-tag-icon">
+                    		<span class="cmp-icon iconfont see-icon-v5-common-solid-arrow-top"></span>
+                		</div>
+            		</div>
+					<div class="task_feedback-item-right">
+                		<div>
+                    		<div class="task_feedback-item-status">
+                        		<div class="task_feedback-item-status-time">
+                            		<span><i18n key="Taskmanage.label.elapsedtime"></i18n></span>
+                            		<span><%= parseFloat(feed.elapsedTime)%><%=cmp.i18n("Taskmanage.label.hour")%></span>
+                            		<span style="margin-left: 20px;"><%=cmp.i18n("Taskmanage.label.risk")%></span>
+                            		<span><%= feed.taskRiskLevelName%></span>
+                        		</div>
+                        		<div class="task_feedback-item-status-back">
+                            		<div style="width:<%= feed.finishRate%>%"></div>
+                        		</div>
+                        		<div class="task_feedback-item-status-name">
+                            		<span><%= feed.createUserName%></span>
+                            		<span><%= feed.statusName%></span>
+                        		</div>
+							</div>
+                    		<div class="task_feedback-item-per">
+                        		<span><%= feed.finishRate%>%</span>
+                    		</div>
+                    		<div style="clear: both;"></div>
+                		</div>
+						<div class="task_feedback-item-reply">
+							<div>
+		<%						if(feed.content !== '无'){					%>
+									<div class="task_feedback-item-reply-top">
+                            			<span><%=cmp.i18n("Taskmanage.label.explain")%></span>
+                        			</div>
+                        		<div class="task_feedback-item-reply-detail">
+                            		<span><%= feed.content.escapeHTML(false)%></span>
+                        		</div>
+		<%						}											%>
+                        		<div id="attachment_<%=feed.id%>" class="task_feedback-item-reply-access"></div>
+                    		</div>
+							
+						</div>
+        <%				if(i != this.length-1){		%>        		
+							<div class="task_feedback-item-tag-line"></div>
+		<%				}							%>
+            		</div>
+            		<div style="clear: both;"></div>
+				</div>
+		<% }                                     	%>
+	</script>
+	<!-- 基本数据 -->
+	<!-- 国际化资源文件引入 -->
+	<script src="/seeyon/m3/apps/v5/taskmanage/i18n/taskmanage_zh_CN.js?buildversion=181210172627"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172627"></script>
+	<script>
+	    cmp.i18n.init("/seeyon/m3/apps/v5/taskmanage/i18n/","taskmanage",function(){
+	    	document.title = cmp.i18n("Taskmanage.label.evolve");
+	    });
+	</script>
+	
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172627"></script>
+	<script  src="/seeyon/m3/apps/v5/taskmanage/js/taskmanage-jssdk.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172627?buildversion=181210172627" id="__jsdktag"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/js/taskFeedbackList.js?buildversion=181210172627"></script>
+</html>

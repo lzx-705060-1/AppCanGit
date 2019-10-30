@@ -1,0 +1,24 @@
+var testApi = (function(){  //api定义的名字和manifest中的openAppMethod字段相对应
+
+    
+    var testApi = function(){
+         
+        this.basePath = "/seeyon/m3/apps/v5/test";//编辑本模块的路径
+    }
+
+    
+	/**
+	 * [打开除了入口页面的其他页面]
+	 * @param  {string} type              [message代表消息模块,todo代表待办模块]
+	 * @param  {obj}    option           [待办/消息穿透所需要的json格式实体对象]<!--此处的数据格式是一个模拟的格式，真实的消息数据数据格式是根据真实情况来的-->
+	 * 			id: //数据id
+	 * 			xxId: //xxId
+	 *          dataType://数据类型
+	 */
+	testApi.prototype.openApp = function(type,backUrl,option,obj) {
+	    
+	}
+    
+    return new testApi();
+})();
+

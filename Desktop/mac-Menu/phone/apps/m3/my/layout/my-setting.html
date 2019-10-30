@@ -1,0 +1,197 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:36
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>设置</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-person.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-setting.css">
+</head>
+
+<body class="bg_gray">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <div class="indexPage display_none">
+        <h1><i18n key="my.m3.h5.homePage"></i18n></h1>
+        <footer class="cmp-bar cmp-bar-tab flex-h"></footer>
+        <div class="shadow"></div>
+    </div>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.my"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <i18n key="my.m3.h5.setting"></i18n>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content margin_top15 my_module">
+        <ul class="cmp-table-view">
+            <!-- 账号与安全 -->
+            <li class="cmp-table-view-cell" id="account">
+                <div class="cmp-pull-left">
+                    <!-- <div class="account"><span class="iconfont see-icon-m3-account-safe"></span></div> -->
+                    
+                    <i18n key="my.m3.h5.accountAndSecurity"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+            <!-- 新消息提醒 -->
+            <li class="cmp-table-view-cell" id="newMsg">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.newMsg"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+            <!-- 首页设置 -->
+            <li class="cmp-table-view-cell" id="indexSet">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.homeSettings"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+                <div class="cmp-pull-right index_name"></div>
+            </li>
+            <!-- <li class="cmp-table-view-cell" id="msgPro">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.messagePush"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li> -->
+
+            
+            <!-- 语音小致 -->
+            <li class="cmp-table-view-cell display_none" id="xiaoZhi">
+                <div class="cmp-pull-left">
+                    <!-- <div class="xiaoZhi"><span class="iconfont see-icon-m3-xiaozhi" id="xiaoZhi_span"></span></div> -->
+                    <i18n key="my.m3.h5.xiaoZhi"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+
+            <!-- 显示应用分类 -->
+            <li class="cmp-table-view-cell showAppCategory">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.appCategory"></i18n>
+                </div>
+                <div class="cmp-pull-right cmp-switch cmp-switch-blue cmp-switch-mini" id="showAppCategory">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+            <!-- 来电提醒 -->
+            <li class="cmp-table-view-cell display_none" id="call-item">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.callTip"></i18n>
+                </div>
+                <div class="cmp-pull-right cmp-switch cmp-switch-blue cmp-switch-mini" id="call-btn">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+        </ul>
+        <ul class="cmp-table-view margin_top15">
+            
+        </ul>
+        <!-- 清楚缓存 -->
+        <ul class="cmp-table-view margin_top15" >
+            <li class="cmp-table-view-cell" id="clear">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.clearCache"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+            <!-- 关于 -->
+            <li class="cmp-table-view-cell" id="about">
+                <div class="cmp-pull-left">
+                    <!-- <div class="about"><span class="iconfont see-icon-m3-about"></span></div> -->
+                    <i18n key="my.m3.h5.about"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+        </ul>
+        <!-- 切换企业 -->
+        <ul class="cmp-table-view margin_top15 Switcher-content display_none" >
+            <li class="cmp-table-view-cell" id="Switcher">
+                <div class="cmp-pull-left witcher-left cmp-ellipsis">
+                    <i18n key="my.m3.h5.SwitchingEnterprise"></i18n>
+                </div>
+                <div class="cmp-pull-right Switcher-Box cmp-ellipsis ">
+                    <span class="SwitcherText cmp-ellipsis"></span>
+                    <span class="iconfont see-icon-m3-arrow-right witcher-arrow"></span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="exit margin_top15">
+            <i18n key="my.m3.h5.exitLogin"></i18n>
+        </div>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+
+    <script>
+        var getParent = cmp.href.getParam();
+        if(getParent && getParent.listShow){
+            document.querySelector('#call-item').classList.remove('display_none');
+            if(getParent.listOpen){
+                document.querySelector('#call-btn').classList.add('cmp-active');
+            }
+        }
+        if(getParent && getParent.xiaozhiShow){
+            document.querySelector('#xiaoZhi').classList.remove('display_none');
+        }
+        if(getParent && getParent.switcherShow){
+            document.querySelector('.Switcher-content').classList.remove('display_none');
+        }
+    </script>
+
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-requestTimer.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-speechRobot.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-webviewListener.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-setting.js')</script>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172443">
+    <title id="title"></title>
+</head>
+<style>
+	.doc-comment-content{word-break: break-word; padding-right:10px;}
+	.doc-comment-content-cp{
+		word-break: break-all; 
+		word-wrap:break-word;
+		padding-right:10px;    
+		font-size: 16px;
+		line-height: 16px;
+		color: #333;
+		margin-left: .26rem;
+		padding-left: .18rem;
+		margin-top: 10px;
+	}
+	.doc-comment-surplus{
+		margin-bottom:10px;
+		color:#666;
+		margin-left: 15%;
+		text-align: center;
+		background: #eee;
+		font-size: 12px;
+		height: 25px;
+		line-height: 25px;
+		margin-right: 3%;
+	}
+	.doc-comment-surplus .doc-comment-surplus-count{
+		color: #3aadfb;
+	}
+	#reply_text:empty:before{
+		content: attr(placeholder);
+		color:#bbb;
+	}
+	#reply_text:focus:before{
+		content:none;
+	}
+	#docView_header:after{
+		position: absolute;
+		content: '';
+		width: 100%;
+		left: 0;
+		bottom: 0;
+		height: 1px;
+		background-color: #d4d4d4;
+		-webkit-transform: scale(1,0.5);
+		transform: scale(1,0.5);
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+		z-index: 10;
+	}
+	.cmp-pull-bottom-pocket:before{
+		position: absolute;
+		content: '';
+		width: 100%;
+		left: 0;
+		top: 0;
+		height: 1px;
+		background-color: #d4d4d4;
+		-webkit-transform: scale(1,0.5);
+		transform: scale(1,0.5);
+		-webkit-transform-origin: top center;
+		transform-origin: top center;
+		z-index: 10;
+	}
+	@-webkit-keyframes back_change /* Safari 和 Chrome */
+	{
+		from {background:#f9f9f9;}
+		to {background:#fff;}
+	}
+	.commont_back{
+		-webkit-animation:back_change 1s;
+	}
+</style>
+<body>
+<!-- <header id="docView_header" class="cmp-bar cmp-bar-nav">
+	<div id="prev" style="display:inline-block;">
+		<a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+		<div class="doc-back">
+			<span><i18n key="doc.h5.back"></i18n></span>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<h1 class="cmp-title" style="font-size=18px;"><i18n key="doc.h5.comment"></i18n></h1>
+</header> -->
+<div class="cmp-content cmp-content-none position_relative ">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+		<div class="cmp-scroll-wrapper" id="scroll" style="background-color: white;">
+			<div class="cmp-scroll">
+				<div id="doc_reply"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/html"  id="doc_reply_js">
+<div id="all-comments" class="cmp-content position_relative">
+    <div class="doc-comment-contents" style="position: relative;">
+        <ul class="doc-comment-one">
+		
+		<%if(this.length > 0 ){%>
+		<%
+			for(var i = 0,len=this.length; i < len; i++){
+				var comment = this[i];
+		%>
+            <li class="doc-comment-one-item">
+                <div style="width: 100%;position: relative;padding-top: 13px;">
+                    <div class="doc-comment-one-img">
+                        <div>
+                            <img class="cmp-img-cache img_setting" cmp-data="<%=comment.createUserId %>" src="<%=comment.userImgUrl%>">
+                        </div>
+                    </div>
+                    <div class="doc-comment-one-content">
+						<% if(comment.subComments){%>
+						<div class="doc-comment-one-content-detail-detail">
+						<%}else{%>
+						<div class="doc-comment-one-content-detail-detail-line">
+						<%}%>
+                            <div class="doc-comment-name cmp-ellipsis">
+                                <span><%=comment.createUserName%></span>
+								<span style="display:none;"><%=comment.id%></span>
+                            </div>
+                            <div class="doc-comment-content" forumId="<%=comment.id%>" createUserId="<%=comment.createUserId%>" createUserName="<%=comment.createUserName%>" parentForumId="<%=comment.parentForumId%>" docResourceId="<%=comment.docResourceId%>">
+                                <span><%=cmp.Emoji().StringToEmoji(comment.body)%></span>
+                            </div>
+                            <div class="doc-comment-time-content">
+                                <span><%=comment.createTime%></span>
+                            </div>
+							<%if(comment.canDelete == "true"){%>
+                            <div class="doc-comment-delete" forumId="<%=comment.id%>" >
+                                <span class="see-icon-v5-common-delete"></span>
+                            </div>
+							<%}%>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+				<div>
+					<% if(comment.subComments){%>
+					<ul class="doc-comment-two">
+						<%
+						for(var j = 0,leng=comment.subComments.length; j < leng; j++){
+						var subComment = comment.subComments[j];
+						%>
+						<% if(j<5){%>
+						<li>
+							<div style="width: 100%;position: relative;padding-left: 12%;">
+								<div class="doc-comment-name cmp-ellipsis">
+									<span><%=subComment.createUserName%></span>
+									<span style="display:none;"><%=subComment.id%></span>
+								</div>
+								<div class="doc-comment-content-cp" forumId="<%=subComment.id%>" createUserId="<%=subComment.createUserId%>" parentForumId="<%=subComment.parentForumId%>" docResourceId="<%=subComment.docResourceId%>">
+									<span><%=cmp.Emoji().StringToEmoji(subComment.body)%>
+								</div>
+								<div class="doc-comment-time-content">
+									<span><%=subComment.createTime%></span>
+								</div>
+								<% if(subComment.canDelete == "true"){%>
+								<div class="doc-comment-delete" forumId="<%=subComment.id%>" >
+									<span class="see-icon-v5-common-delete"></span>
+								</div>
+								<%}%>
+							</div>
+						</li>
+						<%}else{%>
+						<% if(j==5){ %>
+						<% var surplus = leng - 5;%>
+						<div class="doc-comment-surplus">
+							<span><i18n key="doc.h5.reply.more1"></i18n><span class="doc-comment-surplus-count"><%=surplus%></span><i18n key="doc.h5.reply.more2"></i18n></span>
+						</div>
+						<%}%>
+						<li style="display:none;">
+							<div style="width: 100%;position: relative;padding-left: 12%;">
+								<div class="doc-comment-name cmp-ellipsis">
+									<span><%=subComment.createUserName%></span>
+									<span style="display:none;"><%=subComment.id%></span>
+								</div>
+								<div class="doc-comment-content" forumId="<%=subComment.id%>" createUserId="<%=subComment.createUserId%>" parentForumId="<%=subComment.parentForumId%>" docResourceId="<%=subComment.docResourceId%>">
+									<span><%=cmp.Emoji().StringToEmoji(subComment.body)%></span>
+								</div>
+								<div class="doc-comment-time-content">
+									<span><%=subComment.createTime%></span>
+								</div>
+								<% if(subComment.canDelete == "true"){%>
+								<div class="doc-comment-delete" forumId="<%=subComment.id%>" >
+									<span class="see-icon-v5-common-delete"></span>
+								</div>
+								<%}%>
+							</div>
+						</li>
+						<%}%>
+						<%}%>
+					</ul>
+					<%}%>
+				</div>
+            </li>
+			<%}%>
+			<%}else{%>
+				<div style="width:100%;text-align:center;margin-top:10px;"><i18n key="doc.h5.docNoComment"></i18n></div>
+			<%}%>
+        </ul>
+    </div>
+</div>
+</script>
+<footer id="doc-comment">
+    <div class="doc-comment-content">
+        <div style="float: left;">
+            <div style="-webkit-user-select:text" class="doc-comment-edit" contenteditable="true" id="reply_text" placeholder='' onfocus="content_div_focus()" onblur="content_div_blur();"></div>
+        </div>
+        <div class="doc-comment-send" style="float: right;">
+            <span><i18n key="doc.h5.send"></i18n></span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+<div id="reply_shade" style="position:fixed;width:100%;height:100%;background:#000;opacity:.2;z-index:39;top:0;display:none;"></div>
+
+<div id="reply_shade_back" style="position:fixed;width:100%;height:100%;background:#fff;z-index:110;top:0;display:none;"></div>
+                                       
+                                       
+<script src="/seeyon/m3/apps/v5/doc/i18n/Doc_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/doc/i18n/","Doc",null,"?buildversion=181210172443");</script>
+<script type="text/javascript">
+    var _docPath = "/seeyon/m3/apps/v5/doc";
+  var _cmpPath = "/seeyon/m3/cmp";
+  var _colPath = "/seeyon/m3/apps/v5/collaboration";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/common.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+                                            
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/apps/v5/doc/js/docComment.js?buildversion=181210172443"></script>
+<script src="/seeyon/m3/apps/v5/doc/js/flexible.js?buildversion=181210172443"></script>
+</body>
+</html>

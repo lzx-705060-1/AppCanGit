@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172423" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/bulletin/css/bulletin.css?buildversion=181210172423" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172423">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172423">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172423">
+	<!-- 正文组件样式css -->
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=181210172423">
+    
+	<title id="title"></title>
+</head >
+<body class="cmp-fullscreen">
+	<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+    <div  class="cmp-content cmp-content-none position_relative" id="bul_body">
+      <div id="bul_publish" class=""></div>
+      <div id="bul_title" class="cmp-segmented_title_content"></div>
+      <div id="bul_details" class="cmp-control-content cmp-active">
+        <div id="bul_content" class="" style="background-color: #fff; overflow: hidden;"></div>
+      </div>
+      <div class="cmp-scroll-wrapper comment_animation" id="bul_scroll" style="background-color: white;"></div>
+    </div>
+    <!-- 审核的footer -->
+    <footer id="approval" style="display: none;">
+      <div class="app-edit" contenteditable="true" id="auditInput" style="-webkit-user-select:text;" onfocus="auditInput_focus();" onblur="auditInput_blur();"></div>
+      <div class="app-btns">
+        <div class="app-no auditTap" value="noaudit">
+          <span value="noaudit"><i18n key="bulletin.h5.audit.notPass"></i18n></span>
+        </div>
+        <div class="app-yes auditTap"  value="audit">
+          <span value="audit"><i18n key="bulletin.h5.audit.pass"></i18n></span>
+        </div>
+        <div class="app-ok auditTap" value="publish">
+          <span value="publish"><i18n key="bulletin.h5.audit.passAndPublish"></i18n></span>
+        </div>
+        <div style="clear: both;"></div>
+      </div>
+    </footer>
+    <!-- 发布的footer -->
+    <footer id="publish_footer" style="display: none;">
+      <div class="app-btns">
+        <div class="app-publish" id="bul_publish_tap">
+          <span><i18n key="bulletin.h5.audit.publish"></i18n></span>
+        </div>
+      </div>
+    </footer>
+    <!-- 收藏的footer -->
+    <footer id="bul-view-operate" style="display: none">
+      <div style="margin-top: 17px;">
+        <div class="bul-view-operate-store" id="collection">
+          <span class="bul-view-operate-store-icon"></span>
+          <span class="bul-view-operate-store-name"></span>
+          <div class="bul-view-operate-border"></div>
+        </div>
+      </div>
+    </footer>
+<script type="text/html" id="bul_publish_tmp">
+  <div class="bul_publish_content">
+    <%=escapeStringToHTML(this.auditMember) %><i18n key="bulletin.h5.audit.state"></i18n><span id="auditState"></span>
+    <%=this.auditDate %>
+    </br>
+    <i18n key="bulletin.h5.audit.addvice"></i18n>：<%=escapeStringToHTML(this.auditAdvice) %> 
+  </div>
+</script>
+<script type="text/html" id="bul_title_tmp">
+<ul class="cmp-list-ul">
+  <li class="cmp-list-cell ">
+    <div class="cmp-list-cell-info" style="width: 100%;">
+      <span class="bul_title"><%=escapeStringToHTML(this.title) %></span>
+      <div style="line-height: 16px; margin-top: 8px;">
+        <span class="cmp-ellipsis cmp-h5" style="color: #999999;white-space: normal;"><%=this.createDate %>&nbsp;&nbsp;<%=escapeStringToHTML(this.showPublishName) %></span>
+      </div>
+      <div style="line-height: 16px; margin-top: 6px;">
+        <span class="cmp-ellipsis cmp-pull-left" style="color: #999999; width: 80%;">
+          <span class="cmp-h5">
+            <i18n key="bulletin.h5.bulletinFrom"></i18n>
+            :
+          </span>
+          <span class="cmp-h5">
+            <i18n><%=escapeStringToHTML(this.spaceType) %></i18n>-<%=escapeStringToHTML(this.typeName) %>
+          </span>
+        </span>
+        <% if(this.attachmentList.length>0){ %>
+        <button style="border: none; background: none; padding: 0px; color: #51a4df; width: 20%; text-align: right;" class="cmp-btn cmp-pull-right" id="attchmentFile">
+          <span class="cmp-icon iconfont see-icon-accessory link_to" style="font-size: 13px; color: #48a0de;"></span>
+          <span><%=this.attachmentList.length%></span>
+        </button>
+        <% } %>
+      </div>
+    </div>
+  </li>
+</ul>
+</script>
+<script type="text/html" id="bul_scroll_tmp">
+    <div id="att_list" class="cmp-scroll"  style="min-height: 100%;">
+      <div id="attTitle" style="width: 100%; background-color: #fff; line-height: 38px;position: relative;">
+      <span style="margin-left: 10px;font-size: 16px;">
+        <span><i18n key="bulletin.h5.attachment"></i18n></span>
+        <span>&#40;</span>
+        <span id="att_file_count">0</span>
+        <span>&#41;</span>
+        <span>&amp;</span>
+        <span><i18n key="bulletin.h5.relateDoc"></i18n></span>
+        <span>&#40;</span>
+        <span id="att_ass_count">0</span>
+        <span>&#41;</span>
+        <span>:</span>
+        <span class="see-icon-v5-common-arrow-top att-icon" style="float: right; margin-right: 10px;color: #c7c7cc;"></span>
+      </span>
+      </div>
+      <ul id="attchemntFileList" class="cmp-list-content accessory"></ul>
+    </div>
+    <div id="scroll-shade" style="position:absolute;width: 100%;height: 38px;z-index: 3;display: none;"><!-- 滚动遮罩 --></div>
+</script>
+<script src="/seeyon/m3/apps/v5/bulletin/i18n/Bulletin_zh_CN.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172423"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/bulletin/i18n/","Bulletin",null,"?buildversion=181210172423");
+	var str = cmp.i18n("bulletin.h5.bulletinDetails");
+    document.getElementById("title").innerHTML = str;
+    var $verstion = "?buildversion=181210172423";
+  	var _cmpPath = "/seeyon/m3/cmp";
+</script>
+<script src="/seeyon/m3/apps/v5/bulletin/js/flexible.js?buildversion=181210172423"></script>
+<script type="text/javascript">
+    var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172423" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172423"></script>
+<!--正文、关联文档组件-->
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172423"></script>
+<script src="/seeyon/m3/apps/v5/bulletin/js/bulView.js?buildversion=181210172423"></script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************--!>

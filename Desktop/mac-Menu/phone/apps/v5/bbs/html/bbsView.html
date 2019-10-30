@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title id="title"></title>
+<meta name="viewport" content="width=device-width,maximum-scale=1.3,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017248" />
+<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/bbs/css/bbsCenter.css?buildversion=18121017248" />
+<!-- 正文组件样式css -->
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=18121017248">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017248">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=18121017248">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017248">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=18121017248">
+ 
+</head>
+<body class="cmp-fullscreen">
+    <div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+    <div id="bodyDiv" class="cmp-content cmp-content-none position_relative">
+        <div class="cmp-segmented_title_content" id="bbs_brief" style="overflow: hidden;"></div>
+        <div class="cmp-control-content cmp-active" id="bbs_content_par">
+            <div class="listview-content" id="bbs_content"></div>
+        </div>
+        <div id="scroll" class="cmp-scroll-wrapper comment_animation" style="background-color: #fff;">
+            <div class="cmp-scroll" style="min-height: 100%;">
+                <div class="bbsCenterDetails">
+                    <div id="attachmentList" class="display_none">
+                        <div class="attach-title fold_list_title">
+                            <span class="cmp-icon see-icon-accessory" style="font-size: 18px;color: #3aadfb;"></span>
+                            <span><i18n key="bbs.h5.attachment"></i18n></span><span>&#40;</span><span id="file_count">0</span><span>&#41;</span>
+                            <span id="jiantou" class="see-icon-v5-common-arrow-top jiantou"></span>
+                        </div>
+                        <div id="attachBody" class="attach-body">
+                            <ul id="attachments_ul" class="cmp-list-content cmp-accessory-content"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="scroll-shade" style="position:absolute;width: 100%;height: 36px;z-index: 3;display: none;">
+                <!-- 滚动遮罩 -->
+            </div>
+        </div>
+    </div>
+    <!-- 评论页面浮层 -->
+    <div id="replyDiv" class="GM_Alert_Content Animated-Container bottom-go animated">
+      <!-- <header class="cmp-bar cmp-bar-nav" id="reply_header">
+        <div id="prevReply" style="display:inline-block;">
+	        <a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+	        <div class="bbs-back">
+	            <span><i18n key="bbs.h5.back"></i18n></span>
+	        </div>
+	    </div>
+        <h1 class="cmp-title" style="left: 80px;right: 80px;">
+            <i18n key="bbs.h5.comment"></i18n>
+        </h1>
+      </header> -->
+        <div id="replyScroll" class="cmp-scroll-wrapper" style="background-color: #fff;">
+            <div class="cmp-scroll" style="min-height: 100%;">
+              <div class="bbsCenterDetails" style="display: none;">
+                <div class="fold_list_title" id="reply_sum">
+                    <span><i18n key="bbs.h5.all.reply"></i18n></span><span>(<span id="replySum"></span>)</span>
+                </div>
+              </div>
+              <div id="bbs_reply">
+                  <div class="bbs-comment-contents" style="position: relative;">
+                      <ul class="cmp-list-content replyList bbs-comment-one" id="replyUl"></ul>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <footer class="cmp-bar cmp-bar-footer but_custom_content" style="padding-left: 0; padding-right: 0;min-height:85px;display: none;background: #fff;height: auto;z-index:40;" id="footer_num1">
+            <div style="position: relative;margin: 0 20px">
+            <input style="font-size: 14px;display: none;" class="cmp-not-trans input_comment" id="reply_text" type="text" placeholder="">
+            <div class="editDivOuter">
+                <div id="reply_content" contenteditable="true" onfocus="content_div_focus();" onblur="content_div_blur();"></div>
+            </div>
+            <div class="but_custom Praise" style="margin-top: 10px;width: 24px">
+                <span class="cmp-icon iconfont see-icon-v5-common-expression bbsPraise favour" id="footer_button" style="color: #3aadfb;"></span>
+            </div>
+            <div id="anonymousReply" style="float: left; margin-top: 5px; margin-left: 5px;">
+                <div style="width: 20px;float: left;margin-left: 10px;">
+                    <span id="anonymousReplyCheckBox" style="font-size: 18px;color: #3aadfb;" class="cmp-icon iconfont see-icon-radio-unchecked"></span>
+                </div>
+                <div style="float: left;padding-top: 8px;">
+                    <span style="font-size: 16px;color: #3aadfb;"><i18n key="bbs.h5.anonymousReply"></i18n></span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="but_custom send">
+                <button class="" id="send_reply" style="padding-left: 10px;padding-right: 10px;background: #1EA2FA;border: 1px solid #1EA2FA;border-radius: 4px;color: #FFFFFF;font-size: 14px;">
+                    <i18n key="bbs.h5.send"></i18n>
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+            </div>
+            <div class="emoji_ontainer HelloKittyContainer display_none bbs-footer" id="emoji_ontainer"></div>
+        </footer>
+        <footer class="cmp-bar cmp-bar-footer but_custom_content" id="detailReplyFakeFooter" style="height: 50px">
+            <div style="margin-right: 30px;padding-top: 9px">
+                <div id="intoInputBtn"><span style="padding-left: 10px">说点什么...</span></div>
+            </div>
+            <div style="position: absolute;top: 0;right: 0;height: 50px;line-height: 50px;width: 40px;text-align: center;">
+                <span id="praiseIcon1" onclick="" class="see-icon-v5-common-praise-fill" style="color: #AFBAD7;font-size: 20px;"></span>
+            </div>
+        </footer>
+        <div id="reply_shade" style="position:fixed;width:100%;height:100%;background:rgba(0, 0, 0, 0.2);;z-index:30;top:0;display:none;"></div>
+    </div>
+
+    <footer id="doc-view-operate">
+        <!-- 快速回复框 -->
+        <div style="position: relative;">
+            <input type="hidden" id="quick_content">
+            <input type="hidden" id="quick_to">
+            <div id="quick_reply_content" placeholder="" style="overflow: hidden;"></div>
+        </div>
+        <div style="height: 50px;line-height: 50px;">
+            <div class="doc-view-operate-store" id="collection" hidden>
+                <span class="doc-view-operate-store-icon"></span>
+                <span class="doc-view-operate-store-name"></span>
+            </div>
+            <div class="doc-view-operate-share" id="deleteBbs" hidden>
+                <span class="doc-view-operate-share-icon see-icon-v5-common-delete"></span>
+                <span class="doc-view-operate-share-name"><i18n key="bbs.h5.delete"></i18n></span>
+            </div>
+            <div class="doc-view-operate-comment" id="footer_comment">
+                <div style="position: relative;display: inline-block;">
+                    <span class="doc-view-operate-comment-icon see-icon-v5-common-comment"></span>
+                </div>
+                <span class="doc-view-operate-comment-name" id="commentNum"></span>
+            </div>
+            <div class="doc-view-operate-praise" id="footer_praise" style="width: 60px">
+                <div style="position: relative;display: inline-block;">
+                    <!-- see-icon-v5-common-praise-fill -->
+                    <span class="doc-view-operate-praise-icon see-icon-v5-common-praise-fill" style="color: #AFBAD7;font-size: 20px"></span>
+                </div>
+                <span id="bbsPraiseSum" class="doc-view-operate-praise-name"></span>
+            </div>
+            <div class="doc-view-operate-more" id="footer_more" style="width: 50px;">
+                <div style="position: relative;display: inline-block;">
+                    <span class="icon m3-icon m3-icon-more-fill doc-view-operate-more-icon" style="color: #AFBAD7;font-size: 30px"></span>
+                </div>
+                <span class="doc-view-operate-more-name"></span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </footer>
+    <!-- 正文下快速回复-->
+    <footer class="cmp-bar cmp-bar-footer but_custom_content" style="padding-left: 0; padding-right: 0;min-height:85px;display: none;background: #fff;height: auto;z-index:40;" id="footer_quick">
+        <div style="position: relative;margin: 0 20px">
+            <!--回复框-->
+            <input style="font-size: 14px;display: none;" class="cmp-not-trans input_comment" id="quick_reply_text" type="text" placeholder="">
+            <div class="editDivOuter">
+                <div id="quick_reply_content_input" contenteditable="true" onfocus="quick_content_div_focus();" onblur="quick_content_div_blur();"></div>
+            </div>
+            <!--表情-->
+            <div class="but_custom Praise" style="margin-top: 10px;width: 24px">
+                <span class="cmp-icon iconfont see-icon-v5-common-expression bbsPraise favour" id="quick_footer_button" style="color: #3aadfb;"></span>
+            </div>
+            <div id="quick_anonymousReply" style="float: left; margin-top: 5px; margin-left: 5px;">
+                <div style="width: 20px;float: left;margin-left: 10px;">
+                    <span id="quick_anonymousReplyCheckBox" style="font-size: 18px;color: #3aadfb;" class="cmp-icon iconfont see-icon-radio-unchecked"></span>
+                </div>
+                <div style="float: left;padding-top: 8px;">
+                    <span style="font-size: 16px;color: #3aadfb;"><i18n key="bbs.h5.anonymousReply"></i18n></span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="but_custom send">
+                <button class="" id="quick_send_reply" style="padding-left: 10px;padding-right: 10px;background: #1EA2FA;border: 1px solid #1EA2FA;border-radius: 4px;color: #FFFFFF;">
+                    <i18n key="bbs.h5.send"></i18n>
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="emoji_ontainer HelloKittyContainer display_none bbs-footer" id="quick_emoji_ontainer"></div>
+    </footer>
+    <div id="quick_reply_shade" style="position:fixed;width:100%;height:100%;background:rgba(0, 0, 0, 0.2);z-index:30;top:0;display:none;"></div>
+<script type="text/html" id="bbs_brief_js">
+    <div class="bbsCenterDetails-title">
+        <ul class="cmp-table-view  ">
+            <li class="cmp-list-cell ">
+                <div class="cmp-list-cell-info">
+                    <span style="word-break: break-all;" class=" list_title_name width_69">
+                        <% if(this.article.topSequence==1){ %>
+                        <span class="title-sign sign-top"><%=cmp.i18n("bbs.h5.top") %></span>
+                        <% } if(this.article.eliteFlag){ %>
+                        <span class="title-sign sign-fine"><%=cmp.i18n("bbs.h5.fine") %></span>
+                        <% } if(this.article.state==2){ %>
+                        <span class="title-sign sign-close"><%=cmp.i18n("bbs.h5.close") %></span>
+                        <% } %>
+                        <%=cmp.Emoji().StringToEmoji(escapeStringToHTML(this.article.articleName)) %>
+                        <%if(this.article.resourceFlag=='1'){ %>
+                        [<%=cmp.i18n("bbs.h5.original") %>]
+                        <%}else if(this.article.resourceFlag=='2') {%>
+                        [<%=cmp.i18n("bbs.h5.forwarding") %>]
+                        <%} %>
+                    </span>
+                    <div style="position:relative">
+                        <div id="headImg" class="headImg" style="background-color: rgb(<%=getRandomColor(this.article.issueName)%>)">
+                            <span ><%=getTitleChar(this.article.issueName)%></span>
+                        </div>
+                        <h6 class="clear_left" style="margin-left: 35px;line-height: 14px;margin-bottom: 0;" id="_clear_left">
+                            <span id="showPubSpan"><%=escapeStringToHTML(this.article.issueName) %></span>
+                        </h6>
+                        <h6 class="list_cont_info">
+                            <span class="cmp-pull-left cmp-ellipsis" style="width:60%;">
+                                <span id="_shareFrom"><span class="cmp-h6"><%=this.article.issueTimeM3 %></span>-<%=escapeStringToHTML(this.article.boardName)%></span>
+                            </span>
+                            <span class="cmp-pull-right" style="width: 40%; text-align: right; position: absolute; top: 0; right: 0;" id="buttonCotrol">
+                                <span style="color: #999999;font-size: 12px;margin-left: -1px;"><%=this.article.clickNumber %>阅读</span>
+
+                                <span id="bbsPraise" style="display:none;margin-left: 5px;font-size: 14px;
+                                    <% if(!this.article.userPraiseState){%>
+                                        color:#c8c7cd;" class="cmp-icon iconfont see-icon-v5-common-praise cmp-active "
+                                    <%}else{%>
+                                        color:#ec5f45;" class="cmp-icon iconfont see-icon-v5-common-praise-fill cmp-active "
+                                    <%}%>>
+                                </span>
+                                <input type="hidden" id="bbsPraiseSumInput" value="<%=this.article.praiseSum %>">
+                                <!--<span id="bbsPraiseSum" style="display:none;color: #999999;font-size: 12px;"><%=this.article.praiseSum %></span>-->
+                            </span>
+                            <div style="clear: both;"></div>
+                        </h6>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="text/html" id="bbs_content_js">
+    <!--正文内容-->
+    <% if(this.article.content){ %>
+    <p><%=this.article.content %></p>
+    <%}else{%>
+        <p></p>
+    <%}%>
+</script>
+<script type="text/html" id="reply_sum_js">
+    <span><i18n key="bbs.h5.all.reply"></i18n></span><span>(<span id="replySum"><%=this.article.replyNumber%></span>)</span>
+</script>
+<!-- 回复列表 -->
+<script type="text/html" id="bbs_reply_js">
+    <%
+    for(var i = 0,len=this.length; i < len; i++){
+    var reply = this[i];
+    %>
+    <li class="bbs-comment-one-item" id="replyLi_<%=reply.id%>">
+        <div style="width: 100%;position: relative;">
+            <div class="bbs-comment-one-img">
+                <div>
+                    <% if(reply.anonymousFlag){ %>
+                    <img class="cmp-img-cache img_setting" cmp-data="-1">
+                    <% }else{ %>
+                    <img class="cmp-img-cache img_setting" cmp-data="<%=reply.replyUserId %>">
+                    <% } %>
+                </div>
+            </div>
+            <div class="bbs-comment-one-content">
+                <div class="bbs-comment-one-content-detail-detail bbs-reply-area" replyId="<%=reply.id%>" replyFlag="<%=reply.replyFlag%>" replyName="<%=reply.replyUserName %>">
+                    <div class="bbs-comment-name cmp-ellipsis">
+                        <span><%=reply.replyUserName %></span>
+                    </div>
+                    <div class="bbs-comment-time-content">
+                        <span>
+                            <%=reply.replyDownTimes%>
+                            <% if(reply.replyFrom == "weixin"){ %>
+                            (<i18n key="bbs.h5.fromWeixin"></i18n>)
+                            <% } else if(reply.replyFrom != "pc" && reply.replyFrom != "email" && reply.replyFrom != "other" && reply.replyFrom != "vjoin"){%>
+                            (<i18n key="bbs.h5.from.phone"></i18n>)
+                            <% } %>
+                        </span>
+                    </div>
+                    <div class="bbs-comment-content">
+                        <span>
+                            <%if(reply.content){%>
+                                <%if(reply.replyFrom != "pc" && reply.replyFrom != "email" && reply.replyFrom != "other" && reply.replyFrom != "vjoin"){%>
+                                    <%=cmp.Emoji().StringToEmoji($comment_emoji.covert_to_emoji(reply.content)) %>
+                                <%}else{%>
+                                    <%=cmp.Emoji().StringToEmoji($comment_emoji.showReplyContent(reply.content)) %>
+                                <%}%>
+                            <%}%>
+                        </span>
+                    </div>
+                    <ul id="replyAttachments_<%=reply.id%>" class="reply-attachments cmp-list-content cmp-accessory-content" style="margin-bottom: 18px;padding: 6px 20px 6px 0;border-top: none;"></ul>
+
+                    <%if(reply.canBeDeleteFlag){%>
+                    <div class="bbs-comment-delete" replyId="<%=reply.id%>">
+                        <span class=""><i18n key="bbs.h5.delete"></i18n></span>
+                    </div>
+                    <%}%>
+                    <div class="bbs-commont-praise reply-praise">
+                        <%if(reply.praiseFlag){%>
+                        <span class="praise-sum" style="color: #777777;"><%=reply.praiseSum%></span>
+                        <span replyId="<%=reply.id%>" class="cmp-icon iconfont see-icon-v5-common-praise-fill" style="color: #ec5f45;"></span>
+                        <%}else{%>
+                        <span class="praise-sum"><%=reply.praiseSum%></span>
+                        <span replyId="<%=reply.id%>" class="cmp-icon iconfont see-icon-v5-common-praise"></span>
+                        <%}%>
+
+                    </div>
+                </div>
+                <div style="margin-top: 10px;margin-right: 20px">
+                    <% if(reply.childList && reply.childList.length > 0){%>
+                    <ul class="bbs-comment-two child-reply-list" style="list-style: none;">
+                        <%
+                        for(var j = 0; j < reply.childList.length; j++){
+                        var childReply = reply.childList[j];
+                        var l = reply.childList.length;
+                        %>
+                        <li>
+                            <div style="width: 100%;position: relative;" class="bbs-reply-area" replyId="<%=childReply.id%>" topReplyId="<%=reply.id%>" replyName="<%=childReply.replyUserName %>">
+                                <div class="bbs-comment-name">
+                                    <div style="float: left;padding-top: 1px;">
+                                        <% if(childReply.replyFlag != "6"){ %>
+                                        <span style="color: #666;"><%=childReply.replyUserName %></span>
+                                        <%}else{%>
+                                        <span style="color: #666;"><%=childReply.replyUserName %></span>
+                                        <span><i18n key="bbs.h5.reply"></i18n></span>
+                                        <span style="color: #999;"><%=childReply.toReplyUserName %></span>
+                                        <%}%>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="bbs-comment-time-content">
+                                    <span><%=childReply.replyDownTimes%></span>
+                                    <% if(childReply.replyFrom == "weixin"){ %>
+                                    <span>(<i18n key="bbs.h5.fromWeixin"></i18n>)</span>
+                                    <% } else if(childReply.replyFrom != "pc" && childReply.replyFrom != "email" && childReply.replyFrom != "other" && childReply.replyFrom != "vjoin"){%>
+                                    <span>(<i18n key="bbs.h5.from.phone"></i18n>)</span>
+                                    <% } %>
+                                </div>
+                                <div class="bbs-comment-content">
+                                    <%=cmp.Emoji().StringToEmoji($comment_emoji.covert_to_emoji(childReply.content)) %>
+                                </div>
+                                <% if(childReply.canBeDeleteFlag){%>
+                                <div class="bbs-comment-delete" replyId="<%=childReply.id%>" topReplyId="<%=reply.id%>">
+                                    <span class=""><i18n key="bbs.h5.delete"></i18n></span>
+                                </div>
+                                <%}%>
+                            </div>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <%}%>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </li>
+    <%} %>
+</script>
+
+<script type="text/html" id="show_child_reply_js">
+    <li>
+        <div style="width: 100%;position: relative;" class="bbs-reply-area" replyId="<%=this.id%>" topReplyId="<%=this.id%>" replyName="<%=this.replyUserName %>">
+            <div class="bbs-comment-name cmp-ellipsis">
+                <% if(this.replyFlag != "6"){ %>
+                <span><%=this.replyUserName %></span>
+                <%}else{%>
+                <span><%=this.replyUserName %></span>
+                <span><i18n key="bbs.h5.reply"></i18n></span>
+                <span><%=this.toReplyUserName %></span>
+                <%}%>
+            </div>
+            <div class="bbs-comment-content">
+                <%=cmp.Emoji().StringToEmoji($comment_emoji.covert_to_emoji(this.content)) %>
+            </div>
+            <div class="bbs-comment-time-content">
+                <span><%=this.replyDownTimes%></span>
+                <% if(this.replyFrom == "weixin"){ %>
+                <span>(<i18n key="bbs.h5.fromWeixin"></i18n>)</span>
+                <% } else if(this.replyFrom != "pc" && this.replyFrom != "email" && this.replyFrom != "other" && this.replyFrom != "vjoin"){%>
+                <span>(<i18n key="bbs.h5.from.phone"></i18n>)</span>
+                <% } %>
+            </div>
+            <% if(this.canBeDeleteFlag){%>
+            <div class="bbs-comment-delete" replyId="<%=this.id%>" topReplyId="<%=this.id%>">
+                <span class="see-icon-v5-common-delete"></span>
+            </div>
+            <%}%>
+        </div>
+    </li>
+</script>
+<!-- 最赞回复列表 -->
+<script type="text/html" id="bbs_praise_reply_js">
+    <% if(this.length > 0){ %>
+    <div class="bbs-comment-contents" style="position: relative;margin-top: 30px;">
+        <div id="testLine">
+            <i18n key="bbs.h5.hotreply"></i18n>
+        </div>
+        <ul class="cmp-list-content replyList bbs-comment-one" id="praiseList" style="padding-left: 0;">
+            <%
+            for(var i = 0,len=this.length; i < len; i++){
+            var reply = this[i];
+            %>
+            <li class="bbs-comment-one-item" id="praiseReplyLi_<%=reply.id%>">
+                <div style="width: 100%;position: relative;">
+                    <div class="bbs-comment-one-img">
+                        <div>
+                            <% if(reply.anonymousFlag){ %>
+                            <img class="img_setting" style="max-width: 30px;max-height: 30px" src="<%=cmp.seeyonbasepath%>/rest/orgMember/avatar/-1?maxWidth=200">
+                            <% }else{ %>
+                            <img class="img_setting" style="max-width: 30px;max-height: 30px" src="<%=cmp.seeyonbasepath%>/rest/orgMember/avatar/<%=reply.replyUserId %>?maxWidth=200">
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="bbs-comment-one-content">
+                        <div class="bbs-comment-one-content-detail-detail bbs-reply-area" replyId="<%=reply.id%>" replyFlag="<%=reply.replyFlag%>" replyName="<%=reply.replyUserName %>">
+                            <div class="bbs-comment-name cmp-ellipsis" style="line-height: 14px">
+                                <span style="line-height: 14px"><%=reply.replyUserName %></span>
+                            </div>
+                            <div class="bbs-comment-time-content">
+                                <span>
+                                    <%=reply.replyDownTimes%>
+                                    <% if(reply.replyFrom == "weixin"){ %>
+                                    (<i18n key="bbs.h5.fromWeixin"></i18n>)
+                                    <% } else if(reply.replyFrom != "pc" && reply.replyFrom != "email" && reply.replyFrom != "other" && reply.replyFrom != "vjoin"){%>
+                                    (<i18n key="bbs.h5.from.phone"></i18n>)
+                                    <% } %>
+                                </span>
+                            </div>
+                            <div class="bbs-comment-content" style="margin-bottom: 10px">
+                            <span>
+                                <%if(reply.content){%>
+                                    <%if(reply.replyFrom != "pc" && reply.replyFrom != "email" && reply.replyFrom != "other" && reply.replyFrom != "vjoin"){%>
+                                        <%=cmp.Emoji().StringToEmoji($comment_emoji.covert_to_emoji(reply.content)) %>
+                                    <%}else{%>
+                                        <%=cmp.Emoji().StringToEmoji($comment_emoji.showReplyContent(reply.content)) %>
+                                    <%}%>
+                                <%}%>
+                            </span>
+                            </div>
+                            <ul id="praiseReplyAttachments_<%=reply.id%>" class="reply-attachments cmp-list-content cmp-accessory-content" style="margin-bottom: 18px;padding: 6px 20px 6px 0;border-top: none;"></ul>
+                            <!--<%if(reply.canBeDeleteFlag){%>-->
+                            <!--<div class="bbs-comment-delete" replyId="<%=reply.id%>">-->
+                            <!--<span class="see-icon-v5-common-delete"></span>-->
+                            <!--</div>-->
+                            <!--<%}%>-->
+                            <div class="bbs-commont-praise reply-praise">
+                                <%if(reply.praiseFlag){%>
+                                <span class="praise-sum" style="color: #777777;"><%=reply.praiseSum%></span>
+                                <span replyId="<%=reply.id%>" class="cmp-icon iconfont see-icon-v5-common-praise-fill" style="color: #ec5f45;"></span>
+                                <%}else{%>
+                                <span class="praise-sum"><%=reply.praiseSum%></span>
+                                <span replyId="<%=reply.id%>" class="cmp-icon iconfont see-icon-v5-common-praise"></span>
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </li>
+            <%} %>
+        </ul>
+        <div id="moreReply" style="text-align: center;padding: 7px 0;line-height: 14px;width: 100px;margin: 0 auto;border-radius: 15px;border: 1px solid #1EA2FA;font-size: 14px;color: #1EA2FA;">
+            <i18n key="bbs.h5.morereply"></i18n>
+        </div>
+    </div>
+    <%}%>
+</script>
+<script src="/seeyon/m3/apps/v5/bbs/i18n/Bbs_zh_CN.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017248"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/bbs/i18n/","Bbs",null,"?buildversion=18121017248");
+  	var bbsPath = "/seeyon/m3/apps/v5/bbs";
+</script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+     
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017248"></script>
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=18121017248"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=18121017248"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=18121017248"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/emotion_util.js?buildversion=18121017248"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/bbsView.js?buildversion=18121017248"></script>
+</body>
+</html>

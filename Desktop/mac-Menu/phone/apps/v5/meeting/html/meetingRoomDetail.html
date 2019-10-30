@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view-cell:after{ left: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-content back_white relative cmp-content-none">
+		<div class="cmp-control-content cmp-active">
+			<div id="scroller" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<div class="room_wrap">
+						<img id="meetingRoomImage">
+					</div>
+					<ul class="cmp-table-view">
+						<li class="cmp-table-view-cell">
+							<table class="table_wrap">
+								<tr>
+									<th class="left_name"><i18n key="meeting.meetingRoomDetail.name"></i18n></th>
+									<th id="name" class="right_text"></th>
+								</tr>
+							</table>
+						</li>
+						<li class="cmp-table-view-cell">
+							<div class="list_item">
+								<div class="left_name"><i18n key="meeting.meetingRoomDetail.seatCount"></i18n></div>
+								<div id="seatCount" class="right_text"></div>
+							</div>
+						</li>
+						<li class="cmp-table-view-cell">
+							<table class="table_wrap" >
+								<tr>
+									<th class="left_name"><i18n key="meeting.meetingRoomDetail.place"></i18n></th>
+									<th id="place" class="right_text"></th>
+								</tr>
+							</table>
+						</li>
+						<li class="cmp-table-view-cell">
+							<table class="table_wrap" >
+								<tr>
+									<th class="left_name"><i18n key="meeting.meetingRoomDetail.description"></i18n></th>
+									<th id="description" class="right_text"></th>
+								</tr>
+							</table>
+						</li>
+						<li class="cmp-table-view-cell">
+							<table class="table_wrap">
+								<tr>
+									<th class="left_name"><i18n key="meeting.meetingRoomDetail.device"></i18n></th>
+									<th id="device" class="right_text"></th>
+								</tr>
+							</table>
+						</li>
+						<li class="cmp-table-view-cell">
+							<table class="table_wrap">
+								<tr>
+									<th class="left_name" style="width:100px;"><i18n key="meeting.meetingRoomDetail.admin"></i18n></th>
+									<th id="adminNames" class="right_text"></th>
+								</tr>
+							</table>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+       
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>    <script src="/seeyon/m3/apps/v5/meeting/js/meetingRoomDetail.js?buildversion=18121017266"></script>
+</body>
+</html>
+<!--******************** auto import check  ****************--!>

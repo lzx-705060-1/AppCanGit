@@ -1,0 +1,66 @@
+.cancle {
+    font-size: 18px;
+    color: #3AADFB;
+    margin: 1.173rem 0 1.066rem 0.373rem;
+}
+
+.cancle+div {
+    text-align: center;
+}
+
+.see-icon-m3-success-fill,
+.see-icon-m3-load-fail {
+    font-size: 100px;
+    line-height: 100px;
+}
+
+.icon {
+    margin: 2.186rem 0 1.653rem;
+}
+
+.record_fail {
+    margin-bottom: 0.853rem;
+}
+
+.see-icon-m3-load-fail {
+    color: #4b4a67;
+}
+
+.tip {
+    margin-bottom: 1.866rem;
+}
+
+.tip,
+.tip_step2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.tip p {
+    font-size: 16px;
+    color: #999;
+    margin-top: 0.377rem;
+}
+
+.btn {
+    width: 6.4rem;
+    height: 1.066rem;
+    line-height: 1.066rem;
+    margin: 0 auto;
+    border: 1px solid #3AADFB;
+    font-size: 16px;
+    color: #3AADFB;
+    background: #fff;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.tip_mistake {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 2.88rem;
+}
+
+.tip_step2 {
+    margin: 4.586rem 0 3.84rem;
+}

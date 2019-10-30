@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+	    
+	    <!-- css -->
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172358"/>
+	    <link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172358"/>
+    	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172358"/>
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172358">
+		<title></title>
+	</head>
+	<body class="cmp-fullscreen">
+		<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>
+		<!--
+		<header class="cmp-bar cmp-bar-nav after-line">
+		    <span id = "backBtn" class="cmp-icon  cmp-pull-left see-icon-v5-common-arrow-back cmpCommonPageBackBtn">
+			<span class="nav-text"><i18n key="Attendance.label.back"></i18n></span>
+			</span>
+		    
+			<h1 class="cmp-title"><i18n key="Attendance.label.distribution"></i18n></h1>
+		</header>
+		-->
+	
+		<div class="cmp-content position_relative ">
+	        <div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none; position: relative;">
+		        <div class="cmp-segmented-control cmp-search-title " style="border:none;top:0px;z-index: 20;">
+		            <div class="cmp-search-item">
+		                <span class="title" id="reSearchTile" style="color:#666666!important">2222</span>
+		            </div>
+		            <div id="toSearch" class="cmp-search-item">
+		                <div id="searchText" class="item text cmp-active" style="display: block;">
+		                    <input id="searchTextValue" type="text" readonly="readonly">
+		                </div>
+		                <div id="searchDate" class="item date" style="display: none;">
+		                    <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+		                    <span>-</span>
+		                    <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+		                </div>
+		            </div>
+		            <div class="cmp-search-item">
+		                <span id="cancelSearch" class=" gotoSearch"><i18n key="Attendance.message.cancel"></i18n></span>
+		            </div>
+		        </div>
+	    	</div>
+			
+		    <div id="myAttendanceTab" class="cmp-control-content cmp-active">
+		        <div id="myAttendance" class="cmp-scroll-wrapper">
+		            <div class="cmp-scroll">
+						<div class="position_relative cmp-v5-search-content foot-search-container">
+							<div class="cmp-content-title-search m1_search_title ">
+							<div id="myAttendanceSearch" class="cmp-input-row cmp-search search_handler cmp_search_textHandler" style="width: 100%;">
+								<form onsubmit="return false;"></form>
+								<input type="search" name="search" form="cmp-search-input" class="btn cmp-input-clear cmp-v5-search-textBtn" disabled>
+								<span class="cmp-icon cmp-icon-clear cmp-hidden"></span>
+								<span class="cmp-placeholder"><span class="cmp-icon cmp-icon-search"></span><span><i18n key="Attendance.label.search"></i18n></span></span>
+							</div>
+							</div>
+						</div>
+		                <div class="foot-container number-hidden">
+		                    <div class="foot-table-cell">
+		                        <ul class="cmp-table-view"></ul>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div id="authorizeAttendanceTab" class="cmp-control-content background_fff">
+		        <div id="authorizeAttendance" class="cmp-scroll-wrapper">
+		            <div class="cmp-scroll">
+		            	<div class="position_relative cmp-v5-search-content foot-search-container">
+							<div class="cmp-content-title-search m1_search_title ">
+								<div id="authorizeSearch" class="cmp-input-row cmp-search search_handler cmp_search_textHandler" style="width: 100%;">
+									<form onsubmit="return false;"></form>
+									<input type="search" name="search" form="cmp-search-input" class="btn cmp-input-clear cmp-v5-search-textBtn" disabled>
+									<span class="cmp-icon cmp-icon-clear cmp-hidden"></span>
+									<span class="cmp-placeholder"><span class="cmp-icon cmp-icon-search"></span><span><i18n key="Attendance.label.search"></i18n></span></span>
+								</div>
+							</div>
+						</div>
+		            	<div class="foot-container number-hidden">
+		                    <div class="foot-table-cell">
+		                    	<div class="title" style="display: none;">
+									<span class="auth-list-title"></span>
+									<span class="cmp-pull-right attendance-map-handler" signtime=""><i18n key="Attendance.label.profile"></i18n></span>
+								</div>
+		            			<ul class="cmp-table-view cmp-generating"></ul>
+		            		</div>
+		            	</div>
+		            </div>
+		        </div>
+		    </div>
+		    <div id="mentionedAttendanceTab" class="cmp-control-content background_fff ">
+		        <div id="mentionedAttendance" class="cmp-scroll-wrapper">
+		            <div class="cmp-scroll">
+		            	<div class="position_relative cmp-v5-search-content foot-search-container">
+							<div class="cmp-content-title-search m1_search_title ">
+								<div id="mentionedSearch" class="cmp-input-row cmp-search search_handler cmp_search_textHandler" style="width: 100%;">
+									<form onsubmit="return false;"></form>
+									<input type="search" name="search" form="cmp-search-input" class="btn cmp-input-clear cmp-v5-search-textBtn" disabled>
+									<span class="cmp-icon cmp-icon-clear cmp-hidden"></span>
+									<span class="cmp-placeholder"><span class="cmp-icon cmp-icon-search"></span><span><i18n key="Attendance.label.search"></i18n></span></span>
+								</div>
+							</div>
+						</div>
+	                    <div class="foot-table-cell">
+	            			<ul class="cmp-table-view cmp-generating"></ul>
+	            		</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+        
+        <footer id = "attFooterTab" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview before-line">
+		    <a id="myAttendanceLink" class="cmp-tab-item cmp-tabview-item cmp-active" href="#myAttendanceTab">
+		        <span class="cmp-icon see-icon-v5-common-location-fill"></span>
+		        <span class="cmp-tab-label"><i18n key="Attendance.label.myAttendance"></i18n></span>
+		    </a>
+		    <a id="authorizeAttendanceLink" class="cmp-tab-item cmp-tabview-item" href="#authorizeAttendanceTab" style="display: none;">
+		        <span class="cmp-icon checkinicon icon-checkin-accredit-active"><!--<span class="cmp-badge">9</span>--></span>
+		        <span class="cmp-tab-label"><i18n key="Attendance.label.authrize"></i18n></span>
+		    </a>
+		    <a id="mentionedAttendanceLink" class="cmp-tab-item cmp-tabview-item" href="#mentionedAttendanceTab">
+		        <span class="cmp-icon  ">@</span>
+		        <span class="cmp-tab-label"><i18n key="Attendance.label.mentionedMe"></i18n></span>
+		    </a>
+		</footer>
+		
+		<!-- 模版-->
+		<script type="text/html" id="authorizeList">
+
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+			<% var obj = this[i]; %>
+			<%
+				var attendanceType = obj.type != 3 ? obj.type == 1 ? cmp.i18n("Attendance.label.attendance") : cmp.i18n("Attendance.label.offWork") : cmp.i18n("Attendance.label.businessTrip");
+				var attendanceType_class = obj.type != 3 ? "signin" : "legwork";
+			%>
+			
+			<li class="cmp-table-view-cell">
+				<div class="auth-content" id="<%=obj.id%>" item-id = "<%=obj.owner_id%>" item-date = "<%=obj.sign_time%>">
+					<div class="auth-content-left cmp-pull-left">
+						<img class="" src="<%=attendanceCommon.getCmpRoot() + obj.owner_img%>">
+						<p class="name cmp-ellipsis"><%=obj.owner_name%></p>
+					</div>
+					<div class="auth-content-right cmp-after-line">
+						<div class="auth-content-times">
+							<div>
+								<%=cmp.i18n("Attendance.label.authAttendTimes",['<span class="times">' + obj.times + '</span>'])%>
+							</div>
+							<div class="navigate">
+								<span class="navigate-arrow see-icon-v5-common-arrow-right"></span>
+							</div>
+						</div>
+						<div class="auth-content-type">
+							<span><%=attendanceCommon.getCurrentTime(obj.sign_time)%></span>
+							<span class="sign-label <%=attendanceType_class%>"><%=attendanceType%></span>
+						</div>
+						<div class="auth-content-sign cmp-ellipsis-2">
+							<span class="checkinicon icon-checkin-adress" style="font-size: 14px;"></span>
+							<span><%=obj.sign%></span>
+						</div>
+					</div>
+				</div>
+			</li>
+			
+			<% } %>
+		</script>
+		
+		<!-- js引入 -->
+		<script src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172358"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172358"></script>
+		<script>
+		    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance");
+		</script>
+        
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172358" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceDistribution.js?buildversion=181210172358"></script>
+	</body>
+</html>
+

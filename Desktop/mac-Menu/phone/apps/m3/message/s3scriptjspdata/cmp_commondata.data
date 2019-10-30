@@ -1,0 +1,28 @@
+{
+    "dependencies":{
+        "cmp":"${data:modulepath.cmp.path}/${data:version}",
+        "commons":"${data:modulepath.m3.commons}/${data:version}",
+        "login":"${data:modulepath.m3.login}/${data:version}",
+        "application":"${data:modulepath.m3.application}/${data:version}",
+        "message":"${data:modulepath.m3.message}/${data:version}",
+        "my":"${data:modulepath.m3.my}/${data:version}",
+        "search":"${data:modulepath.m3.search}/${data:version}",
+        "todo":"${data:modulepath.m3.todo}/${data:version}"
+    },
+    "modulepath":{
+        "cmp":{
+            "path":"http://cmp"
+        },
+        "m3":{
+            "commons":"http://commons.m3.cmp",
+            "login":"http://login.m3.cmp",
+            "application":"http://application.m3.cmp",
+            "message":"http://message.m3.cmp",
+            "my":"http://my.m3.cmp",
+            "search":"http://search.m3.cmp",
+            "todo":"http://todo.m3.cmp"
+        }
+    },
+    "version":"v1.0.0",
+    "cordova":"<script src=\"${data:dependencies.cmp}\/js/cordova\/__CMPSHELL_PLATFORM__\/cordova.js\"></script>\r\n<script src=\"${data:dependencies.cmp}\/js/cordova\/cordova-plugins.js\"></script>"
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172544" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/hr/css/hrSalary.css?buildversion=181210172544" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172544">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172544">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172544">
+<title>工资条</title>
+<style>
+    body #slider .cmp-content{
+        top: 0;
+    }
+</style>
+</head>
+<body class="cmp-fullscreen">
+    <!--<header class="cmp-bar cmp-bar-nav">-->
+        <!--<div id="prev" style="display:inline-block;">-->
+            <!--<a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>-->
+            <!--<div class="doc-back">-->
+                <!--<span style="font-size: 16px!important;"><i18n key="hr.h5.back"></i18n></span>-->
+            <!--</div>-->
+            <!--<div style="clear:both;"></div>-->
+        <!--</div>-->
+        <!--<a id="showMonth" data-options='{"type":"month"}' class="cmp-icon cmp-pull-right">-->
+            <!--<span class="cmp-icon see-icon-v5-common-date" style="font-size: 16px;color: #fff!important;margin: 0;padding: 0;"></span>-->
+        <!--</a>-->
+        <!--<h1 class="cmp-title"><span><i18n key="hr.h5.title"></i18n></span></h1>-->
+    <!--</header>-->
+    <input id="firstCopy" type="hidden" value="">
+    <input id="repeatCopy" type="hidden" value="">
+    <div id="slider" class="cmp-slider" style="">
+        <a id="showMonth" data-options='{"type":"month"}' class="cmp-icon cmp-pull-right">
+            <span class="cmp-icon see-icon-v5-common-date" style="font-size: 16px;color: #fff!important;margin: 0;padding: 0;"></span>
+        </a>
+        <div class="cmp-slider-group" id="slider_group">
+        </div>
+    </div>
+    <script type="text/html" id = "pageContent_tpl" >
+        <div class="cmp-slider-item cmp-slider-item-duplicate  cmp-control-content">
+        <% var len = this.length;var firstItem = this[0]; var lastItem = this[len-1];%>
+            <div id="<%= lastItem.sliderItemId + '_1' %>" class="cmp-content cmp-scroll-wrapper cmp-content-none">
+                <!--列表容器-->
+                <div class="cmp-scroll">
+                    <div align="center" class="money_content" id="0_salaryActually">
+                        <ul class="cmp-table-view" >
+                            <li class="cmp-table-view-cell"  >
+                                <div style="text-align: center;margin-top: 10px;">
+                                    <span class="unit">￥</span><span class="money"><%=lastItem.relMoney %></span>
+                                </div>
+                                <div class="hr_container">
+                                    <div class="line">
+                                        <div class="tem left"></div>
+                                        <div class="tem center active"></div>
+                                        <div class="tem right"></div>
+                                    </div>
+                                </div>
+                                <div style="text-align: center;font-size: 14px;line-height: 14px;margin-top: 7px;">
+                                    <span class="years"><%=lastItem.item%></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <% var bigTitle = ""; %>
+                    <% for(var i = 0,len = lastItem.data.length;i < len; i++){ %>
+                    <% var obj = lastItem.data[i]; %>
+                    <%if(bigTitle!=obj.bigtitle||bigTitle==""){%>
+                    <%if(i == 0){%>
+                    <div class="money_table_content" style="margin-top: 0;">
+                        <div class="head_title">
+                            <span><%=obj.bigtitle%></span>
+                        </div>
+                    </div>
+                    <%}else{%>
+                    <div class="money_table_content">
+                        <div class="head_title">
+                            <span><%=obj.bigtitle%></span>
+                        </div>
+                    </div>
+                    <%}%>
+                    <% bigTitle = obj.bigtitle; }%>
+                    <div class="money_table_content data">
+                        <div class="rows title"><span><%=obj.title %></span></div>
+                        <div class="rows number cmp-ellipsis"><span><%=obj.value %></span></div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% for(var z = this.length -1 ;z >= 0 ; z--){ %>
+            <% var thisObj = this[z]; %>
+            <div class="cmp-slider-item cmp-control-content">
+                <div id="<%= thisObj.sliderItemId %>" class="cmp-content cmp-scroll-wrapper">
+                    <!--列表容器-->
+                    <div class="cmp-scroll">
+                        <div align="center" class="money_content" id="0_salaryActually">
+                            <ul class="cmp-table-view" >
+                                <li class="cmp-table-view-cell"  >
+                                    <div style="text-align: center;margin-top: 10px;">
+                                        <span class="unit">￥</span><span class="money"><%=thisObj.relMoney %></span>
+                                    </div>
+                                    <div class="hr_container">
+                                        <div class="line">
+                                            <div class="tem left"></div>
+                                            <div class="tem center active"></div>
+                                            <div class="tem right"></div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;font-size: 14px;line-height: 14px;margin-top: 7px;">
+                                        <span class="years"><%=thisObj.item%></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <% var bigTitle = ""; %>
+                        <% for(var i = 0,len = thisObj.data.length;i < len; i++){ %>
+                        <% var obj = thisObj.data[i]; %>
+                        <%if(bigTitle!=obj.bigtitle||bigTitle==""){%>
+                        <%if(i == 0){%>
+                        <div class="money_table_content" style="margin-top: 0;">
+                            <div class="head_title">
+                                <span><%=obj.bigtitle%></span>
+                            </div>
+                        </div>
+                        <%}else{%>
+                        <div class="money_table_content">
+                            <div class="head_title">
+                                <span><%=obj.bigtitle%></span>
+                            </div>
+                        </div>
+                        <%}%>
+                        <% bigTitle = obj.bigtitle; }%>
+                        <div class="money_table_content data">
+                            <div class="rows title"><span><%=obj.title %></span></div>
+                            <div class="rows number cmp-ellipsis"><span><%=obj.value %></span></div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <div class="cmp-slider-item cmp-slider-item-duplicate  cmp-control-content">
+            <div id="<%= firstItem.sliderItemId + '_0' %>" class="cmp-content cmp-scroll-wrapper">
+                    <!--列表容器-->
+                    <div class="cmp-scroll">
+                        <div align="center" class="money_content" id="0_salaryActually">
+                            <ul class="cmp-table-view" >
+                                <li class="cmp-table-view-cell"  >
+                                    <div style="text-align: center;margin-top: 10px;">
+                                        <span class="unit">￥</span><span class="money"><%=firstItem.relMoney %></span>
+                                    </div>
+                                    <div class="hr_container">
+                                        <div class="line">
+                                            <div class="tem left"></div>
+                                            <div class="tem center active"></div>
+                                            <div class="tem right"></div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;font-size: 14px;line-height: 14px;margin-top: 7px;">
+                                        <span class="years"><%=firstItem.item%></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <% var bigTitle = ""; %>
+                        <% for(var i = 0,len = firstItem.data.length;i < len; i++){ %>
+                        <% var obj = firstItem.data[i]; %>
+                        <%if(bigTitle!=obj.bigtitle||bigTitle==""){%>
+                        <%if(i == 0){%>
+                        <div class="money_table_content" style="margin-top: 0;">
+                            <div class="head_title">
+                                <span><%=obj.bigtitle%></span>
+                            </div>
+                        </div>
+                        <%}else{%>
+                        <div class="money_table_content">
+                            <div class="head_title">
+                                <span><%=obj.bigtitle%></span>
+                            </div>
+                        </div>
+                        <%}%>
+                        <% bigTitle = obj.bigtitle; }%>
+                        <div class="money_table_content data">
+                            <div class="rows title"><span><%=obj.title %></span></div>
+                            <div class="rows number cmp-ellipsis"><span><%=obj.value %></span></div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+        </div>
+    </script>
+     
+    <script src="/seeyon/m3/apps/v5/hr/i18n/Hr_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/hr/i18n/","Hr",null,"?buildversion=181210172544");</script>
+<script type="text/javascript">
+    var _hrPath = "/seeyon/m3/apps/v5/hr";
+</script>	<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172544" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172544" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/hr/js/hr-jssdk.js?buildversion=181210172544" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172544" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172544"></script>                            
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172544"></script>
+<script src="/seeyon/m3/apps/v5/hr/js/hrSalary.js?buildversion=181210172544"></script>
+</body>
+</html>

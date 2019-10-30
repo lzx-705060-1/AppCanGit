@@ -1,0 +1,284 @@
+/*===================================================搜索文本框的样式==================================================*/
+.cmp-search {
+  position: relative;
+}
+.cmp-search input[type='search'] {
+  padding-left: 30px;
+  background-color: #eef1f5;
+}
+.cmp-search .cmp-placeholder {
+  font-size: 14px;
+  line-height: 29px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  height: 34px;
+  text-align: center;
+  color: #A1B0C5;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+}
+.cmp-search .cmp-placeholder .cmp-icon {
+  font-size: 17px;
+  color: #A1B0C5;margin-right: 5px;
+}
+.cmp-search:before {
+  font-family: cmpicons;
+  font-size: 20px;
+  font-weight: normal;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  display: none;
+  margin-top: -10px;
+  margin-right: 31px;
+  content: '\e466';
+  width: 20px;
+  height: 20px;
+}
+.cmp-search.cmp-active:before {
+  font-size: 20px;
+  right: auto;
+  left: 5px;
+  display: block;
+  margin-right: 0;
+  color: #999;
+}
+.cmp-search.cmp-active input[type='search'] {
+  text-align: left;
+}
+.cmp-search.cmp-active .cmp-placeholder {
+  display: none;
+}
+/*===========================================================搜索组件的样式===========================================*/
+.cmp-search-content {
+  background-color: #fff;
+}
+
+.cmp-search-content .cmp-list-cell .cmp-list-cell-info {
+  width: 70%;
+}
+
+.cmp-search-content .cmp-list-cell .cmp-list-cell-info .list_title_name {
+  width: 60%;
+}
+
+.cmp-search-content .cmp-list-content:first-child {
+  margin-top: -1px;
+}
+
+.cmp-search-content .cmp-search-title {
+  width: 100%;
+  overflow: auto;
+  border: none;
+  padding:10px 0;
+  border-bottom: 1px #ccc solid;
+}
+body.cmp-ios-x .cmp-searchInit .cmp-search-content .cmp-search-title{
+  /*padding-top: 45px;*/
+}
+
+.cmp-search-content .cmp-search-item {
+  float: left;
+  width: auto;
+  position: relative;
+  height: 28px;
+  line-height: 28px;
+}
+.cmp-search-content .cmp-search-item .icon_select{
+  height: 20px;line-height: 20px;position:absolute;right: 5px;top:50%;margin-top: -10px;z-index: 0;
+  color: #999999;
+}
+
+.cmp-search-content .cmp-search-item .title {
+  width: 100%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  padding-right: 25px;
+  position: relative;
+  z-index: 1;
+  color: #666666;
+  font-size: 14px;
+}
+/* 类似iphone 4 DPR1*/
+@media (min-device-width : 320px) and (max-device-width : 480px) and (-webkit-min-device-pixel-ratio :1){
+  .cmp-search-content .cmp-search-item .title{font-size: 15px;}
+  .cmp-search-content .cmp-search-item input{font-size: 15px;}
+  .cmp-search-content .cmp-search-item:last-child .gotoSearch{font-size: 14px;}
+  .cmp-search-content .cmp-search-item:last-child .gotoSearch.subSearch{width: 50px;}
+}
+.cmp-search-content .cmp-search-item .popover-items{
+  width: 100%;
+  position: absolute;
+  top:37px;
+  left:0;
+  border-radius: 0;
+  z-index: 9;
+}
+
+.cmp-search-content .cmp-search-item .popover-items .tri{
+  //background-color: #585861;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 13px solid #fff;
+  position: relative;bottom: -2px;left: 10px;
+}
+.cmp-search-content .cmp-search-item .popover-items .cmp-search-table-view{
+   overflow: hidden;
+  background-color: #fff;
+  /*background-color: rgba(70, 70, 80, 0.9);*/
+}
+.cmp-search-content .cmp-search-item .popover-items .cmp-search-table-view li{
+  position: relative;font-size: 14px;
+  height: 50px;
+  line-height: 50px;text-align: left;
+  padding: 0 14px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;;
+  white-space: nowrap;;
+}
+.cmp-search-content .cmp-search-item .popover-items .cmp-search-table-view li:not(:last-child):after{
+  content: "";display: inline-block;height: 1px;width: 100%;background-color: #d4d4d4;
+  position: absolute;left: 12px;bottom: 0;
+  -webkit-transform: scale(1,0.5);
+  transform: scale(1,0.5);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+
+.cmp-search-content .cmp-search-title{
+  background-color:#fff ;
+}
+
+.cmp-search-content .cmp-search-item input {
+  margin: 0;border-radius: 38px;
+  padding: 0 !important;
+  width: 46%;
+  display: inline-block;
+  font-size: 16px;
+  height: 28px;
+  border-color: #fff;
+  text-align: center;
+  background-color: #eef1f5;
+  color: #999;
+  -webkit-appearance: none;
+}
+.cmp-search-content .cmp-search-item input:first-child{
+  position: relative;top:-2px;
+}
+.cmp-search-content .cmp-search-item input:last-child{
+  position: absolute;;right: 0;
+}
+.cmp-search-content .cmp-search-item input:disabled{
+  background-color:#E0E5EB;
+}
+.cmp-search-content .cmp-search-item input[disabled] {
+  opacity: 1;
+}
+
+.cmp-search-content .cmp-search-item .item.text input{
+  text-align: left;padding-left: 15px!important;font-size: 13px;
+}
+.cmp-search-content .cmp-search-item .item.text .clear{
+  display: inline-block;;position: absolute;;right:0;top: 4px;color: #aaa;padding: 10px 5px;line-height: 0;
+}
+.cmp-search-content .cmp-search-item .item.date span{
+  padding: 0 1px;
+}
+.cmp-search-content .cmp-search-item .item.date input{
+  font-size: 12px;
+}
+.cmp-search-content .cmp-search-item .item.date_day input{
+  width: 100%;
+}
+.cmp-search-content .cmp-search-item:first-child {
+  width: 27%;
+}
+
+.cmp-search-content .cmp-search-item:nth-child(2) {
+  width: 57%;
+}
+
+.cmp-search-content .cmp-search-item:last-child {
+  width: 16%;
+  text-align: center;
+}
+
+.cmp-search-content .cmp-search-item:last-child .gotoSearch {
+  line-height: 30px;
+  color: #4A90E2;
+  font-size: 14px;
+}
+
+.cmp-search-content .cmp-search-item .item {
+  display: none;
+  position: relative;
+}
+
+.cmp-search-content .cmp-search-item .cmp-active {
+  display: block;
+}
+
+.cmp-search-content .cmp-search-item .text.cmp-active input {
+  width: 100%;
+}
+.cmp-search-content .cmp-table-view-cell{padding: 4px 10px;}
+.cmp-search-content .cmp-table-view-cell:after{left: 0;background-color: #dcdcdc;}
+.cmp-search-content .cmp-table-view-cell:last-child:after{height: 1px;}
+.cmp-search-content .cmp-table-view-cell div{
+  vertical-align: middle;font-size: 14px;color: #666666;display: inline-block;;
+}
+.cmp-search-content .cmp-table-view-cell .icon-time{
+  vertical-align: middle;font-size: 16px;color: #ccc;display: inline-block;margin-top: 5px;
+}
+.cmp-search-content .cmp-table-view-cell .icon-key{
+  font-size: 12px;vertical-align: middle;color:#ccc;position: absolute;top:15px;
+}
+
+.cmp-search-content .cmp-table-view-cell div.datas{
+  padding-left: 5px;width: 88%;height: 30px;line-height: 30px;
+}
+.cmp-search-content .cmp-table-view-cell div.datas .text{
+  max-width: 22%;
+}
+.cmp-search-content .cmp-table-view-cell div.datas .value{
+  width: 65%;
+}
+.cmp-search-content .cmp-table-view-cell .searchHistory{
+  font-size: 16px;color: #cccccc;position: relative;bottom: 2px;margin-right: 10px;
+}
+
+.cmp-search-content .cmp-table-view-cell .searchThat{
+  font-size: 12px;color: #cccccc;position: absolute;bottom:6px;
+  right: 10px;padding: 10px;
+}
+.cmp-search-content .cmp-search-clear-history{
+  width: 100%;padding: 10px 0;text-align: center;color: #999999;font-size: 16px;
+}
+.cmp-search-content .search-data-null{font-size: 106px;color: #ffffff;}
+.cmp-search-content .search-data-null-text{font-size: 16px;color: #999999;}
+.search-backdrap{position: fixed;left: 0;top:0;width: 100%;height: 100%;background-color: transparent;z-index: 1;}
+
+.cmp-content-title-search{overflow: hidden;padding: 5px 0;padding-left: 9px;background-color: #fff;}
+.cmp-content-title-search.cmp-content-search-add .cmp-search{width: 89%;float: left;}
+.cmp-content-title-search.cmp-content-search-add .search-title-cancel{
+  display: inline-block;position: absolute;right: 9px;
+height: 34px;line-height: 31px;color: #3aadfb;
+}
+.cmp-segmented_title_content{
+  padding: 5px 3px;position: relative;
+}
+.cmp-input-row.cmp-search .cmp-icon-clear {
+  top: 5px;
+}

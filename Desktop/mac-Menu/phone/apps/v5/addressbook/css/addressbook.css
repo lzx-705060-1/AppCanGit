@@ -1,0 +1,187 @@
+html{
+  overflow: hidden;
+}
+header {
+    background-color: #4a90e2!important;
+}
+header a {
+    color: #fff!important;
+}
+header span {
+    color: #fff!important;
+}
+body{
+  overflow:hidden;
+}
+.cmp-content{
+    background: #f4f4f4;
+}
+.cmp-list-cell{
+    padding: 14px
+}
+.cmp-list-cell .cmp-list-cell-info{
+    padding-left: 0;
+}
+.cmp-list-content{
+    border-top: none;
+    background-color: #fff;
+}
+.cmp-v5-search-content .cmp-content-title-search input{
+    border: 1px #f0f0f2 solid;
+}
+.news_content .cmp-table-view {
+    background-color: #f1f1f1;
+    margin-top: 0!important;
+}
+
+.news_content .cmp-table-view .cmp-table-view-cell {
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 3px 20px;
+}
+
+.news_content .cmp-table-view .cmp-table-view-cell:after {
+    height: 0;
+}
+
+.news_content .cmp-table-view .cmp-table-view-cell .time_sector {
+    padding: 5px 0;
+}
+
+.news_content .cmp-table-view .cmp-table-view-cell.look_off .title {
+    color: #aaa;
+}
+
+.news_content .cmp-navigate-right {
+    margin: 0 -15px!important;
+    padding: 0!important;
+    height: 45px;
+}
+
+.news_content .cmp-navigate-right .cmp-btn {
+    line-height: 8px;
+    position: relative;
+    top: 10px;
+    left: 15px;
+    padding: 4px 13px;
+    color: #aaa;
+}
+
+.news_content .cmp-navigate-right .text {
+    position: relative;
+    right: 36px;
+    top: 12px;
+    color: #48a0de;
+}
+
+.cmp-navigate-right:after,
+.cmp-push-left:after,
+.cmp-push-right:after {
+    top: inherit;
+    bottom: 9px;
+}
+
+.cmp-navigate-right:after{
+    bottom: 1px;
+}
+
+.news_content .line:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    display: inline-block;
+    background-color: #cbcbcb;
+    position: relative;
+    left: 0;
+}
+
+.news_content .line img {
+    width: 100%;
+    height: 155px;
+}
+
+.cmp-table-view-cell {
+    border-top: 1px #d9d9d9 solid;
+    border-bottom: 1px #d9d9d9 solid;
+}
+
+.news_content .line:after {
+    height: 0;
+}
+
+.cmp-bar .cmp-action-back{
+    font-size: 18px;
+    padding-top: 13px;
+}
+.cmp-navigate-right:after{
+    content: '';
+}
+.cmp-v5-search-content .cmp-search .cmp-v5-search-textBtn{
+    padding-right: 50px;
+}
+
+/*公告UE应用检查-8.11*/
+.time_sector .see-icon-accessory{font-size: 15px;}
+#attchmentFile span:last-child{margin-left: 0;}
+#bul_list li{padding-top: 0;}
+#bul_list h4.title{margin-top: 16px;}
+#bul_list h5.time_sector{line-height: 16px;padding: 0;margin-top: 10px;margin-bottom: 0;color: #999999;}
+#bul_list div.cmp-h6{margin-bottom: 14px;font-size: 14px;line-height: 20px;margin-top: 7px;color: #999999;}
+#bul_list div.content-null{margin-bottom: 0;font-size: 14px;line-height: 20px;margin-top: 14px;color: #999999;}
+#bul_content_detail p{color: black;font-size: 16px;}
+.bul_title{font-size:20px;font-weight:bold;margin:15px 0px 11px 0px;word-break: break-all;line-height: 25px;}
+
+.cmp-bar-nav{box-shadow: none;}
+input,textarea,input[type='search']{-webkit-appearance: none;}
+input[disabled]{background-color: white!important;opacity: 1;}
+
+.cmp-v5-search-content .cmp-content-title-search{border-bottom: none;}
+.cmp-accessory-content .attach-br{height: 0;}
+.comment_animation {
+    transition: transform 200ms linear;
+    -webkit-transition: -webkit-transform 200ms linear;
+    transform-origin: 0px 0px;
+    -webkit-transform-origin: 0px 0px;
+    transform: translate(0px, 100%);
+    -webkit-transform: translate(0px, 100%);
+}
+#bul_title{transform: translate(0px,0px);transition: transform 1s;}
+#bul_details{transform: translate(0px,0px);transition: transform 1s;}
+
+.title-sign.sign-fine {
+    background: #ff8c3d;
+}
+.title-sign {
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 1px;
+    border-radius: 4px;
+    font-weight: normal;
+    color: white;
+    padding: 0 2px;
+    line-height: 16px;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+/*审批样式*/
+#approval{position: fixed;bottom: 0;width: 100%;z-index: 11;background-color: #E7ECF0;}
+#approval:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    top: 0;
+    background: #d0d5da;
+    -webkit-transform:scale(0.5);
+}
+#approval .app-edit{border-radius: 10px;margin: 10px;max-height: 94px;overflow-y: auto;padding: 5px;font-size: 16px;background-color: #fff;}
+#approval .app-btns{margin: 0 10px 10px 10px}
+#approval .app-btns .app-no{width: 2.93rem;height: 30px;line-height:30px;float: left;border-radius: 50px;text-align: center;border: 1px solid #12d0a0;}
+#approval .app-btns .app-no span{font-size: 16px;color: #12d0a0;}
+#approval .app-btns .app-yes{width: 2.93rem;height: 30px;line-height:30px;margin-left: .33rem;float: left;background-color: #12d0a0;border-radius: 50px;text-align: center;}
+#approval .app-btns .app-yes span{font-size: 16px;color: #fff;}
+#approval .app-btns .app-ok{width: 2.93rem;height: 30px;line-height:30px;float: right;background-color: #3aadfb;border-radius: 50px;text-align: center;}
+#approval .app-btns .app-ok span{font-size: 16px;color: #fff;}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>审批列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="stylesheet" href="http://cmp/css/cmp.css"/>
+<link rel="stylesheet" href="http://commons.v5.cmp/cmp-resources/M1H5.s3css"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css">
+
+
+<style>
+</style>
+</head>
+<body class="cmp-fullscreen">
+
+<header class="cmp-bar cmp-bar-nav">
+    <a class="  cmp-icon cmp-icon-arrowleft   cmp-pull-left"></a>
+    <span class="cmp-icon   cmp-pull-right iconfont icon-xinjian"></span>
+    <h1 class="cmp-title thinker_title_action">
+        <span>审批列表</span>
+        <span class="cmp-icon cmp-icon-arrowdown"></span>
+    </h1>
+</header>
+
+<div class="cmp-content position_relative">
+    <div class="cmp-segmented_title_content">
+        <div id="search" class="position_relative">
+
+        </div>
+        <!--<div class="cmp-content-title-search">-->
+            <!--<div class="cmp-input-row cmp-search">-->
+                <!--<input type="search" class="cmp-input-clear" placeholder="搜索">-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="cmp-control-content cmp-active">
+        <div id="scroll" class="  cmp-scroll-wrapper  ">
+            <div class="cmp-scroll">
+                <ul id="sliderContainer" class="cmp-list-content approval_list_content cmp-table-view">
+                    <!--未读-->
+                    <li class="cmp-list-cell cmp-table-view-cell treatment unread" >
+                        <div class="cmp-slider-right cmp-disabled">
+                            <div class="cmp-slider-after-handle cmp-btn">
+                                <!--hasten催办  relay转发 receipt取回 close删除-->
+                                <!--<div class="cmp-icon-synergy relay conduct"><span class="text">转发</span></div>-->
+                                <!--<div class="cmp-icon-synergy receipt conduct"><span class="text">取回</span></div>-->
+                                <!--<div class="cmp-icon-synergy close conduct"><span class="text">删除</span></div>-->
+                                <div class="conduct collect">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont icon-weidianzan"></span>
+                                    </div>
+                                    <span class="text">收藏</span>
+                                </div>
+                                <div class="conduct collect">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont icon-weidianzan"></span>
+                                    </div>
+                                    <span class="text">取消</span>
+                                </div>
+                                <div class="conduct close">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont see-icon-v5-common-delete-bold"></span>
+                                    </div>
+                                    <span class="text">删除</span>
+                                </div>
+                                <div class="conduct relay">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont icon-zhuanfa"></span>
+                                    </div>
+                                    <span class="text">转发</span>
+                                </div>
+
+                                <div class="conduct receipt">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont see-icon-v5-common-getback-bold"></span>
+                                    </div>
+                                    <span class="text">取回</span>
+                                </div>
+
+                                <div class="conduct hasten">
+                                    <div class="bor">
+                                        <span class="cmp-icon iconfont see-icon-v5-common-clock"></span>
+                                    </div>
+                                    <span class="text">催办</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cmp-slider-handle">
+                            <!--mark未读 hold暂存 end结束-->
+                            <div class="mark hold">
+                                <span class="text">暂存</span>
+                            </div>
+                            <div class=" cmp-list-cell-img cmp-radio cmp-left">
+                                <img class="img_setting" src="http://commons.v5.cmp/cmp-resources/m1_h5/img/document_type@1x.png">
+                            </div>
+                            <div class="cmp-list-cell-info">
+                                <div class="content_info ">
+                                    <span class="cmp-ellipsis-2 cmp-pull-left list_title_name">
+                                        北京区用户 周二来研开会周二
+                                    </span>
+                                    <!--<span class="cmp-icon iconfont icon-yijingbiaoqi flag1"></span>-->
+                                    <span class="cmp-icon iconfont icon-weibiaojixiaoqizi flag1"></span>
+                                    <!--<span class="cmp-icon-synergy-list flag1"></span>-->
+                                    <div class="cmp-pull-left width_75">
+                                        <h6 class="cmp-ellipsis" >
+                                            <span>李鸿章</span>
+                                            <span>07-22 09:30</span>
+                                            <span class="cmp-icon iconfont see-icon-accessory"></span>
+                                            <!--<span class="cmp-icon-synergy-list accessory1 linkObj"></span>-->
+                                            <!--<span class=" cmp-icon cmp-icon-paperclip linkObj"></span>-->
+                                            <!--<span class="cmp-badge">msss</span>-->
+                                            <span class="cmp-badge cmp-badge-primary">
+                                                <span class="cmp-icon iconfont see-icon-v5-common-time time_icon"></span>
+                                            <span>ggg</span>
+                                            </span>
+                                        <!--<span class="cmp-badge cmp-badge-custom ">-->
+                                            <!--<span class="cmp-icon iconfont see-icon-v5-common-time time_icon"></span>-->
+                                            <!--<span>ggg</span>-->
+                                        <!--</span>-->
+                                        </h6>
+                                    </div>
+                                    <div class="label_approval cmp-pull-right cmp-text-right">
+                                        <div class="opinion cmp-icon-synergy remark">
+                                            <span class="responses">不同意</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="plaint">
+                                    <span class="cmp-icon iconfont see-icon-v5-common-replies"></span>
+                                    <!--<span class="cmp-icon-synergy-list message"></span>-->
+                                    <!--<span class="cmp-icon iconfont icon-markfill icon"></span>-->
+                                    <span> 特批处理</span>
+                                    <span class="add">
+                                        <span class="cmp-icon iconfont see-icon-v5-common-endorse"></span>
+                                        <span>加签</span>
+                                        <span class="cmp-icon iconfont icon-huitui"></span>
+                                        <!--<span class="cmp-icon-synergy-list adduser"></span>-->
+                                        <!--<span class="cmp-icon-synergy-list back"></span>-->
+                                        <span>回退</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li class="cmp-list-cell cmp-table-view-cell treatment undefined" >
+                        <div class="cmp-slider-right cmp-disabled">
+                            <div class="cmp-slider-after-handle cmp-btn">
+                                <!--<div class="cmp-icon-synergy relay conduct"><span class="text">转发</span></div>-->
+                                <!--<div class="cmp-icon-synergy receipt conduct"><span class="text">取回</span></div>-->
+                                <!--<div class="cmp-icon-synergy close conduct"><span class="text">删除</span></div>-->
+                            </div>
+                        </div>
+                        <div class="cmp-slider-handle">
+                            <!--mark未读 hold暂存 end结束-->
+                            <div class="mark end">
+                                <span class="text">结束</span>
+                            </div>
+                            <div class=" cmp-list-cell-img cmp-radio cmp-left">
+                                <img class="img_setting" src="http://commons.v5.cmp/cmp-resources/m1_h5/img/document_type@1x.png">
+                            </div>
+                            <div class="cmp-list-cell-info">
+                                <div class="content_info ">
+                                    <span class="cmp-ellipsis-2 cmp-pull-left list_title_name">
+                                        北京区用户 周二来研发开会周二来研发开会周二来研发开会周二来研发开会周二来研发开会
+                                    </span>
+                                    <span class="cmp-icon iconfont icon-yijingbiaoqi flag1"></span>
+                                    <!--<span class="cmp-icon-synergy-list flag1"></span>-->
+                                    <div class="cmp-pull-left padding_5_0">
+                                        <div class="cmp-h6" >
+                                            <span>李鸿章</span>
+                                            <span>07-22 09:30</span>
+                                            <span class="cmp-icon-synergy-list accessory1 linkObj"></span>
+                                            <!--<span class=" cmp-icon cmp-icon-paperclip linkObj"></span>-->
+                                            <!--<span class="cmp-badge">msss</span>-->
+                                            <span class="cmp-badge cmp-badge-success cmp-ellipsis">
+                                                <span class="cmp-icon iconfont see-icon-v5-common-time time_icon"></span>
+                                                <span>已超期已超期已超期已超期</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="label_approval cmp-text-right">
+                                        <div class="opinion cmp-icon-synergy remark">
+                                            <span class="responses">不同意</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="message-eject cmp-popover header_title_popover center">
+    <p class="cmp-popover-arrow center"></p>
+    <ul>
+        <li class="cmp-active">
+            <span class="mark cmp-icon cmp-see-icon-v5-common-bulletin"></span>
+            <span class="text">全部</span>
+        </li>
+        <li>
+            <span class="mark cmp-icon cmp-see-icon-v5-common-bulletin"></span>
+            <span class="text">wqtwqtegewgwehewh</span>
+        </li>
+    </ul>
+
+</div>
+<script src="http://cmp/js/cmp.js"></script>
+    
+
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js"></script>
+<script>
+    cmp.ready(function(){
+
+
+
+
+        cmp.listView('#scroll');
+        cmp.listView('#scroll').refresh();
+
+        var sliderContainer=document.getElementById('sliderContainer'); //ul的ID
+        cmp(sliderContainer).on('tap','.conduct',function(){
+
+            if(this.classList.contains('close')){   //点击删除
+                cmp.notification.confirm('确定删除吗?',function(index){
+                    if(index==1){
+                        cmp.notification.alert('已删除',null,'提示','确定');
+                    }
+                },'',['取消','删除']);
+            }
+        });
+//        sliderContainer.addEventListener('slideleft',function(event){
+//            console.log(event)
+//        });
+
+
+        cmp.search.show({
+            id:"#search",//容器，可接受id、class或dom对象形式
+            model:{                    //定义该搜索组件用于的模块及使用者的唯一标识（如：该操作人员的登录id）搜索结果会返回给开发者
+                name:"coordination",   //模块名，如："协同"，名称开发者自定义
+                id:"888888"           //模块的唯一标识：
+            },
+            items : [                  //定义搜索条件：1、type （"text"：文本搜索；"date":日期搜索）text：搜索条件
+                {type:"text",condition:"gjz",text:"关键字"},
+                {type:"text",condition:"fqr",text:"发起人"},
+                {type:"date",condition:"sjd",text:"时间段"}
+            ],//
+            callback:function(result){ //回调函数：会将输入的搜索条件和结果返回给开发者
+                var id = result.id;       //返回模块的唯一标识
+                var name = result.name;   //返回模块的名称
+                var data = result.data;   //返回的搜索相关的数据
+                var condition = data.condition;  //返回的搜索条件
+                var data = data.data;        //搜索输入的数据  如果type="text",为普通文本，如果type="date":有begin和end时间属性
+                var type  = data.type;       //搜索输入的数据类型有text和date两种
+                var renderArea = data.search_result_render_area_ID;  //提供一个该搜索页面上的可渲染的区域（可使用其作为滚动的容器）
+                console.log(result);
+
+                cmp.listView('#cmp_v5_search_scroller');
+//                new cmp.iScroll('#cmp_v5_search_scroller',{
+//                    hScroll: false,
+//                    vScroll: true
+//                });
+            }
+
+        });
+
+//        var dpr, rem, scale;
+//        var docEl = document.documentElement;
+//        var fontEl = document.createElement('style');
+//        var metaEl = document.querySelector('meta[name="viewport"]');
+//        scale = 1 / dpr;
+//        dpr = window.devicePixelRatio || 1;
+//        rem = docEl.clientWidth * dpr / 10;
+//        // 设置viewport，进行缩放，达到高清效果
+//        metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
+//        // 设置data-dpr属性，留作的css hack之用
+//        docEl.setAttribute('data-dpr', dpr);
+//        // 动态写入样式
+//        docEl.firstElementChild.appendChild(fontEl);
+//        fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+//        // 给js调用的，某一dpr下rem和px之间的转换函数
+//        window.rem2px = function(v) {	v = parseFloat(v);	return v * rem;};
+//        window.px2rem= function(v) {    v = parseFloat(v);    return v / rem;};
+//        window.dpr = dpr;window.rem = rem;
+    });
+
+</script>
+</body>
+</html>

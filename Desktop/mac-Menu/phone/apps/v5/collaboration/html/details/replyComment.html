@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172434">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172434">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=181210172434">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172434">
+    <title></title>
+    <style type="text/css">
+        .cmp-segmented-control{ border: none; }
+        .cmp-search-item input{ background-color: #f2f2f2;height: 28px; text-align: left; }
+        .cmp-search-content:before{  content: ''; width: 100%; left: 0; top:0px; height: 1px; display: inline-block; position: absolute; background-color: #d4d4d4; -webkit-transform: scale(1,0.5); transform: scale(1,0.5); -webkit-transform-origin: center bottom; transform-origin: center bottom; z-index: 9;  }
+        .cmp-search-content{ padding-top: 6px; }
+    </style>
+</head>
+<body class="cmp-fullscreen">
+
+<header id="hid" class="cmp-bar cmp-bar-nav head-style" style="display:none;">
+    <a id="goBackBtn" href="javascript:void(0)" class="cmp-pull-left left-btn"><span class="see-icon-v5-common-arrow-back"></span><i18n key="collaboration.page.lable.goBack"></i18n></a>
+    <a  class="cmp-pull-right right-btn">
+        <!-- <span  id="switch_pop_btn" class="see-icon-more"> </span> -->
+    </a>
+    <h1 id="title" class="cmp-title"><i18n key="collaboration.page.lable.opinionReply"></i18n></h1>
+    <div class="add_border border_t"></div>
+</header>
+<div id="mainBodyArea" class="cmp-content cmp-col-content cmp-content-none" style="bottom:44px; position:fixed;">
+    <div id="comment_div" class="replay_opinion_content col noAfter" style="top: 0px;bottom:44px;">
+        <div class="information wh100">
+            <textarea class="wh100" style="font-size: 16px;" id="content" placeholder=""></textarea>
+        </div>
+    </div>
+</div>
+
+<div id="switch_container" class="col-backdrop display_none">
+    <div class="cmp-lists" style=" position: absolute;bottom: 64px; width:100%;">
+        <a href="javascript:void(0);" class="cmp-list">
+            <div class="content">
+                <div class="left"><span class="c1"><i18n key="collaboration.page.lable.hideComment"></i18n></span></div>
+                <div class="right">
+                    <div code="hide" class="cmp-switch cmp-switch-blue cmp-switch-mini">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </div>
+            </div>  
+        </a>
+        <a href="javascript:void(0);" class="cmp-list">
+            <div class="content">
+                <div class="left"><span class="c1"><i18n key="collaboration.page.lable.hideToSender"></i18n></span></div>
+                <div class="right">
+                    <div code="hideToSender" class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-disabled">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </div>
+            </div>  
+        </a>
+        <!-- <a href="javascript:void(0);" class="cmp-list">
+            <div class="content">
+                <div class="left"><span class="c1"><i18n key="collaboration.page.lable.push"></i18n></span></div>
+                <div class="right">
+                    <div code="toSendMsg" class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">
+                        <div class="cmp-switch-handle"></div>
+                    </div>
+                </div>
+            </div>  
+        </a> -->
+    </div>
+</div>
+
+<!-- 附件 -->
+<div id="picture" class="cmp-popover cmp-popover-action" >
+</div>
+
+<div class="text_and_accessory phrases_div col fixed">
+    <div id="btns" class="cmp-badge cmp-pull-right replay_badge badge_custom handle-zan relative">
+        <span id="attCount" class="attCount"></span>
+        <a id="attachment_btn" href="javascript:void(0)" class="see-icon-accessory display_none"></a>
+        <span id="atBtn" class="likeBtn see-icon-v5-common-at"></span>
+    </div>
+    <h5 id="fontCount" class="handle-word-num"></h5>
+</div>
+
+<footer class="send-colla-div cmp-bar-footer ">
+    <span  id="switch_pop_btn" class="see-icon-more" style="text-align: center; font-size: 24px;width:50px;position:absolute;top:0;left:10px;height: 50px;line-height: 50px;color:#3AADFB;"> </span>
+    <div class="border_t wh100">
+        <div class="single_btn">
+            <button id="submitBtn" type="button" class="send-colla"><i18n key="collaboration.page.lable.button.submit"></i18n><!-- 发送 --></button>
+        </div>
+    </div>
+</footer>
+    <script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script type="text/javascript">
+ cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script><script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172434"></script>
+<!--附件-->
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172434"></script>
+
+<script src="/seeyon/m3/apps/v5/collaboration/js/details/replyComment.js?buildversion=181210172434"></script>
+</body>
+</html>

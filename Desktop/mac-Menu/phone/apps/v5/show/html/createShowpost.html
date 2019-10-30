@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172659"/>
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172659"/>
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172659">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172659">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tab.css?buildversion=181210172659">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/show/css/show.css?buildversion=181210172659"/>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    	#publish_location{width: 260px;display: inline-block;}
+    </style>
+</head>
+<body class="cmp-fullscreen ">
+<script>var _showPath = "/seeyon/m3/apps/v5/show";</script>
+<div class="cmp-content position_relative">
+	<div class="cs_scroll  content_details">
+		<div class="publish_content">
+			<input type="hidden" id="showbar_id" name="showbar_id" value="-1" /> <input type="hidden" id="showpost_id" name="showpost_id" value="-1" /> <input type="hidden" id="imgNum" name="imgNum" value="0" />
+			<textarea id="cs_content_text" rows="4" class="pub_text" placeholder=""></textarea>
+			<!--表情包容器-->
+			<div class="but_custom_content openKitty">
+				<div class="but_custom Praise">
+					<span class="cmp-icon iconfont see-icon-v5-common-expression kittyorkey"></span>
+				</div>
+				<div class="but_custom Praise">
+					<span id="openAt" class="cmp-icon iconfont kittyorkey">@</span>
+				</div>
+			</div>
+			<div class="HelloKittyContainer display_none kittyContent">
+				<div class="cmp-collapse-content">
+					<div class="cmp-slider-item" id="cs_face_area"></div>
+				</div>
+			</div>
+
+			<div class="pub_add_content" id="add-image-area" style="display: none;">
+				<div class="sc_img_container pub_img">
+					<div class="add" >
+						<span class="cmp-icon iconfont see-icon-v5-common-add"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="pub_more">
+				<ul class="cmp-table-view">
+					<li class="cmp-table-view-cell cmp-before-line"><a class="cmp-navigate-right" id="location_area"> <span class="cmp-icon iconfont see-icon-v5-common-location-fill"></span> <span id="publish_location" style="font-size: 16px;margin-bottom: -2px;" class="cmp-ellipsis"><i18n key="Show.page.label.location"></i18n></span>
+					</a></li>
+				</ul>
+				<ul class="cmp-table-view">
+					<li class="cmp-table-view-cell cmp-before-line"><a class="cmp-navigate-right" id="publish_source_area"> <span><i18n key="Show.page.label.theme"></i18n>: <span class="source" id="publish_source"></span></span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="csp-button-wapper"> 
+	<span class="csp-button-save cmp-btn cmp-btn-primary2"><i18n key="Show.page.button.publish"></i18n></span> 
+</div>
+
+<!-- 地理位置start -->
+<div id="location_content" class="Animated-Container top-go animated">
+	<div class="cmp-content position_relative">
+		<div class="cmp-control-content cmp-active">
+			<div id="location_scroll" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<div class="cursor_content map-location">
+						<ul class="cmp-table-view cmp-table-view-radio" id="not_pos_btn">
+							<li class="cmp-table-view-cell cmp-media"><a class="cmp-navigate-right">
+									<div class="cmp-media-body not_pos">
+										<span><i18n key="Show.page.label.noLocation"></i18n></span>
+									</div>
+							</a></li>
+						</ul>
+						<ul class="cmp-table-view cmp-table-view-radio" id="location_list"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="location_li_tpl">
+	<% for(var i = 0,len = this.length;i < len; i++){ %>
+	<% var obj = this[i]; %>
+	<li class="cmp-table-view-cell cmp-media <%if(obj.selected){%>cmp-selected <%}%>" id="<%=obj.name %>">
+		<a class="cmp-navigate-right">
+			<div class="cmp-table">
+				<div class="cmp-table-cell cmp-col-xs-10">
+					<span class="cmp-ellipsis"><%=obj.name %></span>
+					<p class="cmp-h6 cmp-ellipsis"><%=obj.address %></p>
+				</div>
+			</div>
+		</a>
+	</li>
+	<% } %>
+</script>
+</div>
+<!-- 地理位置end -->
+</body>
+	<script src="/seeyon/m3/apps/v5/show/i18n/show_zh_CN.js?buildversion=181210172659"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172659"></script>
+	<script>
+		var $buildversion  = '?buildversion=181210172659';
+	    cmp.i18n.init("/seeyon/m3/apps/v5/show/i18n/","show");
+	    var showPath = "/seeyon/m3/apps/v5/show";
+	    var cmpPath = "/seeyon/m3/cmp";
+	</script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172659" defer="defer"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-jssdk.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172659" id="__jsdktag" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.js?buildversion=181210172659" ></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/show-common-util-debug.js?buildversion=181210172659"></script>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=dced395ba47d88fd4dcf8ed6d846cbc7"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/show/js/showpost-edit-debug.js?buildversion=181210172659"></script>
+	
+</html>

@@ -1,0 +1,33 @@
+if(typeof fI18nData == "undefined"){
+    fI18nData = {}
+}
+fI18nData["cmp.accDoc.ok"] = "確認";
+fI18nData["cmp.accDoc.cancel"] = "取消";
+fI18nData["cmp.accDoc.back"] = "返回";
+fI18nData["cmp.accDoc.tips"] = "提示";
+fI18nData["cmp.accDoc.search"] = "搜索";
+fI18nData["cmp.accDoc.title"] = "標題";
+fI18nData["cmp.accDoc.pullUpToloadMore"] = "上拉顯示更多";
+fI18nData["cmp.accDoc.pullDownToRefresh"] = "下拉刷新";
+fI18nData["cmp.accDoc.releaseToLoad"] = "释放立即刷新";
+fI18nData["cmp.accDoc.loading"] = "正在加載...";
+fI18nData["cmp.accDoc.noMoreData"] = "沒有更多數據了";
+fI18nData["cmp.accDoc.listPending"] = "待辦";
+fI18nData["cmp.accDoc.listDoneAll"] = "已辦";
+fI18nData["cmp.accDoc.listSent"] = "已發";
+fI18nData["cmp.accDoc.listZcdb"] = "在辦";
+fI18nData["cmp.accDoc.requestError"] = "請求數據出錯";
+fI18nData["cmp.accDoc.requestPluginsError"] = "請求插件出錯";
+fI18nData["cmp.accDoc.doc"] = "文檔";
+fI18nData["cmp.accDoc.edoc"] = "公文";
+fI18nData["cmp.accDoc.collaboration"] = "協同";
+fI18nData["cmp.accDoc.send"] = "發文";
+fI18nData["cmp.accDoc.receive"] = "收文";
+fI18nData["cmp.accDoc.report"] = "簽報";
+fI18nData["cmp.accDoc.zhankai"] = "展開";
+fI18nData["cmp.accDoc.sender"] = "發起人";
+fI18nData["cmp.accDoc.createData"] = "發起時間";
+fI18nData["cmp.accDoc.creator"] = "創建人";
+fI18nData["cmp.accDoc.noAccess"] = "無權限查看";
+fI18nData["cmp.accDoc.maxNum"] = "最多只能選擇{0}條數據";
+fI18nData["cmp.accDoc.widgetTitle"] = "關聯文檔";

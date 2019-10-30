@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172734">
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/vreport/css/vreport.css?buildversion=181210172734">
+		<title></title>
+	</head>
+	<body class="cmp-fullscreen">
+		<script>;(function(){var ua = window.navigator.userAgent.toUpperCase();if (ua.match(/IPHONEX/)){document.body.className += ' cmp-ios-x ';}})();</script>
+		<div class="report-query-container">
+			<div class="cmp-input-row cmp-search" id="report-query">
+				<input type="search" class="cmp-input-clear" placeholder="">
+				<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+				<span class="cmp-placeholder">
+		            <span class="cmp-icon cmp-icon-search"></span>
+		            <span class="text-search">搜索</span>
+		        </span>
+		   </div>
+		</div>
+		
+		<div class="cmp-content position_relative" style="top: 0;">
+			<div id="report-all" class="cmp-control-content">
+				<div class="cmp-crumbs-content">
+			    	<div class="cmp-scroll-wrapper" id="boxscrolll">
+			    		<div class="cmp-scroll" id="breadTop">
+			    			<!--<a href='javascript:void(0);' class='local'><i18n key="vreport.page.label.reportCenter"></i18n></a>
+			    			<a class="cmp-icon cmp-icon-arrowright right-icon"></a>-->
+			    			<div id="breadcrumb" style="display:inline-block"></div>
+			    		</div>
+			        </div>
+			    </div>
+		        <div id="allPending" class="cmp-scroll-wrapper" style="position: relative;">
+		            <div class="cmp-scroll">
+		                <ul id="list_content" class="cmp-table-view file-index-content"></ul>
+		            </div>
+		        </div>
+			</div>
+			<div id="report-mine" class="cmp-control-content cmp-active">
+				<div id="myFavourList" class="cmp-scroll-wrapper" style="position: relative;overflow:auto">
+		            <div class="cmp-scroll">
+		                <ul class="cmp-table-view"></ul>
+		            </div>
+		        </div>
+			</div>
+		</div>
+		<footer class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview before-line">
+			<div class="report-footer-container">
+				<div class="report-footer-container-item">
+					<a id="report-tab-favour" class="cmp-tab-item cmp-tabview-item cmp-active" href="#report-mine">
+				        <span class="cmp-icon see-icon-v5-common-collect-fill"></span>
+				        <span class="cmp-tab-label"><i18n key="vreport.page.label.followList"></i18n></span>
+				        <div class="report-footer-line"></div>
+				   </a>
+				</div>
+				<div class="report-footer-container-item">
+					<a id="report-tab-all" class="cmp-tab-item cmp-tabview-item" href="#report-all">
+				        <span class="cmp-icon see-icon-v5-common-transverse-switch"></span>
+				        <span class="cmp-tab-label"><i18n key="vreport.page.label.allReports"></i18n></span>
+				    </a>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- 模板 -->
+		<script type="text/html" id="content-tpl">
+		<% for(var i = 0; i < this.length; i ++) {						%>
+			<% var e = this[i];            								%>
+			<% if (e.category) {                      						%>
+				<li class="cmp-list-cell list-content-li cmp-table-view-cell" data-id="<%=e.id%>" folder="true" name="<%=e.name.escapeHTML()%>">
+					<div class="cmp-list-cell-img cmp-left doc-yesFolder">
+						<div class="cmp-icon see-icon-v5-common-document-other icon-doc"></div>
+					</div>
+					<div class="cmp-list-cell-info">
+						<span class="cmp-ellipsis cmp-pull-left"><%=e.name.escapeHTML()%></span>
+						<span class="cmp-ellipsis cmp-pull-right cmp-h5 list_count"><%=(e.subNum ? e.subNum : 0)%></span>         
+					</div>
+					<div class="cmp-list-navigate">
+						<a href="javascript:void(0);" class="cmp-icon cmp-icon-arrowright"></a>
+					</div>
+				</li>
+			<% } else {                                 				%>
+				<li class="cmp-list-cell list-content-li cmp-table-view-cell" data-id="<%=e.id%>" folder="false" name="<%=e.name.escapeHTML()%>">
+					<div class="cmp-slider-right cmp-disabled">
+						<% if(e.properties.attention){ %>
+							<a class="cmp-btn btn-cancel-favour"><i18n key="vreport.page.label.unfollow"></i18n></a>
+						<% }else{ %>
+							<a class="cmp-btn btn-favour"><i18n key="vreport.page.label.follow"></i18n></a>
+						<% } %>	
+					</div>
+					<div class="cmp-slider-handle">
+						<div class="cmp-list-cell-img cmp-left doc-yesFolder">
+							<span class="cmp-icon see-icon-v5-common-report"></span>
+						</div>
+						<div class="cmp-list-cell-info">
+							<span class="cmp-ellipsis cmp-pull-left list_title_name"><%=e.name.escapeHTML()%></span>
+							<span class="cmp-ellipsis cmp-pull-right cmp-h5 list_count"></span>         
+						</div>
+						<div class="cmp-list-navigate">
+							<span class="cmp-icon see-icon-v5-common-collect-fill report-favour-icon <%=(e.properties.attention ? "" : "cmp-hidden")%>"></span>
+						</div>
+					</div>    
+				</li>
+			<% }														%>
+		<% }%>
+		</script>
+		<script type="text/html" id="myFavour-tpl">
+			<% for(var i = 0; i < this.length; i ++) { %>
+				<% var item = this[i]; %>
+				<% if(!item.attention) continue;%>
+				<li class="cmp-table-view-cell" data-id="<%=item.id%>" name="<%=item.name%>">
+					<div class="cmp-slider-right cmp-disabled">
+						<a class="cmp-btn list-delete">
+							<div class="favour-slide-right">
+								<span class="cmp-ellipsis-2"><i18n key="vreport.page.label.unfollow"></i18n></span>
+							</div>
+						</a>
+					</div>
+					<div class="cmp-slider-handle">
+						<div class="my-favour-li">
+							<div class="favour-list-left">
+								<span class="cmp-icon see-icon-v5-common-report"></span>
+							</div>
+							<div class="favour-list-right">
+								<div class="favour-up cmp-ellipsis"><%=item.name%></div>
+								<div class="favour-down">
+									<span><%=item.createTime%></span>
+									<span><%=item.creatorName%></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			<% } %>	
+		</script>
+		
+		
+		<script src="/seeyon/m3/apps/v5/vreport/i18n/vreport_zh_CN.js?buildversion=181210172734"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172734"></script>
+		<script type="text/javascript">
+			cmp.i18n.init("/seeyon/m3/apps/v5/vreport/i18n/","vreport",function(){
+				document.title = cmp.i18n("vreport.page.label.reportCenter");
+			});
+			var vreportPath  = '/seeyon/m3/apps/v5/vreport';
+		</script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreport-jssdk.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172734" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/portal_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/vreport/js/vreportCommon.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/index.js?buildversion=181210172734"></script>
+	</body>
+</html>

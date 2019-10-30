@@ -1,0 +1,87 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:29:38
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>群二维码</title>
+	
+	<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">      <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/uc/css/qrcode.css?buildversion=181210172652" rel="stylesheet" type="text/css" ></link>
+
+</head>
+
+<body class="bg_gray cmp-fullscreen">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="uc.m3.h5.return"></i18n></span>
+        </div>
+        <div class="cmp-title">
+			<span><i18n key="uc.m3.h5.qrcode"></i18n></span>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content position_relative height_auto">
+        <div class="qrcode-content">
+            <div class="content">
+                <div class="logo" id="logo">
+                    <img id="logoImg" src="" alt="">
+                </div>
+                <label class="menbers" id="menbers"></label>
+                <div class="qrcode">
+                    <img class="codeImg"  alt="">
+                </div> 
+                <p class="qr_info"><i18n key="uc.m3.h5.qrtogroup"></i18n></p>
+                <div class="qrcode_save" id="qrcode_save"><i18n key="uc.m3.h5.saveqr"></i18n></div>
+            </div>
+            
+        </div>
+    </div>
+
+<script src="/seeyon/m3/apps/v5/uc/i18n/uc_zh_CN.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172652"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/uc/i18n/","uc");
+</script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-barcode.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=181210172652"></script>
+
+<script src="/seeyon/m3/apps/v5/uc/js/qrcode.js?buildversion=181210172652"></script>
+
+
+</body>
+
+</html>

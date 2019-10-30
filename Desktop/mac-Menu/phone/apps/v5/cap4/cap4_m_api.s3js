@@ -1,0 +1,193 @@
+var cap4Api = (function() {
+   var Cap4Api = function() {}
+ 
+   Cap4Api.prototype.getBasePath = function () {
+	    var basePath;
+        if(cmp.platform.CMPShell){
+	         basePath = "http://cap4.v5.cmp/v1.0.0/htmls";
+	    }else{
+	         basePath = "/seeyon/m3/apps/v5/cap4/htmls";
+	    }
+	    return basePath;
+    }
+   /**
+    * biz的消息穿透
+    * @param {string} type    [todo:待办模块;message:消息模块]
+    * @param {string} backUrl [后退地址]
+    * @param {obj}    option  [待办/消息对象]
+    * @param {string} parms   [其他可选参数]
+    */
+    Cap4Api.prototype.openApp = function (type, backUrl, option, parms) {
+    }
+	/**
+    * 查询统计穿透
+    * @param {obj} option   [穿透参数]
+    */
+    Cap4Api.prototype.openFormQueryReport = function (option) {
+	    // option.type 3:统计 4:查询
+		// option.appId type为3时时统计id，4时为查询id
+		var basePath = this.getBasePath(),options = {};
+		if(cmp.platform.CMPShell){
+			options.openWebViewCatch = 1;
+		}
+		var basePath = this.getBasePath();
+		var params = {
+		   "pathId":option.appId,
+		   "templateType":option.type
+		}
+		cmp.ajax({
+			type : "POST",
+			data : JSON.stringify(params),
+			url : cmp.serverIp + "/seeyon/rest/cap4/template/getMobileTemplatesByPathId",
+			timeout : '3000',
+			dataType : 'json',
+			headers : {
+				'Content-Type' : 'application/json; charset=utf-8',
+				'Accept-Language' : 'zh-CN',
+				'token' : cmp.token || ""
+			},
+			success : function(ret){
+	            if(ret.data.data && ret.data.data.id){//有模板
+				    if(cmp.platform.CMPShell){
+					    var appIds = [];
+						appIds.push(option.appId);
+					    var params = {
+							appIds:appIds,
+							type:option.type,
+							goUrlId:option.appId
+						}
+					    cmp.href.next(basePath+"/downloadApp/html/downloadApp.html",params,options);
+					}else{
+					    if(option.type === 3){
+							cmp.href.next(basePath+"/report/"+option.appId+"/dist/index.html",option,options);
+						}else if(option.type === 4){
+							cmp.href.next(basePath+"/query/"+option.appId+"/dist/index.html",option,options);
+						}
+					}
+				}else{//无模板
+					if(option.type === 3){
+						cmp.href.next(basePath+"/report/0/dist/index.html",option,options);
+					}else if(option.type === 4){
+						cmp.href.next(basePath+"/query/0/dist/index.html",option,options);
+					}
+				}
+			},
+			error : function(error){
+				console.log(error)
+			}
+		});
+    }
+    /**
+     * 跳转到业务首页
+     * @param {string} backUrl [后退地址,需要传完整路径]
+     * @param {obj}    option  [一级菜单信息，包括name:菜单名称，menuId菜单编号]
+     */
+    Cap4Api.prototype.openBizInfo = function (fromUrl, option) {
+        var basePath = this.getBasePath();
+		var params = {
+		   "menuId":option.menuId
+		}
+		cmp.ajax({
+			type : "POST",
+			data : JSON.stringify(params),
+			url : cmp.serverIp + "/seeyon/rest/cap4/template/getMobileTemplatesByMenuId",
+			timeout : '3000',
+			dataType : 'json',
+			headers : {
+				'Content-Type' : 'application/json; charset=utf-8',
+				'Accept-Language' : 'zh-CN',
+				'token' : cmp.token || ""
+			},
+			success : function(ret){
+			    var allTemplates = ret.data.data.allTemplates;
+				var bussId = ret.data.data.bussId;
+				var appIds = [];
+				for(var i=0;i<allTemplates.length;i++){
+				    appIds.push(allTemplates[i].id);
+				}
+				var options = {};
+				if(cmp.platform.CMPShell){
+					options.openWebViewCatch = 1;
+				}
+				if(appIds.length >0){
+				    var currentUserTemplates = ret.data.data.currentUserTemplates;
+					var currentUserTemplate = "0";
+					if(currentUserTemplates && currentUserTemplates.length>0){
+					   currentUserTemplate = currentUserTemplates[0].id;
+					}
+					if(cmp.platform.CMPShell){
+						var params = {
+							appIds:appIds,
+							type:"1",
+							goUrlId:currentUserTemplate,
+							bussId:bussId,
+							name:option.name,
+							entrance: fromUrl || ''
+						}
+						if(fromUrl === 'NavBar'){
+							cmp.href.go(basePath+"/downloadApp/html/downloadApp.html", params);
+						}else if ( fromUrl === 'workbench') {
+							cmp.app.getLocalResourceUrl({
+								url: basePath+"/downloadApp/html/downloadApp.html?entrance=workbench",
+								success: function(ret) {
+									cmp.storage.save('cap4-param', JSON.stringify(params), true);
+									window.location.href = ret.localUrl;
+								},
+								error: function(e) {
+									alert('获取信息门户异常，请截图联系管理员');
+								}
+							});
+						} else {
+							cmp.href.next(basePath+"/downloadApp/html/downloadApp.html",params,options);    
+						}
+					}else{
+					    var params = {
+							bussId:bussId,
+							name:option.name,
+							templateId:currentUserTemplate
+						}
+					    if(currentUserTemplates && currentUserTemplates.length>0){
+					        cmp.href.next(basePath+"/business/"+bussId+"/"+currentUserTemplate+"/dist/index.html",params,options);
+					    }else{
+					        cmp.href.next(basePath+"/business/0/dist/index.html",params,options);
+					    }
+					}
+				}else{
+				    if(cmp.platform.CMPShell){
+						var params = {
+							bussId:bussId,
+							name:option.name,
+							entrance: fromUrl || ''
+						}
+						if(fromUrl === 'NavBar'){
+							cmp.href.go(basePath+"/business/0/dist/index.html?useNativebanner=1", params);
+						}else if ( fromUrl === 'workbench') {
+							cmp.app.getLocalResourceUrl({
+								url: basePath+"/business/0/dist/index.html?entrance=workbench",
+								success: function(ret) {
+									cmp.storage.save('cap4-param', JSON.stringify(params), true);
+									window.location.href = ret.localUrl;
+								},
+								error: function(e) {
+									alert('获取信息门户异常，请截图联系管理员');
+								}
+							});
+						} else {
+							cmp.href.next(basePath+"/business/0/dist/index.html",params,options);    
+						}
+					}else{
+						var params = {
+							bussId:bussId,
+							name:option.name
+						}
+						cmp.href.next(basePath+"/business/0/dist/index.html",params,options);
+					}
+				}
+			},
+			error : function(error){
+				console.log(error)
+			}
+		});
+    }
+    return new Cap4Api();
+})();

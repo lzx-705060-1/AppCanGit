@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+	<head>
+		<!--固定meta写法-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<!-- css样式 -->
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1559611989004"
+		/>
+		<!--导入cmp模块的样式文件，/seeyon/m3/cmp即构建任务中被替换成真实路径的标识-->
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/font-awesome.min.css?buildversion=1559611989004">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/appcan.control.css?buildversion=1559611989004">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/appcan.icon.css?buildversion=1559611989004">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/ui-base.css?buildversion=1559611989004">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/ui-box.css?buildversion=1559611989004">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/test/css/ui-color.css?buildversion=1559611989004">
+		<title>
+			新闻公文
+		</title>
+	</head>
+	<body class="cmp-fullscreen mw"  style="background-color: white">
+		<div id="ub-bar-scope" style="width: 100%;height:13.75em">
+			<img src="../img/yajule.jpg" style="width: 100%;height: 100%;margin: 0;"
+			/>
+		</div>
+		<div>
+			<!--<div style="margin-top:0.6em;border-bottom: 1px solid #000;">
+			<div style="margin-left:0.1em;margin-right:0.1em;"><span style="margin-top:0.6em">最新公司新闻</span>   <span id= "news_more"style="float: right;color: #66AFE9;padding: 0.2em;margin-right: 0.5em;font-size:0.8em;margin-right:0.6em;">查看更多</span></div> 
+			<div id="news" style="font-size :0.85em;color:gray;margin-top:0.3em">
+			正在加载...
+			</div>
+			</div>
+			<div style="margin-top:0.4em;border-bottom: 1px solid #000;">
+			<div style="margin-left:0.1em;margin-right:0.1em;"><span>最新通知公告</span>   <span id="bul_more" style="float: right;color: #66AFE9;padding: 0.2em;margin-right: 0.5em;font-size:0.8em;margin-right:0.6em;;">查看更多</span></div> 
+			<div id="bul" style="font-size :0.85em;color:gray;margin-top:0.3em">
+			正在加载...
+			</div>
+			</div> -->
+			<div id="listview" class="ubt bc-border sc-bg" style="background-color: white">
+				<ul>
+						<li id="2" class="ubb ub bc-border t-bla ub-ac lis" data-index="2">
+						<ul class="ub ub ub-ver">
+							<li class="">
+								<div class="lis-icon-l ub-img" style="background-image:url(../img/main-gsxw.png)">
+								</div>
+								<div class="ulev-lv bc-text umar-t">
+								</div>
+							</li>
+						</ul>
+						<ul class="ub-f1 ub ub-pj ub-ac">
+							<ul class="ub-f1 ub ub-ver marg-l">
+								<li class="bc-text ub ub-ver ut-m line1">
+									<div style="display: initial;position: absolute;margin-top:0.6em">
+										最新公司新闻
+									</div>
+									<div id="news_more" style="width: 30%;text-align: right;padding: 0.2em;display: initial;float: right;color:gray;margin-right: 0.5em;font-size: 0.8em;margin-left:68%;color: #66AFE9;">
+										查看更多
+									</div>
+									<div id="news" style="font-size :0.85em;color:gray;margin-top:0.3em">
+										正在加载...
+									</div>
+								</li>
+							</ul>
+							<ul class="ub ub-ver ub-ae umar-r">
+							</ul>
+						</ul>
+					</li>
+					<li id="1" class="ubb ub bc-border t-bla ub-ac lis" data-index="1">
+						<ul class="ub ub ub-ver">
+							<li class="">
+								<div class="lis-icon-l ub-img" style="background-image:url(../img/main-tzgg.png)">
+								</div>
+								<div class="ulev-lv bc-text umar-t">
+								</div>
+							</li>
+						</ul>
+						<ul class="ub-f1 ub ub-pj ub-ac">
+							<ul class="ub-f1 ub ub-ver marg-l">
+								<li class="bc-text ub ub-ver ut-m line1">
+									<div style="display: initial;position: absolute;margin-top:0.6em">
+										最新通知公告
+									</div>
+									<div id="bul_more" style="width: 30%;text-align: right;padding: 0.2em;display: initial;float: right;color:gray;margin-right: 0.5em;font-size: 0.8em;margin-left:68%;color: #66AFE9;">
+										查看更多
+									</div>
+									<div id="bul" style="font-size :0.85em;color:gray;margin-top:0.3em">
+										正在加载...
+									</div>
+								</li>
+							</ul>
+							<ul class="ub ub-ver ub-ae umar-r">
+							</ul>
+						</ul>
+					</li>
+				
+				</ul>
+			</div>
+			<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=1559611989004">
+			</script>
+			<!--导入cordova相关-->
+			<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=1559611989004">
+			</script>
+			<!--导入cmp平台的基础js-->
+			<script>
+				<!--初始化国际化资源-->
+var testBasePath = "/seeyon/m3/apps/v5/test";
+<!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+			</script>
+			<script type="text/javascript" src="/seeyon/m3/apps/v5/test/js/yajule.js?buildversion=1559611989004">
+			</script>
+			<script type="text/javascript" src="/seeyon/m3/apps/v5/test/js/jquery-1.7.2.min.js?buildversion=1559611989004">
+			</script>
+			<script type="text/javascript" src="/seeyon/m3/apps/v5/test/js/jquery-1.7.2.min.js?buildversion=1559611989004">
+			</script>
+			<script type="text/javascript" src="/seeyon/m3/apps/v5/test/js/message_content.js?buildversion=1559611989078">
+			</script>
+	</body>
+
+</html>

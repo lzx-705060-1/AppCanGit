@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title id="title"></title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172728">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=17122023310">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/cipThirdPending.css?buildversion=181210172728">
+    
+</head>
+
+<body>
+    <div class="position_relative">
+    <div class="cmp-control-content cmp-active">
+        <div id="allPending" class="cmp-scroll-wrapper" style="top: 0px; overflow: hidden;">
+            <div class="cmp-scroll">
+                <ul class="cmp-list-content cmp-table-view file-index-content" id="list_content">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script id="tpl-list" type="text/html">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+    	<% var obj = this[i]; %>
+    	<li class="cmp-table-view-cell list-cell" gotoparams=<%=cmp.toJSON(obj.gotoParams).escapeHTML()%> style="overflow: hidden;">
+        	
+        	<div class="item-content">
+            	<div class="item-title">
+                	<span ><%= obj.content%></span>
+            	</div>
+            	<div class="item-name">
+                	<span style="padding-right:16px"><%= obj.senderName%></span><span class="time"><%= obj.createTime%></span>
+            	</div>
+        	</div>
+    	</li>
+    	<% } %>
+    </script>
+	    <script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172728"></script>
+    <script type="text/javascript">
+        cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal");
+        var str = cmp.i18n("portal.thirdPending.title");
+        document.getElementById("title").innerHTML = str;
+    </script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172728"></script>
+	<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172728" type="text/javascript"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172728"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172728"></script>
+    <script src="/seeyon/m3/apps/v5/portal/js/cipThirdPending.js?buildversion=181210172728"></script>
+</body>
+
+</html>

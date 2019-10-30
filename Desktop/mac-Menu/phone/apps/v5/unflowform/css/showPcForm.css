@@ -1,0 +1,46 @@
+.cmp-fullscreen{background: #fff;}
+.cmp-btn{width:32%;}
+.backbutton_hint {
+    position: absolute;
+    width: 140px;
+    left: 5px;
+    top: 44px;
+    z-index: 9999;
+}
+.backbutton_hint .circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: #5E984F;
+    display: block;
+    position: relative;
+    left: 20px;
+}
+.backbutton_hint .line {
+    width: 2px;
+    height: 30px;
+    position: relative;
+    background-color: rgba(94, 152, 79, 0.82);
+    display: block;
+    left: 22px;
+}
+.backbutton_hint .content {
+    width: 100%;
+    background-color: rgba(94, 152, 79, 0.82);
+    font-size: 14px;
+    border-radius: 8px;
+    color: #fff;
+}
+.backbutton_hint .content .text {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    border-bottom: 1px #fff solid;
+    padding: 8px;
+}
+.backbutton_hint .content .btn {
+    text-align: center;
+    padding: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

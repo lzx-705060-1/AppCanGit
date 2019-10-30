@@ -1,0 +1,789 @@
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+        typeof define === 'function' && (define.amd || define.cmd) ? define(factory) :
+            (global.SeeyonAttachment = factory());
+} (this, function () {
+	var app = function(opt){
+		this.fileMap = {};
+		this.attObjArray = []; //用于保存v5后台返回的附件对象
+		if(opt.loadParam){
+			this.load(opt.loadParam);
+		}
+		if(opt.initParam){
+			this.init(opt.initParam);
+		}
+	};
+	app.prototype.init = function(option) {
+		var self = this;
+		//初始化为初始附件列表
+		var allData = option.initAttData;
+		//页面穿透返回时，从缓存中取附件数据
+		var cache = getAttCache();
+		if(cache){
+			//将初始化数据转变成缓存中的老数据
+			option.initAttData = cache.oldData;
+			allData = cache.oldData.concat(cache.newData);
+			
+			//处理附件页面新上传的数据
+			if(cache.newData){
+				var	data = createAtt4Select(cache.newData);
+				self.addFileMap(data);
+				//保存后台附件对象
+				self.attObjArray = self.attObjArray.concat(reverseAtt(cache.newData));
+			}
+		}
+		if(option.initAttData){
+			var formatList = createAtt4Init(option.initAttData, option.needClone);
+			self.addFileMap(formatList);
+			//保存后台附件对象
+			self.attObjArray = self.attObjArray.concat(option.initAttData);
+		}
+		
+		//区分关联文档与文件
+		if(allData){
+			var _sepratedList = separateAtts(allData);
+			var atts = _sepratedList.fileArray;
+			var docs = _sepratedList.accArray;
+		}
+		
+		var opts = {
+		        showAuth : option.showAuth,
+		        initAttData : atts,
+		        initDocData : docs,
+		        continueUpload: option.continueUpload,
+		        pageKey: "_attCache" //缓存KEY，由附件页面写入值，在本方法中取值并销毁
+		};
+		//执行回调
+		option.selectFunc(self.getFileArray())
+		
+		document.querySelector(option.handler).addEventListener("tap",function(){
+			new cmp.att.initUpload('#'+option.uploadId, opts);
+		},false);
+	}
+	app.prototype.load = function(loadParam){
+		var formatList = createAtt4Init(loadParam.atts, false);
+		this.addFileMap(formatList);
+		//将后台返回的附件对象分离(普通文件和关联文档)
+		var _sepratedList = separateAtts(loadParam.atts);
+		loadParam.atts = _sepratedList.fileArray;
+		loadParam.docs = _sepratedList.accArray;
+		
+		var self = this;
+		var _option = {
+			callback : function(att){
+				var openWebView = {
+					openWebViewCatch : 1
+				};
+				if(att.mimeType == "collaboration"){
+					//关联文档（协同）点击穿透查看
+					var paramData = {
+				    	'openFrom' : 'glwd',
+				        'affairId': att.description,
+				        "baseApp" : att.category,
+				        "baseObjectId" : att.reference
+				    };
+					
+				    cmp.event.trigger("beforepageredirect",document);
+				    cmp.href.next("/seeyon/m3/apps/v5/collaboration" + "/html/details/summary.html", paramData,openWebView);
+				}else if(att.mimeType == "edoc"){
+					//公文
+					var paramData = {
+				    	'listType' : "glwd",
+				    	'openFrom' : 'glwd',
+				        'summaryId': att.description,
+				        "baseApp" : att.category,
+                        "baseObjectId" : att.reference
+				    };
+				    cmp.event.trigger("beforepageredirect",document);
+				    cmp.href.next("/seeyon/m3/apps/v5/edoc" + "/html/edocSummary.html", paramData,openWebView);
+				}else if(att.mimeType == "meeting"){
+					//会议
+					var paramData = {
+				    	'openFrom' : 'glwd',
+				        'meetingId' : att.description,
+				        "baseApp" : att.category,
+                        "baseObjectId" : att.reference
+				    };
+				    cmp.event.trigger("beforepageredirect",document);
+				    cmp.href.next("/seeyon/m3/apps/v5/meeting" + "/html/meetingDetail.html", paramData,openWebView);
+				}else if(att.mimeType == "km"){
+					//文档
+					if($s && $s.Doc){
+						docJumpPage(att.description, loadParam, att);
+					}else{
+						cmp.asyncLoad.js(["/seeyon/m3/apps/v5/doc" + "/js/doc-jssdk.js","/seeyon/m3/apps/v5/commons/wechat-jssdk.js"],function(){
+							docJumpPage(att.description, loadParam, att);
+						});
+					}
+				}
+        	},
+        	delCallback : function(file){
+        		delete self.fileMap[file.fileUrl];
+        	},
+            isShowDelete : loadParam.isShowDelete
+		}
+		_option = cmp.extend(_option,loadParam.option);
+		cmp.att.init(loadParam.selector,loadParam.atts,loadParam.docs,_option);
+	}
+	
+	app.prototype.addFileMap = function(arr){
+		for(var i = 0;i < arr.length;i++){
+			var key = arr[i].attachment_fileUrl;
+			this.fileMap[key] = arr[i];
+		}
+	}
+	
+	app.prototype.getFileArray = function(){
+		var result = [];
+		for(item in this.fileMap){
+			result.push(this.fileMap[item]);
+		}
+		return result;
+	}
+	
+	var getAttCache = function(){
+		var currentUrl = window.location.href;
+		var data = cmp.storage.get("_attCache",true);
+		if(data){
+			data = cmp.parseJSON(data);
+			cmp.storage.delete("_attCache",true);
+		}
+		return data;
+	}
+	
+	//选择附件或关联文档后创建附件对象
+	var createAtt4Select = function(result){
+	    var backData = [];
+        for (var i = 0; i < result.length; i++) {
+        	var obj = {};
+        	if(result[i].type == "collaboration"){
+        		//关联文档(协同)
+            	obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="Doc1";
+        		obj.attachment_category = "1";
+        		obj.attachment_type = "2";
+        		obj.attachment_filename = result[i].subject;
+        		obj.attachment_mimeType =result[i].type;
+        		obj.attachment_createDate = _formatDate(result[i].createdate);
+        		obj.attachment_size = "0";
+        		obj.attachment_fileUrl =result[i].affairId;
+        		obj.attachment_description =result[i].affairId;
+        		obj.attachment_needClone ="false";
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		obj.attachment_fileType = "associated";
+        	}else if(result[i].type == "docFile"){
+        		//关联文档(文档)
+        		obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="Doc1";
+        		obj.attachment_category = "1";
+        		obj.attachment_type = "2";
+        		obj.attachment_filename = result[i].fr_name;
+        		obj.attachment_mimeType ="km";
+        		
+        		obj.attachment_createDate = _formatDate(result[i].createdate);
+        		obj.attachment_size = "0";
+        		obj.attachment_fileUrl =result[i].fr_id;
+        		obj.attachment_description =result[i].fr_id;
+        		obj.attachment_needClone ="false";
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		obj.attachment_fileType = "associated";
+        	}else if(result[i].type == "edoc"){
+        		//关联文档(公文)
+        		obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="Doc1";
+        		obj.attachment_category = "1";
+        		obj.attachment_type = "2";
+        		obj.attachment_filename = result[i].docName;
+        		obj.attachment_mimeType = result[i].type;
+        		
+        		obj.attachment_createDate = _formatDate(result[i].createDate);
+        		obj.attachment_size = "0";
+        		obj.attachment_fileUrl =result[i].affairId;
+        		obj.attachment_description =result[i].affairId;
+        		obj.attachment_needClone ="false";
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		obj.attachment_fileType = "associated";
+        	}else{
+        		//文件
+            	obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="";
+        		obj.attachment_category = result[i].category.toString();
+        		obj.attachment_type = result[i].type.toString();
+        		obj.attachment_filename = result[i].filename;
+        		obj.attachment_mimeType =result[i].mimeType;
+        		obj.attachment_createDate = _formatDate(result[i].createdate);
+        		obj.attachment_size =result[i].size;
+        		obj.attachment_fileUrl =result[i].fileUrl;
+        		obj.attachment_description ="";
+        		obj.attachment_needClone ="false";
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		obj.attachment_fileType = "file";
+        	}
+    		backData.push(obj);
+        }
+        return backData;
+	}
+	
+	function _formatDate(d){
+	    var ret = "";
+	    var dd = null;
+	    if(/^\d+$/.test(d)){
+	       dd = new Date(Number(d));
+	    }else{
+	       dd = new Date();
+	    }
+	    return dd.format("yyyy-MM-dd hh:mm:ss");
+	}
+	
+	//初始化原有的附件或关联文档对象
+	var createAtt4Init = function(result, needClone){
+		var backData = [], _needClone = needClone === true ? "true" : "false";
+        for (var i = 0; i < result.length; i++) {
+        	var obj = {};
+        	if(result[i].type == "2" || result[i].type == "collaboration" || result[i].type == "docFile"){
+        		//关联文档
+            	obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="";
+        		obj.attachment_category = result[i].category.toString();
+        		obj.attachment_type = result[i].type.toString();
+        		obj.attachment_filename = result[i].filename;
+        		obj.attachment_mimeType =result[i].mimeType;
+        		obj.attachment_createDate = _formatDate(result[i].createdate);
+        		obj.attachment_size = "0";
+        		//关联文档大小不显示
+        		result[i].size = null;
+        		obj.attachment_fileUrl =result[i].fileUrl;
+        		obj.attachment_description =result[i].description;
+        		obj.attachment_needClone = _needClone;
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		obj.attachment_fileType = "associated";
+        	}else{
+        		//文件
+        		
+        		/*
+        		 * OA-109260
+        		 * 正常情况在pc端或移动端上传发起人附言附件后都是正常的数据，
+        		 * 有时候发起人附言的附件对象没有 extension 属性，先在这里做下兼容处理。
+        		 */ 
+        		if(!result[i].extension && result[i].filename){
+        			result[i].extension = result[i].filename.substring(result[i].filename.lastIndexOf(".") + 1);
+        		}
+        		
+            	obj.attachment_id = "";
+        		obj.attachment_reference ="";
+        		obj.attachment_subReference ="";
+        		obj.attachment_category = result[i].category.toString();
+        		obj.attachment_type = result[i].type.toString();
+        		obj.attachment_filename = result[i].filename;
+        		obj.attachment_mimeType =result[i].mimeType;
+        		obj.attachment_createDate = _formatDate(result[i].createdate);;
+        		obj.attachment_size =result[i].size;
+        		obj.attachment_fileUrl =result[i].fileUrl;
+        		obj.attachment_description ="";
+        		obj.attachment_needClone = _needClone;
+        		obj.attachment_extReference ="";
+        		obj.attachment_extSubReference ="";
+        		
+        		obj.attachment_fileType = "file";
+        	}
+    		backData.push(obj);
+        }
+        return backData;
+	}
+	
+	/*
+	 * 将后台返回的Attachment对象分为两个数组(普通文件和关联文档)
+	 */
+	var separateAtts = function(result){
+		var backData = {};
+		backData.fileArray = [];
+		backData.accArray = [];
+        for (var i = 0; i < result.length; i++) {
+        	var obj = {};
+        	if(result[i].type == "2" || result[i].type == "collaboration" 
+        	|| result[i].type == "docFile" || result[i].type == "edoc" ){
+        		//关联文档
+        		backData.accArray.push(result[i]);
+        	}else{
+        		//文件
+        		backData.fileArray.push(result[i]);
+        	}
+        }
+        return backData;
+	}
+	
+	/**
+	 * 把v5 ctp_attachment表中的对象转化成对应关联文档类型
+	 * 用于附件组件初始化渲染关联文档
+	 */
+	var reverseAtt = function(result){
+		var data = [];
+		for(var i = 0; i < result.length; i++){
+			var obj = {};
+			if(result[i].type == "collaboration"){
+				//协同
+        		obj.category = "1";
+        		obj.type ="2";
+        		obj.extension = "",
+        		obj.filename = result[i].subject;
+        		obj.mimeType = result[i].type;
+        		obj.fileUrl = result[i].affairId;
+        		obj.description = result[i].affairId;
+        		obj.fileType = "associated";
+			}else if(result[i].type == "docFile"){
+				//文档中心
+				obj.category = "1";
+        		obj.type ="2";
+        		obj.extension = "",
+        		obj.filename = result[i].fr_name;
+        		obj.mimeType = "km";
+        		obj.fileUrl = result[i].fr_id;
+        		obj.description = result[i].fr_id;
+        		obj.fileType = "associated";
+			}else{
+				//文件
+				obj = result[i];
+				obj.fileType = "file";
+			}
+			data.push(obj);
+		}
+		return data;
+	}
+	
+	
+	/**
+	 *  @param {Object} option
+	 * 	option.att v5附件对象（必需参数）
+	 * 	option 对象还可以添加其他业务需要的属性
+	 */
+	app.openRelatedDoc = function(option){
+		var att = option.att;
+		var tempDoc = option.document || document;
+		if(att.mimeType == "collaboration"){
+		    
+		    var tempBaseApp = att.category || "";
+		    if(tempBaseApp == "2"){
+		        tempBaseApp = "1";//兼容~~~
+		    }
+		    var baseObjectId = att.reference;
+		    if(window.summaryBO && summaryBO.summary) {
+		    	baseObjectId = summaryBO.summary.id;
+		    }
+			//关联文档（协同）点击穿透查看
+			var paramData = {
+		    	'openFrom' : 'glwd',
+		        'affairId': att.description,
+		        'pageInfo' : option.pageInfo,
+		        "baseApp" : tempBaseApp,
+                "baseObjectId" : baseObjectId || ""
+		    };
+		    cmp.event.trigger("beforepageredirect", tempDoc);
+		    cmp.href.next("/seeyon/m3/apps/v5/collaboration" + "/html/details/summary.html", paramData);
+		}else if(att.mimeType == "edoc"){
+			//公文
+			var paramData = {
+		    	'listType' : "glwd",
+		    	'openFrom' : 'glwd',
+		        'summaryId': att.description,
+		        'pageInfo' : option.pageInfo,
+                "baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+		    };
+		    cmp.event.trigger("beforepageredirect",tempDoc);
+		    cmp.href.next("/seeyon/m3/apps/v5/edoc" + "/html/edocSummary.html", paramData);
+		}else if(att.mimeType == "meeting"){
+			//会议
+			var paramData = {
+		    	'openFrom' : 'glwd',
+		        'meetingId' : att.description,
+		        'pageInfo' : option.pageInfo,
+                "baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+		    };
+		    cmp.event.trigger("beforepageredirect",tempDoc);
+		    cmp.href.next("/seeyon/m3/apps/v5/meeting" + "/html/meetingDetail.html", paramData);
+		}else if(att.mimeType == "km"){
+			//文档
+			if($s && $s.Doc){
+				docJumpPage(att.description, option, att);
+			}else{
+				cmp.asyncLoad.js(["/seeyon/m3/apps/v5/doc" + "/js/doc-jssdk.js","/seeyon/m3/apps/v5/commons/wechat-jssdk.js"],function(){
+					docJumpPage(att.description, option, att);
+				});
+			}
+		}else{
+		    
+		    var fileType = att.extension;
+            var tLastIndex, tFileName = att.filename;
+            if(!fileType && tFileName && (tLastIndex = tFileName.lastIndexOf(".")) != -1){
+               fileType = tFileName.substring(tLastIndex + 1, tFileName.length);
+            }
+            
+            var suffixMap = {
+                "wps" : "doc",
+                "et" : "xls"
+             }
+            
+            var downFileName = "";
+            if(tFileName){
+                downFileName = tFileName;
+                //获取后缀名, 替换wps相关文件的后缀名，  ios不认识
+                  var dotIndex = downFileName.lastIndexOf(".");
+                  if(dotIndex != -1){
+                      var pureName = downFileName.substring(0, dotIndex);
+                      var fileSuffix = downFileName.substring(dotIndex + 1);
+                      for(var subType in suffixMap){
+                          if(fileSuffix.toLowerCase() == subType){
+                              downFileName = pureName + "." + suffixMap[subType];
+                              break;
+                          }
+                      }
+                  }
+                  
+                  downFileName = "?fileName=" + encodeURI(downFileName);
+              }
+		    
+			//普通文件
+			if(cmp.system.filePermission()){
+			    
+				var items = [{
+                    key:"save",
+                    name:cmp.i18n("commons.label.save")
+                }];
+                if(cmp.att.canSee(fileType)){
+                    items.unshift({
+                        key:"see",
+                        name:cmp.i18n("commons.label.view")
+                    });
+                }
+                //不知道那里来的蒙层，关了
+                cmp.dialog.loading(false);
+                
+	            cmp.dialog.actionSheet(items, cmp.i18n("commons.label.cancel"), function (item) {
+	                if(item.key == "see"){
+	                    var id = att.fileUrl, fileName = att.filename, filePath = "";
+	                    var lastModified = att.lastModified || att.createDate || att.createdate;
+                        
+                        filePath = cmp.origin + "/rest/attachment/file/"+ id + downFileName;
+                        if(cmp.att.canPlay(att.extension)){
+                            _playFile(id,filePath,fileName,lastModified);
+                        }else {
+                            _readFile(id,filePath,fileName,lastModified);
+                        }
+	                }else if(item.key == "save"){
+	                    cmp.dialog.loading();
+	                    var id = att.fileUrl;
+	                    var filePath = cmp.origin + "/rest/attachment/file/"+ id + downFileName;
+	                    var lastModified = att.lastModified || att.createDate || att.createdate;
+	                    filePath = encodeURI(encodeURI(filePath));
+	                    
+	                    cmp.att.download({
+	                        url: filePath,
+	                        title: att.filename,
+	                        extData: {
+                                lastModified:lastModified,
+                                fileId:id,
+                                origin:cmp.origin
+                            },
+	                        progress: function (result) {
+	                            cmp.dialog.loading(false);
+	                        },
+	                        success: function (result) {
+	                        	var msg = '';
+	                        	if(/jpg|jpeg|bmp|png/gi.test(fileType)){
+	                        		//图片
+	                        		msg = cmp.i18n("commons.download.album");
+	                        	}else{
+	                        		msg = cmp.i18n("commons.download.word");
+	                        	}
+	                            cmp.notification.alert(msg, function () {
+	                                cmp.dialog.loading(false);
+	                            },cmp.i18n("commons.label.note"),cmp.i18n("commons.label.confirm"));
+	                        },
+	                        error: function (e) {
+	                            cmp.notification.alert(cmp.i18n("commons.file.notexist"), function () {
+	                                cmp.dialog.loading(false);
+	                            }, cmp.i18n("commons.label.note"), cmp.i18n("commons.label.confirm"));
+	                        }
+	                    });
+	                }
+	            }, function () {
+	            	//点击取消
+	            });
+	        }else{
+	        	/** cmp.notification.toast("微信端暂不支持附件的下载和查看!", 'top', 1000);**/
+	        	
+                if(cmp.att.canDownload4Wechat(fileType)){
+                    var id = att.fileUrl, filePath = "";
+                    filePath = cmp.origin + "/rest/attachment/file/"+ id + downFileName;
+                    cmp.att.download({"url": filePath, "title" : tFileName});
+                }else{
+                   cmp.notification.toast(cmp.i18n("commons.wechat.notSupport",[fileType]), 'top', 1000);
+                }
+                
+	        }
+		}
+	}
+	
+	var _readFile = function(id,filePath,fileName,lastModified) {
+        cmp.dialog.loading();
+        cmp.att.read({
+            path: filePath,
+            filename: fileName,
+            extData:{
+                fileId:id,
+                lastModified:lastModified,
+                origin: cmp.origin
+            },
+            success: function (result) {
+                cmp.dialog.loading(false);
+            },
+            error: function (e) {
+                cmp.dialog.loading(false);
+                cmp.notification.alert(cmp.i18n("commons.file.notexist"), null, cmp.i18n("commons.label.note"), cmp.i18n("commons.label.confirm"));
+            }
+        });
+    };
+    
+    function _playFile(id,filePath,fileName,lastModified){
+        cmp.dialog.loading(cmp.i18n("commons.file.download"));
+        cmp.att.download({
+            url: filePath,
+            title: fileName,
+            extData: {
+                lastModified:lastModified,
+                fileId:id,
+                origin:cmp.origin
+            },
+            progress: function (result) {
+            },
+            success: function (result) {
+                var localPath =  result["target"];
+                localPath = "file://" + localPath;
+                cmp.dialog.loading(false);
+                cmp.audio.play({
+                    filepath:localPath,
+                    filename:fileName
+                });
+            },
+            error: function (e) {
+                cmp.notification.alert(e, function () {
+                    cmp.dialog.loading(false);
+                },cmp.i18n("commons.label.note"), cmp.i18n("commons.label.confirm"));
+            }
+        });
+    };
+	
+	return app;
+}));
+var AttUtil = {
+	transfer : function(att){
+		if(att.type == "collaboration"){
+			//新增协同关联
+			var paramData = {
+				'openFrom' : "glwd",
+				'affairId' : att.affairId,
+				"baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+			}
+			cmp.href.next("/seeyon/m3/apps/v5/collaboration" + "/html/details/summary.html", paramData);
+		}else if(att.mimeType == "collaboration"){
+			//已存入数据库的协同关联
+			var paramData = {
+		    	'openFrom' : 'glwd',
+		        'affairId' : att.description,
+                "baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+		    };
+		    cmp.href.next("/seeyon/m3/apps/v5/collaboration" + "/html/details/summary.html", paramData);
+		}else if(att.mimeType == "edoc"){
+			//已存入数据库的公文关联
+			var paramData = {
+		    	'listType' : "glwd",
+		    	'openFrom' : 'glwd',
+		        'summaryId' : att.description,
+                "baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+		    };
+		    cmp.href.next("/seeyon/m3/apps/v5/edoc" + "/html/edocSummary.html", paramData);
+		}else if(att.mimeType == "meeting"){
+			//已存入数据库的会议关联
+			var paramData = {
+		    	'openFrom' : 'glwd',
+		        'meetingId' : att.description,
+                "baseApp" : att.category || "",
+                "baseObjectId" : att.reference || ""
+		    };
+		    cmp.href.next("/seeyon/m3/apps/v5/meeting" + "/html/meetingDetail.html", paramData);
+		}else if(att.mimeType == "km"){
+			//文档
+			if($s && $s.Doc){
+				docJumpPage(att.description, att);
+			}else{
+				cmp.asyncLoad.js(["/seeyon/m3/apps/v5/doc" + "/js/doc-jssdk.js","/seeyon/m3/apps/v5/commons/wechat-jssdk.js"],function(){
+					docJumpPage(att.description, att);
+				});
+			}
+		}else{
+			alert("TODO");
+			//TODO 关联文档（文档）点击穿透查看
+		}
+    }
+}
+//关联文档（文档中心）点击跳转
+function docJumpPage (docResourceId, loadParam, att){
+	$s.Doc.getDocResource(docResourceId,"",{
+		success : function(result){
+			var frType = result.frType;
+			var pigeonholeType = result.pigeonholeType;
+			if(typeof(frType) == 'undefined'){
+                cmp.notification.toast(cmp.i18n("commons.file.notexist1"));
+				return;
+            }
+			$s.Doc.canOppen({
+                "drId": docResourceId,
+                "frType": frType,
+                "entranceType":8
+            }, {
+                success: function(data) {
+                	if(data == "1"){
+                        cmp.notification.toast(cmp.i18n("commons.file.notexist1"));
+						return;
+                    } else {
+                    	var sourceId = result.sourceId;
+						if (frType == 51) { //映射文件
+                            $s.Docs.getDosBySourceId(sourceId, "", {
+                                success: function(docData) {
+                                    sourceId = docData.sourceId;
+                                    docResourceId = docData.id;
+                                    frType = docData.frType;
+                                    openDoc(sourceId,docResourceId,frType, pigeonholeType,loadParam, att);
+                                    
+                                    att = null;
+                                }
+                            });
+                        } else {
+                            openDoc(sourceId,docResourceId,frType, pigeonholeType,loadParam, att);
+                            att = null;
+                        }
+                    }
+                },
+                error: function(error) {
+                    cmp.dialog.loading(false);
+                    var cmpHandled = cmp.errorHandler(error);
+                    if (cmpHandled) {
+                        //cmp处理了这个错误
+                    } else {
+                        cmp.notification.toast(cmp.i18n("commons.file.notexist1"));
+                        return;
+                    }
+                }
+            });
+		},
+        error: function(error) {
+            cmp.dialog.loading(false);
+            var cmpHandled = cmp.errorHandler(error);
+            if (cmpHandled) {
+                //cmp处理了这个错误
+            } else {
+                cmp.notification.toast(cmp.i18n("commons.file.notexist1"));
+                return;
+            }
+        }
+	});
+}
+function openDoc(sourceId,docResourceId,frType,pigeonholeType,loadParam, att){
+    var tempDoc = loadParam.document || document;
+    var att = att || {};
+	var openWebView = {
+		openWebViewCatch : 1
+	};
+    
+	if (frType == 1 || frType == 9) { // 协同、表单
+	    var paramData = {
+	        'openFrom' : 'docLib',
+			'affairId': sourceId,
+			"pigeonholeType" : pigeonholeType || "",
+			'docResId' : docResourceId,
+		    "baseApp" : att.category || "",
+		    "baseObjectId" : att.reference || ""
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/collaboration" + "/html/details/summary.html", paramData,openWebView);
+	} else if (frType == 2) { // 公文
+	    var paramData = {
+	    	'listType' : "glwd",
+	    	'openFrom' : 'docLib',
+	        'summaryId': sourceId,
+            'docResId' : docResourceId,
+            "baseApp" : att.category || "",
+            "baseObjectId" : att.reference || ""
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/edoc" + "/html/edocSummary.html", paramData,openWebView);
+	} else if (frType == 4) { // 会议
+	    var paramData = {
+	    	'listType' : "glwd",
+	        'openFrom' : 'docLib',
+	        'meetingId' : sourceId,
+            'docResId' : docResourceId,
+            "baseApp" : att.category || "",
+            "baseObjectId" : att.reference || ""
+	    };
+ 		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/meeting" + "/html/meetingDetail.html", paramData,openWebView);
+	} else if (frType == 5) { // 新闻
+	    var paramData = {
+	        'comeFrom' : 1,
+	        'newsId' : sourceId,
+	        'pageInfo' : loadParam.pageInfo
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/news" + "/html/newsView.html", paramData,openWebView);
+	} else if (frType == 6) { // 公告
+	    var paramData = {
+	        'comeFrom' : 1,
+			'bulId' : sourceId,
+	        'pageInfo' : loadParam.pageInfo
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/bulletin" + "/html/bulView.html", paramData,openWebView);
+	} else if (frType == 7) { // 调查
+	    var paramData = {
+	    	'comeFrom' : 1,
+	        'inquiryId': sourceId,
+	        'pageInfo' : loadParam.pageInfo
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/inquiry" + "/html/inquiryView.html", paramData,openWebView);
+	} else if (frType == 8) { // 讨论
+	    var paramData = {
+	      	'from' : 'pigeonhole',
+	      	'bbsId' : sourceId,
+	        'pageInfo' : loadParam.pageInfo
+	    };
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/bbs" + "/html/bbsView.html", paramData,openWebView);
+	} else if((frType>=101&&frType<=122)||(frType>=21&&frType<=26)){
+		var paramData = {
+		      	"drId": docResourceId,
+		        'pageInfo' : loadParam.pageInfo,
+		        'glwd' : true
+		};
+		cmp.event.trigger("beforepageredirect",tempDoc);
+	    cmp.href.next("/seeyon/m3/apps/v5/doc" + "/html/docView.html", paramData,openWebView);
+	} else {
+		cmp.notification.toast(cmp.i18n("commons.file.cannotOpen"));
+		return;
+	}
+}

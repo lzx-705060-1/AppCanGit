@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172627" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/taskmanage/css/taskmanage.css?buildversion=181210172627" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172627" />
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172627">
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172627">
+	<title></title>
+	<style type="text/css">
+	  .taskdetail-hide{display: none !important;}
+	  .taskdetail-show{display: block;}
+	  .taskdetail-ib{display: inline-block;}
+	  .tast-status-container { width: 100%;text-align: center; position: relative;top: 0;}
+	  .tast-status-container .nocontent {background-image: url(/seeyon/m3/cmp/img/nocontent2.png); background-repeat: no-repeat; background-size: 100% 100%; width: 100%;height: 200px;}
+	  .body_content_div{padding-top: 10px;position: absolute;top: 0px;left: 0px;right: 0px;bottom: 50px;}
+	</style>
+</head>
+<body class="cmp-fullscreen">
+	<script>var _cmpPath = "/seeyon/m3/cmp"; var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";</script>
+	<div id="body_content_div" class="cmp-content position_relative body_content_div" style="overflow-y: auto;">
+	
+		<!-- 标题区域 -->
+		<div class="task-title task-border-top task-block-border-bottom">
+			<div class="task-title-detail"></div>
+			<textarea class="task-title-detail task-title-detail-blur taskdetail-hide"></textarea>
+		</div>
+		
+		<!-- 时间选择区域 -->
+		<div class="task-time task-block-border-top task-block-border-bottom task_area">
+			<div class="task-start-time task-common-line task-border-bottom task-detail-start-time">
+				<div class="task-box-left">
+					<span class="cmp-icon iconfont see-icon-v5-common-time-start task-clock"></span>
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.planstart"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text"></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+			<div class="task-end-time task-common-line task-border-bottom">
+				<div class="task-box-left">
+					<span class="cmp-icon iconfont see-icon-v5-common-time-end task-clock"></span>
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.planover"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text"></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow  taskdetail-hide"></span>
+				</div>
+			</div>
+			<div class="task-p-time-type">
+				<div class="task-start-time task-common-line">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.alldaytask"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-disabled">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 任务汇报 -->
+		<div class="task-status task-block-border-top task-block-border-bottom taskdetail-hide task_area">
+			<div class="task-audit-status task-common-line task-border-bottom taskdetail-hide">
+				<div class="task-box-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.auditStatus"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text"></span>
+				</div>
+			</div>
+			<div class="task-status-count task-common-line task-border-bottom">
+				<div class="task-box-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.taskstatus"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text" data-value="1"><i18n key="Taskmanage.label.notstarted"></i18n></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+			<div class="task-status-per task-common-line task-border-bottom">
+				<div class="task-box-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.finishingrate"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text" data-value="0">0%</span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+		</div>
+
+		<!-- 选人 -->
+		<div class="task-person task-block-border-top task-block-border-bottom task_area">
+			<div class="task-person-res task-common-line task-border-bottom">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.manager"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<div style="width: 8%; float: right; padding-left: 2%;">
+						<span id="task-res" class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+					<div style="max-width: 92%;float: right;text-align: left;">
+						<span class="task-common-right-text" id="managers" data-value=""></span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="task-person-dep task-common-line task-border-bottom">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.participator"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<div style="width: 8%; float: right; padding-left: 2%;">
+						<span id="task-dep" class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+					<div style="max-width: 92%;float: right;text-align: left;">
+						<span class="task-common-right-text"  id="participators" data-value=""></span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="task-person-audit task-common-line task-border-bottom taskdetail-hide">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.auditor"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<div style="width: 8%; float: right; padding-left: 2%;">
+						<span id="task-audit" class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+					<div style="max-width: 92%;float: right;text-align: left;">
+						<span class="task-common-right-text" id="auditor" data-value=""></span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="task-person-inform task-common-line ">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.inspector"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<div style="width: 8%; float: right; padding-left: 2%;">
+						<span id="task-inform" class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+					<div style="max-width: 92%;float: right;text-align: left;">
+						<span class="task-common-right-text" id="inspectors" data-value=""></span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="task-creater task-common-line taskdetail-hide">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.creator"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<div style="width: 8%; float: right; padding-left: 2%;">
+						<span id="task-inform" class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+					<div style="max-width: 92%;float: right;text-align: left;">
+						<span class="task-common-right-text" id="task-creater"></span>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		
+		<!-- 任务描述 -->
+		<div class="task-detail task-block-border-top task-block-border-bottom task_area" style="display: none;">
+			<div  class="task-detail-detail"></div><div style="width: 100%;height: 3px;"></div>
+			<textarea id="task-description" class="task-detail-detail taskdetail-hide" placeholder=""></textarea>
+		</div>
+		
+		<!-- 任务类型 -->
+		<div class="task-type task-detail task-border-bottom task-common-line ">
+			<div class="task-box-view-left">
+				<span class="task-common-left-text"><i18n key="Taskmanage.label.tasktype"></span>
+			</div>
+			<div class="task-box-view-right" >
+				<div style="max-width: 92%;float: right;text-align: right;">
+					<span id="taskType" class="task-common-right-text" data-value="-1" style="overflow:hidden"></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+		<!-- 附件、重要程度 -->
+		<div class="task-attach task-block-border-top task-block-border-bottom task_area" style="display: none;">
+			
+			<div class="task-attach-access task-common-line task-border-bottom taskdetail-hide" id="task-att-area">
+				<div class="task-box-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.attanchment"></i18n></span>
+					<span class="task-common-left-text" id="att-size">(0)</span>
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.relatefile"></i18n></span>
+					<span class="task-common-left-text" id="accdoc-size">(0)</span>
+				</div>
+				<div class="task-box-right">
+					<span class="cmp-icon iconfont see-icon-accessory task-common-access" id="uploadAtt"></span>
+				</div>
+			</div>
+			<div id="taskEditorId" class="taskdetail-hide"></div>
+			
+			<div class="task-attach-imp task-common-line">
+				<div class="task-box-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.importance"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span id="importantLevel" class="task-common-right-text" data-value="1"><i18n key="Taskmanage.label.general"></i18n></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+			
+			<div id="task-source-name" class="task-common-line taskdetail-hide">
+				<div class="task-box-view-left">
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.source"></i18n></span>
+				</div>
+				<div class="task-box-view-right">
+					<span class="task-common-right-text"></span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		
+		
+		<!-- 实际开始、结束时间 -->
+		<div class="task-time task-a-time task-block-border-top task-block-border-bottom taskdetail-hide task_area">
+			<div class="task-a-start-time task-common-line task-border-bottom ">
+				<div class="task-box-left">
+					<span class="cmp-icon iconfont see-icon-v5-common-time-start task-clock"></span>
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.actualstart"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text"></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+				</div>
+			</div>
+			<div class="task-a-end-time task-common-line task-border-bottom">
+				<div class="task-box-left">
+					<span class="cmp-icon iconfont see-icon-v5-common-time-end task-clock"></span>
+					<span class="task-common-left-text"><i18n key="Taskmanage.label.actualover"></i18n></span>
+				</div>
+				<div class="task-box-right">
+					<span class="task-common-right-text"></span>
+					<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow  taskdetail-hide"></span>
+				</div>
+			</div>
+			<div class="task-a-time-type">
+				<div class="task-start-time task-common-line">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.alldaytask"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-disabled">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="task-account task-block-border-top task-block-border-bottom task_area" style="display: none;">
+			<div class="task-account-imp">
+				<div class="task-start-time task-common-line task-border-bottom">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.milestone"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<div id="milestone" class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-disabled">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 提醒  -->
+			<div class="task-account-remind">
+				<div class="task-start-time task-common-line task-border-bottom">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.remind"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-disabled">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 提醒设置  -->
+			<div id="task-account-remind-detail" style="display: none;">
+				<div class="task-account-remind-begin task-common-line task-border-bottom">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.remindbeforstart"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<span class="task-common-right-text" data-value="-1"><i18n key="Taskmanage.label.none"></i18n></span>
+						<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+				</div>
+				<div class="task-account-remind-end task-common-line task-border-bottom">
+					<div class="task-box-left">
+						<span class="task-common-left-text"><i18n key="Taskmanage.label.remindbeforeover"></i18n></span>
+					</div>
+					<div class="task-box-right">
+						<span class="task-common-right-text" data-value="-1"><i18n key="Taskmanage.label.none"></i18n></span>
+						<span class="cmp-icon iconfont see-icon-v5-common-arrow-right task-common-arrow taskdetail-hide"></span>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!-- 展开按钮 -->
+		<div class="task-show task-block-border-bottom">
+			<span style="font-size: 14px; color:#A1B0C5;"><i18n key="Taskmanage.label.unfold"></i18n></span>
+			<span class="cmp-icon iconfont see-icon-arrow-down task-common-arrow-down"></span>
+		</div>
+		
+		<!-- 任务评论  -->
+		<div class="task-comment-area taskdetail-hide">
+			<div class="task-comment-title"><i18n key="Taskmanage.label.reply"></i18n></div>
+			<div id="task_commit" class="cmp-control-content cmp-active main-content white tab_selector">
+		        <div class="task-comment-contents" style="position: relative;">
+		            <ul class="task-comment-one"></ul>
+		        </div>
+		    </div>
+		</div>
+		
+	</div>
+	
+	
+	<!-- 查看任务才显示 -->
+	<footer id="task-save">
+		<div class="task-view-actions taskdetail-hide">
+			<div class="task-view-operate taskdetail-hide" href="#topPopover" id="topPopoverA">
+				<span class="task-view-operate-icon  cmp-icon iconfont see-icon-more"></span>
+				<span class="task-view-operate-name"><i18n key="Taskmanage.label.more"></i18n></span>
+			</div>
+			<div class="task-view-operate" id="duration">
+				<span class="task-view-operate-icon see-icon-v5-common-progress"></span>
+				<span class="task-view-operate-name"><i18n key="Taskmanage.label.progress"></i18n></span>
+			</div>
+			<div class="task-view-operate" id="commit">
+				<span class="task-view-operate-icon see-icon-v5-common-comment"></span>
+				<span class="task-view-operate-name"><i18n key="Taskmanage.label.reply"></i18n></span>
+			</div>
+		</div>
+		<div class="task-save-wapper taskdetail-hide">
+			<button class="cmp-btn cmp-btn-primary2 save"><i18n key="Taskmanage.label.save"></i18n></button>
+		</div>
+	</footer>
+
+	<!-- 催办区域 -->
+	<div id="task-pushing" class="taskdetail-hide">
+		<div id="pushing-content" class="cmp-content position_relative ">
+			<div class="pushing-top">
+				<div class="pushing-choose choose-all" style="float: left;">
+					<span id="select-all-check" class=" cmp-icon see-icon-radio-unchecked"></span>
+					<span><i18n key="Taskmanage.label.selectall"></i18n></span>
+				</div>
+				<div class="hasten-cancel" style="float: right;">
+					<span><i18n key="Taskmanage.label.cancel"></i18n></span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<!-- 催办人员列表 -->
+			<div class="pushing-list"></div>
+		</div>
+		<footer class="pushing-footer">
+			<div class="pushing-inner">
+				<div class="pushing-input" style="">
+					<input type="text" id="hasten-message">
+				</div>
+				<div class="pushing-text">
+					<span><i18n key="Taskmanage.label.hasten"></i18n></span>
+				</div>
+			</div>
+		</footer>
+	</div>
+	
+	<!-- 任务震荡回复  -->
+	<div id="task-reply" class="Animated-Container right-go animated" style="display: block;z-index: 12;">
+	    <div id="reply-content" class="cmp-content position_relative" style="position: fixed;bottom: 91px;width: 100%;">
+	        <textarea id="reply-area" placeholder="" maxlength="500" style="border: none;height: 100%;width: 100%;"></textarea>
+	    </div>
+	    
+	    <div style="width: 100%;padding: 10px;position: fixed;bottom: 50px;left: 0;background-color: #efeff4;">
+            <div style="float: left;font-size: 16px;color: #999;">
+                <span id="reply-remain">500</span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        
+	    <footer id="task-reply-area" class="cmp-bar cmp-comment-footer cmp-bar-footer">
+	        <div class="task-save-bottom">
+	            <div class="task-save-btn">
+	                <span><i18n key="Taskmanage.label.replytask"></i18n></span>
+	            </div>
+	        </div>
+	    </footer>
+	</div>
+</body>
+	<!-- 催办选人模板 -->
+	<script type="text/html" id="task-hasten-tpl">
+    <% var root = cmp.serverIp ? cmp.serverIp : ""; %>
+    <% for(var i = 0;i < this.length; i++){ %>
+    <% 		var taskRole = this[i];			%>
+		<div class="pushing-list-item">
+			<div class="pushing-list-item-choose">
+				<span userId="<%=taskRole.roleId %>" class="task-role-item cmp-icon see-icon-radio-unchecked"></span>
+			</div>
+			<div class="pushing-list-item-person ">
+				<div class="pushing-list-item-person-img">
+					<img src="<%=root %><%=taskRole.avatar %>" onload="resizeHeight(this)">
+				</div>
+				<div class="pushing-list-item-person-detail">
+					<div class="pushing-list-item-person-name">
+						<span><%=taskRole.roleName %></span>
+					</div>
+					<div class="pushing-list-item-person-role">
+						<span><%=taskRole.roleTypeName %></span>
+					</div>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+	<% } 							%>
+	</script>
+	<!-- 回复列表模板 -->
+	<script type="text/html" id="task-comments-tpl">
+	<% for(var i = 0,len = this.length;i < len; i++){ %>
+	<% var obj = this[i];%>
+        <li class="task-comment-one-item" id="<%=obj.id%>">
+            <div style="width: 100%;position: relative;">
+                <div class="task-comment-one-img">
+                    <div>
+                        <img class="cmp-img-cache img_setting" src="<%=obj.userImage%>">
+                    </div>
+                </div>
+                <div class="task-comment-one-content">
+                    <div class="task-comment-one-content-detail-detail">
+					<%if(obj.children.length != 0){%>
+						<div class="task-comment-one-content-detail-detail-line">
+					<%}else{%>
+						<div>
+					<%}%>
+							<div class="task-comment-name cmp-ellipsis">
+								<span><%=obj.userName%></span>
+							</div>
+							<div class="task-comment-content" >
+								<span>
+									<% if(obj.ctype == -1){ %>
+										<%=cmp.i18n("Taskmanage.taskhasten.comment"); %>
+									<% } %>
+									<%=obj.content%>
+								</span>
+							</div>
+						<%if(obj.attachments.length == 0){%>
+							<ul id="attachment_<%=obj.id%>" class="task-comment-access taskdetail-hide"></ul>
+						<%}else{%>
+							<ul id="attachment_<%=obj.id%>" class="task-comment-access"></ul>
+						<%}%>
+							<div class="task-comment-time-content">
+								<span><%=obj.createDate%></span>
+							</div>
+							<div data-id="<%=obj.id%>"  class="task-comment-praise praise-handle">
+							<%if(obj.praiseToComment){%>
+								<span class="see-icon-v5-common-praise-fill active"></span>
+							<%}else{%>
+								<span class="see-icon-v5-common-praise-fill"></span>
+							<%}%>
+								<span><%=obj.praiseNumber%></span>
+							</div>
+						</div>
+                    </div>
+                    <%if(obj.children){%>
+                    	<div>
+                        	<ul class="task-comment-two">
+                        		<%for(var j = 0;j<obj.children.length;j++){%>
+                        		<%var subObj = obj.children[j];%>
+                                <li>
+                                    <div style="width: 100%;position: relative;">
+                                        <div class="task-comment-name cmp-ellipsis">
+                                            <span><%=subObj.userName%></span>
+                                        </div>
+                                        <div class="task-comment-content">
+                                            <span><%=subObj.content%></span>
+                                        </div>
+								<%if(subObj.attachments.length == 0){%>
+									<ul id="attachment_<%=subObj.id%>" class="task-comment-access taskdetail-hide"></ul>
+								<%}else{%>
+									<ul id="attachment_<%=subObj.id%>" class="task-comment-access"></ul>
+								<%}%>
+                                        <div class="task-comment-time">
+                                            <span><%=subObj.createDate%></span>
+                                        </div>
+                                    </div>
+                                </li>
+	                            <%}%>
+	                        </ul>
+	                    </div>
+                    <%}%>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </li>
+	<% } %>
+    </script>
+    <!-- 震荡回复模板  -->
+   	<script type="text/html" id="task-shakecomment-tpl">
+	<% for(var i = 0,len = this.length;i < len; i++){ %>
+	<% var obj = this[i];%>
+        <li>
+            <div style="width: 100%;position: relative;">
+                <div class="task-comment-name cmp-ellipsis">
+                    <span><%=obj.userName%></span>
+                </div>
+                <div class="task-comment-content">
+                    <span><%=obj.content%></span>
+                </div>
+			<%if(obj.attachments.length == 0){%>
+				<ul id="attachment_<%=obj.id%>" class="task-comment-access taskdetail-hide"></ul>
+			<%}else{%>
+				<ul id="attachment_<%=obj.id%>" class="task-comment-access"></ul>
+			<%}%>
+                <div class="task-comment-time">
+                    <span><%=obj.createDate%></span>
+                </div>
+            </div>
+        </li>
+	<%}%>
+	</script>
+	<!-- 国际化资源文件引入 -->
+	<script src="/seeyon/m3/apps/v5/taskmanage/i18n/taskmanage_zh_CN.js?buildversion=181210172627"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172627"></script>
+	<script type="text/javascript">
+		var $buildversion  = '?buildversion=181210172627';
+	    cmp.i18n.init("/seeyon/m3/apps/v5/taskmanage/i18n/","taskmanage",function(){
+	    	document.querySelector("div.task-title-detail").setAttribute("placeholder",cmp.i18n("Taskmanage.message.inputtitle"));
+	    	document.querySelector("textarea.task-title-detail").setAttribute("placeholder",cmp.i18n("Taskmanage.message.inputtitle"));
+	    	document.querySelector("#task-description").placeholder = cmp.i18n("Taskmanage.message.description");
+	    	document.querySelector("#reply-area").placeholder = cmp.i18n("Taskmanage.label.replyopinion");
+	    });
+		var colPath  = '/seeyon/m3/apps/v5/collaboration';
+		var meetingPath  = '/seeyon/m3/apps/v5/meeting';
+		var unflowformPath  = '/seeyon/m3/apps/v5/unflowform';
+	</script>
+	
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172627"></script>
+	<script  src="/seeyon/m3/apps/v5/taskmanage/js/taskmanage-jssdk.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172627" id="__jsdktag"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172627"></script>
+	<!-- 不需要这个JS -->
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/js/taskCommon.js?buildversion=181210172627"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/js/taskEditor-debug.js?buildversion=181210172627"></script>
+	<script type="text/javascript">
+		var commonPath =  '/seeyon/m3/cmp';
+		cmp.ready(function(){
+			var params = cmp.href.getParam() || {};
+			if(cmp.isEmptyObject(params)) {
+				params = getQueryParams();
+			}
+			if(typeof params != "undefined" && params.createType == "newTaskWithParams"){
+				if(typeof  params.subject == "undefined"){
+					params.subject = "";
+				}
+				if(typeof  params.content == "undefined"){
+					params.content = "";
+				}
+				if(typeof  params.fullTime == "undefined"){
+					params.fullTime = false;
+				}
+				
+				if(typeof  params.plannedStartTime == "undefined"){
+					params.plannedStartTime = new Date().getTime() + "";
+				}
+				if(typeof  params.plannedEndTime == "undefined"){
+					params.plannedEndTime = new Date().getTime() + "";
+					if(parseInt(params.plannedEndTime) - parseInt(params.plannedStartTime) < 0){
+						params.plannedEndTime = params.plannedStartTime;
+					}
+				}
+				
+				if(typeof  params.managers == "undefined"){
+					params.managers = [];
+					params.managerNames = [];
+				}
+				if(typeof  params.participators == "undefined"){
+					params.participators = [];
+					params.participatorNames = [];
+				}
+				if(typeof  params.inspectors == "undefined"){
+					params.inspectors = [];
+					params.inspectorNames = [];
+				}
+				if(typeof  params.milestone == "undefined"){
+					params.milestone = "0";
+				}
+				if(typeof  params.importantLevel == "undefined"){
+					params.importantLevel = 1;
+				}
+				var i18ns = [
+	             {key:"1",name:cmp.i18n("Taskmanage.label.general")},
+	             {key:"2",name:cmp.i18n("Taskmanage.label.important")},
+				 {key:"3",name:cmp.i18n("Taskmanage.label.vimportant")} 
+	            ];
+				params.importantLevelLabel = i18ns[params.importantLevel].name;
+			}
+			//微协同也能上传附件了
+			document.querySelector("#task-att-area").classList.remove("taskdetail-hide");
+			//页面初始化
+			taskEditor.initTaskEditor(params);
+			
+		});
+		/** 获取URL的查询参数 */
+		function getQueryParams(){
+	        var url = window.location.search,
+	            reg_url = /^\?([\w\W]+)$/,
+	            reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
+	            arr_url = reg_url.exec(url),
+	            ret = {};
+	        if (arr_url && arr_url[1]) {
+	            var str_para = arr_url[1], result;
+	            while ((result = reg_para.exec(str_para)) != null) {
+	                ret[result[1]] = result[2];
+	            }
+	        }
+	        return ret;
+	    }
+	</script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172627" defer="defer"></script>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>选择关联表单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/relationForm.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172644">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172644">	
+        
+
+	</head>
+
+	<body class="cmp-fullscreen">
+		<div class="cmp-content cmp-content-none" style="background-color: #ffffff;">
+            <div class="cmp-segmented_title_content">
+                <div id="header_search_btn" class="cmp-content-title-search" style="background-color: #ffffff;height: 48px;">
+                    <div class="cmp-input-row see-icon-search cmp-search">
+                        <input type="search" placeholder="" class="cmp-input-clear " style="border: none;" disabled="" data-input-clear="1" data-input-search="1">
+                        <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+                        <span class="cmp-placeholder" id="search" style="background: #EEF1F5;border-radius: 50px;height: 27px;line-height: 27px;font-size: 14px;">
+                        <span class="cmp-icon cmp-icon-search"></span>
+                      <span class="text-search">搜索</span>
+                      </span>
+                    </div>
+                </div>
+                <div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted">
+                    <a id="tab_me" class="cmp-control-item cmp-active" href="#item1mobile">
+                        <i18n key="relationform.page.lable.sender_me"></i18n>
+                    </a>
+                    <a id="tab_other" class="cmp-control-item" href="#item2mobile">
+                        <i18n key="relationform.page.lable.sender_other"></i18n>
+                    </a>
+                </div>
+            </div>
+            <div id="item1mobile" class="cmp-slider-item cmp-control-content cmp-active">
+                <div id="contentView" class="cmp-scroll-wrapper">
+                    <div class="cmp-scroll">
+                        <ul class="cmp-list-content my_work_content  cmp-indexed-ul-extend" id="me"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="item2mobile" class="cmp-slider-item cmp-control-content  ">
+                <div id="contentView2" class="cmp-scroll-wrapper">
+                    <div class="cmp-scroll">
+                        <ul class="cmp-list-content my_work_content  cmp-indexed-ul-extend" id="other"></ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<footer id="footer" class="cmp-bar cmp-bar-footer"  >
+			<div class="cmp-btn cmp-btn-primary" id="ok"><i18n key="relationform.page.lable.ok"></i18n></div>
+		</footer>
+        <div class="pop-div" style="display: none;"></div>
+	</body>
+	    <script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/relationForm_zh_CN.js?buildversion=181210172644" ></script>
+        <script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/unflowform_zh_CN.js?buildversion=181210172644" ></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+		        <script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+        
+		<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172644"></script>
+        
+        <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172644"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172644"></script>
+       
+        <script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172644"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172644"></script>
+        <script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172644"></script>
+	<script type="text/html" id="datalist_li_tpl">
+        <%  console.log(this); %>
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+		<%  var obj = this[i]; %>
+        <%  var objstr =JSON.stringify(obj).replace(/"/g,"'"); %>
+        <li class="cmp-list-cell ">
+            <div class="cmp-list-cell-radio cmp-radio cmp-left">
+                <div class="cmp-checkbox">
+                    <%if(params.mutiselect) { %>
+                       <input name="checkbox" name="Item1" type="checkbox" info="<%=objstr %>">
+                    <% }else {%>
+                       <input name="checkbox" name="Item1" type="checkbox" info="<%=objstr %>">
+                    <% } %>
+                </div>
+            </div>
+            <div class="cmp-list-cell-img cmp-radio cmp-left">
+                <%if(obj.startMemberId) { %>
+                  <img class=" cmp-pull-left img_setting" src="<%=cmp.origin+ '/rest/orgMember/avatar/'+ obj.startMemberId %>">
+                <% }else {%>
+                  <img class=" cmp-pull-left img_setting" src="../img/def_member.png">
+                <% } %>
+            </div>
+            <div class="cmp-list-cell-info" info="<%=objstr %>">
+                <span class="cmp-ellipsis cmp-pull-left list_title_name width_69"><%=obj.startMemberName %></span>
+                <!--<a class="menu-right"></a>-->
+                <h6 class="cmp-ellipsis list_cont_info"><%=obj.subject %></h6>
+            </div>
+            <span class="cmp-ellipsis cmp-h5 cmp-pull-right list_title_time  cmp-text-right"><%=obj.createDate %></span>
+        </li>
+		<% } %>
+
+		<%if(this.length == 0){%>
+		<p style="text-align:center">没有可以显示的数据</p>
+		<%}%>
+	</script>
+
+	<script type="text/html" id="search_li_tpl">
+		<% for(var i = 0,len = this.search.length;i < len; i++){ %>
+		<% var obj = this.search[i]; %>
+		<li class="cmp-table-view-cell" id="<%=obj.name %>"><a href="#"><%=obj.value %></a>
+		</li>
+		<% } %>
+	</script>
+    <script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script>    <script type="text/javascript">
+        cmp.i18n.init(_unflowformpath+"/i18n/", "relationForm");
+        cmp.i18n.init(_unflowformpath+"/i18n/", "unflowform");
+    </script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/relationForm.js?buildversion=181210172644"></script>
+</html>

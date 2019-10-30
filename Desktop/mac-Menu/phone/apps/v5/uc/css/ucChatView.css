@@ -1,0 +1,437 @@
+html,body{height: 100%;width: 100%;background-color: #efefef;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar.cmp-bar-nav {background: #fff;top:0;}
+.see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-table-view-cell {padding: 0.26rem 0.32rem;}
+.cmp-bar.cmp-bar-footer{height: auto;background:#e4e9ec;}
+.cmp-bar .cmp-btn-link {color:#3AADFB;}
+.cmp-table-view {background: none;}
+.cmp-table-view:before,.cmp-table-view:after,.cmp-table-view-cell:after {height: 0;}
+.cmp-table-view-cell.cmp-active {background: none;}
+.uc-chat-date {width: 100%;text-align: center; font-size: 12px;color: #999;}
+.uc-chat-system {width: 100%;text-align: center; font-size: 12px;color: #999;}
+.uc-chat-toolbar {width: 100%;height: 0.9rem;line-height: 0.8rem; padding: 0 0.25rem;background:#e4e9ec;margin-bottom:0.1rem;}
+.uc-chat-toolbar span {width: 16.66%; float: left;text-align: center;color: #8798a4;line-height: 0.9rem;font-size:20px;}
+.uc-chat-unread-dot{width: 6px;height: 6px;border-radius: 50%;background: #ff3b30;position: absolute;top: 0;right: -0.32rem;}
+.uc-chat-read-state {font-size: 12px;color: #999;position: absolute;left: -1.06rem;bottom: 6px;}
+.redWarning {color:#F43530;font-size:22px;left: -0.9rem;}
+.uc-chat-unread {color: #3aadfb;}
+.uc-chat-revoke {width: auto;float: left;position: relative;left: 50%;overflow: initial;}
+.uc-chat-revoke .uc-chat-revoke-inner {position: relative;left: -50%; border-radius: 0.374rem; text-align: center; font-size: 14px;color: #fff;padding: 0.054rem 0.373rem; background: #d8d8d8;letter-spacing: 2px;margin: 0 0.26rem;}
+.cmp-pull-caption {display:none !important;}
+.cmp-pull-top-pocket.sleep {background:none !important;}
+.cmp-bar .cmp-title .uc-block-msg {color:#999;padding-left:0.26rem;font-size: 18px;margin-top: -3px;}
+.cmp-pull-bottom-pocket {height:0 !important;}
+/*text文本气泡样式 对方*/
+.uc-other-text {display: block;}
+.uc-other-text .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-text .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-text .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-text .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; background: #fff;padding: 0.15rem 0.26rem; font-size: 16px;color: #313f48;margin-right: 1.253rem;min-width: 1.33rem;min-height: 0.9rem;word-break: break-all;}
+.uc-other-text .uc-chat-base .uc-other-chat-base .uc-copy-text{width: 1px;height: 1px;background: #3aadfb;border: none;}
+.uc-other-text .uc-chat-base .uc-other-chat-base .uc-chat-text{width: 100%;word-wrap: break-word;}
+/*自己*/
+.uc-me-text {display: block;}
+.uc-me-text .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-text .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-text .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-text .uc-chat-base .uc-me-chat-base {position: relative;float: right; border: 1px solid #3aadfb;border-radius: 0.45rem; background: #3aadfb;padding: 0.1rem .26rem;padding-right: .2rem; font-size: 16px;color: #fff;z-index: 0;margin-left: 2.5rem;min-width: 1.2rem;min-height: 0.9rem;word-break: break-all;padding-top: .15rem;}
+.uc-me-text .uc-chat-base .uc-me-chat-base .uc-copy-text{width: 1px;height: 1px;background: #3aadfb;border: none;}
+/*语音气泡样式 对方*/
+.uc-other-voice {display: block;}
+.uc-other-voice .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-voice .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-voice .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-voice .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; background: #fff;padding: 0.15rem 0.53rem; font-size: 16px;color: #313f48;max-width: 6.847rem;}
+.uc-other-voice .uc-chat-base .uc-other-chat-base .uc-record {display:inline-block;width:0.373rem;height:0.533rem; margin-right: 0.2rem;vertical-align: middle;margin-top:-2px;}
+/*自己*/
+.uc-me-voice {display: block;}
+.uc-me-voice .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-voice .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-voice .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-voice .uc-chat-base .uc-me-chat-base {position: relative; border: 1px solid #3aadfb;border-radius: 0.45rem; background: #3aadfb;padding: 0.15rem 0.53rem; font-size: 16px;color: #fff;z-index: 0;float: right;max-width: 6.847rem;text-align: right;}
+.uc-me-voice .uc-chat-base .uc-me-chat-base .uc-record {display:inline-block;width:0.373rem;height:0.533rem; margin-left: 0.2rem;vertical-align: bottom;}
+/*图片气泡样式 对方*/
+.imgMask {display:none;width: 100%;position: absolute;top: 0;left: 0;background: rgba(0,0,0,.7);border-radius: 0.45rem;font-size:16px;text-align:center;}
+.uc-other-picture {display: block;}
+.uc-other-picture .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-picture .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-picture .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-picture .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; font-size: 2rem;color: #313f48;overflow: hidden;background: #efeff4;}
+.uc-other-picture .uc-chat-base .uc-bubble-arrow.uc-arrow2 {z-index: 0;}
+/*自己*/
+.uc-me-picture {display: block;}
+.uc-me-picture .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-picture .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-picture .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-picture .uc-chat-base .uc-me-chat-base {position: relative; border: 1px solid #3aadfb;border-radius: 0.45rem; padding: 0; font-size: 2rem;color: #fff;z-index: 0;float: right;background: #efeff4;}
+.uc-me-picture .uc-chat-base .uc-me-chat-base .uc-me-p-overflow {overflow:hidden;border-radius:0.45rem;}
+/*名片气泡样式 对方*/
+.uc-other-card {display: block;}
+.uc-other-card .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-card .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-card .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-card .uc-chat-base .uc-bubble-arrow.uc-arrow3 {z-index: 0;}
+.uc-other-card .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; font-size: 16px;color: #313f48;width: 5.2rem;height: 2.5rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-info {border-bottom: 1px dashed #ccc;color: #333;overflow: hidden;padding-bottom: 0.16rem;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-info .uc-card-head {width: 1.067rem;height: 1.067rem; margin: 0 0.26rem 0 0.16rem;float: left;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-info .uc-card-width {width: 3.12rem;float: left;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-info .uc-card-width .uc-card-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 2px 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-info .uc-card-width .uc-card-phone {width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;}
+.uc-other-card .uc-chat-base .uc-other-chat-base .uc-card-b {margin-top: 0.16rem;font-size: 16px;margin-bottom: 0;clear: both;}
+/*自己*/
+.uc-me-card {display: block;}
+.uc-me-card .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-card .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-card .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-card .uc-chat-base .uc-bubble-arrow.uc-arrow3 {z-index: 0;}
+.uc-me-card .uc-chat-base .uc-me-chat-base {position: relative; float: right; border: 1px solid #3aadfb;border-radius: 0.45rem; font-size: 16px;color: #313f48;width: 5.2rem;height: 2.5rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-info {border-bottom: 1px dashed #ccc;color: #333;overflow: hidden;padding-bottom: 0.16rem;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-info .uc-card-head {width: 1.067rem;height: 1.067rem; margin: 0 0.26rem 0 0.16rem;float: left;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-info .uc-card-width {width: 3.12rem;float: left;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-info .uc-card-width .uc-card-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 2px 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-info .uc-card-width .uc-card-phone {width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;}
+.uc-me-card .uc-chat-base .uc-me-chat-base .uc-card-b {margin-top: 0.16rem;font-size: 16px;margin-bottom: 0;clear: both;}
+/*文档气泡样式 对方*/
+.uc-other-doc {display: block;}
+.uc-other-doc .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-doc .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-doc .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-doc .uc-chat-base .uc-bubble-arrow.uc-arrow3 {z-index: 0;}
+.uc-other-doc .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; font-size: 16px;color: #313f48;width: 5.2rem;height: 2.5rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-other-doc .uc-chat-base .uc-doc {width: 5.865rem;height: 2.09rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-other-doc .uc-chat-base .uc-doc .cmp-icon-document {width: 1.06rem;height: 1.06rem;float: left;margin-right: 0.26rem;}
+.uc-other-doc .uc-chat-base .uc-other-chat-base .uc-doc-info {width: 3.787rem;float: left;}
+.uc-other-doc .uc-chat-base .uc-other-chat-base .uc-doc-info .uc-doc-state {width: 100%;font-size: 12px;color: #999;margin-top: -0.107rem;}
+.uc-other-doc .uc-chat-base .uc-other-chat-base .uc-doc-info .uc-doc-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 0.053rem 0 0.133rem 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.93rem;line-height: 0.48rem;word-break: break-all;}
+/*自己*/
+.uc-me-doc {display: block;}
+.uc-me-doc .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-doc .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-doc .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-doc .uc-chat-base .uc-me-chat-base {position: relative; float: right; border: 1px solid #3aadfb;border-radius: 0.45rem; font-size: 16px;color: #313f48;width: 5.2rem;height: 2.5rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-me-doc .uc-chat-base .uc-doc {width: 5.865rem;height: 2.09rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-me-doc .uc-chat-base .uc-doc .cmp-icon-document {width: 1.06rem;height: 1.06rem;float: left;margin-right: 0.26rem;}
+.uc-me-doc .uc-chat-base .uc-me-chat-base .uc-doc-info {width: 3.787rem;float: left;}
+.uc-me-doc .uc-chat-base .uc-me-chat-base .uc-doc-info .uc-doc-state {width: 100%;font-size: 12px;color: #999;margin-top: -0.107rem;}
+.uc-me-doc .uc-chat-base .uc-me-chat-base .uc-doc-info .uc-doc-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 0.053rem 0 0.133rem 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.94rem;line-height: 0.48rem;word-break: break-all;}
+/*新闻气泡样式 对方*/
+.uc-other-new {display: block;}
+.uc-other-new .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-new .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-new .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-new .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; font-size: 16px;color: #313f48;}
+.uc-other-new .uc-chat-base .uc-bubble-arrow.uc-arrow3 {z-index: 0;}
+.uc-other-new .uc-chat-base .uc-new {width: 5.865rem;height: 2.72rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-other-new .uc-chat-base .uc-new .uc-new-info {width: 100%;color: #999;font-size: 12px;}
+.uc-other-new .uc-chat-base .uc-new .uc-new-info .uc-new-img {width: 1.44rem;height: 0.98rem;}
+.uc-other-new .uc-chat-base .uc-new .uc-new-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 2px 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.94rem;line-height: 0.48rem;}
+/*自己*/
+.uc-me-new {display: block;}
+.uc-me-new .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-new .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-new .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-new .uc-chat-base .uc-me-chat-base {position: relative; float: right; border: 1px solid #3aadfb;border-radius: 0.45rem; font-size: 16px;color: #313f48;}
+.uc-me-new .uc-chat-base .uc-new {width: 5.865rem;height: 2.72rem;background: #fff;padding: 0.213rem 0.266rem;}
+.uc-me-new .uc-chat-base .uc-new .uc-new-info {width: 100%;color: #999;font-size: 12px;}
+.uc-me-new .uc-chat-base .uc-new .uc-new-info .uc-new-img {width: 1.44rem;height: 0.98rem;}
+.uc-me-new .uc-chat-base .uc-new .uc-new-name {width: 100%;font-size: 16px;color:#333;font-weight: normal;margin: 2px 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.94rem;line-height: 0.48rem;}
+/*协同气泡样式 对方*/
+.uc-other-a8 {display: block;}
+.uc-other-a8 .uc-o-h {margin-right: 0.32rem;float: left;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-other-a8 .uc-other-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-other-a8 .uc-chat-base {position: relative;width: 8.1rem;float: right;}
+.uc-other-a8 .uc-chat-base .uc-other-chat-base {position: relative; float: left; border: 1px solid #dbdbdb;border-radius: 0.45rem; font-size: 16px;color: #313f48;}
+.uc-other-a8 .uc-chat-base .uc-bubble-arrow.uc-arrow3 {z-index: 0;}
+.uc-other-a8 .uc-chat-base .uc-a8 {width: 5.86rem;height: 2.72rem;padding: 0;background: none;border: none;}
+.uc-other-a8 .uc-chat-base .uc-a8 .uc-a8-info {width: 100%;height: 1.94rem;background: #3aadfb;overflow: hidden;padding: 0.4rem 0.26rem;border-top-left-radius: 0.45rem;border-top-right-radius: 0.45rem;}
+.uc-other-a8 .uc-chat-base .uc-a8 .uc-a8-info .uc-doc-icon {width:1.06rem;height:1.06rem;line-height: 1.06rem; border:1px solid #fff;border-radius:50%;font-size: 22px;color: #fff;text-align: center;}
+.uc-other-a8 .uc-chat-base .uc-a8 .uc-a8-info .uc-a8-name {float: left;width: 4rem;padding-left: 0.26rem;font-size: 16px;color:#fff;font-weight: normal;margin: 2px 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.94rem;line-height: 0.48rem;}
+.uc-other-a8 .uc-chat-base .uc-a8 .uc-a8-n {color: #999;font-size: 12px; clear: both;padding: 0.06rem 0.26rem 0 0.42rem;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;background: #fff;height: 0.78rem;border-bottom-left-radius: 0.45rem;border-bottom-right-radius: 0.45rem;}
+/*自己*/
+.uc-me-a8 {display: block;}
+.uc-me-a8 .uc-m-h {margin-left: 0.32rem;float: right;width: 0.93rem;height: 0.93rem;border-radius: 50%;overflow: hidden;}
+.uc-me-a8 .uc-me-chat-head {width: 0.93rem;height: 0.93rem;}
+.uc-me-a8 .uc-chat-base {position: relative;width: 8.1rem;float: left;}
+.uc-me-a8 .uc-chat-base .uc-me-chat-base {position: relative; float: right; border: 1px solid #3aadfb;border-radius: 0.45rem; font-size: 16px;color: #313f48;}
+.uc-me-a8 .uc-chat-base .uc-a8 {width: 5.86rem;height: 2.72rem;padding: 0;background: none;border: none;}
+.uc-me-a8 .uc-chat-base .uc-a8 .uc-a8-info {width: 100%;height: 1.94rem;background: #3aadfb;overflow: hidden;padding: 0.4rem 0.26rem;border-top-left-radius: 0.45rem;border-top-right-radius: 0.45rem;}
+.uc-me-a8 .uc-chat-base .uc-a8 .uc-a8-info .uc-doc-icon {width:1.06rem;height:1.06rem;line-height: 1.06rem; border:1px solid #fff;border-radius:50%;font-size: 22px;color: #fff;text-align: center}
+.uc-me-a8 .uc-chat-base .uc-a8 .uc-a8-info .uc-a8-name {float: left;width: 4rem;padding-left: 0.26rem;font-size: 16px;color:#fff;font-weight: normal;margin: 2px 0;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;height: 0.94rem;line-height: 0.48rem;}
+.uc-me-a8 .uc-chat-base .uc-a8 .uc-a8-n {color: #999;font-size: 12px; clear: both;padding: 0.06rem 0.26rem 0 0.42rem;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;background: #fff;height: 0.78rem;border-bottom-left-radius: 0.45rem;border-bottom-right-radius: 0.45rem;}
+/*群人名*/
+.uc-o-username {color: #999;font-size: 12px;margin-bottom: 0.08rem;margin-top: -0.107rem;text-align: left;}
+.uc-me-username {color: #999;font-size: 12px;margin-bottom: 0.08rem;margin-top: -0.107rem;text-align: right;}
+/*聊天窗口header*/
+#peopleCard,#uc-property-group {top:.1rem;}
+/*聊天窗口工具栏*/
+footer.cmp-bar {padding: 0;}
+footer.cmp-bar .uc-input {width: 100%;padding: 0 10px;position: relative;height:44px;}
+footer.cmp-bar .uc-input .uc-send {position: absolute;right: 13px;bottom: 8px;font-size: 28px;width: 28px;height: 28px;line-height: 28px;}
+footer.cmp-bar .uc-input .uc-send.uc-send-gray {color: #d8d8d8;}
+footer.cmp-bar .uc-input .uc-send.uc-send-blue {color: #51AFF8;}
+footer.cmp-bar .uc-input .uc-input-text {width: 100%;height: 34px;max-height:94px; padding: 5px 45px 5px 18px;margin: 0.15rem 0; border: 1px solid #d5d5d5;border-radius: 15px; font-size: 16px;color: #000;overflow:hidden;background:#fff;word-break:break-all;-webkit-user-select:auto;-webkit-appearance: none;outline: none;}
+footer.cmp-bar .uc-input .uc-input-text::-webkit-input-placeholder {color:#999;}
+.uc-chat-toolbar span.icon-blue {color: #3aadfb;}
+.uc-chat-toolbar span.uc-voice,.uc-chat-toolbar span.uc-more {font-size: 22px;}
+.uc-chat-tool-panel {display: none;position: relative; width: 100%;height: 6.08rem;background: #fff;}
+.uc-chat-tool-panel .cmp-scroll-wrapper {bottom: 1.173rem; background: #efefef;}
+/*聊天工具栏的更多样式*/
+.uc-chat-tool-panel .uc-icon-voice-wrap {width: 100%;text-align: center;}
+.uc-chat-tool-panel .uc-icon-voice-wrap .uc-icon-voice-text {position: relative; font-size: 16px;color: #313f48;padding-top: 0.8rem;padding-bottom: 0.533rem;}
+.uc-chat-tool-panel .uc-icon-voice-wrap .uc-icon-voice-text .uc-voice-time {font-size: 16px;color: #313f48;text-align: center;position: absolute;left: 50%;transform : translate3d(-50%, 0, 0);-webkit-transform: translate3d(-50%, 0, 0);}
+.uc-chat-tool-panel .uc-icon-voice-wrap .uc-icon-voice {width: 2.8534rem;height: 2.8534rem;line-height: 2.8534rem; margin: 0 auto; border-radius: 50%;background: #3aadfb;}
+.uc-chat-tool-panel .uc-icon-voice-wrap .uc-icon-voice i {font-size: 53px;color: #fff;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 {padding: 0;background: #fff;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 .cmp-table-view-cell {padding: 0;border: 0;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 .cmp-table-view-cell .cmp-media-body {color:#8798a4;font-size: 0.374rem;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 .cmp-table-view-cell > a:not(.cmp-btn) {padding: 0; padding-bottom: 0.4rem;}
+.uc-chat-tool-panel .more.cmp-slider {height: inherit;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-slider-group {overflow: hidden;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-slider-group .cmp-slider-item {float: left;padding: 0.666rem;width:100%;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 .cmp-col-xs-4 {width:25%;}
+.uc-chat-tool-panel .cmp-grid-view.cmp-grid-9 .cmp-active {background: #fff;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-slider-indicator {bottom: 0.134rem;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-slider-indicator .cmp-indicator {box-shadow:none;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-slider-indicator .cmp-active.cmp-indicator {background: #3aadfb;}
+.uc-chat-tool-panel .more.cmp-slider .cmp-table-view.cmp-grid-view .cmp-table-view-cell .cmp-media-body {height: inherit;line-height: inherit;margin-top: 0.2rem;}
+.uc-chat-tool-panel .uc-icon-bg {width: 1.467rem;height: 1.467rem;line-height:1.467rem;border-radius: 0.4rem;margin: 0 auto;color: #fff;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-blue {background: #4da9eb;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-red {background: #f2725e;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-yellow {background: #f7b55e;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-green {background: #17c295;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-blue {background: #4da9eb;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-blue {background: #4da9eb;}
+.uc-chat-tool-panel .uc-icon-bg.uc-icon-bg-blue {background: #4da9eb;}
+.uc-chat-tool-panel .uc-icon-bg span {font-size: 0.53rem;}
+.uc-chat-tool-panel .uc-pic-btn {width: 100%;height: 1.173rem;line-height:1.173rem;background: #fafafa;position: absolute;bottom: 0;font-size: 16px;color: #3aadfb;}
+.uc-chat-tool-panel .uc-pic-btn .uc-album {padding: 0 0.614rem 0 0.747rem;}
+.uc-chat-tool-panel .uc-pic-btn .uc-send {display: inline-block; width: 2.14rem;height: 0.91rem;line-height: 0.91rem; border-radius: 0.134rem;background: #3aadfb;margin-top: 0.134rem;color: #fff;text-align: center;margin-right: 0.32rem;float: right;}
+.uc-chat-tool-panel .uc-pic-list {width: 100%;overflow: hidden;padding: 0.43rem 0;}
+.uc-chat-tool-panel .uc-pic-list .uc-pic-li {position: relative; width: auto;height: 4.054rem;float: left;margin-left: 10px;overflow: hidden;border: 2px solid transparent;}/*margin-left要写成像素*/
+.uc-chat-tool-panel .uc-pic-list .uc-pic-li.uc-pic-current {border: 2px solid #3aadfb;}
+.uc-chat-tool-panel .uc-pic-list .uc-pic-li.uc-pic-current i.see-icon-success-circle-fill {position: absolute;top: 0.134rem;right: 0.054rem;color: #3aadfb;}
+.uc-chat-tool-panel .uc-pic-list .uc-pic-li i.uc-no-check {position: absolute;top: 0.187rem;right: 0.187rem;display: block;width: 16px;height: 16px;border-radius: 50%;border: 1px solid #fff;}
+.uc-chat-tool-panel .uc-pic-list .uc-pic-li img {height: 4.054rem;width: auto;}
+.see-icon-success-circle-fill:before {padding-right: 0.134rem;}
+.uc-chat-tool-panel .sendBtn {width:100%;height:0.906rem;background:#f8f8f7;position: absolute;bottom: 0;left: 0;}
+.uc-chat-tool-panel .sendBtn .send_look {float:right;width:2.026rem;height:0.906rem;line-height:0.906rem;background:#ccc;color:#fff;font-size:16px;text-align:center;}
+.uc-chat-tool-panel .emoji_ontainer {display: -webkit-box;padding: 0 0.26rem;width:100%;height:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;/*max-height: 5.174rem;*/overflow-y: scroll;}
+.uc-chat-tool-panel .emoji_ontainer .addIcon_face {display: -webkit-box;-webkit-box-align: center;width: 100%;}
+.uc-chat-tool-panel .emoji_ontainer .addIcon_face .faces_list_hot li {float: left;width: 12.5%;text-align: center;margin: 0.16rem 0;}
+/*表情*/
+.show-emoji-5-1, .show-emoji-5-2, .show-emoji-5-3, .show-emoji-5-4, .show-emoji-5-5,
+.show-emoji-5-6, .show-emoji-5-7, .show-emoji-5-8, .show-emoji-5-9, .show-emoji-5-10,
+.show-emoji-5-11, .show-emoji-5-12, .show-emoji-5-13, .show-emoji-5-14, .show-emoji-5-15,
+.show-emoji-5-16, .show-emoji-5-17, .show-emoji-5-18, .show-emoji-5-19, .show-emoji-5-20,
+.show-emoji-5-21, .show-emoji-5-22, .show-emoji-5-23, .show-emoji-5-24, .show-emoji-5-25,
+.show-emoji-5-26, .show-emoji-5-27, .show-emoji-5-28, .show-emoji-5-29, .show-emoji-5-30,
+.show-emoji-5-31, .show-emoji-5-32{
+    display: inline-block;
+    background: url('../img/emoji.png') no-repeat;
+    overflow: hidden;
+    text-indent: -9999px;
+    text-align: left;
+    vertical-align: middle;background-size: 323px;width: 40px; height: 40px;
+}
+.show-emoji-all{
+    display: inline-block;
+    background: url('../img/emoji.png') no-repeat;
+    overflow: hidden;
+    text-indent: -9999px;
+    text-align: left;
+    vertical-align: -9px;
+    background-size: 243px;width: 30px; height: 30px
+}
+.show-emoji-5-1 { background-position: 0 0;}
+.show-emoji-5-10 { background-position: -40px -40px;}
+.show-emoji-5-11 { background-position: -80px -40px;}
+.show-emoji-5-12 { background-position: -120px -40px;}
+.show-emoji-5-13 { background-position: -160px -40px;}
+.show-emoji-5-14 { background-position: -200px -40px;}
+.show-emoji-5-15 { background-position: -240px -40px;}
+.show-emoji-5-16 { background-position: -280px -40px;}
+.show-emoji-5-17 { background-position: 0 -80px;}
+.show-emoji-5-18 { background-position: -40px -80px;}
+.show-emoji-5-19 { background-position: -80px -80px;}
+.show-emoji-5-2 { background-position: -40px 0;}
+.show-emoji-5-20 { background-position: -120px -80px;}
+.show-emoji-5-21 { background-position: -160px -80px;}
+.show-emoji-5-22 { background-position: -200px -80px;}
+.show-emoji-5-23 { background-position: -240px -80px;}
+.show-emoji-5-24 { background-position: -280px -80px;}
+.show-emoji-5-25 { background-position: 0 -120px;}
+.show-emoji-5-26 { background-position: -40px -120px;}
+.show-emoji-5-27 { background-position: -80px -120px;}
+.show-emoji-5-28 { background-position: -120px -120px;}
+.show-emoji-5-29 { background-position: -160px -120px;}
+.show-emoji-5-3 { background-position: -80px 0;}
+.show-emoji-5-30 { background-position: -200px -120px;}
+.show-emoji-5-31 { background-position: -240px -120px;}
+.show-emoji-5-32 { background-position: -280px -120px;}
+.show-emoji-5-4 { background-position: -120px 0;}
+.show-emoji-5-5 { background-position: -160px 0;}
+.show-emoji-5-6 { background-position: -200px 0;}
+.show-emoji-5-7 { background-position: -240px 0;}
+.show-emoji-5-8 { background-position: -280px 0;}
+.show-emoji-5-9 { background-position: 0 -40px;}
+/*遮罩 - 手指上滑，取消发送*/
+.mask {width: 100%;position: absolute;top: 0;left:0;z-index: 1;display: none;}
+.mask .mask-wrap {width: 100%;position: absolute;display: -webkit-box;-webkit-box-align: center;top: 0;left: 0;}
+.mask .mask-wrap .uc-finger-slide {position: relative; width: 140px;height: 140px;border-radius: 12px;background: rgba(0,0,0,.6);margin: 0 auto;display: -webkit-box;-webkit-box-align: center;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon {position: relative; width: 100%;padding: 0 32px;height: 1.33rem;line-height: 1.25rem;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon i.icon-voicing {font-size: 50px;color: #fff;opacity: .8;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume {position: absolute; display: inline-block; height: 3px;border-radius: 1px;background: #fff;opacity: .8;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section1{width: 10px;bottom: 0;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section2{width: 11px;bottom: 6px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section3{width: 12px;bottom: 12px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section4{width: 13px;bottom: 18px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section5{width: 14px;bottom: 24px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section6{width: 15px;bottom: 30px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section7{width: 16px;bottom: 36px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section8{width: 17px;bottom: 42px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-icon .uc-voice-volume.section9{width: 18px;bottom: 48px;}
+.mask .mask-wrap .uc-finger-slide .uc-finger-slide-text {display: block; width: 100%;text-align: center;color: #fff;opacity:.8;font-size: 12px;position: absolute;bottom: 14px;left: 0;}
+.mask .mask-wrap .uc-cancel-send {position: relative; width: 140px;height: 140px;border-radius: 12px;background: rgba(0,0,0,.6);margin: 0 auto;display: -webkit-box;-webkit-box-align: center;}
+.mask .mask-wrap .uc-cancel-send .uc-cancel-send-text {display: block; width: 126px;text-align: center;color: #fff;opacity:.85;font-size: 12px;position: absolute;bottom: 12px;left: 7px; background: #a52e2c;border-radius: 4px;line-height: 25px;}
+.mask .mask-wrap .uc-cancel-send .uc-prompt-send-text {display: block; width: 126px;text-align: center;color: #fff;font-size: 12px;position: absolute;bottom: 12px;left: 7px;}
+.mask .mask-wrap .uc-cancel-send .uc-cancel-send-icon {position: relative; width: 100%;text-align: center;}
+.mask .mask-wrap .uc-cancel-send .uc-cancel-send-icon i.icon-cancel-voice,
+.mask .mask-wrap .uc-cancel-send .uc-cancel-send-icon i.icon-warning {font-size: 50px;color: #fff;opacity: .8;}
+/*消息气泡箭头样式*/
+.uc-bubble-arrow {display: block;width: 22px;height: 18px;background: url("../img/arrow/icon.png") no-repeat;position: absolute;}
+.uc-bubble-arrow.uc-arrow1 {background-position: -25px 0; top: 0;right: -5px;}
+.uc-bubble-arrow.uc-arrow2 {background-position: -73px 0; top: 0;left: -5px;z-index: 1;}
+.uc-bubble-arrow.uc-arrow3 {background-position: -49px 0; top: 0;left: -2px;z-index: 1;}
+/*转发：发送到浮层*/
+#forwardDiv .cmp-content {height:inherit;}
+#forwardDiv .cmp-scroll-wrapper,#selGroupMemDiv .cmp-scroll-wrapper {background:#fff;}
+#forwardDiv .uc-sel-forward .cmp-table-view-cell:after {height:1px;left:0.32rem;}
+#forwardDiv .uc-sel-forward .cmp-table-view-cell:last-child:after {height:0;}
+#forwardDiv .cmp-scroll-wrapper .uc-forward-li {margin: -0.32rem;}
+#forwardDiv .cmp-scroll-wrapper .uc-recent {background: #f4f4f4;padding: 0 0.32rem;font-size:12px;color:#666;height:0.53rem;line-height:0.53rem;}
+.uc-sel-forward {font-size:16px;color:#333;}
+.uc-sel-forward .cmp-table-view-cell {padding:0.4rem 0.32rem;}
+.uc-sel-forward .cmp-push-right:after {right:0;}
+.uc-sel-forward .cmp-table-view-cell > a:not(.cmp-btn) {margin: -0.4rem -0.32rem;padding-left:0.45rem;}
+.uc-sel-forward .cmp-navigate-right:after, .uc-sel-forward .cmp-push-right:after {right:0.13rem;}
+#forwardDiv .uc-recent-member .cmp-table-view-cell {padding: 0;height: 1.22rem;line-height: 1.22rem;font-size: 16px;}
+.uc-recent-member .cmp-slider-handle.cmp-table {width: 100%;display: -webkit-box;-webkit-box-orient: horizontal;}
+#forwardDiv .uc-recent-member .uc-head {height: 1.22rem;display: -webkit-box;-webkit-box-align: center;margin: 0 .32rem;}
+.uc-recent-member .cmp-media-object {display: block;-webkit-box-pack: center;height: 0.93rem;line-height: 0.93rem;max-width: 0.93rem;}
+.uc-recent-member .cmp-media-body {-webkit-box-flex: 1;text-overflow: ellipsis;white-space: nowrap;margin-right: 10px;}
+#forwardDiv .uc-recent-member .cmp-table-view-cell:after {height:1px;left:0.32rem;}
+.uc-recent-member .cmp-table-view-cell:last-child:after {height:1px;}
+.window_alert_content {background:#fcfcfc;}
+.window_alert_cont input[type='text'] {height:0.96rem;font-size:16px;font-family:'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;border: 1px solid #d7d7d7;}
+#selGroupMemDiv .cmp-content {height:inherit;}
+#selGroupMemDiv .uc-recent-member .cmp-table-view-cell {height: 1.77rem;line-height: 1.7rem;font-size: 16px;padding: 0 .32rem;}
+#selGroupMemDiv .uc-recent-member .cmp-table-view-cell:after {height:1px;left:0;}
+#selGroupMemDiv .uc-recent-member .uc-head {height: 1.7rem;display: -webkit-box;-webkit-box-align: center;margin-right: .32rem;}
+.cmp-segmented_title_content {position: absolute; width: 100%; top: 0;}
+.cmp-v5-search-content .cmp-content-title-search {height:46px;background: #fff;padding: 8px 0.25rem;border: none;}
+.cmp-v5-search-content .cmp-content-title-search input {border: none;background: rgba(3,3,3,0.07);}
+.cmp-search .cmp-placeholder {height: 30px !important;line-height:30px !important;}
+/*转发弹出框*/
+.window_alert_content .container .sendTo .user-info {font-size: 16px;padding-left: 0.32rem;border-bottom: 1px solid #d7d7d7;margin-bottom: 0.26rem;}
+.window_alert_content .container .sendTo .user-info:after {}
+.window_alert_content .container .sendTo .user-text {font-size:16px;color:#999;}
+/*.window_alert_sub {border: 1px solid #d7d7d7;}*/
+.window_alert_sub button {width:49%;}
+.window_alert_sub button:nth-child(2) {border: 1px solid #d7d7d7;}
+.window_alert_sub button.uc-cancel-btn {color:#333;}
+/* 类似iphone 4 DPR1*/
+@media (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 1) {
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice1 {background:url("../img/voice/me-voice1@1x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice2 {background:url("../img/voice/me-voice2@1x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice3 {background:url("../img/voice/me-voice3@1x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice1 {background:url("../img/voice/o-voice1@1x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice2 {background:url("../img/voice/o-voice2@1x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice3 {background:url("../img/voice/o-voice3@1x.png") no-repeat;background-size:100%;}
+}
+/* 类似iphone 5 DPR2*/
+@media (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice1 {background:url("../img/voice/me-voice1@2x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice2 {background:url("../img/voice/me-voice2@2x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice3 {background:url("../img/voice/me-voice3@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice1 {background:url("../img/voice/o-voice1@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice2 {background:url("../img/voice/o-voice2@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice3 {background:url("../img/voice/o-voice3@2x.png") no-repeat;background-size:100%;}
+}
+/* 类似iphone 6 DPR2*/
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice1 {background:url("../img/voice/me-voice1@2x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice2 {background:url("../img/voice/me-voice2@2x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice3 {background:url("../img/voice/me-voice3@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice1 {background:url("../img/voice/o-voice1@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice2 {background:url("../img/voice/o-voice2@2x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice3 {background:url("../img/voice/o-voice3@2x.png") no-repeat;background-size:100%;}
+}
+/*/!* 类似iphone6 plus DPR3*!/*/
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice1 {background:url("../img/voice/me-voice1@3x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice2 {background:url("../img/voice/me-voice2@3x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice3 {background:url("../img/voice/me-voice3@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice1 {background:url("../img/voice/o-voice1@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice2 {background:url("../img/voice/o-voice2@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice3 {background:url("../img/voice/o-voice3@3x.png") no-repeat;background-size:100%;}
+}
+/*/!* 类似ipad DPR 未知*!/*/
+@media (min-device-width: 737px) {
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice1 {background:url("../img/voice/me-voice1@3x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice2 {background:url("../img/voice/me-voice2@3x.png") no-repeat;background-size:100%;}
+  .uc-me-voice .uc-chat-base .uc-me-chat-base .icon-me-voice3 {background:url("../img/voice/me-voice3@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice1 {background:url("../img/voice/o-voice1@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice2 {background:url("../img/voice/o-voice2@3x.png") no-repeat;background-size:100%;}
+  .uc-other-voice .uc-chat-base .uc-other-chat-base .icon-other-voice3 {background:url("../img/voice/o-voice3@3x.png") no-repeat;background-size:100%;}
+  .uc-other-text .uc-chat-base,
+  .uc-me-text .uc-chat-base,
+  .uc-other-voice .uc-chat-base,
+  .uc-me-voice .uc-chat-base,
+  .uc-other-picture .uc-chat-base,
+  .uc-me-picture .uc-chat-base,
+  .uc-other-card .uc-chat-base,
+  .uc-me-card .uc-chat-base,
+  .uc-other-doc .uc-chat-base,
+  .uc-me-doc .uc-chat-base,
+  .uc-other-new .uc-chat-base,
+  .uc-me-new .uc-chat-base,
+  .uc-other-a8 .uc-chat-base,
+  .uc-me-a8 .uc-chat-base{
+  	width:12.3rem;
+  }
+}
+
+/*聊天界面表情样式*/
+.show-emoji-talk-5-1 { background-position: 0 0;}
+.show-emoji-talk-5-10 { background-position: -30px -30px;}
+.show-emoji-talk-5-11 { background-position: -60px -30px;}
+.show-emoji-talk-5-12 { background-position: -90px -30px;}
+.show-emoji-talk-5-13 { background-position: -120px -30px;}
+.show-emoji-talk-5-14 { background-position: -150px -30px;}
+.show-emoji-talk-5-15 { background-position: -180px -30px;}
+.show-emoji-talk-5-16 { background-position: -210px -30px;}
+.show-emoji-talk-5-17 { background-position: 0 -60px;}
+.show-emoji-talk-5-18 { background-position: -30px -60px;}
+.show-emoji-talk-5-19 { background-position: -60px -60px;}
+.show-emoji-talk-5-2 { background-position: -30px 0;}
+.show-emoji-talk-5-20 { background-position: -90px -60px;}
+.show-emoji-talk-5-21 { background-position: -120px -60px;}
+.show-emoji-talk-5-22 { background-position: -150px -60px;}
+.show-emoji-talk-5-23 { background-position: -180px -60px;}
+.show-emoji-talk-5-24 { background-position: -210px -60px;}
+.show-emoji-talk-5-25 { background-position: 0 -90px;}
+.show-emoji-talk-5-26 { background-position: -30px -90px;}
+.show-emoji-talk-5-27 { background-position: -60px -90px;}
+.show-emoji-talk-5-28 { background-position: -90px -90px;}
+.show-emoji-talk-5-29 { background-position: -120px -90px;}
+.show-emoji-talk-5-3 { background-position: -60px 0;}
+.show-emoji-talk-5-30 { background-position: -150px -90px;}
+.show-emoji-talk-5-31 { background-position: -180px -90px;}
+.show-emoji-talk-5-32 { background-position: -210px -90px;}
+.show-emoji-talk-5-4 { background-position: -90px 0;}
+.show-emoji-talk-5-5 { background-position: -120px 0;}
+.show-emoji-talk-5-6 { background-position: -150px 0;}
+.show-emoji-talk-5-7 { background-position: -180px 0;}
+.show-emoji-talk-5-8 { background-position: -210px 0;}
+.show-emoji-talk-5-9 { background-position: 0 -30px;}

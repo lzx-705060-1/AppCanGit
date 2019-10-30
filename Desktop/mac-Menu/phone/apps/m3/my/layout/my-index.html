@@ -1,0 +1,185 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:16
+-->
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>我的首页</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-index.css">
+</head>
+<style>
+.cmp-ios .cmp-content,
+.cmp-android .cmp-content {
+    top: 0!important;
+}
+</style>
+
+<body class="body_bg flex-1 cmp-fullscreen">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+         ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase(),
+                curUrl = window.location.href,
+                isNeedShowHeader = curUrl.match(/ParamHrefMark|isfromnative/)
+            window.isNeedShowHeader = isNeedShowHeader;
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x';
+            } else if (ua.match(/IPHONE|IPAD|IPOD/)) {
+                document.body.className += ' cmp-ios';
+            }
+            if (isNeedShowHeader) {
+                document.body.className += ' showHeader isOther';
+            }
+        })();
+    </script>
+
+<!-- CSS文件里面根据showHeader类名，加载header是否显示-->
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header">
+        <div class="cmp-header-left backBtn cmp-action-back" id="backBtn">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title"><i18n key="my.m3.h5.my"></i18n></div>
+        <div class="cmp-header-right nav-text">
+        </div>
+    </header>
+
+    <div class="person_header">
+        <!-- <div class="person-header-title display_none">
+            <div class="cmp-pull-left cmp-icon display_none" id="backBtn">
+                <span class="see-icon-v5-common-arrow-back"></span>
+                <span class="left_word" id="my"><i18n key="my.m3.h5.back"></i18n></span>
+            </div>
+            <h1><i18n key="my.m3.h5.my"></i18n></h1>
+        </div> -->
+
+        <div class="person_info">
+            <div class="person_head">
+                <div class="person_head_layer"></div>
+            </div>
+            <div class="person_userInfo">
+                <div class="name"></div>
+                <span id="my_personDecoder" class="see-icon-v5-common-qrcode qrcode"></span>
+                <div class="station cmp-ellipsis"></div>
+            </div>
+
+        </div>
+        <div class="wave wave-active">
+            <span class="cloud-1"></span>
+            <span class="cloud-2"></span>
+            <span class="cloud-3"></span>
+        </div>
+    </div>
+    <!-- <div class="mask_wt"></div>
+    <div class="blur_bg"></div> -->
+    <div class="cmp-content flex-1 my_index my_module">
+        <!--列表-->
+        <ul class="cmp-table-view">
+            <!-- 个人信息 -->
+            <!-- <li class="cmp-table-view-cell myindexcell" id="person">
+                <div class="cmp-pull-left">
+                    <div class="person"><span class="iconfont see-icon-m3-person"></span></div>
+                    <span><i18n key="my.m3.h5.personalInformation"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li> -->
+            <!-- 企业信息 -->
+            <li class="cmp-table-view-cell myindexcell" id="company">
+                <div class="cmp-pull-left">
+                    <div class="company"><span class="iconfont see-icon-qiye"></span></div>
+                    <span><i18n key="my.m3.h5.EnterpriseInfo"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+
+            <!-- 我的文件 -->
+            <li class="cmp-table-view-cell myindexcell" id="MyFile">
+                <div class="cmp-pull-left">
+                    <div class="myfile"><span class="icon iconfont see-icon-myfile"></span></div>
+                    <span><i18n key="my.m3.h5.MyFile"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+             <!-- 我的收藏 -->
+             <li class="cmp-table-view-cell myindexcell display_none" id="mycollect">
+                <div class="cmp-pull-left">
+                    <div class="mycollect"><span class="icon iconfont see-icon-mycollect"></span></div>
+                    <span><i18n key="my.m3.h5.mycollect"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+            <!-- 我的钱包 -->
+            <li class="cmp-table-view-cell myindexcell" id="mymoney" style="display:none;">
+                <div class="cmp-pull-left">
+                    <div class="mymoney"><span class="icon iconfont see-icon-money"></span></div>
+                    <span><i18n key="my.m3.h5.mymoney"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+
+ 			<!-- 我的客服 -->
+            <li class="cmp-table-view-cell myindexcell" id="mycustomerservice"  style="display:none;">
+                <div class="cmp-pull-left">
+                    <div class="mycustomerservice"><span class="icon m3-icon-kefu"></span></div>
+                    <span><i18n key="my.m3.h5.mycustomerservice"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+            <!-- 设置 -->
+            <li class="cmp-table-view-cell myindexcell" id="setting">
+                <div class="cmp-pull-left">
+                    <div class="set"><span class="iconfont see-icon-MySettings"></span></div>
+                    <span><i18n key="my.m3.h5.setting"></i18n></span>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right arrow-icon"></span></div>
+            </li>
+
+        </ul>
+
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <!-- cmp组件 -->
+    <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-att.js"></script>
+    <!-- <script src="http://cmp/v/js/cmp-offlineContacts.js"></script> -->
+    <script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>
+    <!-- <script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script> -->
+    <script src="http://cmp/v1.0.0/js/cmp-webviewListener.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-speechRobot.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-distinc.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-index.js')</script>
+</body>
+
+</html>

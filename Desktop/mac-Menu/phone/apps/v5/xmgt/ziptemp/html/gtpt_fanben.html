@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css"/>
+    <!--导入cmp模块的样式文件，http://cmp/v即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/appcan.control.css">
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/appcan.icon.css">
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/ui-base.css">
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/ui-box.css">
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/ui-color.css">
+    <link rel="stylesheet" href="http://xmgt.v5.cmp/v/css/gtpt_fanben.css">
+    <title>个人返本明细</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<!--<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">-->
+<!--    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn">-->
+<!--        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>-->
+<!--        <span class="nav-text"><i18n key="xmgt.label.back"></i18n></span>-->
+<!--    </div>-->
+<!--    <div class="cmp-title">-->
+<!--        <i18n key="xmgt.label.home"></i18n>-->
+<!--    </div>-->
+<!--    <div class="cmp-header-right">-->
+<!--    </div>-->
+<!--</header>-->
+<!-- 内容-->
+<div id="content">
+    <div style="height: 1em;width: 90%"></div>
+    <div style="width: 90%;border: 1px solid #00AEE1;border-radius: 1.5em;height: 1.5em;margin: auto;margin-bottom: 0.5em;">
+        <img src="../img/gt-sousuo.png" style="height: 1em;width: 1em;float: left;margin-top: 0.25em;margin-left: 0.5em;" />
+        <input id ="infoName" type="text" style="width: 74%;border: none;font-size: 1em;line-height: 1.5em;background: none;margin-left: 0.3em;" placeholder="输入项目名搜索:" />
+        <div style="width: 14%;display: inline-block;font-size: 0.8em;border-left: 1px solid;text-align: center;" onclick="select()">
+            搜索
+        </div>
+    </div>
+    <div style="height: 4em;margin-left: 2%">
+        <div style="height: 1.8em;">
+            <div style="line-height: 1.5em; margin-top: 0.2em; text-align: right; font-size: 0.9em;  color :#000000;float: left;width:21%;margin-left: 0.5em;padding-right: 0.5em;">
+                投入金额
+            </div>
+            <div id="zongtouru" style="float: left;height: 1em;background-color: #F4941D;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+            <div id="zongtourunum" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #F4941D;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+        </div>
+        <div style="height: 1.8em;">
+            <div style="line-height: 1.5em;margin-top: 0.2em;font-size: 0.9em; text-align: right; color :#000000;float: left;width: 21%;margin-left: 0.5em;padding-right: 0.5em;">
+                返本金额
+            </div>
+            <div id="zongfanben" style="float: left;height: 1em;background-color: #00AEE1;margin-bottom: 0.3em;margin-top: 0.3em;"></div>
+            <div id="zongfanbennum" style="float: left;line-height: 1.5em;margin-bottom: 0.3em;margin-top: 0.3em;color: #00AEE1;font-size: 0.8em;margin-left: 0.5em;">0万</div>
+        </div>
+    </div>
+    <div style="margin-bottom: 0.5em;height: 2em;text-align: center;font-size: 0.8em;">
+        <div value="1" onclick="qiehuan(this)" id="cishu" style="position: absolute;background-image: url(../img/tixing1.png);background-size: 100% 100%;width: 40%;color: white;line-height: 2em;padding-right: 0.5em;margin-left: 10%;">按项目累计显示</div>
+        <div value="2" onclick="qiehuan(this)" id="leixin" style="position: absolute;background-image: url(../img/tixing7.png);background-size: 100% 100%;width: 40%;color: black;line-height: 2em;padding-left: 0.5em;margin-left: 47%;">按单次返本显示</div>
+    </div>
+    <div id ="gt_fanbenContent"  value ="1" calss="gt_apply_content" style="width: 98%;height:72%; margin-left: 2%;overflow:auto;">
+        <ul id="gt_fanbenlistview" class="gt_listview"></ul>
+    </div></div>
+</div>
+<!-- 导入国际化资源 -->
+<script src="http://xmgt.v5.cmp/v/i18n/xmgt_zh_CN.js"></script><!--导入本应用的中文国际化资源-->
+<script src="http://cmp/v/js/cmp-i18n.js"></script><!--导入cmp国际化组件-->
+<script>
+    cmp.i18n.init("http://xmgt.v5.cmp/v/i18n/", "xmgt");
+    <!--初始化国际化资源-->
+    var xmgtBasePath = "http://xmgt.v5.cmp/v";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script> <!--导入cordova相关-->
+<script type="text/javascript" src="http://cmp/v/js/cmp.js"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="http://xmgt.v5.cmp/v/js/gtpt_fanben.js"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="http://xmgt.v5.cmp/v/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://xmgt.v5.cmp/v/js/yajule.js"></script>
+</body>
+
+</html>
+

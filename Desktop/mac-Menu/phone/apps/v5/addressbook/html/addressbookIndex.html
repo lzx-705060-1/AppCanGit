@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172349" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/apps/v5/addressbook/css/addressbook.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <title id="title">通讯录</title>
+    <style>
+        html {
+            overflow: visible;
+        }
+
+        .add-list-group {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-align: center;
+        }
+
+        .add-list-group .add-list-group-log {
+            margin-left: 6px;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: blue;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .add-list-group .add-list-group-log span {
+            font-size: 18px;
+            color: #fff
+        }
+
+        .add-list-group .add-list-group-name {
+            margin-right: 6px;
+            -webkit-box-flex: 3;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .add-list-group .add-list-group-name span {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .add-list-group .add-list-group-detail {
+            margin-right: 6px;
+            -webkit-box-flex: 1;
+            text-align: right
+        }
+
+        .add-list-group .add-list-group-detail-num {
+            font-size: 14px;
+            color: #333
+        }
+
+        .add-list-person {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-align: center;
+        }
+
+        .add-list-person .add-list-person-img {
+            margin-left: 6px;
+            text-align: left;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+        }
+
+        .add-list-person .add-list-person-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        }
+
+        .add-list-person .add-list-person-name {
+            height: 50px;
+            -webkit-box-flex: 1;
+            text-align: left;
+            margin-left: 10px;
+            padding-top: 5px;
+            border-bottom: 1px solid #ECEAE8;
+        }
+
+        .add-list-person .add-list-person-name span:first-child {
+            font-size: 16px;
+            color: #333;
+        }
+        .add-list-person .add-list-person-name span:not(:first-child) {
+            font-size: 14px;
+            color: #999;
+        }
+        /*跳转 面包屑用*/
+        .add-list-see {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-align: center;
+        }
+
+        .add-list-see .add-list-see-group {
+            margin-left: 6px;
+            -webkit-box-flex: 4;
+            text-align: left;
+        }
+
+        .add-list-see .add-list-see-group span {
+            font-size: 14px;
+            color: #333;
+            display: inline;
+        }
+
+        .add-list-see .add-list-see-detail {
+            margin-right: 6px;
+            -webkit-box-flex: 1;
+            text-align: right
+        }
+
+        .cmp-table-view {
+		    position: relative;
+		    margin-top: 0;
+		    margin-bottom: 0;
+		    padding-left: 0;
+		    list-style: none;
+		}
+        .shadowDiv{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 30;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<div class="cmp-content position_relative cmp-content-none">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <!--搜索框-->
+        <div id="searchDiv" style=" width: 100%; top: 0;background: #fff;">
+            <div id="search" class="position_relative boder_bottom">
+                <div class="position_relative cmp-v5-search-content">
+                    <div class="cmp-segmented_title_content ">
+                        <div class="cmp-content-title-search m1_search_title " style="padding-right: 9px;">
+                            <div id="cmp_search_textHandler" class="cmp-input-row cmp-search search_handler cmp-v5-transition-width-return">
+                                <form id="cmp-search-input" onsubmit="searchFun();return false;" action=""></form>
+                                <span id="searchButton" class="cmp-icon cmp-icon-search search-btn" style="display: none"></span>
+                                <input id="searchInput" type="search" name="search" form="cmp-search-input"  placeholder="输入姓名，手机号查询" class="btn cmp-input-clear cmp-v5-search-textBtn" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--跳转-->
+        <div id="jumpToGroupDiv" style=" width: 100%; top: 45px;height: 50px;background-color: #fff;border-bottom: 1px solid #ECEAE8;border-top: 1px solid #ECEAE8;">
+            <div class="add-list-see">
+                <div id="pathZone" class="add-list-see-group" style="display:inline-block;height: 20px">
+                </div>
+            </div>
+        </div>
+        <!-- 单位选择 -->
+        <div id="selectAccountDiv" style=" width: 100%; top: 45px;height: 50px;background-color: #fff;border-bottom: 1px solid #ECEAE8;border-top: 1px solid #ECEAE8;" >
+        </div>
+        <div id="addressBookList" class="cmp-scroll-wrapper" style="margin-top: 100px">
+            <div class="cmp-scroll">
+                <div class="news_content" id="listDiv">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="addressBook_listUl">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="shadowDiv" class="shadowDiv"></div>
+<script type="text/html" id="addressBookRow">
+    <% var hasDept = false; %>
+    <% var firstMember = true; %>
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i]; %>
+    <% var name = (obj.n.length > 15 ? (obj.n.slice(0, 15) + "...") : obj.n); %>
+    <% if( obj.t == "Account"){ %>
+            <% hasDept = true; %>
+            <li class="addressBookAccountRow" style=" width: 100%;height: 50px;" orgId = "<%=obj.i%>" orgType = "account">
+                <div class="add-list-group">
+                    <div class="add-list-group-log" style="background-color: rgb(<%=getRandomColor(obj.n)%>)">
+                        <span ><%=getTitleChar(obj.n)%></span>
+                    </div>
+                    <div style="display: -webkit-box;-webkit-box-align: center;height: 50px;-webkit-box-flex: 1;border-bottom: 1px solid #ECEAE8;">
+                        <div class="add-list-group-name">
+                            <span><%=escapeStringToHTML(name)%></span>
+                        </div>
+                        <div class="add-list-group-detail" style="">
+                            <span class="add-list-group-detail-num" style="color: #999;"><%=obj.nm%></span>
+                            <span class="cmp-icon iconfont see-icon-v5-common-arrow-right" style="color: #999;font-size: 14px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <% } %>
+        <% if( obj.t == "Department"){ %>
+            <% hasDept = true; %>
+            <li class="addressBookDeptRow" style=" width: 100%;height: 50px;" orgId = "<%=obj.i%>" orgType = "dept">
+                <div class="add-list-group">
+                    <div class="add-list-group-log" style="background-color: rgb(<%=getRandomColor(obj.n)%>)">
+                        <span ><%=getTitleChar(obj.n)%></span>
+                    </div>
+                    <div style="display: -webkit-box;-webkit-box-align: center;height: 50px;-webkit-box-flex: 1;border-bottom: 1px solid #ECEAE8;">
+                        <div class="add-list-group-name">
+                            <span><%=escapeStringToHTML(name)%></span>
+                        </div>
+                        <div class="add-list-group-detail" style="">
+                            <span class="add-list-group-detail-num" style="color: #999;"><%=obj.nm%></span>
+                            <span class="cmp-icon iconfont see-icon-v5-common-arrow-right" style="color: #999;font-size: 14px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <% } %>
+        <% if( obj.t == "Member"){ %>
+            <% if( hasDept && firstMember){ %>
+            <% firstMember = false; %>
+            <li style=" width: 100%;height: 10px;background-color: rgb(241, 241, 241);">
+                <div style="height:10px;margin-left: 50px;border-bottom: 1px solid #ECEAE8;">
+                </div>
+            </li>
+            <% } %>
+            <li class="addressBookMemberRow" style=" width: 100%;height: 50px;" orgId = "<%=obj.i%>" orgType = "member">
+                <div class="add-list-person">
+                    <div class="add-list-person-img">
+                        <img src="<%=obj.img%>">
+                    </div>
+                    <div class="add-list-person-name">
+                        <span><%=escapeStringToHTML(name)%></span><br>
+                        <span><%=escapeStringToHTML((obj.pN.length > 15 ? (obj.pN.slice(0, 15) + "...") : obj.pN))%></span>
+                    </div>
+                </div>
+            </li>
+        <% } %>
+    <% } %>
+</script>
+<script id="createPath" type="text/html">
+    <% var obj = this; %>
+    <% for(var i = 0,len = this.length;i < len ; i++){ %>
+    <%     var path = this[i]; %>
+    <%     if(i == len-1){ %>
+        <span id="nowPath" orgId="<%=path.i%>" orgType="<%=path.t%>"><%=escapeStringToHTML(path.n) %></span>
+    <%     }else{ %>
+        <span class="prevPath" id="prevPath_<%=path.i%>" style="color: #5abafb" orgId="<%=path.i%>" orgType="<%=path.t%>"><%=escapeStringToHTML(path.n) %></span>
+        <span>></span>
+    <%     } %>
+    <% } %>
+
+</script>
+<script id="createAccountSelect" type="text/html">
+    <% var obj = this; %>
+    <div class="add-list-group">
+		<%if(obj.existLogo == true){%>
+			<!--<div class="account-logo">-->
+				<!--<span ><img src="<%=cmp.origin%><%=obj.logoUrl%>" width="30" height="30"></span>-->
+			<!--</div>-->
+		<%}else{%>
+			<div class="add-list-group-log" style="background-color: rgb(<%=getRandomColor(obj.n)%>)">
+				<span ><%=getTitleChar(obj.n)%></span>
+			</div>
+		<%}%>
+		<div class="add-list-group-name">
+            <% var text = (obj.name.length > 15 ? (obj.name.slice(0, 15) + "...") : obj.name); %>
+            <span><%=escapeStringToHTML(text) %></span>
+        </div>
+        <div class="add-list-group-detail" style="">
+            <span class="cmp-icon iconfont see-icon-v5-common-arrow-right" style="color: #999;font-size: 14px;"></span>
+        </div>
+    </div>
+</script>
+<script id="createAccountSelectList" type="text/html">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <% var obj = this[i]; %>
+        <li class="addressBookAccountRow" style=" width: 100%;height: 50px;" orgId = "<%=obj.i%>" orgType = "account">
+            <div class="add-list-group">
+                <div style="display: -webkit-box;-webkit-box-align: center;height: 50px;-webkit-box-flex: 1;margin-left: 10px;border-bottom: 1px solid #ECEAE8;">
+                    <div class="add-list-group-name" style="margin-left: 4px">
+                        <% var text = (obj.n.length > 15 ? (obj.n.slice(0, 15) + "...") : obj.n); %>
+                        <span><%=escapeStringToHTML(text) %></span>
+                    </div>
+                    <div class="add-list-group-detail" style="">
+                        <span class="add-list-group-detail-num" style="color: #999;"></span>
+                        <span class="cmp-icon iconfont see-icon-v5-common-arrow-right" style="color: #999;font-size: 14px;"></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    <% } %>
+</script>
+<script src="/seeyon/m3/apps/v5/addressbook/i18n/Addressbook_zh_CN.js?buildversion=181210172349"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172349"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/addressbook/i18n/","addressbook",null,"?buildversion=181210172349");
+</script>
+<script type="text/javascript">
+    var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+</script><script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/addressbook/js/addressbook-jssdk.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-scrollBox.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/addressbook/js/flexible.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/addressbook/js/addressbookIndex.js?buildversion=181210172349"></script>
+
+</body>
+</html>

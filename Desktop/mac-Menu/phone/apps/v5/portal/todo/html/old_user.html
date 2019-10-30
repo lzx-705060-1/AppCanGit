@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<!--固定meta写法-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- css样式 -->
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433"/>
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172433"/>
+	<!--导入cmp模块的样式文件，/seeyon/m3/cmp即构建任务中被替换成真实路径的标识-->
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/font-awesome.min.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.control.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.icon.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-base.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-box.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-color.css?buildversion=181210172433">
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/old_user.css?buildversion=181210172433">
+	<title>绑定AD账号</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">
+	<div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn" style="display: none">
+		<span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+		<span class="nav-text">返回</span>
+	</div>
+	<div class="cmp-title">
+		绑定AD账号
+	</div>
+	<div class="cmp-header-right" style="display: none">
+		<div class="t-btn-w1 ub-img uwh-tBtn"></div>
+	</div>
+</header>
+<!-- 内容-->
+<div class="cmp-content">
+	<div class="ub ub-ver uinn-a3 ub-fv">
+		<div class="ub ub-ver uinn uinn-at1">
+			<form method="get">
+				<div class="umar-a ubb bc-border">
+					<div class="ub ub-ac ubb umh5 bc-border ">
+						<div class=" uinput ub ub-f1">
+							<div class="uinn fa fa-user sc-text"></div>
+							<input placeholder="AD用户" type="text" class="ub-f1" id="olduser">
+						</div>
+					</div>
+					<div class="ub ub-ac ubb umh5 bc-border ">
+						<div class=" uinput ub ub-f1">
+							<div class="uinn fa fa-eye sc-text"></div>
+							<input placeholder="AD密码" id="oldpwd" type="password" class="ub-f1">
+						</div>
+					</div>
+				</div>
+				<div class="ub ub-ver">
+					<div class="uinn-at1">
+						<div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="test">
+							确定
+						</div>
+					</div>
+				</div>
+				<!--
+                <div class="ub ub-ver">
+                    <div class="uinn-at1">
+                        <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="submit">
+                            绑定
+                        </div>
+                    </div>
+                </div>
+                -->
+				<button type="submit"class="uinvisible"></button>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433"></script><!--导入cmp国际化组件-->
+<script>
+	cmp.i18n.init("/seeyon/m3/apps/v5/portal/todo/i18n/", "olddaiban");
+	<!--初始化国际化资源-->
+	var olddaibanBasePath = "/seeyon/m3/apps/v5/portal/todo";
+	<!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/jquery-1.7.2.min.js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/old_user.js?buildversion=181210172439"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/yajule.js?buildversion=181210172433"></script>
+</body>
+
+</html>

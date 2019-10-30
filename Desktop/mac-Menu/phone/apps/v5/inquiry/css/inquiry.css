@@ -1,0 +1,418 @@
+
+
+/*
+  Ms Code/ 问卷调查与讨论  样式模块
+*/
+
+/*m1h5迁移*/
+.file-index-content .cmp-list-cell-info{overflow: hidden;line-height: 44px;padding-left: 18px;width: 80% !important;}
+.file-index-content .cmp-list-cell{ padding: 10px;padding-left: 18px;padding-right: 24px;}
+.file-index-content .cmp-list-navigate{width: 5%;text-align: right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.file-index-content .cmp-list-navigate a{color: #666666;}
+.file-index-content .file_indie .list_cont_info{line-height: 20px;}
+.file-index-content .file_indie .cmp-list-cell-info .list_title_name a{font-size: 16px;color: #000000;}
+.cmp-list-cell .cmp-list-cell-info .list_cont_info{color: #666666;}
+
+/*问卷调查*/
+*{font-family: "microsoft yahei";}
+.survey_container{}
+.survey_container .title{width: 100%;font-size: 18px;color: #192b37;
+text-align: center;padding: 12px 12px 12px 12px;}
+/*.survey_container .quest_img{ height: 143px;}*/
+.survey_container .quest_img img{width: 100%;height: 100%;}
+.survey_container .content{background-color: #fff;color: #333333;}
+.survey_container .content .prompt{font-size: 16px;color: #999;text-align: justify;}
+.survey_container .content .formContent{padding: 4px 3% 2% 3%;}
+.survey_container .content .formContent .tal{display: block;font-size: 16px;padding-top: 12px;padding-bottom: 8px;line-height: 22px;}
+.survey_container .content .formContent .inputText{outline: #3aadfb;border-color: #e6e6e6;}
+.survey_container .content .formContent input[type='radio']{left: 10px;top: 11px;}
+.survey_container .content .formContent input[type='checkbox']{left: 10px;top: 11px;}
+.survey_container .content .formContent .cmp-input-row label{padding-left: 42px;}
+.survey_container .content .formContent .formOther{height: 102px;}
+.survey_container .content .formContent .formOther .inputText{    width: 85%;
+    background-color: #fff;border-radius: 3px;margin-right: 5px;padding-left: 15px;border: 1px #ccc solid;}
+.survey_container .content .formContent .cmp-input-group{margin-bottom: 10px;}
+.survey_container .content .formContent .cmp-input-group{border-radius: 3px;border: 1px #e6e6e6 solid;}
+.survey_container .content .formContent .cmp-input-group .cmp-input-row:after{left: 0;}
+.survey_container .content .Hint_Content .Hint{background-color: #fb7f60;width: 100%;height: 40px;line-height: 40px;
+font-size: 16px;margin-top: 30px;padding-left: 12px;color: #fff;}
+.survey_container .content .Hint_Content .formContent .inputText{background-color: #ffece8;}
+/*对单选复选图标更换*/
+.formContent .cmp-radio input[type='radio']:before{content:"\e61d";font-family: "see-icon" !important;font-size: 20px;}
+.formContent .cmp-radio input[type='radio']:checked:before{content:"\e61e";font-family: "see-icon" !important;font-size: 20px;}
+.formContent .cmp-checkbox input[type='checkbox']:before{content: '\e60b';font-family: "see-icon" !important;font-size: 20px;}
+.formContent .cmp-checkbox input[type='checkbox']:checked:before{content: '\e607';font-family: "see-icon" !important;font-size: 20px;}
+
+
+.survey_container .phoneOSContent{overflow: hidden;}
+.survey_container .phoneOSContent .OS{min-height: 180px;width: 49%;border-radius: 7px;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.17);background-color: #fff;margin-bottom: 8px;display: inline-flex;border: 1px solid #e6e6e6;}
+.survey_container .phoneOSContent .OS .select{text-align: center;}
+.survey_container .phoneOSContent .OS .select.TextMore{ overflow: hidden;}
+.survey_container .phoneOSContent .OS .select.TextMore .OSText{margin-top: -4px;
+    -webkit-line-clamp: 3;overflow: hidden;-webkit-box-orient: vertical;}
+.survey_container .phoneOSContent .OS img{width: 80%;margin: 15px 15px 5px 15px;}
+.survey_container .phoneOSContent .OS .radio_btn{width: 30px;height: 30px;display: inline-block;
+    vertical-align: middle;}
+.survey_container .phoneOSContent .OS .OSText{width: 75%;vertical-align: top;float: right;;
+position: relative;display: -webkit-box;margin-bottom: 6px;text-align: left;}
+
+.survey_container .phoneOSContent .OS .OSText .more{position: absolute;right: 12px;bottom: 3px;
+    transform: rotate(90deg);color: #aaa;}
+.survey_container .phoneOSContent .OS .radio_btn input{top:-2px;right: 0;left: 7px;}
+.survey_container .submit{background-color: #3aadfb;font-size: 15px;width: 250px;height: 40px;
+border-color:#3aadfb ;padding:0px;margin: 37px auto 70px auto;border-radius: 5px;}
+/*调查-完成*/
+.survey_finish{padding: 45px 10px 0px 10px;font-size: 16px;width: 100%;text-align: center;color: #333333;}
+.display_hide{display: none;}
+.inputText_red{background-color: #ffece8 !important;}
+.cmp-ellipsis-3 {display: -webkit-box!important;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;}
+.cmp-input-group .cmp-input-row{height: auto;min-height: 40px;}
+.cmp-input-group .cmp-input-row span{;font-size: 16px;line-height: 21px;}
+.cmp-input-group .cmp-input-row label{padding: 10px 15px 8px 15px;}
+.cmp-input-row .input-more{width: 86%;background-color: #fff;border-radius: 3px;margin-right: 12px;padding-left: 15px;border: 1px #ccc solid;margin-bottom: 11px;}
+
+.survey_container .content .formContent input[type='text']:focus{
+    border-color: #4a90e2;
+}
+.survey_container .content .formContent textarea:focus{
+    border-color: #4a90e2;
+}
+.cmp-input-group:before{
+    height: 0;
+}
+.cmp-input-group:after{
+    height: 0;
+}
+.inputMarB{
+    margin-bottom: 0px !important;
+}
+.icon-bofang:before{
+    content: "";
+}
+.icon-all:before{
+    content: " ";
+    background: url(../img/1.png);
+    display: block;
+    height: 7px;
+    width: 14px;
+    margin: 0 auto;
+}
+.icon-sub:before{
+    content: " ";
+    background: url(../img/2.png);
+    display: block;
+    height: 7px;
+    width: 14px;
+    margin: 0 auto;
+}
+.cmp-input-group .cmp-input-row:after{
+    height: 0;
+}
+.input-row{
+    border-bottom: 1px #e6e6e6 solid;
+}
+.word_break{
+    word-break: break-all;
+}
+header{background-color: #4a90e2!important;}
+.cmp-radio input[type=radio][disabled]:before, .cmp-checkbox input[type=checkbox][disabled]:before{
+    opacity: 1;
+    color: #E1E1E1;
+}
+
+.cmp-table-cell .title{
+    line-height: 1.5;
+}
+
+.news_content .cmp-table-view {
+    background-color: #efeff4;
+}
+
+.news_content .cmp-table-view .cmp-table-view-cell {
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.cmp-table-view-cell .inq_margin{
+    height: 30px;
+    padding: 3px 0px 2px 0px;
+}
+
+.cmp-table-view-cell:after{
+    height: 0px;
+}
+.cmp-bar .cmp-action-back{
+    font-size: 16px;
+    padding-top: 13px;
+}
+
+/*调查列表*/
+#all_inq,#bul_list,.cmp-pull-bottom-pocket.next-page{background-color: #f3f3f3;}
+.list-cell{padding: 13px 0 5px 0}
+.list-left{width: 62px;float: left;}
+.list-img{margin-left: 12px;margin-right: 10px;}
+.list-img img{width: 40px;height:40px;border-radius: 100%;}
+.list-right{width: 83%;float: right;}
+@media screen and (max-width: 360px) {.list-right{width: 80%;float: right;}}
+.list-surveyName{margin-right: 20px;text-align: justify;}
+.list-surveyName span{font-size: 16px;color: #333;font-weight: bold;}
+.list-createUserName{line-height: 14px;position: relative;text-align: center;}
+.list-createUserName span{font-size: 14px;color: #999;}
+.list-middle{padding: 8px 0 0 0;margin-right: 20px;overflow: hidden;}
+.list-bottom{padding: 0 0 5px 0;margin-right: 20px;overflow: hidden;}
+.list-per,.list-date{float: left;}
+.list-per span{font-size: 14px;color: #999;}
+.list-date span{font-size: 14px;color: #999;}
+input,textarea,input[type='search']{-webkit-appearance: none;}
+
+.cmp-table-view:before{height: 0;}
+.cmp-table-view:after{height:0;}
+#body_inquiry_body{margin-bottom: 10px;}
+.marBIm{margin-bottom: 10px!important;padding-left:10px!important;padding-right:10px!important;}
+.input-text{margin-top: 5px;margin-bottom: 15px;}
+
+/*查看大图*/
+.cmp-slider-img-text{
+    position: absolute;
+    line-height: 25px;
+    right: 0;
+    bottom: 70px;
+    font-size: 14px;
+    color: #ccc;
+    z-index: 86;
+    width: 100%;
+    text-align: center;
+}
+.cmp-slider-item img{
+    top:40%;
+}
+.cmp-sliders-basicDiv{
+    background: #000000;
+}
+#bigImgBtn{
+    width: 19%;
+    /*margin-left: 40.5%;*/
+    border: rgba(256,256,256,.5) solid 1px;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,.2);
+    color: white;
+}
+.cmp-slider-img-text #bigImgBtn{
+    margin-left: 40.5%;
+}
+.cmp-slider-text{
+    color: white;
+}
+
+/*此处添加header的样式，如果组件样式已修改可以删除*/
+header{
+    background-color: #ffffff!important;
+}
+header a{
+    color: #4a90e2!important;
+}
+header span{
+     color: #333333!important;
+}
+header h1{
+    color: #333333!important;
+}
+/**/
+/*审批样式*/
+.body_approval_css{position: relative;padding: 16px 12px 12px 12px;}
+.body_approval_line1:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    bottom: 0;
+    background: #ccc;
+    -webkit-transform: scale(0.5);
+}
+.body_approval_line2:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 0;
+    bottom: 0;
+    background: #ccc;
+    -webkit-transform:scale(0.5);
+}
+.body_approval_css .body_approval_title{line-height: 20px;font-size: 20px;color: #333;}
+.body_approval_css .body_approval_time{line-height: 14px;font-size: 14px;color: #999;margin-top: 12px;}
+.body_approval_css .body_approval_person{line-height: 14px;font-size: 14px;color: #999;margin-top: 10px;}
+.body_approval_css .body_approval_block{line-height: 14px;font-size: 14px;color: #999;margin-top: 10px;}
+
+#approval{position: fixed;bottom: 0;width: 100%;z-index: 11;background-color: #E7ECF0;}
+#approval:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    top: 0;
+    background: #d0d5da;
+    -webkit-transform:scale(0.5);
+}
+#approval .app-edit{border-radius: 10px;margin: 10px;overflow-y: auto;padding: 5px;font-size: 16px;line-height: 16px;background-color: #fff;}
+#approval .app-btns{margin: 0 10px 10px 10px}
+#approval .app-btns .app-no{width: 2.93rem;height: 30px;line-height:30px;float: left;border-radius: 50px;text-align: center;border: 1px solid #3aadfb;}
+#approval .app-btns .app-no span{font-size: 16px;color: #3aadfb;}
+#approval .app-btns .app-yes{width: 2.93rem;height: 30px;line-height:30px;margin-left: .33rem;float: left;background-color: #3aadfb;border-radius: 50px;text-align: center;}
+#approval .app-btns .app-yes span{font-size: 16px;color: #fff;}
+#approval .app-btns .app-ok{width: 2.93rem;height: 30px;line-height:30px;float: right;background-color: #3aadfb;border-radius: 50px;text-align: center;}
+#approval .app-btns .app-ok span{font-size: 16px;color: #fff;}
+
+#inquiryFoot{position: fixed;bottom: 0;width: 100%;z-index: 11;background-color: #E7ECF0;}
+#inquiryFoot:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    top: 0;
+    background: #d0d5da;
+    -webkit-transform:scale(0.5);
+}
+#inquiryFoot .app-btns{margin: 10px}
+#inquiryFoot .app-btns .app-del{width: 2.93rem;height: 30px;line-height:30px;float: left;border-radius: 50px;text-align: center;border: 1px solid #3aadfb;}
+#inquiryFoot .app-btns .app-del span{font-size: 16px;color: #3aadfb;}
+#inquiryFoot .app-btns .app-publish{width: 2.93rem;height: 30px;line-height:30px;margin-left: .33rem;float: left;background-color: #3aadfb;border-radius: 50px;text-align: center;}
+#inquiryFoot .app-btns .app-publish span{font-size: 16px;color: #fff;}
+#inquiryFoot .app-btns .app-audit{width: 2.93rem;height: 30px;line-height:30px;float: right;background-color: #3aadfb;border-radius: 50px;text-align: center;}
+#inquiryFoot .app-btns .app-audit span{font-size: 16px;color: #fff;}
+/**/
+/*2017年1月11日17:12:08*/
+*{
+    font-family: "Microsoft Yahei", sans-serif;
+}
+.cmp-content{background-color: #f4f4f4;}
+header{
+    position: relative;
+    background-color: rgba(254,254,254,.9)!important;
+}
+header a{
+    color: #3aadfb!important;
+}
+header span,header h1{
+    color: #333333!important;
+    font-size: 18px!important;
+}
+header .inquiry-back{display: inline-block;float: left;margin-top: 11px;}
+header .inquiry-back span{font-size: 16px!important;color: #3aadfb!important;}
+.cmp-bar .cmp-title{left:60px;right: 60px;}
+header:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    bottom: 0;
+    background: #d4d4d4;
+    -webkit-transform:scale(0.5);
+}
+.news_content .cmp-table-view .cmp-table-view-cell{position: relative;}
+.news_content .cmp-table-view .cmp-table-view-cell:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+.news_content .cmp-table-view .cmp-table-view-cell:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+.list-createUserName:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    /*background-color: #d4d4d4;*/
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+.cmp-radio input[type='radio']:checked:before, .cmp-checkbox input[type='checkbox']:checked:before{color: #3aadfb;}
+.cmp-radio input[type='radio']:before, .cmp-checkbox input[type='checkbox']:before{color: #d3d3d3;}
+#body_inquiry_head .body_approval_title{padding: 12px 12px 0 12px;line-height: 20px;}
+#body_inquiry_head .body_approval_time{padding: 5px 12px 0 12px;line-height: 14px;}
+#body_inquiry_head .body_approval_person ,#body_inquiry_head .body_approval_area{padding: 3px 12px 0 12px;line-height: 14px;}
+#body_inquiry_head .body_approval_block{padding: 3px 12px 12px 12px;line-height: 14px;}
+#body_inquiry_head .body_approval_title span{font-size: 20px;color: #333;}
+#body_inquiry_head .body_approval_time span{font-size: 14px;color: #666;}
+#body_inquiry_head .body_approval_person span,#body_inquiry_head .body_approval_area ,#body_inquiry_head .body_approval_area span{font-size: 14px;color: #666;}
+#body_inquiry_head .body_approval_block span{font-size: 14px;color: #666;}
+a{
+    text-decoration: none!important;
+}
+a:visited{
+    text-decoration:none!important;
+}
+a:hover{
+    text-decoration:none!important;
+}
+a:active{
+    text-decoration:none!important;
+}
+textarea.inputText.inputMarB.marBIm{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#att_list:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#att_list:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+@media screen and (min-width: 767px) {
+    #approval .app-btns .app-ok,#approval .app-btns .app-yes,#approval .app-btns .app-no{
+        width:4.4rem;
+    }
+}

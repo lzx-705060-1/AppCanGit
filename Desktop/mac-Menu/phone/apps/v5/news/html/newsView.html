@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+  	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172558" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/news/css/news.css?buildversion=181210172558" rel="stylesheet" type="text/css" />
+    <!-- 正文组件样式css -->
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=181210172558">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172558">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172558">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172558">
+    <title id="title"></title>
+    
+</head>
+<body class="cmp-fullscreen">
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<div class="cmp-content cmp-content-none position_relative">
+    <div class="cmp-segmented_title_content"  id="news_brief">
+    </div>
+    <div class="cmp-control-content cmp-active" id="news_content_par">
+        <div class="news-content" id="news_content"></div>
+    </div>
+    <div id="scroll" class="cmp-scroll-wrapper comment_animation" style="background-color:#fff;">
+        <div class="cmp-scroll"  style="min-height: 100%;">
+            <div class="NewsCenterList" >
+                <div class="NewsCenterDetails" >
+                    <div id="attachmentList"></div>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-shade" style="position:absolute;width: 100%;height: 37px;z-index: 3;display: none;"><!-- 滚动遮罩 --></div>
+    </div>
+    <div id="replyDiv" class="cmp-scroll-wrapper comment_animation" style="background-color:#fff;">
+        <div class="cmp-scroll"  style="min-height: 100%;">
+            <div class="NewsCenterDetails" >
+                <div class="fold_list_title" id="reply_sum" style="display:none;"></div>
+                <div class="news-comment-contents" style="position: relative;">
+                    <ul class="cmp-list-content replyList news-comment-one" id="news_reply"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-shade1" style="position:absolute;width: 100%;height: 37px;z-index: 3;display: none;"><!-- 滚动遮罩 --></div>
+    </div>
+</div>
+<footer id="footer_num" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview but_custom_content" style="display: none;" >
+    <div id="replyFooterDiv1">
+        <div style="margin-right: 50px;padding-top: 9px">
+            <div id="intoInputBtn" ><span style="padding-left: 10px"><i18n key="news.h5.saySomething"></i18n></span></div>
+        </div>
+        <div style="position: absolute;top: 0;right: 0;height: 50px;line-height: 50px;width: 40px;text-align: center;">
+            <span id="praiseIcon1" onclick="newsPrise()" class="see-icon-v5-common-praise" style="color: #48a0de;font-size: 20px"></span>
+        </div>
+    </div>
+    <div id="replyFooterDiv2" class="but_custom matter" style="display:none;">
+        <input style="display: none;" class="cmp-not-trans input_comment" id="reply_text" type="text" placeholder='<i18n key="news.h5.saySomething"></i18n>' onblur="inputBlurFunction()">
+        <div class="editDivOuter">
+            <div id="reply_content" contenteditable="true" onfocus="content_div_focus();" onblur="content_div_blur();" oninput="checkInputValue()"></div>
+        </div>
+        <div class="but_custom send">
+            <span class="reply_gray" id="send_reply" style=""><i18n key="news.h5.send"></i18n></span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+<div id="reply_shade" style="position:fixed;width:100%;height:100%;background:#fff;opacity:.2;z-index:4;top:0;display:none;"></div>
+
+<footer id="approval"  style="display: none;">
+    <div class="app-edit" contenteditable="true" id="auditInput" style="-webkit-user-select:text;" onfocus="auditInput_focus();" onblur="auditInput_blur();"></div>
+    <div class="app-btns">
+        <div class="app-no auditTap" value="noaudit">
+            <span  value="noaudit"><i18n key="news.h5.audit.notPass"></i18n></span>
+        </div>
+        <div class="app-yes auditTap" value="audit">
+            <span value="audit"><i18n key="news.h5.audit.pass"></i18n></span>
+        </div>
+        <div class="app-ok auditTap" value="publish">
+            <span value="publish"><i18n key="news.h5.audit.passAndPublish"></i18n></span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+<footer id="news-view-operate" style="display: none">
+    <div style="margin-top: 17px;">
+        <div class="news-view-operate-store" id="collection">
+            <span class="news-view-operate-store-icon"></span>
+            <span class="news-view-operate-store-name"></span>
+            <div class="news-view-operate-border">
+                <div></div>
+            </div>
+        </div>
+        <div class="news-view-operate-share" id="share">
+            <span class="news-view-operate-share-icon see-icon-v5-common-transmit"></span>
+            <span class="news-view-operate-share-name"><i18n key="news.h5.share"></i18n></span>
+            <div class="news-view-operate-border"><div></div></div>
+        </div>
+        <div class="news-view-operate-comment" id="comment">
+            <span class="news-view-operate-comment-icon see-icon-v5-common-comment"></span>
+            <span class="news-view-operate-comment-name"></span>
+            <div class="news-view-operate-border"><div></div></div>
+        </div>
+        <div class="news-view-operate-comment" id="praise" onclick="newsPrise()">
+            <span id="praiseIcon" class="news-view-operate-comment-icon see-icon-v5-common-praise" style="color: #48a0de;"></span>
+            <span id="priseTextSpan" class="news-view-operate-comment-name"><i18n key="news.h5.likes"></i18n></span>
+            <div class="news-view-operate-border"><div></div></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+<script type="text/html"  id="news_brief_js">
+    <div class="NewsCenterDetails-title">
+        <ul>
+            <li class="cmp-list-cell ">
+                <div class="cmp-list-cell-info" style="width: 100%;">
+                    <span style="word-break: break-all;color: #333;" class=" cmp-pull-left list_title_name width_69">
+                        <%=escapeStringToHTML(this.title) %>
+                    </span>
+                    <div class="newsTitleInfo">
+                        <div id="headImg" class="headImg" style="background-color: rgb(<%=getRandomColor(this.showPublishName)%>)">
+                            <span ><%=getTitleChar(this.showPublishName)%></span>
+                        </div>
+                        <h6 class="clear_left" style="margin-left: 35px;line-height: 14px;margin-bottom: 0;" id="_clear_left">
+                            <span id="showPubSpan"><%=escapeStringToHTML(this.showPublishName) %></span>
+                        </h6>
+                        <h6 class="list_cont_info" id="list_cont_info">
+                            <span class="cmp-pull-left cmp-ellipsis" style="width:60%;">
+                                <span id="_shareFrom"><span class="cmp-h6"><%=this.publishTime %></span>-<%=escapeStringToHTML(this.typeName) %></span>
+                            </span>
+                            <span class="cmp-pull-right" style="width:40%;text-align: right;padding-right: 6px;" id="buttonCotrol">
+                            <% if(this.attachmentList.length>0){ %>
+                                <button style="border:none;background:none;padding:0px;margin-top: -4px;margin-left: 5px;color: #51a4df;" class="cmp-btn" id="attchmentFile" >
+                                <span class="cmp-icon iconfont see-icon-accessory link_to" style="font-size: 13px;color: #48a0de;"></span>
+                                    <span style="color: #999999;font-size: 12px;margin-left: -3px;"><%=this.attachmentList.length%></span>
+                                </button>
+                            <% } %>
+                            <% if(this.subState != 10){ %>
+                                <span class="cmp-icon iconfont see-icon-v5-common-view" style="font-size: 14px;color:#c8c7cd;margin-left: 6px;"></span>
+                                <span style="color: #999999;font-size: 12px;margin-left: -1px;"><%=this.readCount %></span>
+
+                                <span id="newsPraise"  <% if(this.prise=="1"){%> class="cmp-icon iconfont praise-btn see-icon-v5-common-praise cmp-active " style="color: #c8c7cd;margin-left:7px;" <%}else{%>
+                                    class="cmp-icon iconfont praise-btn see-icon-v5-common-praise-fill cmp-active " onclick="" style="color: #48a0de;"
+                                <%}%>></span>
+                            <span id="newsPraiseSum" style="color: #999999;font-size: 12px;margin-left: -1px;"><%=this.priseCount %></span>
+                            <% } else if(this.shareWeixin){ %>
+                            <span class="cmp-icon iconfont see-icon-v5-common-transmit" style="font-size: 14px;color:#c8c7cd;margin-left: 6px;"></span>
+                            <% } %>
+                            </span>
+                            <div style="clear: both;"></div>
+                        </h6>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="text/html"  id="attachmentList_js">
+    <div id="att_list" style="position: relative;width: 100%;background-color: #fff;line-height: 38px;font-size: 14px;">
+        <span style="margin-left: 10px;">
+            <span><i18n key="news.h5.attachment"></i18n></span><span>&#40;</span><span id="att_file_count">0</span><span>&#41;</span><span>&amp;</span>
+            <span><i18n key="news.h5.relateDoc"></i18n></span><span>&#40;</span><span id="att_ass_count">0</span><span>&#41;</span><span>:</span>
+        </span>
+        <span class="see-icon-v5-common-arrow-top att-icon" style="float: right;margin-right: 10px;font-size: 14px;color: #ccc;"></span>
+    </div>
+    <ul id="attchemntFileList" class="cmp-list-content accessory"></ul>
+</script>
+<script type="text/html"  id="news_content_js">
+    <% if(this.dataFormat=="HTML"){ %>
+        <!--正文内容-->
+        <% if(this.content){ %>
+            <p>
+                <%=this.content %>
+            </p>
+            <%}%>
+        <%}else{%>
+            <p></p>
+            <span><i18n key="news.h5.newsContentTypeFirst"></i18n><%=this.dataFormat%><i18n key="news.h5.newsContentTypeLast"></i18n></span>
+            <div>
+                <a class="cmp-btn cmp-btn-primary" style="margin-left: 40%" id="news_content_office">
+                    <i18n key="news.h5.readContent"></i18n>
+                </a>
+            </div>
+    <%}%>
+</script>
+<script type="text/html" id="reply_sum_js">
+    <span><i18n key="news.h5.allComment"></i18n></span><span>(<%=this.commentNumber%>)</span>
+</script>
+<script type="text/html"  id="news_reply_js">
+    <%
+    for(var i = 0,len=this.length; i < len; i++){
+    var comment = this[i];
+    %>
+    <li class="news-comment-one-item" id="replyLi_<%=comment.id%>">
+        <div style="width: 100%;position: relative;">
+            <div class="news-comment-one-img">
+                <div>
+                    <img class="cmp-img-cache img_setting" cmp-data="<%=comment.fromMemberId %>">
+                </div>
+            </div>
+            <div class="news-comment-one-content">
+                <div class="news-comment-one-content-detail-detail reply_cell" replyId="<%=comment.id%>" commentType="<%=comment.replyType%>" toMemberId="<%=comment.fromMemberId %>" replyName="<%=escapeStringToHTML(comment.fromMemberName) %>" commentId="<%=comment.id%>">
+                    <div class="news-comment-name cmp-ellipsis">
+                        <span><%=escapeStringToHTML(comment.fromMemberName) %></span>
+                    </div>
+                    <div class="news-comment-time-content">
+                            <span>
+                                <%=comment.createDate%>
+                                <% if(comment.replyFrom && comment.replyFrom == 'weixin'){ %>
+                                    (<i18n key="news.h5.fromWeixin"></i18n>)
+                                <% } else if(comment.replyFrom && comment.replyFrom != 'pc' && comment.replyFrom != "email" && comment.replyFrom != "other"){%>
+                                    (<i18n key="news.h5.fromMobile"></i18n>)
+                                <%} %>
+                            </span>
+                    </div>
+                    <div class="news-comment-content">
+                        <span><%=cmp.Emoji().StringToEmoji(escapeStringToHTML(comment.replayContent))%></span>
+                    </div>
+                    <%if(comment.canDelete == "true"){%>
+                    <div class="news-comment-delete" replyId="<%=comment.id%>" commentType="<%=comment.replyType%>">
+                        <span class=""><i18n key="news.h5.delete"></i18n></span>
+                    </div>
+                    <%}%>
+                    <div class="news-commont-praise reply-praise">
+                        <%if(comment.PraiseFlag=='true'){%>
+                        <span class="praise-sum comment_like_num_<%=comment.id%>" style="color: #3aadfb;"><%=comment.praiseSum%></span>
+                        <span likeNum="<%=comment.praiseSum%>" priseFlag="<%=comment.PraiseFlag%>" commentId="<%=comment.id%>" class="cmp-icon iconfont see-icon-v5-common-praise-fill comment_like_btn_<%=comment.id%> cmp-active" style="color: #3aadfb;"></span>
+                        <%}else{%>
+                        <span class="praise-sum comment_like_num_<%=comment.id%>" style=""><%=comment.praiseSum%></span>
+                        <span likeNum="<%=comment.praiseSum%>" priseFlag="<%=comment.PraiseFlag%>" commentId="<%=comment.id%>" class="cmp-icon iconfont see-icon-v5-common-praise comment_like_btn_<%=comment.id%>"></span>
+                        <%}%>
+                    </div>
+                </div>
+                <div>
+                    <% if(comment.subReplys && comment.subReplys.length > 0){%>
+                    <ul class="news-comment-two child-reply-list" style="list-style: none;">
+                        <%
+                        for(var j = 0; j < comment.subReplys.length; j++){
+                        var subComment = comment.subReplys[j];
+                        %>
+                        <li>
+                            <div style="width: 100%;position: relative;" class="reply_cell" replyId="<%=subComment.id%>" commentId="<%=comment.id%>" toMemberId="<%=subComment.fromMemberId%>" commentType="<%=subComment.replyType%>" replyName="<%=escapeStringToHTML(subComment.fromMemberName) %>">
+                                <div class="news-comment-name">
+                                    <div style="float: left;padding-top: 5px;">
+                                        <% if(subComment.replyType != '2'){ %>
+                                        <span><%=escapeStringToHTML(subComment.fromMemberName) %>:</span>
+                                        <%}else{%>
+                                        <span><%=escapeStringToHTML(subComment.fromMemberName) %></span>
+                                        <span id="<%=subComment.toMemberId %>" name="<%=comment.fromMemberId %>"><i18n key="news.h5.reply"></i18n></span>
+                                        <span><%=escapeStringToHTML(subComment.toMemberName) %>:</span>
+                                        <%}%>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="news-comment-time-content">
+                                    <span><%=subComment.createDate%></span>
+                                    <% if(subComment.replyFrom && subComment.replyFrom == 'weixin'){ %>
+                                    (<i18n key="news.h5.fromWeixin"></i18n>)
+                                    <% } else if(subComment.replyFrom && subComment.replyFrom != 'pc' && subComment.replyFrom != "email" && subComment.replyFrom != "other"){%>
+                                    (<i18n key="news.h5.fromMobile"></i18n>)
+                                    <%} %>
+                                </div>
+                                <div class="news-comment-content">
+                                    <%=cmp.Emoji().StringToEmoji(escapeStringToHTML(subComment.replayContent))%>
+                                </div>
+                                <% if(subComment.canDelete == "true"){%>
+                                <div class="news-comment-delete" replyId="<%=subComment.id%>" commentType="<%=subComment.replyType%>" topReplyId="<%=subComment.fromMemberId%>">
+                                    <span class=""><i18n key="news.h5.delete"></i18n></span>
+                                </div>
+                                <%}%>
+                            </div>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <%}%>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </li>
+    <%} %>
+</script>
+<script type="text/html"  id="news_hot_reply_js">
+    <div class="" style="position: relative;margin-top: 30px;">
+        <div id="testLine">
+            <!--<i18n key="bbs.h5.hotreply"></i18n>-->
+            最赞回复
+        </div>
+        <ul class="news-comment-one" style="padding-left: 0" id="hotListUl">
+        <%
+        for(var i = 0,len=this.length; i < len; i++){
+        var comment = this[i];
+        %>
+        <li class="news-comment-one-item" id="hotReplyLi_<%=comment.id%>">
+            <div style="width: 100%;position: relative;">
+                <div class="news-comment-one-img" style="padding-top: 5px">
+                    <div>
+                        <img class="cmp-img-cache img_setting" cmp-data="<%=comment.fromMemberId %>">
+                    </div>
+                </div>
+                <div class="news-comment-one-content">
+                    <div class="news-comment-one-content-detail-detail reply_cell" replyId="<%=comment.id%>" commentType="<%=comment.replyType%>" toMemberId="<%=comment.fromMemberId %>" replyName="<%=escapeStringToHTML(comment.fromMemberName) %>" commentId="<%=comment.id%>">
+                        <div class="news-comment-name cmp-ellipsis">
+                            <span><%=escapeStringToHTML(comment.fromMemberName) %></span>
+                        </div>
+                        <div class="news-comment-time-content" style="margin-top: 0;padding-bottom: 5px;">
+                                <span>
+                                    <%=comment.createDate%>
+                                    <% if(comment.replyFrom && comment.replyFrom == 'weixin'){ %>
+                                        (<i18n key="news.h5.fromWeixin"></i18n>)
+                                    <% } else if(comment.replyFrom && comment.replyFrom != 'pc' && comment.replyFrom != "email" && comment.replyFrom != "other"){%>
+                                        (<i18n key="news.h5.fromMobile"></i18n>)
+                                    <%} %>
+                                </span>
+                        </div>
+                        <div class="news-comment-content">
+                            <span><%=cmp.Emoji().StringToEmoji(escapeStringToHTML(comment.replayContent))%></span>
+                        </div>
+                        <div class="news-commont-praise reply-praise">
+                            <%if(comment.PraiseFlag=='true'){%>
+                            <span class="praise-sum comment_like_num_<%=comment.id%>" style="color: #3aadfb;"><%=comment.praiseSum%></span>
+                            <span likeNum="<%=comment.praiseSum%>" priseFlag="<%=comment.PraiseFlag%>" commentId="<%=comment.id%>" class="cmp-icon iconfont see-icon-v5-common-praise-fill comment_like_btn_<%=comment.id%> cmp-active" style="color: #3aadfb;"></span>
+                            <%}else{%>
+                            <span class="praise-sum comment_like_num_<%=comment.id%>" ><%=comment.praiseSum%></span>
+                            <span likeNum="<%=comment.praiseSum%>" priseFlag="<%=comment.PraiseFlag%>" commentId="<%=comment.id%>" class="cmp-icon iconfont see-icon-v5-common-praise comment_like_btn_<%=comment.id%>"></span>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </li>
+        <%} %>
+    </ul>
+        <div id="moreReply" style="text-align: center;padding: 7px 0;line-height: 14px;width: 100px;margin: 0 auto;border-radius: 15px;border: 1px solid #1EA2FA;font-size: 14px;color: #1EA2FA;">
+            <i18n key="news.h5.morereply"></i18n>
+        </div>
+    </div>
+</script>
+<script src="/seeyon/m3/apps/v5/news/i18n/News_zh_CN.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172558"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/news/i18n/","News",null,"?buildversion=181210172558");
+    document.getElementById("reply_text").setAttribute("placeholder",cmp.i18n("news.h5.comment"));
+    document.getElementById("title").innerHTML = cmp.i18n("news.h5.newsDetails");
+</script>
+<script src="/seeyon/m3/apps/v5/news/js/flexible.js?buildversion=181210172558"></script>
+<script type="text/javascript">
+    var _newsPath = "/seeyon/m3/apps/v5/news";
+</script><script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172558" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-share.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172558"></script>
+
+<!--正文、关联文档组件-->
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/ShareRecord.js?buildversion=181210172558"></script>
+<script src="/seeyon/m3/apps/v5/news/js/newsView.js?buildversion=181210172558"></script>
+</body>
+</html>
+

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/inquiry/css/inquiry.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172551">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172551">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172551">
+    <title id="title"></title>
+</head>
+<body>
+<div class="cmp-fullscreen cmp-content cmp-content-none position_relative" id="top_div" style="height: 100%;background-color: rgb(255, 255, 255);">
+    <div class="cmp-control-content cmp-active" style="height: 100%">
+        <div id="scroll" class="content_details" style="background-color: #fff;height: 100%;overflow:auto;">
+            <div>
+                <!--内容区域-->
+                <div class="survey_container">
+                    <div id="body_audit_head" style="position: relative;display: none">
+                        <div style="position: absolute;width: 100%;height: 100%;background: #82fa9b;opacity: .2;"></div>
+                        <div class="title word_break" style="text-align: left;font-size: 14px">
+                            <span></span><br>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div id="body_inquiry_head" style="position: relative;background-color: #3aadfb33">
+                        <div style="position: absolute;width: 100%;height: 100%;"></div>
+                    </div>
+                    <div class="content">
+                        <div class="formContent">
+                            <div id="body_inquiry_body">
+                            </div>
+                            <div id="body_inquiry_attrs">
+                            </div>
+                            <div id="body_inquiry_details">
+                            </div>
+                            <!--提交按钮-->
+                            <button type="button" id="sendBtn" class="cmp-btn cmp-btn-primary cmp-btn-block submit"><i18n key="inquiry.h5.submit"></i18n></button>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 150px;display: none;" id="lastDiv"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="approval" style="display: none;">
+    <div class="app-edit" contenteditable="true" id="auditInput" style="-webkit-user-select:text" onfocus="auditInput_focus();" onblur="auditInput_blur();"></div>
+    <div class="app-btns">
+        <div class="app-no auditTap" value="1">
+            <span value="1"><i18n key="inquiry.h5.audit.notPass"></i18n></span>
+        </div>
+        <div class="app-yes auditTap" value="0">
+            <span value="0"><i18n key="inquiry.h5.audit.pass"></i18n></span>
+        </div>
+        <div class="app-ok auditTap" value="2">
+            <span value="2"><i18n key="inquiry.h5.audit.passAndPublish"></i18n></span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+
+<footer id="inquiryFoot" style="display: none;">
+    <div class="app-btns">
+        <div id="delBtn" class="app-del auditTap" style="display: none;">
+            <span><i18n key="inquiry.h5.del"></i18n></span>
+        </div>
+        <div id="publishBtn" class="app-publish auditTap" style="display: none;">
+            <span><i18n key="inquiry.h5.publish"></i18n></span>
+        </div>
+        <!--<div class="app-audit auditTap" style="display: none;">-->
+            <!--<span>提交审核</span>-->
+        <!--</div>-->
+        <div style="clear: both;"></div>
+    </div>
+</footer>
+
+<script type="text/html" id="inquiry_detail_head">
+    <div class="title word_break">
+        <span><%=escapeStringToHTML(this.package.inquiryTitle) %></span><br>
+        <% if(this.metaData.inquiryVoteType == '1'){%>
+        <span style="font-size: 14px"><i18n key="inquiry.h5.votetype"></i18n>:<i18n key="inquiry.h5.secret"></i18n></span>
+        <% } %>
+        <% if(this.metaData.inquiryVoteType == '0'){%>
+        <span style="font-size: 14px"><i18n key="inquiry.h5.votetype"></i18n>:<i18n key="inquiry.h5.notsecret"></i18n></span>
+        <% } %>
+    </div>
+    <% if(this.package.inquiryImg!=null && this.package.inquiryImg !="" && this.package.inquiryImg !="null"){%>
+    <div class="quest_img">
+        <img id="quest_imgId" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=this.package.inquiryImg%>&size=custom&h=160&w=441" alt=""/>
+    </div>
+    <% } %>
+    <input id="inquiryAfter" type="hidden" value="<%=escapeStringToHTML(this.package.inquiryAfter) %>"/>
+</script>
+<script type="text/html" id="inquiry_detail_head_audit">
+    <div class="body_approval_title word_break">
+        <span><%=escapeStringToHTML(this.package.inquiryTitle) %></span>
+    </div>
+    <div class="body_approval_time">
+        <span><i18n key="inquiry.h5.audit.date"></i18n>:</span>
+        <span><%=formatInqTime(this.metaData.inquirySendTime,this.metaData.inquiryCloseTime)%></span>
+    </div>
+    <div class="body_approval_person">
+        <span><i18n key="inquiry.h5.audit.creater"></i18n>:</span>
+        <span><%=escapeStringToHTML(this.metaData.inquirySenderName) %></span>
+    </div>
+    <div class="body_approval_area">
+        <span><i18n key="inquiry.h5.audit.inqtype"></i18n>:</span>
+        <span><%=escapeStringToHTML(this.metaData.inquiryBoardName) %></span>
+    </div>
+    <div class="body_approval_block">
+        <span><i18n key="inquiry.h5.votetype"></i18n>:</span>
+        <% if(this.metaData.inquiryVoteType == '1'){%>
+        <span><i18n key="inquiry.h5.secret"></i18n></i18n></span>
+        <% } %>
+        <% if(this.metaData.inquiryVoteType == '0'){%>
+        <span><i18n key="inquiry.h5.notsecret"></i18n></span>
+        <% } %>
+    </div>
+    <% if(this.package.inquiryImg!=null && this.package.inquiryImg !="" && this.package.inquiryImg !="null"){%>
+        <div class="quest_img">
+            <img id="quest_imgId" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=this.package.inquiryImg%>&size=custom&h=160&w=441" alt=""/>
+        </div>
+    <% } %>
+    <input id="inquiryAfter" type="hidden" value="<%=escapeStringToHTML(this.package.inquiryAfter) %>"/>
+</script>
+<script type="text/html" id="inquiry_detail_body">
+    <div class="prompt cmp-ellipsis-3 word_break" style="margin-top: 15px;">
+        <span id="inquiry_Before" style="color: #999999;"><%=escapeStringToHTML(this.package.inquiryBefore) %></span>
+    </div>
+    <span class="cmp-icon iconfont icon-bofang  more display_hide" style="width: 100%;color:#3aadfb;margin-top:3px;font-size: 15px;margin-left: 0;" id="inquiry_Before_more"><i18n key="inquiry.h5.All"></i18n></span>
+</script>
+<script type="text/html" id="inquiry_detail_li">
+    <% for(var i = 1,len = this.questions.length;i <= len; i++){ %>
+    <% var obj = this.questions[i-1]; %>
+    <% var myState = !(this.comeFrom!='4' && this.metaData.inquiryState=='8' && this.package.myState != "true"&& this.metaData.inquiryIsInScope == "true");%>
+    <div class="inquiry_question_li Hint_Content" id="<%=obj.qId%>" qType="<%=obj.qType%>" qJump="<%=obj.qJump%>" qMin="<%=obj.qMin%>" qMax="<%=obj.qMax%>">
+        <div class="Hint display_hide">
+            <span><i18n key="inquiry.h5.questionError"></i18n></span>
+        </div>
+        <span class="tal"><%=i %>.<%=escapeStringToHTML(obj.qContent)  %>
+            <% if(obj.qType=="1" || obj.qType=="5"){ %>
+                <% if((obj.qMax !=0 && obj.qMin != 0) && (obj.qMax != obj.qMin)){%>
+                    （<i18n key="inquiry.h5.chooseNumLeast"></i18n> <%=obj.qMin%> <i18n key="inquiry.h5.num"></i18n>,<i18n key="inquiry.h5.checkNumMost"></i18n> <%=obj.qMax%> <i18n key="inquiry.h5.num"></i18n>！）
+                <% }%>
+                <%  if(obj.qMax ==0 && obj.qMin != 0){%>
+                    （<i18n key="inquiry.h5.chooseNumLeast"></i18n> <%=obj.qMin%> <i18n key="inquiry.h5.num"></i18n>！）
+                <% }%>
+                <% if(obj.qMax !=0 && obj.qMin == 0){%>
+                    （<i18n key="inquiry.h5.chooseNumMost"></i18n> <%=obj.qMax%> <i18n key="inquiry.h5.num"></i18n>！）
+                <% }%>
+                <% if((obj.qMax == obj.qMin) && (obj.qMax !=0 && obj.qMin != 0)){%>
+                    （<i18n key="inquiry.h5.chooseNumOnly"></i18n> <%=obj.qMin%> <i18n key="inquiry.h5.num"></i18n>！）
+                <% }%>
+            <% }%>
+        </span>
+        <% if(obj.qType=="0"){ %>
+        <div class="cmp-input-group">
+            <% for(var j = 0,opt_len = obj.qOpts.length;j < opt_len; j++){ %>
+            <% if(j != opt_len - 1){%>
+            <div class="cmp-input-row cmp-radio cmp-left cmp-input-opt input-row">
+                <label class="">
+                                <span class="text_opt word_break">
+                                    <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                </span>
+                </label>
+
+                <% if(obj.qOpts[j].oExtContent=="1"){ %>
+                <input class="input-radio" name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <%if(myState){%>
+                    <textarea class="input-more inputText input-text" type="text" disabled="true" readOnly><%=escapeStringToHTML(obj.qOpts[j].oExtContentStr) %></textarea>
+                <% } else { %>
+                    <input class="input-more inputText input-text" type="text" disabled="true" onfocus="auditInput_focus();" onblur="auditInput_blur();">
+                <% } %>
+                <% } else { %>
+                <input name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <% } %>
+            </div>
+            <%}else{%>
+            <div class="cmp-input-row cmp-radio cmp-left cmp-input-opt">
+                <label class="">
+                                <span class="text_opt word_break">
+                                    <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                </span>
+                </label>
+
+                <% if(obj.qOpts[j].oExtContent=="1"){ %>
+                <input class="input-radio" name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <%if(myState){%>
+                    <textarea class="input-more inputText input-text" type="text" disabled="true" readOnly ><%=escapeStringToHTML(obj.qOpts[j].oExtContentStr) %></textarea>
+                <% } else { %>
+                    <input class="input-more inputText input-text" type="text" disabled="true" onfocus="auditInput_focus();" onblur="auditInput_blur();">
+                <% } %>
+                <% } else { %>
+                <input name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <% } %>
+            </div>
+            <%} %>
+            <% }%>
+        </div>
+        <% }%>
+        <% if(obj.qType=="1"){ %>
+        <div class="cmp-input-group">
+            <% for(var j = 0,opt_len = obj.qOpts.length;j < opt_len; j++){ %>
+            <% if(j != opt_len - 1){%>
+            <div class="cmp-input-row cmp-checkbox cmp-left input-row">
+                <label class="">
+                                <span class="text_opt word_break">
+                                    <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                </span>
+                </label>
+
+                <% if(obj.qOpts[j].oExtContent=="1"){ %>
+                <input name="checkbox" class="input-checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <%if(myState){%>
+                    <textarea class="input-more inputText input-text" type="text" disabled="true" readOnly ><%=escapeStringToHTML(obj.qOpts[j].oExtContentStr) %></textarea>
+                <%} else {%>
+                    <input class="input-more inputText input-text" type="text" disabled="true" onfocus="auditInput_focus();" onblur="auditInput_blur();">
+                <%}%>
+                <% } else { %>
+                <input name="checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <% } %>
+            </div>
+            <%}else{%>
+            <div class="cmp-input-row cmp-checkbox cmp-left">
+                <label class="">
+                                <span class="text_opt word_break">
+                                    <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                </span>
+                </label>
+
+                <% if(obj.qOpts[j].oExtContent=="1"){ %>
+                <input name="checkbox" class="input-checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <%if(myState){%>
+                    <textarea class="input-more inputText input-text" type="text" disabled="true" readOnly ><%=escapeStringToHTML(obj.qOpts[j].oExtContentStr) %></textarea>
+                <%} else {%>
+                    <input class="input-more inputText input-text" type="text" disabled="true" onfocus="auditInput_focus();" onblur="auditInput_blur();">
+                <%}%>
+                <% } else { %>
+                <input name="checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                <% } %>
+            </div>
+            <%} %>
+            <% }%>
+        </div>
+        <% }%>
+        <% if(obj.qType=="2"){ %>
+        <textarea class="inputText inputMarB marBIm" name="inputText" rows="5"  <%if(myState){%>readOnly disabled <%}%> <%if(i==len){%> id="lastFocus" <%}%> onfocus="auditInput_focus();" onblur="auditInput_blur();"><%=obj.qAnswer %></textarea>
+        <% }%>
+        <% if(obj.qType=="3"){ %>
+            <%if(myState){%>
+            <textarea class="inputText inputMarB marBIm" name="inputText" rows="5" <%if(myState){%>readOnly disabled <%}%> ><%=obj.qAnswer %></textarea>
+            <%}else{%>
+            <input class="inputText inputMarB marBIm" name="inputText" type="text" <%if(myState){%>readOnly disabled value="<%=obj.qAnswer %>" <%}%>  <%if(i==len){%> id="lastFocus" <%}%> onfocus="auditInput_focus();" onblur="auditInput_blur();"/>
+            <%}%>
+        <% }%>
+        <% if(obj.qType=="4"){ %>
+        <div class="phoneOSContent">
+            <% for(var j = 0,opt_len = obj.qOpts.length;j < opt_len; j++){ %>
+            <% if(j%2==0){%>
+            <div style="width: 100%;">
+                <div class="OS" style="float:left;width:48%;margin-right:1%;margin-left:1%;">
+                    <div class="select">
+                        <div class="cmp-input-row cmp-radio cmp-left">
+                            <div style="padding: 0;text-align:center;">
+                                <img class="showImg" imgCount="<%=j%>" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>&size=custom&h=200&w=200" alt="" src-data="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>"/>
+                            </div>
+                            <label class="cmp-ellipsis-3" style="position: relative;padding-top:2px;text-align:left;padding-bottom: 0;min-height: 25px;">
+                                        <span style="font-size: 16px;" class="img_opt radio_img_opt word_break">
+                                            <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                        </span>
+                                <input name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" style="top: 3px;left: 15px;" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                            </label>
+                            <span class="cmp-icon iconfont more display_hide inquiry_img_opt_more see-icon-v5-common-arrow-bottom-fill" style="width: 100%;text-align: center;color: #cbcbcb;"></span>
+                            <div style="width:100%;height:6px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <%if(j%2==0&&j==opt_len-1){%> </div> <%}%>
+            <%}else{%>
+            <div class="OS" style="float:left;width:48%;margin-right:1%;margin-left:1%;">
+                <div class="select">
+                    <div class="cmp-input-row cmp-radio cmp-left">
+                        <div style="padding: 0;text-align:center;">
+                            <img class="showImg" imgCount="<%=j%>" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>&size=custom&h=200&w=200" alt="" src-data="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>"/>
+                        </div>
+                        <label class="cmp-ellipsis-3" style="position: relative;padding-top:2px;text-align:left;padding-bottom: 0;min-height: 25px;">
+                                        <span style="font-size: 16px;" class="img_opt radio_img_opt word_break">
+                                            <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                        </span>
+                            <input name="radio<%=i%>" id="<%= obj.qOpts[j].oId%>" type="radio" oExtContent="<%=obj.qOpts[j].oExtContent %>" style="top: 3px;left: 15px;" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                        </label>
+                        <span class="cmp-icon iconfont more display_hide inquiry_img_opt_more see-icon-v5-common-arrow-bottom-fill" style="width: 100%;text-align: center;color: #cbcbcb;"></span>
+                        <div style="width:100%;height:6px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <%}%>
+        <% }%>
+    </div>
+    <% }%>
+    <% if(obj.qType=="5"){ %>
+    <div class="phoneOSContent">
+        <% for(var j = 0,opt_len = obj.qOpts.length;j < opt_len; j++){ %>
+        <% if(j%2==0){%>
+        <div style="width: 100%;">
+            <div class="OS" style="float:left;width:48%;margin-right:1%;margin-left:1%;">
+                <div class="select">
+                    <div class="cmp-input-row cmp-checkbox cmp-left">
+                        <div style="padding: 0;text-align:center;">
+                            <img class="showImg" imgCount="<%=j%>" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>&size=custom&h=200&w=200" alt="" src-data="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>"/>
+                        </div>
+                        <label class="cmp-ellipsis-3" style="position: relative;padding-top:2px;text-align:left;padding-bottom: 0;min-height: 25px;">
+                                        <span style="font-size: 16px;" class="img_opt checkbox_img_opt word_break">
+                                            <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                        </span>
+                            <input name="checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" style="top: 2px;left: 15px;" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                        </label>
+                        <span class="cmp-icon iconfont more display_hide inquiry_img_opt_more see-icon-v5-common-arrow-bottom-fill" style="width: 100%;text-align: center;color: #cbcbcb;"></span>
+                        <div style="width:100%;height:6px;"></div>
+                    </div>
+                </div>
+            </div>
+            <%if(j%2==0&&j==opt_len-1){%> </div> <%}%>
+        <%}else{%>
+        <div class="OS" style="float:left;width:48%;margin-right:1%;margin-left:1%;">
+            <div class="select">
+                <div class="cmp-input-row cmp-checkbox cmp-left">
+                    <div style="padding: 0;text-align:center;">
+                        <img class="showImg" imgCount="<%=j%>" src="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>&size=custom&h=200&w=200" alt="" src-data="<%=cmp.origin%>/commonimage.do?method=showImage&id=<%=obj.qOpts[j].oUrl%>"/>
+                    </div>
+                    <label class="cmp-ellipsis-3" style="position: relative;padding-top:2px;text-align:left;padding-bottom: 0;min-height: 25px;">
+                                        <span style="font-size: 16px;" class="img_opt checkbox_img_opt word_break">
+                                            <%=escapeStringToHTML(obj.qOpts[j].oContent)%>
+                                        </span>
+                        <input name="checkbox" id="<%= obj.qOpts[j].oId%>" type="checkbox" oExtContent="<%=obj.qOpts[j].oExtContent %>" style="top: 2px;left: 15px;" <%if(myState){%>disabled<%}%> <%if(obj.qOpts[j].oChecked == '1'){%>checked<%}%> >
+                    </label>
+                    <span class="cmp-icon iconfont more display_hide inquiry_img_opt_more see-icon-v5-common-arrow-bottom-fill" style="width: 100%;text-align: center;color: #cbcbcb;"></span>
+                    <div style="width:100%;height:6px;"></div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <%}%>
+    <% }%>
+    </div>
+    <% }%>
+    </div>
+    <% } %>
+</script>
+<script type="text/html"  id="attachmentList_js">
+    <div id="att_list" style="width: 100%;background-color: #f0f0f0;line-height: 36px;font-size: 14px;position: relative;">
+        <span style="margin-left: 10px;">
+            <span><i18n key="inquiry.h5.attachment"></i18n></span><span>&#40;</span><span id="att_file_count">0</span><span>&#41;</span><span>&amp;</span>
+            <span><i18n key="inquiry.h5.relateDoc"></i18n></span><span>&#40;</span><span id="att_ass_count">0</span><span>&#41;</span><span>:</span>
+        </span>
+        <span class="see-icon-v5-common-arrow-top att-icon" style="float: right;margin-right: 10px;font-size: 14px;color: #ccc;"></span>
+    </div>
+    <ul id="attchemntFileList" class="cmp-list-content accessory" style="border: none;"></ul>
+</script>
+<div id="imgShadow" style="position: fixed;width: 100%;height: 100%;top: 0;left: 0;z-index: 49;background-color: black;display: none;">
+    <img src="" style="width: 100%;vertical-align: middle;">
+</div>
+<script src="/seeyon/m3/apps/v5/inquiry/i18n/Inquiry_zh_CN.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172551"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/inquiry/i18n/","Inquiry",null,"?buildversion=181210172551");
+    var str = cmp.i18n("inquiry.h5.inquiryDetail");
+    document.getElementById("title").innerHTML = str;
+    var $verstion = "?buildversion=181210172551";
+</script>
+ 
+<script type="text/javascript">
+    var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+  var _cmpBASEPATH = "/seeyon/m3/cmp";
+</script><script  src="/seeyon/m3/apps/v5/inquiry/js/flexible.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/inquiry/js/inquiry-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/apps/v5/inquiry/js/inquiryView.js?buildversion=181210172551"></script>
+<!--正文、关联文档组件-->
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172551"></script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************--!>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017266">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view:after{ height: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div id="searchHeader" class="cmp-search-box" style="padding:10px;">
+		<div class="cmp-input-row cmp-search">
+			<input type="search" class="cmp-input-clear" placeholder="" disabled>
+			<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+			<span id="search" class="cmp-placeholder">
+		        <span class="cmp-icon cmp-icon-search"></span>
+		        <span class="text-search"><i18n key="meeting.page.label.search"></i18n></span>
+		    </span>
+		</div>
+	</div>
+	<div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none;">
+		<div class="cmp-segmented-control cmp-search-title " style="top:0px;">
+			<div class="cmp-search-item" style="width:12%;">
+		    	<span class="title" id="cmp_search_title" style="padding-right:0px;color:#666666!important"></span>
+	        </div>
+	        <div id="toSearch" class="cmp-search-item" style="width:72%;">
+	            <div id="searchText" class="item text cmp-active">
+	                <input id="searchTextValue" type="text" readonly="readonly">
+	            </div>
+	            <div id="searchDate" class="item date">
+	                <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly" style="font-size: 14px">
+	                <span>-</span>
+	                <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly" style="font-size: 14px">
+	            </div>
+	        </div>
+	        <div class="cmp-search-item">
+	            <span id="cancelSearch" class="gotoSearch"><i18n key="meeting.meetingRoomList.cancel"></i18n></span>
+	        </div>
+        </div>
+	</div>
+	<div id="dataCommonDiv" class="cmp-content back_white relative cmp-content-none">
+		<div class="cmp-control-content cmp-active">
+			<div id="pullrefresh" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<ul id="meetingRoomList" class="cmp-table-view">
+					</ul>					
+				</div>
+			</div>
+		</div>
+	</div>
+       
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>    <script src="/seeyon/m3/apps/v5/meeting/js/meetingRoomList.js?buildversion=18121017266"></script>
+    <!-- js模版 -->
+	<script type="text/html" id="list_li_meetingRoom">
+		<% var roomStateClass, roomStateName,
+			admin = cmp.i18n('meeting.meetingRoomList.admin'),
+			roomStateName0 = cmp.i18n("meeting.meetingRoomList.roomState0"),
+			roomStateName1 = cmp.i18n("meeting.meetingRoomList.roomState1"),
+			roomStateName2 = cmp.i18n("meeting.meetingRoomList.roomState2"),
+			roomStateName3 = cmp.i18n("meeting.meetingRoomList.roomState3"),
+			admin = cmp.i18n("meeting.meetingRoomList.admin"),
+			choice = cmp.i18n("meeting.meetingRoomList.choice");%>
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+		<% var data = this[i];
+			if(data.applyState == '1'){
+				roomStateClass = 'roomState';
+				roomStateName = roomStateName1;
+			}else if(data.applyState == '2'){
+				roomStateClass = 'roomState part';
+				roomStateName = roomStateName2;
+			}else if(data.applyState == '3'){
+				roomStateClass = 'roomState forbid';
+				roomStateName = roomStateName3;
+			} else if (data.applyState == '0'){
+				roomStateClass = 'roomState forbid';
+				roomStateName = roomStateName0;
+			} 
+			if(showToday){
+				roomStateName = cmp.i18n("meeting.meetingRoomList.today") + roomStateName;
+			}
+		%>
+			<li class="cmp-list-cell 
+				<%if(data.roomType == '2') { %>
+					meetingVideoList
+				<% } else { %>
+					meetingList
+				<% } %> 
+				">
+				<input type="hidden" id="roomNeedApp_<%=data.roomId%>" name="roomNeedApp_<%=data.roomId%>" value="<%=data.roomNeedApp%>" />
+				<div class="room_list" roomId=<%=data.roomId%> roomName=<%=data.roomName%>>
+					<%if(data.roomType != '2'){ %>
+						<div class="img_wrap">
+						<%if(data.image){%>
+							<img src="<%=cmp.serverIp%>/seeyon/commonimage.do?method=showImage&id=<%=data.image%>&size=custom&w=127&h=90"></div>
+						<%}else{%>
+							<img src="<%=cmp.serverIp%>/seeyon/m3/apps/v5<%=MeetingUtils.getDefaultImage()%>" style="height:90px;"></div>
+						<%}%>
+					<%}%>
+					<div class="detail_wrap">
+						<ul>
+							<li><div class="roomName"><%=data.roomName%></div></li>
+							<li><div class="<%=roomStateClass%>"><%=roomStateName%></div></li>
+							<% if (data.roomSeatCount) {%>
+								<li><div class="maxNum"><%=cmp.i18n("meeting.meetingRoomList.seatCount", data.roomSeatCount)%></div></li>
+							<% } %>
+							<% if (data.roomSeat) { %>
+								<li><div class="maxNum"><%= data.roomSeat %></div></li>
+							<% } %>
+							<%if(data.roomNeedApp){%>
+								<li><div class="adminName"><%=admin%>：<span><%=data.adminNames%></span></div></li>
+							<%}%>
+						</ul>
+						<%if(showChoiceBtn && data.applyState == '1'){%>
+							<div roomId=<%=data.roomId%> roomName=<%=data.roomName%> class="choice_room"><%=choice%></div>
+						<%}else{%>
+							<div class="details see-icon-v5-common-arrow-right"></div>
+						<%}%>
+					</div>
+				</div>
+			</li>
+		<% } %>
+	</script>
+</body>
+</html>
+<!--******************** auto import check  ****************--!>

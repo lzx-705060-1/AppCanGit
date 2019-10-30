@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无流程表单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/form/filter/sui-filter.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tableList.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/unflowform/css/index.css?buildversion=181210172644">
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172644">
+		
+
+	</head>
+
+	<body class="cmp-fullscreen">
+		<div class="cmp-content  cmp-content-none background_white">
+			<div id="title-more" class="title-more">
+				<div class="title-info-bg"></div>
+				<div class="title-info">
+					<div id="title-info-txt" class="title-info-txt"></div>
+					<div class="nav nav-border"></div>
+					<div class="nav nav-background"></div>
+				</div>
+			</div>
+			<div  class="cmp-segmented_title_content" style="padding: 0;">
+				<div id="unflowform_search"></div>
+				<div  class="data-order-box"  style="display:none;">
+					<span class="datatotal" id="datatotal">共0条数据</span>
+					<div id="header_right_div" class="head_btns">
+						<span id="head_Btn" class="cmp-icon see-icon-v5-common-transverse-switch" style="display: none;"></span>
+						<span id="add_Btn" class="cmp-icon m3-icon-add-round" style="display: none;"></span>
+					</div>
+
+					<span class="orderType" id="orderType">&nbsp;</span>
+					<span class="dataorder" id="dataorder"></span>
+				</div>
+			</div>
+
+			<div id="data-order-popover" class="data-order-popover" style="display:none;">
+				<div id="data-order-bg" class="data-order-bg"></div>
+			    <div  class="data-order-menu">
+					<ul id="orderlist">
+					</ul>
+				</div>
+			</div>
+			<div class="cmp-control-content cmp-active">
+				<div id="scroll"  class="cmp-scroll-wrapper" style="display:none;">
+						<div class="cmp-scroll">
+							<ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="datalist">
+
+							</ul>
+						</div>
+				</div>
+			</div>
+			<div class="cmp-control-content cmp-active">
+				<div id="linkContainer" class="container" >  <!--第一步 定义列表容器-->
+				</div>
+			</div>
+		</div>
+	</body>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/i18n/unflowform_zh_CN.js?buildversion=181210172644" ></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172644" ></script>
+				<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/unflowform/js/unflowform-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172644" type="text/javascript"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.min.js?buildversion=181210172644"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/form/filter/sui-filter.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172644"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172644"></script>
+	<script type="text/html" id="datalist_li_tpl">
+		<% for(var i = 0,len = this.data.length;i < len; i++){ %>
+		<%  var obj = this.data[i]; %>
+		<li class="cmp-table-view-cell <%if(this.showimg){%> hasImg <% }%> datali_li"  state="<%=obj.state %>" id="<%=obj.id %>">
+
+			  <div class="mark locked"  <%  if(obj.state=='1'){%> style="display:none;" <%}%> >
+				  <span class="text"><%= cmp.i18n("unflowform.locked") %></span>
+			  </div>
+
+			<div class="cmp-table" style="padding-top: 2px;">
+				<% if(this.showimg) {%>
+				  <div class="cmp-table-cell cmp-col-img">
+					  <% if(obj[configData.imgField]!="") {%>
+					    <img class="biz-list-img" src="<%= configData.ip %>/commonimage.do?method=showImage&q=0.5&size=custom&w=91&h=91&id=<%=obj[configData.imgField] %>"/>
+					  <%}else {%>
+					    <span class="see-icon-v5-common-import-img"></span>
+					  <%}%>
+				   </div>
+				<%}%>
+				<div class="cmp-table-cell col-title">
+					<% for(var j = 0,len1 = configData.fields.length;j < len1; j++){ %>
+					<%  var field =  configData.fields[j]; %>
+					<h5 <%if(j == 0){%> style="font-weight: bold;color:#000000;" <% } %>  class="cmp-ellipsis <%if(j >=4){%> hidden <% }%>"><%=field.value %></h5>
+					<% } %>
+				</div>
+				<% if(this.showimg) {%>
+				    <div class="cmp-table-cell ">
+				<% }else {%>
+					<div class="cmp-table-cell ">
+				<% } %>
+					<% for(var k = 0,len2 = configData.fields.length;k < len2; k++){ %>
+					<% var field1 =  configData.fields[k];obj[field1.name]=(obj[field1.name]==null || obj[field1.name]=="")?"&nbsp;":obj[field1.name];%>
+					<h5 <%if(k == 0){%> style="font-weight: bold;color:#000000;" <% } %>  class="cmp-ellipsis  <%if(k >=4){%> hidden <% }%>"><%=obj[field1.name].replace("<","&lt;").replace(">","&gt;") %></h5>
+					<% } %>
+				</div>
+			</div>
+			<%if(configData.fields.length>=5 || auth4menu.length>0){%>
+			 <div class="datali_button_div">
+				 <%if(configData.fields.length>=5) {%>
+				     <div class="cmp-icon maxicon see-icon-v5-common-arrow-down" style="font-size: 12px;"></div>
+				 <% } %>
+				 <%if(auth4menu.length>1){%>
+				     <div class="cmp-icon maxicon see-icon-more" ></div></div>
+				 <%} else if(auth4menu.length==1) {%>
+				     <div class="showinfo maxicon" _id="<%=obj.id %>" _btn="<%=JSON.stringify(auth4menu[0]).replace(/"/g,"'")%>"><%=auth4menu[0].name %></div>
+			     <% } %>
+			 </div>
+			<% } %>
+		</li>
+		<% } %>
+
+		<%if(this.data.length == 0){%>
+		<p style="text-align:center">没有可以显示的数据</p>
+		<%}%>
+	</script>
+
+	<script type="text/html" id="search_li_tpl">
+		<% for(var i = 0,len = this.search.length;i < len; i++){ %>
+		<% var obj = this.search[i]; %>
+		<li class="cmp-table-view-cell" id="<%=obj.name %>"><a href="#"><%=obj.value %></a>
+		</li>
+		<% } %>
+	</script>
+	<script type="text/html" id="order_li_tpl">
+		<% for(var i = 0,len = this.orderField.length;i < len; i++){ %>
+		<% var obj = this.orderField[i]; %>
+		<li  id="<%=obj.fieldName %>" display="<%=obj.display %>" orderType="<%=obj.type %>"><%=obj.display %></li>
+		<% } %>
+	</script>
+	<script type="text/javascript">
+    var _unflowformpath = "/seeyon/m3/apps/v5/unflowform";
+  var _cmppath = "/seeyon/m3/cmp";
+ var _formpath = "/seeyon/m3/apps/v5/form";
+</script>	<script type="text/javascript">
+		var buildversion="?buildversion=181210172644";
+		cmp.i18n.init(_unflowformpath+"/i18n/", "unflowform");
+	</script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/js/index.js?buildversion=181210172644"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/unflowform/unflowform_m_api.s3js?buildversion=181210172644"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172644"></script>
+</html>

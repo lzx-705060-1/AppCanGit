@@ -1,0 +1,107 @@
+.cmp-table-view .cmp-table-view-cell {
+    background: #fff;
+    font-size: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.cmp-table-view .cmp-table-view-cell input[type=password] {
+    border: none;font-size: 14px;color: #999;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #999;
+}
+
+input {
+    font-size: 14px;
+}
+
+.cmp-content .pwd {
+    font-size: 12px;height: 40px;line-height: 50px;margin-top: 10px;
+    color: #999;
+    padding: 0 14px;
+}
+.pwd .level {
+    display: inline-block;overflow: hidden;
+}
+
+.pwd .level span {
+    display: inline-block;float: left;
+    position: relative;
+    width: 1.6125rem;
+    height: 0.38rem;
+    line-height: 0.42rem;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    background: #CBCBCB;
+}
+
+.pwd .level span::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    height: 0.38rem;
+    content: '';
+    background: #fff;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+
+.pwd .level span:last-child::after {
+    width: 0;
+}
+
+.pwd .level span:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.pwd .level span:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.pwd .level span.week::after,
+.pwd .level span.middle::after,
+.pwd .level span.strong::after,
+.pwd .level span.strongest::after {
+    width: 0;
+}
+
+.pwd .level span.week {
+    background: #F60000;
+}
+
+.pwd .level span.middle {
+    background: #FF5900;
+}
+
+.pwd .level span.strong {
+    background: #ffca01;
+}
+
+.pwd .level span.strongest {
+    background: #4dde56;
+}
+
+.cmp-content .sure {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    margin: 1rem 0.55rem;
+    background: #3AADFB;
+    border-radius: 25px;
+}
+.cmp-content .sure.disable{
+    color: rgba(255, 255, 255, 0.5);
+}
+body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+body.cmp-ios-c .cmp-content{top:64px;}
+body.cmp-ios-x .cmp-content{top:88px;} 

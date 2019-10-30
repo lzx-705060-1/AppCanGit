@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+/** 回复区域  */
+.reply-area{position: absolute;bottom:40px;right: 10px;width: 40px;height: 100px;box-shadow: -2px 3px 6px #999;border: 1px solid #ccc;background: #fff;border-radius: 5px;text-align: center;z-index:10;display: none;}
+.reply-area .ikes,.replys{display: inline-block;width: 40px;overflow: hidden;text-overflow: ellipsis;}
+.reply-area .replys-wrapper,.likes-wrapper{cursor: pointer;font-size: 14px;color: #999;margin-top: 4px;}
+.reply-area .like-members{display:none;position: absolute;bottom: 95px;right: -4px;background: #fff;/* width: 400px; */border: 1px solid #ccc;border-radius: 5px;}
+.reply-area .like-members .mem-names{color: #000;display: inline-block;padding: 6px;}
+.reply-area .like-members .box{position: absolute;bottom: -7px;right: 16px;background: #fff;border: 1px solid #ccc;z-index: -1;width: 10px;height: 10px;transform: rotate(45deg);}
+.reply-area .like-members .b1{bottom: -6px;background: #fff;border: 1px solid #fff;z-index: 1;}
+.reply-area .like-members .rotate45{transform: rotate(45deg);-webkit-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);}
+
+/** 回复列表 */
+.reply-list{position: fixed;z-index: 11;bottom:0px;width: 100%;background: #fff;box-shadow: 0px -1px 10px 0px #999;border-top: 1px solid #ccc;}
+.reply-list .statu-bar{font-size: 16px;text-align: center;height: 30px;line-height: 30px;background: #84B9E8;}
+.reply-list .statu-bar .close-botn{float: right;font-size: 12px;width: 40px;}
+
+.reply-list .comment-list{padding: 10px 5px 0px 5px;font-size: 14px;height: 250px;overflow: auto;}
+.reply-list .comment-list{color: #3A3C3B;padding-top: 4px;padding-bottom:2px; }
+.reply-list .comment-list .comment-item{font-size: 14px;line-height: 18px;padding: 0px 10px 2px 10px;}
+.reply-list .comment-list .username{color: #50698D;}

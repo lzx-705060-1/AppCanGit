@@ -1,0 +1,2383 @@
+/**
+ * Created by Administrator on 2016/5/18.
+ */
+
+//布局.layout的样式
+
+@import "_variable";
+@import "_reset";
+@import "_form_icon";
+//@import "seeFont/iconfont.css";
+
+
+//#contentDiv{
+//    overflow-y: auto;
+//    -webkit-overflow-scrolling : touch;
+//}
+
+.sui-form-header{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: @form-title-font-size-16;
+}
+
+.sui-form-content{
+    background: #fff !important; //先将表单背景色强制设置为fff
+    font-size: @form-title-font-size-16;
+    //padding-bottom: 5px;
+
+    .sui-form-ctrl-divider{
+        width: 100%;
+        height: 8px;
+        background: #ccc;
+    }
+
+    .sui-form-ctrl-summary{
+        width: 100%;
+        line-height: 22px;
+        font-family: '微软雅黑';
+        padding: 8px 12px;
+        font-size: 16px;
+        text-align: center;
+        color: #010101;
+        display: block;
+    }
+}
+
+.sui-form-ctrl{
+    width: 100%;
+    padding: @form-padding-1;
+}
+
+//是否有分割线的样式
+.sui-form-ctrl.sui-form-sep-line {
+    border-bottom: 1px solid #ECECEC;
+    .calc-width('100% - 20px') !important;
+    margin: 0 10px;
+    padding: 6px 2px !important;
+
+    &:before{
+        border-color: #0a628f;
+    }
+
+    .sui-form-ctrl-inner{
+        .sui-form-ctrl-field{
+            .sui-form-ctrl-value, .sui-form-ctrl-value-display, .sui-form-ctrl-value-hide{
+                border: none;
+            }
+        }
+    }
+}
+
+//一行显示
+.sui-form-viewType-0{
+
+    &.sui-form-ctrl{
+        width: 100%;
+        padding: @form-padding-0;
+    }
+
+    .sui-form-ctrl-inner{
+        -webkit-box-align: center;
+        .display-flex();
+        display: -webkit-box;
+
+
+        .sui-form-ctrl-title{
+            width: @form-title-font-size-16 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right;
+            //font-size: @form-title-font-size-16;
+            //min-width: @form-title-font-size-16 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right;
+            padding-right: @form-title-padding-right;
+            padding-left: @form-title-padding-left;
+            padding-top:0;
+            padding-bottom:0;
+            line-height: @form-title-line-height;
+        }
+
+        .sui-form-ctrl-desc{
+            display: none !important;
+        }
+
+        .sui-form-ctrl-field{
+            .flex(1);
+            display: block;
+            width: 100%;
+
+            .sui-form-ctrl-field-main{
+                width: 100%;
+                position: relative;
+            }
+        }
+
+    }
+}
+
+
+//折行
+.sui-form-viewType-1{
+    &.sui-form-ctrl{
+        width: 100%;
+        padding: @form-padding-1;
+    }
+
+    .sui-form-ctrl-inner{
+        width: 100%;
+        display: block;
+
+        .sui-form-ctrl-title{
+            width: 100%;
+            padding-bottom: @form-title-padding-bottom-single;
+            line-height: 18px;
+        }
+
+        //折行的时候可以显示描述
+        .sui-form-ctrl-desc{
+            display: block !important;
+            color: #7C7C7C;
+            font-size: 12px;
+            line-height: 18px;
+            padding: 7px 0;
+            border-top: 1px dashed #999;
+        }
+
+        .sui-form-ctrl-field{
+            width: 100%;
+
+            .sui-form-ctrl-field-main{
+                width: 100%;
+            }
+        }
+
+    }
+
+    .sui-form-ctrl-inner.image, .sui-form-ctrl-inner.mapphoto {
+        .sui-form-ctrl-title{
+            padding-bottom: 5px;
+        }
+    }
+}
+
+//隐藏title
+.sui-form-viewType-2{
+    width: 100%;
+    display: block;
+
+    &.sui-form-ctrl{
+        width: 100%;
+        padding: @form-padding-1;
+    }
+
+    .sui-form-ctrl-inner{
+        .sui-form-ctrl-title {
+            display: none !important;
+        }
+    }
+}
+
+
+
+.sui-form-ctrl-border-none{
+    .sui-form-ctrl{
+        border-bottom: 1px solid #e2e2e2;
+
+        input[type="text"],input[type="number"],textarea,.sui-form-ctrl-value,.sui-form-ctrl-value-display{
+            border: 1px solid transparent !important;
+            padding: 0 !important;
+        }
+    }
+}
+
+//title字体加粗
+.sui-form-title-bold{
+    .sui-form-ctrl-title{
+        font-weight: bold !important;
+    }
+}
+
+.sui-form-title-font-size-12 {
+    .sui-form-ctrl-title{
+        max-width: @form-title-font-size-12 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right !important;
+        font-size: @form-title-font-size-12 !important;
+    }
+}
+
+.sui-form-title-font-size-14 {
+    .sui-form-ctrl-title{
+        max-width: @form-title-font-size-14 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right !important;
+        font-size: @form-title-font-size-14 !important;
+    }
+}
+
+.sui-form-title-font-size-16 {
+    .sui-form-ctrl-title{
+        max-width: @form-title-font-size-16 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right !important;
+        font-size: @form-title-font-size-16 !important;
+    }
+}
+
+.sui-form-title-font-size-18 {
+    .sui-form-ctrl-title{
+        max-width: @form-title-font-size-18 * @form-title-font-count + @form-title-padding-left + @form-title-padding-right !important;
+        font-size: @form-title-font-size-18 !important;
+    }
+}
+
+//全局隐藏
+.sui-hide{
+    display: none !important;
+}
+
+//控件内部样式
+.sui-form-ctrl-inner{
+    width: 100%;
+    display: block;
+    position: relative;
+
+    .sui-form-placeholder{
+        color: #bbb !important;
+    }
+
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+        color: #bbb !important;
+    }
+
+    input::-moz-placeholder, textarea::-moz-placeholder,input:-ms-input-placeholder, textarea:-ms-input-placeholder{
+        color: #bbb !important;
+    }
+
+    .sui-form-ctrl-title{
+        word-wrap: break-word;
+        word-break: break-word;
+        display: block;
+        position: relative;
+        color: #8f8f8f;
+        padding-bottom: @form-title-padding-bottom-single;
+        padding-left: @form-title-padding-left;
+        line-height: 18px;
+        font-size: @form-title-font-size-16;
+    }
+
+    .sui-form-ctrl-desc{
+        display: none;
+    }
+
+    .sui-form-ctrl-field{
+        position: relative;
+        min-width: @field-min-width;
+
+        .sui-form-ctrl-field-main{
+            width: 100%;
+            position: relative;
+
+            .sui-form-ctrl-value{
+                width: 100%;
+            }
+
+            .sui-form-ctrl-value:focus{
+                border-color: #38adff;
+            }
+
+            .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                width: 100%;
+                padding: 5px 8px;
+                text-align: left;
+                min-height: @field-height;
+                line-height: @line-height;
+            }
+
+            //让组织控件的div自动撑开
+            .sui-form-ctrl-value-display.organization{
+                height: auto !important;
+                word-break: break-word;
+            }
+
+            .sui-form-ctrl-value-display.sui-input-url{
+                color: #007aff !important;
+            }
+
+                //.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+            //    line-height: 22px;
+            //}
+
+            .sui-form-ctrl-value-hide{
+                display: none;
+            }
+
+            //.sui-form-ctrl-value-display.sui-form-ctrl-date:after{
+            //    font-family: "see-icon-v5-form" !important;
+            //    font-size: 20px;
+            //    font-style: normal;
+            //    -webkit-font-smoothing: antialiased;
+            //    content: '\e617';
+            //    color: #999;
+            //    position: absolute;
+            //    right: 5px;
+            //    top: 6px;
+            //}
+
+            .see-icon-v5-form-close-circle-fill{
+                font-size: 20px;
+                color: #999;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+
+            .see-icon-v5-form-pull-down,.see-icon-v5-form-pull-right,.see-icon-v5-form-search{
+                font-size: 20px;
+                color: #e0e0e0;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+
+            .see-icon-v5-form-pull-right{
+                right: 5px; // 向右的箭头有边距，调整一下right值，看着像10px
+            }
+
+            input[type="text"],input[type="number"],textarea,.sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                width: 100%;
+                max-width: 100%;
+                padding: @field-padding;
+                margin: 0;
+                height: auto;
+                -webkit-user-select: text;
+                background: #fff;
+                border: 1px solid #ececec;
+                border-radius: @form-field-border-radius;
+                outline: none;
+                -webkit-appearance: none; /*去除系统默认的样式*/
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 点击高亮的颜色*/
+                font-size: @form-field-font-size-16;
+                position: relative;
+                color: @form-field-color;
+                font-family: @font-family;
+            }
+
+            .sui-form-ctrl-value-display,.sui-form-ctrl-value-hide {
+                -webkit-user-select: none;
+                /*2017-11-22 修改-webkit-user-select，防止Android上弹起拨电话界面*/
+            }
+
+            input[type="text"]:focus,input[type="number"]:focus,textarea:focus,.sui-form-ctrl-value:focus,.sui-form-ctrl-value-display:focus,.sui-form-ctrl-value-hide:focus{
+                border-color: #38ADFF;
+            }
+
+            //display的padding-right
+            .sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                overflow: hidden;
+            }
+
+            &.sui-auth-edit{
+                .sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                    padding-right: 40px;
+                }
+            }
+
+            //radio控件的样式
+            .sui-form-ctrl-value-display.sui-radio-group{
+
+                line-height: 22px !important;
+                height: auto !important;
+
+                .sui-radio-item {
+                    position: relative;
+                    .display-flex();
+                    //width: 100%;
+                    line-height: 34px;
+                    margin-right: 34px;
+
+                    label{
+                        line-height: 22px;
+                        padding: 5px 0;
+                        word-break: break-word;
+                        .flex(1);
+                    }
+
+                }
+            }
+
+            //将radio和checkbox的边框去除
+            input[type='radio'],input[type='checkbox'],.sui-form-ctrl-value-display.sui-radio-group{
+                border-color: transparent;
+            }
+
+            input[type='radio']{
+                .appearance(none);
+                border: none;
+                width: 30px;
+            }
+
+            input[type='radio']:after{
+                .appearance(none);
+                font-family: "see-icon-v5-form" !important;
+                content: '\e60e';  //勾选
+                color: #c9c9c9;
+                font-size: 22px;
+                text-align: center;
+                line-height: 34px;
+                position: absolute;
+            }
+
+            input[type='radio']:checked{
+                .appearance(none);
+                background: transparent;
+
+            }
+            input[type='radio']:checked:after{
+
+                font-family: "see-icon-v5-form" !important;
+                content: '\e604';  //勾选
+                color: #38adff;
+                font-size: 22px;
+                text-align: center;
+                line-height: 34px;
+                position: absolute;
+            }
+
+            input[type='checkbox'] {
+                //position: absolute;
+                //top: 4px;
+                //right: 20px;
+                display: inline-block;
+                .appearance(none);
+                font-family: "see-icon-v5-form" !important;
+                content: '\e606';  //勾选
+                color: #38adff;
+                font-size: 22px;
+                text-align: center;
+                line-height: 22px;
+            }
+
+
+            input[type='checkbox'] {
+                .appearance(none);
+                background: transparent;
+                text-align: left;
+            }
+
+            input[type='checkbox']:checked:after {
+                //background: #007aff;
+                //.appearance(none);
+                font-family: "see-icon-v5-form" !important;
+                content: '\e616';  //勾选
+                color: #38adff;
+                font-size: 22px;
+                text-align: center;
+                line-height: 22px;
+                position: absolute;
+                top: 50%;
+                left:50%;
+                transform: translate(-50%, -50%); //OA-124275 让checkbox显示居中
+                -ms-transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+            }
+
+            input[type='checkbox']:after{
+                font-family: "see-icon-v5-form" !important;
+                content: '\e617';  //勾选
+                .appearance(none);
+                color: #c9c9c9;
+                font-size: 22px;
+                text-align: center;
+                line-height: 22px;
+                position: absolute;
+                top: 50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button,input[type="text"] {
+                .appearance(none);
+            }
+            input[type="number"]{
+                -moz-appearance: textfield;
+            }
+
+
+            //textarea控件的样式
+            textarea.sui-form-ctrl-value{
+                height: @textarea-height;
+                padding: @textarea-padding;
+                //line-height: 22px;
+                .calc-line-height('100% + 6px'); /*2017-10-25 将textarea控件的line-height强制设置为字体高度 + 6px*/
+            }
+
+            //流程处理意见的样式
+            .sui-form-ctrl-value-display.sui-form-ctrl-static{
+
+                line-height: 22px;
+                height: auto !important;
+                padding: 5px 8px;
+                word-break: break-word;
+                //background: #f2f2f2;
+
+                img{
+                    max-width: 100%;
+                }
+
+            }
+
+
+            //上传图片控件
+            .sui-form-ctrl-value-display.sui-form-ctrl-image{
+                height: auto !important; //被外部写入带过来的高度坑了
+                //border-color: transparent;
+                padding: 6px;
+                border-color: transparent !important;
+
+                .image-items{
+                    //.display-flex();
+                    //display: -webkit-box;
+
+                    .image-add-item,.image-item{
+                        width: 110px;
+                        height: 110px;
+                        background: #f8f8f8;
+                        position: relative;
+                        .display-inline-flex();
+                        margin: 6px 12px 6px 0;
+
+                        .sui-image-wrapper {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden;
+
+                            img{
+                                position: absolute;
+                                //max-height: 100%;
+                                //max-width: 100%;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                -ms-transform: translate(-50%, -50%);
+                                -webkit-transform: translate(-50%, -50%);
+                                -o-transform: translate(-50%, -50%);
+                                -moz-transform: translate(-50%, -50%);
+                            }
+
+                            .top{
+                                position: absolute;
+                                top: 24px;
+                                height: 40px;
+                                width: 100%;
+                                text-align: center;
+
+                                .see-icon-v5-form-import-img,.see-icon-v5-form-camera-fill{
+                                    font-size: 40px;
+                                    line-height: 40px;
+                                    color: #38adff;
+                                }
+                            }
+
+                            .bottom{
+                                position: absolute;
+                                bottom: 16px;
+                                width: 100%;
+                                color: #38adff;
+                                height: 14px;
+                                font-size: 14px;
+                                line-height: 14px;
+                                text-align: center;
+                            }
+
+                        }
+
+                        .image-icon-close{
+                            position: absolute;
+                            width: 24px;
+                            height: 24px;
+                            right: -12px;
+                            top: -12px;
+                            background: #fff;
+                            border-radius: 50%;
+
+                            .see-icon-v5-form-close-circle{
+                                position: absolute;
+                                font-size: 24px;
+                                line-height: 24px;
+                                top: 2px;
+                                right: 2px;
+                                color: red;
+
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+            //上传附件
+            .sui-form-ctrl-value-display.sui-form-ctrl-attachment{
+                height: auto !important; //被外部写入带过来的高度坑了
+                border-color: transparent;
+                padding: 0;
+
+                .attachment-items{
+                    width: 100%;
+                    padding: 4px 8px;
+                    border: 1px solid #ececec;
+                    min-height: 34px;
+                    margin-bottom: 6px;
+
+                    &.items-empty{
+                        display: none;
+                    }
+
+                    .attachment-item{
+                        width: 100%;
+                        position: relative;
+                        height: 34px;
+                        line-height: 34px;
+
+                        .attachment-icon{
+                            position: absolute;
+                            line-height: 34px;
+                            font-size: 22px;
+                        }
+
+                        .attachment-content{
+                            color: #4A90E2;
+                            padding: 0 30px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+
+                        .see-icon-v5-form-close-circle-fill{
+                            font-size: 22px;
+                            color: #999;
+                            position: absolute;
+                            right: 0px;
+                            top: 50%;
+                            transform: translate(0, -50%);
+                            -ms-transform: translate(0, -50%);
+                            -webkit-transform: translate(0, -50%);
+                            -o-transform: translate(0, -50%);
+                            -moz-transform: translate(0, -50%);
+                        }
+
+                    }
+                }
+
+                .attachment-add-item{
+                    position: relative;
+                    height: 34px;
+                    line-height: 34px;
+                    border: 1px solid #ececec;
+                    border-right: none;
+                    width: 100%;
+                    background: #fff;
+                    color: #8f8f8f;
+                    padding: 0 40px 0 8px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    .icon-add{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 34px;
+                        width: 34px;
+                        text-align: center;
+                        background: #38adff;
+
+                        .see-icon-v5-form-add{
+                            font-size: 22px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            //文档
+            .sui-form-ctrl-value-display.sui-form-ctrl-document{
+                height: auto !important; //外部写入可能会带高度，坑
+                border-color: transparent;
+                padding: 0;
+
+                .document-items{
+                    width: 100%;
+                    padding: 4px 8px;
+                    border: 1px solid #ececec;
+                    min-height: 34px;
+                    margin-bottom: 6px;
+
+                    &.items-empty{
+                        display: none;
+                    }
+
+                    .document-item{
+                        width: 100%;
+                        position: relative;
+                        height: 34px;
+                        line-height: 34px;
+
+                        .document-icon{
+                            position: absolute;
+                            line-height: 34px;
+                            font-size: 22px;
+
+                            &.see-icon-v5-form-ic-col-fill{
+                                color: #3AADFB;
+                            }
+                            &.see-icon-v5-form-ic-offdoc-fill{
+                                color: #FF5E5E;
+                            }
+                            &.see-icon-v5-form-relation-doc{
+                                color: #FFAD00;
+                            }
+                        }
+
+                        .document-content{
+                            color: #4A90E2;
+                            padding: 0 30px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+
+                        .see-icon-v5-form-close-circle-fill{
+                            font-size: 22px;
+                            color: #999;
+                            position: absolute;
+                            right: 0px;
+                            top: 50%;
+                            transform: translate(0, -50%);
+                            -ms-transform: translate(0, -50%);
+                            -webkit-transform: translate(0, -50%);
+                            -o-transform: translate(0, -50%);
+                            -moz-transform: translate(0, -50%);
+                        }
+
+                    }
+                }
+
+                .document-add-item{
+                    position: relative;
+                    height: 34px;
+                    line-height: 34px;
+                    width: 100%;
+                    border: 1px solid #ececec;
+                    border-right: none;
+                    background: #fff;
+                    color: #8f8f8f;
+                    padding: 0 40px 0 8px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    .icon-add{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 34px;
+                        width: 34px;
+                        text-align: center;
+                        background: #38adff;
+
+                        .see-icon-v5-form-add{
+                            font-size: 22px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            //各种文件图标的颜色样式
+            .see-icon-v5-form-ic-txt-fill {color: #91a7b9;}
+            .see-icon-v5-form-ic-image-fill {color: #00a720;}
+            .see-icon-v5-form-ic-doc-fill {color: #4a90e2;}
+            .see-icon-v5-form-ic-xls-fill {color: #00a720;}
+            .see-icon-v5-form-ic-ppt-fill {color: #eb8b18;}
+            .see-icon-v5-form-ic-wps-fill {color: #e33737;}
+            .see-icon-v5-form-ic-vsd-fill {color: #4c78b8;}
+            .see-icon-v5-form-ic-pdf-fill {color: #e33737;}
+            .see-icon-v5-form-ic-et-fill {color: #eb8b18;}
+            .see-icon-v5-form-ic-html-fill {color: #91a7b9;}
+            .see-icon-v5-form-ic-mp3-fill {color: #8183f1;}
+            .see-icon-v5-form-ic-mp4-fill {color: #8183f1;}
+            .see-icon-v5-form-ic-voice-fill {color: #eb8b18;}
+            .see-icon-v5-form-ic-zip-fill {color: #163c96;}
+            .see-icon-v5-form-ic-unknown-fill {color: #bec3c7;}
+            .see-icon-v5-form-doc-relation {color: #8183f1;}
+
+            .sui-form-ctrl-value-display.sui-form-ctrl-mapmarked{
+                position: relative;
+                color: #4A90E2;
+                line-height: 22px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                height: auto !important; //外部写入带来高度，就是坑
+
+                .see-icon-v5-form-location-fill{
+                    color: #3cd4c6;
+                    position: absolute;
+                    right: 8px;
+                    font-size: 24px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    -ms-transform: translate(0, -50%);
+                    -webkit-transform: translate(0, -50%);
+                    -o-transform: translate(0, -50%);
+                    -moz-transform: translate(0, -50%);
+                }
+            }
+            //
+            //.sui-form-ctrl-value-display.sui-form-ctrl-maplocate{
+            //    position: relative;
+            //    color: #4A90E2;
+            //    line-height: 22px;
+            //    padding-top: 5px;
+            //    padding-bottom: 5px;
+            //
+            //    .see-icon-v5-form-close-circle-fill{
+            //        right: 8px;
+            //    }
+            //
+            //    .see-icon-v5-form-location-fill{
+            //        color: #35acff;
+            //        position: absolute;
+            //        right: 8px;
+            //        font-size: 24px;
+            //        top: 50%;
+            //        transform: translate(0, -50%);
+            //        -ms-transform: translate(0, -50%);
+            //        -webkit-transform: translate(0, -50%);
+            //        -o-transform: translate(0, -50%);
+            //        -moz-transform: translate(0, -50%);
+            //    }
+            //}
+
+            //dee交换数据
+            .sui-form-ctrl-querytask{
+                color: #8f8f8f;
+            }
+            .sui-form-ctrl-handwrite{
+                color: #8f8f8f !important;
+            }
+        }
+
+
+        //各种权限样式，auth
+        &.sui-auth-browse{
+
+            //浏览权限关联文档，上传附件样式
+            .sui-form-ctrl-value-display.sui-form-ctrl-document{
+                .document-content{
+                    padding-right: 0px !important;
+                }
+            }
+
+            .sui-form-ctrl-value-display.sui-form-ctrl-attachment{
+                .attachment-content{
+                    padding-right: 0px !important;
+                }
+            }
+
+            //如果需要关连穿透，强制padding一下
+            .sui-form-ctrl-field-main.un-flow-relationform-through{
+                padding-right: 40px;
+            }
+
+            .sui-form-ctrl-value,.sui-form-ctrl-value-display{
+                //background: #f2f2f2;  //去除浏览权限灰背景
+            }
+
+            input,input:read-only,input:disabled,textarea,textarea:read-only,textarea:disabled,select,select:disabled{
+                opacity: 1.0 !important;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                -webkit-appearance:none;
+                //background: #f2f2f2 !important;   //去除浏览权限灰背景
+                color: #101010;
+
+            }
+
+            .see-icon-v5-form-pull-right,.see-icon-v5-form-pull-down,.see-icon-v5-form-search,
+            .see-icon-v5-form-close-circle-fill,.see-icon-v5-form-ic-form-fill,.see-icon-v5-form-qrcode,
+            .see-icon-v5-form-location-fill{
+                display: none;
+            }
+
+            .sui-text-multi{
+                height: auto !important;
+                word-break: break-word;
+                line-height: normal;/*2017-12-6 将多行文本的line-height设置为normal*/
+                padding: 5px 8px;
+            }
+
+            .sui-form-ctrl-value-display.sui-form-ctrl-attachment,.sui-form-ctrl-value-display.sui-form-ctrl-document{
+                padding-right: 0 !important;
+            }
+            .document-items,.attachment-items{
+                margin-bottom: 0 !important;
+            }
+
+            //只读时radio的样式
+            .sui-form-ctrl-value-display.sui-radio-group{
+                background: transparent !important;
+                .sui-radio-item{
+                    input{
+                        background: transparent !important;
+                    }
+
+                    input[type='radio']:checked:after{
+                        color: #c9c9c9;
+                    }
+                }
+            }
+
+            //只读checkbox样式
+            input[type='checkbox']:checked:after{
+                color: #c9c9c9;
+            }
+
+        }
+
+        &.sui-auth-hide{
+            position: relative;
+
+            .sui-form-ctrl-value,.sui-form-ctrl-value-display{
+                //background: #f2f2f2;
+                display: none !important;
+            }
+
+            .see-icon-v5-form-pull-right,.see-icon-v5-form-pull-down,.see-icon-v5-form-search,
+            .see-icon-v5-form-close-circle-fill,.see-icon-v5-form-ic-form-fill,.see-icon-v5-form-qrcode
+            .see-icon-v5-form-location-fill{
+                display: none;
+            }
+
+            .sui-form-ctrl-value-hide{
+                //background: #f2f2f2;
+                display: block;
+                height: 34px;
+                line-height: 22px;
+                padding: 5px 8px;
+                border: 1px solid #ececec;
+                color: #8f8f8f;
+
+            }
+        }
+
+        &.sui-auth-edit{
+            .sui-form-ctrl-value-display.sui-form-ctrl-mapmarked{
+                padding-right: 40px;
+            }
+
+
+            .sui-form-ctrl-value-display.sui-form-ctrl-maplocate {
+                padding-right: 70px;
+            }
+
+            .sui-form-ctrl-value-display.sui-radio-group{
+                padding-right: 8px;
+            }
+
+            .sui-form-ctrl-value-display{
+                padding-right: 40px;
+            }
+        }
+        &.sui-auth-add{
+            textarea:disabled{
+                -webkit-text-fill-color: #101010;
+                opacity: 1 !important;
+                -webkit-opacity: 1;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                -webkit-appearance:none;
+                //background: #f2f2f2 !important;   //去除浏览权限灰背景
+                color: #101010;
+
+            }
+        }
+    }
+
+    //设置关联表单样式
+    &.relationform{
+
+        //浏览时，关联穿透按钮
+        .see-icon-v5-form-relation-to{
+            position: absolute;
+            color: #388FFF;
+            font-size: 24px;
+            right: 5px;
+            top: 50%;
+            transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            -webkit-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+        }
+
+        .sui-form-ctrl-field-main{
+
+            .sui-form-ctrl-value-display{
+                //background: #f2f2f2;
+                padding-right: 8px !important; //关联表单右侧没有close按钮，因为是只读权限
+                color: #4A90E2; //关联表单默认字体颜色设置在display上
+
+                &.sui-text-multi{
+                    height: auto !important; //有sui-text-multi自动撑开 bug OA-137367
+                }
+            }
+
+            //编辑时，关联表单按钮
+            .see-icon-v5-form-ic-form-fill{
+                position: absolute;
+                color: #eb8b18;
+                font-size: 24px;
+                right: 5px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+
+            //浏览时，关联穿透按钮
+            .see-icon-v5-form-relation-to{
+                position: absolute;
+                color: #388FFF;
+                font-size: 24px;
+                right: 5px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+
+
+            //扯淡的关联表单，都是只读权限,如果是LBS，那就没有那个图标
+            .sui-form-ctrl-value-display.sui-form-ctrl-mapmarked{
+                padding-right: 8px;
+            }
+            .sui-form-ctrl-value-display.sui-form-ctrl-maplocate {
+                padding-right: 8px;
+            }
+
+        }
+
+        .sui-auth-edit{
+            .sui-form-ctrl-field-main{
+                padding-right: 40px;
+
+                .see-icon-v5-form-pull-right,.see-icon-v5-form-pull-down,.see-icon-v5-form-search,
+                .see-icon-v5-form-close-circle-fill,.see-icon-v5-form-qrcode,
+                .see-icon-v5-form-location-fill{
+                    display: none;
+                }
+            }
+        }
+
+        .sui-auth-hide,.sui-auth-browse{
+
+        }
+
+        .see-icon-v5-form-ic-form-fill.relationform{
+            position: absolute;
+            color: #eb8b18;
+            font-size: 24px;
+            right: 5px;
+            top: 50%;
+            transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            -webkit-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+        }
+
+        //可以关联穿透的字体颜色
+        .sui-form-ctrl-flow-name.allow-click-relationform{
+            color: inherit;
+        }
+
+        .sui-form-ctrl-flow-name.sub-relationlist{
+            padding-left: 20px;
+        }
+    }
+
+    //外部写入
+    &.outwrite{
+        //可以关联穿透的字体颜色
+        .sui-form-ctrl-value-display {
+            color: #4A90E2;
+            height: auto !important; //浏览态自动撑开 bug OA-124237
+
+            .sui-form-ctrl-flow-name.allow-click-relationform{
+                color: #4A90E2;  //bug OA-128563
+            }
+        }
+    }
+
+
+    //地图定位样式
+    &.maplocate{
+
+        .sui-auth-edit{
+            .sui-form-ctrl-field-main{
+                //padding-right: 40px;
+            }
+        }
+
+        .sui-auth-hide,.sui-auth-browse{
+
+        }
+
+        .sui-form-ctrl-field-main{
+
+            .sui-form-ctrl-value-display.sui-form-ctrl-maplocate{
+                position: relative;
+                color: #4A90E2;
+                line-height: 22px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                height: auto !important; //外部写入带来高度，就是坑
+
+                .see-icon-v5-form-close-circle-fill{
+                    right: 44px;
+                }
+
+            }
+
+            .see-icon-v5-form-location-fill{
+                color: #35acff;
+                position: absolute;
+                right: 8px;
+                font-size: 24px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+        }
+
+    }
+
+
+    //这个几个什么鬼东西，display默认自动撑开 OA-124237
+    &.exchangetask, &.externalwrite-ahead, &.querytask {
+        .sui-form-ctrl-field-main {
+            .sui-form-ctrl-value-display{
+                height: auto !important;
+            }
+        }
+    }
+
+    &.barcode{
+        .sui-auth-edit{
+            .sui-form-ctrl-field-main{
+                padding-right: 40px;
+            }
+        }
+
+        .sui-auth-hide,.sui-auth-browse{
+
+            .sui-form-ctrl-barcode{
+                padding-right: 8px;
+            }
+            .see-icon-v5-form-qrcode{
+                display: none;
+            }
+        }
+
+        .sui-form-ctrl-field-main{
+
+            .sui-form-ctrl-barcode{
+
+            }
+
+            .see-icon-v5-form-qrcode{
+                position: absolute;
+                color: #38adff;
+                font-size: 24px;
+                right: 5px;
+                top: 50%;
+                transform: translate(0, -50%);
+                -ms-transform: translate(0, -50%);
+                -webkit-transform: translate(0, -50%);
+                -o-transform: translate(0, -50%);
+                -moz-transform: translate(0, -50%);
+            }
+        }
+    }
+
+
+    //有必填字段的时候，字段框背景色
+    /*2017-10-9 修改客户bug 20170930045233，在追加权限时也将必填项设置背景色*/
+    &.sui-form-ctrl-required.sui-form-ctrl-empty{
+        .sui-form-ctrl-field.sui-auth-edit,.sui-form-ctrl-field.sui-auth-add {
+            .sui-form-ctrl-field-main {
+                .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                    background: #FFF5D2 !important;
+                }
+                .sui-form-ctrl-value-display{
+                    .document-add-item,.attachment-add-item {
+                        background: #FFF5D2 !important;
+                    }
+                }
+                textarea{
+                    background: #FFF5D2 !important;
+                }
+            }
+        }
+    }
+
+    /*2017-11-30 修改签章控件自动撑高*/
+    .sui-form-ctrl-handwrite{
+        height: auto !important;
+    }
+
+}
+
+/*=====================================================================
+    轻表单比较难搞的样式，一些特殊的important样式，区别于原表单的
+*/
+
+.sui-form-content.sui-light-form{
+    .sui-form-ctrl-inner{
+        //轻表单模式下，高度auto
+        .sui-form-ctrl-barcode {
+            height: auto !important;
+            img{
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        .sui-form-ctrl-field{
+            //轻表单中ios disabled的时候会加一个透明效果
+            input:disabled,textarea:disabled,select:disabled{
+                opacity: 1.0;
+                //background: #f2f2f2 !important;
+                background: transparent !important;
+            }
+        }
+
+        /*2018-4-11修改下拉控件自动撑高*/
+        &.select {
+            .sui-form-ctrl-value-display{
+                height: auto !important;
+            }
+        }
+
+        &.relationform {
+            .sui-form-ctrl-value-display{
+                height: auto !important;
+            }
+        }
+    }
+}
+
+.sui-form-ctrl.sui-form-ctrl-radio-h{
+    .sui-form-ctrl-inner{
+        .sui-form-ctrl-field{
+            .sui-form-ctrl-value-display.sui-radio-group{
+
+                .display-flex();
+                display: -webkit-box;
+
+                .sui-radio-item{
+                    .display-inline-flex();
+                }
+            }
+        }
+    }
+}
+
+
+//错误信息提示
+.sui-form-error-tips{
+    display: none;
+}
+
+.sui-form-ctrl.sui-form-ctrl-error{
+    .sui-form-ctrl-inner{
+        .sui-form-ctrl-field{
+            .sui-form-ctrl-field-main{
+                .sui-form-ctrl-value,.sui-form-ctrl-value-display{
+                    border-color: #ff0000 !important;
+                }
+            }
+        }
+    }
+
+    .sui-form-ctrl-error-tips{
+        display: block;
+        line-height: 22px;
+        width: 100%;
+        color: #ff0000;
+        word-break: break-word;
+        text-align: left;
+        overflow: initial;
+        text-overflow: initial;
+        white-space: normal;
+        //overflow: hidden;
+        //text-overflow: ellipsis;
+        //white-space: nowrap;
+    }
+}
+
+
+.sui-form-required {
+    color: #ff0000;
+    position: absolute;
+    top: 3px;
+    left:-8px;
+    font-size: 16px;
+}
+
+//
+
+
+//子表新新加记录的时候，边框高亮
+@-webkit-keyframes sub-table-new-record-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3% {
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@-moz-keyframes sub-table-new-record-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3% {
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@-o-keyframes sub-table-new-record-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3% {
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@keyframes sub-table-new-record-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3% {
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+.sui-sub-table-new-record{
+    //border-color: orange !important;
+    .animation-name(sub-table-new-record-flash);
+    .animation-duration(1.5s);
+    .animation-fill-mode(both);
+
+}
+
+@-webkit-keyframes sui-form-last-field-highlight-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3%{
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@-moz-keyframes sui-form-last-field-highlight-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3%{
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@-o-keyframes sui-form-last-field-highlight-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3%{
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+@keyframes sui-form-last-field-highlight-flash {
+    from, 33.3%, 66.6%, 99%{
+        border:2px dashed orange;
+    }
+
+    16.6%, 50%, 83.3% {
+        border:2px dashed transparent;
+    }
+    to{
+        border: none;
+    }
+}
+
+.sui-form-last-field-highlight{
+    .animation-name(sui-form-last-field-highlight-flash);
+    .animation-duration(1.5s);
+    .animation-fill-mode(both);
+}
+
+//子表控件样式
+.sui-sub-table-ctrl{
+    margin: 10px 0;
+
+    &.sui-sub-table-ctrl-collapse{
+
+        .sui-sub-table-header{
+            .header-right{
+                .see-icon-v5-form-arrow-down{
+                    display: block;
+                }
+
+                .see-icon-v5-form-arrow-up{
+                    //display: none;
+                }
+            }
+        }
+
+        .sui-sub-table-main{
+            display: none;
+        }
+    }
+
+    .sui-sub-table-header{
+        -webkit-box-align: center;
+        .display-flex();
+        display: -webkit-box;
+        position: relative;
+        height: 40px;
+        width: 100%;
+        background: #b9e1ff;
+
+        //复选框按钮
+        .sui-sub-table-check-all{
+            position: absolute;
+            left: 10px;
+            top: 9px;
+            width: 22px;
+            height:22px;
+            display: none;
+
+            .see-icon-v5-form-checkbox-checked{
+                color: #0c5e97;
+                font-size: 24px;
+                line-height: 24px;
+                text-align: center;
+                display: none;
+            }
+
+            .see-icon-v5-form-checkbox-unchecked-my{
+                color: #0c5e97;
+                background: #fff;
+                //font-size: 22px;
+                //border: 1px solid #c9c9c9;
+                border-radius: 2px;
+                line-height: 40px;
+                width: 22px;
+                height: 22px;
+                text-align: center;
+                display: none;
+            }
+
+            //.see-icon-v5-form-checkbox-checked{
+            //    position: absolute;
+            //    left: 10px;
+            //    font-size: 22px;
+            //    line-height: 22px;
+            //    width: 22px;
+            //    height: 22px;
+            //    top: 9px;
+            //}
+
+        }
+
+        .header-left{
+            width: 20%;
+            height: 100%;
+            text-align: left;
+            padding-left: 18px;
+            line-height: 40px;
+
+            .see-icon-v5-form-delete-circle{
+                font-size: 24px;
+                color: #0c5e97;
+            }
+
+            .see-icon-v5-form-table-collect{
+                font-size: 24px;
+                color: #0c5e97;
+            }
+        }
+
+        .sub-table-title{
+            color: #0c5e97;
+            width: 60%;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .header-right{
+            width: 20%;
+            height: 100%;
+            text-align: right;
+            padding-right: 18px;
+            line-height: 40px;
+
+            .see-icon-v5-form-arrow-down,.see-icon-v5-form-arrow-up{
+                font-size: 18px;
+                color: #0c5e97;
+            }
+
+            .see-icon-v5-form-arrow-down{
+                display:none;
+            }
+
+        }
+    }
+
+    hr{
+        .flex(1);
+        display: block;
+        border: 1px dashed #cad5da;
+        //width: 100%;
+    }
+
+    .sui-sub-table-main{
+        .sui-sub-table-more-ctrl{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+
+            span{
+                background: #38adff;
+                padding: 5px 30px;
+                border-radius: 20px;
+                border: 1px solid #38adff;
+                font-size: 16px;
+            }
+
+            span:active{
+                background: #fff;
+                color: #38adff;
+            }
+        }
+
+        .sui-sub-table-record{
+            //margin: 20px 0 20px 10px;
+            //border: 1px dashed #999;
+            position: relative;
+
+            .sui-sub-table-btns{
+                background: #fff;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                text-align: right;
+                position: relative;
+
+                i{
+                    padding: 0 20px 0 10px;
+                    font-size: 24px;
+                }
+
+                .see-icon-v5-form-checkbox-checked,.see-icon-v5-form-checkbox-unchecked{
+                    position: absolute;
+                    left: 7px;
+                    top: 10px;
+                    padding: 3px;
+                    font-size: 24px;
+                    line-height: 24px;
+                }
+
+                .see-icon-v5-form-checkbox-unchecked {
+                    color: #c9c9c9
+                }
+
+                .see-icon-v5-form-checkbox-checked {
+                    color: #38adff
+                }
+
+                .see-icon-v5-form-new-circle,.see-icon-v5-form-copy-circle,.see-icon-v5-form-remove-circle{
+                    color: #3badff;
+                    background: #fff;
+                }
+
+                .see-icon-v5-form-new-circle{
+                    color: #3badff;
+                    background: #fff;
+                }
+
+            }
+
+            .sui-sub-table-record-content{
+                width: 100%;
+                border-top:1px solid #ececec;
+                padding-bottom: 6px;
+                border-bottom:1px solid #ececec;
+
+                //去除重复表记录中最后一个字段的下分割线
+                .sui-form-ctrl:last-child{
+                    border: none !important;
+                }
+            }
+        }
+    }
+
+}
+
+.sui-form-content.sui-form-content-allow-check{
+    .sui-sub-table-ctrl{
+        .sui-sub-table-header{
+            .header-left{
+                i{
+                    display: none !important;
+                }
+            }
+
+            .sui-sub-table-check-all{
+                display: block !important;
+                .see-icon-v5-form-checkbox-checked,.see-icon-v5-form-checkbox-unchecked-my{
+                    display: block !important;
+                }
+            }
+        }
+
+        .sui-sub-table-main{
+            .sui-sub-table-record{
+                .sui-sub-table-btns{
+                    .toolbar-btn{
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sui-form-drag{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    //background: #4A90E2;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 0 8px #2c99fa;
+    -webkit-box-shadow: 0 0 8px rgba(44,153,250,0.6);
+    position: fixed;
+    //.calc-top('100% - 220px');
+    //.calc-left('100% - 58px');
+    bottom: 158px;
+    right: 10px;
+    z-index: 50;
+    text-align: center;
+
+    .see-icon-v5-form-qrscan{
+        line-height: 44px;
+        font-size: 20px;
+        color: #57A0F6;
+    }
+}
+
+
+@-webkit-keyframes shake {
+    2% {
+        transform: translate(-0.5px, 0.5px) rotate(0.5deg); }
+    4% {
+        transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
+    6% {
+        transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+    8% {
+        transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+    10% {
+        transform: translate(2.5px, -1.5px) rotate(1.5deg); }
+    12% {
+        transform: translate(-1.5px, 2.5px) rotate(-0.5deg); }
+    14% {
+        transform: translate(0.5px, 2.5px) rotate(1.5deg); }
+    16% {
+        transform: translate(-1.5px, -1.5px) rotate(0.5deg); }
+    18% {
+        transform: translate(0.5px, -1.5px) rotate(0.5deg); }
+    20% {
+        transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+    22% {
+        transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
+    24% {
+        transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+    26% {
+        transform: translate(1.5px, -0.5px) rotate(0.5deg); }
+    28% {
+        transform: translate(2.5px, -0.5px) rotate(0.5deg); }
+    30% {
+        transform: translate(1.5px, 2.5px) rotate(-0.5deg); }
+    32% {
+        transform: translate(1.5px, 1.5px) rotate(1.5deg); }
+    34% {
+        transform: translate(-1.5px, 0.5px) rotate(-0.5deg); }
+    36% {
+        transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+    38% {
+        transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
+    40% {
+        transform: translate(1.5px, -0.5px) rotate(1.5deg); }
+    42% {
+        transform: translate(0.5px, -1.5px) rotate(1.5deg); }
+    44% {
+        transform: translate(-1.5px, -1.5px) rotate(1.5deg); }
+    46% {
+        transform: translate(2.5px, 2.5px) rotate(1.5deg); }
+    48% {
+        transform: translate(0.5px, 0.5px) rotate(0.5deg); }
+    50% {
+        transform: translate(1.5px, -1.5px) rotate(-0.5deg); }
+    52% {
+        transform: translate(-1.5px, 2.5px) rotate(-0.5deg); }
+    54% {
+        transform: translate(-1.5px, -0.5px) rotate(-0.5deg); }
+    56% {
+        transform: translate(1.5px, 0.5px) rotate(0.5deg); }
+    58% {
+        transform: translate(0.5px, -0.5px) rotate(0.5deg); }
+    60% {
+        transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+    62% {
+        transform: translate(2.5px, -0.5px) rotate(0.5deg); }
+    64% {
+        transform: translate(1.5px, -0.5px) rotate(0.5deg); }
+    66% {
+        transform: translate(0.5px, -1.5px) rotate(-0.5deg); }
+    68% {
+        transform: translate(-0.5px, 0.5px) rotate(1.5deg); }
+    70% {
+        transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+    72% {
+        transform: translate(2.5px, -0.5px) rotate(-0.5deg); }
+    74% {
+        transform: translate(0.5px, 1.5px) rotate(-0.5deg); }
+    76% {
+        transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
+    78% {
+        transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
+    80% {
+        transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+    82% {
+        transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+    84% {
+        transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
+    86% {
+        transform: translate(0.5px, 2.5px) rotate(1.5deg); }
+    88% {
+        transform: translate(0.5px, 2.5px) rotate(-0.5deg); }
+    90% {
+        transform: translate(2.5px, 1.5px) rotate(1.5deg); }
+    92% {
+        transform: translate(-1.5px, -1.5px) rotate(0.5deg); }
+    94% {
+        transform: translate(-0.5px, -1.5px) rotate(-0.5deg); }
+    96% {
+        transform: translate(-0.5px, -1.5px) rotate(0.5deg); }
+    98% {
+        transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+.sui-form-drag-active{
+    //border: 2px dashed orange;
+    opacity: 0.8;
+    cursor: move;
+    .animation-name(shake);
+    .animation-duration(100ms);
+    .animation-iteration-count(infinite);
+    .animation-timing-function(ease-in-out);
+}
+
+
+
+/*=====================================================================
+    原样表单的样式
+*/
+
+.sui-form-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sui-source-form-ctrl-wrapper{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    vertical-align: middle;
+    height: auto !important;
+    margin: auto !important;
+
+    //设置默认字体大小
+    font-size: 12px;
+    max-width: 100%;
+    //width: 60px;
+
+    &.checkbox{
+        border: none !important;
+        min-width: 22px;
+    }
+
+    //bug OA-132136 radio不需要宽度
+    &.radio {
+        width: auto !important;
+    }
+
+    /*bug 20171129049187,将fieldxxxx的margin样式强制设置为auto important 2017-11-30*/
+    .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide {
+        margin: auto !important;
+    }
+
+}
+
+.sui-form-wrapper .sui-form-content{
+    //display: inline-block;
+}
+
+.sui-form-wrapper .sui-form-content.sui-form-grid{
+    display: inline-block;
+    padding: 0 5px 0 30px; //用于重复表图标的放置缓冲位置
+}
+
+.sui-form-wrapper .sui-form-content,.sui-form-wrapper .sui-form-content.sui-form-grid{
+    //    display: table-cell !important;
+}
+
+.sui-form-wrapper .sui-form-content.sui-form-grid table td{
+    vertical-align: middle !important;
+    /*2018-3-6 OA-139556【6.1sp2-3月修复包】M3上查看边框显示不全--Android*/
+    overflow: hidden;
+}
+
+.sui-form-wrapper .sui-form-content.sui-form-grid .sui-form-ctrl .sui-form-ctrl-title{
+    display: none !important;
+}
+
+
+.sui-form-content.sui-form-grid {
+    .sui-sub-table-record{
+        //position: relative;
+    }
+    .sui-sub-table-more-ctrl-grid{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+
+        span{
+            background: #38adff;
+            padding: 5px 25px;
+            border-radius: 20px;
+            border: 1px solid #38adff;
+            font-size: 14px;
+        }
+
+        span:active{
+            background: #fff;
+            color: #38adff;
+        }
+    }
+
+    .sui-form-ctrl-inner {
+        .sui-form-ctrl-field {
+            min-width: 0px !important;
+
+            .sui-form-ctrl-field-main {
+                //fix 客户BUG 20180426057828 (2018-4-17)
+                .display-flex();
+
+                .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                    min-height: 26px;  //设置字段输入框默认最小高度26px
+                    padding: 0px;
+                    line-height: 22px;
+                    text-align: left;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 12px;
+                }
+
+                input,textarea,select{
+                    font-size: 12px;
+                }
+
+
+                //checkbox样式，min-width
+                input[type='checkbox'] {
+                    min-width: 22px;
+                    width: 22px;
+                    border: none !important;
+                    /*2018-11-28 客户BUG 20181121071267 ,checkbox只读时字体大小为bold在ios下显示不清楚异常问题*/
+                    font-weight: normal;
+                }
+
+                //文本域样式
+                textarea.sui-form-ctrl-value{
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: pre-wrap !important;
+                    word-break: break-word !important;
+                    overflow-y: scroll;
+                    height: 26px;
+                    /*2017-12-6 将textarea控件的line-height强制设置为字体高度 + 6px,
+                    为什么不设置为normal呢，因为textarea高度自动增减，如果为normal不好计算
+                    */
+                    .calc-line-height('100% + 6px');
+                }
+                //标签和流程处理意见,流水号自动撑开
+                .sui-form-ctrl-value-display.sui-form-ctrl-static,.sui-form-ctrl-value-display.sui-text-multi{
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: pre-wrap !important;
+                    word-break: break-word !important;
+                    height: auto !important;
+                    line-height: normal;
+
+                    span{
+                        height: auto !important;
+                    }
+                }
+
+                //关联文档高度自动撑开
+                .sui-form-ctrl-value-display.sui-form-ctrl-document,.sui-form-ctrl-value-display.sui-form-ctrl-attachment{
+                    height: auto !important;
+                    color: #4A90E2;
+                    .document-content,.attachment-content{
+                        color: inherit;
+                    }
+                }
+
+                //单选按钮在原表单时的格式
+                .sui-form-ctrl-value-display.sui-radio-group{
+                    white-space: normal;
+                    width: 100%;
+
+                    .sui-radio-item{
+                        margin-right: 15px;
+                        display: inline-flex;
+
+                        input[type='radio']{
+                            width: 26px !important; //防止infopath修改样式
+                            text-align: left !important;
+                        }
+                    }
+                }
+
+                //所有向右的箭头以及叉叉图标，靠右边缩进一下
+                .see-icon-v5-form-pull-right{
+                    right: 0px;
+                }
+
+                //所有删除图标距右侧2px
+                .see-icon-v5-form-close-circle-fill{
+                    right: 2px;
+                }
+
+                //图片控件样式，拍照定位
+                .sui-form-ctrl-value-display.sui-form-ctrl-image, .sui-form-ctrl-value-display.sui-form-ctrl-maplocate{
+                    height: 100%; //默认行高26px
+                    min-height: 26px;
+
+                    .infopath-image-item{
+                        height: 100%;
+                        width: 100%;
+                        position: relative;
+                        min-height: 26px;
+
+                        .see-icon-v5-form-close-circle-fill{
+                            font-size: 20px;
+                            color: #999;
+                            position: absolute;
+                            right: -20px;
+                            top: 50%;
+                            transform: translate(0, -50%);
+                            -ms-transform: translate(0, -50%);
+                            -webkit-transform: translate(0, -50%);
+                            -o-transform: translate(0, -50%);
+                            -moz-transform: translate(0, -50%);
+                        }
+
+
+                        img{
+                            max-width: 100%;
+                            max-height: 100%;
+                            position: relative;
+                            display: block;
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                            -ms-transform: translate(-50%, 0);
+                            -webkit-transform: translate(-50%, 0);
+                            -o-transform: translate(-50%, 0);
+                            -moz-transform: translate(-50%, 0);
+                        }
+                    }
+
+                    .image-add-item{
+                        position: absolute;
+                        right: 2px;
+                        top: 50%;
+                        height: 26px;
+                        width: 26px;
+                        transform: translate(0, -50%);
+                        -ms-transform: translate(0, -50%);
+                        -webkit-transform: translate(0, -50%);
+                        -o-transform: translate(0, -50%);
+                        -moz-transform: translate(0, -50%);
+                        i{
+                            font-size: 24px;
+                            line-height: 26px;
+                            color: #38adff;
+                        }
+                    }
+                }
+
+                //上传附件，关联文档，将左右的padding缩一下，节省空间
+                .sui-form-ctrl-value-display {
+                    .attachment-items,.document-items{
+                        text-align: left;
+                        padding: 4px;
+                    }
+
+                    .attachment-add-item,.document-add-item {
+                        padding: 0 40px 0 4px;
+                    }
+                }
+
+                //地图标注，位置定位
+                .sui-form-ctrl-value-display.sui-form-ctrl-mapmarked,.sui-form-ctrl-value-display.sui-form-ctrl-maplocate {
+                    display: inline-flex;
+                    align-items: center;
+                    .sui-text-single{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+
+            }
+
+            &.sui-auth-edit {
+                .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                    //编辑权限下，默认给控制设置50px的宽度
+                    max-width: 100%;
+                    width: 100px;
+                }
+
+                //组织控件编辑态的时候，单行
+                .sui-form-ctrl-value-display.organization {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-right: 24px !important;
+                }
+
+                .sui-form-ctrl-value-display.organization + .see-icon-v5-form-close-circle-fill {
+                    display: none;
+                }
+
+                //编辑权限时的图片控件有缩进
+                .sui-form-ctrl-value-display.sui-form-ctrl-image{
+                    padding-right: 60px !important;
+                }
+
+                //编辑权限时的二维码控件有缩进
+                .sui-form-ctrl-value-display.sui-form-ctrl-barcode{
+                    padding-right: 60px !important;
+                }
+
+                //编辑权限时的签章有缩进
+                .sui-form-ctrl-value-display.sui-form-ctrl-handwrite{
+                    padding-right: 24px !important;
+                }
+
+                //编辑权限radio宽度100%
+                .sui-form-ctrl-value-display.sui-radio-group{
+                    width: 100%;
+                }
+                ///地图标注
+                .sui-form-ctrl-value-display.sui-form-ctrl-mapmarked{
+                    padding-right: 30px !important;
+                    .see-icon-v5-form-location-fill{
+                        right: 4px;
+                    }
+                }
+
+                //位置定位
+                .sui-form-ctrl-value-display.sui-form-ctrl-maplocate {
+                    padding-right: 60px !important;
+                    i{
+                        right: 40px;
+                    }
+                }
+            }
+
+            &.sui-auth-browse {
+                //组织控件浏览态的时候，自动撑开
+                .sui-form-ctrl-value-display.organization {
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: normal !important;
+                }
+
+                //浏览态的时候，字体的默认颜色跟pc一致#0557d9
+                .sui-form-ctrl-value,.sui-form-ctrl-value-display,.sui-form-ctrl-value-hide{
+                    color: #0557d9 !important;
+                }
+
+                //文本域浏览态，高度自动撑开
+                textarea.sui-form-ctrl-value{
+                    //height: auto !important;  //2017-7-25需求变更为自动根据实际高度撑开
+                }
+            }
+
+        }
+
+        //下拉控件，日期控件样式修改，关联项目
+        &.select,&.date,&.datetime,&.project{
+            //.sui-form-ctrl-value-display{
+            //    display: table-cell;
+            //    vertical-align: middle;
+            //}
+            .sui-form-ctrl-field.sui-auth-edit{
+                //强制padding-right 18像素，下拉图标右侧靠边，文本单行
+                .sui-form-ctrl-value-display{
+                    padding-right: 24px !important;
+                    display: inline-flex;
+                    align-items: center;
+
+                    .sui-text-single{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                }
+
+                .see-icon-v5-form-pull-down,.see-icon-v5-form-close-circle-fill{
+                    right: 2px;
+                }
+            }
+
+            .sui-form-ctrl-field.sui-auth-browse {
+                .sui-form-ctrl-value-display{
+                    height: auto !important; //浏览态自动撑开
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: normal !important;
+                }
+            }
+
+        }
+
+        &.image,&.maplocate{
+            .sui-form-ctrl-field-main{
+                padding-top: 2px; //给图片控制一直2像素的容限，解决下边框显示重叠问题
+                padding-bottom: 2px;
+            }
+        }
+
+        //二维码样式优化
+        &.barcode{
+            .sui-form-ctrl-field-main{
+                padding-right: 0px;
+
+                .sui-form-ctrl-value-display{
+                    height: 26px; //默认行高26px
+                    min-height: 26px;
+
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+
+                    .see-icon-v5-form-close-circle-fill{
+                        right: 40px;
+                    }
+                }
+
+            }
+        }
+
+        //关联表单样式修改
+        &.relationform{
+            .sui-form-ctrl-field.sui-auth-edit{
+                .sui-form-ctrl-field-main{
+                    padding-right: 34px;
+                }
+            }
+
+            .sui-auth-browse{
+                .sui-form-ctrl-value-display{
+                    height: auto !important; //浏览态自动撑开
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: normal !important;
+                }
+            }
+
+        }
+
+        //关联表单和外部写入，浏览态自动撑开
+        &.outwrite{
+            .sui-auth-browse{
+                .sui-form-ctrl-value-display{
+                    height: auto !important; //浏览态自动撑开
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: normal !important;
+                }
+            }
+        }
+
+        //位置定位编辑权限时
+        &.maplocate {
+            .sui-form-ctrl-field.sui-auth-edit{
+                .sui-form-ctrl-field-main{
+                    //padding-right: 34px;
+
+                    .see-icon-v5-form-location-fill{
+                        right: 4px;
+                    }
+                }
+            }
+        }
+
+        //原表单提示
+        .sui-form-ctrl-error-tips{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        //文本域
+        &.textarea{
+            .sui-form-ctrl-field-main{
+                .display-flex();
+            }
+            white-space: nowrap;
+        }
+
+        //这个几个什么鬼东西，display默认自动撑开 OA-124237
+        &.exchangetask, &.externalwrite-ahead, &.querytask {
+            .sui-form-ctrl-field-main {
+                .sui-form-ctrl-value-display{
+                    height: auto !important;
+                    overflow: initial;
+                    text-overflow: initial;
+                    white-space: normal !important;
+                }
+            }
+        }
+    }
+
+    .sui-form-viewType-1.sui-form-ctrl {
+        padding: 0px !important;
+    }
+
+    //原表单的重复表样式
+    .subTableBtn{
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        top: 50%;
+        transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        -webkit-transform: translate(0, -50%);
+        -o-transform: translate(0, -50%);
+        -moz-transform: translate(0, -50%);
+
+        .see-icon-v5-form-edit-circle{
+            font-size: 22px;
+            line-height: 24px;
+            text-align: center;
+            color: #3AADFB;
+        }
+    }
+
+    .see-icon-v5-form-table-collect{
+        position: absolute;
+        margin-left: -26px;
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        color: #3AADFB;
+    }
+
+    font{
+        line-height: normal; //默认line-height，本来是用来解决标题在移动端line-height过小，字体看不清，但后续可能会影响到其他font元素的lineHeight
+    }
+}
+
+
+
+
+

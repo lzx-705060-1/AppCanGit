@@ -1,0 +1,272 @@
+.cmp-bar-nav {
+    box-shadow: none;
+}
+/*空间排序功能*/
+#spaceSelectionSort .canChooseSpace {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #F5F4F3;
+}
+
+#spaceSelectionSort .canChooseSpace .chooseTitle {
+  font-size: 14px;
+  color: #333;
+  margin-left: 15px;
+}
+
+#spaceSelectionSort .canChooseSpace .sortOperate {
+  width: 80px;
+  height: 25px;
+  box-sizing: border-box;
+  line-height: 22px;
+  border: 1px solid #FF191E;
+  border-radius: 50px;
+  text-align: center;
+  float: right;
+  margin-top: 7px;
+  margin-right: 10px;
+}
+
+#spaceSelectionSort .canChooseSpace .sortOperate span {
+  font-size: 12px;
+  color: #FF191E;
+}
+
+#spaceSelectionSort .canChooseSpace .canChooseSpaceShow {
+  height: 25px;
+  line-height: 25px;
+  padding-left: 15px;
+  margin-top: 7px;
+  border-left: 1px solid #D8D5D0;
+  float: right;
+  margin-right: 15px;
+}
+
+#spaceSelectionSort .canChooseSpace .canChooseSpaceShow .iconfont {
+  font-size: 14px;
+  color: #D8D5D0;
+}
+
+#spaceSelectionSort .detailList {
+  width: 100%;
+  overflow: hidden;
+}
+
+#spaceSelectionSort .detailList .detailItem {
+  position: relative;
+  width: 33.333%;
+  float: left;
+  margin-top: 20px;
+}
+
+#spaceSelectionSort .detailList .detailItem .remove {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #FF0000;
+  line-height: 15px;
+  text-align: center;
+  font-size: 12px;
+  top: -5px;
+  right: 15px;
+  border-radius: 100%;
+  color: #fff;
+}
+
+#spaceSelectionSort .detailList .detailItem .detailItemContent {
+  width: 70%;
+  margin-left: 15%;
+  height: 25px;
+  line-height: 25px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #F5F4F3;
+  border: 1px solid #D8D5D0;
+  border-radius: 50px;
+}
+
+#spaceSelectionSort .detailList .detailItem .detailItemContent div {
+  width: 90%;
+  margin-left: 5%;
+  font-size: 16px;
+  color: #333;
+}
+
+#spaceSelectionSort .detailList .detailItem .detailItemContent div.top {
+  color: #FF191E;
+}
+
+#spaceSelectionSort .detailList .detailItem .detailItemContent div.elpse {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#spaceSelectionSort .canChooseSpaceMore {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #F5F4F3;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+#spaceSelectionSort .canChooseSpaceMore span {
+  margin-left: 15px;
+}
+
+
+
+/*栏目排序功能*/
+#divSection {
+  width: 100%;
+  background-color: #fff;
+}
+
+#divSection .choosedSection {
+  width: 100%;
+}
+
+#divSection .choosedSection .title {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #F5F4F3;
+}
+
+#divSection .choosedSection .title span {
+  font-size: 12px;
+  color: #333;
+  margin-left: 15px;
+}
+
+.sectionMove {
+  width: 100%;
+}
+
+.sectionMove .detailSection {
+  list-style: none;
+  width: 100%;
+  height: 40px;
+  position: relative;
+}
+
+.sectionMove .detailSection .sectionContent {
+  margin-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  /*border-bottom: 1px solid #d4d4d4;*/
+}
+.sectionMove .detailSection .sectionContent:after{
+  background-color: #D4D4D4;
+}
+
+
+.sectionMove .detailSection .sectionContent .remove {
+  width: 16px;
+  height: 16px;
+  background: #ff0000;
+  line-height: 14px;
+  text-align: center;
+  margin-top: 12px;
+  float: left;
+  margin-right: 10px;
+  border-radius: 100%;
+}
+
+.sectionMove .detailSection .sectionContent .remove span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.sectionMove .detailSection .sectionContent .add {
+  width: 16px;
+  height: 16px;
+  background: #00ACF8;
+  line-height: 14px;
+  text-align: center;
+  margin-top: 12px;
+  float: left;
+  margin-right: 10px;
+  border-radius: 100%;
+}
+
+.sectionMove .detailSection .sectionContent .add span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.sectionMove .detailSection .sectionContent .name {
+  font-size: 16px;
+  color: #333;
+}
+
+.sectionMove .detailSection .sectionContent .iconfont {
+  float: right;
+  font-size: 16px;
+  color: #999;
+  padding: 0 15px;
+}
+
+#divSection .canChooseSection {
+  width: 100%;
+}
+
+#divSection .canChooseSection .title {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #F5F4F3;
+}
+
+#divSection .canChooseSection .title span {
+  font-size: 12px;
+  color: #333;
+  margin-left: 15px;
+}
+
+
+
+/*** 选择数据来源***/
+.Animated-Container .cmp-content {
+    position: absolute;
+    width: 100%;
+}
+.info-style {
+  margin-top: 10px;
+}
+.folder-style {
+  height: 30px !important;
+    padding-left: 26px;
+}
+.arrowright-high {
+  line-height: 38px;
+}
+
+.icon-doc {
+  color: #3aadfb;
+}
+
+.footer-style {
+  background-color: white;
+  text-align: center;
+  height: 50px;
+  border-top: solid 0.5px #d4d4d4;
+}
+
+.footer-button-style {
+  background-color: #3aadfb !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  width: 46%;
+  border-color: #3aadfb !important;
+  margin-top: 8px;
+  font-size: 16px !important;
+}
+.footer-button-style:first-child{
+  margin-right: 20px;
+}

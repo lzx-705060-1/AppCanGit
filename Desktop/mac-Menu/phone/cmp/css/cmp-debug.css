@@ -1,0 +1,160 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+.cmp-ios-x .debug-page{
+    padding-top: 44px;
+}
+.cmp-debug-float-div{
+    position: absolute;
+    width: 40px;
+    height: 90px;
+    top: 99px;
+    right: 10px;
+    z-index: 9999;
+}
+.cmp-debug {
+    /*position: absolute;*/
+    width: 40px;
+    height: 40px;
+    /*top: 99px;*/
+    /*right: 10px;*/
+    border-radius: 50%;
+    /*z-index: 9999;*/
+    background: url(../img/bug-green.png) center center no-repeat;
+    background-size: 27px 27px;
+    border-radius: 50%;
+    border: 1px solid #80ba27;
+}
+.cmp-debug-barcode{
+    padding-top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /*z-index: 9999;*/
+    background: url(../img/debugbarcode.png) center center no-repeat;
+    background-size: 27px 27px;
+    border-radius: 50%;
+    border: 1px solid #80ba27;
+}
+.cmp-debug-refresh{
+    margin-top: 15px;
+    width: 40px;
+    height: 20px;
+    background: rgba(149, 130, 125, 0.7);
+    color: #0ce0a3;
+    font-size: 10px;
+    text-align: left;
+}
+.cmp-debug-error {
+    background: url(../img/bug-error.png) center center no-repeat;
+    border: 1px solid #ef7726;
+}
+.cmp-debug-log {
+    background: url(../img/bug-log.png) center center no-repeat;
+    border: 1px solid #2f8cc0;
+}
+.cmp-debug-page {
+    position: absolute;
+    display: -webkit-flex;
+    -webkit-flex-flow: column;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    left: 0;
+    top: 0;
+    color: #888;
+    background: #fff;
+}
+.cmp-debug-content {
+    -webkit-flex: 1;
+    overflow: scroll;
+}
+.cmp-debug-content > div {
+    overflow: scroll;
+    white-space: nowrap;
+}
+.m3-red {
+    background: red;
+}
+.cmp-debug-child-cont {
+    text-indent: 20px;
+    line-height: 25px;
+}
+.cmp-debug-child-cont > .cmp-debug-child-cont {
+    padding-left: 20px;
+}
+.cmp-can-extend,
+.cmp-no-extend {
+    border-bottom: 1px solid #dfdfdd;
+}
+.cmp-debug-child-cont > div {
+    border-bottom: none;
+    border-top: 1px solid #dfdfdd;
+}
+.cmp-debug-toolbar {
+    width: 100%;
+    height: 45px;
+    display: -webkit-flex;
+    border: 1px solid #dfdfdd;
+}
+.cmp-debug-toolbar > textarea {
+    display: block;
+    line-height: 25px;
+    -webkit-flex: 1;
+    font-size: 14px;
+    -webkit-appearance: none;
+    border: none;
+    resize: none;
+    padding: 0 15px;
+    outline: none;
+}
+.cmp-debug-toolbar > .cmp-debug-btn {
+    width: 60px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-left: 1px solid #dfdfdd;
+}
+.cmp-debug-title {
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-bottom: 1px solid #dfdfdd;
+}
+.cmp-debug-title > h1 {
+    height: inherit;
+    line-height: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+.cmp-debug-title > a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 45px;
+    border-left: 1px solid #dfdfdd;
+}
+
+.cmp-debug-code {
+    border-bottom: 1px solid #dfdfdd;
+    color: #abc;
+    padding: 0 10px;
+}
+.cmp-debug-red,
+.cmp-debug-window {
+    color: #a00;
+}
+.cmp-debug-ajax {
+    color: #f00;
+}
+.cmp-debug-native {
+    color: #0af;
+}
+.cmp-debug-others {
+    color: #f94;
+}

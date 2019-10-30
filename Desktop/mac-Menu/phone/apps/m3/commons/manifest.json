@@ -1,0 +1,21 @@
+{
+	"buildVersion":"1.0.0",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"commons",
+	"splashscreen":[],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"",
+	"serviceProvidear":"seeyon",
+	"team":"m3",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"LIB",
+	"version":"1.0.0",
+	"entry":{"phone":""},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"53",
+	"urlSchemes":"commons.m3.cmp",
+	"bundleName":"commons",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

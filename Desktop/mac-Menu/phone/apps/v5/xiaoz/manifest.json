@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.0",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"xiaoz",
+	"splashscreen":[],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  	"cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{"phone":""},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"79",
+	"urlSchemes":"xiaoz.v5.cmp",
+	"bundleName":"xiaoz",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":"",
+	"entry":{
+		"jsapi":"xiaoz_m_api.s3js",
+		"openAppMethod":"xiaozApi.openApp"
+	}
+}

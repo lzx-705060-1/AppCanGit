@@ -1,0 +1,35 @@
+html,body{height: 100%;width: 100%;background-color: #efefef;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar {background: #fff;border-bottom: 1px solid #ddd}
+header.cmp-bar .cmp-btn-link {color:#3AADFB;}
+header .see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-content {background: #efefef;}
+.cmp-table-view {background: none;font-size:0;}
+.cmp-table-view:before {height:0;}
+.cmp-table-view-cell {padding: 0;}
+.cmp-table-view-cell:after {height:0;}
+.cmp-table-view:after {height: 0;}
+#g_pic_list{background: #fff;}
+#g_pic_list li {width:25%;display:inline-block;vertical-align: top;margin-bottom: 0.133rem;margin-right: 0.133rem;overflow:hidden;position:relative;}
+#g_pic_list li img {position:absolute;}
+#g_pic_list .cmp-scroll{background:#fff;}
+div#delete{
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #50abff;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.cmp-header-right .nav-text{
+   padding: 0!important;
+}
+.cmp-checkbox input.checkbox{
+    top:0!important;
+    left: 60px !important;
+    z-index: 300;
+}

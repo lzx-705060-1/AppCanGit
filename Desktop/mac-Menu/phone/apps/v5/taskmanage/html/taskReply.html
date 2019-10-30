@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+		<!-- css样式 -->
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172627"/>
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/taskmanage/css/taskmanage.css?buildversion=181210172627"/>
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172627">
+		<title></title>
+		<style type="text/css">
+		  .reply-hide{display: none;}
+		</style>
+	</head>
+	<body class="cmp-fullscreen">
+		<script>var _cmpPath = "/seeyon/m3/cmp"; var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";</script>
+	    <div id="reply-content" class="cmp-content position_relative" style="position: fixed;bottom: 101px;width: 100%;">
+	        <textarea id="reply-area" placeholder="" style="border: none;height: 100%;width: 100%; font-size: 16px;"></textarea>
+	    </div>
+	    
+    	<div class="border_b" style="width: 100%;padding: 10px;position: fixed;bottom: 60px;left: 0;background: #fff;">
+            <div style="float: left;font-size: 12px;color: #A2ACC7;">
+                <span id="reply-remain">500</span>
+            </div>
+            <div style="float: right;font-size: 18px;color: #a2acc7;" class="reply-hide att-area">
+            	<span id="attNum">0</span>
+                <span id="attBtn" class="cmp-icon iconfont see-icon-accessory task-common-access"></span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+	
+	    <footer id="task-reply-area">
+			<div class="task-reply-area-block">
+				<div class="task-save-bottom">
+					<div class="task-save-btn">
+						<span><i18n key="Taskmanage.label.replytask"></i18n></span>
+					</div>
+				</div>
+			</div>
+	    </footer>
+		<!-- 附件容器 -->
+		<div id="picture"></div>
+		<!-- 国际化资源文件引入 -->
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/i18n/taskmanage_zh_CN.js?buildversion=181210172627"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172627"></script>
+		<script type="text/javascript">
+		    cmp.i18n.init("/seeyon/m3/apps/v5/taskmanage/i18n/","taskmanage", function(){
+				document.querySelector("#reply-area").placeholder = cmp.i18n("Taskmanage.label.replyopinion");
+			});
+		</script>
+				<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172627"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172627"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172627"></script>
+        <script  src="/seeyon/m3/apps/v5/taskmanage/js/taskmanage-jssdk.js?buildversion=181210172627"></script>
+        <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172627" id="__jsdktag" ></script>
+        <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172627"></script>
+        <script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/js/taskReply.js?buildversion=181210172627"></script>
+        	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=181210172627" defer="defer"></script>
+	</body>
+</html>

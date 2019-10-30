@@ -1,0 +1,34 @@
+
+.qrcode-content{padding-top: 14px;}
+.qrcode-content.isEmailbind{padding-top: 0;}
+.content{margin:0;position: relative;}
+.content input{height: 50px;padding-right: 40px;}
+.content input:disabled{color:#333;background-color: #fff;-webkit-text-fill-color:#333;
+    -webkit-opacity:1; opacity: 1; }
+.content .cmp-input-row .cmp-icon-clear{top:15px;right:5px;color: #ccc;}
+
+.content textarea,.content input{
+    border: 0;font-size: 16px;color: #333;
+}
+.isbind-text{
+    font-size: 12px;color: #999;padding-left: 15px;display:block;
+}
+.content.emailCode{margin: 0;}
+.emailCode{}
+.emailCode .title{padding: 10px;text-align: center;color: #ffa500;font-size: 14px;text-align: left;
+background-color: #fbf3e1;}
+.emailCode .cmp-input-row{background-color: #fff;position: relative;margin-top: 14px;}
+/* .emailCode .cmp-input-row .label{width: 27%;height: 50px;font-size: 16px;color: #999;
+    line-height: 50px;padding: 0;padding-left: 14px;} */
+.emailCode .cmp-input-row input{width: 71%;}
+.emailCode .cmp-input-row .codeTime{position: absolute;right: 10px;top:0;color: #3AADFB;font-size: 16px;
+height: 50px;line-height: 50px;}
+
+.alert-title{text-align: center;color: #262626;font-size: 16px;}
+.alert-small{text-align: center;color: #3F3F3F;font-size: 16px;}
+
+.isEmail{width: 100%;display: inline-block;vertical-align: middle;}
+.emailbindbtn{display: inline-block;width: 20%;text-align: right;background-color: #fff;height: 50px;
+    padding-right: 14px;font-size: 16px;z-index: 2;
+line-height: 50px;vertical-align: middle;color: #3aadfb;font-weight: bold;position: absolute;right: 0;top:0;}
+

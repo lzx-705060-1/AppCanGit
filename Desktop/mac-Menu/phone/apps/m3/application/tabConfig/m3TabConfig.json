@@ -1,0 +1,73 @@
+{
+    "tabBarAttribute":
+    {
+        "iconNormalColor":"7A7E83",
+        "iconSelectedColor":"3aadfb",
+        "titleColor":"7A7E83",
+        "titleSelectedColor":"3aadfb",
+        "titleFontName":"",
+        "titleFontSize":12,
+        "classType":"CMPTabBarAttribute"
+    },
+    "itemAttributes":
+    [
+        {
+            "appID": "55",
+            "version": "1.0.0",
+            "chTitle": "消息",
+            "enTitle": "Message",
+            "chHansTitle":"消息",
+            "normalImage": "e62c",
+            "normalImageUrl":"http://application.m3.cmp/v1.0.0/img/msg.png",
+            "selectedImageUrl":"http://application.m3.cmp/v1.0.0/img/active-msg.png",
+            "selectedImage": "e603",
+            "classType": "CMPTabBarItemAttribute"
+        }, {
+            "appID": "58",
+            "version": "1.0.0",
+            "chTitle": "待办",
+            "enTitle": "Todo",
+            "chHansTitle":"待办",
+            "normalImage": "e644",
+            "selectedImage": "e673",
+            "normalImageUrl":"http://application.m3.cmp/v1.0.0/img/todo.png",
+            "selectedImageUrl":"http://application.m3.cmp/v1.0.0/img/active-todo.png",
+            "classType": "CMPTabBarItemAttribute"
+        }, {
+            "appID": "52",
+            "version": "1.0.0",
+            "chTitle": "工作台",
+            "enTitle": "Workbench",
+            "chHansTitle":"工作台",
+            "normalImage": "e605",
+            "selectedImage": "e69b",
+            "normalImageUrl":"http://application.m3.cmp/v1.0.0/img/workbench.png",
+            "selectedImageUrl":"http://application.m3.cmp/v1.0.0/img/active-workbench.png",
+            "classType": "CMPTabBarItemAttribute"
+        }, {
+            "appID": "62",
+            "version": "1.0.0",
+            "chTitle": "通讯录",
+            "enTitle": "Contacts",
+            "chHansTitle":"通讯录",
+            "normalImage": "e667",
+            "selectedImage": "e664",
+            "normalImageUrl":"http://application.m3.cmp/v1.0.0/img/contact.png",
+            "selectedImageUrl":"http://application.m3.cmp/v1.0.0/img/active-contact.png",
+            "classType": "CMPTabBarItemAttribute"
+        }, {
+            "appID": "56",
+            "version": "1.0.0",
+            "chTitle": "我",
+            "enTitle": "Me",
+            "chHansTitle":"我",
+            "normalImage": "e62b",
+            "selectedImage": "e6b4",
+            "normalImageUrl":"http://application.m3.cmp/v1.0.0/img/my.png",
+            "selectedImageUrl":"http://application.m3.cmp/v1.0.0/img/active-my.png",
+            "classType": "CMPTabBarItemAttribute"
+        }
+    ]
+}
+
+

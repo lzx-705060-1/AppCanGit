@@ -1,0 +1,25 @@
+var hrApi = (function() {
+    
+    var HrApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/hr";
+    } 
+    
+     /**
+	 * 打开工资条(消息穿透)
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]
+	 * @param  {string} parms   [其他可选参数]
+	 */
+    HrApi.prototype.openApp = function(type, backUrl, option, obj) {
+    	var pageInfo = {"url":backUrl, "data":obj};
+        var paramData = {
+        	'type':type,
+            'pageInfo' : pageInfo
+        };
+        cmp.href.next(this.basePath + "/html/hrSalary.html", paramData);
+    } 
+    
+    return new HrApi();
+    
+})();

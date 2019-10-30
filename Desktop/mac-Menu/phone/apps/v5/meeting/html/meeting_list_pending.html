@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017266">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017266">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=18121017266">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list-card.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view-cell:after{ left: 0px; }
+		.cmp-table-view:after{ height: 0px; }
+		.cmp-table-view:before{ height: 0px; }
+
+		#searchHeader .cmp-content-title-search{
+			padding: 10px 0 10px 12px;
+			height: 48px;
+		}
+
+		.cmp-search input[type='search']{
+			height: 28px;
+		}
+		#searchHeader .cmp-search .cmp-placeholder{
+			height: 28px;
+		}
+		#searchHeader .cmp-search .cmp-placeholder .cmp-icon{
+			font-size: 12px !important;
+			margin-right: 0;
+		}
+		.cmp-search .text-search{
+			font-size: 12px;
+		}
+
+		.cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active:before{
+			width:30px;
+			left: 51%;
+			border-bottom: 0;
+			background-color: #3aadfb;
+			border-radius: 1.5px;
+			height: 3px;
+			bottom: 0;
+		}
+
+		.cmp-content div.new-tab-nav{
+			height: 28px;
+		}
+		.cmp-content div.new-tab-nav .cmp-control-item{
+			height: 28px;
+			padding-bottom: 2px;
+			line-height: 28px;
+		}
+
+		.cmp-content div.new-tab-nav .cmp-control-item.cmp-active{
+			color: #000;
+			padding-bottom: 2px;
+		}
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-segmented_title_content" id="searchHeader" style="background-color: transparent;padding: 0">
+		<form action="#" onsubmit="return false;">
+			<div class="cmp-content-title-search cmp-content-search-add">
+				<div class="cmp-input-row see-icon-search cmp-search">
+					<input type="search" placeholder="" class="cmp-input-clear" style="background-color: #eef1f5;" disabled>
+					<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+					<span class="cmp-placeholder" id="search">
+						<span class="cmp-icon cmp-icon-search"></span>
+						<span class="text-search"><i18n key="meeting.page.label.search"></i18n></span>
+					</span>
+				</div>
+				<div id="addKey" class="search-title-cancel cmp-icon cmp-icon-plus" style="display:none;color: #3aadfb;font-size: 26px;"></div>
+			</div>
+		</form>
+	</div>
+	<!-- 查询后返回的查询内容 -->
+		<div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none; position: absolute;right: 0px;left: 0px;">
+	        <div class="cmp-segmented-control cmp-search-title " style="border:none;top:0px;">
+	            <div class="cmp-search-item">
+	                <span class="title" id="cmp_search_title" style="color:#666666!important"></span>
+	            </div>
+	            <div id="toSearch" class="cmp-search-item">
+	                <div id="searchText" class="item text cmp-active">
+	                    <input id="searchTextValue" type="text" readonly="readonly">
+	                </div>
+	                <div id="searchDate" class="item date">
+	                    <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+	                    <span>-</span>
+	                    <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+	                </div>
+	            </div>
+	            <div class="cmp-search-item">
+	                <span id="cancelSearch" class="gotoSearch"><i18n key="meeting.meetingCommon.cancel"></i18n></span>
+	            </div>
+	        </div>
+    	</div>
+	<div id="dataCommonDiv" class="cmp-content relative back_f4 cmp-content-none">
+		<div class="cmp-segmented-control cmp-segmented-control-inverted cmp-segmented-control-primary new-tab-nav">
+			<a id="pendingTab" href="#pendingDiv" class="cmp-control-item  cmp-active" style="display:none;"><i18n key="meeting.page.list.listPending"></i18n></a><!-- 待开 -->
+			<a id="doneTab" href="#doneDiv" class="cmp-control-item" style="display:none;"><i18n key="meeting.page.list.listDone"></i18n></a><!-- 已开 -->
+			<a id="sentTab" href="#sentDiv" class="cmp-control-item" style="display:none;"><i18n key="meeting.page.list.listSent"></i18n></a><!-- 已发 -->
+			<a id="waitSentTab" href="#waitSentDiv" class="cmp-control-item" style="display:none;"><i18n key="meeting.page.list.listWaitSent"></i18n></a><!-- 待发 -->
+		</div>
+			<div id="pendingDiv" class="cmp-control-content cmp-active data_body">
+				<div id="pendingContain" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul id="listPending" class="cmp-table-view ul_list">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="doneDiv" class="cmp-control-content cmp-active data_body">
+				<div id="doneContain" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<div class="cmp-pull-widget"><div class="test-button batch_wrap" style="height: 41px;"><div class="batch_click batch_btn"><i18n key="meeting.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+						<ul id="listDone" class="cmp-table-view ul_list">
+						</ul>
+					</div>
+					<div class="cmp-scroll-parts test-parts all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+	            		<div  class="batch_wrap">
+      						<div class="all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+              					<label class="lableBtn all_click">
+                 					<span class="all_btn all_click"></span>
+                  					<span class="lab_all_select all_click"><i18n key="meeting.page.lable.button.allSelect"></i18n></span>
+                  					<span class="count" style="display:none;">0</span>
+              					</label>
+          					</div>
+      						<div class="cancelBtn cancel_click" ><i18n key="meeting.meetingCommon.cancel"></i18n></div>
+  	  					</div>
+          	 	    </div>
+				</div>
+			</div>
+			<div id="sentDiv" class="cmp-control-content cmp-active data_body">
+				<div id="sentContain" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<div class="cmp-pull-widget"><div class="test-button batch_wrap" style="height: 41px;"><div class="batch_click batch_btn"><i18n key="meeting.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+						<ul id="listSent" class="cmp-table-view ul_list">
+						</ul>
+					</div>
+					<div class="cmp-scroll-parts test-parts all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+	            		<div  class="batch_wrap">
+      						<div class="all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+              					<label class="lableBtn all_click">
+                 					<span class="all_btn all_click"></span>
+                  					<span class="lab_all_select all_click"><i18n key="meeting.page.lable.button.allSelect"></i18n></span>
+                  					<span class="count" style="display:none;">0</span>
+              					</label>
+          					</div>
+      						<div class="cancelBtn cancel_click" ><i18n key="meeting.meetingCommon.cancel"></i18n></div>
+  	  					</div>
+          	 	    </div>
+				</div>
+			</div>
+			<div id="waitSentDiv" class="cmp-control-content cmp-active data_body">
+				<div id="waitSentContain" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<div class="cmp-pull-widget"><div class="test-button batch_wrap" style="height: 41px;"><div class="batch_click batch_btn"><i18n key="meeting.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+						<ul id="listWaitSent" class="cmp-table-view ul_list">
+						</ul>
+					</div>
+					<div class="cmp-scroll-parts test-parts all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+	            		<div  class="batch_wrap">
+      						<div class="all_btn cmp-input-row meeting-search cmp-radio cmp-left">
+              					<label class="lableBtn all_click">
+                 					<span class="all_btn all_click"></span>
+                  					<span class="lab_all_select all_click"><i18n key="meeting.page.lable.button.allSelect"></i18n></span>
+                  					<span class="count" style="display:none;">0</span>
+              					</label>
+          					</div>
+      						<div class="cancelBtn cancel_click" ><i18n key="meeting.meetingCommon.cancel"></i18n></div>
+  	  					</div>
+          	 	    </div>
+				</div>
+			</div>
+	</div>
+	<!-- 引导 -->
+<div id="src_form_view_hint" class="new_synergy_hint col display_none" style="top: 135px;right: 5px;">
+    <i class="circle" ></i>
+    <i class="line" ></i>
+    <div class="content">
+        <div class="text">
+            <span id="src_form_view_hint_txt"><!-- 提示信息 --></span>
+        </div>
+        <div class="btn"><i18n key="meeting.page.lable.whenExit_2"></i18n><!-- 知道了 --></div>
+    </div>
+</div>
+	<footer class="cmp-bar cmp-bar-tab cmp-bar-footer  cmp-bar-tabview border_t footer_color">
+		<div class="meet_room">
+			<a id="meetingEntrance" href="" class="cmp-tab-item  cmp-tabview-item cmp-active" style="display:none;">
+				<span class="cmp-icon see-icon-v5-common-bemeeting" ></span>
+				<span class="cmp-tab-label" ><i18n key="meeting.page.lable.meeting"></i18n></span> <!-- 会议 -->
+			</a>
+			<a id="meetingRoomEntrance" href="#" class="cmp-tab-item  cmp-tabview-item" style="display:none;">
+				<span class="cmp-icon see-icon-v5-common-meetingroom" ></span>
+				<span class="cmp-tab-label" ><i18n key="meeting.meetingRoomCommon.meetingRoom"></i18n></span> <!-- 会议室 -->
+			</a>
+		</div>
+		<div class="cmp_handler_content_blue meeting_remove" style="padding-top:12px;display:none;height:51px;">
+       	 <a href="javascript:void(0)" style="border-right-color:#3AADFB;padding-top:5px;">
+          <lable id="removeBtnLable"><i18n key="meeting.page.action.delete"></i18n></lable>
+       	 </a>
+    	</div>
+	</footer>
+	 <!-- 快捷键 -->
+	  <div id="maskContainer" class="mask">
+	    <div class="wrap">
+	      <div class="li_wrap">
+	        <div class="cell" id="meetingCreateDiv" style="display:none;">
+	          <span id="meetingCreate" class="icon m3-icon-m3-createMeeting"></span>
+	          <span class="name"><i18n key="meeting.meetingCreate.createNewMeeting"></i18n></span>
+	        </div>
+	        <div class="cell" id="meetingApplyDiv" style="display:none;">
+	          <span id="meetingApply" class="icon m3-icon-meetingRoom-fill"></span>
+	          <span class="name"><i18n key="meeting.meetingRoomApply.application"></i18n></span>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="close"><span class="m3-icon-close"></span></div>
+	  </div>
+</body>
+	<!-- js -->
+      
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+    
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>    <script src="/seeyon/m3/apps/v5/meeting/js/meetingList.js?buildversion=18121017266"></script>
+	<script type="text/html" id="list_li_tpl">
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+			<% var data = this[i]; %>
+			<li class="cmp-list-cell">
+				<div class="meeting_wrap collaboration-list">
+					<div class="left_img img-wrap choice">
+						<img class="cmp-img-cache img_setting" cmp-data="<%=data.createUser %>" meetingId="<%=data.id%>" state="<%=data.state%>" />
+             			<div class="unselected img_click" style="display:none;"></div>
+						<!-- <div class="name"><%=data.createUserName%></div> -->
+					</div>
+					<div id="<%=data.id %>" affairId="<%=data.affairId %>" affairState="<%=data.affairState %>" category="<%=data.category%>" class="right_wrap" >
+						<div class="meet_title cmp-ellipsis-2" style="word-break: break-word;">
+							<!-- 周期性会议 -->
+							<% if(data.category == 1) { %>
+								<%=cmp.i18n("meeting.page.perMeeting")%>
+							<%}%>
+							<%=data.title%>
+							<% if((pageX.listType == 'listPending' || pageX.listType == 'listDone') && data.proxyId != -1) {%>
+								(<%=cmp.i18n("meeting.page.lable.agent")%><%=data.proxyName%>)
+							<%}%>
+						</div>
+						<div class="meet_date">
+							<span class="name" style="font-size: 14px;vertical-align: text-bottom;margin-right: 10px;"><%=data.createUserName%></span>
+							<%=data.showTime%>
+							<% if(data.recordId && data.businessType!=9){ %><span class="outer m3-icon-summary"></span><% }%>
+							<% if(data.hasAttachments){%><span class="outer m3-icon-attachment"></span><% }%>
+						</div>
+						<%if((data.roomName == null || data.roomName == "") && (data.meetPlace == null || data.meetPlace == "")){%>
+							<div class="meet_palce" style="height:0px;"></div>
+						<%}else{%>
+							<div class="meet_palce">
+								<span style="word-break:break-all;">
+									<% if(data.roomName != null && data.roomName != ""){ %><%=data.roomName%><%}%>
+									<% if(data.meetPlace != null && data.meetPlace != ""){ %><%=data.meetPlace%><%}%>
+								</span>
+							</div>
+						<%}%>
+						<!-- 回执状态： --> 
+						<% if(pageX.listType == 'listPending') {%>
+							<% if(data.affairState != '2'){ %>
+								<% if(data.feedbackFlag == 1){%> <!--参加-->
+									<span class="mark m3-icon-status-seal part"><em><%=cmp.i18n('meeting.page.action.attend')%></em></span>
+						        <%}else if(data.feedbackFlag == 0){%> <!--不参加-->
+						        	<span class="mark m3-icon-status-seal unpart"><em><%=cmp.i18n('meeting.page.action.noAttend')%></em></span>
+						        <%}else if(data.feedbackFlag == -1){%> <!--待定-->
+						        	<span class="mark m3-icon-status-seal determined"><em><%=cmp.i18n('meeting.page.action.pending')%></em></span>
+						        <%}else if(data.feedbackFlag == -100){%><!-- 未回执 -->
+						        	<span class="mark m3-icon-status-seal viewed"><em><%=cmp.i18n('meeting.page.lable.noReceipt')%></em></span>
+						        <%}%>
+					        <%}%>
+						<%}%>
+					</div>
+				</div>
+			</li>
+		<%}%>
+	</script>
+</html>
+<!--******************** auto import check  ****************--!>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172734" />
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172734">
+		<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/vreport/css/vreport.css?buildversion=181210172734">
+		<title>未读报表</title>
+	</head>
+	<body class="cmp-fullscreen">
+		<div class="vreport-content">
+			<div class="vreport-header">
+				<div class="cmp-segmented_title_content">
+					<form action="#" onsubmit="return false;">
+						<div class="cmp-content-title-search">
+							<div class="cmp-input-row cmp-search">
+								<input type="search" class="cmp-input-clear" placeholder="搜索" disabled="disabled">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="list-container">
+				<div id="vreportUnreadList" class="cmp-scroll-wrapper">
+	                <div class="cmp-scroll">
+	                    <ul class="cmp-table-view"></ul>
+	                </div>
+	            </div>
+	            <div class="common-list-empty cmp-hidden">
+	            	<div>
+	            		<img src="../img/noContent.png"/>
+	            	</div>
+					<span>暂无数据</span>					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script src="/seeyon/m3/apps/v5/vreport/i18n/vreport_zh_CN.js?buildversion=181210172734"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172734"></script>
+		<script type="text/javascript">
+			cmp.i18n.init("/seeyon/m3/apps/v5/vreport/i18n/","vreport",function(){
+				document.title = "未读报表";
+			});
+			var vreportPath  = '/seeyon/m3/apps/v5/vreport';
+		</script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreport-jssdk.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172734" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/portal_m_api.s3js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/vreport/js/vreportCommon.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreportCommon.js?buildversion=181210172734"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/vreport/js/vreportUnread.js?buildversion=181210172734"></script>
+	</body>
+</html>

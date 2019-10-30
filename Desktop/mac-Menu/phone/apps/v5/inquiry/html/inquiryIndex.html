@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/inquiry/css/inquiry.css?buildversion=181210172551" rel="stylesheet" type="text/css" />
+    
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172551">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tab.css?buildversion=181210172551">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list-card.css?buildversion=181210172551">
+    <title id="title"></title>
+    <style>
+        .cmp-tab-content {
+            display: none;
+        }
+        .cmp-tab-content.selected {
+            display: block;
+        }
+        .c1 div{
+            color : #666;
+        }
+        .c1.selected div{
+            color : #000;
+        }
+        .cmp-tab-doState .li.selected {
+            border-bottom: none;
+        }
+        .cmp-tab-doState .li.selected:after {
+            content: ' ';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            left: 42%;
+            background: #3aadfb;
+            border-radius: 3px;
+            top: 36px;
+        }
+        .cmp-tab-doState .title{
+            font-size: 16px;
+        }
+        .cmp-tab-doState:after{
+            height: 0;
+        }
+        .cmp-tab-doState .li{
+            padding: 10px 0 9px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="cmp-content cmp-content-none position_relative ">
+    <ul class="cmp-tab-doState">
+        <li id="tab1" class="li c1 selected" list-type="joined" isInit ="true">
+            <div class="title"><i18n key="inquiry.h5.joined"></i18n></div>
+        </li>
+        <li id="tab2" class="li c1" list-type="started" isInit ="true">
+            <div class="title"><i18n key="inquiry.h5.started"></i18n></div>
+        </li>
+    </ul>
+    <div class="cmp-tab-content selected">
+        <div class="cmp-control-content cmp-active">
+            <div id="all_inq" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <div class="news_content" id="bul_listAll">
+                        <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="bul_list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cmp-tab-content">
+        <div class="cmp-control-content cmp-active">
+            <div id="startedListDiv" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <div class="news_content" id="startedList">
+                        <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="startedListUl">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="bul_list_li">
+    <% var list = this.list; %>
+    <% var listType = this.listType; %>
+    <% for(var i = 0,len = list.length;i < len; i++){ %>
+    <% var obj = list[i]; %>
+    <li class="cmp-table-view-cell list-cell text-wrap" inquiryId="<%=obj.id %>">
+        <div class="list-left">
+            <div class="list-img">
+                <img class="cmp-img-cache" cmp-data="<%=obj.createUserId %>">
+            </div>
+            <div class="list-createUserName">
+                <span><%=escapeStringToHTML(obj.createUserName) %></span>
+            </div>
+        </div>
+        <div class="list-right">
+            <div class="list-surveyName cmp-ellipsis-2">
+                <span><%=escapeStringToHTML(obj.surveyName)%></span>
+            </div>
+            <div class="list-middle">
+                <div class="list-date">
+                    <span><%=obj.dateFormat%></span>
+                    <% if(obj.hasAtt){ %>
+                    <span class="cmp-icon see-icon-accessory" style="margin-left:1em;"></span>
+                    <% } %>
+                </div>
+            </div>
+            <div class="list-bottom">
+                <div class="list-per">
+                    <span><%=escapeStringToHTML(obj.per) %></span>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <% if(obj.surveyState=='3' && listType == 'started'){ %>
+        <!--草稿-->
+        <span class="mark m3-icon-status-seal end"><em><%=cmp.i18n("inquiry.h5.liststate1") %></i18n></em></span>
+        <% } %>
+        <% if(obj.surveyState=='8'&& obj.myState && false && listType == 'joined'){ %>
+        <!--已填 暂不显示-->
+        <span class="mark m3-icon-status-seal determined"><em><%=cmp.i18n("inquiry.h5.liststate2") %></em></span>
+        <% } %>
+        <% if(obj.surveyState=='8'&& !obj.myState && listType == 'joined'){ %>
+        <!--未填-->
+        <span class="mark m3-icon-status-seal" style="color: #FFB11A"><em><%=cmp.i18n("inquiry.h5.liststate3") %></em></span>
+        <% } %>
+        <% if(obj.surveyState=='4' && listType == 'started'){ %>
+        <!--待审核-->
+        <span class="mark m3-icon-status-seal stag"><em><%=cmp.i18n("inquiry.h5.liststate4") %></em></span>
+        <% } %>
+        <% if(obj.surveyState=='2' && listType == 'started'){ %>
+        <!--通过-->
+        <span class="mark m3-icon-status-seal" style="color: #48D59A"><em><%=cmp.i18n("inquiry.h5.liststate5") %></em></span>
+        <% } %>
+        <% if(obj.surveyState=='1' && listType == 'started'){ %>
+        <!--不通过-->
+        <span class="mark m3-icon-status-seal" style="color: #F86363"><em><%=cmp.i18n("inquiry.h5.liststate6") %></em></span>
+        <% } %>
+    </li>
+    <% } %>
+</script>
+<script src="/seeyon/m3/apps/v5/inquiry/i18n/Inquiry_zh_CN.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172551"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/inquiry/i18n/","Inquiry",null,"?buildversion=181210172551");
+    var str = cmp.i18n("inquiry.h5.inquiry");
+    document.getElementById("title").innerHTML = str;
+</script>
+                 
+<script type="text/javascript">
+    var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+  var _cmpBASEPATH = "/seeyon/m3/cmp";
+</script><script  src="/seeyon/m3/apps/v5/inquiry/js/flexible.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/inquiry/js/inquiry-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172551" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/cmp/js/cmp-tabChange.js?buildversion=181210172551"></script>
+<script src="/seeyon/m3/apps/v5/inquiry/js/inquiryIndex.js?buildversion=181210172551"></script>
+</body>
+</html>

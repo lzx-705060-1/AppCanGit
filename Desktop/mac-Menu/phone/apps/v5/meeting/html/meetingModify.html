@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+	 <!-- 
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017266">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-accDoc.css?buildversion=18121017266">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017266">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=18121017266">
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=18121017266">
+  	正文组件样式css
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=18121017266">
+	 -->
+    <title></title>
+	<style type="text/css">
+	
+	   .cmp-table-view:before{ height: 0px; }
+        .cmp-table-view:after{ height: 0px; }
+        .cmp-table-view-cell:last-child:before, .cmp-table-view-cell:last-child:after{ height: 1px; }
+        .cmp-table-view-cell:after{ left: 0px; }
+        .attachment-wrap:after{ height: 0px; }
+        /* 国际化下新建会议与会员显示不全 */
+        .new_header_content .title{ width: 85px; }
+        .new_header_content .headline{left: 102px;}
+		.start-left-label{
+			display: inline-block;
+			margin-left: 4px;
+		}
+        .cmp-table-view .title{
+            font-family: ArialMT;
+            font-size: 16px;
+            color: #8F8F8F;
+            letter-spacing: 0;
+        }
+        .cmp-table-view .headline{
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #999999;
+        }
+        
+		.meetingTimeRow{
+			display: flex;
+			display: -webkit-flex;
+			justify-content: flex-start;
+			justify-content: -webkit-flex-start;
+		}
+		.leftCell,.rightCell{
+			flex:2;
+			-webkit-flex:2;
+		}
+		.leftCell .titleLabel,.rightCell .titleLabel{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #999999;
+			letter-spacing: 0;
+		}
+		.leftCell .timeLabel,.rightCell .timeLabel{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #000000;
+		}
+		.leftCell input,.rightCell input{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #717171;
+		}
+		.startReq em{
+			color: red;
+		}
+		.centerCell{
+			flex:1;
+			-webkit-flex:1;
+			display: flex;
+			display: -webkit-flex;
+			justify-content: center;
+			-webkit-justify-content: center;
+			align-items: center;
+			-webkit-align-items: center;
+		}
+		.go-row{
+			height: 28px;
+			line-height: 28px;
+		}
+		.go-row:first-child{
+			margin-top: 10px;
+			padding-left: 11px;
+		}
+
+		.go-row input{
+			height: 25px;
+			line-height: 25px;
+			padding-left: 12px;
+			border: 0;
+		}
+		.new_header_content .title em {
+			color: red;
+			position: absolute;
+			left: 10px;
+		}
+		#confereesCell:after,.meetingNatureCell:after,#showOrHideMore:after{
+			height: 0;
+		}
+	</style>
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div id="middleArea" class="cmp-content relative back_f2 absolute_wrap cmp-content-none">
+		<div id="scroller">
+			<div id="otherDiv">
+				<ul class="cmp-table-view new_header_content" style="margin-top:0">
+					<li id="liMeetingName" class="cmp-table-view-cell" style="height: 50px;">
+	                    <!--会议名称-->
+	                    <span class="title" style="width: 30px;"><em>*</em></span>
+	                    <!--请输入会议名称-->
+	                    <span id="sMeetingName" class="headline" style="width:calc(100% - 40px); margin-top:8px;left:25px;">
+	                        <textarea id="meetingName" maxlength="60" style="height:100%; color:#666666;"></textarea>
+	                        <textarea id="shadowMeetingName"></textarea>
+	                    </span>
+	                </li>
+					<li>
+	                    <div class="meetingTimeRow" style="height: 103px">
+	                        <div class="leftCell" id="showStartDate">
+	                            <div class="go-row">
+	                                <span class="startReq">
+	                                    <em>*</em>
+	                                    <!--会议开始时间-->
+	                                    <span class="titleLabel"><i18n key="meeting.meetingRoomApply.startTime"></i18n></span>
+	                                </span>
+	                            </div>
+	
+	                            <div class="go-row">
+	                                <input style="color: #717171;" id="startDate" type="text" readonly="readonly">
+	                            </div>
+	
+	                            <div class="go-row">
+	                                <input class="timeLabel" id="startDatetimeLabel" type="text" readonly="readonly">
+	                            </div>
+	                        </div>
+	                        <div class="centerCell">
+	                            <img style="height:80px;width:26px;" src="../img/rightDate.png"/>
+	                        </div>
+	                        <div class="rightCell" id="showEndDate">
+	
+	                            <div class="go-row">
+	                                <span class="startReq">
+	                                    <em>*</em><!--会议结束时间-->
+	                                    <span class="titleLabel"><i18n key="meeting.meetingRoomApply.endTime"></i18n></span>
+	                                </span>
+	                            </div>
+	
+	                            <div class="go-row">
+	                                <input style="color: #717171;" id="endDate" type="text" readonly="readonly">
+	                            </div>
+	
+	                            <div class="go-row">
+	                                <input class="timeLabel" id="endDatetimeLabel" type="text" readonly="readonly">
+	                            </div>
+	
+	                        </div>
+	                    </div>
+	                </li>
+					<li id="liMeetingPlace" class="cmp-table-view-cell border_t" style="padding-left: 20px;">
+	
+	                    <!--会议地点-->
+	                     <span class="title"><i18n key="meeting.meetingCreate.meetingPlace"></i18n></span>
+	                     <span id="showMeetingPlaceAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	                     <span id="showMeetingPlace" class="headline" style="width:calc(100% - 125px); margin-top:8px;text-align: right">
+	                        <textarea id="meetingPlace" maxlength="60" readonly="readonly" style="height:100%; color:#666666;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                        <textarea id="shadowMeetingPlace"></textarea>
+	                        <input id="meetingPlace_value" style="display:none"/>
+	                        <input id="meetingPlace_value1" style="display:none"/>
+	                        <input id="roomAppBeginDate" style="display:none"/>
+	                        <input id="roomAppEndDate" style="display:none"/>
+	                     </span>
+	                </li>
+					<li id="liMeetingVideoPlace" class="cmp-table-view-cell" style="padding-left: 20px;display:none;">
+
+						<!--视频会议地点-->
+						 <span class="title"><i18n key="meeting.page.lable.button.vidio.room"></i18n></span>
+	               		 <span id="showMeetingVideoPlaceAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span id="showMeetingVideoPlace" class="headline" style="width:calc(100% - 125px); margin-top:8px;text-align: right">
+	               		 	<textarea id="videoRoomName" maxlength="60" readonly="readonly" style="height:100%; color:#666666;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                		<textarea id="shadowMeetingVideoPlace"></textarea>
+	               		 	<input id="videoRoomId" style="display:none"/>
+	               		 	<input id="oldVideoRoomAppId" style="display:none"/>
+	               		 	<input id="videoRoomStartDate" style="display:none"/>
+	               		 	<input id="videoRoomEndDate" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell" style="padding-left: 20px;">
+	                     <span class="title"><em>*</em><span class="start-left-label"><i18n key="meeting.meetingCreate.conferees"></i18n></span></span>
+	                     <span id="confereesAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	                     <span class="headline">
+	                        <input id="conferees" type="text" style="color: #3AADFB;" readonly="readonly"/>
+	                        <input id="conferees_value" style="display:none"/>
+	                     </span>
+	                </li>
+	                <li id="liMeetingType" class="cmp-table-view-cell border_t" style="padding-left: 20px;" >
+						 <span class="title"><i18n key="meeting.meetingCreate.meetingType"></i18n></span>
+	               		 <span id="showMeetingTypeAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span id="showMeetingType" class="headline" style="width:calc(100% - 125px); margin-top:8px;text-align: right">
+	               		 	<textarea id="meetingType" maxlength="60" readonly="readonly" style="height:100%; color:#666666;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                		<textarea id="shadowMeetingType"></textarea>
+	               		 	<input id="meetingType_value" style="display:none"/>
+	               		 </span>
+					</li>
+				</ul>
+				<div id="showMeetingVideoArea" class="text-area" style="margin-bottom: 8px; display:none;">
+					<ul class="cmp-table-view new_header_content">
+						<li class="cmp-table-view-cell meetingNatureCell">
+							 <span class="title"><i18n key="meeting.meetingCreate.nature"></i18n></span>
+							 <span class="right_arrow see-icon-v5-common-arrow-right"></span>
+	                   		 <span id="showMeetingNature" class="headline">
+	                   		 	<input id="meetingNature" type="text" readonly="readonly"/>
+	                   		 	<input id="meetingNature_value" value="1" style="display:none"/>
+	                   		 </span>
+						</li>
+					</ul>
+				</div>
+				<!-- 参会密码 -->
+				<div id="meetingPassword" class="text-area" style="margin-bottom: 8px; display:none;">
+					<ul class="cmp-table-view new_header_content">
+						<li  class="cmp-table-view-cell">
+							<span class="title"><i18n key="meeting.meetingCreate.password"></i18n></span>
+		                	<span class="headline">
+		                		<input id="password" type="text" style="text-align:right;"/>
+		                	</span>
+						</li>
+					</ul>
+				</div>
+				<ul id="moreItme" class="cmp-table-view new_header_content" style="display:none;">
+					<li class="cmp-table-view-cell" style="padding-left: 20px;">
+						 <span class="title"><em>*</em><i18n key="meeting.meetingCreate.host"></i18n></span>
+	               		 <span id="hostAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="host" style="color: #333333;" type="text" readonly="readonly"/>
+	               		 	<input id="host_value" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell">
+						 <span class="title"><i18n key="meeting.meetingCreate.recorder"></i18n></span>
+						 <span id="recoderAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="recoder"style="color: #333333;"  type="text" readonly="readonly"/>
+	               		 	<input id="recoder_value" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell">
+						 <span class="title"><i18n key="meeting.meetingCreate.notify"></i18n></span>
+	               		 <span id="notifyAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="notify" type="text" readonly="readonly"/>
+	               		 	<input id="notify_value" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell">
+						 <span class="title"><i18n key="meeting.meetingCreate.new.tip"></i18n></span>
+	               		 <span class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="reminder" type="text" readonly="readonly"/>
+	               		 	<input id="reminder_value" style="display:none"/>
+	               		 </span>
+					</li>
+				</ul>
+				<div id="showOrHideMore" style="font-family: ArialMT;font-size: 14px;color: #A1B0C5;" class="show-more"><span style="font-family: ArialMT;font-size: 14px;color: #A1B0C5;"><i18n key="meeting.meetingCreate.show"></i18n></span>
+					<span class="see-icon-arrow-down icon"></span></div>
+			</div>
+			<div id="contentDiv" class="text-area" style="height:300px;overflow:auto;">
+				<div id="content" class="text min-height" style="height:100%; word-break: break-word;"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 附件 -->
+	<div id="picture"></div>
+	<footer class="cmp-bar cmp-bar-tab cmp-bar-footer  cmp-bar-tabview">
+		<div class="attachment-wrap">
+			<div id="attBtn" class="attach-title">
+				<span id="showAttCount" class="name"></span>
+				<span class="see-icon-accessory fujian cmp-pull-right" style="font-size:18px;"></span>
+			</div>
+			<div class="atatch-text"></div>
+		</div>
+		<div class="cmp-block-with-btn footer-btn">
+			<button id="waitSend" class="cmp-btn cmp-btn-primary2 cmp-btn-outlined cmp-btn-width40" style="display:none;"><i18n key="meeting.meetingCreate.waitSend"></i18n></button>
+			<button id="send" class="cmp-btn cmp-btn-primary2 cmp-btn-width40"><i18n key="meeting.meetingCreate.send"></i18n></button>
+		</div>
+	</footer>
+</body>
+      
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+	<script type="text/javascript">
+       var $verstion = "?buildversion=18121017266";
+       var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+       var _collPath = "/seeyon/m3/apps/v5/collaboration";  
+       var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+       var _cmpPath = "/seeyon/m3/cmp";
+       cmp.i18n.init("/seeyon/m3/apps/v5/meeting/i18n/", "MeetingResources");
+    </script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/meeting/js/meetingCreateCommon.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/meeting/js/meetingModify.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+    <!-- 
+	<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-accDoc.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017266"></script>
+    <script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=18121017266"></script>
+	 -->
+</html>

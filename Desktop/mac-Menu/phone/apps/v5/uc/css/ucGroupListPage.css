@@ -1,0 +1,124 @@
+html,body{height: 100%;width: 100%;background-color: #fff;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+.icon {width: 1em; height: 1em;vertical-align: -0.15em;fill: currentColor;overflow: hidden;}
+.cmp-bar {background: #fff;}
+/* .cmp-bar:after {width: 100%;position: absolute;bottom: 0;left: 0;height: 1px;content: '';-webkit-transform: scale(1,0.5);transform: scale(1,0.5);background-color: #c8c7cc;} */
+.cmp-bar .cmp-btn-link {color:#3AADFB;}
+.see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-segmented_title_content {position: absolute; width: 100%; top: 0;}
+.cmp-v5-search-content .cmp-content-title-search {height:46px;background: #fff;padding: 8px 0.25rem;border: none;}
+.cmp-v5-search-content .cmp-content-title-search input {border: none;background:rgba(3,3,3,0.07);}
+.cmp-search .cmp-placeholder {height: 30px !important;line-height:30px !important;}
+.cmp-content {background: #fff;}
+.cmp-table-view:before {height: 0;}
+.cmp-table-view:after {left: 1.7rem;}
+.cmp-table-view-cell:after {left: 1.7rem;}
+.cmp-table-view-cell {padding: 0; height: 1.65rem;line-height: 1.6rem; font-size: 16px;}
+.cmp-slider-handle.cmp-table {width: 100%;display: -webkit-box;-webkit-box-orient: horizontal;-webkit-box-align: center;}
+.cmp-table-view .cmp-media-body {position:relative;}
+.uc-group-head {width: 1.17rem;height: 1.17rem;display: -webkit-box;-webkit-box-align: center;margin: 0 0.266rem;border-radius: 50%;overflow: hidden;}
+.cmp-table-view .cmp-media-object {display: block;-webkit-box-pack: center;line-height: 1.17rem;height: 1.17rem;max-width: 1.17rem;width: 1.17rem;}
+.cmp-table-view-cell:last-child:before, .cmp-table-view-cell:last-child:after{height:1px;}
+.cmp-table-view:after{height:0;}
+#create-group{padding-right:10px;}
+.uc-group-name{font-size:14px;color:#333;-webkit-box-flex: 1;text-overflow: ellipsis;white-space: nowrap;margin-right: 5px;overflow:hidden;max-width:200px;display:block;}
+#group-admin-icon {font-size:14px;width: 14px;height: 14px;position:absolute;;right:20px;top:50%;-webkit-transform:translateY(-50%); }
+form .cmp-search{
+  margin: .16rem .26rem;
+}
+input[type='search'] {
+    background-color: #f2f2f2;
+    color: #333;
+    height: .746rem;
+    border-radius: 25px;
+}
+form .cmp-icon {
+    color: #999;
+}
+form .cmp-search .cmp-placeholder {
+    font-size: 14px;
+    height: .746rem;
+    line-height: .746rem;
+}
+span.cmp-placeholder span:last-child{
+    visibility: hidden;
+}
+.cmp-search .cmp-placeholder .cmp-icon{
+    margin-right: 15px;
+}
+header.cmp-bar:before{
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scale(1,.5);
+  transform: scale(1,.5);
+  -webkit-transform-origin: center top;
+  transform-origin: center top;
+  background-color: #e4e4e4;
+}
+.uc-search-group{
+    -webkit-flex: 1;
+    flex: 1;
+}
+header .cancel{
+    color: #999;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    padding: .34rem .32rem 0 0;
+    vertical-align: top;
+}
+.title{
+    padding-top: 1.01rem;
+    color: #c4c4c4;
+    font-size: 12px;
+    text-align: center;
+}
+.title:before,
+.title:after{
+    content: "";
+    position: absolute;
+    width: 2.5rem;
+    top: 1.28rem;
+    height: 1px;
+    -webkit-transform: scale(1, .5);
+    transform: scale(1, .5);
+}
+.title:before{
+    left: .8rem;
+    background: -webkit-linear-gradient(left, #e9e9e9 0%, #d4d4d4 50%);
+}
+.title:after{
+    right: .8rem;
+    background: -webkit-linear-gradient(left, #d4d4d4 0%, #e9e9e9 50%);
+}
+.cmp-input-row.cmp-search .cmp-icon-clear{
+    top: 4px;
+}
+header.cmp-bar.cmp-bar-nav .cmp-icon{
+    color: #3aadfb !important;
+}
+.cmp-bar input[type='search']{
+    height: .746rem;
+    margin: 4px 0;
+    padding-right: 34px;
+}
+.uc-search-member{
+    overflow: auto;
+}
+.cmp-bar .cmp-input-row .cmp-input-clear ~ .cmp-icon-clear{
+    top: -1px;
+}
+/*.cmp-icon-search-uc-input{*/
+    /*margin-top: -6px;*/
+    /*padding-left: 62px !important;*/
+/*}*/
+.cmp-title {
+    font-size: 18px!important;
+}
+.cmp-bar .cmp-btn.cmp-pull-right.uc-create-group{
+    font-weight: 700;
+}

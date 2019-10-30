@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">_locale = "en";</script>
+    <script type="text/javascript">
+        var cmp=top.cmp;
+        var clientType = "iphone";
+        var version = "6.0.0";
+        var m_documentType = "1";
+        var serverPath="";
+        var form={};
+        var myscroll;
+        var formData;
+    </script>
+
+    <script type="text/javascript">canSignatuer = true;</script>
+    <script type='text/javascript'>var style = '1';</script>
+
+</head>
+<body style="overflow:hidden;margin: 0;">
+<div id="content1" style="margin-left: 2px;margin-top:2px;overflow:hidden;">
+    <script></script>
+    <input type="hidden" id="_currentDiv" value="0"><script type="text/javascript">var flowForm=true; var pendingFlag = "true"; var m_contentType = "1";var m1FileDownloadURL = "http://10.5.6.208/seeyon/servlet/SeeyonMobileBrokerServlet;jsessionid=8CD1DC08B078A0DE223A1005B10F5E0C?serviceProcess=A6A8_File&method=download&";</script>
+
+    <!--******************************正文开始-->
+    <div id="wrapper"  style="overflow:hidden;background: #FFFFFF;">
+        <div id="mainbodyHtmlDiv_0" style="display: inline-block;" >
+
+        </div>
+        <div id="mainbodyDataDiv_0" style="display: none">
+            <input type="hidden" id="id" name="id" value='-1' />
+            <input type="hidden" id="createId" name="createId" value='0' />
+            <input type="hidden" id="createDate" name="createDate" value='2016-08-22 11:15:43.0' />
+            <input type="hidden" id="modifyId" name="modifyId" value='2908150921582364753' />
+            <input type="hidden" id="modifyDate" name="modifyDate" value='2016-08-22 11:16:24.0' />
+            <input type="hidden" id="moduleType" name="moduleType" value='1' />
+            <input type="hidden" id="moduleId" name="moduleId" value='-1' />
+            <input type="hidden" id="contentType" name="contentType" value='20' />
+            <input type="hidden" id="moduleTemplateId" name="moduleTemplateId" value='8987737907576720868' />
+            <input type="hidden" id="contentTemplateId" name="contentTemplateId" value='5484460532989971898' />
+            <input type="hidden" id="sort" name="sort" value='1' />
+            <input type="hidden" id="title" name="title" value='位置定位' />
+            <input type="hidden" id="content" name="content" value='' />
+            <input type="hidden" id="rightId" name="rightId" value='-4819574030653437249' />
+            <input type="hidden" id="editable" name="editable" value='true' />
+            <input type="hidden" id="status" name="status" value='STATUS_RESPONSE_VIEW' />
+            <input type="hidden" id="viewState" name="viewState" value='1' />
+            <input type="hidden" id="contentDataId" name="contentDataId" value='4925056606222864366' />
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    proxyServerAddr = "";
+    var summaryID = "";
+    function setContentSize() {
+        var parentWindow = parent.window;
+        var contentfrmW = parentWindow.document.getElementById("contentfrm").parent().offsetWidth;
+        var contentfrmH = parentWindow.document.getElementById("contentfrm").parent().offsetHeight;
+        parentWindow.document.getElementById("contentfrm").style.height = document.getElementById("wrapper").style.height = (contentfrmH - 10) + "px";//适配小强意见区的margin-top 10px
+        parentWindow.document.getElementById("contentfrm").style.width = document.getElementById("wrapper").style.width = contentfrmW;
+        if (myscroll && contentfrmH != parentWindow.document.getElementById("contentfrm").offsetHeight) {
+            myscroll.refresh();
+
+        }
+    }
+    function contentScroll() {
+        setContentSize();
+        createScroll();
+        top.cmp.dialog.loading(false);
+    }
+    function createScroll(){
+        var percent=document.getElementById("wrapper").offsetWidth/document.getElementById("mainbodyHtmlDiv_0").offsetWidth;
+        var scrollEndActionTime = 0,scrollYMax = false;
+        myscroll=new IScroll("#wrapper",{zoom:true,scrollX: true,
+            scrollY: true,
+            mouseWheel: true,
+            zoomStart:1,
+            zoomMin:percent,
+            preventDefaultException:{tagName: /^(INPUT|SPAN|IMG|A|TEXTAREA|SELECT)$/ },
+            zoomMax:1,
+            mouseWheel: true,
+            wheelAction: 'zoom'
+        });
+        myscroll.on('scrollEnd', function(){
+            if(onScrollBottom){
+                if(scrollYMax) {
+                    if(scrollEndActionTime > 0) {
+                        onScrollBottom();
+                        scrollEndActionTime = 0;
+                    }else {
+                        scrollEndActionTime ++;
+                    }
+                }
+            }
+        });
+
+        myscroll.on("scroll", function(e){
+            if(onScroll){
+                onScroll(-myscroll.y, myscroll.directionY);
+                if((myscroll.directionY == -1 && -myscroll.y <10) || (myscroll.directionY == 1 && -myscroll.y >10)){
+                    setContentSize();
+                }
+            }
+            if(myscroll.y <= (myscroll.maxScrollY-10)) {
+                scrollYMax = true;
+            }else {
+                scrollYMax = false;
+            }
+        });
+        myscroll.zoom(percent);
+
+        var tsY,tsT,wrapperMove = false;
+        document.getElementById("wrapper").addEventListener("touchstart",function(e){
+            if(myscroll.scale < 1 && e.targetTouches.length == 1) {
+                tsY = e.touches[0].pageY;
+                tsT = e.timeStamp;
+                wrapperMove = true;
+            }else {
+                wrapperMove = false;
+            }
+        });
+        document.getElementById("wrapper").addEventListener("touchend",function(e){
+            var teY = e.changedTouches[0].pageY;
+            var teT = e.timeStamp;
+            if(wrapperMove == true) {
+                if((teY - tsY) > 10 && (teT - tsT) >300 && myscroll.y == 0){
+                    if(onScroll){
+                        onScroll(-5, -1);
+                    }
+                }
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+html,body{height: 100%;width: 100%;background-color: #efefef;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar {background: #fff;border-bottom: 1px solid #ddd}
+header.cmp-bar .cmp-btn-link {color:#3AADFB;}
+header .see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-content {background: #fff;}
+.cmp-table-view:after {height: 0;background: #fff;}
+.cmp-table-view .cmp-icon-document {width: 0.96rem;height: 1.06rem;margin: 0 0.293rem 0 0.16rem;}
+.cmp-table-view-cell:after {left:0.25rem;}
+.cmp-table-view-cell .cmp-media-body {-webkit-box-flex:1;}
+.cmp-table-view-cell {height:1.73rem; padding: 0.27rem 0.25rem;}
+.cmp-table-view-cell > .cmp-slider-handle-wall {display: -webkit-box;-webkit-box-orient: horizontal;}
+.cmp-table-view-cell.uc-top {background: rgba(3,3,3,0.07);}
+.cmp-table-view-cell.uc-top > .cmp-slider-handle {background: transparent;}
+.cmp-table-view-cell > a:not(.cmp-btn) {margin: -0.27rem -0.25rem;}
+.cmp-table-view:before {height: 0;}
+.cmp-table-view-cell .uc-file-title {overflow: hidden;}
+.cmp-table-view-cell .uc-file-title .uc-date {font-size: 12px;color: #919191;position: absolute;top: 0;right: 0;}
+.cmp-table-view-cell .uc-file-title .uc-title-l {font-size: 16px;color: #000;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: inline-block;width:80%;}
+.cmp-table-view-cell .uc-file-info {font-size:14px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;color: #666;position: relative;}
+.cmp-table-view-cell .uc-file-info .file_size,.cmp-table-view-cell .uc-file-info .file_from {color:#666;padding-right:10px;}
+.cmp-table-view-cell .uc-file-info .user_name {color:#3aadfb;}
+#g_file .cmp-scroll{background:#fff;}
+.cmp-checkbox .checkbox{
+    position: relative!important;
+    left: 0 !important;
+    top: -9px !important;
+}
+div#delete{
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #50abff;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+header.cmp-flex-header.cmp-bar.cmp-bar-nav .cmp-header-right .nav-text{padding:0;}
+.cmp-table-view-cell .uc-file-title .file_size{
+    display: inline-block;
+    width:50px;
+    text-align: right;
+    color:#999;
+    float: right;
+}
+ß

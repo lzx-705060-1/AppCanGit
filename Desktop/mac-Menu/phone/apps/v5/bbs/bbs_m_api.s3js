@@ -1,0 +1,46 @@
+var bbsApi = (function() {
+  var BbsApi = function() {
+    this.basePath = "/seeyon/m3/apps/v5/bbs";
+  }
+  /**
+   * 跳转到讨论查看页面
+   * 
+   * @param bbsId : ID
+   * @param from : 来源 "pigeonhole" >>> 文档中心（归档） ,"bbs" >>> 讨论列表
+   * @param
+   *          页面的返回信息，即打开讨论页面以后，点返回按钮的跳转页面信息，backPageInfo对象包含"url","data"两个属性，跳转的时候采用（
+   *          cmp.href.next（url,data）的方式跳转，如果没传递 该参数，则默认采用cmp.href.back()的方式跳转）
+   * @param isNav : 是否是新开页面
+   */
+  BbsApi.prototype.jumpToBbs = function(bbsId, from, backPageInfo, fromXz, isNav) {
+    var _basePath = this.basePath;
+    var paramData = {
+      'from' : from,
+      'fromXz' : typeof(fromXz) == 'undefined' ? false  : fromXz,
+      'bbsId' : bbsId,
+      'isNav' : isNav
+    };
+    var option = {};
+    if(isNav === true){
+        option.openWebViewCatch = true;
+    }
+    cmp.href.next(_basePath + "/html/bbsView.html", paramData, option);
+  }
+  /**
+   * 讨论的消息穿透
+   * 
+   * @param {string} type    [todo:待办模块;message:消息模块]
+   * @param {string} backUrl [后退地址]
+   * @param {obj}    option  [待办/消息对象]
+   * @param {string} parms   [其他可选参数]
+   */
+  BbsApi.prototype.openApp = function (type, backUrl, option, obj) {
+    var _basePath = this.basePath;
+    var paramData = {
+      'from' : type,
+      'bbsId' : option.id
+    };
+    cmp.href.next(_basePath + "/html/bbsView.html", paramData);
+  }
+  return new BbsApi();
+})();

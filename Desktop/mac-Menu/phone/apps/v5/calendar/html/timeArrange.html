@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no,email=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017250">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-dateCalender.css?buildversion=18121017250">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-list-card.css?buildversion=18121017250">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=18121017250">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017250">
+	<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/calendar/css/calender.css?buildversion=18121017250">
+	<title></title>
+	<style type="text/css">
+	  .time-arrange-hide{display:none !important;}
+	  .StatusContainer { width: 100%;text-align: center; position: relative;top: 0;}
+	  .StatusContainer .nocontent {background-image: url(/seeyon/m3/cmp/img/nocontent2.png); background-repeat: no-repeat; background-size: 100% 100%; width: 100%;height: 200px;}
+		.cmp-dtcHeader {text-align: left;}
+    	.cmp-dtcHeader .dateswitch{float:left;left:0px;padding-left:12px;width:140px !important;}
+    	.cmp-dtcHeader .today{float:left;margin-left: 150px;border: 1px solid;padding: 0px 2px !important;line-height: 20px;margin-top: 9px;border-radius: 5px;font-size: 14px;}
+    	.calendar_head_btns span{position:absolute;top:8px;z-index:2;color:#3aadf8;font-size: 24px;}
+    </style>
+</head>
+<body class="cmp-fullscreen">
+	<script>var _commonsPath = "/seeyon/m3/apps/v5/commons";
+ var _cmpPath = "/seeyon/m3/cmp";
+ var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage"; 
+ var _calendarPath = "/seeyon/m3/apps/v5/calendar";</script>
+	
+	<div class="cmp-content sche-content cmp-content-none" >
+		<!-- 顶部按钮组 -->
+		<div id ="head_btn_div" class ="calendar_head_btns">
+			<span class="cmp-icon see-icon-v5-common-synch time-arrange-sync time-arrange-hide" style="right:100px;"></span>
+			<span class="cmp-icon see-icon-v5-common-screen time-arrange-filter" style="right:56px;"></span>
+			<span class="cmp-icon m3-icon-add-round left-icon time-arrange-addcalevent" style="right:12px;"></span>
+		</div>
+		<!-- 日历位置 -->
+		<div id="calender" class="">
+		</div>
+		
+		<!-- 日程数据列表 -->
+		<div class="schedule_list">
+			<ul class="cmp-table-view ul-table-list time-arrange-list"></ul>
+		</div>
+		
+		<!-- 筛选页面 -->
+		<div class="filter_wrap time-arrange-hide">
+			<span class="up"></span>
+			<div class="item_wrap border_b">
+				<p class="title"><i18n key="calendar.label.type"></i18n></p>
+				<ul class="apps">
+					<li class="item active taskmanage time-arrange-hide" appId="2"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.task"></i18n></li>
+					<li class="item active plan time-arrange-hide" appId="1"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.plan"></i18n></li>
+					<li class="item active meeting time-arrange-hide" appId="3"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.meeting"></i18n></li>
+					<li class="item active calendar time-arrange-hide" appId="4"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.schedule"></i18n></li>
+					<!-- <li class="item active collaboration time-arrange-hide" appId="5"><span class="see-icon-succeed icon"></span>到期协同</li>
+					<li class="item active edoc time-arrange-hide" appId="6"><span class="see-icon-succeed icon"></span>到期公文</li> -->
+				</ul>
+			</div>
+			<div class="item_wrap border_b">
+				<p class="title"><i18n key="calendar.label.status"></i18n></p>
+				<ul class="status">
+					<li class="item li  active" status="0"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.unfinished"></i18n></li>
+					<li class="item li active" status="1"><span class="see-icon-succeed icon"></span><i18n key="calendar.label.finished"></i18n></li>
+				</ul>
+			</div>
+			<div class="btn_wrap">
+				<div class="border_t" >
+					<div class="left_btn reset"><span><i18n key="calendar.label.reset"></i18n></span></div>
+					<div class="right_btn ok"><span><i18n key="calendar.label.confirm"></i18n></span></div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 同步界面 -->
+		<div class="synchronous time-arrange-hide">
+			<span class="up"></span>
+			<div class="mission border_b">
+				<div class="cmp-lists">
+					 <a href="javascript:;" class="cmp-list-file meeting time-arrange-hide">
+					 	 <div style="display: inline-block;height: 50px;position: relative;width: 35px;">
+						 	<input type="checkbox" class="cmp-checkbox2" appId="3" style="position: absolute;top: 10px;">
+					 	 </div>
+						 <div class="content">
+						      <span class="m3-icon-meeting-fill icon"></span>
+						      <span class="text"><i18n key="calendar.label.meeting"></i18n></span>
+						 </div>
+					 </a>
+					 <a href="javascript:;" class="cmp-list-file taskmanage time-arrange-hide">
+					 	 <div style="display: inline-block;height: 50px;position: relative;width: 35px;">
+						 	<input type="checkbox" class="cmp-checkbox2" appId="2" style="position: absolute;top: 10px;">
+					 	 </div>
+						 <div class="content">
+						      <span class="m3-icon-task icon"></span>
+						      <span class="text"><i18n key="calendar.label.task"></i18n></span>
+						 </div>
+					 </a>
+					 <a href="javascript:;" class="cmp-list-file plan time-arrange-hide">
+					 	 <div style="display: inline-block;height: 50px;position: relative;width: 35px;">
+						 	<input type="checkbox" class="cmp-checkbox2" appId="1" style="position: absolute;top: 10px;">
+					 	 </div>
+						 <div class="content">
+						      <span class="m3-icon-plan icon"></span>
+						      <span class="text"><i18n key="calendar.label.plan"></i18n></span>
+						 </div>
+					 </a>
+					 <a href="javascript:;" class="cmp-list-file calendar time-arrange-hide">
+					 	 <div style="display: inline-block;height: 50px;position: relative;width: 35px;">
+						 	<input type="checkbox" class="cmp-checkbox2" appId="4" style="position: absolute;top: 10px;">
+					 	 </div>
+						 <div class="content">
+						      <span class="m3-icon-schedule icon"></span>
+						      <span class="text"><i18n key="calendar.label.schedule"></i18n></span>
+						 </div>
+					 </a>
+				</div>
+			</div>
+			<div class="state "><i18n key="calendar.label.sync"></i18n></div>
+			<div class="remind border_t border_b">
+	            <div class="cmp-lists">
+	                 <a href="javascript:;" class="cmp-list">
+	                     <div class="content">
+	                         <div class="left"><span class="c1"><i18n key="calendar.label.autosync"></i18n></span></div>
+	                         <div class="right">
+	                             <div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">
+	                                 <div class="cmp-switch-handle"></div>
+	                             </div>
+	                         </div>
+	                     </div>
+	                 </a>
+	             </div>
+	        </div>
+	        <p class="waring"><i18n key="calendar.label.wifiauto"></i18n></p>
+			<div class="btn_wrap">
+				<div class="border_t">
+					<div class="left_btn cancel"><span><i18n key="calendar.label.cancel"></i18n></span></div>
+					<div class="right_btn sync"><span><i18n key="calendar.label.synch"></i18n></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- mask蒙层 -->
+	<div id="time-arrange-mask" class="mask time-arrange-hide"></div>
+	
+	<!-- +号 -->
+	<div class="shortcut time-arrange-hide">
+	    <div class="wrap">
+	      <div class="li_wrap">
+	        <div class="cell calEventCreate time-arrange-hide">
+	          <span class="icon m3-icon-schedule  "></span>
+	          <span class="name"><i18n key="calendar.label.schedule"></i18n></span>
+	        </div>
+	        <div class="cell meetingCreate time-arrange-hide">
+	          <span class="icon m3-icon-meeting-fill  "></span>
+	          <span class="name"><i18n key="calendar.label.meeting"></i18n></span>
+	        </div>
+	        <div class="cell taskCreate time-arrange-hide">
+	          <span class="icon m3-icon-task  "></span>
+	          <span class="name"><i18n key="calendar.label.task"></i18n></span>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="close"><span class="m3-icon-close"></span></div>
+	</div>
+	
+<!-- 来自待办  -->
+<div class="portalFooter cmp-hidden" >
+    <div class="block qywx navPending">
+        <div class="pIcon ">
+            <span class="see-icon-v5-common-Pendingwork"></span>
+        </div>
+        <div class="pName ">
+            <span><i18n key="calendar.label.todo"></i18n></span>
+        </div>
+    </div>
+    <div class="block qywx navWorktask">
+        <div class="pIcon ">
+            <span class="see-icon-v5-common-worktask"></span>
+        </div>
+        <div class="pName ">
+            <span><i18n key="calendar.label.task"></i18n></span>
+        </div>
+    </div>
+    <div class="block qywx navSchedule">
+        <div class="pIcon pIconChoose">
+            <span class="see-icon-v5-common-workingaffair"></span>
+        </div>
+        <div class="pName pNameChoose">
+            <span><i18n key="calendar.label.schedule"></i18n></span>
+        </div>
+    </div>
+</div>
+<!-- 来自待办  -->
+	
+</body>
+	<!-- 	列表模板	 -->
+	<script type="text/html" id="time-arrangr-tpl">
+	<% for(var i = 0;i < this.length; i++){ %>
+	<% 		var arrange	=	this[i]; 		%>
+	    <li class="cmp-table-view-cell arrange-item" sid="<%=arrange.id %>" stype="<%=arrange.type %>" summaryId="<%=arrange.summaryId %>">
+		    <div class="collaboration-list">
+		        <div class="img-wrap">
+		        	<% if(arrange.type == "calendar"){ %>
+		            	<span class="m3-icon-schedule"></span>
+		        	<% }else if(arrange.type == "meeting"){ %>
+		            	<span class="m3-icon-meeting-fill"></span>
+		        	<% }else if(arrange.type == "taskManage"){ %>
+		            	<span class="m3-icon-task"></span>
+		        	<% }else if(arrange.type == "plan"){ %>
+		            	<span class="m3-icon-plan"></span>
+		        	<% }	 %>
+		        </div>
+		        <div class="text-wrap">
+		            <ul class="list-item padding_b_5">
+		                <li class="collabo-title"><!--[<%=arrange.typeName %>]--><%=arrange.title %></li>
+		                <li class="collabo-time">
+		                    <span class=""><%=new Date(parseInt(arrange.beginDate)).calformat("MM-dd HH:mm") %></span> — <span class=""><%=new Date(parseInt(arrange.endDate)).calformat("MM-dd HH:mm") %></span>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</li>
+	<% }									  %>
+	</script>
+	<script src="/seeyon/m3/apps/v5/calendar/i18n/calendar_zh_CN.js?buildversion=18121017250"></script>  
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017250"></script>
+	<script type="text/javascript">
+		var $buildversion  = '?buildversion=18121017250';
+		var isFromTodoList = window.location.href.match('weixinFrom=todo');
+		if(isFromTodoList){//来自待办
+			document.querySelector(".portalFooter").classList.remove("cmp-hidden");
+	        document.querySelector(".navPending").addEventListener("tap",function () {
+	            cmp.href.next("/seeyon/m3/apps/v5/portal/todo/html/todo-list.html?weixinFrom=app");
+	        });
+	        document.querySelector(".navWorktask").addEventListener("tap",function () {
+	        	cmp.href.next("/seeyon/m3/apps/v5/taskmanage/html/task_index.html?weixinFrom=todo");
+	        });
+		}
+	    cmp.i18n.init("/seeyon/m3/apps/v5/calendar/i18n/","calendar",function(){
+	    	if(isFromTodoList){
+		    	document.title = cmp.i18n("calendar.label.todoWork");
+	    	}else{
+		    	document.title = cmp.i18n("calendar.label.title");
+	    	}
+	    });
+	</script>
+	
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/calendar/js/calendar-jssdk.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017250" id="__jsdktag"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-dateCalender.js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/taskmanage/taskmanage_m_api.s3js?buildversion=18121017250"></script>
+	<script type="text/javascript" src="/seeyon/m3/apps/v5/calendar/js/timeArrange.js?buildversion=18121017250"></script>
+	<script type="text/javascript">
+		var cmpPath = "/seeyon/m3/cmp";
+		cmp.ready(function(){
+			timeArrange.init();
+		});
+	</script>
+</html>

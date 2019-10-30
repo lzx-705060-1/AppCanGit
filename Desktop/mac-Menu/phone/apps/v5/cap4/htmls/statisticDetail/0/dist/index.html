@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="shortcut icon" href="static/favicon.ico"><link rel="bookmark" href="static/favicon.ico"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="format-detection" content="telephone=no"><title></title></head><body><script id="app">
+(function () {
+        window.document.title = '';
+        var u = (navigator || window.navigator).userAgent;
+        var CMPShell = u.indexOf('seeyonCordova') > -1; // 是否是m3壳子
+        var href = window.location.href;
+        if(CMPShell) window.location.href = href.replace('index.html','native.html');
+        else window.location.href = href.replace('index.html','wap.html');
+    })();
+</script></body></html>

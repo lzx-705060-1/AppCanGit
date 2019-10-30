@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+	
+		<!-- css样式 -->
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172358"/>
+		<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172358"/>
+    	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172358"/>
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172358">
+		<title></title>
+	</head>
+	<body class="cmp-fullscreen">
+		<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>
+		<header id="setting" class="cmp-bar cmp-bar-nav cmp-flex-header after-line" style="display: none;height:44px;padding-top: 0;">
+			<div class="cmp-header-right">
+				<span class="cmp-icon see-icon-v5-common-settings"></span>
+			</div>
+		</header>
+		
+		<div id="index-container" class="cmp-content position_relative index-container">
+		    <div class="index-today  ">
+		        <span class="cmp-icon see-icon-v5-common-time"></span>
+		        <span class="nowDate"></span>
+		    </div>
+		    <div class="index-map position_relative">
+		        <div id="mapContainer" style="height: 100%;"></div>
+		    </div>
+		    <div class="index-location after-line">
+		    	<div class="index-navigate">
+		    		<span class="cmp-icon see-icon-v5-common-location-fill"></span>
+		    		<span class="location"></span>
+		    	</div>
+		    </div>
+		    <div class="index-action-container ">
+		        <div class="index-listView">
+		            <div class="index-listView-title"><span><i18n key="Attendance.label.records"></i18n></span></div>
+		            <div class="index-listView-content position_relative">
+		                <div id="scroll" class="cmp-scroll-wrapper">
+		                    <div class="cmp-scroll">
+		                        <!--数据列表-->
+		                        <ul class="cmp-table-view index-clockin-content"></ul>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="index-bottom-boxShadow"></div>
+		        </div>
+		        <div class="cmp-text-center index-login ">
+		        	<a href="#bottomPopover">
+			            <div class="index-login-btn">
+			                <div class="index-login-time">
+			                    <span class="signTime"></span><p class="signType"><i18n key="Attendance.label.punchCard"></i18n></p>
+			                </div>
+			            </div>
+		            </a>
+					<div class="index-login-isAttend">
+						<span id="iconMark" class="cmp-icon checkinicon icon-checkin-tanhao"></span>
+						<!--<span class="cmp-icon checkinicon icon-checkin-success"></span>-->
+						<span class="isAttend-msg"></span>
+					</div>
+		            <div class="index-login-tal"></div>
+		        </div>
+		    </div>
+		</div>
+		<footer id="distribution" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-text-center index-footer before-line">
+		    <span><i18n key="Attendance.label.distribution"></i18n></span>
+		</footer>
+		
+		<!--弹出容器-->
+		<div id="bottomPopover" class="cmp-popover cmp-popover-bottom index-popover"  style="margin-left:0;">
+		    <div class="cmp-popover-arrow" style="margin-left:-5px;"></div>
+		    <div class="index-rapid">
+		        <ul>
+		            <li class="attendance-outside">
+		                <div class="rapid-btn legwork">
+		                    <span class="checkinicon icon-checkin-legwork"></span>
+		                </div>
+		                <p><i18n key="Attendance.label.businessTrip"></i18n></p>
+		            </li>
+		            <li class="attendance-work-on">
+		                <div class="rapid-btn signIn didNot">
+		                    <span class="checkinicon icon-checkin-signin"></span>
+		                </div>
+		                <p><i18n key="Attendance.label.atWork"></i18n></p>
+		            </li>
+		            <li class="attendance-work-off">
+		                <div class="rapid-btn signOut didNot">
+		                    <span class="cmp-icon see-icon-v5-common-siginout"></span>
+		                </div>
+		                <p><i18n key="Attendance.label.offWork"></i18n></p>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+		<!--模板-->
+		<script type="text/html" id="pending_li_tpl">
+			<% var index = 0; %>
+	        <% for(var i = 0,len = this.data.length;i < len; i++){ %>
+	        <% var obj = this.data[i];var rowNum = this.rowNum - i;  %>
+	        <% var signType = obj.type != 3 ? obj.type == 1 ? '<i18n key="Attendance.label.atWork"></i18n>' : '<i18n key="Attendance.label.offWork"></i18n>' : '<i18n key="Attendance.label.businessTrip"></i18n>'; %>
+	        <li id="<%=obj.id%>">
+	            <div class="scroll-listView">
+	                <div class="mark"><%=rowNum%></div>
+	                <span class="time"><%=attendanceCommon.getCurrentTime(obj.signTime) %></span><small><%=signType%></small>
+					<%if(obj.type != 3 && index == 0){%>
+						<% index = 1;%>
+						<a class="modify" type="<%=obj.type%>" source="<%=obj.source%>" fixTime="<%=obj.fixTime%>"><i18n key="Attendance.label.reAttend"></i18n></a>
+					<%}%>
+                    <%if(obj.type == 1 && obj.fixTime<attendanceCommon.getCurrentTime(obj.signTime)){%>
+					<small style="font-size: 12px; color: #ff0000;"><i18n key="Attendance.message.attendlate"></i18n></small>
+					<%}%>
+					<%if(obj.type == 2 && obj.fixTime>attendanceCommon.getCurrentTime(obj.signTime)){%>
+					<small style="font-size: 12px; color: #ff0000;"><i18n key="Attendance.message.leaveearly"></i18n></small>
+					<%}%>
+	                <p class="address cmp-ellipsis">
+	                	<%if(obj.source == "1"){%>
+	                	<span class="checkinicon icon-checkin-computer"></span>
+	                	<%}else{%>
+	                	<span class="checkinicon icon-checkin-adress"></span>	
+	                	<%}%>
+	                    <span><%=obj.sign.escapeHTML() %></span>
+	                </p>
+	                <p class="file-icon">
+	                	<%if(obj.recordNum && parseInt(obj.recordNum) > 0){%>
+	                		<span class="checkinicon icon-checkin-voice"></span>
+	                	<%}%>
+	                	<%if(obj.imgNum && parseInt(obj.imgNum) > 0){%>
+	                		<span class="checkinicon icon-checkin-img"></span>
+	                	<%}%>
+	                	<%if(obj.remark){%>
+	                		<span class="checkinicon icon-checkin-text-file"></span>
+	                	<%}%>
+	                </p>
+	            </div>
+	        </li>
+	        <% } %>
+    	</script>
+		<!-- js引入 -->
+		
+		<script src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172358"></script>
+		<script src="/seeyon/m3/apps/v5/commons/i18n/Commons_zh_CN.js?buildversion=181210172358"></script>
+		<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172358"></script>
+		<script>
+			var $buildversion = '?buildversion=181210172358';
+			var attendancePath = "/seeyon/m3/apps/v5/attendance";
+			var cmpPath = "/seeyon/m3/cmp";
+			var commonPath = "/seeyon/m3/apps/v5/commons";
+		    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance",function(){
+		    	document.title = cmp.i18n("Attendance.label.atWork");
+		    });
+		    cmp.i18n.init("/seeyon/m3/apps/v5/commons/i18n/","Commons");
+		</script>
+		
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172358" id="__jsdktag"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/amapComponent.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/remogeo.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceIndex.js?buildversion=181210172358"></script>
+	</body>
+</html>
+

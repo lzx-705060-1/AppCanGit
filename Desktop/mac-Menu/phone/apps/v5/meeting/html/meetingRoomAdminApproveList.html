@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view:after{ height: 0px; }
+		.cmp-table-view:before{ height: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div id="headerDiv" class="cmp-bar head-style border1 cmp-header-none"> 
+        <h1 id="title" class="meeting-left-title"><i18n key="meeting.meetingRoomList.list"></i18n></h1>
+		<a id="goMeetingRooBtn" href="javascript:void(0)" class="cmp-pull-right right-btn" style="display:none;font-size:20px;"><span class="m3-icon-meetingRoom-fill left-icon"></span></a>
+	</div>
+	<div id="dataCommonDiv" class="cmp-content back_f4 relative cmp-content-none" style="top:44px">
+		<div id="segmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted col cmp-segmented-control-primary new-tab-nav" style="display:none;">
+			<!-- 已申请 -->
+			<a id="listMRApprove" class="cmp-control-item cmp-active" href="#mrApprovesContain" style="display:none;"><i18n key="meeting.meetingRoomCommon.alreadyApplied"></i18n></a>
+			<!-- 审核 -->
+			<a id="listMRAudit" class="cmp-control-item" href="#mrAuditsContain" style="display:none;"><i18n key="meeting.meetingRoomCommon.audit"></i18n></a>
+		</div>
+	
+		<div id="mrApprovesContain" class="cmp-control-content  back_white cmp-active">
+			<div id="mrApprovesContainDiv" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<ul class="cmp-table-view" id="mrApproves">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="mrAuditsContain" class="cmp-control-content  back_white cmp-active">
+			<div id="mrAuditsContainDiv" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<ul class="cmp-table-view" id="mrAudits">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="footerArea" class="cmp-bar cmp-bar-tab cmp-bar-footer  cmp-bar-tabview footer_color" style="display:none;">
+		<div class="border_t meet_room">
+			<a id="meetingEntrance" href="#" class="cmp-tab-item  cmp-tabview-item " style="display:none;">
+				<span class="cmp-icon see-icon-v5-common-bemeeting" ></span>
+				<span class="cmp-tab-label" ><i18n key="meeting.page.lable.meeting"></i18n></span> <!-- 会议 -->
+			</a>
+			<a href="" class="cmp-tab-item  cmp-tabview-item cmp-active">
+				<span class="cmp-icon see-icon-v5-common-meetingroom" ></span>
+				<span class="cmp-tab-label" ><i18n key="meeting.meetingRoomCommon.meetingRoom"></i18n></span> <!-- 会议室 -->
+			</a>
+		</div>
+	</footer>
+</body>
+	<!-- js -->
+      
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>	<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/js/mrApproveAndAuditList.js?buildversion=18121017266"></script>
+	<script type="text/html"  id="list_li_tpl">
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+			<% var data = this[i]; %>
+			<li class="cmp-list-cell meetingList">
+				<div class="room_list">
+					<%if(data.image){%>
+						<div class="img_wrap"><img src="<%=cmp.serverIp%>/seeyon/commonimage.do?method=showImage&id=<%=data.image%>&size=custom&w=127&h=90"></div>
+					<%}else{%>
+						<div class="img_wrap"><img src="<%=cmp.serverIp%>/seeyon/m3/apps/v5<%=MeetingUtils.getDefaultImage()%>" style="height:90px;width:127px"></div>
+					<%}%>
+					<div roomappId="<%=data.roomAppId%>" roomid="<%=data.roomId%>" roomName="<%=data.roomName%>" startDatetime="<%=data.startDatetime%>" endDatetime="<%=data.endDatetime%>" class="detail_wrap">
+						<ul >
+							<li> <div class="roomName"><%=data.roomName %></div> </li>
+							<li> <div class="meet_date"><%=data.showTime%></div> </li>
+							<!--已申请是：可容纳，待审核是：申请人-->
+							<% if(page.listType == 'mrApproveList') {%>
+								<!-- 可容纳 -->
+								<li> <div class="maxNum"><%=cmp.i18n("meeting.meetingRoomList.seatCount", data.roomSeatCount)%></div> </li>
+							<%} else {%>
+								<li> <div class="applicant"><%=cmp.i18n("meeting.meetingRoomCommon.applicant")%>:<span><%=data.appPerName%></span></div> </li>
+							<%}%>
+							<!-- unpass(2) : 审核未通过 , pass(1) 审核通过, 无 (0)  待审核 -->
+							<li>
+								<% if(data.appStatus == 0) {%>
+									<div class="applyState"><%=cmp.i18n("meeting.meetingRoomCommon.pendingAudit")%></div> <!--待审核-->
+								<%} else if(data.appStatus == 1) {%>
+									<div class="applyState pass"><%=cmp.i18n("meeting.meetingRoomCommon.auditPass")%></div> <!--审核通过--> 
+								<%} else if(data.appStatus == 2) {%>	
+									<div class="applyState unpass"><%=cmp.i18n("meeting.meetingRoomCommon.auditNotPassed")%></div> <!--审核未通过-->
+								<%}%>
+							</li>
+						</ul>
+						<div class="details see-icon-v5-common-arrow-right"></div>
+					</div>
+				</div>
+			</li>	
+		<% }%>
+	
+	</script>
+	
+</html>
+<!--******************** auto import check  ****************--!>

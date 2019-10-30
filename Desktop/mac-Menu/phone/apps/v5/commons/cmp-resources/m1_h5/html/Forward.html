@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <link rel="stylesheet" href="http://cmp/css/cmp.css"/>
+    <link rel="stylesheet" href="http://commons.v5.cmp/cmp-resources/M1H5.s3css"/>
+    <title>转发</title>
+    <style>
+
+
+    </style>
+</head>
+<body class="background_eee">
+
+<header class="cmp-bar cmp-bar-nav M1_search_result_title">
+    <a class="cmp-icon iconfont see-icon-error search_close "></a>
+    <a class=" cmp-icon submit_text  cmp-pull-right">发送</a>
+    <h1 class="cmp-title">转发</h1>
+</header>
+<div class="cmp-content position_relative">
+    <div class="replay_opinion_content">
+        <div class="information">
+            <textarea id="textarea" rows="5" placeholder="请输入处理意见"></textarea>
+            <div class="text_and_accessory">
+                <h5 class="cmp-pull-left">124</h5>
+                <!--<span class="cmp-badge cmp-pull-right replay_badge  ">-->
+                    <!--<a href="#picture" class="cmp-icon-synergy-list accessory1 linkObj"></a>-->
+                <!--</span>-->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div id="picture" class="cmp-popover cmp-popover-action     " >
+    <div   class="cmp-popover-container replay_accessory_list_content  ">
+        <ul class="overflow_hidden ">
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory photo"></div>
+                    <p>拍照</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory record"></div>
+                    <p>语音</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory document"></div>
+                    <p>关联文档</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory localFile"></div>
+                    <p>本地文件</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="box">
+                    <div class="cmp-icon-accessory takePhotos"></div>
+                    <p>本地图片</p>
+                </div>
+            </li>
+        </ul>
+        <div class="cmp-text-center">
+            <button id="close" class="cmp-btn cancel ">取消</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="cmp-bar cmp-bar-footer forward_footer">
+    <div class="forward_footer_title  ">
+        <a class="item " href="">
+            <span class="cmp-icon iconfont see-icon-accessory"></span>
+        </a>
+        <a class="item cmp-active " href="#item2">
+           <span class="cmp-icon iconfont see-icon-v5-common-settings"></span>
+        </a>
+        <a class="item  " href="">
+            <span class="cmp-icon iconfont see-icon-v5-common-add"></span>
+            <span>新建流程</span>
+        </a>
+    </div>
+    <div id="item2"  class="forward_footer_content">
+        <ul class="cmp-table-view">
+            <li class="cmp-table-view-cell">
+                转发原附言
+                <div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+            <li class="cmp-table-view-cell">
+                转发原意见
+                <div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+            <li class="cmp-table-view-cell">
+                跟踪
+                <div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--<div id="item1" class="forward_footer_content cmp-active">-->
+        <!--<div class="replay_accessory_list_content forward_accessory">-->
+            <!--<ul class="overflow_hidden ">-->
+                <!--<li class="item" id="camera">-->
+                    <!--<div class="box">-->
+                        <!--<div class="cmp-icon-accessory photo"></div>-->
+                        <!--<p>拍照</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="item" id="audio">-->
+                    <!--<div class="box">-->
+                        <!--<div class="cmp-icon-accessory record"></div>-->
+                        <!--<p>语音</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="item" id="document">-->
+                    <!--<div class="box">-->
+                        <!--<div class="cmp-icon-accessory document"></div>-->
+                        <!--<p>关联文档</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="item" id="file">-->
+                    <!--<div class="box">-->
+                        <!--<div class="cmp-icon-accessory localFile"></div>-->
+                        <!--<p>本地文件</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="item" id="img">-->
+                    <!--<div class="box">-->
+                        <!--<div class="cmp-icon-accessory takePhotos"></div>-->
+                        <!--<p>本地图片</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<div class="cmp-list-content cmp-accessory-show">-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div id="item2"  class="forward_footer_content">-->
+        <!--<ul class="cmp-table-view">-->
+            <!--<li class="cmp-table-view-cell">-->
+                <!--转发原附言-->
+                <!--<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">-->
+                    <!--<div class="cmp-switch-handle"></div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li class="cmp-table-view-cell">-->
+                <!--转发原意见-->
+                <!--<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">-->
+                    <!--<div class="cmp-switch-handle"></div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li class="cmp-table-view-cell">-->
+                <!--跟踪-->
+                <!--<div class="cmp-switch cmp-switch-blue cmp-switch-mini cmp-active">-->
+                    <!--<div class="cmp-switch-handle"></div>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div id="item3"  class="forward_footer_content">333</div>-->
+</div>
+
+
+
+
+<script src="http://cmp/js/cmp.js"></script>
+<script>
+cmp.ready(function(){
+    var item=document.querySelector('.forward_footer_title').querySelectorAll('.item');
+    var forward_footer_content=document.querySelector('.forward_footer').querySelectorAll('.forward_footer_content');
+   cmp('.forward_footer').on('click','.forward_footer_title .item',function(){
+
+       for(var i=0,len=item.length;i<len;i++){
+           item[i].classList.remove('cmp-active');
+       }
+       this.classList.add('cmp-active');
+       for(var j= 0,lens=forward_footer_content.length;j<lens;j++){
+           forward_footer_content[j].classList.remove('cmp-active');
+       }
+       var ContentId=this.href.toString().split('#')[1];
+       var content=document.getElementById(ContentId);
+       content.classList.add('cmp-active');
+   });
+
+//    对附件进行监听调用附件方法
+//    var camera=document.getElementById('camera');
+//    camera.addEventListener('click',function(){
+//
+//    });
+
+//    var img=document.getElementById('img');
+//    img.addEventListener('click',function(){
+//        var test=cmp.file.localFileList();
+//        test.open();
+//    },false);
+
+
+
+});
+
+
+
+</script>
+</body>
+</html>

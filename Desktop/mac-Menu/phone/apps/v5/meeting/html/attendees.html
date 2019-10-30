@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		/*.cmp-table-view{ height: 0px; }*/
+		.cmp-table-view-cell:after{ left: 0px; }
+		.head-style:after{ height: 0px; }
+		.cmp-list-cell{ border-bottom:none; }
+		#noFeedback,#noJoin,#pending,#join{
+			font-family: PingFangSC-Regular;
+			font-size: 16px;
+			letter-spacing: 0;
+			line-height: 20px;
+			height:33px;
+		}
+		.cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active:before{
+			border-bottom: 0;
+			background-color: #3aadfb;
+			border-radius: 1.5px;
+			height: 3px;
+			bottom: 0;
+		}
+		.cmp-content div.new-tab-nav a{
+			padding-bottom: 4px;
+		}
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-content relative back_f4 cmp-content-none">
+		<div id="detailDiv" style="padding-top: 10px;" class="cmp-segmented-control cmp-segmented-control-inverted cmp-segmented-control-primary new-tab-nav">
+			<a id="join" href="#page01" class="cmp-control-item cmp-active">
+				<i18n key="meeting.page.action.attend"></i18n>
+				<div class="userNumber" id="joinNumber"></div>
+			</a><!-- 参加 -->
+			<a id="pending" href="#page02" class="cmp-control-item">
+				<i18n key="meeting.page.action.pending"></i18n>
+				<div class="userNumber" id="pendingNumber"></div>
+			</a><!-- 待定 -->
+			<a id="noJoin" href="#page03" class="cmp-control-item">
+				<i18n key="meeting.page.action.noAttend"></i18n>
+				<div class="userNumber" id="noJoinNumber"></div>
+			</a><!-- 不参加 -->
+			<a id="noFeedback" href="#page04" class="cmp-control-item">
+				<div><i18n key="meeting.page.lable.noReceipt"></i18n></div>
+				<div class="userNumber" id="noFeedbackNumber"></div>
+			</a><!-- 未回执 -->
+		</div>
+
+
+			<div id="page01" class="cmp-control-content back_white cmp-active">
+				<div id="page011" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul class="cmp-table-view ul_list" id="joinUserDiv">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="page02" class="cmp-control-content back_white">
+				<div id="page022" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul class="cmp-table-view ul_list" id="pendingUserDiv">
+						</ul>
+					</div>
+				</div>
+				<div id="remindersPendingUserDiv" style='position:absolute;left:0;bottom:0;width:100%;display:none;'>
+					<button type='button' style='margin-bottom:0px;font-size:14px;border-radius:0px;' 
+					  class='cmp-btn-primary cmp-btn-block display_inline-block' onclick="remindersPending()">
+						<span>
+							<i18n key="meeting.page.lable.reminders"></i18n>
+						</span>
+					</button>
+				</div>
+			</div>
+			<div id="page03" class="cmp-control-content back_white">
+				<div id="page033" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul class="cmp-table-view ul_list" id="noJoinUserDiv">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="page04" class="cmp-control-content back_white">
+				<div id="page044" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul class="cmp-table-view ul_list" id="noFeedbackUserDiv">
+						</ul>
+					</div>
+				</div>
+				<div id="remindersNoFeedbackUserDiv" style='position:absolute;left:0;bottom:0;width:100%;display:none;'>
+					<button type='button' style='margin-bottom:0px;font-size:14px;border-radius:0px;'
+					  class='cmp-btn-primary cmp-btn-block display_inline-block' onclick="remindersNoFeedback()">
+						<span>
+							<i18n key="meeting.page.lable.reminders"></i18n>
+						</span>
+					</button>
+				</div>
+			</div>
+	</div>
+</body>
+	<!-- js -->
+	  
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>    <script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/js/meetingUserList.js?buildversion=18121017266"></script>
+	<script type="text/html" id="replyMemberTpl">
+	 	<% 
+	    	for(var i = 0,len = this.length; i < len; i++){  
+	        	var data = this[i];
+	    %>
+		    <li class="cmp-list-cell li-border">
+				<div class="attendess-wrap">
+					<div class="img-wrap">
+						<img class="cmp-img-cache img_setting" cmp-data="<%=data.memberId %>"  />
+						
+						<% if(data.look !=undefined && data.look == '1') { %>
+							<div class="read-states has-read">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-view-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<%}%>
+						<% if(data.look !=undefined && data.look == '0') { %>
+							<div class="read-states other">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-unview-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<%}%>
+					</div>
+					<div class="text">
+						<div class="name">
+							<div style="width:75%;float:left" class="memberName"><%=data.memberName %></div>
+							<div style="width:25%;float:right;text-align:right;padding-right:20px;height:21px;">
+								<% if(data.replyState == "noFeedback") { %>
+									<% if(data.look !=undefined && data.look == '1') { %>
+										<%=cmp.i18n("meeting.meetingDetail.replyState.read")%>
+									<%}%>
+									<% if(data.look !=undefined && data.look == '0') { %>
+										<%=cmp.i18n("meeting.meetingDetail.replyState.unread")%>
+									<%}%>
+								<%}%>
+							</div>
+						</div>
+						<div class="job"><%=data.memberPost %></div>
+					</div>
+				</div>
+			</li>
+	    <%}%>
+	</script>
+</html>

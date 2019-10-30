@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/shortCutSort.css?buildversion=181210172728">
+<title id="title"></title>
+</head>
+<body style="overflow: hidden;position: relative;">
+<div class="body-content" style="overflow: auto;">
+    <div>
+        <div class="choosedShortCut">
+            <div class="title">
+                <span class="head"><i18n key="shortcut.selected.label"></i18n></span>
+                <span class="brief">（<i18n key="shortcut.hold.drag.sort"></i18n>）</span>
+                <a id="operate" class="cmp-pull-right state-edit"><i18n key="shortcut.edit.label"></i18n></a>
+            </div>
+            <div id="selectedShortCutDiv"></div>
+        </div>
+        <div id="addShortCutDiv" class=""></div>
+    </div>
+</div>
+<script type="text/html" id="normalShortCutList">
+<div style="display: block;margin: 0 10px;" class="detail">
+<ul class="shortCutUl shortCut1">
+<% for(var i = 0,len = this.length;i < len; i++){
+    var _group = this[i];
+    var _type = _group.groupType;
+%>
+<% if(_type == "0"){ %>
+    <%  for(var j = 0,lens = _group.portlets.length;j < lens; j++){
+        var _portlet = _group.portlets[j];
+        var _icon = replaceMagnetIcon(_portlet.imageLayouts[0].imageUrl);
+        portletMap.set(_portlet.portletId, _portlet);
+    %>
+    <li class="item" data-url="<%= escapeStringToHTML(_portlet.mobileUrl) %>">
+        <div style="width: 100%;">
+            <div class="operateArea">
+                <span class="remove vportal vp-online2" portletId="<%=_portlet.portletId %>"></span>
+                <div class="name">
+                    <span><%=escapeStringToHTML(_portlet.displayName) %></span>
+                </div>
+            </div>
+        </div>
+    </li>
+    <% } %>
+<% }else if(_type == "2"){   MODE_TYPE = 2; %>
+    <li class="item folderItem">
+        <div style="width: 100%;">
+            <div class="operateArea">
+                <span class=""></span>
+                <div class="name">
+                    <span class="groupName"><%=escapeStringToHTML(_group.groupName) %></span>
+                </div>
+                <%  for(var j = 0,lens = _group.portlets.length; j < lens; j++){
+                    var _portlet = _group.portlets[j];
+                    var _icon = replaceMagnetIcon(_portlet.imageLayouts[0].imageUrl);
+                    portletMap.set(_portlet.portletId, _portlet);
+                %>
+                <input type="hidden" name="portletId" value="<%=_portlet.portletId %>">
+                <% } %>
+            </div>
+        </div>
+    </li>
+<% } %>
+<% } %>
+</ul>
+</div>
+</script>
+<script type="text/html" id="groupShortCutList">
+<%  for(var i = 0,len = this.length;i < len; i++){
+    var _group = this[i];
+    var _type = _group.groupType;
+%>
+    <% if(_type == "1"){ %>
+    <div style="display: block;" class="shortCutGroup">
+        <div class="group-content">
+            <div class="groupTitle cmp-ellipsis">
+                <span class="cmp-ellipsis"><%=escapeStringToHTML(_group.groupName) %></span>
+            </div>
+            <div class="detail">
+                <ul class="shortCutUl groupShortCut1" groupIndex="<%=i %>">
+                    <%  for(var j = 0,lens = _group.portlets.length;j < lens; j++){
+                        var _portlet = _group.portlets[j];
+                        var _icon = replaceMagnetIcon(_portlet.imageLayouts[0].imageUrl);
+                        portletMap.set(_portlet.portletId, _portlet);
+                    %>
+                    <li class="item" data-url="<%= escapeStringToHTML(_portlet.mobileUrl) %>">
+                        <div style="width: 100%;">
+                            <div class="operateArea">
+                                <span class="remove vportal vp-online2" portletId="<%=_portlet.portletId %>"></span>
+                                <div class="name">
+                                    <span><%=escapeStringToHTML(_portlet.displayName) %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <% } %>
+<% } %>
+</script>
+<script type="text/html" id="addShortCutList">
+<% for (_addtype in this){
+    if(_addtype == "0"){
+        continue;
+    }
+    var list = this[_addtype];
+    var titleName = cmp.i18n("shortcut.standard.icon");
+    if(_addtype == "2"){
+        titleName = cmp.i18n("shortcut.custom.app");
+    }else if(_addtype == "3"){
+        titleName = cmp.i18n("shortcut.more.app");
+    }
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+    <span class="brief">（<%= cmp.i18n("shortcut.click.to.add") %>）</span>
+</div>
+<div class="detail">
+    <ul class="shortCutUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var _portlet = list[i];
+            var _icon = replaceMagnetIcon(_portlet.imageLayouts[0].imageUrl);
+            var stateClass = "add";
+            var iconName = "vportal vp-plus";
+            selectPortlets[_portlet.portletId] = _portlet;
+            if(portletMap.has(_portlet.portletId)){
+                stateClass = "isChoose";
+                iconName = "vportal vp-online0";
+            }
+        %>
+        <li class="item" data-url="<%= escapeStringToHTML(_portlet.mobileUrl) %>">
+            <div style="width: 100%;">
+                <div class="operateArea <%=stateClass %>" portletId="<%=_portlet.portletId %>">
+                    <span class="leftIcon <%=iconName %>" id="add_<%=_portlet.portletId %>"></span>
+                    <div class="name">
+                        <span><%=escapeStringToHTML(_portlet.displayName) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+</script>
+<!-- 国际化顺序 1应用的国际化 2cmp-i18n.js 3去国际化 4加载cmp -->
+<script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172728"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal");
+</script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172728"></script>
+<script type="text/javascript">
+     
+                            var _cmpPath = "/seeyon/m3/cmp";
+                            var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+        					var _colPath = "/seeyon/m3/apps/v5/collaboration";
+        					var _docPath = "/seeyon/m3/apps/v5/doc";
+  
+        					var _formqueryreportPath = "/seeyon/m3/apps/v5/formqueryreport";
+ 
+        					var _unflowformPath = "/seeyon/m3/apps/v5/unflowform";
+        					var _workflowPath = "/seeyon/m3/apps/v5/workflow";
+        					var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+        					var _newsPath = "/seeyon/m3/apps/v5/news";
+        					var _mycollectionPath = "/seeyon/m3/apps/v5/mycollection";
+        					var _edocPath = "/seeyon/m3/apps/v5/edoc";
+        					var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+        					var _bbsPath = "/seeyon/m3/apps/v5/bbs";
+        					var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+        					var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";
+        					var _calendarPath = "/seeyon/m3/apps/v5/calendar";
+        					var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+        					var _attendancePath = "/seeyon/m3/apps/v5/attendance";
+        					var _hrPath = "/seeyon/m3/apps/v5/hr";
+        					var _footprintPath = "/seeyon/m3/apps/v5/footprint";
+        					var _showPath = "/seeyon/m3/apps/v5/show";
+        					var _portalPath = "/seeyon/m3/apps/v5/portal";
+        					var _cap4Path = "/seeyon/m3/apps/v5/cap4";
+        					var _vreportPath = "/seeyon/m3/apps/v5/vreport";
+        					var _bizPath = "/seeyon/m3/apps/v5/biz";
+        					var _fullsearch = "/seeyon/m3/apps/v5/fullsearch";
+        					</script><script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sortable.js?buildversion=181210172728"></script>
+
+<script src="/seeyon/m3/cmp/js/cmp-ajax-fast.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-barcode.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/apps/v5/biz/biz_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/doc/doc_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+
+<script src="/seeyon/m3/apps/v5/portal/js/shortCutEvent.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/apps/v5/portal/js/shortCutSort.js?buildversion=181210172728"></script>
+</body>
+</html>

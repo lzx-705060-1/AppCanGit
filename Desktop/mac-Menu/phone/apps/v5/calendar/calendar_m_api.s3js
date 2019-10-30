@@ -1,0 +1,35 @@
+var calendarApi = (function(){
+	var calendarApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/calendar";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [id:任务记录id]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+	calendarApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	var _basePath = this.basePath;
+		
+		if (type == "message") {//消息
+			var param = {
+				'id' : option.id
+			};
+			if (option.linkType === "message.link.cal.view") {
+				//事件查看
+				cmp.href.next(_basePath + "/html/newCalEvent.html", param);
+			} else if(option.linkType === "message.link.cal.reply") {
+				//事件回复
+				cmp.href.next(_basePath + "/html/newCalEvent.html", param);
+			}
+		} else if (type == 'todo') {//全文检索
+			cmp.href.next(_basePath + "/html/newCalEvent.html", {"id": option.id});
+		} else if (type == 'xiaozhiSpeechInput') { //小智快捷创建日程
+			option.from = "xiaozhiSpeechInput";
+			cmp.href.next(_basePath + "/html/newCalEvent.html", option);
+		}
+	}
+	return new calendarApi();
+})();

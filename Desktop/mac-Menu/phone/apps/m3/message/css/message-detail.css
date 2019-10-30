@@ -1,0 +1,161 @@
+/*
+* @Author: 伟
+* @Date:   2016-06-22 20:38:36
+* @Last Modified by:   think
+* @Last Modified time: 2016-07-05 15:16:25
+*/
+/*Android*/
+body.cmp-dd header{height: 44px;padding-top: 0;}/*android header样式*/
+body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+/*ios*/
+body.cmp-ios-c header{height: 64px;padding-top: 20px}
+body.cmp-ios-c .cmp-content{top:64px;}
+body.cmp-ios-x header{height: 88px;padding-top: 44px}
+body.cmp-ios-x .cmp-content{top:88px;}
+.cmp-content{background-color: #EBEBEB;}
+.msg-list {
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin: 0px 11px 10px;
+    box-sizing: content-box;
+    background-color: #fff;
+    border: 1px solid #DBDBDB;
+    position: relative;
+    border-radius: 8px;
+    padding-bottom: 10px;
+}
+.msg-list > span:first-child {
+    display: block;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.msg-list > .title {
+    color: #999;font-size: 14px;
+    padding: 16px 14px 0;
+}
+
+.msg-list > .content {
+    display: -webkit-box;line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    font-size: 17px;
+    padding:13px 14px 18px 14px;
+    box-sizing: content-box;
+    word-wrap: break-word;
+    color: #333;
+}
+.toDo_listes{padding-top: 10px;}
+.toDo_listes .msg-list.unread{
+    background: #fff;
+}
+.msg-list .content{padding:13px 14px 5px 14px;}
+
+
+
+.msg-list > .send-info {
+    
+    font-size: 14px;
+    color: #999;
+    padding: 0 15px 0 10px;
+    width: 100%;text-align: right;
+}
+
+.send-info > .send-user {
+    -webkit-flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.msg-list > .textover-8 {
+    -webkit-line-clamp: 8;
+}
+
+.msg-list > .line {
+    height: 1px;
+    background: #e7e7e7;
+    -webkit-transform: scale(1, .5);
+}
+
+.see-icon-m3-appDefault-fill {
+    font-size: 14px;
+}
+
+.toDo_list {
+    position: absolute;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    background: rgba(252, 252, 252, 1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cmp-scroll-wrapper {
+    background: #EBEBEB;
+}
+
+.cmp-scroll {
+    background: #ebebeb;
+}
+
+.see-icon-m3-notViewed {
+    position: absolute;
+    font-size: 16px;
+    width: 13px;
+    height: 13px;
+    top: 22px;
+    right: 20px;
+    color: #d4d4d4;
+}
+.display-none {
+    display: none;
+}
+
+.toDo_listes .timeStamp{
+    padding:4px 5px 5px 5px;text-align: center;color: #d4d4d4;
+}
+.toDo_listes .timeStamp .cmp-badge{
+    background-color: #CECECE ;border-radius: 4px;font-size: 10px;color: #fff;
+    height: 20px;line-height: 15px;display: inline-block;
+}
+.msg-list .send-info .send-detail{
+    color: #3AADFB;
+}
+.msg-list .send-info .unread-mark{
+    display: inline-block;width: 10px;height: 10px;background-color: #FF5E5E;border-radius: 100%;
+    margin-right: 5px;
+}
+.message-footer{
+    height: 50px;;line-height: 50px;position: fixed;
+}
+.message-footer span{
+    display: inline-block;text-align: center;position: relative;color: #3AADFB;font-size: 16px;line-height: 50px;
+}
+.message-footer span.allread::before{
+    content:"";display: inline-block;position: absolute;left:0;bottom:10px;width:1px;height: 30px;
+    background-color: #e7e7e7;
+}
+.toDo_listes .msg-list .userImg{
+    width: 30px;height: 30px;margin-right: 10px;
+    border-radius: 50%;
+    background-size: cover!important;
+    display: inline-block;
+    vertical-align: middle;
+}
+.msg-list.read-readonly{background-color: rgba(255, 255, 255, 0.30);}
+/* 已读情况隐藏红色圆角 */
+.msg-list .send-info .unread-mark{display: none;}
+/* 未读情况显示红色圆角 */
+.msg-list.unread .send-info .unread-mark{display: inline-block;}
+/* 可读情况显示查看详情 */
+.msg-list.read-none .send-info{display: block;}
+/* 只读情况隐藏查看详情 */
+.msg-list.read-readonly .send-info{display: none;}
+
+/* 暂时屏蔽未读功能 --------*/
+.msg-list .send-info .unread-mark{display:none!important;}

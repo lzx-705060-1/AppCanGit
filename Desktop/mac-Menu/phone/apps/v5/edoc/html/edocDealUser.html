@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/edoc/css/cmp-edoc.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172510">
+<title></title>
+</head>
+<body class="cmp-fullscreen">
+
+<div id="hastenDiv" style="height:40px;display:none;">
+	<span class="edoc-left-title" style="padding-left:10px;"><i18n key="Edoc.action.totalElement"></i18n></span>
+	<span class="cmp-pull-right" style="padding-right:30px;" id="akeyHasten"><i18n key="Edoc.page.lable.button.keyHasten"></i18n></span>
+</div>
+<div class="cmp-content position_relative cmp-content-none" style="bottom:0px;background-color:white;">
+      
+      <div class="cmp-control-content cmp-active">
+          <div id="edocNodeContain" class="cmp-scroll-wrapper">
+              <div class="cmp-scroll">
+                <ul id="edocNodeUserList" class="cmp-list-content cmp-table-view">
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+   
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172510"></script>
+  <script  src="/seeyon/m3/apps/v5/edoc/js/edocUtil.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/i18n/EdocResources_zh_CN.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/js/edoc-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+    
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edocDealUser.js?buildversion=181210172510"></script>
+
+<!-- js模版 -->
+  <script  type="text/html" id="list_li_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+      <% var data = this[i]; %>
+        <li id="<%=data.memberId %>" class="treatment">
+           <div class="handler-div position_relative">
+               <img class="cmp-img-cache img_setting" cmp-data="<%=data.memberId %>">
+                <div class="read-states <%=data.bgcolor%>">
+                  <div class="state-bg">
+                     <span class="<%=data.stateIcon%> state-color"></span>
+                  </div>
+                </div>
+               <div class="handler-states"><span class="<%=data.isHasten%>" id="<%=data.memberId%>"><%=data.nowState %></span></div>
+               <div class="handler-user">
+                  <div class="handle-user-name"><%=data.memberName %></div>
+                  <div class="handle-user-job"><%=data.gwName %></div>
+               </div>
+           </div>
+        </li>
+    <%} %>
+          
+  </script>
+</body>
+</html>
+<!--******************** auto import check  ****************--!>

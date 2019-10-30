@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172349" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/apps/v5/addressbook/css/addressbook.css?buildversion=181210172349" rel="stylesheet" type="text/css"/>
+    <!-- 正文组件样式css -->
+    <style>
+        .add-detail {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+        .add-detail .add-detail-bgImg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .add-detail .add-detail-img {
+            width: 100%;
+            text-align: center;
+            padding-top: 20px;
+            position: absolute;
+        }
+
+        .add-detail .add-detail-img img {
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+        }
+
+        .add-detail .add-detail-name {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 105px;
+        }
+
+        .add-detail .add-detail-name span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .add-block-content {
+            position: relative;
+            width: 100%;
+            padding: 15px 0;
+        }
+        .add-block-emptyContent {
+            position: relative;
+            width: 100%;
+            padding: 6px 0;
+        }
+
+        .add-block-content:after,.add-block-emptyContent:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -50%;
+            width: 200%;
+            height: 1px;
+            bottom: 0;
+            background: #d4d4d4;
+            -webkit-transform: scale(0.5);
+        }
+        .add-block-emptyContent:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -50%;
+            width: 200%;
+            height: 1px;
+            top: -1px;
+            background: #d4d4d4;
+            -webkit-transform: scale(0.5);
+        }
+        .add-block-content-left {
+            width: 40%;
+            text-align: left;
+            font-size: 16px;
+            color: #666;
+            float: left;
+            word-break: break-all;
+        }
+
+        .add-block-content-right {
+            width: 60%;
+            text-align: right;
+            font-size: 16px;
+            color: #333;
+            float: right;
+            word-break: break-all;
+        }
+    </style>
+    <title id="title"></title>
+</head>
+<body class="cmp-fullscreen">
+<div class="cmp-control-content cmp-content position_relative cmp-content-none" style="display: block">
+    <div class="add-detail">
+        <img class="add-detail-bgImg" src="../img/viewHeadBg.png">
+        <div class="add-detail-img">
+            <img id="memberPhoto" src="">
+        </div>
+        <div class="add-detail-name">
+            <span id="memberName"></span>
+        </div>
+    </div>
+    <div class="cmp-scroll-wrapper" style="margin-top: 150px">
+        <div class="cmp-scroll">
+            <!--数据列表-->
+            <ul class="cmp-table-view" id="container">
+                <div style="width: 100%;padding: 0 10px;" id="memberDeptDiv">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.dept.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberDept"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;display: none" id="vjoinOrgDiv">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.vjoin.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="vjoinOrg"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;display: none;" id="vjoinAccDiv">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.out.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="vjoinAcc"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.mainpost.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberPost"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;" id="memberLevelDiv">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.level.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberLevel"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <!--加分割行-->
+                <div style="width: 100%;padding: 0 10px;background-color: #f8f9fb;">
+                    <div class="add-block-emptyContent">
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;" id="memberWorkTelNumDiv">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span ><i18n key="addressBook.worknum.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberWorkTelNum"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span><i18n key="addressBook.phonenum.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberPhoneNum"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;padding: 0 10px;">
+                    <div class="add-block-content">
+                        <div class="add-block-content-left">
+                            <span><i18n key="addressBook.mail.label"></i18n></span>
+                        </div>
+                        <div class="add-block-content-right">
+                            <span id="memberMail"></span>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div id="infoDiv"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<script id="diyInfo" type="text/html">
+    <% var obj = this; %>
+    <div style="width: 100%;padding: 0 10px;">
+        <div class="add-block-content">
+            <div class="add-block-content-left">
+                <span><%=escapeStringToHTML(obj.label) %></span>
+            </div>
+            <div class="add-block-content-right">
+                <% var value = (obj.value.length > 10 ? (obj.value.slice(0, 10) + "...") : obj.value); %>
+                <span><%=escapeStringToHTML(obj.value) %></span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</script>
+<script src="/seeyon/m3/apps/v5/addressbook/i18n/Addressbook_zh_CN.js?buildversion=181210172349"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172349"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/addressbook/i18n/","addressbook",null,"?buildversion=181210172349");
+    document.getElementById("title").innerText = cmp.i18n("addressBook.addressBook.title");
+</script>
+<script type="text/javascript">
+    var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+</script><script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/addressbook/js/addressbook-jssdk.js?buildversion=181210172349" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/addressbook/js/flexible.js?buildversion=181210172349" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/addressbook/js/addressbookView.js?buildversion=181210172349"></script>
+
+</body>
+</html>

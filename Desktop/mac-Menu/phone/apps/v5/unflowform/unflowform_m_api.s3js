@@ -1,0 +1,167 @@
+(function($,doc){
+    
+    var unflowform_basePath = "/seeyon/m3/apps/v5/unflowform";
+    /**
+     * *************选择关联表单************
+     * @param formId：关联数据的表单Id
+     * @param fromFormId：当前单据表单Id
+     * @param fromDataId：当前单据Id
+     * @param fromRecordId： 当前重复行Id（如果关联字段在重复表里面）,非重复表字段传0
+     * @param fromRelationAttr： 源关联字段
+     * @param toRelationAttr： 目标关联字段
+     * @param formType： 表单类型 unflowform or form
+     * @param mutiselect： 是否多选
+     * @param showView： 是否显示列表
+     */
+    $.relationForm = function(pageKey,metadata,option){
+        option.pageKey=pageKey;
+        option.metadata=metadata;
+        if ( typeof(params) != "undefined" ) {
+                        option.pageParams=params; //页面有其他参数需要在跳转前保存的，请放到params 中
+        }
+        $.event.trigger("beforepageredirect",document);
+        option.fromUrl=window.location.href+"?pageKey="+option.pageKey;
+        cmp.storage.delete("relationForm_params",true);
+        cmp.storage.delete("relationUnflowForm_params",true);
+        cmp.storage.delete("relationSubForm_currview",true);
+        if(option.formType=="form"){
+            cmp.href.go(unflowform_basePath + "/html/relationForm.html",option);
+        }else{
+            cmp.href.go(unflowform_basePath + "/html/relationUnflow.html",option);
+        }
+    }
+     /**
+     * *************选择数据交换任务************
+     * @param formId:关联数据的表单Id
+     * @param fieldName:关联字段
+     * @param contentDataId:当前单据Id
+     * @param recordId: 当前重复行Id（如果关联字段在重复表里面）,非重复表字段传0
+     * @param allowCheck:是否允许选择
+     */
+     $.deeDataList = function(pageKey,metadata,option){
+             option.pageKey=pageKey;
+             option.metadata=metadata;
+             if ( typeof(params) != "undefined" ) {
+                option.pageParams=params; //页面有其他参数需要在跳转前保存的，请放到params 中
+             }
+             $.event.trigger("beforepageredirect",document);
+             option.fromUrl=window.location.href+"?pageKey="+option.pageKey;
+             cmp.href.go(unflowform_basePath + "/html/deeDataList.html",option);
+      }
+       /**
+       * *************查看原样表单************
+       * option包含如下参数：
+       * @param isNew 是否新建
+       * @param moduleId 必须传（如果是新建，传-1），各模块业务数据id，在moduleId为-1的情况下是新建状态，moduleId不为-1说明是查看状态，在数据库中已经有该正文数据
+       * @param moduleType 必须传，正文所属模块类型formView:表单样式 collabration:协同
+       * @param openFrom 从哪儿打开的
+       * @param templateId 模板id
+       * @param contentDataId 表单数据id
+       * @param formRecordid 拷贝的那条数据的表单数据id
+       * @param summaryId 流程数据复制需要当前数据的summaryid，也就是moduleid，因为拷贝附件的时候需要用它来当附件表的referenceid
+       * @param isFromFrReport 是否报表穿透
+       * @param style 表单查看样式
+       * @param rightId 权限id
+       * @param indexParam 当前查看的是哪个页签
+       * @param viewState 表单查看状态
+       * @param fromCopy 复制自哪条正文数据，fromCopy是ctp_content_all中的的id，默认为-1(以前的计划复制)
+       * @param contentType 正文类型
+       */
+       $.showPcForm = function(option){
+                    option.viewState="2"; //新建协同调用此接口，目前只支持查看
+                    $.event.trigger("beforepageredirect",document);
+                    cmp.href.next(unflowform_basePath + "/html/showPcForm_readonly.html",option);
+             }
+     /**
+      * *************跳转到无流程列表************
+      ** option包含参数：
+      * @param formId:表单Id
+      * @param formTemplateId:模板ID
+      * @param name:表单名称
+      */
+      $.openUnflowFormList = function(option){
+              option.formAppmainId=option.formId;
+              option.sourceId=option.formTemplateId;
+              $.event.trigger("beforepageredirect",document);
+              cmp.href.next(unflowform_basePath + "/html/index.html",option);
+       }
+     /**
+     * *************跳转到无流程详情************
+     ** option包含参数：
+     * @param moduleId:模块Id
+     * @param moduleType:模块类型
+     * @param rightId:权限ID
+     * @param name:表单名称
+     * @param  viewState: 显示状态
+     */
+     $.openUnflowFormData = function(option){
+             if(!option.contentAllId && option.moduleId){
+                 option.contentAllId=option.moduleId;
+             }
+             if(!option.showType){
+                 option.showType="browse";
+             }
+             $.event.trigger("beforepageredirect",document);
+             if(option.from=="dashboard" && typeof(cmp.platform.CMPShell) != 'undefined' && cmp.platform.CMPShell){
+                 //遍历各参数，拼成URL传参方式
+                 var paramStr="";
+                 for(var i in option){
+                    paramStr +="&"+ i+"="+option[i];
+                 }
+                 cmp.href.open(unflowform_basePath + "/html/info.html?date="+(new Date().getTime())+paramStr);
+             }else{
+                 cmp.href.next(unflowform_basePath + "/html/info.html",option);
+             }
+      }
+      /**
+           * *************跳转到无流程选择权限页面************
+           ** option包含参数：
+           * @param moduleId:模块Id
+           * @param moduleType:模块类型
+           * @param rightId:权限ID
+           * @param name:表单名称
+           * @param viewState: 显示状态
+           * @param formTemplateId:应用Id
+           * @param updateAuthList: 修改数据的权限列表
+           */
+           $.selectUnflowRight = function(option){
+                   if(!option.contentAllId && option.moduleId){
+                       option.contentAllId=option.moduleId;
+                   }
+                   if(!option.showType){
+                       option.showType="browse";
+                   }
+                   option.openFrom="scanInput";
+                   option.needCheckRight=true;
+                   $.event.trigger("beforepageredirect",document);
+                   cmp.href.next(unflowform_basePath + "/html/selectRight.html",option);
+            }
+})(cmp,document);
+var unflowformApi = (function() {
+  var UnflowformApi = function() {
+    this.basePath = "/seeyon/m3/apps/v5/unflowform";
+  }
+  /**
+   * [打开应用]
+   *
+   * @param {string} type [暂时没用]
+   * @param {string} backUrl [后退地址]
+   * @param {obj}    option  [参数信息 按需传参]
+             * @param openFrom:来源 [全文检索:search;扫一扫:scan]
+             * @param moduleId:模块Id
+             * @param moduleType:模块类型
+             * @param rightId:权限ID
+             * @param name:表单名称
+             * @param formId:表单Id
+             * @param formTemplateId:模板ID
+   * @param {string} obj   [其他可选参数]
+   */
+  UnflowformApi.prototype.openApp = function (type,backUrl, option, obj) {
+    option.backUrl=backUrl;
+    option.obj=obj;
+    if(option.openFrom=="search") {
+        cmp.openUnflowFormData(option);
+    }
+  }
+    return new UnflowformApi();
+})();

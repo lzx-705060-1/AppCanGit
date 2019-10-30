@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172714"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172714"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-accDoc.css?buildversion=181210172714"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172714"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172714"/>
+    <title> </title>
+	<style type="text/css">
+		#cmp_accDoc_backBtn .back_text{position:relative;top:0;}
+	</style>
+</head>
+<body>
+
+<div class="cmp-bar  cmp-bar-nav cmp-accDoc-header cmp-bar-accDoc  ">
+    <div data-key="x-9999" id="cmp_accDoc_backBtn" class="cmp-pull-left select_btnBack display_none cmp-hidden">
+        <span  class="cmp-icon  see-icon-v5-common-arrow-back"></span>
+    </div>
+    <div id="cmp_accDoc_searchBtn" class="cmp-icon see-icon-search cmp-pull-right cmp-active"></div>
+    <div class="cmp-segmented-control cmp-accDoc-control">
+        <nav id="colControlItem" class="cmp-control-item cmp-accDoc-control-item cmp-active" href="#cmp_accDoc_coordinationArea">
+            <i18n key="cmp.accDoc.collaboration"></i18n>
+        </nav>
+        <nav id="docControlItem" class="cmp-control-item cmp-accDoc-control-item" href="#cmp_accDoc_docArea">
+            <i18n key="cmp.accDoc.doc"></i18n>
+        </nav>
+        <nav id="eDocControlItem" class="cmp-control-item cmp-accDoc-control-item" href="#cmp_accDoc_edocArea">
+            <i18n key="cmp.accDoc.edoc"></i18n>
+        </nav>
+    </div>
+</div>
+<div class="cmp-content accDoc position_relative background_fff">
+    <!--协同页签内容-->
+    <div id="cmp_accDoc_coordinationArea" class="cmp-control-content cmp-active cmp_accDoc_first">
+        <div id="cmp_accDoc_coordinationSwitch" class="cmp-segmented_title_content accDoc">
+            <div class="cmp-segmented-control cmp-segmented-control-inverted accDoc cmp-after-line">
+                <nav class="cmp-accDoc-mtb-30 cmp-control-item cmp-active" href="#cmp_accDoc_coordination_todoArea"data-param="3">
+                    <span id="todo_text"><i18n key="cmp.accDoc.listPending"></i18n></span>
+                    <span id="pendingNO" class="cmp-hidden"></span>
+                </nav>
+                <nav class="cmp-accDoc-mtb-30 cmp-control-item" href="#cmp_accDoc_coordination_doneArea" data-param="4">
+                    <span id="done_text"><i18n key="cmp.accDoc.listDoneAll"></i18n></span>
+                    <span id="doneNO" class="cmp-hidden"></span>
+                </nav>
+                <nav class="cmp-accDoc-mtb-30 cmp-control-item " href="#cmp_accDoc_coordination_sendArea"data-param="2">
+                    <span id="sent_text"><i18n key="cmp.accDoc.listSent"></i18n></span>
+                    <span id="sentNO" class="cmp-hidden"></span>
+                </nav>
+            </div>
+        </div>
+        <div id="cmp_accDoc_coordination_todoArea" class="cmp-control-content background_eee cmp-active cmp_accDoc_floor">
+            <div class="cmp-scroll-wrapper" id="cmp_accDoc_scroll4Todo">
+                <ul id="cmp_accDoc_coordination_todoList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+            </div>
+        </div>
+        <div id="cmp_accDoc_coordination_doneArea" class="cmp-control-content cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Done" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_coordination_doneList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="cmp_accDoc_coordination_sendArea" class="cmp-control-content cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Send" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_coordination_sendList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--文档页签内容-->
+    <div id="cmp_accDoc_docArea" class="cmp-control-content cmp_accDoc_first">
+        <div class="cmp-segmented_title_content cmp-accDoc-crumbs-container">
+            <div id="cmp_accDoc_crumbsScroll" class="cmp-crumbs-content-accDoc accDoc">
+                <div id="cmp_accDoc_crumbsList" class="scroll">
+                        <span id="crumbs_x-9999"class="transverse-mark on-text crumbs-text">
+                            <a href="javascript:void(0)" class="no-text" id="doc_text"><i18n key="cmp.accDoc.doc"></i18n></a>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="cmp-control-content cmp-active background_fff cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Doc" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_docList" class="cmp-list-content cmp-accDoc-file-index-content"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--公文内容页签-->
+    <div id="cmp_accDoc_edocArea" class="cmp-control-content cmp_accDoc_first">
+        <div id="cmp_accDoc_edocSwitch" class="cmp-segmented_title_content edoc">
+            <div class="cmp-segmented-control cmp-segmented-control-inverted accDoc cmp-after-line">
+                <nav class="cmp-control-item cmp-accDoc-nav" href="#cmp_accDoc_edoc_sendArea" edoc-type="0">
+                    <span class="edoc"><t id="sendTitle"><i18n key="cmp.accDoc.send"></i18n></t><state id="cmp_accDoc_edoc_initState" value="listPending">.<i18n key="cmp.accDoc.listPending"></i18n></state></span>
+                    <span class="cmp-icon cmp-icon-arrowdown"></span>
+                </nav>
+                <nav class="cmp-control-item" href="#cmp_accDoc_edoc_receiveArea" edoc-type="1">
+                    <span class="edoc"><t id="receiveTitle"><i18n key="cmp.accDoc.receive"></i18n></t><state value="listPending"></state></span>
+                    <span class="cmp-icon cmp-icon-arrowdown"></span>
+                </nav>
+                <nav class="cmp-control-item " href="#cmp_accDoc_edoc_reportArea" edoc-type="2">
+                    <span  class="edoc" ><t id="reportTitle"><i18n key="cmp.accDoc.report"></i18n></t><state value="listPending"></state></span>
+                    <span class="cmp-icon cmp-icon-arrowdown"></span>
+                </nav>
+            </div>
+            <div class="popover-items cmp-hidden">
+                <div class="tri"></div>
+                <ul>
+                    <li state="listPending"><t id="pListPending"><i18n key="cmp.accDoc.listPending"></i18n></t><span class="cmp-icon cmp-icon-checkmarkempty accDoc-gou"></span></li>
+                    <li state="listZcdb"><t id="pListZcdb"><i18n key="cmp.accDoc.listZcdb"></i18n></t></li>
+                    <li state="listDoneAll"><t id="pListDoneAll"><i18n key="cmp.accDoc.listDoneAll"></i18n></t></li>
+                    <li state="listSent"><t id="pListSent"><i18n key="cmp.accDoc.listSent"></i18n></t></li>
+                </ul>
+            </div>
+        </div>
+        <div id="cmp_accDoc_edoc_sendArea" class="cmp-control-content background_eee cmp-active cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Edoc_send" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_edoc_sendList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="cmp_accDoc_edoc_receiveArea" class="cmp-control-content cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Edoc_receive" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_edoc_receiveList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="cmp_accDoc_edoc_reportArea" class="cmp-control-content cmp_accDoc_floor">
+            <div id="cmp_accDoc_scroll4Edoc_report" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul id="cmp_accDoc_edoc_reportList" class="cmp-list-content cmp-accDoc-file-index-content relevance_synergy_content"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="cmp-bar cmp-bar-footer cmp-accDoc-footer cmp-accDoc-footer_replay">
+    <button id="cmp_accDoc_closeBtn" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block display_inline-block hold"><i18n key="cmp.accDoc.cancel"></i18n></button>
+    <button id="cmp_accDoc_okBtn" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block display_inline-block">
+        <span id="okBtn_text"><i18n key="cmp.accDoc.ok"></i18n></span>(<span id="cmp_accDoc_selectNum"></span>)
+    </button>
+</footer>
+<div class="cmp-accDoc-back-drop cmp-hidden"></div>
+<div class="cmp-accDoc-back-drop2 cmp-hidden"></div>
+</body>
+<script src="/seeyon/m3/cmp/i18n/cmp-accDoc_zh_CN.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172714"></script>
+<script>
+    cmp.i18n.init('/seeyon/m3/cmp/i18n/', 'cmp-accDoc',null,"?buildversion=181210172714");
+    var CMP_ACCDOC_I18N_LOADED = true;
+</script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172714"></script>
+<script>
+//    if(cmp.os.ios){
+//        document.querySelector("header").classList.add("cmp-accDoc-ios-header");
+//        document.querySelector(".cmp-content").classList.add("cmp-accDoc-ios-content");
+//        document.querySelector(".cmp-accDoc-control").classList.add("ios");
+//    }
+    var optionsObj = (function(window){
+        var search = window.location.search;
+        search = search.replace("?", "");
+        var searchVals = search.split("&");
+        var searchKeys = {};
+        for (var i = 0; i < searchVals.length; i++) {
+            var searchVal = searchVals[i].split("=");
+            searchKeys[searchVal[0]] = searchVal[1];
+        }
+        var optionsName = searchKeys["options"];
+        var pageKey = searchKeys["pageKey"] ? searchKeys["pageKey"] : null;
+        var options = {};
+        if(pageKey == "getAccDoc4WebView"){
+            options = searchKeys;
+            optionsName = "cmp-accDoc-opts";
+            options.callback = function(data){
+                cordova.exec(
+                        null,
+                        null,
+                        "CMPNativeH5transferParamsPlugin",
+                        "getData",
+                        [{
+                            result:data
+                        }]
+                );
+            };
+            var preOptions = cmp.storage.get(optionsName, true);
+            if(preOptions){
+                preOptions = cmp.parseJSON(preOptions);
+                for(var key in preOptions){
+                    options[key] = preOptions[key];
+                }
+            }
+        }else {
+            options = cmp.storage.get(optionsName, true);
+            options = cmp.parseJSON(options);
+        }
+        options._transed = true;
+        return {
+            options:options,
+            pageKey:pageKey
+        }
+    })(window);
+    var thisDocArea = document.getElementById("cmp_accDoc_docArea");
+    var thisCoorArea = document.getElementById("cmp_accDoc_coordinationArea");
+    var thisEdocArea = document.getElementById("cmp_accDoc_edocArea");
+    var thisColControlItem = document.getElementById("colControlItem");
+    var thisDocControlItem = document.getElementById("docControlItem");
+    var thisEdocControlItem = document.getElementById("eDocControlItem");
+
+    if(optionsObj.options.docShow){//如果是跳转页面回来后，文档中心是显示的
+        thisDocArea.classList.remove("display_none");
+        thisDocArea.classList.add("cmp-active");
+        thisCoorArea.classList.add("display_none");
+        thisCoorArea.classList.remove("cmp-active");
+        thisColControlItem.classList.remove("cmp-active");
+        thisDocControlItem.classList.add("cmp-active");
+    }else if(optionsObj.options.edocShow){
+        thisCoorArea.classList.add("display_none");
+        thisCoorArea.classList.remove("cmp-active");
+        thisEdocArea.classList.remove("display_none");
+        thisEdocArea.classList.add("cmp-active");
+        thisColControlItem.classList.remove("cmp-active");
+        thisEdocControlItem.classList.add("cmp-active");
+        document.getElementById("cmp_accDoc_edoc_initState").innerHTML = "";
+        var thisStateArr = optionsObj.options.edocState.split("|");
+        var thisEdocTypeNav = thisEdocArea.querySelector("nav[edoc-type=\""+thisStateArr[0]+"\"]");
+        var thisEdocTypeState = thisEdocTypeNav.querySelector("state");
+        thisEdocTypeNav.classList.add("cmp-active");
+        thisEdocTypeState.setAttribute("value",thisStateArr[1]);
+        var edocStateI18N = cmp.i18n("cmp.accDoc."+[thisStateArr[1]]);
+        if(edocStateI18N){
+            thisEdocTypeState.innerHTML = "." + edocStateI18N;
+        }else {
+            setTimeout(function(){
+                thisEdocTypeState.innerHTML = "." + cmp.i18n("cmp.accDoc."+[thisStateArr[1]]);
+            },300);
+        }
+
+//        thisEdocTypeState.innerHTML = "." + accDocPageI18n[cmp.language][thisStateArr[1]];
+        if(thisStateArr[0] != "0"){
+            document.getElementById("cmp_accDoc_edoc_sendArea").classList.remove("cmp-active");
+        }
+    }
+    if(optionsObj.options.docShow || optionsObj.options.coorState){//只要存了协同显示状态的，就要做此处理
+        thisCoorArea.querySelector("nav.cmp-active").classList.remove("cmp-active");
+        thisCoorArea.querySelector("div.cmp-active").classList.remove("cmp-active");
+    }
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-accDoc.js?buildversion=181210172714"></script>
+<script src="/seeyon/m3/cmp/js/cmp-v5.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172714" async="async"></script>
+<script id="__jsdktag" type="text/javascript" src= "/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172714" async="async"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172714" async="async"></script>
+
+<script src="/seeyon/m3/cmp/page/js/cmp-accDoc-penetrate-page.js?buildversion=181210172714"></script>
+
+</html>

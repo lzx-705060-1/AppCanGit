@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172812" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172812" rel="stylesheet" type="text/css"/>
+    <link href="/seeyon/m3/apps/v5/formcreditqueryctrl/css/cmp-col.css?buildversion=181210172812" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172812"/>
+    <!--<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172812" rel="stylesheet" type="text/css"/>-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/formcreditqueryctrl/css/todo-list.css?buildversion=181210172812">
+    <title></title>
+</head>
+<body>
+<header class="cmp-bar cmp-bar-nav head-style">
+    <a id="prev" href="javascript:void(0)" class="cmp-pull-left left-btn">
+        <span class="see-icon-v5-common-arrow-back"></span>
+        <i18n key="formcreditqueryctrl.page.lable.goBack"></i18n>
+    </a>
+    <h1 id="searchTitle" class="cmp-title">
+        <i18n key="formcreditqueryctrl.template.templateSearch"></i18n>
+    </h1>
+    <div class="add_border border_t"></div>
+</header>
+
+<div id="mainContent" class="cmp-content position_relative cmp-col-content" style="background: white;">
+    <!--<form action="javascript:void(0)">-->
+    <!--<div class='cmp-input-row cmp-search cmp-active' id='searchContent'>-->
+    <!--<input id="subject" type='search' class='cmp-input-clear' placeholder='' data-input-clear='1' data-input-search='1'>-->
+    <!--<span class='cmp-icon cmp-icon-clear cmp-hidden'></span><span class='cmp-placeholder'><span class='cmp-icon cmp-icon-search'></span></span>-->
+    <!--</div>-->
+    <!--</form>-->
+    <form action="javascript:void(0)">
+        <div id="searchContent" class="col-search">
+            <input autocomplete="off" class="col-search-input" type="search" id="subject" placeholder="" disabled="disabled"/>
+            <span id="searchClear" class="cmp-icon  cmp-icon-search col-search-icon"></span>
+        </div>
+    </form>
+
+    <div class=" cmp-slider-group">
+        <div id="dataCommonDiv" style="overflow: auto;"
+             class="form_template cmp-slider-item cmp-control-content cmp-active">
+            <ul id="templateList" class="cmp-list-content file-index-content new-temp-list">
+                <div class="StatusContainer">
+                    <div class="nocontent"></div>
+                    <span class="text nocontent_text">
+                        <i18n key="formcreditqueryctrl.template.nomorethanfive"></i18n>
+                    </span></div>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script src="/seeyon/m3/cmp/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="/seeyon/m3/cmp/js/cordova/cordova-plugins.js"></script><script src="/seeyon/m3/cmp/js/cordova/cordova-plugins.js?buildversion=181210172812"></script>
+<script src="/seeyon/m3/apps/v5/formcreditqueryctrl/i18n/Formcreditqueryctrl_zh_CN.js?buildversion=181210172812"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/formcreditqueryctrl/js/common.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/formcreditqueryctrl/js/formcreditqueryctrl-jssdk.js?buildversion=181210172812"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172812" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/commons/m3-jssdk.js?buildversion=181210172812" type="text/javascript"></script>
+<script type="text/javascript">
+    cmp.i18n.init('$(data:dependencies.formcreditqueryctrl)/i18n/', 'formcreditqueryctrl',null,?buildversion=181210172812);
+</script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/formcreditqueryctrl/js/searchTemplate.js?buildversion=181210172812"></script>
+<script type="text/html" id="templateTpl">
+    <ul class="toDo_listes">
+        <% for(i=0;i < this.length;i++){%>
+        <li class="none read templateList" data="<%=this[i].name%>">
+            <div class="img">
+                <div class="cmp-icon-document squares"></div>
+            </div>
+            <div class="content">
+                <div class="info read"><%=this[i].name%></div>
+                <div class="info2">法定代表人:<%=this[i].oper_name%></div>
+                <div class="info2">社会信用编码:<%=this[i].credit_no%></div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</script>
+</body>
+</html>

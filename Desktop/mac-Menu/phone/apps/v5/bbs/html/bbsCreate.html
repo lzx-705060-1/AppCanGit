@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title id="title"></title>
+<meta name="viewport" content="width=device-width,maximum-scale=1.3,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017247" />
+<link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/bbs/css/bbsCenter.css?buildversion=18121017247" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017247">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=18121017247">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017247">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=18121017247">
+ 
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+  <div id="bodyDiv" class="cmp-content cmp-content-none position_relative">
+      <div class="bbsNew-choose">
+          <div class="bbsNew-title line-bottom">
+              <div class="bbsNew-leftText1">
+                  <span><i18n key="bbs.h5.create.titleName"></i18n>:</span>
+              </div>
+              <div class="bbsNew-title-content">
+                  <div contenteditable="true" onblur="title_div_blur(this);" onfocus="title_div_focus(this);" id="bbsTitle"></div>
+              </div>
+              <div style="clear: both;"></div>
+          </div>
+          <div class="bbsNew-block line-bottom">
+              <div class="bbsNew-leftText1">
+                  <span><i18n key="bbs.h5.create.type"></i18n>:</span>
+              </div>
+              <div class="bbsNew-title-content" id="choosePubTypes">
+                  <span id="typeChoosePlease" style="color: #333;"><i18n key="bbs.h5.create.bbsTypeChoose"></i18n></span>
+              </div>
+              <div style="clear: both;"></div>
+          </div>
+          <div class="bbsNew-setting line-bottom" style="padding-bottom: 11px;">
+              <div class="bbsNew-leftText1">
+                  <span><i18n key="bbs.h5.create.bbsSet"></i18n>:</span>
+              </div>
+              <div class="bbsNew-setting-detail">
+                  <div class="bbsNew-setting-detail-placard" style="display: inline-block;" id="anonymousPublish">
+                      <div style="width: 16px;float: left;">
+                          <span class="cmp-icon see-icon-checked"></span>
+                      </div>
+                      <div style="float: left;padding-left: 5px;">
+                          <span><i18n key="bbs.h5.create.anonymousPublish"></i18n></span>
+                      </div>
+                      <div style="clear: both;"></div>
+                  </div>
+                  <div class="bbsNew-setting-detail-placard-copy" style="display: none;" id="anonymousPublishCopy">
+                      <div style="width: 16px;float: left;height: 21px;">
+                          <img src="../img/3X.png" style="width: 16px;padding-top: 3px;">
+                      </div>
+                      <div style="float: left;padding-left: 5px;">
+                          <span><i18n key="bbs.h5.create.anonymousPublish"></i18n></span>
+                      </div>
+                      <div style="clear: both;"></div>
+                  </div>
+                  <div class="bbsNew-setting-detail-reply" style="display: inline-block;margin-left: 30px;" id="anonymousReply">
+                      <div style="width: 16px;float: left;">
+                          <span class="cmp-icon see-icon-checked"></span>
+                      </div>
+                      <div style="float: left;padding-left: 5px;">
+                          <span><i18n key="bbs.h5.create.anonymousReply"></i18n></span>
+                      </div>
+                      <div style="clear: both;"></div>
+                  </div>
+                  <div class="bbsNew-setting-detail-reply-copy" style="display: none;margin-left: 30px;" id="anonymousReplyCopy">
+                      <div style="width: 16px;float: left;height: 21px;">
+                          <img src="../img/1X.png" style="width: 16px;padding-top: 3px;">
+                      </div>
+                      <div style="float: left;padding-left: 5px;">
+                          <span><i18n key="bbs.h5.create.anonymousReply"></i18n></span>
+                      </div>
+                      <div style="clear: both;"></div>
+                  </div>
+              </div>
+              <div style="clear: both;"></div>
+          </div>
+          <div class="bbsNew-area line-bottom">
+              <div class="bbsNew-leftText2">
+                  <span><i18n key="bbs.h5.create.publishScope"></i18n>:</span>
+              </div>
+              <div class="bbsNew-rightText1" id="choosePubScope">
+                  <span id="publishScopeName"><i18n key="bbs.h5.create.publishScopeChoose"></i18n></span>
+              </div>
+              <div style="clear: both;"></div>
+          </div>
+      </div>
+      <div style="height: 10px;width: 100%;background-color: #f4f4f4;"></div>
+      <div class="bbsNew-content line-bottom line-top">
+          <div id="contentDiv" contenteditable="true" placeholder="" onfocus="content_div_focus();" onblur="content_div_blur();"></div>
+          <div id="contentDivCopy" style="display: none;"></div>
+      </div>
+  </div>
+<div id="uploadFileDiv"></div>
+<footer id="bbsNew-footer" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview attachment-wrap">
+    <div class="bbsNew-footer-access line-top" id="uploadFile">
+        <div class="bbsNew-footer-access-num">
+            <span><i18n key="bbs.h5.attachment"></i18n></span>
+            (<span id="attCount">0</span>)
+        </div>
+        <div class="bbsNew-footer-access-icon">
+            <span class="cmp-icon see-icon-accessory" style="padding:0;"></span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div class="bbsNew-footer-send line-top">
+        <div class="bbsNew-footer-send-btn">
+            <span><i18n key="bbs.h5.create.send"></i18n></span>
+        </div>
+    </div>
+</footer>
+
+<footer id="bbsNew-footer-img" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview attachment-wrap">
+    <div class="line-top">
+        <div value="openCamera" class="footer_upload" style="width: 20px;height:40px;float: left;text-align: left;padding-top: 10px;margin-left: 22px;">
+            <span value="openCamera" class="cmp-icon see-icon-v5-common-camera-new contentImg" style="color: #3aadfb;"></span>
+        </div>
+        <div value="openPhotos" class="footer_upload" style="width: 20px;height:40px;float: left;text-align: left;padding-top: 10px;margin-left: 22px;">
+            <span value="openPhotos" class="cmp-icon see-icon-v5-common-image contentImg" style="color: #3aadfb;"></span>
+        </div>
+    </div>
+</footer>
+
+<div id="show-block" class="GM_Alert_Content Animated-Container bottom-go animated">
+    <!-- <header class="cmp-bar cmp-bar-nav">
+        <div style="display:inline-block;" id="typeChooseBack">
+            <a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+            <div class="bbs-back">
+                <span><i18n key="bbs.h5.back"></i18n></span>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <h1 class="cmp-title">
+            <i18n key="bbs.h5.create.chooseType"></i18n>
+        </h1>
+    </header> -->
+    <div id="boardSelectDiv" class="cmp-content cmp-content-none position_relative" style="overflow: auto;">
+        <div class="bbs-block" id="groupBBS" style="display: none;margin-top: 0px;">
+            <div class="bbs-block-icon">
+                <span class="cmp-icon see-icon-v5-common-document-integration"></span>
+            </div>
+            <div class="bbs-block-detail">
+                <div class="bbs-block-detail-name">
+                    <span><i18n key="bbs.h5.create.groupTypes"></i18n></span>
+                </div>
+                <div class="bbs-block-detail-icon">
+                    <span class="cmp-icon see-icon-v5-common-arrow-top"></span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="bbs-block-content line-bottom" spaceId="0" style="display: none;" id="groupTypes">
+            
+        </div>
+        <div class="bbs-block" id="accountBBS" style="display: none;">
+            <div class="bbs-block-icon">
+                <span class="cmp-icon see-icon-v5-common-document-unit"></span>
+            </div>
+            <div class="bbs-block-detail">
+                <div class="bbs-block-detail-name">
+                    <span><i18n key="bbs.h5.create.accountTypes"></i18n></span>
+                </div>
+                <div class="bbs-block-detail-icon">
+                    <span class="cmp-icon see-icon-v5-common-arrow-down"></span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="bbs-block-content line-bottom" spaceId="1" id="accountTypes">
+            
+        </div>
+    </div>
+    <footer></footer>
+</div>
+<script type="text/html" id="type_tpl">
+  <% for(var i = 0,len = this.length;i < len; i++){ %>
+  <% var obj = this[i]; %>
+    <div class="bbs-block-content-detail" typeId="<%=obj.id%>" typeName="<%=obj.name%>" anonymousFlag="<%=obj.anonymousFlag%>" anonymousReplyFlag="<%=obj.anonymousReplyFlag%>" id="<%=obj.id%>">
+      <div class="bbs-block-content-detail-choose">
+          <span class="cmp-icon see-icon-radio-unchecked" style="font-size: 24px;"></span>
+      </div>
+      <div class="bbs-block-content-detail-name cmp-ellipsis">
+          <span><%=obj.name%></span>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+  <% } %>
+</script>
+
+<script src="/seeyon/m3/apps/v5/bbs/i18n/Bbs_zh_CN.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017247"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/bbs/i18n/","Bbs",null,"?buildversion=18121017247");
+  	var bbsPath = "/seeyon/m3/apps/v5/bbs";
+  	var $verstion = "?buildversion=18121017247";
+  	var _cmpPath = "/seeyon/m3/cmp";
+</script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+     
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-camera.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=18121017247"></script>
+
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=18121017247"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/emotion_util.js?buildversion=18121017247"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/bbsCreate.js?buildversion=18121017247"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/flexible.js?buildversion=18121017247"></script>
+</body>
+</html>
+

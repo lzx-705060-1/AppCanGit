@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=181210172742"></script>
+    <title>全文检索查看更多</title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/fonts/iconfont.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/css/base.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/css/all-search.css?buildversion=181210172742" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/css/search-person-search.css?buildversion=181210172742" />
+
+</head>
+
+<body>
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav m3-iosx">
+        <div class="cmp-pull-left cmp-icon">
+            <span class="iconfont see-icon-m3-arrow-left"></span>
+            <span class="left_word"><i18n key="fullsearch.m3.h5.return"></i18n></span>
+        </div>
+        <!-- <form class="search_all">
+            <div class="cmp-input-row cmp-search">
+                <input id="btn_a" type="search" class=" cmp-input-clear" placeholder="搜索">
+                <span id="speech" class="cmp-icon cmp-icon-speech input-icon-rudio display_none"></span>
+            </div>
+        </form> -->
+        <span class="cancel"><i18n key="fullsearch.m3.h5.cancel"></i18n></span>
+    </header>
+    <div class="cmp-content message">
+        <div class="cmp-control-content cmp-active">
+            <div id="pullrefresh" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <p id="model"></p>
+                    <ul class="cmp-table-view search-people" id="content"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/fullsearch_zh_CN.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/commons_zh_CN.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172742"></script>
+    <script type="text/javascript">
+
+		var $buildversion  = '?buildversion=181210172742';
+		var fullsearchPath = '/seeyon/m3/apps/v5/fullsearch'; 
+		var cmpPath = '/seeyon/m3/cmp'; 
+	    // cmp.i18n.init("/i18n/","show",function(){
+	    // 	document.title = cmp.i18n("Show.page.label.show");
+        // });
+        cmp.i18n.init("/seeyon/m3/apps/v5/fullsearch/i18n/", "fullsearch");
+        cmp.i18n.init("/seeyon/m3/apps/v5/fullsearch/i18n/", "commons");
+    </script>
+    
+              <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-chat.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-iat.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-gestureLock.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172742"></script>
+    <!-- <script src="/seeyon/m3/cmp/js/cmp-speechRobot.js?buildversion=181210172742"></script> -->
+    <!-- <script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172742"></script> -->
+
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/js/m3-path.s3js?buildversion=181210172742"></script>
+
+    <!-- seajs -->
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/js/seajs-2.2.1.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/config.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/m3-config.js?buildversion=181210172742"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('/seeyon/m3/apps/v5/fullsearch/js/all-search-seemore.js')</script>
+</body>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="max-age">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>忘记密码</title>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="updatepwd/font.css">
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="updatepwd/update-psw.css">
+    <!-- 获取语言信息 -->
+    <script type="text/javascript" src="updatepwd/language.js"></script>
+</head>
+<body class="flex-v">
+<header class="flex-h header">
+    <a class="m3-back">
+        <i class="iconfont icon-arrow-back"></i><i class="language-tag" data-language-key="com.back"></i>
+    </a>
+    <h1 class="flex-1 textover-1 language-tag" id="page-title" data-language-key="page1.title"></h1>
+    <a></a>
+</header>
+<!-- 忘记密码 -->
+<div class="slider-box flex-h">
+    <section class="flex-h flex-1 page1">
+        <input class="user-acount flex-1 language-tag"
+               type="text" placeholder="" maxlength="200"
+               data-language-attr="placeholder"
+               data-language-key="page1.placeholder">
+    </section>
+    <section class="flex-1 page2">
+        <p class="flex-h tips">
+            <i class="iconfont icon-m3-about"></i>
+            <i class="bind-email flex-1"></i>
+        </p>
+        <div class="user-code flex-h">
+            <input class="code-value flex-1 language-tag"
+                   type="text" placeholder="" maxlength="20"
+                   data-language-attr="placeholder"
+                   data-language-key="page2.placeholder"
+            >
+            <span class="get-code language-tag" data-language-key="page2.codeButton"></span>
+        </div>
+    </section>
+    <!---->
+    <section class="flex-1 page3">
+        <input class="psw-value language-tag" type="password"
+               data-language-attr="placeholder"
+               data-language-key="page3.newPassword"
+               placeholder="" maxlength="16">
+        <div class="psw-bar flex-h">
+            <p class="language-tag" data-language-key="page3.zoneTitle"></p>
+            <p class="flex-1 flex-h psw-level">
+                <span class="flex-1 language-tag" data-language-key="page3.level1"></span>
+                <span class="flex-1 language-tag" data-language-key="page3.level2"></span>
+                <span class="flex-1 language-tag" data-language-key="page3.level3"></span>
+                <span class="flex-1 language-tag" data-language-key="page3.level4"></span>
+            </p>
+        </div>
+        <input class="psw-confirm language-tag"
+               type="password"
+               data-language-attr="placeholder"
+               data-language-key="page3.secondPassword"
+               placeholder="" maxlength="16">
+    </section>
+</div>
+<section class="next-box"><a class="next disable-btn language-tag" data-curindex="0"
+                             data-language-key="page1.nextButton"></a></section>
+<script src="lib/zepto.js"></script>
+<script src="updatepwd/alert.js"></script>
+<script src="updatepwd/update-psw.js"></script>
+</body>
+</html>

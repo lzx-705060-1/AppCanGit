@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>选择签到地址</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172452"/>
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/lbs/css/lbs-address.css?buildversion=181210172452"></script>
+
+</head>
+<body class="cmp-fullscreen">
+<input type="button" value="" id="btn">
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=f38609be3347aab7409ac0a1149edfb5"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/cmp-resources/lbs/js/lbs-address.js?buildversion=181210172452"></script>
+
+
+<script type="text/javascript">
+cmp.ready(function(){
+    var selectData;
+	var lbs = new LBSAddress({
+        shownodata : false,
+        title:{
+            right : {text:cmp.i18n("commons.action.next"),click:function(){
+                console.log(selectData = lbs.getSelectdata());
+                return true;
+            }},
+            center: {text:cmp.i18n("commons.choose.address")}
+        }
+    });
+	lbs.open();
+
+    cmp("body").on("tap","#btn",function(){
+        lbs.open();
+    });
+    
+    document.getElementById("btn").setAttribute("value", cmp.i18n("commons.action.open"));
+});
+</script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************--!>
+<script src="/seeyon/m3/cmp/js/cmp-app.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-lbs.js"></script>
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css">
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js"></script>

@@ -1,0 +1,122 @@
+/*
+* @Author: 伟
+* @Date:   2016-08-22 14:42:07
+* @Last Modified by:   伟
+* @Last Modified time: 2016-08-28 15:42:18
+*/
+
+a:hover {
+    text-decoration: none!important;
+}
+
+.cmp-control-content {
+    height: 100%;
+    background-color: #f3f3f3;
+    overflow: hidden;
+}
+
+ul.cmp-table-view li {
+    height: 49px;
+    padding: 0.1rem 0.4rem;
+}
+
+.cmp-bar-nav {
+    box-shadow: none;
+}
+
+.cmp-scroll {
+    overflow: scroll;
+}
+
+p.online {
+    font-size: 12px;
+    color: #818183;
+    padding: .266rem 0 .16rem .4rem;
+    margin: 0;
+}
+
+.cmp-table-view-cell p.message_list_title,
+.cmp-table-view-cell p.cmp-ellipsis {
+    padding-left: 1.226rem;
+}
+
+.cmp-table-view-cell p.cmp-pull-right {
+    position: absolute;
+    right: 0.48rem;
+    top: 0.186rem;
+    width: 58px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #3AADFB;
+    font-size: 16px;
+    color: #3AADFB;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.cmp-table-view-cell p.cmp-ellipsis {
+    font-size: 12px;
+    color: #999;
+}
+
+.message_list_title span {
+    /*margin-right: 0.293rem;*/
+}
+
+li.cmp-table-view-cell div.cmp-pull-left {
+    position: absolute;
+    left: 0.48rem;
+    top: 0.266rem;
+    color: #333;
+}
+
+p.message_list_title span {
+    color: #333;
+}
+
+li.cmp-table-view-cell div.see-icon-m3-phoneOnline-fill {
+    left: 0.586rem;
+}
+
+.cmp-table-view-cell p.mine {
+    border: none;
+    color: #999;
+}
+
+.cmp-table-view-cell:after {
+    left: 0;
+    bottom: 1px;
+}
+
+p.near15 {
+    font-size: 12px;
+    color: #818183;
+    padding: .266rem 0 .16rem .4rem;
+    margin: 0;
+}
+
+ul {
+    margin-bottom: 0!important;
+}
+
+ul.near15-list li p.message_list_title,
+ul.near15-list li p.cmp-ellipsis {
+    padding-left: 0;
+}
+
+.cmp-table-view.online-device:after {
+    height: 0;
+    display: none;
+}
+
+.cmp-table-view.near15-list:before {
+    height: 0;
+    display: none;
+}
+
+header span.left_word {
+    font-size: 14px;
+}
+body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+body.cmp-ios-c .cmp-content{top:64px;}
+body.cmp-ios-x .cmp-content{top:88px;} 

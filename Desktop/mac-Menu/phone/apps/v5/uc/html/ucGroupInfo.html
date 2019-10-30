@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>群资料页面</title>
+    <meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">  	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucGroupInfo.css?buildversion=181210172652" />
+    <script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+</head>
+<body>
+<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+    <div id="prev" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title" id="title"></div>
+    <div class="cmp-header-right">
+    </div>
+</header>
+<div class="cmp-content position_relative">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <div id="property" class="cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <div class="uc-list" id="uc_listAll">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="group_info_list">
+                        <li class="cmp-table-view-cell cmp-media">
+                            <div class="uc-group-top-wrap">
+                                <div class="uc-group-top">
+                                    <img class="uc-group-head" />
+                                    <span class="uc-group-top-name"></span>
+                                </div>
+                                <div class="uc-group-data">
+                                    <div class="uc-group-notice">
+                                        <i class="iconfont icon-group-gg"></i>
+                                        <span class="uc-group-notice-name">群公告</span>
+                                    </div>
+                                    <div class="uc-group-pic">
+                                        <i class="iconfont icon-group-photo"></i>
+                                        <span class="uc-group-pic-name">图片</span>
+                                    </div>
+                                    <div class="uc-group-file">
+                                        <i class="iconfont icon-uc-icon-group-folder"></i>
+                                        <span class="uc-group-file-name">文件</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uc-group-name">
+                                <span class="uc-group-n">群名称</span>
+                                <span id="uc-group-input-name" class="uc-group-input-name"></span>
+                            </div>
+                            <div class="uc-group-recieve">
+                                <span class="uc-group-n">接收不提醒</span>
+                                <div class="uc-group-check">
+                                    <div class="cmp-switch cmp-switch-blue cmp-switch-mini" id="uc-recieve-block">
+                                        <div class="cmp-switch-handle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uc-group-member">
+                                <div class="uc-group-m">群成员(<span class="uc-g-m-num">1</span>人)</div>
+                                <ul class="uc-group-members">
+                                    <li class="add">
+                                        <div class="cmp-icon see-icon-v5-common-add-circle uc-group-m-add"></div>
+                                    </li>
+                                    <li class="sub">
+                                        <div class="cmp-icon see-icon-v5-common-remove-circle uc-group-m-sub"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="uc-group-btn">退出该群组</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="memberHeadLi">
+    <% var obj = this; %>
+    <li class="uc-group-m-list">
+        <div class="uc-m-head">
+            <img class="uc-group-m-head" src="<%=obj.src%>" id="h_<%=obj.id%>" />
+        </div>
+        <span class="uc-group-m-name" id="n_<%=obj.id%>"><%=obj.name %></span>
+    </li>
+</script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172652"></script>
+
+<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script><script src="/seeyon/m3/apps/v5/uc/js/ucCommonUtil-debug.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucGroupInfo.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im/jsjac.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_message.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_iq.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucDB.js?buildversion=181210172652"></script>
+</body>
+</html>
+

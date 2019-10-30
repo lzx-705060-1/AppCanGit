@@ -1,0 +1,42 @@
+
+/*
+ 引用了致信的图标库/
+*/
+
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1480993562'); /* IE9*/
+  src: url('../fonts/uc/iconfont.ttf?t=1480993562') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/uc/iconfont.svg?t=1480993562#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  /*-webkit-text-stroke-width: 0.2px;*/
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-address:before { content: "\e60c"; }
+.icon-edit:before { content: "\e60d"; }
+.icon-cancel-voice:before { content: "\e60e"; }
+.icon-create-group:before { content: "\e60f"; }
+.icon-alone-enter:before { content: "\e610"; }
+.icon-group-folder:before { content: "\e611"; }
+.icon-group-enter:before { content: "\e612"; }
+.icon-me-voice:before { content: "\e613"; }
+.icon-group-gg:before { content: "\e614"; }
+.icon-me-voice1:before { content: "\e615"; }
+.icon-other-voice:before { content: "\e616"; }
+.icon-other-voice1:before { content: "\e617"; }
+.icon-group-photo:before { content: "\e618"; }
+.icon-other-voice2:before { content: "\e619"; }
+.icon-voice:before { content: "\e61a"; }
+.icon-me-voice2:before { content: "\e61b"; }
+.icon-voice-loading:before { content: "\e61c"; }
+.icon-voicing:before { content: "\e61d"; }
+.icon-icon-file:before { content: "\e61e"; }
+.icon-icon-create-alone:before { content: "\e61f"; }
+.icon-icon-picture:before { content: "\e620"; }
+.icon-icon-photograph:before { content: "\e621"; }

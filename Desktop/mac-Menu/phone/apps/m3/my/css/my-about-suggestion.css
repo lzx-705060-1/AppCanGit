@@ -1,0 +1,152 @@
+/*
+* @Author: 伟
+* @Date:   2016-07-20 10:00:14
+* @Last Modified by:   伟
+* @Last Modified time: 2016-07-20 14:51:19
+*/
+
+
+/*header*/
+
+header a {
+    font-size: 16px;
+}
+
+header .cmp-pull-left span {
+    top: 0;
+}
+
+header a.cmp-pull-right {
+    right: 0.25rem;
+}
+
+
+/*意见反馈*/
+
+div.question-title {
+    height: 0.875rem;
+    font-size: 14px;
+    color: #666;
+    padding-left: 0.25rem;
+    padding-top: 0.2rem;
+}
+
+div.question-body {
+    background-color: #fff;
+}
+
+div.question-body>div.detail {
+    height: 2.75rem;
+    background-color: #fff;
+}
+
+div.question-body>div textarea {
+    height: 100%;
+    border: 0;
+    border-bottom: 1px solid #f1f1f1;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+div.pic-title {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #333;
+    font-size: 14px;
+    background: #fff;
+    padding-left: 0.25rem;
+}
+
+ul {
+    background-color: #fff;
+    overflow: hidden;
+}
+
+ul li {
+    float: left;
+    width: 2.15rem;
+    height: 2.15rem;
+    margin: 0 0 0.3rem 0.3rem;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+ul li img {
+    width: 2.15rem;
+    height: 2.15rem;
+}
+
+ul li.add {
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 2.15rem;
+}
+
+div.question-phone {
+    height: 0.875rem;
+    line-height: 0.875rem;
+    font-size: 14px;
+    color: #666;
+    padding-left: 0.25rem;
+}
+
+div.phone {
+    height: 40px;
+    background-color: #fff;
+}
+
+div.phone textarea {
+    height: 1.0rem;
+    border: 0;
+    font-size: 14px;
+    overflow-y: hidden;
+}
+
+
+/*删除图片*/
+
+.delete-pic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #222;
+    z-index: 49;
+    overflow: hidden;
+}
+
+.delete-pic header span.iconfont,
+.delete-pic header span.left_word,
+.delete-pic header .cmp-title {
+    color: #fff!important;
+}
+
+.delete-pic header.cmp-bar.cmp-bar-nav {
+    background-color: #393939;
+}
+
+.add .see-icon-m3-add-big {
+    font-size: 38px;
+    color: #999;
+}
+
+.cmp-slider-item img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    -ms-transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 0%);
+    -moz-transform: translate(0%, 0%);
+    transform: translate(0%, 0%);
+    position: static;
+}
+
+.cmp-slider {
+    position: absolute;
+}
+
+.cmp-slider .cmp-slider-group {
+    height: 100%;
+}

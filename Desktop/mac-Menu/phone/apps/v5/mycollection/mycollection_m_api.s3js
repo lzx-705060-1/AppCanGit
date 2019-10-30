@@ -1,0 +1,17 @@
+var mycollectionApi = (function() {
+    var MycollectionApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/doc";
+    }
+    
+    /**
+     * 打开文档
+     * @param  {string} type    [todo:待办模块;message:消息模块]
+     * @param  {string} backUrl [后退地址]
+     * @param  {obj}    option  [消息对象]	option.id		文档id										
+     * @param  {string} parms   [其他可选参数]
+     */
+    MycollectionApi.prototype.openApp = function(type, backUrl, option, obj) {
+    	
+    }
+    return new MycollectionApi();
+})();

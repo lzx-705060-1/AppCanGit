@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/edoc/css/cmp-edoc.css?buildversion=181210172510" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172510">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172510">
+<!-- 
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172510">
+ -->
+	<style type="text/css">
+		.cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active:before{
+			width:30px;
+			left: 51%;
+			border-bottom: 0;
+			background-color: #3aadfb;
+			border-radius: 1.5px;
+			height: 3px;
+			bottom: 0;
+		}
+		.cmp-search .cmp-placeholder{
+			background-color: #eef1f5;
+		}
+		#searchIcon .cmp-placeholder .cmp-icon{
+			margin-right: 0;
+		}
+		.cmp-search input[type='search']{
+			height: 28px;
+		}
+		.cmp-search .cmp-icon-search{
+			font-size: 12px !important;
+		}
+		#searchHeader .cmp-search .text-search{
+			font-size: 12px;
+		}
+		.cmp-content div.new-tab-nav{
+			height: 28px;
+		}
+		.cmp-content div.new-tab-nav .cmp-control-item{
+			height: 28px;
+			line-height: 28px;
+			padding-bottom: 2px;
+		}
+
+		.cmp-content div.new-tab-nav .cmp-control-item.cmp-active{
+			color: #000;
+			padding-bottom: 2px;
+		}
+	</style>
+<title></title>
+</head>
+<body class="cmp-fullscreen">
+	<div id="searchHeader" class="cmp-search-box" style="padding:10px 12px;">
+		<div id="searchIcon" class="cmp-input-row cmp-search">
+			<input type="search" class="cmp-input-clear" placeholder="" style="background-color: #eef1f5;" disabled>
+			<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+			<span id="search" class="cmp-placeholder">
+		        <span class="cmp-icon cmp-icon-search" style="font-size: 13px;"></span>
+		        <span class="text-search" style="font-size: 12px;"><i18n key="Edoc.page.label.search"></i18n></span>
+		    </span>
+		</div>
+	</div>
+	<!-- 查询后返回的查询内容 -->
+		<div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none; position: absolute;right: 0px;left: 0px;">
+	        <div class="cmp-segmented-control cmp-search-title " style="border:none;top:0px;">
+	            <div class="cmp-search-item">
+	                <span class="title" id="cmp_search_title" style="color:#666666!important"></span>
+	            </div>
+	            <div id="toSearch" class="cmp-search-item">
+	                <div id="searchText" class="item text cmp-active">
+	                    <input id="searchTextValue" type="text" readonly="readonly">
+	                </div>
+	                <div id="searchDate" class="item date">
+	                    <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+	                    <span>-</span>
+	                    <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+	                </div>
+	            </div>
+	            <div class="cmp-search-item">
+	                <span id="cancelSearch" class="gotoSearch"><i18n key="Edoc.dialog.cancle"></i18n></span>
+	            </div>
+	        </div>
+    	</div>
+	<div id="dataCommonDiv" class="cmp-content position_relative cmp-content-none" style="bottom:0px;">
+		<div id="listTabs" class="cmp-segmented-control cmp-segmented-control-inverted col cmp-segmented-control-primary new-tab-nav">
+			<a id="allPendingTab" class="cmp-control-item cmp-active" href="#allPending_" edocType="-1"><i18n key="Edoc.label.allPending"></i18n></a>
+			<a id="sendTab" style="display:none;" class="cmp-control-item" href="#send" edocType="0"><i18n key="Edoc.label.Dispatch"></i18n></a>
+			<a id="receiveTab" style="display:none;" class="cmp-control-item" href="#receive" edocType="1"><i18n key="Edoc.action.receive"></i18n></a>
+			<a id="reportTab" style="display:none;" class="cmp-control-item" href="#report" edocType="2"><i18n key="Edoc.action.signandreport"></i18n></a>
+		</div>
+		<div id="allPending_" class="cmp-control-content cmp-active">
+			<div id="allPending" class="cmp-scroll-wrapper">
+			<div id="allPendingContain" class="cmp-scroll">
+				<ul id="allPendingList" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+				</ul>
+			</div>
+			</div>
+		</div>
+		<div id="send" class="cmp-control-content"></div>
+		<div id="receive" class="cmp-control-content"></div>
+		<div id="report" class="cmp-control-content"></div>
+	</div>
+     
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172510"></script>
+	<script  src="/seeyon/m3/apps/v5/edoc/js/edocUtil.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/i18n/EdocResources_zh_CN.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/edoc/js/edoc-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172510" type="text/javascript"></script>
+<script type="text/javascript">
+  cmp.i18n.init("/seeyon/m3/apps/v5/edoc/i18n/", "EdocResources");
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/apps/v5/edoc/js/edocList.js?buildversion=181210172510"></script>
+<!-- 
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172510"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172510"></script> 
+-->
+
+<!-- js模版 -->
+<script type="text/html" id="list_li_tpl">
+<% for(var i = 0,len = this.length;i < len; i++){ %>
+	<% var obj = this[i]; %>
+	<% var urgentLevel = obj.summary.urgentLevel - 1;
+		if(obj.summary.urgentLevel>5){
+				urgentLevel = obj.summary.urgentLevel;
+			}
+%>
+		<li class="cmp-list-cell cmp-table-view-cell treatment">
+		<!-- 内容区域 -->
+		<div class="cmp-slider-handle">
+			<!--当前事项状态:mark未读 hold暂存 end结束-->
+			<%if(obj.finshed){%>
+				<div class="mark end"> 
+            		<span class="text"><%=cmp.i18n("Edoc.page.lable.button.end")%></span> 
+            	</div>
+			<%}else if(obj.affair.subState == '13'){%>
+				<div class="mark hold"> 
+            		<span class="text"><%=cmp.i18n("Edoc.page.lable.button.storage")%></span> 
+            	</div>
+			<%}else if(obj.affair.subState == '11'){%>
+				<div class="mark"> 
+            		<span class="text"><%=cmp.i18n("Edoc.page.lable.button.unRead")%></span> 
+            	</div>
+			<%}%>
+			<!--发起人图片-->
+			<div class="cmp-list-cell-img cmp-radio cmp-left">
+				<img class="cmp-img-cache img_setting" cmp-data="<%=obj.summary.startUserId%>"/>
+			</div>
+			<div affairId="<%=obj.affairId %>" affairState="<%=obj.affair.state %>" subState="<%=obj.affair.subState %>" class="cmp-list-cell-info col-list-cell-info">
+				<div class="content_info">
+					<span class="cmp-ellipsis-2 cmp-pull-left list_title_name">
+						<!-- 重要程度 -->
+				  		<span style="color: #FF0000;font-size:12px;position:relative;top:-1px;" class="cmp-icon iconfont see-icon-v5-common-important-<%=urgentLevel%>"></span>
+						<%if(obj.secretLevelName != null) { %>
+							<span>[<%=obj.secretLevelName%>]</span>
+						<% } %>
+						<%=obj.summary.subject.escapeHTML() %>
+					</span>
+					<% if(obj.summary.docMark!="" && obj.summary.docMark != null){%>
+						<div class="cmp-pull-left padding_5_0" style="padding:1px;height:24px;line-height:24px;width:88%;">
+							<div class="cmp-h6 wh100">
+								<span class="send-name" style="max-width:inherit;width:100%;"><%=obj.summary.docMark.escapeHTML() %></span>
+							</div>
+						</div>
+						<div class="cmp-pull-left padding_5_0" style="padding-top:0px;height:30px;">
+					<%}else{%>
+						<div class="cmp-pull-left padding_5_0">
+					<%}%>
+						<div class="cmp-h6" style=" height: 25px;line-height: 25px;overflow: hidden; ">
+							<!--发起人 -->
+							<span class="send-name list-sub-text"><%=obj.createPerson%></span>
+							<!-- 发起时间-->
+							<span class="send-time list-sub-text"><%=obj.createDate%></span>
+							<!-- 是否有附件 -->
+							<%if(obj.summary.hasAttachments){%>
+                                <span class="see-icon-accessory list-sub-text" style="color: #6E6E6E;"></span>
+							<%}%>
+							<% if(obj.backFromName) {%>         
+                                <span class="see-icon-v5-common-rollback-fill list-sub-text" style="font-size:12px; color:#FF8300;"></span>
+                            <%} %>
+
+							<!--是否超期-->
+							<% if(obj.surplusTime == null){ %>
+								
+							<% } else if(obj.surplusTime[0] == '0' && obj.surplusTime[1] == '0' && obj.surplusTime[2] == '0'){ %>
+								<span class="list-sub-text" style="overflow:hidden;">
+									<span class="see-icon-v5-common-time list-sub-text" style="color:#fc4906; font-size:12px;"></span>
+									<%=cmp.i18n("Edoc.info.extended")%>
+								</span>
+							<%} else if(obj.surplusTime[0] <=0 && obj.surplusTime[1] <=0 && obj.surplusTime[2] <=0) {%>
+								<span class="list-sub-text" style=" overflow:hidden;">
+									<span class="see-icon-v5-common-time list-sub-text" style="color:#fc4906; font-size:12px;"></span>
+									<%=cmp.i18n("Edoc.info.extended")%>
+								</span>
+							<% }else {%>
+								<% if(obj.surplusTime[0] != 0){%>
+									<span class="see-icon-v5-common-time list-sub-text" style="overflow:hidden; font-size:12px;">
+										<%=obj.surplusTime[0]%><%=cmp.i18n("Edoc.label.day")%>
+									</span>
+								<%}else if(obj.surplusTime[1] != 0) {%>
+									<span class="see-icon-v5-common-time list-sub-text" style="overflow:hidden; font-size:12px;">
+										<%=obj.surplusTime[1]%><%=cmp.i18n("Edoc.label.hour")%>
+									</span>
+								<% }else if(obj.surplusTime[2] != 0){%>
+									<span class="see-icon-v5-common-time list-sub-text" style="overflow:hidden; font-size:12px;">
+										<%=obj.surplusTime[2]%><%=cmp.i18n("Edoc.label.minutes")%>
+									</span>
+								<%}%>
+							<%}%>
+						</div>
+					</div>
+				</div>
+				<!--当前节点名称-->
+				<% if(obj.affairState != 1 && obj.affairState != 2){%>
+					<div class="plaint">
+						<!--加签-->
+						<%if(obj.fromName != null && obj.fromName != ""){%>
+							<span class="add">
+								<span class="cmp-icon-synergy-list adduser"></span>
+								<span><%=obj.fromName %></span>
+							</span>
+						<%}%>
+						<!--回退-->
+						<%if(obj.backFromName != null && obj.backFromName != ""){%>
+							<span class="add">
+								<span class="cmp-icon-synergy-list back"></span>
+								<span><%=obj.backFromName %></span>
+							</span>
+						<%}%>
+					</div>
+				<%}%>
+			</div>
+		</div>
+	</li>
+<%}%>
+</script>
+<script type="text/html" id="doc_type_tpl">
+<div class="cmp-scroll">
+	<ul class="cmp-list-content approval_list_content col col-list">
+		<div class="doc-lists-div">
+			<ul class="doc-list-wrap">
+				<li class="selectNoCss" listType="listPending" edocType=<%=this.edocType %>>
+					<div class="left-title cmp-pull-left"><%=cmp.i18n("Edoc.state.pending")%></div>
+					<div class="right-count cmp-pull-right"><%=this.listPendingSize%></div>
+				</li>
+				<li class="selectNoCss" listType="listZcdb" edocType=<%=this.edocType %>>
+					<div class="left-title cmp-pull-left"><%=cmp.i18n("Edoc.state.processing")%></div>
+					<div class="right-count cmp-pull-right"><%=this.listZcdbSize%></div>
+				</li>
+				<li class="selectNoCss" listType="listDoneAll" edocType=<%=this.edocType %>>
+					<div class="left-title cmp-pull-left"><%=cmp.i18n("Edoc.state.done")%></div>
+					<div class="right-count cmp-pull-right"><%=this.listDoneAllSize%></div>
+				</li>
+				<li class="selectNoCss" listType="listSent" edocType=<%=this.edocType %>>
+					<div class="left-title cmp-pull-left"><%=cmp.i18n("Edoc.state.sent")%></div>
+					<div class="right-count cmp-pull-right"><%=this.listSentSize%></div>
+				</li>
+				<li class="selectNoCss" listType="listWaitSend" edocType=<%=this.edocType %>>
+					<div class="left-title cmp-pull-left"><%=cmp.i18n("Edoc.state.waitSent")%></div>
+					<div class="right-count cmp-pull-right"><%=this.listWaitSize%></div>
+					<div class="add-more"><%=cmp.i18n("Edoc.info.unsupport")%></div>
+				</li>
+			</ul>
+		</div>
+	</ul>
+</div>
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:29:44
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>修改密码</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-setting.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-account-pwd.css">
+</head>
+
+<body class="bg_gray">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <i18n key="my.m3.h5.modifyPassword"></i18n>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content">
+        <!-- 旧密码 -->
+        <div class="pwd">
+            <i18n key="my.m3.h5.oldPassword"></i18n>
+        </div>
+        <ul class="cmp-table-view">
+            <li class="cmp-table-view-cell">
+                <input type="password" placeholder="请输入旧密码" id="oldPwd">
+            </li>
+        </ul>
+        <!-- 新密码 -->
+        <div class="pwd">
+            <span><i18n key="my.m3.h5.newPassword"></i18n>(<i18n key="my.m3.h5.pwdTip"></i18n>)</span>
+        </div>
+        <ul class="cmp-table-view">
+            <li class="cmp-table-view-cell">
+                <input type="password" placeholder="请输入新密码" id="newPwd">
+            </li>
+            <li class="cmp-table-view-cell">
+                <input type="password" placeholder="请再次输入新密码" id="newPwd2">
+            </li>
+        </ul>
+
+        <div class="pwd">
+            <!-- <i18n key="my.m3.h5.newPassword"></i18n> -->
+            <div class="level">
+                <span id="week"><i18n key="my.m3.h5.weak"></i18n></span>
+                <span id="middle"><i18n key="my.m3.h5.middle"></i18n></span>
+                <span id="strong"><i18n key="my.m3.h5.strong"></i18n></span>
+                <span id="strongest"><i18n key="my.m3.h5.strongest"></i18n></span>
+            </div>
+        </div>
+
+
+        <div class="sure disable">
+            <i18n key="my.m3.h5.sure"></i18n>
+        </div>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-encrypt.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-headerFixed.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-account-pwd.js')</script>
+</body>
+
+</html>

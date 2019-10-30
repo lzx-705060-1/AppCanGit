@@ -1,0 +1,45 @@
+.verport_chart{
+    /* max-width: 50%; */
+    width: 30%;overflow: hidden;
+    background-color: #ccc;
+  }
+  .verport_table{
+    width: 68%;
+    margin-left: 15px;
+  }
+  .verport_border{
+    margin-top: 15px;
+    overflow-x:inherit;overflow-y:inherit;
+  }
+  .verport_border .only_table{
+	font-size: 12px;
+  }
+  /*select下拉*/
+  .mg-select-control{position: relative;text-align: center;margin-bottom: 10px;}
+  .mg-select-control .mg-select {
+      width: 120px;margin-left:6px;background-color: #fff;height: 28px;padding-left: 5px;border-radius: 4px;
+      border: 1px solid #D4D4D4;font-size: 12px;color: #000;outline: none;
+      /*很关键：将默认的select选择框样式清除*/
+      appearance:none; -moz-appearance:none; -webkit-appearance:none;
+      /*在选择框的最右侧中间显示小箭头图片*/
+      background: url("../../images/reportTpl/arrow-down.png") no-repeat scroll right center transparent;
+  }
+  .mg-select-control .mg-select:before{
+    content: "\e61f";
+    display:inline-block;
+    width:10px;
+    height:10px;
+    position:relative;
+    right:5px;
+}
+  /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+  .mg-select-control select::-ms-expand { display: none; }
+  .mg-select-control span{font-size: 12px;
+  color: #666;
+	width:72px;
+	text-align: right;
+	display:inline-block;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;}
+  .penetrate_enable {color:   #318ed9;cursor: pointer;}

@@ -1,0 +1,250 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0;}
+ul{ list-style:none; margin:10px auto; text-align:left;}
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+.clear{ clear:both; font-size:0; height:0; overflow:hidden;}
+body{ font-size:12px;background-color: #E8E3E3;}
+table{ font-size:12px;}
+.hidden{ display:none;}
+
+.margin_r_10{ margin-right:10px;}
+.hand{ cursor:pointer; display:inline-block;}
+/**showToolbar**/
+.light-form-showToolbar{ position:relative;}
+.light-form-toolbar{position:absolute; width: 16px; visibility: visible; left:0; top:0; display:none;}
+.light-form-toolbar div{ display:block;}
+.ico16{display:inline-block;vertical-align:middle;height:16px;width:16px;line-height:16px;background:url(http://172.20.2.20/seeyon/skin/default/images/icon16.png?v=5_1_6_04) no-repeat;background-position:0 0;cursor:pointer;_overflow:hidden;_background:url(http://172.20.2.20/seeyon/skin/default/images/icon16.png?v=5_1_6_04) no-repeat;}
+
+.repeater_plus_16 {background-position: -176px -16px;}
+.blank_plus_16 {background-position: -208px -16px;}
+.repeater_reduce_16 {background-position: -192px -16px;}
+
+/*.view_model_pc{ z-index:2; position:fixed; top:20px; right:-103px; width:148px; border:1px solid #1f1f74; height:85px; background-color:#2929A6; border-radius:10px 0 0 10px; font-family:"Microsoft YaHei",SimSun,Arial,Helvetica,sans-serif;}
+.view_model_pc label.fieldName{ color:#fff; display:block; text-align:center; cursor:pointer; background:url(./images/gif-0451.png) 8px center no-repeat; padding:10px 8px 10px 15px; width:23px; height:54px; border-radius:15px 0 0 15px; float:left;}
+.view_model_pc label.hide_view_model{background:url(./images/gif-0450.png) 34px center no-repeat; padding:10px 15px 10px 10px;}
+.view_model_pc span{float:left;}
+.view_model_pc span label{cursor:pointer; display:block; width:80px; height:16px; padding:13px 10px; text-align:center; border-bottom:1px solid #1f1f74; background:#eee;}
+.view_model_pc span label input{ cursor:pointer; vertical-align:middle; margin-right:5px;}*/
+
+
+/**form-pc**/
+.mainbodyDiv{margin:0 auto;}
+
+
+
+.light-form-pc-mainForm{ border:1px solid #000; padding-bottom:5px;}
+.light-form-mainTable{ border-collapse:collapse; border-top:1px solid #000;border-left:1px solid #000;}
+.light-form-mainTable th,.light-form-mainTable td{ padding:5px 5px 5px 3px; border-right:1px solid #000;border-bottom:1px solid #000;}
+.light-form-mainTable td label i{color:#f00;padding:0 5px 0 0;}
+.light-form-mainTable th{ text-align:center;}
+.light-form-mainTable td{line-height:150%;}
+/* .light-form-mainTable tr td span{display:block;} */
+.light-form-mainTable tr td input,.light-form-mainTable tr td textarea{ width:99%; *width:auto; _width:90%;  padding:0; border:1px solid #d2d2d2;}
+.light-form-mainTable tr td input.radio_com { width:auto;border:none;}
+.light-form-mainTable tr td label.fieldName{/*white-space:nowrap;*/}
+.light-form-mainTableOut{ padding:5px 5px 0;}
+
+.light-form-repeatTable{ border-top:1px solid #000;border-left:1px solid #000;}
+.light-form-repeatTable td{ padding:5px 7px 5px 5px; border-right:1px solid #000;border-bottom:1px solid #000;}
+.light-form-repeatTable td label i{color:#f00;padding:0 5px 0 0;}
+.light-form-repeatTable th{ height:20px;padding:5px 0 5px 0; border-right:1px solid #000;border-bottom:1px solid #000; font-weight:normal;/*white-space:nowrap;*/}
+.light-form-repeatTable th i{color: #f00;padding: 0 5px 0 0;}
+/* .light-form-repeatTable tr td span{display:block;} */
+.light-form-repeatTable tr td input{ width:99%; *width:98%; _width:90%;}
+.light-form-repeatTable tr.trOdd td{ background-color:#f7f7f7;}
+
+.light-form-formName{padding:10px 10px 20px; background:#1f1f74; color:#fff;font-size:2em;}
+.light-form-formName img{vertical-align: middle;} 
+.light-form-formName strong{padding-left:34px; display:block; text-align:center; margin-top:-48px;}
+.nologo img{ display:none;}
+.nologo strong{ padding-left:0; margin-top:0;}
+.light-form-repeatTableOut{margin:0 5px;}
+.light-form-repeatTableTr .light-form-repeatTableTitle{ text-align:center; background-color:#eee; font-weight:normal;}
+
+.light-form-repeatTableTr .light-form-repeatTableName{ margin:5px 5px 0; padding:8px 10px; color:#333; font-size:16px; border:1px solid #000; border-bottom:none; text-align:center;background-image:url(./images/icon_up.png);_background-image:url(./images/icon_up.gif);background-position:right center;background-repeat:no-repeat;background-color:#ddd;cursor:pointer;}
+.light-form-repeatTableTr .light-form-repeatTableName-on{background-image:url(./images/icon_down.png);_background-image:url(./images/icon_down.gif);border-bottom:1px solid #000;}
+
+/**正文开始**/
+
+.light-form-phone-mainTable{ background-color:#E8E3E3; font-family:"华文细黑"; padding-bottom:70px;}
+.light-form-lines input[type=text],.light-form-lines input[type=password],.light-form-lines textarea/*,.light-form-textInput*/{ -webkit-appearance: none;border:1px solid #d2d2d2;display: inline-block;width:100%;/*line-height:200%;text-indent:.5em;*/ font-size:14px; border-radius:0;  box-sizing: border-box; box-shadow:none; padding:4px 5px;}
+
+.light-form-lines select{box-shadow:none;border:1px solid #ccc;display: inline-block;width:100%;text-indent:.5em; height:28px; line-height:28px; background:#fff;}
+.light-form-lines select option{background:#fff;}
+/*.light-form-lines select option{ padding:15px 0; height:40px; line-height:40px; margin-top:10px; background-color:#ccc;}*/
+
+.light-form-phone-mainTable dd.light-form-lines{ background-color:#fff; display: -webkit-box;-webkit-box-orient:horizontal; font-size:1.2em; /*line-height:200%;*/ padding:12px 17px; border-bottom:1px solid #d9d9d9;}
+.light-form-lines .light-form-description{ text-align:center; width: 100%;line-height: 100%;}
+.light-form-phone-mainTable dt.light-form-mainTableTitle{color: #242625;border-bottom: 1px solid #e3e5e4;	font-size:1.2em;	line-height:150%;	text-align:center;	background:#1f1f74;	cursor:pointer;}
+.light-form-phone-mainTable dt.light-form-mainTableTitle img{width:32px; height:32px; vertical-align:middle;}
+
+.light-form-phone-mainTable dt.light-form-mainTableTitle{padding:0.4em 3em 0.4em 0;}
+.light-form-phone-mainTable dt.light-form-mainTableTitle strong{ padding: 0 0 0 20px; background-position:10px center; color:#fff; font-family:"微软雅黑"; font-weight:normal;vertical-align: middle;}
+.light-form-phone-mainTable dt.light-form-mainTableTitle strong img{display: inline-block;vertical-align: middle; padding-right:10px;}
+
+.light-form-phone-mainTable .light-form-lines label.fieldName{ width:5em;display:block; color:#000; padding:4px 7px 4px 0;}
+.light-form-phone-mainTable .light-form-lines label.fieldName i{ color:#f00; font-style:normal;}
+.light-form-phone-mainTable .light-form-lines span{-webkit-box-flex:1; display: block;font-size: 14px;}
+.light-form-phone-mainTable .light-form-lines span label{ font-size:14px;}
+.light-form-phone-mainTable .light-form-lines span.ico16{margin-top:0.4em;}
+.light-form-phone-mainTable .light-form-repeatTable{border-left:none; border-top:1px solid #d9d9d9;	margin-top:20px;	background-color:#fff; }
+.light-form-repeatTable dt.light-form-repeatTableTitle{color: #333; border-bottom: 1px solid #d9d9d9; font-size:1.2em;	line-height:150%; padding:8px 5px;text-align:center;background-image:url(./images/up.fw.png);background-position:right center;	background-repeat:no-repeat;background-color:#F9F8F8;background-size:30px auto; cursor:pointer;}
+.light-form-repeatTable dt.light-form-repeatTableTitle-on{background-image:url(./images/down.fw.png);background-position:right center;	background-repeat:no-repeat;background-color:#F9F8F8;background-size:30px auto;cursor:pointer;}
+.light-form-phone-mainTable dd.light-form-linesbox{ display: -webkit-box; -webkit-box-orient:horizontal; font-size:1.2em; line-height:200%; padding:10px 0; border-bottom:1px solid #ededed;}
+.light-form-phone-mainTable .light-form-repeatTable dd.light-form-linesbox label{ width:5em;display:block;}
+.light-form-phone-mainTable .light-form-repeatTable dd.light-form-linesbox span{-webkit-box-flex:1; display: block;}
+.light-form-phone-mainTable .light-form-repeatTable div.light-form-lines dd:last-child{ border-bottom:none;}
+.light-form-repeatTable div.light-form-lines{ display:block; margin:0; padding:0 15px 0; border-bottom:1px solid #d9d9d9;}
+
+
+/**form-phone**/
+.light-form-phone-mainTable dd.light-form-linesbox-div-Num{padding:5px 0;}
+.light-form-linesbox-Num{ padding:0 5px 0 0; font-size:1.2em; display: block;-webkit-box-flex:1; font-family:Arial;}
+.light-form-phone-toolbar{position:inherit;display: block;}
+.light-form-phone-toolbar div{ float:right; display:inline-block; width:24px; height:24px; padding:0 0 0 20px;}
+
+dd.light-form-linesbox .ico16{display:inline-block;vertical-align:middle; width:24px; height:24px; line-height:24px; background-image:url(./images/toolbars.png); background-size:auto 24px;}
+
+dd.light-form-linesbox .repeater_plus_16 {background-position: 0 0;}
+dd.light-form-linesbox .blank_plus_16 {background-position: -41px 0;}
+dd.light-form-linesbox .repeater_reduce_16 {background-position: -82px 0;}
+
+.browse_class{color:blue;}
+.xdRichTextBox{/*  border:1px solid #eee;  padding:0 5px; */ min-height:2em;}
+.light-form-lines label.fieldName{/*white-space:nowrap;*/ font-size:15px;}
+
+/**查看模式
+.fixMemu dd.View_select{display: -webkit-box;font-size:1.2em; line-height:200%; padding:10px 5px;padding:0.5em 10px;}
+.fixMemu dd.View_select label.fieldName{ width:5em; display:block; color:#fff;}
+.fixMemu dd.View_select span{-webkit-box-flex: 1;display: block;}
+.fixMemu dd.View_select span select{box-shadow:-2px 2px 2px rgba(0,0,0,.15) inset;border:1px solid #ccc;display: inline-block;width:100%;text-indent:.5em; height:28px; line-height:28px; background:#fff;}**/
+
+/**查看模式 - 拆分**/
+dd.View_select{display: -webkit-box;font-size:1.2em; line-height:200%; padding:10px 5px;padding:0.5em 10px;border-bottom:1px solid #d9d9d9;}
+dd.View_select label.fieldName{ width:5em; display:block; font-size:15px;}
+dd.View_select span{-webkit-box-flex: 1;display: block;}
+dd.View_select span select{box-shadow:none;border:1px solid #d9d9d9;display: inline-block;width:100%;text-indent:.5em; height:28px; line-height:28px; background:#fff;}
+
+/**视图模式**/
+.fixMemu .view_model_phone{ display: -webkit-box;font-size:1.2em; line-height:200%; padding:10px 5px;padding:0.5em 10px;/* border-bottom:1px solid #ccc;*/border-top:1px solid #ccc; }
+.fixMemu .view_model_phone label.fieldName{color:#888; color:#fff;text-align:left; width:5em; display:block;font-size: 14px;}
+.fixMemu .view_model_phone span.outspan{-webkit-box-flex: 1;display: block;}
+.fixMemu .view_model_phone span.outspan span{  color:#fff; width:auto; display:inline-block; padding:0 10px 0 0; background:none; border:none; margin-top:0; background:none; font-size: 14px;}
+.fixMemu .view_model_phone span.outspan input{ margin-right:5px; background:none;}
+.fixMemu .view_model_phone span.outspan b{ font-weight:normal;}
+.fixMemu .view_model_phone input{width:12px; height:12px;}
+
+#fixMemu_box{display:inline-block; float:right;}
+.fixMemu{ display:none; position:absolute; right:0; top:48px; width: 100%; border-radius:0 0 8px 8px; background: rgba(0,0,0,.8); padding-bottom:5px;}
+
+
+#fixdMemu{ display:-webkit-box; position:fixed; bottom:0; left:0; width:100%; z-index:99; background-color:#fff;border-top: 1px solid #ccc;}
+#fixdMemu span{-webkit-box-flex:1; margin:5px 0 0; text-align:center; display:block;}
+#fixdMemu span a,#fixdMemu span a:visited{
+	text-align:center;
+	display:inline-block; 
+	color: #333; 
+	font-size:12px;
+	line-height:20px;
+	padding:25px 0 0;
+	text-decoration:none;
+	width:auto;
+	color:#0078FE;
+}
+#fixdMemu span.btn_save a{background:url(./images/save.png) top center no-repeat; background-size:24px 24px;}
+#fixdMemu span.btn_saveAndNew a{background:url(./images/saveAndNew.png) top center no-repeat; background-size:24px 24px;}
+#fixdMemu span.btn_cancel a{background:url(./images/cancel.png) top center no-repeat; background-size:24px 24px;}
+#fixdMemu span.btn_del a{background:url(./images/del.png) top center no-repeat; background-size:24px 24px;color:#FF0101;}
+#fixdMemu span.btn_lock a{background:url(./images/lock.png) top center no-repeat; background-size:24px 24px;}
+#fixdMemu span.btn_unlock a{background:url(./images/unlock.png) top center no-repeat; background-size:24px 24px;}
+#fixdMemu span.btn_cancel a{background:url(./images/cancel.png) top center no-repeat; background-size:24px 24px;}
+
+
+
+#right-panel-link{position:absolute;top:0;right:20px;z-index: 100;display: block;width:30px;height:45px;cursor: pointer;background-color: rgba(0,0,0,0);-webkit-backface-visibility: hidden;-webkit-transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;}
+#right-panel-link span{position: absolute;top: 50%;left: 0;display: block;width: 100%;height: 8%;background-color: #fff;font-size: 0px;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-transition: background-color 0.3s;transition: background-color 0.3s;}
+#right-panel-link span:before,
+#right-panel-link span:after{position: absolute;left: 0;width: 100%;height: 100%;background: #fff;content: '';-webkit-transition: -webkit-transform 0.3s;transition: transform 0.3s;}
+#right-panel-link span:before{-webkit-transform: translateY(-250%);transform: translateY(-250%);}
+#right-panel-link span:after{-webkit-transform: translateY(250%);transform: translateY(250%);}
+
+
+
+/**新增3种样式**/
+.light-form-phone-mainTable .nofield label.fieldName{ display:none;}
+.light-form-phone-mainTable .light-form-repeatTable dd.nofield label.fieldName{ display:none;}
+.light-form-phone-mainTable dd.doubleline{ -webkit-box-orient: vertical;}
+.light-form-phone-mainTable dd.doubleline label.fieldName{ width:auto;}
+.light-form-phone-mainTable .light-form-repeatTable dd.doubleline{ -webkit-box-orient: vertical;}
+.light-form-phone-mainTable .exchange label.fieldName{  -webkit-box-flex: 1; display: block; font-size: 14px; width:auto;}
+.light-form-phone-mainTable .exchange span{width: 5em; display: block; color: #888;-webkit-box-flex:0; }
+
+.lightForm-phonePage .light-form-lines input.triangle[type='text']{ background:url(./images/triangle.png) right center no-repeat; /*text-align:right;*/ padding-right:15px;}
+.lightForm-phonePage .light-form-lines textarea.triangle{ background:url(./images/triangle.png) right center no-repeat; /*text-align:right;*/ padding-right:15px;}
+.phonebg{ background:url(../images/iphone5s.png) 0 0 no-repeat; background-size:320px auto; width:320px; margin:10px auto; padding:95px 0 85px;position:relative;}
+.phonebg #cmp_common_wrapper{ width:270px; height:480px; overflow-x:hidden; overflow-y:auto; margin:0 auto; border-radius:10px; position:relative;}
+.phonebg #fixdMemu{ width:270px; position:absolute; bottom:85px; left:25px;}
+
+/***和 jquery moblie 兼容处理**/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,a{
+    margin:0;
+    padding:0;
+    font-family: "微软雅黑";
+    font-weight: normal;
+    text-shadow: none;
+    box-shadow: none;
+	font-size:14px;
+}
+
+
+.lightForm-phonePage input[type=text]{
+-webkit-appearance:none;
+background: #fff;
+}
+.lightForm-phonePage input[type=password]{
+-webkit-appearance: none;
+background: #fff;
+}
+.lightForm-phonePage textarea{
+-webkit-appearance: none;	
+background: #fff;
+}
+.lightForm-phonePage input[type=radio]{
+-webkit-appearance: radio;
+background: #fff;
+}
+.lightForm-phonePage input[type=checkbox]{
+-webkit-appearance: checkbox;
+background: #fff;
+}
+.lightForm-phonePage select{
+-webkit-appearance: menulist;
+background: #fff;
+
+}
+
+select.comp {
+    width:100%;
+}
+
+/** seework新增图标 **/
+/*插入图片*/
+.light-form-phone-mainTable .light-form-lines span.insert_pic_16{
+	display:inline-block; background:url(./images/iphone48.png) no-repeat; background-size:382px 300px;  background-position: -179px -34px; width:24px; height:24px; 
+}
+/*附件*/
+.light-form-phone-mainTable .light-form-lines span.affix_16{
+	display:inline-block; background:url(./images/iphone48.png) no-repeat; background-size:382px 300px; background-position:-92px -5px; width:24px; height:24px;
+}
+/*地图定位*/
+.light-form-phone-mainTable .light-form-lines span.map_position_48{
+    display:inline-block; background:url(./images/iphone48.png) no-repeat; background-size:382px 300px; background-position: -121px -121px; width:24px; height:24px;
+}
+/*取消地图定位*/
+.light-form-phone-mainTable .light-form-lines span.cancel_map_position_48{
+    display:inline-block; background:url(./images/iphone48.png) no-repeat; background-size:382px 300px; background-position: -150px -121px; width:24px; height:24px;
+}
+
+

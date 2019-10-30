@@ -1,0 +1,4 @@
+var querybtnApi = (function() {
+    var QuerybtnApi = function() {}
+    return new QuerybtnApi();
+})();

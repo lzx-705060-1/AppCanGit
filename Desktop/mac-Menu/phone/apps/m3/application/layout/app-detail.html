@@ -1,0 +1,94 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 03:29:02
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:27:11
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="http://commons.m3.cmp/v/js/flexible.js"></script>
+    <title>应用详情</title>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-att.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css">
+    <link rel="stylesheet" href="http://application.m3.cmp/v/css/app-detail.css">
+</head>
+
+<body class="bg_gray message flex-v cmp-fullscreen">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="application.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <i18n key="application.m3.h5.detail"></i18n>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content flex-1 cmp-content">
+        <div class="cip-header flex-h">
+            <div class="header-icon"></div>
+            <div class="cip-info flex-1">
+                <span class="cip-app-name text-over"></span>
+                <span class="marg-10 text-over company-name"></span>
+                <span class="app-label"></span>
+            </div>
+            <div class="cip-btn">
+                <a class="open display_none"><i18n key="application.m3.h5.publish"></i18n></a>
+<!--                <a class="close display_none"><i18n key="application.m3.h5.disable"></i18n></a>-->
+            </div>
+        </div>
+        
+        <div class="cip-content">
+            <p class="cip-dest flex-h y-center">
+                <span class="dot"></span>
+                <span class="flex-1"><i18n key="application.m3.h5.introduction"></i18n></span>
+            </p>
+            <p class="cip-description"></p>
+        </div>
+    </div>
+    <script src="http://application.m3.cmp/v/i18n/application_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://application.m3.cmp/v/i18n/", "application");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v/js/cmp.js"></script>
+    <script src="http://cmp/v/js/cmp-app.js"></script>
+    <!--<script src="http://cmp/v/js/cmp-chat.js"></script>-->
+    <script src="http://cmp/v/js/cmp-gestureLock.js"></script>
+    <script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+    <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://application.m3.cmp/v/js/app-detail.js')</script>
+</body>
+
+</html>

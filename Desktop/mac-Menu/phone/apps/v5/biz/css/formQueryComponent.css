@@ -1,0 +1,172 @@
+.query-box{
+    margin-top: 10px;
+    padding: 16px;
+    color: #666666;
+    list-style-type: none;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    min-height: 175px;
+}
+
+.query-box .query-title{
+    font-family: STHeitiSC-Medium;
+    font-size: 18px;
+    color: #333333;
+    height: 20px;
+    margin-bottom: 15px;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.query-title-icon{
+    background: #3AADFB;
+    width: 3px;
+    display: inline-block;
+    border-radius: 8px;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 7px;
+}
+.query-title-field{
+    font-family: STHeitiSC-Medium;
+    font-size: 18px;
+    color: #666666;
+    letter-spacing: 0;
+    padding-left: 5px;
+}
+.query-title-value{
+    font-family: STHeitiSC-Medium;
+    font-size: 20px;
+    color: #FF4141;
+}
+.query-title .show-more{
+    right: 0px;
+    content: '\e583';
+    font-family: cmpicons;
+    font-size: inherit;
+    position: absolute;
+    width: 50px;
+    height: 30px;
+}
+
+.query-title .show-more:after {
+    right: 25px;
+    content: '\e583';
+    font-family: cmpicons;
+    font-size: inherit;
+    line-height: 1;
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+    color: #C7C7CC;
+    HEIGHT: 13PX;
+    WIDTH: 7PX;
+    -webkit-font-smoothing: antialiased;
+}
+
+.formquery-table-scroll{
+    overflow-x: hidden;
+    padding:0px;
+    margin-left: -13px;
+    margin-right: -13px;
+    margin-bottom: -13px;
+}
+.formquery-table{
+    /*table-layout:fixed;*/
+    empty-cells:show;
+    border-collapse: collapse;
+    margin:0 auto;
+}
+
+.formquery-table{
+    /*border:1px solid #cad9ea;*/
+    color:#666;
+    min-width: 100%;
+}
+.formquery-table td,.formquery-table th{
+    padding:0 1em 0;
+    white-space: nowrap;
+    text-align: center;
+}
+.formquery-table th {
+    font-family: STHeitiSC-Medium;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.45px;
+    background-repeat:repeat-x;
+    height:40px;
+    background: #E9F2F7;
+}
+.formquery-table td{
+    font-family: STHeitiSC-Light;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.4px;
+    height:40px;
+    border-bottom: 0.5px solid #E5E7E6;
+}
+
+.formquery-table tr.alter{
+    /*background-color:#f5fafe;*/
+}
+
+/**************/
+
+.formquery-row{
+    list-style-type: none;
+    border-bottom: solid 0.5px rgba(151,151,151,0.15);
+    padding-bottom: 16px;
+    margin-bottom: 15px;
+}
+.formquery-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.formquery-row .field-1{
+    font-family: STHeitiSC-Light;
+    font-size: 18px;
+    color: #333333;
+}
+.formquery-row .field-2{
+    font-family: STHeitiSC-Light;
+    font-size: 14px;
+    color: #666666;
+    line-height: 22px;
+    margin-top: 11px;
+    margin-bottom: 9px;
+}
+.formquery-row .field-3{
+    font-family: STHeitiSC-Light;
+    font-size: 12px;
+    color: #999999;
+}
+.formquery-row .field-title {
+    display: inline;
+    max-width: 30%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.formquery-row .field-value {
+    display: inline;
+    max-width: 70%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+}
+.query-box .nodata{
+    height:140px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color:#999;
+    font-size: 14px;
+}
+.query-box .nodata span{
+    font-size: 40px;
+    height: 40px;
+}

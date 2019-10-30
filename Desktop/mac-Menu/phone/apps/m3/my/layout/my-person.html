@@ -1,0 +1,40 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:27
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <style>
+        html{
+            width: 100vw;
+            height: 100vh;
+            background: url('data:image/svg+xml;charset=utf-8,<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g><circle cx="50" cy="50" r="42" stroke="#E4E4E4" stroke-width="8" fill="transparent"/><circle cx="50" cy="50" r="42" stroke="#3aadfb" stroke-width="8" fill="transparent" stroke-dasharray="50,400"/><animateTransform attributeName="transform" begin="0s" dur="1.1s" type="rotate" from="0,50,50" to="360,50,50" repeatCount="indefinite"/></g></svg>') center no-repeat;
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body style="display:none;opacity: 0;">
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v/js/cmp.js"></script>
+<script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v/config.js"></script>
+<!-- 模块入口 -->
+<script>
+    seajs.use('http://my.m3.cmp/v/js/person-info-shunt.js')
+</script>
+</body>
+
+</html>

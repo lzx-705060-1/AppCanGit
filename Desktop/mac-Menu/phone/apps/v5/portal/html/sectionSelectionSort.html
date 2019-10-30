@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=181210172728">
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/selectionSort-common.css?buildversion=181210172728">
+<title id="title"></title>
+</head>
+<body>
+
+<div id="scroll"  class="cmp-scroll-wrapper">
+    <div class="cmp-scroll" id="divSection">
+        <div class="choosedSection">
+            <div class="title selectedNum">
+            <span><i18n key="portal.label.selectedColumns"></i18n>(0)</span>
+            </div>
+            <ul id="canChooseSpaceDetail" class="sectionMove">
+            </ul>
+        </div>
+        <div class="canChooseSection">
+            <div class="title">
+                <span><i18n key="portal.label.allColumn"></i18n></span>
+            </div>
+            <ul id="allSection" class="sectionMove">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<! -- 国际化顺序 1应用的国际化 2cmp-i18n.js 3去国际化 4加载cmp -->
+<script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172728"></script>
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal");
+</script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172728"></script>
+
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sortable.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172728"></script>
+
+
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/apps/v5/taskmanage/taskmanage_m_api.s3js?buildversion=181210172728" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=181210172728" type="text/javascript"></script><script type="text/javascript">
+     
+                            var _cmpPath = "/seeyon/m3/cmp";
+                            var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+        					var _colPath = "/seeyon/m3/apps/v5/collaboration";
+        					var _docPath = "/seeyon/m3/apps/v5/doc";
+  
+        					var _formqueryreportPath = "/seeyon/m3/apps/v5/formqueryreport";
+ 
+        					var _unflowformPath = "/seeyon/m3/apps/v5/unflowform";
+        					var _workflowPath = "/seeyon/m3/apps/v5/workflow";
+        					var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+        					var _newsPath = "/seeyon/m3/apps/v5/news";
+        					var _mycollectionPath = "/seeyon/m3/apps/v5/mycollection";
+        					var _edocPath = "/seeyon/m3/apps/v5/edoc";
+        					var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+        					var _bbsPath = "/seeyon/m3/apps/v5/bbs";
+        					var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+        					var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";
+        					var _calendarPath = "/seeyon/m3/apps/v5/calendar";
+        					var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+        					var _attendancePath = "/seeyon/m3/apps/v5/attendance";
+        					var _hrPath = "/seeyon/m3/apps/v5/hr";
+        					var _footprintPath = "/seeyon/m3/apps/v5/footprint";
+        					var _showPath = "/seeyon/m3/apps/v5/show";
+        					var _portalPath = "/seeyon/m3/apps/v5/portal";
+        					var _cap4Path = "/seeyon/m3/apps/v5/cap4";
+        					var _vreportPath = "/seeyon/m3/apps/v5/vreport";
+        					var _bizPath = "/seeyon/m3/apps/v5/biz";
+        					var _fullsearch = "/seeyon/m3/apps/v5/fullsearch";
+        					</script><script type="text/javascript">
+        var $verstion = "?buildversion=181210172728";
+</script>
+<script src="/seeyon/m3/apps/v5/portal/js/selectionSort-common.js?buildversion=181210172728"></script>
+<script src="/seeyon/m3/apps/v5/portal/js/sectionSelectionSort.js?buildversion=181210172728"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<title>个人信息二维码</title>
+<link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+<link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+<link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+<link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-person-2dcode.css">
+<style>
+html{font-size: 41.4px;}
+.qrcode-content{padding-top: 19.5%;}
+</style>
+</head>
+
+<body class="bg_gray">
+<script>
+    /**
+        * @description 优化IphoneX的头部交互，组织去抖动
+        */
+    ;(function() {
+        var ua = window.navigator.userAgent.toUpperCase();
+        if (ua.match(/IPHONEX/)) {
+            document.body.className += ' cmp-ios-x ';
+        }
+    })();
+</script>
+
+<header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+    <div id="backBtn" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+    </div>
+    <div class="cmp-title">
+        <span><i18n key="my.m3.h5.code"></i18n></span>
+    </div>
+    <div class="cmp-header-right">
+    </div>
+</header>
+<div class="cmp-content position_relative height_auto">
+    <div class="qrcode-content person_card">
+        <div class="content">
+            <div class="qr-left">
+                <div class="logo person_head">
+                    <!-- <img id="logoImg" src="" alt=""> -->
+                </div>
+                <label class="menbers name"></label>
+            </div>
+            <div class="qr-right">
+                <div class="qrcode code">
+                    <img class="codeImg" id="codeImg"  alt="">
+                </div> 
+                <p class="qr_info"><i18n key="my.m3.h5.addMe"></i18n></p>
+            </div>
+            <!-- <div class="qrcode_save" id="qrcode_save"><i18n key="uc.m3.h5.saveqr"></i18n></div> -->
+        </div>
+        
+    </div>
+</div>
+
+
+<script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+<script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+<script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script>
+    cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+    cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+</script>
+<script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp.js"></script>
+<!--<script src="http://cmp/v1.0.0/js/cmp-app.js"></script>-->
+<!--<script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>-->
+<script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+<!--<script src="http://cmp/v1.0.0/js/cmp-barcode.js"></script>-->
+<!--<script src="http://cmp/v1.0.0/js/cmp-att.js"></script>-->
+<!--<script src="http://cmp/v1.0.0/js/cmp-server.js"></script>-->
+
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+<!-- 模块入口 -->
+<script async src="http://my.m3.cmp/v/js/sea-person-2dcode.js"></script>
+</body>
+
+</html>

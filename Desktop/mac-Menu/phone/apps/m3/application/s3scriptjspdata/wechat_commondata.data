@@ -1,0 +1,27 @@
+{
+    "dependencies":{
+        "cmp":"${data:modulepath.cmp.path}/${data:version}",
+        "commons":"${data:modulepath.m3.commons}/${data:version}",
+        "login":"${data:modulepath.m3.login}/${data:version}",
+        "application":"${data:modulepath.m3.application}/${data:version}",
+        "message":"${data:modulepath.m3.message}/${data:version}",
+        "my":"${data:modulepath.m3.my}/${data:version}",
+        "search":"${data:modulepath.m3.search}/${data:version}",
+        "todo":"${data:modulepath.m3.todo}/${data:version}"
+    },
+    "modulepath":{
+        "cmp":{
+            "path":"/seeyon/m3/cmp"
+        },
+        "m3":{
+            "commons":"/seeyon/m3/apps/m3/commons",
+            "login":"/seeyon/m3/apps/m3/login",
+            "application":"/seeyon/m3/apps/m3/application",
+            "message":"/seeyon/m3/apps/m3/message",
+            "my":"/seeyon/m3/apps/m3/my",
+            "search":"/seeyon/m3/apps/m3/search",
+            "todo":"/seeyon/m3/apps/m3/todo"
+        }
+    },
+    "version":"v1.0.0"
+}

@@ -1,0 +1,124 @@
+h1,
+h3 {
+    font-weight: 400;
+    margin: 0;
+}
+
+/* 交叉轴 */
+
+/* 居中 */
+.flex-cross-center {
+    align-items: center;
+}
+/* 公共样式 */
+.display-none {
+    display: none;
+}
+.opacity-0,
+.list-opacity-0 {
+    opacity: 0;
+}
+/* 头部 */
+
+.m3-header {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 10px;
+    background: #fff;
+    border-bottom: 1px solid rgba(200, 199, 204, .4);
+}
+.m3-back {
+    color: #3aadfb;
+    font-size: 16px;
+}
+.m3-back:active {
+    color: #3aadfb;
+}
+.m3-header > a {
+    width: 70px;
+}
+.m3-header > a,
+.m3-header > h1 {
+    display: block;
+}
+.m3-header > h1 {
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    line-height: inherit;
+}
+.bg-white {
+    background: #fff;
+}
+.set-list > i ,
+.set-list > span {
+    display: block;
+}
+.m3-content {
+    /*padding-top: 44px;*/
+    overflow: auto;
+}
+.m3-content > h3 {
+    height: 35px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #A1B0C5;
+    background: #fff;
+    padding: 0 10px;
+}
+.app-active, .app-unactive {
+    background: #fff;
+}
+.set-list {
+    height: 48px;
+    line-height: 48px;
+    padding: 0 0 0 10px;
+}
+.set-list > .add-btn, 
+.set-list > .del-btn {
+    height: inherit;
+    font-size: 18px;
+    padding-right: 10px;
+}
+.set-list > .flex-1 {
+    border-bottom: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.set-list > .drug-btn {
+    height: inherit;
+    padding: 0 10px 0 18px;
+    font-size: 18px;
+    border-top: none;
+}
+.set-list + .set-list > .flex-1,
+.set-list + .set-list > .drug-btn {
+    border-top: 1px solid rgb(245, 245, 245);;
+}
+.app-active + h3 {
+    margin-top: 5px;
+}
+.see-icon-menhushezhiquxiao {
+    color: #FF7A7A;
+}
+.see-icon-menhushezhitianjia {
+    color: #3CADF9;
+}
+.see-icon-menhushezhituozhuai {
+    color: #A1B0C5;
+}
+.li-chosen {
+    border: 1px solid #ddd;
+}
+.del-disable {
+    color: #cdcdcd;
+}
+header.cmp-flex-header .cmp-header-right.app-save {
+    text-align: right;
+    font-size: 16px;
+    padding-right: 12px;
+}
+body header.cmp-bar{
+    position: relative;
+}

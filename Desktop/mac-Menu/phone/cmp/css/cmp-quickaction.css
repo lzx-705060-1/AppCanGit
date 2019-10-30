@@ -1,0 +1,126 @@
+
+/*快捷操作模板UI 组件*/
+
+
+.cmp-quickaction{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(252,252,252,0);
+    overflow: hidden;
+    display: none;
+}
+.cmp-quickaction.cmp-active{display: block;}
+.cmp-quickaction .calendar {
+    width: 100%;
+    font-size: 12px;
+    color: #333;
+    margin-top: 65px;
+}
+.cmp-quickaction .calendar .time, .cmp-quickaction .calendar .motto {
+    display: inline-block;
+    width: 100%;
+}
+
+.cmp-quickaction .calendar .time {
+    text-align: center;
+}
+.cmp-quickaction .calendar .time>div {
+    display: inline-block;
+}
+.cmp-quickaction #day {
+    font-size: 28px;
+    color: #3AADFB;
+    margin-left: 4px;
+    vertical-align: super;
+}
+.cmp-quickaction .cmp-slider {
+    margin-top: 3px;
+    overflow: visible;
+}
+.cmp-quickaction .cmp-grid-view.cmp-grid-9 {
+    background: transparent;
+    width: 100%;
+}
+.cmp-quickaction .cmp-table-view:before{display: none;}
+.cmp-quickaction .cmp-table-view:after{display: none;}
+.cmp-grid-view.cmp-grid-9 .cmp-table-view-cell {
+    border: none;
+}
+.cmp-grid-view.cmp-grid-9 .cmp-table-view-cell:after{display: none;}
+.cmp-quickaction ul li .quick-item{
+    width: 66px;
+    height: 67px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 67px;
+    background: pink;
+    margin-top: 10px;
+}
+.cmp-quickaction li .quick-item{
+    background-color: #3EB0FF;
+}
+.cmp-quickaction .cmp-table-view.cmp-grid-view .cmp-table-view-cell .cmp-media-body {
+    font-size: 14px;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.cmp-quickaction ul li div span {
+    color: #fff;
+    font-size: 30px;
+}
+
+.cmp-quickaction .close {
+    text-align: center;
+    margin-top: 37px;
+}
+.cmp-quickaction .close span{
+    padding: 10px;
+}
+.blur {
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+}
+
+
+
+.cmp-quickaction li .quick-item.teamwork{
+    background-color: #3EB0FF;
+}
+.cmp-quickaction li .quick-item.auditing{
+    background-color: #00DBEE;
+}
+.cmp-quickaction li .quick-item.scan{
+    background-color: #FFAF18;
+}
+.cmp-quickaction li .quick-item.finishedmatter{
+    background-color: #00ed9e;
+}
+.cmp-quickaction li .quick-item.sendedmatter{
+    background-color: #fe9285;
+}
+.cmp-quickaction li .quick-item.planmatter{
+    background-color: #ff5e94;
+}
+.cmp-quickaction li .quick-item.openedmeeting{
+    background-color: #9896fe;
+}
+.cmp-quickaction li .quick-item.createTask{
+    background-color: #7F4DE6;
+}
+.cmp-quickaction li .quick-item.createMeeting{
+    background-color: #0AB9F5;
+}
+.cmp-quickaction li .quick-item.meetingRoom{
+    background-color: #16D997;
+}
+.cmp-quickaction li .quick-item.talk{
+    background-color: #27E0B8;
+}
+

@@ -1,0 +1,43 @@
+var ucApi = (function(){
+	
+	var UcApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/uc";
+	};
+	
+	/**
+	 * 临时后期补充
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [id:秀主题id (目前只需要跳转到秀主题详情界面)] obj.chatType 'shortcut/groupchat'/'chat' 群聊、单聊入口  obj.toId 群ID、聊天人ID
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    UcApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	var _basePath = this.basePath;
+		var param = {
+           'id' : option.id,
+           'openType' : type,
+           'backUrl' : backUrl,
+           'obj' : obj
+        };
+        console.log("从消息穿透到致信，参数param:" + param);
+        if(option.type){
+        	if(option.type == 'single'){
+                param.chatType = 'chat';
+                param.toId = option.fromId;
+                param.toName = option.fromname;
+                cmp.href.next(_basePath + "/html/ucAloneChatView.html", param);
+            }else if(option.type == 'group'){
+                param.chatType = 'groupchat';
+                param.toId = option.toId;
+                param.toName = option.toname;
+                cmp.href.next(_basePath + "/html/ucGroupChatView.html", param);
+            }else if(option.type == 'shortcut'){
+                cmp.href.next(_basePath + "/html/ucGroupList.html", param);
+            }
+		}else{
+            cmp.href.next(_basePath + "/html/ucIndex.html", param);
+        }
+	};
+	return new UcApi();
+})();

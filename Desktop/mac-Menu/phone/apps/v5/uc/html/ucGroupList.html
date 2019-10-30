@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>群组列表页面</title>
+    <meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">  	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucGroupList.css?buildversion=181210172652" />
+    <script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+</head>
+<body>
+<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+    <div id="prev" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title" id="title">选择群组</div>
+    <div class="cmp-header-right">
+        <button class="cmp-btn cmp-btn-blue cmp-btn-link cmp-pull-right uc-create-group" id="create-group">创建群组</button>
+    </div>
+</header>
+<div class="cmp-content position_relative">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <div id="all_uc" class="cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <div class="uc-list" id="uc_listAll">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="group_list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="ms_list_li">
+    <% var obj = this; %>
+    <li id="<%=obj.id%>" class="cmp-table-view-cell cmp-media" data-toName="<%=obj.name%>">
+        <div class="cmp-slider-handle cmp-table">
+            <div class="uc-group-head">
+                <img class="cmp-media-object" src="<%=obj.src%>" />
+            </div>
+            <div class="cmp-media-body"><%=obj.name%></div>
+        </div>
+    </li>
+</script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+<!-- <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172652"></script> -->
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172652"></script>
+<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script><script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucDB.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucGroupList.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im/jsjac.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_message.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_iq.js?buildversion=181210172652"></script>
+</body>
+</html>

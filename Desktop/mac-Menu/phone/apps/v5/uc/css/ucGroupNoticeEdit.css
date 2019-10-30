@@ -1,0 +1,11 @@
+html,body{height: 100%;width: 100%;background-color: #fff;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar {background: #fff;}
+header.cmp-bar .cmp-btn-link {color:#3AADFB;}
+header .see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-content {background:#fff;}
+.cmp-table-view:before,.cmp-table-view:after {height:0;}
+.cmp-table-view-cell.cmp-active {background:#fff;}
+.cmp-table-view-cell textarea {font-size:16px;line-height:0.64rem;color:#333;border:none;}
+.cmp-bar-footer {background:#fff;border-top:1px solid #f3f3f3;height:1.33rem;}
+.cmp-bar-footer .uc-edit-send {width:5.73rem;height:0.906rem;line-height:0.906rem;border-radius:2.66rem;margin:0 auto;background:#3aadfb;text-align:center;color:#fff;font-size:16px;margin-top:0.213rem;}

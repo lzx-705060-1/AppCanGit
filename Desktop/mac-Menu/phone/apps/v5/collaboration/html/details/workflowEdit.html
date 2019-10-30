@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<!-- 
+<link href="/seeyon/m3/apps/v5/workflow/css/wf.css?buildversion=181210172434" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tab.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=181210172434">
+ -->
+ 
+    <title></title>
+    <style type="text/css">
+    	.cmp-selectOrg-checkbox input[type='checkbox']:before{ font-size: 24px; }
+    	.select-height-63{ height: 60px;}
+    	.GM_Alert_Content .GM_item_container ul li{ padding: 3px 10px; }
+    	.select-selected-scroll{ border-top: none; }
+    	.cmp-selectOrg-checkbox input[type='checkbox']:checked:before{ color: #3aadfb; }
+    </style>
+</head>
+<body class="cmp-fullscreen">
+
+<!-- <header id="hid" class="cmp-bar cmp-bar-nav head-style">
+		<a id="goBackBtn" href="javascript:void(0)" class="cmp-pull-left left-btn"><span class="see-icon-v5-common-arrow-back"></span><i18n key="collaboration.page.lable.goBack"></i18n></a>
+	    <a id="editBtn" href="javascript:void(0)" class="cmp-pull-right right-btn display_none"><i18n key="collaboration.page.lable.button.finish"></i18n>完成</a>
+	    <h1 id="title" class="cmp-title"><i18n key="collaboration.page.lable.button.flow">流程</i18n></h1>
+    <div class="add_border border_t"></div>
+</header> -->
+
+<!-- 调用了工作流里面的样式 -->
+<div id="workflow_toast" class="workflow_toast center display_none" style="z-index: 10"><span class="m3-icon-about margin_r_6"></span><span><i18n key="collaboration.page.lable.wf.modifyNode"></i18n></span></div>
+<div id="hearderContainer" class="clear_both border_b display_none" style="height: 40px;line-height:40px;padding: 0px 10px;">
+   <span id="editBtn" style="min-width: 40px;float: right;direction: rtl;"><i18n key="collaboration.page.lable.button.finish"></i18n><!-- 完成 --></span>
+</div>
+<div id="colEditWfMainBody" class="cmp-content cmp-col-content cmp-content-none" style="background-color: white;">
+
+</div>
+<footer id="footBtns" class="cmp-bar cmp-bar-footer col_footer flexbox border_t display_none">
+</footer>
+
+<script src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433"></script>
+
+<script type="text/javascript">  
+  cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/details/workflowEdit.js?buildversion=181210172434"></script>
+
+<!-- 
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flowV5.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-zoom.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172434"></script>
+
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-tabChange.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-visitingCard.js?buildversion=181210172434"></script>
+ -->
+ 
+<script type="text/html" id="edit_btn_template">
+<%
+   for(var i = 0, len = this.length;i < len;i++){
+      var btn = this[i];
+%>
+<button id="<%=btn.code%>" type="button" class="cmp-btn text-ellipsis flex-1 col_button secondary" ><%=btn.lable%></button>
+<%
+}
+%>
+</script>
+</body>
+</html>

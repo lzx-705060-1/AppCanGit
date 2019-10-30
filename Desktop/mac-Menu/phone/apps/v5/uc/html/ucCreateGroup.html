@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>创建群组</title>
+	<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+	<link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucCreateGroup.css?buildversion=181210172652" />
+	<script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+</head>
+<body>
+<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+	<div id="prev" class="cmp-action-back cmp-header-left ">
+		<span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+		<span class="nav-text">返回</span>
+	</div>
+	<div class="cmp-title" id="title">创建群组</div>
+	<div class="cmp-header-right">
+		<button class="cmp-btn cmp-btn-blue cmp-btn-link cmp-pull-right uc-confirm" id="uc-confirm">确认</button>
+	</div>
+</header>
+	<div class="cmp-content position_relative">
+		<div class="cmp-control-content cmp-active" id="cmp-control">
+			<div id="changeName" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<div class="uc-list" id="uc_listAll">
+						<ul
+							class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="create_group_list">
+							<li class="cmp-table-view-cell">
+								<div class="uc-create-name">群名称</div>
+								<div class="uc-create-name-input">
+									<input type="text" name="uc-group-name" id="uc-group-name" value="" maxlength="30" placeholder="输入群组名称" oninput="initClearBtn(this)" /> 
+									<i class="iconfont icon-PC-clear uc-clear"></i>
+								</div>
+								<div class="uc-create-name">已选人员</div>
+								<div class="uc-alread-member-wrap">
+									<input type="hidden" id="members_value" value="" /> 
+									<input type="hidden" id="members_auth" value="" /> 
+									<input type="hidden" id="members_auth_str" value="" /> 
+									<ul id="uc-alread-members" class="uc-alread-members">
+										<li id="li-select-member">
+											<div id="select-member"
+												class="cmp-icon see-icon-v5-common-add-circle uc-group-m-add"></div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="member_li_tpl">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <% var obj = this[i]; %>
+			<li class="select_member">
+				<div class="uc-m-head">
+					<img src="<%=obj.src%>" class="uc-group-m-head" id="h_<%=obj.id%>" />
+				</div>
+                <span class="uc-group-m-name"><%=obj.name %></span>
+            </li>
+        <% } %>
+	</script>
+		<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=181210172652"></script>
+	<!--<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172652"></script>-->
+	<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script>	<script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucDB.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucCommonUtil-debug.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/ucCreateGroup.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/im/jsjac.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/im_send_message.js?buildversion=181210172652"></script>
+	<script src="/seeyon/m3/apps/v5/uc/js/im_send_iq.js?buildversion=181210172652"></script>
+</body>
+</html>

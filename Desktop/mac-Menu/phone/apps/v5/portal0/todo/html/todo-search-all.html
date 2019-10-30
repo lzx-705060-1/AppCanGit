@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/flexible.js"></script>
+    <title>全局搜索查看更多</title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/commons/fonts/iconfont.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/commons/css/base.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/search-person-search.css?buildversion=181210172727" />
+</head>
+
+<body>
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav m3-iosx">
+        <div class="cmp-pull-left cmp-icon cmp-action-back">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="todo.m3.h5.return"></i18n></span>
+        </div>
+        <form class="search_all">
+            <div class="cmp-input-row cmp-search">
+                <input id="btn_a" type="search" class=" cmp-input-clear" placeholder="搜索">
+            </div>
+        </form>
+        <span class="cancel"><i18n key="todo.m3.h5.cancel"></i18n></span>
+    </header>
+    <div class="cmp-content message">
+        <div class="cmp-control-content cmp-active">
+            <div id="pullrefresh" class="cmp-scroll-wrapper">
+                <div class="cmp-scroll">
+                    <ul class="cmp-table-view search-people link"></ul>
+                    <ul class="cmp-table-view search-people third"></ul>
+                    <ul class="cmp-table-view search-people todo"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/seeyon/m3/apps/v5/portal/todo/i18n/todo_zh_CN.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/i18n/commons_zh_CN.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172727"></script>
+    <script>
+        cmp.i18n.init("/seeyon/m3/apps/v5/portal/todo/i18n/", "todo");
+        cmp.i18n.load("/seeyon/m3/apps/v5/portal/todo/commons/i18n/", "commons");
+    </script>
+    <script src="/seeyon/m3/cmp/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="/seeyon/m3/cmp/js/cordova/cordova-plugins.js"></script>
+    <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-chat.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-gestureLock.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-iat.js?buildversion=181210172727"></script>
+
+
+    <!--<script src="http://commons.m3.cmp/js/zepto-1.2.0.js?buildversion=181210172727"></script>-->
+    <!--<script src="http://commons.m3.cmp/js/m3.js?buildversion=181210172727"></script>-->
+    <!--<script src="http://commons.m3.cmp/js/m3i18n.js?buildversion=181210172727"></script>-->
+    <!--<script src="http://commons.m3.cmp/js/m3Route.s3js"></script>-->
+    <!--<script src="http://commons.m3.cmp/js/m3Ajax.js?buildversion=181210172727"></script>-->
+    <!--<script src="http://commons.m3.cmp/js/m3DB.js?buildversion=181210172727"></script>-->
+    <!--<script src="http://todo.m3.cmp/js/app_todo_allsearch.js?buildversion=181210172727"></script>-->
+
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/lib/seajs-2.2.1.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/config.js?buildversion=181210172727"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('/seeyon/m3/apps/v5/portal/todo/js/app_todo_allsearch.js?buildversion=181210172727')</script>
+</body>

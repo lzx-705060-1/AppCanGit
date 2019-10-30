@@ -1,0 +1,146 @@
+.t-btn-w1{
+    background-image:url(../img/t-btn-w1.png);
+}
+.uwh-tBtn{
+    width:1.75em;
+    height:1.75em;
+}
+body, tr, td {
+    margin: 0px;
+    padding: 0px;
+}
+table {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(240, 240, 240);
+}
+img {
+    border: 0
+}
+.border1 {
+    border-bottom: 1px solid rgb(213, 213, 213);
+    height: 4.5em;
+}
+
+.content-l {
+    width: 45%;
+    float: left;
+    margin-left: 1em;
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    /*font-size: 1.8em;*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content-r {
+    width: 45%;
+    text-align: right;
+    float: right;
+    margin-right: 1em;
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    /*font-size: 1.8em;*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.munTeam {
+    font-size: 1.8em;
+    margin-left: 1em;
+    line-height: 2.5em;
+    font-weight: bold;
+}
+.editTeam-r {
+    /*width: 2em;
+     height: 2em;
+     font-size: 35px;
+     float: right;
+     margin-top: 0.4em;
+     margin-right: 1em;*/
+
+    width: 2em;
+    height: 2em;
+    float: right;
+    margin-bottom: 0.1em;
+    margin-right: 1.5em;
+}
+.inp1 {
+    width: 100%;
+    font-size: 1.5em;
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}
+.right {
+    text-align: right;
+}
+.inp2 {
+    width: 100%;
+    font-size: 1.5em;
+    border: rgb(174, 174, 250) 1px solid;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}
+tr {
+    height: 3em;
+    background-color: white;
+}
+tr td {
+    border-bottom: 1px solid rgb(29, 187, 194);
+}
+.inpborder {
+    border: none;
+}
+.left {
+    margin-left: 0.5em;
+}
+.color1 {
+
+}
+.color2 {
+    background-color: rgb(231, 253, 248);
+}
+.color3 {
+    background-color: #A0D0FF !important;
+}
+/*.color4 {
+ background-color: rgb(231, 253, 248);
+ }*/
+.inp1-huawei {
+    width: 100%;
+    font-size: 2em;
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}
+.inp2-huawei {
+    width: 100%;
+    font-size: 2em;
+    /*border: rgb(174, 174, 250) 1px solid;*/
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}
+.xiangqing{
+    font-size:1.5em;
+    line-height:1.5em;
+    margin-right:10%;
+    margin-left:10%;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}
+.xiangqing_huawei{
+    font-size:2em;
+    line-height:2em;
+    margin-right:10%;
+    margin-left:10%;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+}

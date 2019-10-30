@@ -1,0 +1,1742 @@
+
+@font-face {font-family: "CAP";
+  src: url('iconfont.ttf?t=1541481782273') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1541481782273#CAP') format('svg'); /* iOS 4.1- */
+}
+
+.CAP {
+  font-family:"CAP" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cap-icon-section-btn-setting:before { content: "\e642"; }
+
+.cap-icon-yixinbaogouxuanjiaobiao:before { content: "\e621"; }
+
+.cap-icon-section-more:before { content: "\e6d1"; }
+
+.cap-icon-systemadministrator:before { content: "\e61f"; }
+
+.cap-icon-more-circle-fill:before { content: "\e626"; }
+
+.cap-icon-success-circle-fill:before { content: "\e620"; }
+
+.cap-icon-unview-circle-fill:before { content: "\e61a"; }
+
+.cap-icon-view-circle-fill:before { content: "\e635"; }
+
+.cap-icon-payroll:before { content: "\e60a"; }
+
+.cap-icon-home:before { content: "\e632"; }
+
+.cap-icon-fanruan:before { content: "\e6d4"; }
+
+.cap-icon-987caidan_zuzhijiagou:before { content: "\e6d5"; }
+
+.cap-icon-remind1:before { content: "\e781"; }
+
+.cap-icon-spot:before { content: "\e609"; }
+
+.cap-icon-shaixuan:before { content: "\e616"; }
+
+.cap-icon-min:before { content: "\e6d6"; }
+
+.cap-icon-clear:before { content: "\e6d7"; }
+
+.cap-icon-baocun:before { content: "\e629"; }
+
+.cap-icon-xinjian:before { content: "\e62a"; }
+
+.cap-icon-sousuo:before { content: "\e62b"; }
+
+.cap-icon-fabu:before { content: "\e62e"; }
+
+.cap-icon-xiugai:before { content: "\e630"; }
+
+.cap-icon-tingyong:before { content: "\e631"; }
+
+.cap-icon-beijingse:before { content: "\e646"; }
+
+.cap-icon-biankuang:before { content: "\e647"; }
+
+.cap-icon-biankuangyangshi:before { content: "\e648"; }
+
+.cap-icon-chuizhijuzhongduiqi:before { content: "\e64f"; }
+
+.cap-icon-dingbuduiqi:before { content: "\e651"; }
+
+.cap-icon-jiacu:before { content: "\e658"; }
+
+.cap-icon-riqixuanze1:before { content: "\e6d8"; }
+
+.cap-icon-shanchu-X:before { content: "\e660"; }
+
+.cap-icon-shuzi1:before { content: "\e6d9"; }
+
+.cap-icon-shuipingjuzhongduiqi:before { content: "\e663"; }
+
+.cap-icon-wenben1:before { content: "\e6da"; }
+
+.cap-icon-wenbenyu1:before { content: "\e6db"; }
+
+.cap-icon-xiahuaxian:before { content: "\e66b"; }
+
+.cap-icon-xialazujian1:before { content: "\e6dc"; }
+
+.cap-icon-xieti:before { content: "\e66e"; }
+
+.cap-icon-xuhao:before { content: "\e66f"; }
+
+.cap-icon-youduiqi:before { content: "\e676"; }
+
+.cap-icon-zitiyanse:before { content: "\e678"; }
+
+.cap-icon-zuoduiqi:before { content: "\e679"; }
+
+.cap-icon-bianji:before { content: "\e684"; }
+
+.cap-icon-dibuduiqi:before { content: "\e68b"; }
+
+.cap-icon-chaxun:before { content: "\e603"; }
+
+.cap-icon-tongji:before { content: "\e607"; }
+
+.cap-icon-fuhetongji:before { content: "\e608"; }
+
+.cap-icon-tishi:before { content: "\e618"; }
+
+.cap-icon-shezhi2:before { content: "\e615"; }
+
+.cap-icon-guanbi:before { content: "\e68e"; }
+
+.cap-icon-zhidinghuitui:before { content: "\e68f"; }
+
+.cap-icon-beihuitui:before { content: "\e690"; }
+
+.cap-icon-xinjianyewuzhibiao:before { content: "\e617"; }
+
+.cap-icon-peizhilanmu:before { content: "\e61b"; }
+
+.cap-icon-xiugaipaixu:before { content: "\e61d"; }
+
+.cap-icon-shouquan:before { content: "\e61e"; }
+
+.cap-icon-biankuangyanse:before { content: "\e691"; }
+
+.cap-icon-jiazai:before { content: "\e692"; }
+
+.cap-icon-jiazaibai-tou:before { content: "\e695"; }
+
+.cap-icon-yuanjiaosanjiao:before { content: "\e698"; }
+
+.cap-icon-duigou:before { content: "\e699"; }
+
+.cap-icon-shouji:before { content: "\e69a"; }
+
+.cap-icon-diannao:before { content: "\e69b"; }
+
+.cap-icon-ignore:before { content: "\e602"; }
+
+.cap-icon-shezhi:before { content: "\e6a0"; }
+
+.cap-icon-signIn:before { content: "\e625"; }
+
+.cap-icon-arrow-down:before { content: "\e627"; }
+
+.cap-icon-collapse:before { content: "\e628"; }
+
+.cap-icon-search-large:before { content: "\e634"; }
+
+.cap-icon-arrow-down-serif:before { content: "\e6dd"; }
+
+.cap-icon-arrow-up-serif:before { content: "\e6de"; }
+
+.cap-icon-arrow-right-serif:before { content: "\e6df"; }
+
+.cap-icon-arrow-left-serif:before { content: "\e6e0"; }
+
+.cap-icon-riqishijian1:before { content: "\e6e1"; }
+
+.cap-icon-msg:before { content: "\e6e2"; }
+
+.cap-icon-setting:before { content: "\e6e3"; }
+
+.cap-icon-guanlianwendang:before { content: "\e63b"; }
+
+.cap-icon-qiehuan:before { content: "\e6a2"; }
+
+.cap-icon-ziduan:before { content: "\e6a3"; }
+
+.cap-icon-mingxibiao:before { content: "\e6ae"; }
+
+.cap-icon-dayin:before { content: "\e641"; }
+
+.cap-icon-shitupipei:before { content: "\e645"; }
+
+.cap-icon-shujupipei:before { content: "\e649"; }
+
+.cap-icon-daochuyangshi:before { content: "\e64a"; }
+
+.cap-icon-guanlianxiangmu:before { content: "\e64b"; }
+
+.cap-icon-chaxunjiaohuanrenwu:before { content: "\e64c"; }
+
+.cap-icon-xuanjiaohuanrenwu:before { content: "\e64d"; }
+
+.cap-icon-jiesuo:before { content: "\e64e"; }
+
+.cap-icon-suoding:before { content: "\e657"; }
+
+.cap-icon-jiangehang:before { content: "\e6b5"; }
+
+.cap-icon-wenzibiaoqian:before { content: "\e6b6"; }
+
+.cap-icon-daochu:before { content: "\e6b7"; }
+
+.cap-icon-xianshineirong:before { content: "\e650"; }
+
+.cap-icon-default:before { content: "\e6e4"; }
+
+.cap-icon-magnify:before { content: "\e6e5"; }
+
+.cap-icon-shrink1:before { content: "\e6e6"; }
+
+.cap-icon-neirongshaixuan:before { content: "\e659"; }
+
+.cap-icon-report-file:before { content: "\e6e7"; }
+
+.cap-icon-yishouqiwenjianjia:before { content: "\e6e8"; }
+
+.cap-icon-yizhankaiwenjianjia:before { content: "\e6e9"; }
+
+.cap-icon-report-excel:before { content: "\e6ea"; }
+
+.cap-icon-report-warned:before { content: "\e6eb"; }
+
+.cap-icon-lishibaobiao:before { content: "\e661"; }
+
+.cap-icon-jingtaibaobiao:before { content: "\e666"; }
+
+.cap-icon-daochushuju:before { content: "\e65c"; }
+
+.cap-icon-fuzhi:before { content: "\e667"; }
+
+.cap-icon-charuwupin:before { content: "\e66a"; }
+
+.cap-icon-daochumoban:before { content: "\e66d"; }
+
+.cap-icon-shuzhedie-zuo:before { content: "\e675"; }
+
+.cap-icon-shuzhedie-zuo1:before { content: "\e677"; }
+
+.cap-icon-tongji-quanbu:before { content: "\e67a"; }
+
+.cap-icon-shua:before { content: "\e6b9"; }
+
+.cap-icon-Application-tasks:before { content: "\e6ec"; }
+
+.cap-icon-Associated-application:before { content: "\e707"; }
+
+.cap-icon-Process-event-binding:before { content: "\e71a"; }
+
+.cap-icon-quxiaoshoucang:before { content: "\e779"; }
+
+.cap-icon-shoucang:before { content: "\e796"; }
+
+.cap-icon-piliangxiugai:before { content: "\e652"; }
+
+.cap-icon-chakanrizhi:before { content: "\e680"; }
+
+.cap-icon-piliangshuaxin:before { content: "\e681"; }
+
+.cap-icon-tongji1:before { content: "\e683"; }
+
+.cap-icon-daorudaochu:before { content: "\e68c"; }
+
+.cap-icon-mimaanquanshezhi:before { content: "\e749"; }
+
+.cap-icon-liekuan:before { content: "\e6bc"; }
+
+.cap-icon-peizhilanmu1:before { content: "\e6a8"; }
+
+.cap-icon-peizhishujuyuan:before { content: "\e6b2"; }
+
+.cap-icon-jiancezhongxin:before { content: "\e6bf"; }
+
+.cap-icon-yunweizhongxin:before { content: "\e6c1"; }
+
+.cap-icon-shejizhongxin:before { content: "\e6c2"; }
+
+.cap-icon-qianzhang:before { content: "\e6c3"; }
+
+.cap-icon-formquery:before { content: "\e6f2"; }
+
+.cap-icon-formthemespace:before { content: "\e6f3"; }
+
+.cap-icon-formstatistics:before { content: "\e6f4"; }
+
+.cap-icon-docdispatch:before { content: "\e6f5"; }
+
+.cap-icon-officthemespace:before { content: "\e6f6"; }
+
+.cap-icon-signreceipt:before { content: "\e6f7"; }
+
+.cap-icon-docreceiving:before { content: "\e6f8"; }
+
+.cap-icon-docsupervision:before { content: "\e6f9"; }
+
+.cap-icon-docsearch:before { content: "\e6fa"; }
+
+.cap-icon-conferencearrangemen:before { content: "\e6fb"; }
+
+.cap-icon-scheduledconference:before { content: "\e6fc"; }
+
+.cap-icon-newmeeting:before { content: "\e6fd"; }
+
+.cap-icon-conferencethemespace:before { content: "\e6fe"; }
+
+.cap-icon-conferenceroom:before { content: "\e6ff"; }
+
+.cap-icon-accomplishedconferen:before { content: "\e700"; }
+
+.cap-icon-workingplan:before { content: "\e701"; }
+
+.cap-icon-objectivethemespace:before { content: "\e703"; }
+
+.cap-icon-schedule:before { content: "\e704"; }
+
+.cap-icon-mytask:before { content: "\e705"; }
+
+.cap-icon-relatedproject:before { content: "\e706"; }
+
+.cap-icon-collaborationthemespace:before { content: "\e708"; }
+
+.cap-icon-trackevent:before { content: "\e709"; }
+
+.cap-icon-todoevent:before { content: "\e70a"; }
+
+.cap-icon-newaffair:before { content: "\e70b"; }
+
+.cap-icon-supervisoryevent:before { content: "\e70c"; }
+
+.cap-icon-sentevent:before { content: "\e70d"; }
+
+.cap-icon-doneevent:before { content: "\e70e"; }
+
+.cap-icon-blog:before { content: "\e70f"; }
+
+.cap-icon-kmsquare:before { content: "\e710"; }
+
+.cap-icon-rsssubscription:before { content: "\e711"; }
+
+.cap-icon-mycollection:before { content: "\e712"; }
+
+.cap-icon-doccenter:before { content: "\e713"; }
+
+.cap-icon-personalkmcenter:before { content: "\e714"; }
+
+.cap-icon-newplan:before { content: "\e6ed"; }
+
+.cap-icon-related:before { content: "\e6ee"; }
+
+.cap-icon-onlineRecord:before { content: "\e6ef"; }
+
+.cap-icon-overduematters:before { content: "\e6f0"; }
+
+.cap-icon-bookssy:before { content: "\e6f1"; }
+
+.cap-icon-carsy:before { content: "\e702"; }
+
+.cap-icon-officesuppliessy:before { content: "\e715"; }
+
+.cap-icon-officesuppliessq:before { content: "\e716"; }
+
+.cap-icon-officeequipmentsy:before { content: "\e717"; }
+
+.cap-icon-officeequipmentsq:before { content: "\e718"; }
+
+.cap-icon-elementarydata:before { content: "\e719"; }
+
+.cap-icon-informationform:before { content: "\e71b"; }
+
+.cap-icon-collaborationcube:before { content: "\e71c"; }
+
+.cap-icon-monitorthemespace:before { content: "\e71d"; }
+
+.cap-icon-orgbehavioranalysis:before { content: "\e71e"; }
+
+.cap-icon-email:before { content: "\e71f"; }
+
+.cap-icon-notepad:before { content: "\e720"; }
+
+.cap-icon-favoritelinks:before { content: "\e721"; }
+
+.cap-icon-calendar:before { content: "\e722"; }
+
+.cap-icon-calculator:before { content: "\e723"; }
+
+.cap-icon-contacts:before { content: "\e724"; }
+
+.cap-icon-survey:before { content: "\e725"; }
+
+.cap-icon-cbulletin:before { content: "\e726"; }
+
+.cap-icon-cbbs:before { content: "\e727"; }
+
+.cap-icon-news:before { content: "\e728"; }
+
+.cap-icon-show:before { content: "\e729"; }
+
+.cap-icon-Flag:before { content: "\e72a"; }
+
+.cap-icon-AiSortOff:before { content: "\e612"; }
+
+.cap-icon-AiSortOn:before { content: "\e613"; }
+
+.cap-icon-icon:before { content: "\e72b"; }
+
+.cap-icon-attachment:before { content: "\e790"; }
+
+.cap-icon-close:before { content: "\e72c"; }
+
+.cap-icon-delete:before { content: "\e79c"; }
+
+.cap-icon-scan:before { content: "\e72d"; }
+
+.cap-icon-querystatistics:before { content: "\e776"; }
+
+.cap-icon-icon-fog-day:before { content: "\e72e"; }
+
+.cap-icon-icon-cloud-day:before { content: "\e72f"; }
+
+.cap-icon-icon-shower-day:before { content: "\e730"; }
+
+.cap-icon-icon-snowShower-day:before { content: "\e731"; }
+
+.cap-icon-icon-clear-day:before { content: "\e732"; }
+
+.cap-icon-icon-fog-night:before { content: "\e733"; }
+
+.cap-icon-icon-cloud-night:before { content: "\e734"; }
+
+.cap-icon-icon-shower-night:before { content: "\e735"; }
+
+.cap-icon-icon-snowShower-night:before { content: "\e736"; }
+
+.cap-icon-icon-clear-night:before { content: "\e737"; }
+
+.cap-icon-icon-rain_level_09:before { content: "\e738"; }
+
+.cap-icon-icon-rain_level_07:before { content: "\e739"; }
+
+.cap-icon-icon-rain_level_08:before { content: "\e73a"; }
+
+.cap-icon-icon-snow_level_06:before { content: "\e73b"; }
+
+.cap-icon-icon-snow_level_07:before { content: "\e73c"; }
+
+.cap-icon-icon-rain_level_06:before { content: "\e73d"; }
+
+.cap-icon-icon-rain_level_10:before { content: "\e73e"; }
+
+.cap-icon-icon-iceRain:before { content: "\e73f"; }
+
+.cap-icon-icon-rain_level_05:before { content: "\e740"; }
+
+.cap-icon-icon-snow_level_05:before { content: "\e741"; }
+
+.cap-icon-icon-thunderShower:before { content: "\e742"; }
+
+.cap-icon-icon-thunderStormHail:before { content: "\e743"; }
+
+.cap-icon-icon-haze:before { content: "\e744"; }
+
+.cap-icon-icon-sandStorm:before { content: "\e745"; }
+
+.cap-icon-icon-severeSandStorm:before { content: "\e746"; }
+
+.cap-icon-icon-flyAsh:before { content: "\e747"; }
+
+.cap-icon-icon-snow_level_02:before { content: "\e748"; }
+
+.cap-icon-icon-rain_level_11:before { content: "\e74a"; }
+
+.cap-icon-icon-rain_level_02:before { content: "\e74b"; }
+
+.cap-icon-icon-rain_level_01:before { content: "\e74c"; }
+
+.cap-icon-icon-snow_level_01:before { content: "\e74d"; }
+
+.cap-icon-icon-blowingSand:before { content: "\e74e"; }
+
+.cap-icon-icon-cloudy:before { content: "\e74f"; }
+
+.cap-icon-icon-rainAndSnow:before { content: "\e750"; }
+
+.cap-icon-icon-snow_level_04:before { content: "\e751"; }
+
+.cap-icon-icon-rain_level_04:before { content: "\e752"; }
+
+.cap-icon-icon-rain_level_03:before { content: "\e753"; }
+
+.cap-icon-icon-snow_level_03:before { content: "\e754"; }
+
+.cap-icon-vreporthome:before { content: "\e755"; }
+
+.cap-icon-vreportcenter:before { content: "\e756"; }
+
+.cap-icon-vreportview:before { content: "\e759"; }
+
+.cap-icon-formengine:before { content: "\e75a"; }
+
+.cap-icon-newplanform:before { content: "\e75b"; }
+
+.cap-icon-runningnumber:before { content: "\e75c"; }
+
+.cap-icon-metadata:before { content: "\e75e"; }
+
+.cap-icon-newworkflowform:before { content: "\e75f"; }
+
+.cap-icon-routechart:before { content: "\e760"; }
+
+.cap-icon-formcolumnconfig:before { content: "\e761"; }
+
+.cap-icon-professionmap:before { content: "\e763"; }
+
+.cap-icon-newmobiledashboard:before { content: "\e764"; }
+
+.cap-icon-edocfawen:before { content: "\e765"; }
+
+.cap-icon-officialdocument:before { content: "\e766"; }
+
+.cap-icon-docexchage:before { content: "\e767"; }
+
+.cap-icon-edocqianbao:before { content: "\e768"; }
+
+.cap-icon-docconfig:before { content: "\e769"; }
+
+.cap-icon-docstatistics:before { content: "\e76a"; }
+
+.cap-icon-doclibrarymanagement:before { content: "\e76b"; }
+
+.cap-icon-knowledgecommunity:before { content: "\e76c"; }
+
+.cap-icon-conference:before { content: "\e76d"; }
+
+.cap-icon-blogmanagement:before { content: "\e76e"; }
+
+.cap-icon-managementbyobjectiv:before { content: "\e76f"; }
+
+.cap-icon-coltemplatemanage:before { content: "\e771"; }
+
+.cap-icon-formtemplate:before { content: "\e772"; }
+
+.cap-icon-workingaffair:before { content: "\e773"; }
+
+.cap-icon-applog:before { content: "\e774"; }
+
+.cap-icon-salary:before { content: "\e775"; }
+
+.cap-icon-dajiawork:before { content: "\e77a"; }
+
+.cap-icon-Travel-reference:before { content: "\e77c"; }
+
+.cap-icon-agent:before { content: "\e77d"; }
+
+.cap-icon-worktask:before { content: "\e77e"; }
+
+.cap-icon-workdaysetting:before { content: "\e77f"; }
+
+.cap-icon-attendancemanagement:before { content: "\e780"; }
+
+.cap-icon-newelementarydata:before { content: "\e782"; }
+
+.cap-icon-perfomanceanalysisconfig:before { content: "\e783"; }
+
+.cap-icon-Enterprise-email:before { content: "\e785"; }
+
+.cap-icon-collaborationtemplate:before { content: "\e786"; }
+
+.cap-icon-authormanage:before { content: "\e788"; }
+
+.cap-icon-wfanalysis:before { content: "\e789"; }
+
+.cap-icon-Applicationconferenceroom:before { content: "\e78a"; }
+
+.cap-icon-weather:before { content: "\e78b"; }
+
+.cap-icon-edocdengji:before { content: "\e791"; }
+
+.cap-icon-bookManagement:before { content: "\e792"; }
+
+.cap-icon-cultureconstruction:before { content: "\e793"; }
+
+.cap-icon-performancequery:before { content: "\e794"; }
+
+.cap-icon-newemail:before { content: "\e795"; }
+
+.cap-icon-newinformationform:before { content: "\e797"; }
+
+.cap-icon-itemsetting:before { content: "\e798"; }
+
+.cap-icon-businessconfiguration:before { content: "\e799"; }
+
+.cap-icon-Train-query:before { content: "\e79a"; }
+
+.cap-icon-employeearchives:before { content: "\e79b"; }
+
+.cap-icon-yunxuetang:before { content: "\e79d"; }
+
+.cap-icon-statistics:before { content: "\e79e"; }
+
+.cap-icon-collaborationmonitor:before { content: "\e79f"; }
+
+.cap-icon-s1:before { content: "\e7a0"; }
+
+.cap-icon-seeyon-serve:before { content: "\e7a1"; }
+
+.cap-icon-businesssolutionsgen:before { content: "\e7c3"; }
+
+.cap-icon-teammanagement:before { content: "\e7d8"; }
+
+.cap-icon-humanResources:before { content: "\e7d9"; }
+
+.cap-icon-unitmanagement:before { content: "\e7da"; }
+
+.cap-icon-yonyou:before { content: "\e7db"; }
+
+.cap-icon-service:before { content: "\e7dc"; }
+
+.cap-icon-fasong:before { content: "\e6c4"; }
+
+.cap-icon-zhuanfa:before { content: "\e6c5"; }
+
+.cap-icon-quhui:before { content: "\e6c6"; }
+
+.cap-icon-businessOperationCenter:before { content: "\e7dd"; }
+
+.cap-icon-businessDesignCenter:before { content: "\e7de"; }
+
+.cap-icon-businessOrderPlatform:before { content: "\e7df"; }
+
+.cap-icon-chexiaoliucheng:before { content: "\e6c7"; }
+
+.cap-icon-dept_management:before { content: "\e7e0"; }
+
+.cap-icon-unsentEvent:before { content: "\e7e1"; }
+
+.cap-icon-section-btn-edit:before { content: "\e7e2"; }
+
+.cap-icon-section-btn-sectionDingYueIco:before { content: "\e7e3"; }
+
+.cap-icon-change-one-change:before { content: "\e7e4"; }
+
+.cap-icon-sectionTitleIcon01:before { content: "\e7e5"; }
+
+.cap-icon-online1:before { content: "\e7e6"; }
+
+.cap-icon-section-btn-sectionSetIco:before { content: "\e7e7"; }
+
+.cap-icon-section-btn-count:before { content: "\e7e8"; }
+
+.cap-icon-online3:before { content: "\e7e9"; }
+
+.cap-icon-homePageSet:before { content: "\e7ea"; }
+
+.cap-icon-online2:before { content: "\e7eb"; }
+
+.cap-icon-logout:before { content: "\e6be"; }
+
+.cap-icon-refresh:before { content: "\e7ed"; }
+
+.cap-icon-setTop:before { content: "\e7ee"; }
+
+.cap-icon-XXApp:before { content: "\e7ef"; }
+
+.cap-icon-btn-add:before { content: "\e7f0"; }
+
+.cap-icon-online0:before { content: "\e7f1"; }
+
+.cap-icon-menu_report:before { content: "\e7f2"; }
+
+.cap-icon-bigScreen:before { content: "\e7f3"; }
+
+.cap-icon-menu_department:before { content: "\e7f4"; }
+
+.cap-icon-menu_group:before { content: "\e7f5"; }
+
+.cap-icon-menu_leader:before { content: "\e7f6"; }
+
+.cap-icon-menu_outer:before { content: "\e7f7"; }
+
+.cap-icon-menu_personal_custom:before { content: "\e7f8"; }
+
+.cap-icon-menu_custom:before { content: "\e7f9"; }
+
+.cap-icon-menu_personal:before { content: "\e7fa"; }
+
+.cap-icon-help:before { content: "\e7fb"; }
+
+.cap-icon-ctrip:before { content: "\e7fc"; }
+
+.cap-icon-formtalk:before { content: "\e7fd"; }
+
+.cap-icon-guanlianwendang1:before { content: "\e68d"; }
+
+.cap-icon-sectionTitleIcon02:before { content: "\e7fe"; }
+
+.cap-icon-menu_public_custom:before { content: "\e7ff"; }
+
+.cap-icon-menu_public_custom_group:before { content: "\e800"; }
+
+.cap-icon-menu_corporation:before { content: "\e801"; }
+
+.cap-icon-shanchuquanbu:before { content: "\e6c8"; }
+
+.cap-icon-shujuxiaozheng:before { content: "\e6c9"; }
+
+.cap-icon-shujuruku:before { content: "\e6ca"; }
+
+.cap-icon-myShortCut:before { content: "\e802"; }
+
+.cap-icon-collaboration:before { content: "\e803"; }
+
+.cap-icon-xuanzeExcel:before { content: "\e6cb"; }
+
+.cap-icon-cancel-the-point-of-praise:before { content: "\e804"; }
+
+.cap-icon-section-praised:before { content: "\e805"; }
+
+.cap-icon-folder:before { content: "\e806"; }
+
+.cap-icon-Businessportal:before { content: "\e807"; }
+
+.cap-icon-space1:before { content: "\e808"; }
+
+.cap-icon-Pendingofficialdocument:before { content: "\e809"; }
+
+.cap-icon-Reportportal:before { content: "\e80a"; }
+
+.cap-icon-Conferences:before { content: "\e80b"; }
+
+.cap-icon-Mainportal:before { content: "\e819"; }
+
+.cap-icon-Subportal:before { content: "\e81c"; }
+
+.cap-icon-Waitingmeeting:before { content: "\e81e"; }
+
+.cap-icon-Pendingwork:before { content: "\e821"; }
+
+.cap-icon-abouta8:before { content: "\e82a"; }
+
+.cap-icon-personaltools:before { content: "\e834"; }
+
+.cap-icon-singletemplate:before { content: "\e8b2"; }
+
+.cap-icon-newtask:before { content: "\e8b3"; }
+
+.cap-icon-assetManage:before { content: "\e8b4"; }
+
+.cap-icon-stockAdmin:before { content: "\e8b5"; }
+
+.cap-icon-menus4Entrance:before { content: "\e8b6"; }
+
+.cap-icon-colourful-icons2:before { content: "\e8b7"; }
+
+.cap-icon-colourful-icons3:before { content: "\e8b8"; }
+
+.cap-icon-colourful-icons5:before { content: "\e8b9"; }
+
+.cap-icon-colourful-icons6:before { content: "\e8ba"; }
+
+.cap-icon-colourful-icons1:before { content: "\e8bb"; }
+
+.cap-icon-personality-icon2:before { content: "\e8bc"; }
+
+.cap-icon-personality-icon1:before { content: "\e8bd"; }
+
+.cap-icon-personality-icon3:before { content: "\e8be"; }
+
+.cap-icon-personality-icon4:before { content: "\e8bf"; }
+
+.cap-icon-personality-icon6:before { content: "\e8c0"; }
+
+.cap-icon-personality-icon5:before { content: "\e8c1"; }
+
+.cap-icon-colourful-icons4:before { content: "\e8c2"; }
+
+.cap-icon-personality-icon0:before { content: "\e8c3"; }
+
+.cap-icon-colourful-icons0:before { content: "\e8c4"; }
+
+.cap-icon-financialvoucher:before { content: "\e8c5"; }
+
+.cap-icon-sap:before { content: "\e8c6"; }
+
+.cap-icon-eas:before { content: "\e8c7"; }
+
+.cap-icon-videoconferencing:before { content: "\e8c8"; }
+
+.cap-icon-internalpurchaseofplug-in:before { content: "\e8c9"; }
+
+.cap-icon-nc:before { content: "\e8ca"; }
+
+.cap-icon-section-replied2:before { content: "\e8cb"; }
+
+.cap-icon-section-replied:before { content: "\e8cc"; }
+
+.cap-icon-reading1:before { content: "\e8cd"; }
+
+.cap-icon-reading:before { content: "\e8ce"; }
+
+.cap-icon-arrow-line-down:before { content: "\e8cf"; }
+
+.cap-icon-shujutihuan:before { content: "\e6cd"; }
+
+.cap-icon-examine-event:before { content: "\e784"; }
+
+.cap-icon-multilist:before { content: "\e8d1"; }
+
+.cap-icon-workflow-form:before { content: "\e8d2"; }
+
+.cap-icon-workflow-list:before { content: "\e787"; }
+
+.cap-icon-statics-report:before { content: "\e8d4"; }
+
+.cap-icon-menu1:before { content: "\e8d5"; }
+
+.cap-icon-non-workflow-form:before { content: "\e8d6"; }
+
+.cap-icon-application1:before { content: "\e8d7"; }
+
+.cap-icon-non-workflow-list:before { content: "\e78f"; }
+
+.cap-icon-Reportform:before { content: "\e8d9"; }
+
+.cap-icon-disable-font:before { content: "\e757"; }
+
+.cap-icon-unpublished-font:before { content: "\e758"; }
+
+.cap-icon-zhexiantushuzhou:before { content: "\e65b"; }
+
+.cap-icon-jichu:before { content: "\e62f"; }
+
+.cap-icon-kongzhi:before { content: "\e6cc"; }
+
+.cap-icon-bitian:before { content: "\e638"; }
+
+.cap-icon-import:before { content: "\e75d"; }
+
+.cap-icon-duigou1:before { content: "\e693"; }
+
+.cap-icon-gengduo:before { content: "\e6b1"; }
+
+.cap-icon-gengduocaozuo-shixin:before { content: "\e696"; }
+
+.cap-icon-gengduocaozuo-kongxin:before { content: "\e697"; }
+
+.cap-icon-upload:before { content: "\e762"; }
+
+.cap-icon-xiazai:before { content: "\e619"; }
+
+.cap-icon-tanhao:before { content: "\e6af"; }
+
+.cap-icon-gantanhao:before { content: "\e6d2"; }
+
+.cap-icon-weibiaoti6-copy:before { content: "\e611"; }
+
+.cap-icon-xunwen:before { content: "\e6a7"; }
+
+.cap-icon-jinggao:before { content: "\e694"; }
+
+.cap-icon-shu-zhankai1:before { content: "\e654"; }
+
+.cap-icon-shu-zhankai:before { content: "\e69c"; }
+
+.cap-icon-arrow-plane-left:before { content: "\e770"; }
+
+.cap-icon-shu-shouqi:before { content: "\e69d"; }
+
+.cap-icon-shangyitiao:before { content: "\e643"; }
+
+.cap-icon-xiayitiao:before { content: "\e644"; }
+
+.cap-icon-first-page:before { content: "\e601"; }
+
+.cap-icon-last-page:before { content: "\e600"; }
+
+.cap-icon-zhiding:before { content: "\e6d3"; }
+
+.cap-icon-xia:before { content: "\e6aa"; }
+
+.cap-icon-you:before { content: "\e6ac"; }
+
+.cap-icon-zuo:before { content: "\e6ab"; }
+
+.cap-icon-shang:before { content: "\e6a9"; }
+
+.cap-icon-paixu-shangjiantou:before { content: "\e623"; }
+
+.cap-icon-arrow-line-right:before { content: "\e777"; }
+
+.cap-icon-arrow-line-left:before { content: "\e778"; }
+
+.cap-icon-paixu-xiajiantou:before { content: "\e624"; }
+
+.cap-icon-zidingyishouyejinexiatiao:before { content: "\e65f"; }
+
+.cap-icon-arrow-dottedline-left:before { content: "\e77b"; }
+
+.cap-icon-zidingyishouyejineshangtiao:before { content: "\e65e"; }
+
+.cap-icon-ziduanjiantou:before { content: "\e6b0"; }
+
+.cap-icon-youjiantou:before { content: "\e688"; }
+
+.cap-icon-youjiantou-copy:before { content: "\e653"; }
+
+.cap-icon-youjiantou2:before { content: "\e656"; }
+
+.cap-icon-zuojiantou:before { content: "\e687"; }
+
+.cap-icon-jianhao:before { content: "\e6b4"; }
+
+.cap-icon-jiahao:before { content: "\e6b3"; }
+
+.cap-icon-zengjia:before { content: "\e689"; }
+
+.cap-icon-jianshao:before { content: "\e68a"; }
+
+.cap-icon-liuchengbiaodan:before { content: "\e685"; }
+
+.cap-icon-wuliuchengbiaodan:before { content: "\e686"; }
+
+.cap-icon-youliucheng:before { content: "\e69f"; }
+
+.cap-icon-wuliucheng:before { content: "\e69e"; }
+
+.cap-icon-moban:before { content: "\e604"; }
+
+.cap-icon-yingyong:before { content: "\e605"; }
+
+.cap-icon-menu:before { content: "\e78c"; }
+
+.cap-icon-application:before { content: "\e78d"; }
+
+.cap-icon-cap:before { content: "\e78e"; }
+
+.cap-icon-xuanduoren:before { content: "\e673"; }
+
+.cap-icon-xuanren:before { content: "\e674"; }
+
+.cap-icon-xuanduobumen:before { content: "\e67b"; }
+
+.cap-icon-xuanbumen:before { content: "\e670"; }
+
+.cap-icon-xuanduodanwei:before { content: "\e672"; }
+
+.cap-icon-xuandanwei:before { content: "\e671"; }
+
+.cap-icon-xuanduogangwei:before { content: "\e67c"; }
+
+.cap-icon-xuangangwei:before { content: "\e67d"; }
+
+.cap-icon-xuanzhiwujibie:before { content: "\e67e"; }
+
+.cap-icon-xuanduozhiwujibie:before { content: "\e67f"; }
+
+.cap-icon-tupianxiala:before { content: "\e6bb"; }
+
+.cap-icon-tupiandanxuan:before { content: "\e6ba"; }
+
+.cap-icon-shangchuantupian:before { content: "\e63e"; }
+
+.cap-icon-tupian:before { content: "\e664"; }
+
+.cap-icon-ditubiaozhubianjitai:before { content: "\e63a"; }
+
+.cap-icon-weizhidingweibianjitai:before { content: "\e63c"; }
+
+.cap-icon-paizhaodingwei:before { content: "\e63d"; }
+
+.cap-icon-liuchengchuliyijian:before { content: "\e65a"; }
+
+.cap-icon-wenbenyu:before { content: "\e669"; }
+
+.cap-icon-wenben:before { content: "\e668"; }
+
+.cap-icon-shuzi:before { content: "\e662"; }
+
+.cap-icon-riqixuanze:before { content: "\e65d"; }
+
+.cap-icon-riqishijian:before { content: "\e6a1"; }
+
+.cap-icon-fuxuan-xuanzhong:before { content: "\e6a4"; }
+
+.cap-icon-fuxuan-moren:before { content: "\e6a5"; }
+
+.cap-icon-danxuan-xuanzhong:before { content: "\e640"; }
+
+.cap-icon-danxuan-moren:before { content: "\e63f"; }
+
+.cap-icon-xialazujian:before { content: "\e66c"; }
+
+.cap-icon-zidingyi:before { content: "\e6bd"; }
+
+.cap-icon-yulan:before { content: "\e61c"; }
+
+.cap-icon-erweima:before { content: "\e637"; }
+
+.cap-icon-saoyisao:before { content: "\e639"; }
+
+.cap-icon-fujian:before { content: "\e655"; }
+
+.cap-icon-PCxuanzeqi:before { content: "\e6b8"; }
+
+.cap-icon-mingxibiaoxuanzeqi:before { content: "\e636"; }
+
+.cap-icon-zhubiaoxuanzeqi:before { content: "\e62d"; }
+
+.cap-icon-tuodongxian:before { content: "\e6ad"; }
+
+.cap-icon-tuozhuai:before { content: "\e665"; }
+
+.cap-icon-wenjianjia:before { content: "\e682"; }
+
+.cap-icon-shanchu:before { content: "\e62c"; }
+
+.cap-icon-unpublished:before { content: "\e7b7"; }
+
+.cap-icon-sample:before { content: "\e7b8"; }
+
+.cap-icon-cost-management:before { content: "\e7a2"; }
+
+.cap-icon-plan-management:before { content: "\e7a3"; }
+
+.cap-icon-customer-management:before { content: "\e7a4"; }
+
+.cap-icon-salary-management:before { content: "\e7b4"; }
+
+.cap-icon-human-resources:before { content: "\e7bd"; }
+
+.cap-icon-administrative-management:before { content: "\e7d4"; }
+
+.cap-icon-bidding-management:before { content: "\e7d5"; }
+
+.cap-icon-asset-management:before { content: "\e7d6"; }
+
+.cap-icon-contract-management:before { content: "\e7d7"; }
+
+.cap-icon-back:before { content: "\e8ea"; }
+
+.cap-icon-forward:before { content: "\e8eb"; }
+
+.cap-icon-big-screen:before { content: "\e8ec"; }
+
+.cap-icon-tanhao-xian:before { content: "\e6a6"; }
+
+.cap-icon-news-classification4:before { content: "\e8ed"; }
+
+.cap-icon-news-classification2:before { content: "\e8ee"; }
+
+.cap-icon-news-classification1:before { content: "\e8ef"; }
+
+.cap-icon-news-classification3:before { content: "\e8f0"; }
+
+.cap-icon-Stars:before { content: "\e8f1"; }
+
+.cap-icon-Halfstar:before { content: "\e8f2"; }
+
+.cap-icon-xls_16:before { content: "\e8f3"; }
+
+.cap-icon-doc_16:before { content: "\e8f4"; }
+
+.cap-icon-pdf_16:before { content: "\e8f5"; }
+
+.cap-icon-txt_16:before { content: "\e8f6"; }
+
+.cap-icon-WpsWord:before { content: "\e8f7"; }
+
+.cap-icon-xls2_16:before { content: "\e8f8"; }
+
+.cap-icon-extended_blue_16:before { content: "\e8f9"; }
+
+.cap-icon-extended_red_16:before { content: "\e8fa"; }
+
+.cap-icon-meeting_inform_16:before { content: "\e8fb"; }
+
+.cap-icon-signature_16:before { content: "\e8fc"; }
+
+.cap-icon-specify_fallback_16:before { content: "\e8fd"; }
+
+.cap-icon-red_text_template_16:before { content: "\e8fe"; }
+
+.cap-icon-flow_template_16:before { content: "\e8ff"; }
+
+.cap-icon-collaboration_16:before { content: "\e900"; }
+
+.cap-icon-lately_flow_template_16:before { content: "\e901"; }
+
+.cap-icon-format_template_16:before { content: "\e902"; }
+
+.cap-icon-markedAsRead:before { content: "\e903"; }
+
+.cap-icon-cartravel:before { content: "\e904"; }
+
+.cap-icon-corpinfor:before { content: "\e905"; }
+
+.cap-icon-cardeptmoneymgr:before { content: "\e906"; }
+
+.cap-icon-ordermanage:before { content: "\e907"; }
+
+.cap-icon-callcar:before { content: "\e908"; }
+
+.cap-icon-benifitconfig:before { content: "\e909"; }
+
+.cap-icon-neigousso:before { content: "\e90a"; }
+
+.cap-icon-neigoupoint:before { content: "\e90b"; }
+
+.cap-icon-neigouledger:before { content: "\e90c"; }
+
+.cap-icon-conferenceCallControl:before { content: "\e90d"; }
+
+.cap-icon-save-and-copy:before { content: "\e7a5"; }
+
+.cap-icon-cancel:before { content: "\e7a8"; }
+
+.cap-icon-save-and-modify-next:before { content: "\e7a6"; }
+
+.cap-icon-save-and-build:before { content: "\e7a7"; }
+
+.cap-icon-Reportform-follow:before { content: "\e90e"; }
+
+.cap-icon-right-angle:before { content: "\e7a9"; }
+
+.cap-icon-common_second_0:before { content: "\e90f"; }
+
+.cap-icon-common_second_1:before { content: "\e910"; }
+
+.cap-icon-common_second_2:before { content: "\e911"; }
+
+.cap-icon-common_second_3:before { content: "\e912"; }
+
+.cap-icon-common_second_4:before { content: "\e913"; }
+
+.cap-icon-common_second_5:before { content: "\e914"; }
+
+.cap-icon-query:before { content: "\e915"; }
+
+.cap-icon-count:before { content: "\e916"; }
+
+.cap-icon-interview-arrange:before { content: "\e7aa"; }
+
+.cap-icon-post-allocation:before { content: "\e7ab"; }
+
+.cap-icon-all:before { content: "\e7ac"; }
+
+.cap-icon-employee-files:before { content: "\e7ad"; }
+
+.cap-icon-staff-interview:before { content: "\e7ae"; }
+
+.cap-icon-entry-prepare:before { content: "\e7af"; }
+
+.cap-icon-recruitment-demand:before { content: "\e7b0"; }
+
+.cap-icon-employee-turnover:before { content: "\e7b1"; }
+
+.cap-icon-business-home-page:before { content: "\e7b5"; }
+
+.cap-icon-entry-prepare-sheet:before { content: "\e7b3"; }
+
+.cap-icon-leave-nunber:before { content: "\e7b2"; }
+
+.cap-icon-interview-sheet:before { content: "\e7b6"; }
+
+.cap-icon-post-state:before { content: "\e7b9"; }
+
+.cap-icon-staff-attendance:before { content: "\e7ba"; }
+
+.cap-icon-recruitment-configuration:before { content: "\e7bb"; }
+
+.cap-icon-recruitment-demand-sheet:before { content: "\e7bc"; }
+
+.cap-icon-information-maintenance:before { content: "\e7be"; }
+
+.cap-icon-labor-relation:before { content: "\e7bf"; }
+
+.cap-icon-remind:before { content: "\e7c0"; }
+
+.cap-icon-telephone:before { content: "\e7c1"; }
+
+.cap-icon-regular-employee-number:before { content: "\e7c2"; }
+
+.cap-icon-dynamic-report:before { content: "\e7c4"; }
+
+.cap-icon-flow1_16:before { content: "\e920"; }
+
+.cap-icon-flow3_16:before { content: "\e921"; }
+
+.cap-icon-liuchengbianji:before { content: "\e922"; }
+
+.cap-icon-infoTemplate_16:before { content: "\e923"; }
+
+.cap-icon-expire-this-month:before { content: "\e7c5"; }
+
+.cap-icon-expire:before { content: "\e7c6"; }
+
+.cap-icon-aiMsgType:before { content: "\e924"; }
+
+.cap-icon-carsq:before { content: "\e925"; }
+
+.cap-icon-important2_16:before { content: "\e6c0"; }
+
+.cap-icon-important4_16:before { content: "\e6ce"; }
+
+.cap-icon-important3_16:before { content: "\e6cf"; }
+
+.cap-icon-important5_16:before { content: "\e6d0"; }
+
+.cap-icon-application-third-party:before { content: "\e92a"; }
+
+.cap-icon-external-item-matching:before { content: "\e7c7"; }
+
+.cap-icon-organization-matching:before { content: "\e7c8"; }
+
+.cap-icon-legality-validation:before { content: "\e7c9"; }
+
+.cap-icon-version-detection:before { content: "\e7ca"; }
+
+.cap-icon-install:before { content: "\e7cb"; }
+
+.cap-icon-yunshangcheng:before { content: "\e7cc"; }
+
+.cap-icon-stateSelected:before { content: "\e92b"; }
+
+.cap-icon-u8integrated:before { content: "\e92c"; }
+
+.cap-icon-aboutA6:before { content: "\e92d"; }
+
+.cap-icon-userwoucher:before { content: "\e92e"; }
+
+.cap-icon-entry-number-m:before { content: "\e7d1"; }
+
+.cap-icon-employee-number-m:before { content: "\e7d2"; }
+
+.cap-icon-entry-number-pc:before { content: "\e7cd"; }
+
+.cap-icon-employee-number-pc:before { content: "\e7ce"; }
+
+.cap-icon-posting_registration_thin_16:before { content: "\e92f"; }
+
+.cap-icon-register_of_receipt_16:before { content: "\e930"; }
+
+.cap-icon-terminate-matter:before { content: "\e7cf"; }
+
+.cap-icon-end-matter:before { content: "\e7d0"; }
+
+.cap-icon-workbench:before { content: "\e931"; }
+
+.cap-icon-businessMonitorCenter:before { content: "\e932"; }
+
+.cap-icon-take-up:before { content: "\e933"; }
+
+.cap-icon-switch-light-form:before { content: "\e7d3"; }
+
+.cap-icon-businessManagementCenter:before { content: "\e934"; }
+
+.cap-icon-portal-settings:before { content: "\e935"; }
+
+.cap-icon-association-application-settings:before { content: "\e936"; }
+
+.cap-icon-HR-management:before { content: "\e937"; }
+
+.cap-icon-application-settings:before { content: "\e938"; }
+
+.cap-icon-icon43:before { content: "\e939"; }
+
+.cap-icon-icon42:before { content: "\e93a"; }
+
+.cap-icon-icon41:before { content: "\e93b"; }
+
+.cap-icon-icon40:before { content: "\e93c"; }
+
+.cap-icon-icon39:before { content: "\e93d"; }
+
+.cap-icon-icon38:before { content: "\e93e"; }
+
+.cap-icon-icon37:before { content: "\e93f"; }
+
+.cap-icon-icon36:before { content: "\e940"; }
+
+.cap-icon-icon35:before { content: "\e941"; }
+
+.cap-icon-icon34:before { content: "\e942"; }
+
+.cap-icon-icon33:before { content: "\e943"; }
+
+.cap-icon-icon32:before { content: "\e944"; }
+
+.cap-icon-icon31:before { content: "\e945"; }
+
+.cap-icon-icon30:before { content: "\e946"; }
+
+.cap-icon-icon29:before { content: "\e947"; }
+
+.cap-icon-icon28:before { content: "\e948"; }
+
+.cap-icon-icon27:before { content: "\e949"; }
+
+.cap-icon-icon26:before { content: "\e94a"; }
+
+.cap-icon-icon25:before { content: "\e94b"; }
+
+.cap-icon-icon24:before { content: "\e94c"; }
+
+.cap-icon-icon23:before { content: "\e94d"; }
+
+.cap-icon-icon22:before { content: "\e94e"; }
+
+.cap-icon-icon21:before { content: "\e94f"; }
+
+.cap-icon-icon20:before { content: "\e950"; }
+
+.cap-icon-icon19:before { content: "\e951"; }
+
+.cap-icon-icon18:before { content: "\e952"; }
+
+.cap-icon-icon17:before { content: "\e953"; }
+
+.cap-icon-icon16:before { content: "\e954"; }
+
+.cap-icon-icon15:before { content: "\e955"; }
+
+.cap-icon-icon14:before { content: "\e956"; }
+
+.cap-icon-icon13:before { content: "\e957"; }
+
+.cap-icon-icon12:before { content: "\e958"; }
+
+.cap-icon-icon11:before { content: "\e959"; }
+
+.cap-icon-icon10:before { content: "\e95a"; }
+
+.cap-icon-icon9:before { content: "\e95b"; }
+
+.cap-icon-icon8:before { content: "\e95c"; }
+
+.cap-icon-icon7:before { content: "\e95d"; }
+
+.cap-icon-icon6:before { content: "\e95e"; }
+
+.cap-icon-icon5:before { content: "\e95f"; }
+
+.cap-icon-icon4:before { content: "\e960"; }
+
+.cap-icon-icon3:before { content: "\e961"; }
+
+.cap-icon-icon2:before { content: "\e962"; }
+
+.cap-icon-icon1:before { content: "\e963"; }
+
+.cap-icon-987caidan_zuzhijiagou-copy:before { content: "\e964"; }
+
+.cap-icon-report-unread:before { content: "\e965"; }
+
+.cap-icon-noData:before { content: "\e80c"; }
+
+.cap-icon-list-screen:before { content: "\e80d"; }
+
+.cap-icon-customer-visit:before { content: "\e80e"; }
+
+.cap-icon-business-opportunity-follow:before { content: "\e80f"; }
+
+.cap-icon-sales-order:before { content: "\e810"; }
+
+.cap-icon-product-storage:before { content: "\e811"; }
+
+.cap-icon-sales-delivery:before { content: "\e812"; }
+
+.cap-icon-index-review:before { content: "\e813"; }
+
+.cap-icon-product-pricing-adjustment:before { content: "\e814"; }
+
+.cap-icon-will-contact-customer:before { content: "\e815"; }
+
+.cap-icon-not-contact-customer:before { content: "\e816"; }
+
+.cap-icon-lately-contact-customer:before { content: "\e817"; }
+
+.cap-icon-transaction-amount:before { content: "\e818"; }
+
+.cap-icon-new-customer:before { content: "\e81a"; }
+
+.cap-icon-new-business-opportunity:before { content: "\e81b"; }
+
+.cap-icon-cost-budget-control:before { content: "\e81d"; }
+
+.cap-icon-budget-adjustment:before { content: "\e81f"; }
+
+.cap-icon-cost-budget-review:before { content: "\e820"; }
+
+.cap-icon-budget-transfer:before { content: "\e822"; }
+
+.cap-icon-contract-approval:before { content: "\e823"; }
+
+.cap-icon-contract-entry:before { content: "\e824"; }
+
+.cap-icon-contract-payment:before { content: "\e828"; }
+
+.cap-icon-contract-supplement:before { content: "\e825"; }
+
+.cap-icon-contract-change:before { content: "\e826"; }
+
+.cap-icon-contract-state-change:before { content: "\e827"; }
+
+.cap-icon-contract-receipts:before { content: "\e829"; }
+
+.cap-icon-available-balance:before { content: "\e82e"; }
+
+.cap-icon-available-balance-plan:before { content: "\e82f"; }
+
+.cap-icon-surplus-amount:before { content: "\e82b"; }
+
+.cap-icon-budget-amount-plan:before { content: "\e82c"; }
+
+.cap-icon-budget-amount:before { content: "\e82d"; }
+
+.cap-icon-pending-payment-plan:before { content: "\e830"; }
+
+.cap-icon-volume:before { content: "\e835"; }
+
+.cap-icon-contract-change-plan:before { content: "\e831"; }
+
+.cap-icon-perform-contract-number-plan:before { content: "\e836"; }
+
+.cap-icon-pending-payment:before { content: "\e832"; }
+
+.cap-icon-perform-contract-number:before { content: "\e837"; }
+
+.cap-icon-contract-change1:before { content: "\e833"; }
+
+.cap-icon-new-customer-plan:before { content: "\e838"; }
+
+.cap-icon-transaction-amount-plan:before { content: "\e839"; }
+
+.cap-icon-used-amount:before { content: "\e83a"; }
+
+.cap-icon-termination-contract-number:before { content: "\e83b"; }
+
+.cap-icon-list-screen-not:before { content: "\e83c"; }
+
+.cap-icon-list-screen-after:before { content: "\e83d"; }
+
+.cap-icon-link:before { content: "\e83e"; }
+
+.cap-icon-form-to-document:before { content: "\e83f"; }
+
+.cap-icon-choose-meetingroom:before { content: "\e840"; }
+
+.cap-icon-corporation-credit:before { content: "\e841"; }
+
+.cap-icon-e-invoice:before { content: "\e842"; }
+
+.cap-icon-credentials-recognition:before { content: "\e843"; }
+
+.cap-icon-office-consumable:before { content: "\e84a"; }
+
+.cap-icon-consumable-stock-plan:before { content: "\e844"; }
+
+.cap-icon-business-travel:before { content: "\e84b"; }
+
+.cap-icon-consumable-stock:before { content: "\e845"; }
+
+.cap-icon-consumable-use:before { content: "\e848"; }
+
+.cap-icon-ask:before { content: "\e84c"; }
+
+.cap-icon-consumable-use-plan:before { content: "\e849"; }
+
+.cap-icon-book-return:before { content: "\e84d"; }
+
+.cap-icon-book-borrow:before { content: "\e84e"; }
+
+.cap-icon-book-number-plan:before { content: "\e846"; }
+
+.cap-icon-book-number:before { content: "\e847"; }
+
+.cap-icon-file-examine-submit:before { content: "\e84f"; }
+
+.cap-icon-data-borrow-extract:before { content: "\e850"; }
+
+.cap-icon-data-number:before { content: "\e851"; }
+
+.cap-icon-in-storage-nember:before { content: "\e852"; }
+
+.cap-icon-in-storage-nember-plan:before { content: "\e853"; }
+
+.cap-icon-use-nember:before { content: "\e854"; }
+
+.cap-icon-maintenance-nember-plan:before { content: "\e855"; }
+
+.cap-icon-maintenance-nember-plan1:before { content: "\e856"; }
+
+.cap-icon-use-nember-plan:before { content: "\e857"; }
+
+.cap-icon-no-inventory:before { content: "\e858"; }
+
+.cap-icon-asset-allocate:before { content: "\e859"; }
+
+.cap-icon-asset-faulty:before { content: "\e85a"; }
+
+.cap-icon-asset-purchase:before { content: "\e85b"; }
+
+.cap-icon-asset-use:before { content: "\e85c"; }
+
+.cap-icon-asset-borrow:before { content: "\e85d"; }
+
+.cap-icon-asset-transfer:before { content: "\e85e"; }
+
+.cap-icon-asset-maintenance:before { content: "\e85f"; }
+
+.cap-icon-overdue-task-number-plan:before { content: "\e860"; }
+
+.cap-icon-tbd-work-task-number:before { content: "\e861"; }
+
+.cap-icon-tbd-work-task-number-plan:before { content: "\e862"; }
+
+.cap-icon-overdue-task-number:before { content: "\e863"; }
+
+.cap-icon-tbd-project-task-number-plan:before { content: "\e864"; }
+
+.cap-icon-tbd-project-task-number:before { content: "\e865"; }
+
+.cap-icon-company-work-task-examine:before { content: "\e866"; }
+
+.cap-icon-adjust-work-task-condition:before { content: "\e867"; }
+
+.cap-icon-tbd-task-month:before { content: "\e868"; }
+
+.cap-icon-group-work-task-examine:before { content: "\e869"; }
+
+.cap-icon-adjust-work-task-information:before { content: "\e86a"; }
+
+.cap-icon-department-work-task-examine:before { content: "\e86b"; }
+
+.cap-icon-project-task-examine:before { content: "\e86c"; }
+
+.cap-icon-adjust-project-task-condition:before { content: "\e86d"; }
+
+.cap-icon-adjust-project-task-information:before { content: "\e86e"; }
+
+.cap-icon-payment:before { content: "\e86f"; }
+
+.cap-icon-reimbursement:before { content: "\e870"; }
+
+.cap-icon-travel-expense:before { content: "\e871"; }
+
+.cap-icon-OnlineService:before { content: "\e991"; }
+
+.cap-icon-menu-currency:before { content: "\e992"; }
+
+.cap-icon-menu-cost:before { content: "\e891"; }
+
+.cap-icon-cost-adjust:before { content: "\e873"; }
+
+.cap-icon-cost-budget:before { content: "\e874"; }
+
+.cap-icon-cost-use:before { content: "\e875"; }
+
+.cap-icon-contract-information:before { content: "\e876"; }
+
+.cap-icon-receipts-payment:before { content: "\e877"; }
+
+.cap-icon-contract-implement:before { content: "\e878"; }
+
+.cap-icon-book-management:before { content: "\e879"; }
+
+.cap-icon-data-management:before { content: "\e87a"; }
+
+.cap-icon-daily-affairs:before { content: "\e87b"; }
+
+.cap-icon-consumables-management:before { content: "\e87c"; }
+
+.cap-icon-asset-change:before { content: "\e87d"; }
+
+.cap-icon-asset-used:before { content: "\e87e"; }
+
+.cap-icon-asset-information:before { content: "\e87f"; }
+
+.cap-icon-change-record:before { content: "\e880"; }
+
+.cap-icon-work-task:before { content: "\e881"; }
+
+.cap-icon-task-implement:before { content: "\e882"; }
+
+.cap-icon-project-task:before { content: "\e883"; }
+
+.cap-icon-my-niche:before { content: "\e872"; }
+
+.cap-icon-company-customer:before { content: "\e884"; }
+
+.cap-icon-personal-customer:before { content: "\e885"; }
+
+.cap-icon-customer:before { content: "\e886"; }
+
+.cap-icon-product-price:before { content: "\e887"; }
+
+.cap-icon-niche-sales:before { content: "\e888"; }
+
+.cap-icon-activity-case:before { content: "\e889"; }
+
+.cap-icon-salesman:before { content: "\e88a"; }
+
+.cap-icon-apply-personnel:before { content: "\e88b"; }
+
+.cap-icon-query-information:before { content: "\e9ae"; }
+
+.cap-icon-used-amount-plan:before { content: "\e88c"; }
+
+.cap-icon-new-business-opportunity-plan:before { content: "\e88d"; }
+
+.cap-icon-person-template:before { content: "\e9af"; }
+
+.cap-icon-dropdown-operation:before { content: "\e9b0"; }
+
+.cap-icon-task-risk:before { content: "\e9b1"; }
+
+.cap-icon-task-milestone:before { content: "\e9b2"; }
+
+.cap-icon-space:before { content: "\e88e"; }
+
+.cap-icon-business-map:before { content: "\e88f"; }
+
+.cap-icon-business-menu:before { content: "\e890"; }
+
+.cap-icon-save-as:before { content: "\e892"; }
+
+.cap-icon-comment-plan:before { content: "\e893"; }
+
+.cap-icon-comment-line:before { content: "\e894"; }
+
+.cap-icon-total-calculate:before { content: "\e895"; }
+
+.cap-icon-arrow-crude-up:before { content: "\e896"; }
+
+.cap-icon-meeting_pause:before { content: "\e9b3"; }
+
+.cap-icon-auto-collect:before { content: "\e897"; }
+
+.cap-icon-match-monitor:before { content: "\e898"; }
+
+.cap-icon-parameter:before { content: "\e899"; }
+
+.cap-icon-map-positioning:before { content: "\e89a"; }
+
+.cap-icon-exterior-style:before { content: "\e89b"; }
+
+.cap-icon-Asynchrony:before { content: "\e8a4"; }
+
+.cap-icon-no-border:before { content: "\e89e"; }
+
+.cap-icon-full-border:before { content: "\e89f"; }
+
+.cap-icon-bottom-border:before { content: "\e8a0"; }
+
+.cap-icon-title-change-line:before { content: "\e8a1"; }
+
+.cap-icon-synchronization:before { content: "\e8a5"; }
+
+.cap-icon-no-title:before { content: "\e8a2"; }
+
+.cap-icon-title-abreast:before { content: "\e8a3"; }
+
+.cap-icon-recover:before { content: "\e89c"; }
+
+.cap-icon-revoke:before { content: "\e89d"; }
+
+.cap-icon-informal:before { content: "\e8a6"; }
+
+.cap-icon-running-log:before { content: "\e8a7"; }
+
+.cap-icon-configuration-log:before { content: "\e8a8"; }
+
+.cap-icon-slow-SQL:before { content: "\e8a9"; }
+
+.cap-icon-trigger-queue:before { content: "\e8aa"; }
+
+.cap-icon-title-behind:before { content: "\e8ab"; }
+
+.cap-icon-title-before:before { content: "\e8ac"; }
+
+.cap-icon-formula-set:before { content: "\e9b4"; }
+
+.cap-icon-expire-m:before { content: "\e8ad"; }
+
+.cap-icon-cooperate-supplier:before { content: "\e8b0"; }
+
+.cap-icon-cooperate-supplier-m:before { content: "\e8b1"; }
+
+.cap-icon-qualified-supplier:before { content: "\e8ae"; }
+
+.cap-icon-expire1:before { content: "\e8af"; }
+
+.cap-icon-doc-sentevent:before { content: "\e9b5"; }
+
+.cap-icon-doc-doneevent:before { content: "\e9b6"; }
+
+.cap-icon-doc-unsentevent:before { content: "\e9b7"; }
+
+.cap-icon-trust-contract:before { content: "\e8da"; }
+
+.cap-icon-activist-m:before { content: "\e8db"; }
+
+.cap-icon-party-member-total:before { content: "\e8de"; }
+
+.cap-icon-probationary-Party-member:before { content: "\e8df"; }
+
+.cap-icon-activist:before { content: "\e8e0"; }
+
+.cap-icon-development-object:before { content: "\e8e1"; }
+
+.cap-icon-development-object-m:before { content: "\e8dc"; }
+
+.cap-icon-party-member-total-m:before { content: "\e8dd"; }
+
+.cap-icon-marking-m:before { content: "\e8e2"; }
+
+.cap-icon-bid-evaluation-m:before { content: "\e8e3"; }
+
+.cap-icon-tendering-m:before { content: "\e8e4"; }
+
+.cap-icon-tendering:before { content: "\e8e5"; }
+
+.cap-icon-marking:before { content: "\e8e6"; }
+
+.cap-icon-tendering-sum:before { content: "\e8e7"; }
+
+.cap-icon-bid-evaluation:before { content: "\e8e8"; }
+
+.cap-icon-order-un-entry-m:before { content: "\e8e9"; }
+
+.cap-icon-order-un-entry:before { content: "\e919"; }
+
+.cap-icon-order-entry:before { content: "\e91a"; }
+
+.cap-icon-procurement-plan-m:before { content: "\e917"; }
+
+.cap-icon-procurement-plan-m1:before { content: "\e91b"; }
+
+.cap-icon-order-number-m:before { content: "\e918"; }
+
+.cap-icon-order-number-m1:before { content: "\e91c"; }
+
+.cap-icon-save-and-close:before { content: "\e91d"; }
+
+.cap-icon-down-close:before { content: "\e91e"; }
+
+.cap-icon-up-open:before { content: "\e91f"; }
+

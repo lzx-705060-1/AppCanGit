@@ -1,0 +1,503 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-27 12:58:56
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:31:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/flexible.js?buildversion=181210172727"></script>
+    <title></title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/commons/fonts/iconfont.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/commons/css/base.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172727">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/todo-list.css?buildversion=181210172727">
+    <script>
+        var defaultImg = '/seeyon/m3/apps/v5/portal/todo/commons/imgs/default.png';
+    </script>
+</head>
+<script type="text/html" id="shortcut">
+    
+    <% var length = this.length, COUNT = this.length, iconPageCount = Math.ceil(this.length/9); %>
+    <div class="cmp-slider-group">   
+        <% for(var j = 0; j < iconPageCount; j++){ %>
+            <div class="cmp-slider-item">
+                <ul class="cmp-table-view cmp-grid-view cmp-grid-9">
+                    <% length -= 9; %>
+                    <% if( length >= 0 ){ %>
+                        <% for(var i = 0;i < 9; i++){ %>
+                            <% var obj = this[i]; %>
+                            <% if (obj) { %>
+                                <% var positionClass = (i+1)%3==1?"atLeft":(i+1)%3==0?"atRight":""; %>
+                                <li  class="cmp-table-view-cell cmp-media cmp-col-xs-4 cmp-col-sm-4 <%=positionClass %>" data-appId="<%=obj.appId%> gotoParam=<%=obj.gotoParam %>">
+                                <%var appIcon = m3.appIcon[obj.bundleName];%>
+                                <% if(appIcon){%>
+                                    <div class="icon_bg <%=appIcon.css%>" >
+                                        <span class="iconfont <%=appIcon.icon%>"></span>
+                                    </div>
+                                    <div class="cmp-media-body"> <%=cmp.i18n(appIcon.text)%> </div>
+                                <%}else{%>
+                                    <div class="icon_bg <%=appIcon%>" data-appid="<%=obj.appId%>">
+                                        <span class="iconfont <%=appIcon%>"></span>
+                                    </div>
+                                    <div class="cmp-media-body"> <%=appIcon%> </div>
+                                <%}%>
+                                </li>
+                            <% } %>
+                        <%}%>
+                    <%}else{%>
+                        <% if (COUNT > 9) { %>
+                            <% for(var k = 9,len = this.length % 9 + 9;k < len; k++){ %>
+                                <% var obj = this[k]; %>
+                                <% if (obj) { %>
+                                    <% var positionClass = (k+1)%3==1?"atLeft":(k+1)%3==0?"atRight":""; %>
+                                    <li  class="cmp-table-view-cell cmp-media cmp-col-xs-4 cmp-col-sm-4 <%=positionClass %>" data-appId="<%=obj.appId%> gotoParam=<%=obj.gotoParam %>">
+                                    <%var appIcon = m3.appIcon[obj.bundleName];%>
+                                    <% if(appIcon){%>
+                                        <div class="icon_bg <%=appIcon.css%>" >
+                                            <span class="iconfont <%=appIcon.icon%>"></span>
+                                        </div>
+                                        <div class="cmp-media-body"> <%=cmp.i18n(appIcon.text)%> </div>
+                                    <%}else{%>
+                                        <div class="icon_bg <%=appIcon%>" data-appid="<%=obj.appId%>">
+                                            <span class="iconfont <%=appIcon%>"></span>
+                                        </div>
+                                        <div class="cmp-media-body"> <%=appIcon%> </div>
+                                    <%}%>
+                                    </li>
+                                <% } %>
+                            <% } %>
+                        <% } else { %>
+                            <% for(var n = 0;n < 9; n++){ %>
+                                <% var obj = this[n]; %>
+                                <% if (obj) { %>
+                                    <% var positionClass = (n+1)%3==1?"atLeft":(n+1)%3==0?"atRight":""; %>
+                                    <li  class="cmp-table-view-cell cmp-media cmp-col-xs-4 cmp-col-sm-4 <%=positionClass %>" data-appId="<%=obj.appId%>" gotoParam='<%=obj.gotoParam %>'>
+                                    <%var appIcon = m3.appIcon[obj.bundleName];%>
+                                    <% if(appIcon){%>
+                                        <div class="icon_bg <%=appIcon.css%>" >
+                                            <span class="iconfont <%=appIcon.icon%>"></span>
+                                        </div>
+                                        <div class="cmp-media-body"> <%=cmp.i18n(appIcon.text)%> </div>
+                                    <%}else{%>
+                                        <div class="icon_bg <%=appIcon%>" data-appid="<%=obj.appId%>">
+                                            <span class="iconfont <%=appIcon%>"></span>
+                                        </div>
+                                        <div class="cmp-media-body"> <%=appIcon%> </div>
+                                    <%}%>
+                                    </li>
+                                <% } %>
+                            <%}%>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        <%}%>
+    </div>
+    <% if( iconPageCount > 1 ){ %>
+        <div class="cmp-slider-indicator">
+        <% var className = ''; %>
+        <% for(var f = 0; f < iconPageCount; f++){ %>
+            <% f == 0 ? className = 'cmp-active' : className = ''; %>
+            <div class="cmp-indicator <%= className %>"></div>
+        <%}%>
+        </div>
+    <%}%>
+</script>
+
+<script type="text/html" id="pending_li_tpl">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i];%>
+    <% if (obj.appId == "10" || obj.appId == "3" || obj.appId == "4" || obj.appId == "6" || obj.appId == "1" || obj.appId == "7" || obj.appId == "8" || obj.appId == "9" || obj.appId == "40" || obj.appId == "26") { %>
+    <li class="<%= obj.readonly%> <%=obj.status%>" data-affairId="<%= obj.affairId%>" data-appId="<%= obj.appId%>"
+        data-gotoParams=<%=obj.gotoParams%>>
+        <% var appIcon = m3.appIcon['appid_'+obj.appId+obj.subAppId];%>
+            <!--<div class="img" style="background-image:url(<%=(obj.senderFaceUrl + '?maxWidth=200')%>),url(<%=defaultImg%>);background-size:cover;background-position:center center;background-repeat:no-repeat;"></div> -->
+
+        <div class="content">
+            <div class="info read">
+                <% if (obj.grade != "normal") { %>
+                <span class="iconfont see-icon-m3-important-<%=obj.grade%>"></span>
+                <% } %>
+                <%=obj.content.escapeHTML()%>
+
+            </div>
+
+           <!-- <div class="info2">
+             <!--   <% if(appIcon){%>
+              <!--  <span>[<%=cmp.i18n(appIcon.text)%>]</span>
+              <!--  <%}else{%>
+              <!--  <span>[其他]</span>
+             <!--   <%}%>
+              <!--  <span class="author"><%=obj.senderName%></span> -->
+               <!--   <span class="time"><%=obj.createTime%></span> -->
+
+
+              <!--  <% if (obj.hasAttachment == true) { %>
+               <!-- <span class="iconfont see-icon-m3-attachment"></span>
+              <!--  <% } %>
+              <!--  <% if (obj.beBack == true) { %>
+              <!--  <span class="iconfont see-icon-m3-rollback-fill"></span>
+              <!--  <% } %>
+              <!--  <% if (obj.remainingTime == "true") { %>
+              <!--  <span class="iconfont see-icon-m3-time-bold"></span>
+             <!--   <% } %>
+            </div>
+
+
+            <% if (obj.affairSubStatus == "13" || obj.affairSubStatus == "19") { %>
+            <div class="staging"><span><%=cmp.i18n("todo.m3.h5.staging")%></span></div>
+            <% } %>
+            <% if (obj.joinMeetingState == "FEEDBACK_FLAG_ATTEND") { %>
+            <div class="staging"><span><%=cmp.i18n("todo.m3.h5.join")%></span></div>
+            <% } %>
+            <% if (obj.joinMeetingState == "FEEDBACK_FLAG_HOLD") { %>
+            <div class="staging"><span><%=cmp.i18n("todo.m3.h5.determined")%></span></div>
+            <% } %>
+
+            <% if (obj.appId != "26" && obj.appId != "4" && obj.appId != "7" && obj.appId != "8" && obj.appId != "9" && obj.appId != "40") { %>
+            <% if(obj.subAppId != "8") {%>
+            <div class="reply">
+                <% if (obj.displayValueList&&obj.displayValueList.length==1) { %>
+                <span class="reply_info">
+                    <% if (obj.displayValueList) { %>
+                    <%=obj.displayValueList[0].value%>
+                    <%=cmp.i18n("todo.m3.h5.reply")%>
+                    <% } else { %>
+                    <%=cmp.i18n("todo.m3.h5.noreply")%>
+                    <% } %>
+                </span>
+                <% } %>
+
+                <% if (obj.displayValueList&&obj.displayValueList.length==2) { %>
+                <span class="reply_info">
+                    <% if (obj.displayValueList) { %>
+                    <%=obj.displayValueList[0].value%><%=cmp.i18n("todo.m3.h5.vote")%>&nbsp;&nbsp;
+                    <%=obj.displayValueList[1].value%><%=cmp.i18n("todo.m3.h5.notvote")%>
+                    <% } else { %>
+                    0<%=cmp.i18n("todo.m3.h5.vote")%>&nbsp;&nbsp;
+                    0<%=cmp.i18n("todo.m3.h5.notvote")%>
+                    <% } %>
+                </span>
+                <% } %>
+
+                <% if (obj.displayValueList&&obj.displayValueList.length==4) { %>
+                 <span class="reply_info">
+                    <% if (obj.displayValueList) { %>
+                    <%=obj.displayValueList[0].value%><%=cmp.i18n("todo.m3.h5.people.join")%>&nbsp;&nbsp;
+                    <%=obj.displayValueList[1].value%><%=cmp.i18n("todo.m3.h5.nojoin")%>&nbsp;&nbsp;
+                    <%=obj.displayValueList[2].value%><%=cmp.i18n("todo.m3.h5.people.determined")%>
+                    <% } else { %>
+                    0<%=cmp.i18n("todo.m3.h5.people.join")%>&nbsp;&nbsp;
+                    0<%=cmp.i18n("todo.m3.h5.nojoin")%>&nbsp;&nbsp;
+                    0<%=cmp.i18n("todo.m3.h5.people.determined")%>
+                    <% } %>
+                </span>
+                <% } %>
+            </div>
+            <%}%>
+            <%}%>
+        </div>
+    </li>
+    <!-- 外部,第三方待办 -->
+    <% } else { %>
+    <% if (!sessionStorage.getItem("curAppId")) { %>
+    <li id="thirdList <%=obj.status%>">
+      
+        <div class="content">
+
+            <div class="info read">
+                [<%=cmp.i18n("todo.m3.h5.externalToDo")%>]
+
+          <!-- <div class="info2">-->
+            <!--    <%=obj.content.escapeHTML()%> -->
+           <!--  </div> -->
+
+          <!--   <div class="reply"> -->
+                <!-- <span class="author"><%=obj.senderName%></span> -->
+                <!--  <span class="time"><%=obj.createTime%></span> -->
+               <!--  <% if (obj.hasAttachment == true) { %> -->
+               <!--  <span class="iconfont see-icon-m3-attachment"></span> -->
+               <!--  <% } %>
+           <!--  </div> -->
+        </div>
+    </li>
+	 <% } else if(!obj.senderFaceUrl){ %>
+	 <li id="" class="none read appid-1" sendername="" node_policy="" processid="" summaryid="" url="<%=obj.url%>" time="<%=obj.publish_date%>" title="<%=obj.title%>">
+	 <div class="content">       
+	 <div class="info read">  
+	 <%=obj.title.escapeHTML()%> 
+	 </div>             
+	 </div>   
+	 </li>  
+			
+				
+	 
+    <% } else { %>
+    <li class="thirdList <%= obj.readonly%> <%=obj.status%>" obj-affairId="<%= obj.affairId%>" obj-appId="<%= obj.appId%>"
+        obj-gotoParams=<%=obj.gotoParams%>>
+        <% if (obj.senderFaceUrl) { %>
+          <!--   <img class="img" src=<%=obj.senderFaceUrl%> /> -->
+        </div>
+        <% } else { %>
+        <% } %>
+
+        <div class="content">
+            <% if (obj.appName) { %>
+            <div class="info read"><%=obj.content.escapeHTML()%></div>
+            <% } else { %>
+            <div class="info read"><%=cmp.i18n("todo.m3.h5.externalToDo")%></div>
+            <% } %>
+
+           <!-- <div class="info2"><%=obj.appName%></div> -->
+
+           <!-- <div class="reply"> -->
+                <!-- <span class="author"><%=obj.senderName%></span> -->
+                <!--<span class="time"><%=obj.createTime%></span> -->
+              <!--  <% if (obj.hasAttachment == true) { %>-->
+               <!-- <span class="iconfont see-icon-m3-attachment"></span>-->
+              <!--  <% } %>-->
+            <!--</div> -->
+        </div>
+    </li>
+    <% } %>
+    <% } %>
+    <% } %>
+</script>
+<body>
+    <div class="createFilter display_none"></div>
+
+    <div class="cmp-content cmp-content-none">
+        <div class="cmp-control-content cmp-active">
+            <div class="cmp-segmented_title_content" id="searchPlus" style="display: none">
+                <form action="#" onsubmit="return false;">
+                    <div class="cmp-content-title-search cmp-content-search-add">
+                        <div class="cmp-input-row see-icon-search cmp-search">
+                            <input type="search" placeholder="" class="cmp-input-clear " disabled>
+                            <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+											<span class="cmp-placeholder" id="searchDom">
+                        						<span class="cmp-icon cmp-icon-search"></span>
+                        						<span class="text-search">搜索</span>
+                        					</span>
+                        </div>
+                        <a class="search-title-cancel cmp-icon cmp-icon-plus" ></a>
+                    </div>
+                </form>
+            </div>
+            <!-- 下拉列表 -->
+            <div class="toDo_title gradient flex-h">
+                <div class="nav-left flex-1">
+                    <div id="option" class="option">
+                    </div>
+                    <!--<div id="toggleColumns" class="display_none">切换栏目</div>-->
+                    <span class="sort-btn select display_none"><i18n key="todo.m3.h5.showCategory"></i18n></span>
+                    <span class="sort-btn1 select display_none"><i18n key="todo.m3.h5.drugSort"></i18n></span>
+                    <span class="sort-btn sort display_none"><i18n key="todo.m3.h5.hideSort"></i18n></span>
+                    <span class="sort-btn1 finish display_none"><i18n key="todo.m3.h5.complete"></i18n></span>
+                </div>
+                <div class="nav-right more-action close-status display_none">
+                    <span class="iconfont see-icon-m3-spread"></span>
+                    <span class="iconfont see-icon-m3-close display_none"></span>
+                </div>
+            </div>
+            <div class="toDo_list display_none">
+                <ul class="active-app"></ul>
+                <div class="more">
+                    <i18n key="todo.m3.h5.moreMsg"></i18n>
+                </div>
+                <ul class="unactive-app"></ul>
+            </div>
+            <!--列表容器-->
+            <div id="pullrefresh" class="cmp-scroll-wrapper">
+                <!-- 滚动容器 -->
+                <div class="cmp-scroll">
+                    <!--装载小部件的容器-->
+                    <div class="cmp-pull-widget">
+                        <div class="ai_sort_wrap">
+                            <div class="batch_click ai_sort_btn" id="ai_sort_ok">
+                            	<i18n key="todo.m3.h5.openAISort"></i18n> <!-- 开启智能排序 -->
+                            </div>
+                            <div class="batch_click ai_sort_btn cmp-hidden" id="ai_sort_cancel">
+                                <i18n key="todo.m3.h5.closeAISort"></i18n> <!-- 关闭智能排序 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--数据列表-->
+                    <ul class="toDo_listes">
+                    </ul>
+                </div>
+                <!--<div class="cmp-scroll-parts test-parts ai_sort_wrap" style="display: none;">-->
+                    <!--<div class="batch_click ai_sort_btn" id="ai_sort_cancel">-->
+                    	<!--<i18n key="todo.m3.h5.closeAISort"></i18n> &lt;!&ndash; 关闭智能排序 &ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="create display_none">
+        
+        <div id="slider" class="cmp-slider">
+            
+        </div>
+        <div class="close">
+            <span class="iconfont see-icon-m3-close"></span>
+        </div>
+    </div>
+    
+    <section class="top-bar flex display_none">
+        <div class="flex1" data-target="listDone">
+            <span><img src="../img/已办已发.png"></span>
+            <span>已办已发</span>
+        </div>
+        <div class="flex1" data-target="listSent" style="display: none;">
+            <span class="tb-bg-red1 iconfont see-icon-m3-sendedmatter-fill"></span>
+            <span><i18n key="todo.m3.h5.coorSent"></i18n></span>
+        </div>
+        <div class="flex1" data-target="listWaitSend">
+            <span class="tb-bg-red2 iconfont see-icon-m3-planmatter-fill"></span>
+            <span><i18n key="todo.m3.h5.coorSending"></i18n></span>
+        </div>
+    </section>
+    <div class="top-opacity display_none"></div>
+    <div class="portalFooter cmp-hidden" id="home">
+        <div class="block navTodo" style="width: 33.3%;">
+            <div class="pIcon pIconChoose">
+                <span class="vpDiconfont icon-backlog-fill"></span>
+            </div>
+            <div class="pName pNameChoose">
+                <span><i18n key="portal.bottom.todo"></i18n></span>
+            </div>
+        </div>
+        <div class="block navPortal" style="display: none;">
+            <div class="pIcon">
+                <span class="vpDiconfont icon-information-portal"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="portal.bottom.portal_index"></i18n></span>
+            </div>
+        </div>
+        <div class="block navApp" style="width: 33.3%;">
+            <div class="pIcon">
+                <span class="vpDiconfont icon-wechat-m3-app"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="portal.bottom.all_apps"></i18n></span>
+            </div>
+        </div>
+        <div class="block navUser" style="width: 33.3%;">
+            <div class="pIcon">
+                <span class="vpDiconfont icon-personal-center"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="portal.bottom.personal_center"></i18n></span>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="portalFooter" id="app" style="display: none">
+        <div class="block qywx navPending" style="display: none">
+            <div class="pIcon pIconChoose">
+                <span class="see-icon-v5-common-Pendingwork-plan"></span>
+            </div>
+            <div class="pName pNameChoose">
+                <span><i18n key="portal.bottom.pending"></i18n></span>
+            </div>
+        </div>
+        <div class="block qywx navWorktask" style="display: none;">
+            <div class="pIcon">
+                <span class="see-icon-v5-common-worktask"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="calendar.label.task"></i18n></span>
+            </div>
+        </div>
+        <div class="block qywx navSchedule" style="display: none;">
+            <div class="pIcon">
+                <!-- <span class="vpDiconfont iconfont see-icon-m3-schedule"></span> -->
+                <!-- <span class="see-icon-v5-common-workingaffair"></span> -->
+                <span class="see-icon-v5-common-schedule-fill"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="calendar.label.schedule"></i18n></span>
+            </div>
+        </div>
+    </div>
+    <script src="/seeyon/m3/apps/v5/portal/todo/i18n/todo_zh_CN.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172727"></script>
+    <script>
+        cmp.i18n.init("/seeyon/m3/apps/v5/portal/todo/i18n/", "todo",null,"?buildversion=181210172727");
+        cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal",null,"?buildversion=181210172727");
+        function renderNavBar(){
+            var urlParams = getUrlParams();
+            if(Object.keys(urlParams).length){
+                var weixinFrom = urlParams["weixinFrom"];
+                var homeBar = document.getElementById("home");
+                var appBar = document.getElementById("app");
+                var moreAction = document.querySelector(".more-action");
+                switch (weixinFrom){
+                    case "home":
+                        homeBar.classList.remove("cmp-hidden");
+                        appBar.classList.add("cmp-hidden");
+                        moreAction.classList.remove("display_none");
+                        break;
+                    case "app":
+                        homeBar.classList.add("cmp-hidden");
+                        appBar.classList.remove("cmp-hidden");
+                        break;
+
+                }
+            }
+        }
+        function getUrlParams(){
+            var urlSearch = window.location.search;
+            var urlParams = {};
+            if(urlSearch) {
+                urlSearch = decodeURI(urlSearch);
+                urlSearch = urlSearch.replace(/\?/, "");//把剩下的?和&去掉
+
+                if (urlSearch.indexOf("&") != -1) {
+                    urlSearch = urlSearch.split("&");
+                    for (var i = 0; i < urlSearch.length; i++) {
+                        var oneParamStr = urlSearch[i];
+                        if (oneParamStr) {
+                            urlParams[oneParamStr.substring(0, oneParamStr.indexOf("="))] = oneParamStr.substring(oneParamStr.indexOf("=") + 1);
+                        }
+                    }
+                } else {
+                    urlParams[urlSearch.substring(0, urlSearch.indexOf("="))] = urlSearch.substring(urlSearch.indexOf("=") + 1);
+                }
+            }
+            return urlParams;
+        }
+        renderNavBar();
+
+    </script>
+  
+    <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/zepto-1.2.0.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/m3.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/m3i18n.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/m3Ajax.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/commons/js/m3Map.js?buildversion=181210172727"></script>
+    <script src="/seeyon/m3/apps/v5/portal/todo/js/app_todo_list.js?buildversion=181210173156"></script>
+    <!--微协同行为统计-->
+    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172727" id="__jsdktag"></script>
+    <script src="/seeyon/H5/wechat/js/stastics.js?buildversion=181210172727"></script>
+</body>
+
+</html>

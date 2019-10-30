@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<title></title>
+<!-- 引用表单CSS开始 -->
+<!-- 
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172434" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/docNewPigeonhole.css?buildversion=181210172434" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/form/css/index.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-accDoc.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-selectOrg.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172434">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list.css?buildversion=181210172434">
+引用表单CSS结束
+<link href="/seeyon/m3/apps/v5/workflow/css/wf.css?buildversion=181210172434" rel="stylesheet" type="text/css" /> 
+-->
+
+<style type="text/css">
+    .cmp-table-view:after{ height: 1px; }
+    .border_top:before{  content: ''; width: 100%; left: 0; top:0px; height: 1px; display: inline-block; position: absolute; background-color: #d4d4d4; -webkit-transform: scale(1,0.5); transform: scale(1,0.5); -webkit-transform-origin: center bottom; transform-origin: center bottom; z-index: 10; }
+    .attachment_wrap:after{ height: 0px; }
+    .cmp-table-view-cell:last-child:before{ height: 1px; }
+    .cmp-bar.cmp-bar-footer{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .newCol_lookflow{
+        padding: 8px 0;
+        font-size: 24px;
+    }
+    .dragFixdIcon{
+        box-shadow: 0 0 6px;
+    }
+	.sui-form-ctrl-title{
+		font-size: 13px !important;
+	}
+</style>
+
+</head>
+<body class="cmp-fullscreen">
+
+<!-- 引导 -->
+ <div id="src_form_view_hint" class="new_synergy_hint col display_none" style="right:18px;left:auto;top:110px;position: absolute;transform:translateX(0px);-webkit-transform:translateX(0px)">
+     <i class="circle new"></i>
+     <i class="line new"></i>
+     <div class="content">
+         <div class="text">
+             <div id="src_form_view_hint_txt"><!-- 提示信息 --></div>
+         </div>
+         <div class="btn"><i18n key="collaboration.page.lable.whenExit_2"></i18n><!-- 知道了 --></div>
+     </div>
+ </div>
+ 
+
+<div id="colContentDiv" class="cmp-content absolute new_synergy_content col cmp-col-content cmp-content-none" style="bottom:51px;">
+     <div class="dragFixdIcon display_none" id="dragFixdIcon">
+        <span id="src_form_btn" class="switchIcon see-icon-v5-common-switch-light-form display_none"></span>
+     </div>
+        
+     <div id="contentView" class="wh100 relative" style="overflow: auto;">
+        <div id="colMainData" style="display: none;">
+            <ul class="cmp-table-view new_header_content new-colla-title">
+                <li class="cmp-table-view-cell">
+                    <div id="title_name" class="title flex-item" style="margin-right: 5px;"><i18n key="collaboration.page.lable.subject"></i18n><!-- 标题 -->:</div>
+                    <div id="title_container" class="headline flex-item-auto">
+                        <div id="subject_text" class="text-ellipsis" style="width: 100%;"></div>
+                        <textarea id="subject" _srcHeight="20" maxlength="300" style="display: none;height: 20px;"></textarea></div>
+                </li>
+                <li class="cmp-table-view-cell border_top" style="padding-right: 0px">
+                     <div id="receiver_flex_name" style="flex-basis:68px;" id="receiver_title flex-item" class="title"><i18n key="collaboration.page.lable.receiver"></i18n><!-- 接收人 -->:</div>
+                     <div id="receiver_flex_item" class="flex-item-auto">
+                         <div id="receiver_container_text" class="new_synergy_badge text-ellipsis" style="height:100%; width:100%; display: none;font-size: 16px; color: #333;">&nbsp;</div>
+                         <div id="receiver_container" class="new_synergy_badge" style="max-height : 111px;line-height: 1.3;height:auto; width:100%;overflow-y:auto;overflow-x:hidden;">&nbsp;</div>
+                     </div>
+                     <a id="edit_receiver" class="add_accepter flex-item" href="javascript:void(0)" style="width: 40px;flex-basis:40px; margin: 0;">
+                         <span style="font-size: 24px;" class="see-icon-add-round"></span>
+                     </a>
+                </li>
+                <li class="border_top relative"></li>
+            </ul>
+            <input id="importantLevel" value="1" type="hidden"/>
+            <input id="canTrack" value="1" type="hidden"/>
+            <input id="trackType" name="trackType" value="1" type="hidden"/>
+            <input id="zdgzry" name="zdgzry" value="" type="hidden"/>
+            <input id="resend" value="false" type="hidden"/>
+            <input id="newBusiness" value="1" type="hidden"/>
+            <input id="id" value="" type="hidden"/>
+            
+            <input id="prevArchiveId" value="" type="hidden">
+            <input id="colPigeonhole" value="" type="hidden"/>
+            <input id="bodyType" value="10" type="hidden"/>
+            <input id="tId" value="" type="hidden"/>
+            <input id="formRecordid" name="formRecordid" type="hidden"></input>
+            <input id="formParentid" name="formParentid" type="hidden"></input>
+            <input id="formViewOperation" name="formViewOperation" type="hidden"></input>
+            <input id="formAppid" name="formAppid" type="hidden"></input>
+            <input id="DR" name="DR" type="hidden"></input>
+            <input id="contentTemplateId" name="contentTemplateId" type="hidden"></input>
+            <input id="contentRightId" name="contentRightId" type="hidden" ></input>
+            <input id="contentDataId" name="contentDataId" type="hidden"></input>
+            <!-- 奇葩的两个参数 -->
+            <input id="contentSaveId" value="" type="hidden"/>
+            <input id="contentZWID" value="" type="hidden"/>
+            
+            <input id="canForward" name="canForward" value="1" type="hidden"/>
+            <input id="canModify" name="canModify" value="1" type="hidden"/>
+            <input id="canEdit" name="canEdit" value="1" type="hidden"/>
+            <input id="canEditAttachment" name="canEditAttachment" value="1" type="hidden"/>
+            <input id="canArchive" name="canArchive" value="1" type="hidden"/>
+            <input id="canScanCode" name="canScanCode" value="0" type="hidden"/>
+            <input id="canSetSupervise" name="canSetSupervise" value="1" type="hidden"/>
+            <input id="processTermType" name="processTermType" value="" type="hidden" />
+            <input id="remindInterval" name="remindInterval" value="" type="hidden" />
+            <input id="mergeDealType" name="mergeDealType" value="" type="hidden" />
+            
+            <input id="projectId" name="projectId" value="" type="hidden"/>
+            <input id="archiveId" name="archiveId" value="" type="hidden"/>
+            <input id="deadline" name="deadline" value="" type="hidden"/>
+            <input id="deadlineDatetime" name="deadlineDatetime" value="" type="hidden"/>
+            <input id="awakeDate" name="awakeDate" value="" type="hidden"/>
+			<input id="advanceRemind" name="advanceRemind" value="" type="hidden"/>
+            <input id="advancePigeonhole" name="advancePigeonhole" value="" type="hidden"/>
+            <input id="archiveName" name="archiveName" value="" type="hidden"/>
+			<input id="archiveAllName" name="archiveAllName" value="" type="hidden"/>
+            <input id="attachmentArchiveId" name="attachmentArchiveId" type="hidden"/>
+            
+            <input id="caseId" type="hidden"/>
+            <input id="currentaffairId" type="hidden" value=""/>
+            <input id="oldProcessId" type="hidden" value=""/>
+            <input id="isTemplateHasPigeonholePath" type="hidden" value="false"/>
+         </div>
+         
+         <!-- 正文有两个域 -->
+         <div id="_currentDiv" style="display: none;">
+             <input name="_currentDiv" type="hidden" value="0">
+         </div>
+        <div id="mainbodyDataDiv_0" style="display: none">
+            <input name="id" id="id" type="hidden">
+            <input name="createId" id="createId" type="hidden"/>
+            <input name="createDate" id="createDate" type="hidden"/>
+            <input name="modifyId" id="modifyId" type="hidden"/>
+            <input name="modifyDate" id="modifyDate" type="hidden"/>
+            <input name="moduleType" id="moduleType" type="hidden" value="1"/>
+            <input name="moduleId" id="moduleId" type="hidden"/>
+            <input name="contentType" id="contentType" type="hidden" value="10"/>
+            <input name="moduleTemplateId" id="moduleTemplateId" type="hidden" value="0"/>
+            <input name="contentTemplateId" id="contentTemplateId" type="hidden" value="0"/>
+            <input name="sort" id="sort" type="hidden" value="0"/>
+            <input name="title" id="title" type="hidden" value=""/>
+            <input name="rightId" id="rightId" type="hidden" value=""/>
+            <input name="status" id="status" type="hidden" value="STATUS_RESPONSE_NEW"/>
+            <input name="viewState" id="viewState" type="hidden" value="1"/>
+            <input name="contentDataId" id="contentDataId" type="hidden" value=""/>
+            <textarea id="content" class="content_wrap" rows="5" placeholder="" style="top:100px; margin-top: 10px;bottom:0px;"></textarea>
+        </div>
+        <div rootpath="/seeyon/m3/apps/v5/form" id="contentDiv" class="" style="display: none;width: 100%;height: 100%;">
+            <span id="form_placeholder"><!-- CAP4表单渲染占位元素 --></span>
+        </div>
+    </div>
+</div>
+
+<!-- 附件关联文档 -->
+<div id="attachment_wrap" class="padlr-10 attachment_wrap new_synergy_content border_t border_b transform"
+     style="display: none;" >
+    <ul class="cmp-table-view new_header_content new-colla-title">
+        <li id="attachment" class="cell_li font17 flexbox" style="padding-right: 0px;line-height: 37px;">
+            <a id="attBtn" href="javascript:void(0)" class="leftIcon add_accepter none-attach" style="margin-right: 10px;">
+                <span style="font-size: 18px;" class="see-icon-accessory none-attach"></span>
+            </a>
+            <span class="title flex-1 textover" id="attachment_title">
+                <span style="color: #999;"><i18n key="collaboration.label.uploadAttachmentOrRelateDoc"></i18n></span>
+                <span style="color: #333;" class="display_none"><i18n key="collaboration.page.lable.attachment"></i18n>(<span id="attCount">0</span>) &amp; <i18n key="collaboration.page.lable.relateDoc"></i18n>(<span id="assCount">0</span>)</span>
+            </span>
+            <a href="javascript:void(0)" style="width: 20px;">
+                <span style="font-size: 18px; color: #999;" class="cmp-icon cmp-icon-arrowright"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="dataRelationBtn" class="more-data flexbox padlr-10 border_t border_b" style="display:none;height: 40px;line-height: 40px;">
+    <span class="leftIcon see-icon-v5-common-relevance"></span>
+    <span class="flex-1 middleLabel"><i18n key="collaboration.page.lable.button.dataRelation"></i18n></span>
+    <a href="javascript:void(0)" style="float: right;width: 20px;">
+        <span style="font-size: 18px; color: #999;" class="cmp-icon cmp-icon-arrowright"></span>
+    </a>
+</div>
+<div id="viewWfMenu" data-code="viewWfMenu" class="viewWfMbox flexbox padlr-10 border_t display_none">
+    <span class="leftIcon see-icon-v5-common-lookflow"></span>
+    <span class="flex-1 middleLabel"><i18n key="collaboration.page.lable.viewWf"></i18n></span>
+    <a href="javascript:void(0)" style="float: right;width: 20px;">
+        <span style="font-size: 18px; color: #999;" class="cmp-icon cmp-icon-arrowright"></span>
+    </a>
+</div>
+
+<!-- 发送按钮 -->
+<footer class="cmp-bar cmp-bar-footer footer_custom footer_replay col send-colla-div">
+<div class="wh100 transform" style="display: flex;flex-wrap: nowrap;-webkit-flex-wrap:nowrap; display: -webkit-flex;">
+    <div style="width: 42px;text-align: left">
+        <span id="switch_pop_btn" class="newCol_lookflow see-icon-more"></span>
+    </div>
+    <div style="flex: 1;-webkit-flex:1;padding-right:10px;">
+        <button style="width: 100%;" id="saveDraftBtn" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block hold" ><i18n key="collaboration.page.lable.saveToDraft"></i18n><!-- 保存待发 --></button>
+    </div>
+    <div style="flex: 1;-webkit-flex:1;padding-left: 10px;">
+        <button style="width: 100%;" id="sendBtn" type="button" class="cmp-btn cmp-btn-primary cmp-btn-block" ><i18n key="collaboration.page.lable.button.send"></i18n></button><!-- 发送 -->
+    </div>
+</div>
+</footer>
+
+
+
+<!-- 表单标题 -->
+<div id="form_more_container" class="col-backdrop display_none" style="z-index: 92;">
+    <textarea id="form_more_subject" class="white" _srcHeight="45" maxlength="300" style="height: 45px;font-size: 16px;padding: 10px;border: 0px;opacity:1;"></textarea>
+</div>
+
+<!-- 附件 -->
+<div id="picture"></div>
+<div id="docPigeonhole" style="z-index:92;" class="GM_Alert_Content Animated-Container bottom-go animated"></div>
+</body>
+<script src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172436"></script>
+<script src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433"></script>
+<!-- <script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+ -->
+
+<script type="text/javascript">  
+	cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-v5.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/commons/widget/tokeninput.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/newCollaboration.js?buildversion=181210172480"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/jquery-1.7.2.min.js?buildversion=181210172452"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/formmain_0400.js?buildversion=181210172452"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/formmain_0453.js?buildversion=181210172452"></script>
+<!-- 
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-flowV5.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172434"></script>
+
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-accDoc.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-selectOrg.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-popPicker.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-handWriteSignature.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-barcode.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-camera.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172434"></script>
+引用表单js开始
+<script src="/seeyon/m3/apps/v5/form/js/lib/vue/vue.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/form/js/dataService.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/form/js/sui.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/commons/cmp-resources/project/js/projectAccountList.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/unflowform/unflowform_m_api.s3js?buildversion=181210172434"></script>
+引用表单js结束
+附件
+表单高级开发
+<script src="/seeyon/m3/apps/v5/dee/js/formDevelopmentOfadv.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/doc/js/docNewPigeonhole.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/doc/js/flexible.js?buildversion=181210172434"></script> 
+-->
+</html>

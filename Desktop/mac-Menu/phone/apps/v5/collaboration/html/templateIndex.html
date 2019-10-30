@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172433">
+<title></title>
+<style type="text/css">
+.head-style:after{ height: 0px; }
+
+.border_t:before { z-index: 0; }
+</style>
+</head>
+<body>
+
+<div class="cmp-bar cmp-bar-nav head-style" style="height: 60px;">
+  <div class="cmp-search-box">
+      <div class="cmp-input-row cmp-search" id="searchBtn">
+          <input type="search" disabled="disabled" class="cmp-input-clear" placeholder="">
+          <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+          <span class="cmp-placeholder">
+            <span class="cmp-icon cmp-icon-search"></span>
+            <span class="text-search"><i18n key="collaboration.page.lable.search"></i18n></span>
+          </span>
+      </div>
+    </div>
+</div>
+
+<div class="cmp-content  position_relative cmp-col-content" style="top: 60px;">
+    <div id="sliderSegmentedControl" class="cmp-segmented-control cmp-segmented-control-inverted col cmp-segmented-control-primary new-tab-nav" >
+          <a id="rencentUseTemplate_tab" class="cmp-control-item cmp-active" href="#rencentUseTemplate">
+                 <i18n key="collaboration.page.lable.rencentUseTemplate"></i18n>
+          </a>
+          <a id="rootCategory_tab" class="cmp-control-item" href="#rootCategory">
+                 <i18n key="collaboration.page.lable.allTemplate"></i18n>
+          </a>
+    </div>
+       <div id="rencentUseTemplate" class="form_template  cmp-control-content cmp-active white" >
+            <div id="rencentUseTemplateScroll" class="cmp-scroll-wrapper" >
+                <div class="cmp-scroll" >
+                    <ul class="cmp-list-content file-index-content new-temp-list" id="rencentTemplateList">
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="rootCategory" class="all_web  cmp-control-content white">
+            <div id="rootCategoryScroll" class="cmp-scroll-wrapper" >
+                <div class="cmp-scroll">
+                    <ul class="cmp-list-content file-index-content new-temp-list" id="rootCategoryList">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div id="childCategory" class="cmp-control-content cmp-active display_none ">
+       <div id="childCategoryScroll" class="cmp-scroll-wrapper white border_t">
+           <div class="cmp-scroll">
+               <ul class="cmp-list-content file-index-content new-temp-list" id="childCategoryList">
+
+               </ul>
+           </div>
+       </div>
+   </div>
+</div>
+    <script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script type="text/javascript">
+ cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script>    
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/templateIndex.js?buildversion=181210172433"></script>
+<script type="text/html" id="templateTpl">
+    <% if(this!=null){ %>
+    <% for(i=0;i<this.length;i++){%>
+    <li class="cmp-list-cell templateList" hasOfficeTemp="<%=this[i].hasOfficeTemp%>" data="<%=this[i].id%>">
+       <div class="cmp-list-cell-img   cmp-left">
+             <div class="cmp-icon-document squares"></div>
+       </div>
+       <div class="cmp-list-cell-info width_85">
+             <span class="cmp-ellipsis cmp-pull-left list_title_name" >
+                   <%=this[i].subject.escapeHTML()%>
+             </span>
+       </div>
+    </li>
+    <% }} %>
+</script>
+
+<script type="text/html" id="templateCategoryTpl">
+    <% if(this!=null){ %>
+    <% for(i=0;i<this.length;i++){%>
+    <li class="cmp-list-cell categoryList" data="<%=this[i].id%>">
+        <div class="cmp-list-cell-img cmp-left">
+             <div class="cmp-icon-document folder"></div>
+        </div>
+        <div class="cmp-list-cell-info">
+             <span class="cmp-ellipsis cmp-pull-left list_title_name">
+                    <%=this[i].name.escapeHTML()%>
+             </span>
+             
+        </div>
+        <div class="cmp-list-navigate">
+            <span class="cmp-pull-left cmp-h5 text_info"><%=this[i].temlateSize %></span>
+             <span class="cmp-icon cmp-icon-arrowright" style=" line-height: 40px; "></span>
+        </div>
+     </li>
+    <% }} %>
+</script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************--!>

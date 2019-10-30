@@ -1,0 +1,61 @@
+@charset "utf-8";
+/*!
+ * pull to refresh v3.0
+ *author:wallace
+ *2015-10-15
+ *qq447363121
+ *陈国华
+ */
+#wrapper {
+	position: absolute;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+.scroller {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	padding: 0;
+}
+.pullDown, .pullUp {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #888;
+	font-family: Arial, Microsoft YaHei;
+}
+.pullDown.loading .pullDownIcon, .pullUp.loading .pullUpIcon {
+	background-image: url(../img/loader.png);
+	background-size: 100% auto;
+	background-position: 0 100%;
+	-webkit-transform: rotate(0deg) translateZ(0);
+	-webkit-transition-duration: 0ms;
+	-webkit-animation-name: loading;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-moz-transform: rotate(0deg) translateZ(0);
+	-moz-transition-duration: 0ms;
+	-moz-animation-name: loading;
+	-moz-animation-duration: 2s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+}
+@-webkit-keyframes loading {
+ from {
+-webkit-transform:rotate(0deg) translateZ(0);
+}
+to {
+	-webkit-transform: rotate(360deg) translateZ(0);
+}
+}
+@-moz-keyframes loading {
+ from {
+-moz-transform:rotate(0deg) translateZ(0);
+}
+to {
+	-moz-transform: rotate(360deg) translateZ(0);
+}
+}

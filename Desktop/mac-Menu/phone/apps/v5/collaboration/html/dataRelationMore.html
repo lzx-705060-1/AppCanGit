@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">        <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+  		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172433"/>
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433"/>
+		<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172433"/>
+        <title>相关数据更多页面</title>
+        <style type="text/css">
+        	.project {}
+        	.templateDeal {}
+	        .see-icon-accessory{
+	        	color : #3AADFB;
+	        }
+			.cmp-bar .cmp-search-box{
+				padding: 10px 12px;
+			}
+			.cmp-bar input[type=search]{
+				margin:0;
+			}
+			.cmp-search .text-search{
+				font-size: 12px;
+			}
+
+			.cmp-bar .cmp-search .cmp-placeholder .cmp-icon{
+				font-size: 12px !important;
+				margin: 0;
+				padding: 0;
+			}
+        </style>
+    </head>
+    <body class="flexbox-v">
+
+		<div class="cmp-bar cmp-bar-nav head-style" style="height: 48px;padding: 0;">
+		  <div class="cmp-search-box">
+		      <div class="cmp-input-row cmp-search">
+		          <input type="search" disabled="disabled" style="background-color: #eef1f5" class="cmp-input-clear" placeholder="">
+		          <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+		          <span class="cmp-placeholder" id="search">
+		            <span class="cmp-icon cmp-icon-search"></span>
+		            <span class="text-search"><i18n key="collaboration.page.lable.search"></i18n></span>
+		          </span>
+		      </div>
+		    </div>
+		</div>
+		<div class="cmp-control-content cmp-active" style="top:50px;">
+	        <div id="pullrefresh" class="cmp-scroll-wrapper">
+			    <div class="cmp-scroll page-content flex-1">
+			        <!--数据列表-->
+			        <ul id="moreData" class="cmp-table-view list-box">
+
+			        </ul>
+			    </div>
+			</div>
+		</div>
+		<div id="titleDetailArea" class="col-backdrop display_none">
+		    <textarea id="titleDetail" class="white" srcHeight="45" maxlength="300" style="font-size: 16px;padding: 10px;border: 0px;"></textarea>
+		</div>
+    </body>
+<script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-v5.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/dataRelationMore.js?buildversion=181210172433"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172433"></script>
+<script type="text/html" id="html_templateDealMore">
+	<% for(var i = 0 ; i < this.length ; i++){ %>
+	<% var obj = this[i];%>
+		<li class="flexbox flex-cross-center padlr-10 templateDeal" affairId="<%=obj.affairId%>" summaryId="<%=obj.summaryId%>">
+			<img class="cmp-img-cache img_setting icon-header" cmp-data="<%=obj.startMemberId%>">
+			<p class="flex-1">
+				<span class="more-title">
+                    <span class="flexbox flex-cross-center">
+					<% var importantLevel = obj.importantLevel - 1; %>
+					<% if(importantLevel != 0){ %>
+						<span class="see-icon-v5-common-important-<%=importantLevel%>" style="color: red;"></span>
+					<% } %>
+					<span class="textover"><%=obj.subject%></span>
+					<% if(obj.hasAttsFlag){ %>
+						<span class="see-icon-accessory mrgl-5"></span>
+					<% } %>
+					</span>
+				</span>
+				<span class="textover-1 data-info">
+					<i class="textover"><%=obj.startMemberName%></i>
+					<i><%=formatDate(obj.startDate)%></i>
+				</span>
+			</p>
+		</li>
+	<% } %>
+</script>
+<script type="text/html" id="html_templateSendMore">
+	<% for(var i = 0 ; i < this.length ; i++){ %>
+	<% var obj = this[i];%>
+		<li class="flexbox flex-cross-center padlr-10 templateDeal" affairId="<%=obj.affairId%>" summaryId="<%=obj.summaryId%>">
+			<img class="cmp-img-cache img_setting icon-header" cmp-data="<%=obj.startMemberId%>">
+			<p class="flex-1">
+				<span class="more-title">
+                    <span class="flexbox flex-cross-center">
+					<% var importantLevel = obj.importantLevel - 1; %>
+					<% if(importantLevel != 0){ %>
+						<span class="see-icon-v5-common-important-<%=importantLevel%>" style="color: red;"></span>
+					<% } %>
+					<span class="textover"><%=obj.subject%></span>
+					<% if(obj.hasAttsFlag){ %>
+						<span class="see-icon-accessory mrgl-5"></span>
+					<% } %>
+					</span>
+				</span>
+			</p>
+		</li>
+	<% } %>
+</script>
+<script type="text/html" id="html_projectMore">
+	<% for(var i = 0 ; i < this.length ; i++){ %>
+	<% var obj = this[i];%>
+		<li class="flexbox flex-cross-center padlr-10 list-page-unread project">
+			<span class="flex-1 textover" style="text-indent: 5px;"><%=this[i].projectName%></span>
+		</li>
+	<% } %>
+</script>
+</html>

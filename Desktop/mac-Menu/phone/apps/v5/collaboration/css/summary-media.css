@@ -1,0 +1,18 @@
+
+
+/*横屏*/
+@media all and (orientation : landscape) {
+     #summary_titile_container{display: none;}
+     /* #footer_btns{display: none;} */
+     #contentAndWfTags{display: none;}
+     #dataRelationBtn{display: none;}
+     /* #contentView{display: none;} */
+} 
+/*竖屏*/
+@media all and (orientation : portrait){
+    #summary_titile_container{display: block;}
+    /* #footer_btns{display: block;} */
+    #contentAndWfTags{display: block;}
+    #dataRelationBtn{display: block;}
+    /* #contentView{display: block;} */
+} 

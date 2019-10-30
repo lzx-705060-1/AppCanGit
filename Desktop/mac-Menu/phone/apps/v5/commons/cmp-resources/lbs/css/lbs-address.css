@@ -1,0 +1,7 @@
+/*签到--选择签到地址页面*/
+.address-map{height: 250px;}
+.address-listView{}
+.address-listView .cmp-table-view .cmp-table-view-cell .cmp-table span{font-size: 16px;color: #333;}
+.address-listView .cmp-table-view .cmp-table-view-cell .cmp-table p{font-size: 12px;color: #999;}
+.address-listView .cmp-table-view-radio .cmp-table-view-cell.cmp-selected .cmp-navigate-right:after{
+    font-family: see-icon;;content: "\e600";font-weight: 100;color: #3AADFB;right: 20px;}

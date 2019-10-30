@@ -1,0 +1,147 @@
+/**
+ * Created by yangchao on 2016/7/21.
+ */
+
+
+
+.sui-form-content{
+     //background: #FFA500;                     /*控制表单背景色，默认#fff 【文档：8】*/
+
+
+    .sui-form-ctrl {
+        //background: #666;                       /*控制所有组件的背景色，默认 #fff 【文档：7】*/
+        margin: 5px 0 5px 0;                    /*控制所有组件的间距，默认0px，注意，只设置上下间距，左右间距不设置 【文档：9】*/
+
+        &.sui-form-viewType-0{
+            .sui-form-ctrl-inner{
+                .sui-form-ctrl-title{
+                    width: 18px * 5;
+                    box-sizing: content-box;
+                }
+            }
+        }
+
+        .sui-form-ctrl-inner{
+
+            .sui-form-ctrl-title{
+                font-family: '微软雅黑';        /*控制所有组件的标题family，默认“微软雅黑”  【文档：4】*/
+                color: red;                     /*控制所有组件的标题字体颜色，默认#8f8f8f 【文档：5】*/
+                font-size: 18px;                /*控制所有组件的标题字体大小，默认16px 【文档：6】*/
+                /*备注：字体大小改变了可能会影响到每行最多5个汉子的计算，需要从模板中传入参数*/
+                font-weight: bold;                          /*控制所有组件的标题字体是否加粗， 默认为normal, 【文档：34】*/
+
+            }
+
+            .sui-form-ctrl-value, .sui-form-ctrl-value-display, .sui-form-ctrl-value-hide{ /*控制所有组件的边框，默认为全边框，不用设置，如果是下边框，则按下述设置  【文档：10】*/
+                border-top: 1px solid transparent !important;
+                border-left: 1px solid transparent !important;
+                border-right: 1px solid transparent !important;
+
+                border-color: #e0e0e0; /*设置边框颜色默认为#e0e0e0*/
+
+                /*border: none !important;   如果是无边框，则设置border:none;*/
+
+                min-height: 50px;
+                line-height: 50px;
+            }
+
+
+        }
+    }
+
+    .sui-sub-table-ctrl{
+
+        .sui-sub-table-header{
+            background: #38adff;            /*控制重复表表头的背景色，默认是 #38adff, 【文档：32】*/
+
+            .sub-table-title,i:before {
+                color: #fff;                /*控制重复表表头字体颜色以及清空和折叠图标字体，默认 #fff, 【文档：35】*/
+            }
+
+
+            .sub-table-title{
+                font-family: '微软雅黑';    /*控制重复表表头字体family，默认是 微软雅黑,【文档：33】*/
+                font-size: 16px;            /*控制重复表表头字体大小，默认 16px,  【文档：34】*/
+                font-weight: bold;        /*控制重复表表头字体加粗  默认为 normal, 【文档：36】*/
+            }
+        }
+    }
+
+    .sui-form-ctrl-divider{                 /*控制字段之间间隔行。默认高度为1/4行高，即8px，默认背景色为#ccc，*/
+
+        /*间隔行的高度，背景色，直接生成到模板中，写到style中*/
+
+    }
+
+    .sui-form-ctrl-summary{                 /*控制字段之间间隔行。默认高度为1/4行高，即8px，默认背景色为#ccc，*/
+        //height: 8px;
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #010101;
+        background: #fff;
+        line-height: 22px;
+        /*line-height: max(22px, font-size) line-height默认为22px，如果超过22px设置为font-size*/
+    }
+}
+
+
+/*sui-form-ctrl-master-field0001跟sui-form-ctrl同级,每个字段根据字段名生成一个唯一的class，在模板中设置上，前缀为“sui-form-ctrl”，避免对其他人干扰*/
+
+.sui-form-ctrl.sui-form-ctrl-field0001{
+
+    //background: #666;                                   /*控制控件[master-field0001]的背景色，默认为#FFF 【文档：11】*/
+
+    .sui-form-ctrl-inner{
+        .sui-form-ctrl-title{
+            font-family: '微软雅黑' ;        /*控制控件[master-field0001]的标题family，默认“微软雅黑”  【文档：17】*/
+            color:#FFA500 ;                     /*控制控件[master-field0001]的标题字体颜色，默认#8f8f8f 【文档：18】*/
+            font-size: 18px ;                /*控制控件[master-field0001]的标题字体大小，默认16px 【文档：19】*/
+            /*备注：字体大小改变了可能会影响到每行最多5个汉子的计算，需要从模板中传入参数*/
+            font-weight: bold;                          /*控制控件[master-field0001]的标题字体是否加粗，默认为normal*/
+        }
+
+        .sui-form-ctrl-field{
+            .sui-form-ctrl-value, .sui-form-ctrl-value-display，.sui-form-ctrl-value-hide{ /*控制控件[master-field0001]的边框，默认为全边框，不用设置，如果是下边框，则按下述设置  【文档：16】*/
+                border-top: 1px solid transparent !important;
+                border-left: 1px solid transparent !important;
+                border-right: 1px solid transparent !important;
+
+                /*border: none !important;   如果是无边框，则设置border:none;*/
+
+                border-color: #e0e0e0; /*设置边框颜色默认为#e0e0e0*/
+
+                font-family: '微软雅黑' ;         /*控制控件[master-field0001]的控件值的字体family，默认“微软雅黑”  【文档：20】*/
+                color:#FFA500 ;                   /*控制控件[master-field0001]的控制值的字体颜色，默认#101010 【文档：21】*/
+                font-size: 18px ;                 /*控制控件[master-field0001]的标题字体大小，默认16px 【文档：22】*/
+
+            }
+        }
+
+
+        textarea.sui-form-ctrl-value{
+            min-height: 38px;                               /*控制文本域字段的单行高度，默认为34px,在控件中，行高都用min-height表示*/
+            padding-top: 7px ;                          /*控制文本域的内边距，注意计算方式为  (height- lineHeight - 2) /  2，默认为5px*/
+            padding-bottom: 7px ;                       /*同上*/
+            font-size: 20px ;                           /*控制文本域中字体的大小，默认为16px*/
+            line-height: 22px ;                         /*控制文本域中字体多行时的行高，默认为22px，注意，计算方式为   max(22px， font-size);*/
+        }
+
+
+        .sui-form-ctrl-sign.sui-form-ctrl-value-display{  /*签章的样式*/
+            min-height: 34px;                           /*控制签章的默认高度，默认为34px*/
+        }
+
+
+        .sui-form-ctrl-pos.sui-form-ctrl-value-display{  /*位置标注，位置定位的样式*/
+            min-height: 34px;                           /*位置标注，位置定位的默认高度，默认为34px*/
+            font-family: '微软雅黑' ;                   /*位置标注，位置定位控件值的字体family，默认“微软雅黑”  */
+            color:#FFA500 ;                             /*位置标注，位置定位控件值的字体颜色，默认#101010 */
+            font-size: 18px ;                           /*位置标注，位置定位的标题字体大小，默认16px */
+            line-height: 22px;
+            /*line-height: max(22px, font-size) line-height默认为22px，如果超过22px设置为font-size*/
+        }
+
+    }
+}
+
+

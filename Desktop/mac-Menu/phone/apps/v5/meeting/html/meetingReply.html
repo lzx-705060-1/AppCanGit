@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=18121017266">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=18121017266">
+<title></title>
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1" onresize="hideOrShowAttForm()">
+<div id="mainBodyArea" class="cmp-content cmp-col-content text_body cmp-content-none">
+	<div class="cmp-handle-btn-content col comment-states" id="attitudeForm" style="display:none;">
+        <button  name="feedbackFlag" data-value="1" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle cmp-active"><i18n key="meeting.page.action.attend"></i18n></button>
+        <button  name="feedbackFlag" data-value="0" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle "><i18n key="meeting.page.action.noAttend"></i18n></button>
+        <button  name="feedbackFlag" data-value="-1" class="cmp-btn cmp-btn-primary cmp-btn-outlined handle "><i18n key="meeting.page.action.pending"></i18n></button>
+    </div> 
+    
+   	<div id="comment_div" class="replay_opinion_content col border_t relative">
+	    <div class="information wh100">
+	        <textarea id="content" rows="5"></textarea>
+	    </div>
+   	</div>
+    
+</div>
+
+<!-- 附件容器 -->
+<div class="number" >
+	<a id="attchmentFile" class="cmp-icon iconfont see-icon-accessory none-attach" style=" float: right;line-height: 40px; margin:0px 10px 0px 0px; ">
+		<span id="attCount" class="count_num none-attach"></span>
+	</a>
+	
+	<h5 id="fontCount">1200</h5> 
+</div>
+		
+<footer class="cmp-bar cmp-bar-footer single_btn back_white">
+	<div class="wh100 border_t relative">
+		<div class="btn_wrap">
+			<button id="sendBtn" type="button"><i18n key="meeting.page.action.send"></i18n></button> 
+		</div>
+	</div>
+</footer>
+
+<div id="picture"></div>
+  
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017266"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script><script src="/seeyon/m3/apps/v5/meeting/js/meetingReply.js?buildversion=18121017266"></script>
+<!--附件-->
+<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=18121017266"></script>
+
+</body>
+
+</html>
+<!--******************** auto import check  ****************--!>

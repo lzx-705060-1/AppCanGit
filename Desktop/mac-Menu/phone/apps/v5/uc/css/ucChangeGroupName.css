@@ -1,0 +1,20 @@
+html,body{height: 100%;width: 100%;background-color: #fff;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+input {font-family: inherit;}
+.cmp-bar {background: #fff}
+.cmp-bar .cmp-btn-link {color:#3AADFB;}
+.see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-table-view-cell {padding: 0;}
+.uc-create-name {width: 100%;height: 1.28rem;line-height: 1.28rem;font-size: 16px;background: #edf0f4;color: #333;padding: 0 0.267rem;}
+.uc-create-name-input {width: 100%;height: 40px;line-height: 40px;background: #fff;padding: 0 0.267rem;color: #333;font-size: 16px;position: relative;}
+.uc-create-name-input input {width: 100%;border: none;color: #333;padding:0.26rem 0.4rem;padding-right: 0.91rem;}
+.uc-create-name-input i {position: absolute;top: 0;right: 0.373rem;font-size: 14px;color: #8e8f94;}
+.cmp-table-view:after {height: 0;}
+#uc-confirm{padding-right:10px;}
+
+
+
+
+
+
+

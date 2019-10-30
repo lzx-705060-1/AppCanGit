@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html style="overflow: hidden;height: 100%;">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/footprint/css/M1FootPrint.css?buildversion=181210172520"/>
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/footprint/css/animated.css?buildversion=181210172520"/>
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/footprint/css/iconfont.css?buildversion=181210172520"/>
+    
+    <style type="text/css">
+		.body-visible{
+			visibility: visible;
+		}
+		.body-hidden{
+			visibility: hidden;
+		}
+		.page-loader{
+			position: absolute;
+			width: 100%;
+			height:100%;
+			background-color: #f0f0f0;
+		}
+		.page-loader img{
+			margin: auto;  
+  			position: absolute;  
+  			top: 0; left: 0; bottom: 0; right: 0;  
+		}
+		.print_hint{
+			position: absolute;
+			top: 50%;
+			color:#fff;
+		}
+		
+		/* dialog */
+		.window_alert {
+		  text-align: center;
+		  font-family: "microsoft yahei";
+		  position: fixed;
+		  left: -100%;
+		  right: 100%;
+		  top: -1%;
+		  bottom: 0;
+		  z-index: 99;
+		}
+		.window_alert:after {
+		  content: "";
+		  display: inline-block;
+		  vertical-align: middle;
+		  height: 100%;
+		  width: 0;
+		}
+		.window_alert_content {
+		  background-color: #F1F1F1;
+		  z-index: 99;
+		  border-radius: 7px;
+		  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+		  width: 75%;
+		  display: inline-block;
+		  /* text-align: center; */
+		  vertical-align: middle;
+		  position: relative;
+		  right: -100%;
+		  max-height: 500px;
+		}
+		.window_alert_title {
+		  padding: 10px 10px 0 10px;
+		  color: #000000;
+		  font-size: 16px;
+		}
+		.window_alert_cont {
+		  width: 85%;
+		  margin: auto;
+		  overflow: hidden;
+		  text-align: center;
+		  padding: 20px 0;
+		  position: relative;
+		  max-height: 275px;
+		  overflow-y: auto;
+		}
+		.window_alert_cont .text {
+		  font-size: 14px;
+		  word-break: break-word;
+		  text-align: justify;
+		  color: #000000;
+		  overflow: hidden;
+		  display: inline-block;
+		  padding-right: 10px;
+		}
+		.window_alert_sub {
+		  height: 40px;
+		  border-top: 1px #ccc solid;
+		  overflow: hidden;
+		}
+		.window_alert_sub button {
+		  width: 45.5%;
+		  height: 100%;
+		  display: inline-block;
+		  color: black;
+		  border: none!important;
+		  background-color: transparent;
+		  color: #0d80ff;
+	      font-size: 16px;
+		}
+		/*
+		 * cmp遮罩
+		 */
+		  .cmp-backdrop{
+		  	width: 100%;
+		    height: 100%;
+		    position: absolute;
+		    z-index: 90;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    background-color: rgba(0, 0, 0, 0.4);
+		  }
+		  
+		  .cmp_toast_container {
+		    position: absolute;
+		    z-index: 95;
+		    left: 50%;
+		    margin-left: -135px;
+		  }
+		  
+		  .cmp-toast-message {
+		  	padding: 10px;
+		    background-color: rgba(0, 0, 0, 0.7);
+		    color: #fff!important;
+		    font-size: 14px;
+		    width: 270px;
+		    margin: 5px auto 5px auto;
+		    padding: 5px 5px 5px 5px;
+		    text-align: center;
+		    color: #000;
+		    border-radius: 7px;
+		  }
+		  /*iphonex适配*/
+		  body.cmp-ios-x .header{
+		  	padding-top: 44px;
+		  }
+	</style>
+</head>
+<body style="overflow: hidden;height: 100%;">
+
+<div class = "page-loader">
+	<img alt="" src="/seeyon/m3/apps/v5/footprint/img/loading.gif?buildversion=181210172520" />
+</div>
+<div id = "fp-container" class = "body-hidden" style="overflow: hidden;height: 100%;">
+	<div class="header">
+	    <div class="icon back" id="callback">
+	        <span class="iconfont icon-iconfontzuojiantou cmpCommonPageBackBtn"></span>
+	    </div>
+	    <div class="title"><i18n key="footprint.label.cotiltle"></i18n></div>
+	    <!--  <span class="icon more">...</span> -->
+	</div>
+	
+	<div class="container" id="fullpage">
+	    <section class="section item1 active" id="item1">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item1.jpg?buildversion=181210172520" alt=""/>
+	        <div class="cmp-alert-typical">
+	            <div class="content content-typical">
+	                <div class="logo Animated fadein">
+	                    <div class="imgLogo">
+	                        <img id="imgUrl" src="" alt=""/>
+	                    </div>
+	                    <p id="name"></p>
+	                </div>
+	                <div class="text Animated fadein">
+	                    <p class="day"><i18n key="footprint.label.todayis"></i18n> <span id="currentDate"></span></p>
+	                    <p class="use"><i18n key="footprint.label.use"></i18n> <span class="ColorGer" id="days"></span> <i18n key="footprint.label.days"></i18n></p>
+	                </div>
+	                <div class="select" id="hasData" style="display:none">
+	                    <div class="option">
+	                        <select class="select_container" id="dateSelect" onchange="dateSelect(this.options[this.options.selectedIndex].value,this.options.selectedIndex);"></select>
+	                        <div class="icon_down_pos">
+	                            <img src="/seeyon/m3/apps/v5/footprint/img/jiantou.png?buildversion=181210172520" alt="">
+	                            <!--<span class="icon_down"></span>-->
+	                        </div>
+	
+	                    </div>
+	                    <p><i18n key="footprint.label.check"></i18n></p>
+	                </div>
+	                <div class="select" id="noData" style="display:none">
+	                    <p> <i18n key="footprint.label.nodata"></i18n></p>
+	                </div>
+	                <div class="select" id="noFootData" style="display:none">
+		                <p> <i18n key="footprint.label.nextmonth"></i18n></p>
+	                </div>
+	                <div class="select" id="isNotInternal" style="display:none">
+	                    <p><i18n key="footprint.label.outer"></i18n></p>
+	                </div>
+	
+	            </div>
+	        </div>
+	
+	        <div class="Touch_Move_Top opacityShowHide"  id="toGo"></div>
+	    </section>
+	
+	    <section class="section item2" id="item2">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item2.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content ">
+	
+	            <!-- 雷达图 -->
+	            <div class="radar">
+	                <canvas id="chart-radar"></canvas>
+	            </div>
+	
+	            <div id="accountRankDiv" class="rank"></div>
+	            
+	            <div class="info">
+	                <div class="Animated left-go">
+	                    <span class="ColorGer" id="yearArea1"></span><i18n key="footprint.label.year"></i18n>
+	                    <span class="ColorGer" id="monthArea1"></span>
+	                    <span id="monthText1"><i18n key="footprint.label.month"></i18n></span>
+	                    <i18n key="footprint.label.yourperformance"></i18n>
+	                </div>
+	                <div class="Animated right-go">
+	                    <i18n key="footprint.label.seeyou"></i18n>
+	                </div>
+	            </div>
+	
+	        </div>
+	
+	        <div class="Touch_Move_Top opacityShowHide"></div>
+	    </section>
+	
+	    <section class="section item3" id="item3">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item7.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content" id="hasLoginArea">
+	            <div class="center"><img class="img1" src="/seeyon/m3/apps/v5/footprint/img/page/page3-1.png?buildversion=181210172520" alt=""/></div>
+	            <div class="circle circle1  rotateInfinite">
+	                <img class="bg_circle rotateInfinite-time50" src="/seeyon/m3/apps/v5/footprint/img/page/page3-circle0.png?buildversion=181210172520" alt=""/>
+	                <img class="img1 rotateOutInfinite" src="/seeyon/m3/apps/v5/footprint/img/page/page3-4.png?buildversion=181210172520" alt=""/>
+	            </div>
+	            <div class="circle circle2  rotateInfinite">
+	                <img class="bg_circle rotateInfinite-time50" src="/seeyon/m3/apps/v5/footprint/img/page/page3-circle1.png?buildversion=181210172520" alt=""/>
+	                <img class="img1  rotateOutInfinite" src="/seeyon/m3/apps/v5/footprint/img/page/page3-2.png?buildversion=181210172520" alt=""/>
+	                <img class="img2  rotateOutInfinite" src="/seeyon/m3/apps/v5/footprint/img/page/page3-3.png?buildversion=181210172520" alt=""/>
+	            </div>
+	            <div class="circle circle3 rotateInfinite">
+	                <img class="bg_circle rotateInfinite-time50" src="/seeyon/m3/apps/v5/footprint/img/page/page3-circle2.png?buildversion=181210172520" alt=""/>
+	                <div class="img1 text  rotateOutInfinite">
+	                     <span>
+	                         <span class="ColorGer"><i18n key="footprint.label.latest"></i18n> </span><i18n key="footprint.label.quit"></i18n><br>
+	                         <span class="ColorGer" id="latestMonth"></span><i18n key="footprint.label.month"></i18n>
+	                         <span class="ColorGer" id="latestDay"></span><i18n key="footprint.label.day"></i18n>
+	                         <span class="ColorGer" id="latestTimes"></span>
+	                     </span>
+	                </div>
+	                <div class="img2 text  rotateOutInfinite">
+	                    <span><i18n key="footprint.label.pclog"></i18n> <span class="ColorGer" id="pcCount"></span><i18n key="footprint.label.times"></i18n> </span><br>
+	                    <span><i18n key="footprint.label.mobilelog"></i18n> <span class="ColorGer" id="m1Count"></span><i18n key="footprint.label.times"></i18n> </span><br>
+	                    <span id="m1LoginRankArea" ><i18n key="footprint.label.percentage"></i18n><span class="ColorGer" id="m1LoginRank"></span></span>
+	                </div>
+	            </div>
+	            <div class="circle circle4 rotateInfinite ">
+	                <img class="bg_circle rotateInfinite-time50" src="/seeyon/m3/apps/v5/footprint/img/page/page3-circle3.png?buildversion=181210172520" alt=""/>
+	                <div class="img1 text rotateOutInfinite ">
+	                     <span ><span class="ColorGer"><i18n key="footprint.label.earliest"></i18n> </span><i18n key="footprint.label.login"></i18n><br>
+	                        <span class="ColorGer" id="earliestMonth"></span><i18n key="footprint.label.month"></i18n>
+	                        <span class="ColorGer" id="earliestDay"></span><i18n key="footprint.label.day"></i18n>
+	                        <span class="ColorGer" id="earliestTimes"></span>
+	                     </span>
+	                </div>
+	                <div class="img2 text rotateOutInfinite ">
+	                     <span><i18n key="footprint.label.pctime"></i18n><span class="ColorGer" id="pcTimes"></span><i18n key="footprint.label.hours"></i18n><br>
+	                        <span id="m1TimesArea"><i18n key="footprint.label.mobiletime"></i18n> <span class="ColorGer" id="m1Times"></span> <i18n key="footprint.label.hours"></i18n></span>
+	                     </span>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="print_hint" id="noLoginArea">
+               <i18n key="footprint.label.youon"></i18n>
+                <span class="ColorGer" id="yearArea2"></span><i18n key="footprint.label.year"></i18n><span class="ColorGer" id="monthArea2">3</span><span id="monthText2"><i18n key="footprint.label.month"></i18n></span>
+                <i18n key="footprint.label.notlog"></i18n><br>
+                <i18n key="footprint.label.usemore"></i18n>
+            </div>
+	        <div class="Touch_Move_Top opacityShowHide"></div>
+	    </section>
+	
+	
+	    <section class="section item4" id="item4">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item3.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content">
+	            <div class="headBg">
+	                <img src="/seeyon/m3/apps/v5/footprint/img/page/page4-1.png?buildversion=181210172520" alt=""/>
+	                <div class="Animated top-go TextInfo1">
+	                    <i18n key="footprint.label.no"></i18n><span class="ColorGer"><i18n key="footprint.label.hard"></i18n></span><i18n key="footprint.label.no"></i18n><span class="ColorGer"><i18n key="footprint.label.gain"></i18n></span>,
+	                    <i18n key="footprint.label.hardperson"></i18n><span class="ColorGer"><i18n key="footprint.label.earning"></i18n></span>
+	                </div>
+	            </div>
+	            <div class="bodyInfo">
+	                <div class=" TextInfo2 top">
+	                    <img class="node Animated fadein" src="/seeyon/m3/apps/v5/footprint/img/page/page4-2.png?buildversion=181210172520" alt=""/>
+	                    <div class="text Animated right-go">
+	                        <i18n key="footprint.label.sendprocess"></i18n><span class="ColorGer" id="sendNum"></span><i18n key="footprint.label.count"></i18n>
+	                    </div>
+	                </div>
+	                <div class="hr one">
+	                    <hr class="Animated AutoWidth time5s"/>
+	                </div>
+	                <div class=" TextInfo2 center">
+	                    <div class="text Animated left-go time10s">
+	                        <p><i18n key="footprint.label.dealprocess"></i18n><span class="ColorGer" id="handNum"></span><i18n key="footprint.label.count"></i18n></p>
+	                        <div id="processHandArea">
+	                            <p id="avgP"><i18n key="footprint.label.dealtime"></i18n></p>
+	                            <p id="processRank"></p>
+	                        </div>
+	                    </div>
+	                    <img class="node Animated fadein" src="/seeyon/m3/apps/v5/footprint/img/page/page4-2.png?buildversion=181210172520" alt=""/>
+	                </div>
+	                <div class="hr two">
+	                    <hr class="Animated AutoWidth"/>
+	                </div>
+	                <div class=" TextInfo2 bottom" style="width: 85%;">
+	                    <img class="node  Animated fadein" src="/seeyon/m3/apps/v5/footprint/img/page/page4-2.png?buildversion=181210172520" alt=""/>
+	                    <div class="text Animated right-go" id="templeteArea" style="width: 70%;">
+	                        <i18n key="footprint.label.usemost"></i18n> <br>
+	                        <span class="book_title">《<span class="ColorGer" id="templeteName"></span>》</span>
+	                    </div>
+	                </div>
+	            </div>
+	
+	        </div>
+	        <div class="Touch_Move_Top opacityShowHide"></div>
+	    </section>
+	
+	    <section class="section item5" id="item5">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item5.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content">
+	            <div class="headBg">
+	                <img src="/seeyon/m3/apps/v5/footprint/img/page/page4-1.png?buildversion=181210172520" alt=""/>
+	                <div class="Animated top-go TextInfo1">
+	                    <span><i18n key="footprint.label.road"></i18n><span class="ColorGer"><i18n key="footprint.label.give"></i18n></span><i18n key="footprint.label.also"></i18n><span class="ColorGer"><i18n key="footprint.label.gain2"></i18n></span></span>
+	                </div>
+	            </div>
+	
+	            <div class="Animated left-go move left">
+	                <img src="/seeyon/m3/apps/v5/footprint/img/page/page5-1.png?buildversion=181210172520" alt=""/>
+	                <div class="text ellipsis">
+	
+	                    <div class="getJodie">
+	                        <p><i18n key="footprint.label.inprocess"></i18n></p>
+	                        <span><i18n key="footprint.label.getlike"></i18n><span class="ColorGer" id="receivePraiseNum"></span><i18n key="footprint.label.count"></i18n></span>
+	                        <span><i18n key="footprint.label.givelike"></i18n><span class="ColorGer" id="praiseNum"></span><i18n key="footprint.label.count"></i18n></span> <br>
+	                        <span><i18n key="footprint.label.accept"></i18n><span class="ColorGer"><i18n key="footprint.label.treasure"></i18n></span>!</span>
+	                    </div>
+	
+	                </div>
+	            </div>
+	            <div class="Animated right-go move right">
+	                <div class="text ellipsis">
+	                    <span><i18n key="footprint.label.sharedoc"></i18n><span class="ColorGer" id="docShareNum"></span><i18n key="footprint.label.pian"></i18n></span><br>
+	                    <span><i18n key="footprint.label.readdoc"></i18n><span class="ColorGer" id="docReadNum"></span><i18n key="footprint.label.times"></i18n></span>
+	                    <!--<span>赞许让人更有<span class="ColorGer">动力</span>!</span>-->
+	                </div>
+	                <img src="/seeyon/m3/apps/v5/footprint/img/page/zan.png?buildversion=181210172520" alt=""/>
+	            </div>
+	        </div>
+	        <div class="Touch_Move_Top opacityShowHide"></div>
+	    </section>
+	
+	    <section class="section item6" id="item6">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item8.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content">
+	            <div class="headBg">
+	                <img src="/seeyon/m3/apps/v5/footprint/img/page/page4-1.png?buildversion=181210172520" alt=""/>
+	                <div class="Animated top-go TextInfo1">
+	                    <span><i18n key="footprint.label.blendin"></i18n><span class="ColorGer"><i18n key="footprint.label.attention"></i18n></span>,<i18n key="footprint.label.release"></i18n><span CLASS="ColorGer"><i18n key="footprint.label.energy"></i18n></span></span>
+	                </div>
+	            </div>
+	            <div class="CircleCont new  Animated fadein">
+	                <div class="info ">
+	                    <span><i18n key="footprint.label.readnews"></i18n><span class="ColorGer" id="readTotal"></span><i18n key="footprint.label.pian"></i18n> </span>
+	                    <div id="readArea">
+	                        <span><i18n key="footprint.label.readingquantity"></i18n> <span class="ColorGer" id="readPct"></span></span>
+	                    </div>
+	                </div>
+	            </div>
+	
+	            <div class="CircleCont dis  Animated fadein">
+	                <div class="info">
+	                    <span><i18n key="footprint.label.indiscussion"></i18n><span class="ColorGer" id="bbsNum"></span><i18n key="footprint.label.times"></i18n><br/>
+	                    	<i18n key="footprint.label.showpic"></i18n><span class="ColorGer" id="showPicNum"></span><i18n key="footprint.label.zhang"></i18n></span><br/>
+	                    <div id="showPicMostArea">
+	                        <small><i18n key="footprint.label.in"></i18n>《 <small id="showName"></small>》<i18n key="footprint.label.showmost"></i18n></small>
+	                    </div>
+	                </div>
+	            </div>
+	
+	        </div>
+	        <div class="Touch_Move_Top opacityShowHide"></div>
+	    </section>
+	
+	    <section class="section item7" id="item7">
+	        <img class="background" src="/seeyon/m3/apps/v5/footprint/img/item6.jpg?buildversion=181210172520" alt=""/>
+	        <div class="content">
+	            <div class="feeling">
+	                <div class="text Animated left-go">
+	                    <p><i18n key="footprint.label.workisroad"></i18n></p>
+	                    <p><i18n key="footprint.label.everyeffort"></i18n></p>
+	                    <i18n key="footprint.label.istomeet"></i18n> <span class="ColorGer"><i18n key="footprint.label.betterme"></i18n></span>
+	                </div>
+	                <div class="text Animated left-go">
+	                    <p><i18n key="footprint.label.collaboration"></i18n></p>
+	                    <p><i18n key="footprint.label.insist"></i18n></p>
+	                    <i18n key="footprint.label.isfor"></i18n> <span class="ColorGer"><i18n key="footprint.label.dream"></i18n></span>
+	                </div>
+	            </div>
+	            <div class="share" style="margin-bottom: 0px;">
+	                <div class="box">
+	                    <div class="but"></div>
+	                    <div style="height: 30px;"></div>
+	                    <p><i18n key="footprint.label.dataupdate"></i18n></p>
+	                    <p><i18n key="footprint.label.moreonpc"></i18n></p>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	</div>
+</div>
+
+<script src="/seeyon/m3/apps/v5/footprint/i18n/footprint_zh_CN.js?buildversion=181210172520"></script>  
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172520"></script>
+<script>
+	var footprintPath = "/seeyon/m3/apps/v5/footprint";
+	var $buildversion = '?buildversion=181210172520';
+    cmp.i18n.init("/seeyon/m3/apps/v5/footprint/i18n/","footprint",function(){
+    	document.title = cmp.i18n("footprint.label.title");
+    });
+</script>
+<script type="text/javascript">
+    //	如果是在微信端浏览器
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    };
+
+    if(isWeiXin()){
+        var header=document.querySelector('.header');
+        var contentAll=document.querySelectorAll('.content');
+        header.style.paddingTop='0';
+        for(var i=0;i<contentAll.length;i++){
+            contentAll[i].style.paddingTop='44px';
+        }
+
+    }
+
+
+    (function(doc, win) {
+        var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+                : 'resize', recalc = function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth)
+                return;
+            if (/(window)/i.test(navigator.userAgent)) {
+                docEl.style.fontSize = 10 * (clientWidth / 960) + 'px';
+            } else {
+                docEl.style.fontSize = 18 * (clientWidth / 640) + 'px';
+            }
+
+        };
+        if (!doc.addEventListener)
+            return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-share.js?buildversion=181210172520" async="async" ></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-fullPage.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/footprint-jssdk.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172520?buildversion=181210172520" id="__jsdktag" ></script>
+<!-- <script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/chart-min.js?buildversion=181210172520"></script> -->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/commonUtil.js?buildversion=181210172520"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/widget/ShareRecord.js?buildversion=181210172520" async="async" ></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/footprint/js/footprintIndex.js?buildversion=181210172520"></script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">  <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=1781763332" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=1781763332" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=1781763332" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css"/>
+  <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-list-card.css"/>
+
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/font-awesome.min.css?buildversion=1781763332">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/appcan.control.css?buildversion=1781763332">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/appcan.icon.css?buildversion=1781763332">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/ui-base.css?$buildversion=1781763332">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/ui-box.css?buildversion=1781763332">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/collaboration/css/ui-color.css?buildversion=1781763332">
+  <!-- 
+  <link rel="stylesheet" href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=1781763332"/>
+  <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css"/>
+  <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css"/>
+  <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css"/>
+  <link rel="stylesheet" href="/seeyon/m3/apps/v5/doc/css/docNewPigeonhole.css?buildversion=1781763332"/> 
+  -->
+  <title></title>
+  <style type="text/css">
+    .cmp-table-view-cell{ padding: 0px; }
+    .cmp-radio input[type='radio']:before{ font-size: 14px; }
+    header.head-style:before{ height: 0px;}
+    .search_color{ background-color:#efeff4!important; }
+  </style>
+
+</head>
+<body class="cmp-fullscreen">
+    <header class="cmp-bar cmp-bar-nav head-style" style="display:none">
+    	<div id="searchHeader" class="searchHeader" style="display:none">
+          <a id="prev" href="javascript:void(0)" class="cmp-pull-left left-btn">
+              <!--<span class="see-icon-v5-common-arrow-back"></span><i18n key="collaboration.page.lable.goBack"></i18n>--></a>
+          <!--<a id="more" href="javascript:void(0)" class="cmp-pull-right right-btn">
+              <span  id="search" class="see-icon-search"><em class="dot"></em></span>
+              <span  id="addKey"  href="javascript:void(0)" class="m3-icon-add-round left-icon"> </span>
+          </a>-->
+          <h1 id="listDefaultState" class="cmp-title" style="display:none">已办已发</h1>
+
+      </div>
+        <div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none; position: absolute;right: 0px;left: 0px;bottom: 0px; ">
+	        <div class="cmp-segmented-control cmp-search-title " style="border:none;top:0px;">
+	            <div class="cmp-search-item">
+	                <span class="title" id="cmp_search_title" style="color:#666666!important"></span>
+	            </div>
+	            <div id="toSearch" class="cmp-search-item">
+	                <div id="searchText" class="item text cmp-active">
+	                    <input id="searchTextValue" type="text" readonly="readonly">
+	                </div>
+	                <div id="searchDate" class="item date">
+	                    <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+	                    <span>-</span>   <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+	                </div>
+	            </div>
+	            <div class="cmp-search-item">
+	                <span id="cancelSearch" class=" gotoSearch"><i18n key="collaboration.page.lable.button.cancel"></i18n></span>
+	            </div>
+	        </div>
+    	</div>
+    </header>
+
+   <div class="cmp-content  cmp-col-content" style="position:absolute;top:0px">
+     <div class="cmp-segmented-control cmp-segmented-control-inverted col cmp-segmented-control-primary new-tab-nav">
+        <a id="listPending" style="display:none;" class="cmp-control-item" href="#colPendingsContain"><i18n key="collaboration.default.pending"></i18n></a>
+        <a id="listDone" style="display:none;" class="cmp-control-item" href="#colDoneContain"><i18n key="collaboration.default.done"></i18n></a>
+         <a id="listDoneOld" style="display:none;" class="cmp-control-item" href="#colDoneOldContain"><i18n key="collaboration.default.done"></i18n>(旧)</a>
+        <a id="listSent" style="display:none;" class="cmp-control-item" href="#colSentContain"><i18n key="collaboration.default.sent"></i18n></a>
+        <a id="listSentOld" style="display:none;" class="cmp-control-item" href="#colSentOldContain"><i18n key="collaboration.default.sent"></i18n>(旧)</a>
+        <a id="listWaitSend" style="display:none;" class="cmp-control-item" href="#colWaitContain"><i18n key="collaboration.default.waitSent"></i18n></a>
+    </div>
+      <div id="dataCommonDiv" class="cmp-control-content cmp-active">
+          <div id="colPendingsContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <!--<div class="cmp-scroll">
+              	<div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div>&lt;!&ndash;装载小部件的容器&ndash;&gt;-->
+              		<ul id="colPendingsAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                	</ul>
+              <!--</div>-->
+              <!--<div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+	            <div  class="batch_wrap">
+      				<div class="all_btn cmp-input-row cmp-radio cmp-left">
+              			<label class="lableBtn all_click">
+                 			<span class="all_btn all_click"></span>
+                  			<span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                  			<span class="count" style="display:none;">0</span>
+              			</label>
+          			</div>
+      				<div class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+  	  			</div>
+          	 </div>-->
+          </div>
+           <div id="colDoneContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <div class="cmp-scroll">
+              <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+                <ul id="colDoneAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                  </ul>
+              </div>
+              <div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+	            <div  class="batch_wrap">
+      				<div class="all_btn cmp-input-row cmp-radio cmp-left">
+              			<label class="lableBtn all_click">
+                 			<span class="all_btn all_click"></span>
+                  			<span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                  			<span class="count" style="display:none;">0</span>
+              			</label>
+          			</div>
+      				<div class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+  	  			</div>
+          	 </div>
+          </div>
+          <div id="colDoneOldContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+
+              <div class="cmp-scroll">
+                  <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+                  <ul id="colDoneOldAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                  </ul>
+
+
+                 <!-- <div id="content" class="ub-f1 tx-l">
+                      <div class="umar-a" id="myApplylist">
+
+
+                          <div id="newOAList" class="cmp-control-content cmp-active ub-f1 tx-l"></div>
+                          <div id="oldOAList" class="cmp-control-content ub-f1 tx-l"></div>
+                          <div id="jzList" class="ub-f1 tx-l"></div>
+                          <div id="pageNo" style="display: none">
+                              1
+                          </div>
+                          <div class="tx-c sc-bg-active" id="pullstatus"></div>
+                          <div class="hide" id="curPage"></div>
+                      </div>
+
+
+                  </div>-->
+              </div>
+              <!--<div class="search" style="position: absolute;top: 0;width: 100%;z-index: 2;background-color: white;font-size:16px;position:absolute;top:0em; ">
+                  <div class="uinput ub ub-f1  bc-border uba tab_tu01">
+                      <div class="uinn fa fa-search sc-text"></div>
+                      <input placeholder="请输入关键字" type="text" class="ub-f1" id="infoName" />
+                      <div class="btn ub ub-ac bc-text-head ub-pc sc-btn" id="search2">
+                          搜索
+                      </div>
+
+                  </div>
+                  <div id="tabview" class="uf sc-bg ubb bc-border"></div>
+                  <div class="" id="searchTop"></div>
+              </div>-->
+
+          </div>
+         <!-- <div id="colDoneOldContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <div class="cmp-scroll">
+                  <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div>&lt;!&ndash;装载小部件的容器&ndash;&gt;
+                  <ul id="colDoneOldAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                  </ul>
+              </div>
+              <div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+                  <div  class="batch_wrap">
+                      <div class="all_btn cmp-input-row cmp-radio cmp-left">
+                          <label class="lableBtn all_click">
+                              <span class="all_btn all_click"></span>
+                              <span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                              <span class="count" style="display:none;">0</span>
+                          </label>
+                      </div>
+                      <div class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+                  </div>
+              </div>
+          </div>-->
+           <div id="colSentContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <div class="cmp-scroll">
+              <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+                <ul id="colSentAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                  </ul>
+              </div>
+              <div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+	            <div  class="batch_wrap">
+      				<div class="all_btn cmp-input-row cmp-radio cmp-left">
+              			<label class="lableBtn all_click">
+                 			<span class="all_btn all_click"></span>
+                  			<span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                  			<span class="count" style="display:none;">0</span>
+              			</label>
+          			</div>
+      				<div class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+  	  			</div>
+          	 </div>
+          </div>
+          <!--已发（旧）-->
+          <div id="colSentOldContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <div class="cmp-scroll">
+                  <div id="content2" class="ub-f1 tx-l">
+                      <div class="umar-a" id="myApplylist2">
+
+                          <!--<div id="goodsList" class="ub-f1 tx-l"></div>-->
+                          <div id="newOAList2" class="cmp-control-content cmp-active ub-f1 tx-l"></div>
+                          <div id="pageNo2" style="display: none">
+                              1
+                          </div>
+                          <div class="tx-c sc-bg-active" id="pullstatus2"></div>
+                          <div class="hide" id="curPage2"></div>
+                      </div>
+
+
+                  </div>
+              </div>
+
+              <div class="search" style="position: absolute;top: 0;width: 100%;z-index: 2;background-color: white;font-size:16px;position:absolute;top:0em; ">
+                  <div class="uinput ub ub-f1  bc-border uba tab_tu01">
+                      <div class="uinn fa fa-search sc-text"></div>
+                      <input placeholder="请输入关键字" type="text" class="ub-f1" id="infoName2" />
+                      <div class="btn ub ub-ac bc-text-head ub-pc sc-btn" id="search22">
+                          搜索
+                      </div>
+
+                  </div>
+                  <div id="tabview2" class="uf sc-bg ubb bc-border"></div>
+                  <div class="" id="searchTop2"></div>
+              </div>
+          </div>
+           <div id="colWaitContain" style="position: absolute;" class="cmp-scroll-wrapper white">
+              <div class="cmp-scroll">
+              <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.page.lable.button.batchProcessing"></i18n></div></div></div><!--装载小部件的容器-->
+                <ul id="colWaitAffairs" class="cmp-list-content approval_list_content col cmp-table-view col-list">
+                  </ul>
+              </div>
+              <div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+	            <div  class="batch_wrap">
+      				<div class="all_btn cmp-input-row cmp-radio cmp-left">
+              			<label class="lableBtn all_click">
+                 			<span class="all_btn all_click"></span>
+                  			<span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                  			<span class="count" style="display:none;">0</span>
+              			</label>
+          			</div>
+      				<div  class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+  	  			</div>
+          	 </div>
+          </div>
+      </div>
+  </div>
+	<div id="docPigeonhole" class="GM_Alert_Content Animated-Container bottom-go animated"></div>
+	<!-- 引导 -->
+<div id="src_form_view_hint" class="new_synergy_hint col display_none" style="top: 135px;right: 5px;">
+    <i class="circle" ></i>
+    <i class="line" ></i>
+    <div class="content">
+        <div class="text">
+            <span id="src_form_view_hint_txt"><!-- 提示信息 --></span>
+        </div>
+        <div class="btn"><i18n key="collaboration.page.lable.whenExit_2"></i18n><!-- 知道了 --></div>
+    </div>
+</div>
+  <footer class="cmp-bar cmp-bar-tab cmp-bar-footer footer_btn" style=" display: none;" id="batchFooterBtn">
+     <div class="cmp-block-with-btn cmp_handler_content_blue" style="padding:10px 0px;height:50px;">
+
+        <a href="javascript:void(0)" class="btn transform" style="display:none;">
+          <lable id="transformBtnLable"><i18n key="collaboration.colForward.forward"></i18n></lable>
+        </a>
+
+        <a id="batchArchiveBtn" href="javascript:void(0)" class="btn archivebtn" style="display:none;"> 
+          <lable id="archiveBtnLable"><i18n key="collaboration.page.lable.button.archive"></i18n></lable>
+        </a>
+
+        <a href="javascript:void(0)" class="btn cancelbtn" style="display:none;">
+          <lable id="cancelBtnLable"><i18n key="collaboration.page.lable.button.delete"></i18n></lable>
+        </a>
+
+        <a href="javascript:void(0)" class="btn batchdeal" style="display:none;" >
+          <lable id="batchDealBtnLable"><i18n key="collaboration.page.lable.button.batchDeal"></i18n></lable>
+        </a>
+    </div>
+  </footer>
+  <!-- 快捷键 -->
+  <div id="maskContainer" class="col-new-container">
+      <div class="col-new-btns">
+        <div class="col-new-btn" id="creatFreeCollBtn">
+          <div class="icon m3-icon-coordination-fill col-new-btn-icon col"></div>
+          <div class="col-new-btn-label"><i18n key="collaboration.page.lable.freeColl"></i18n></div>
+        </div>
+        <div class="col-new-btn" id="createTemplateColBtn">
+          <div class="icon see-icon-v5-common-formtemplate col-new-btn-icon form"></div>
+          <div class="col-new-btn-label"><i18n key="collaboration.page.lable.formTemplate"></i18n></div>
+        </div>
+        <div class="col-new-btn display_none" id="createVoiceCollBtn">
+          <div class="icon see-icon-v5-common-m3-voice-fill col-new-btn-icon voice"></div>
+          <div class="col-new-btn-label">语音协同</div>
+        </div>
+      </div>
+    <div id="newCloseBtn" class="col-new-close"><span style="font-size: 24px;" class="m3-icon-close"></span></div>
+  </div>
+    <script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=1781763333" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=1781763332" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=1781763332" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=1781763332" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=1781763332" type="text/javascript"></script>
+<script type="text/javascript">  
+  var $verstion = "?buildversion=1781763332";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";  
+  var _docPath = "/seeyon/m3/apps/v5/doc";
+  var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+  var _cmpPath = "/seeyon/m3/cmp";
+  cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script>
+  <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/collaboration/js/jquery-1.7.2.min.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/collaboration/js/yajule.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/collaboration/js/colAffairs.js?buildversion=1781763340"></script>
+  <!--
+  <script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/collaboration/js/batch.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/collaboration/js/ArrayList.js?buildversion=1781763332"></script>
+  <script src="/seeyon/m3/apps/v5/doc/js/docNewPigeonhole.js?buildversion=1781763332"></script> 
+  -->
+  <!-- js模版 -->
+    <script  type="text/html" id="list_li_tpl0">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <%     var data = this[i]; %>
+        <li id="<%=data.affairId%>" class="cmp-table-view-cell <%if(data.affairState==3 && data.subState==11){%>unread<%}%> <%if(data.affairState==1 || data.affairState == 2){%>undefined<%}%>">
+            <div class="collaboration-list">
+                <!--发起人图片-->
+                <div class="img-wrap choice">
+                    <img class="cmp-img-cache img_setting" cmp-data="<%=data.startMemberId %>" summaryId="<%=data.summaryId%>" affairId="<%=data.affairId%>" templateId="<%=data.templateId%>" subject="<%=data.subject.escapeHTML()%>" canDeleteORarchive="<%=data.canDeleteORarchive%>" workitemId="<%=data.workitemId%>" processId="<%=data.processId%>" subState="<%=data.subState%>" disAgreeOpinionPolicy="<%=data.disAgreeOpinionPolicy%>" />
+                    <div class="unselected img_click" style="display:none;"></div>
+                    <% if(data.affairState == 3 || data.affairState == 4){%>
+                    <div class="name"><%=data.startMemberName.escapeHTML() %></div>
+                    <% } %>
+                </div>
+                <div affairId="<%=data.affairId%>" data-bodyType="<%=data.bodyType%>" class="item-click-area text-wrap">
+                    <ul class="list-item">
+                        <% if(data.subState == 11) {%>
+                        <li class="collabo-title bold">
+                            <%} else{ %>
+                        <li class="collabo-title">
+                            <%} %>
+                            <!-- 重要程度 -->
+                            <% if(data.importantLevel && data.importantLevel > 1){ %>
+                            <span style="color: #FF3B30;font-size:12px;top:-1px;" class="relative cmp-icon iconfont see-icon-v5-common-important-<%=(data.importantLevel-1)%>"></span>
+                            <% } %>
+                            <%=data.subject.escapeHTML() %>
+                        </li>
+                        <li class="collabo-time"  style="display:none;">
+                            <span class=""><%=data.startDate %></span>
+                            <% if(data.hasAttsFlag) {%>
+                            <span class="see-icon-accessory"></span>
+                            <%} %>
+                        </li>
+                        <!--当前节点名称-->
+                        <%
+                        if(data.affairState != 1){
+                        var rightPadding = "0px";
+                        if(data.state == 3 || data.state == 1
+                        || (data.affairState == 3 && data.subState == 13)){
+                        rightPadding = "16px";
+                        }
+                        %>
+                        <li>
+                            <div style="display:none;overflow:hidden;padding-right:<%=rightPadding%>" class="collabo-state" >
+                                <span class="see-icon-v5-common-replies state-icon"></span><span class="state-numb"><%=data.replyCounts %></span>
+                                <% if(data.fromName != null && data.fromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-endorse endorse-icon"></span>
+                       <span><%=data.fromName %></span>
+                     </span>
+                                <%} %>
+                                <% if(data.backFromName != null && data.backFromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-rollback endorse-icon"></span>
+                       <span><%=data.backFromName %></span>
+                     </span>
+                                <%} %>
+                            </div>
+                        </li>
+                        <%} %>
+                    </ul>
+                    <!--当前事项状态:mark未读 hold暂存 end结束-->
+                    <!-- 流程结束状态：终止和正常结束 -->
+                    <%if(data.summaryState == 3) { %>
+                    <span class="mark end m3-icon-status-seal end" style="display:none;"><em><%=cmp.i18n("collaboration.page.lable.button.end")%></em></span>
+                    <%} else if(data.summaryState == 1){%>
+                    <span class="mark end m3-icon-status-seal end" style="display:none;"><em><%=cmp.i18n("collaboration.page.lable.button.stop")%></em></span>
+                    <%}else if(data.subState == 11) {%>
+                    <span class="mark m3-icon-status-seal stag hidden"><em><%=data.subStateName%></em></span>
+                    <!--暂存-->
+                    <%}else if(data.affairState == 3 && data.subState == 13){%>
+                    <span class="mark hold m3-icon-status-seal stag"><em><%=cmp.i18n("collaboration.page.lable.button.storage")%></em></span>
+                    <%}%>
+                </div>
+            </div>
+        </li>
+        <%} %>
+    </script>
+
+  <script  type="text/html" id="list_li_tpl">
+  <% for(var i = 0,len = this.length;i < len; i++){ %>
+  <%     var data = this[i]; %>
+  <% if(data.total){ %>
+        <li id="<%=data.affair_id%>" class="cmp-table-view-cell">
+            <div class="collaboration-list">
+            <div class="img-wrap choice" style="display: none">
+                <img class="img_setting" style="display: none"/>
+                <div class="unselected img_click" style="display:none;"></div>
+                <div class="name"></div>
+            </div>
+            <div affair_Id="<%=data.affair_id%>" summaryid="<%=data.id%>" can_track="<%=data.can_track%>" title="<%=data.subject%>" sendername="<%=data.sendername%>" create_date="<%=data.create_date%>" class="item-click-area oldyiban text-wrap" style="padding-left: 2em">
+                <ul class="list-item">
+                    <li class="collabo-title"><%=data.subject.escapeHTML()%></li>
+                </ul>
+            </div>
+                </div>
+                </li>
+  <%} else if(!data.tatal) { %>
+       <li id="<%=data.affairId%>" class="cmp-table-view-cell <%if(data.affairState==3 && data.subState==11){%>unread<%}%> <%if(data.affairState==1 || data.affairState == 2){%>undefined<%}%>">
+         <div class="collaboration-list">
+           <!--发起人图片-->
+           <div class="img-wrap choice" style="display: none">
+             <img class="cmp-img-cache img_setting" cmp-data="<%=data.startMemberId %>" summaryId="<%=data.summaryId%>" affairId="<%=data.affairId%>" templateId="<%=data.templateId%>" subject="<%=data.subject.escapeHTML()%>" canDeleteORarchive="<%=data.canDeleteORarchive%>" workitemId="<%=data.workitemId%>" processId="<%=data.processId%>" subState="<%=data.subState%>" disAgreeOpinionPolicy="<%=data.disAgreeOpinionPolicy%>" />
+             <div class="unselected img_click" style="display:none;"></div>
+             <% if(data.affairState == 3 || data.affairState == 4){%>
+               <div class="name"><%=data.startMemberName.escapeHTML() %></div>
+             <% } %>
+             </div>
+             <div affairId="<%=data.affairId%>" data-bodyType="<%=data.bodyType%>" class="item-click-area text-wrap" style="padding-left: 2em">
+               <ul class="list-item">
+                   <% if(data.subState == 11) {%>
+                     <li class="collabo-title bold">
+                  <%} else{ %>
+                    <li class="collabo-title">
+                  <%} %>
+                   <!-- 重要程度 -->
+                   <% if(data.importantLevel && data.importantLevel > 1){ %>
+                     <span style="color: #FF3B30;font-size:12px;top:-1px;" class="relative cmp-icon iconfont see-icon-v5-common-important-<%=(data.importantLevel-1)%>"></span>
+                   <% } %>
+                     <%=data.subject.escapeHTML() %>
+                 </li>
+                 <li class="collabo-time" style="display:none;">
+                   <span class=""><%=data.startDate %></span>
+                   <% if(data.hasAttsFlag) {%>         
+                   <span class="see-icon-accessory"></span>
+                   <%} %>
+                 </li>
+                 <!--当前节点名称--> 
+                 <% 
+                     if(data.affairState != 1){
+                            var rightPadding = "0px";
+                           if(data.state == 3 || data.state == 1 
+                                    || (data.affairState == 3 && data.subState == 13)){
+                                rightPadding = "16px";
+                           }
+                  %>
+                 <li>
+                   <div style="display:none;overflow:hidden;padding-right:<%=rightPadding%>" class="collabo-state">
+                     <span class="see-icon-v5-common-replies state-icon"></span><span class="state-numb"><%=data.replyCounts %></span>
+                     <% if(data.fromName != null && data.fromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-endorse endorse-icon"></span>
+                       <span><%=data.fromName %></span>
+                     </span>
+                     <%} %>
+                     <% if(data.backFromName != null && data.backFromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-rollback endorse-icon"></span>
+                       <span><%=data.backFromName %></span>
+                     </span>
+                     <%} %> 
+                   </div>
+                 </li>
+                 <%} %>
+               </ul>
+                <!--当前事项状态:mark未读 hold暂存 end结束-->
+                <!-- 流程结束状态：终止和正常结束 -->
+                <%if(data.summaryState == 3) { %>
+                	<span class="mark end m3-icon-status-seal end" style="display:none;"><em><%=cmp.i18n("collaboration.page.lable.button.end")%></em></span>
+                <%} else if(data.summaryState == 1){%>
+					<span class="mark end m3-icon-status-seal end"style="display:none;"><em><%=cmp.i18n("collaboration.page.lable.button.stop")%></em></span>
+				<%}else if(data.subState == 11) {%>
+					<span class="mark m3-icon-status-seal stag hidden"><em><%=data.subStateName%></em></span>
+                	<!--暂存-->
+                <%}else if(data.affairState == 3 && data.subState == 13){%>
+					<span class="mark hold m3-icon-status-seal stag"><em><%=cmp.i18n("collaboration.page.lable.button.storage")%></em></span>
+				<%}%>
+              </div>
+          </div>
+        </li>
+    <%} %>
+  <%} %>
+  </script>
+
+    <script  type="text/html" id="list_li_tpl2">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <%     var data = this[i]; %>
+        <% if(!data.replyCounts){ %>
+        <li id="<%=data.affair_id%>" class="cmp-table-view-cell">
+            <div class="collaboration-list">
+                <div class="img-wrap choice" style="display:none">
+                    <img class="img_setting" style="display: none"/>
+                    <div class="unselected img_click" style="display:none;"></div>
+                    <div class="name"></div>
+                </div>
+                <div affair_Id="<%=data.affairId%>" summaryid="<%=data.value%>"  title="<%=data.title%>" templete_id="<%=data.templeteId%>" process_id="<%=data.processId%>" class="item-click-area oldyifa text-wrap" style="padding-left: 2em">
+                    <ul class="list-item">
+                        <li class="collabo-title"><%=data.title.escapeHTML()%></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <%} else { %>
+        <li id="<%=data.affairId%>" class="cmp-table-view-cell <%if(data.affairState==3 && data.subState==11){%>unread<%}%> <%if(data.affairState==1 || data.affairState == 2){%>undefined<%}%>">
+            <div class="collaboration-list">
+                <!--发起人图片-->
+                <div class="img-wrap choice" style="display: none">
+                    <img class="cmp-img-cache img_setting" cmp-data="<%=data.startMemberId %>" summaryId="<%=data.summaryId%>" affairId="<%=data.affairId%>" templateId="<%=data.templateId%>" subject="<%=data.subject.escapeHTML()%>" canDeleteORarchive="<%=data.canDeleteORarchive%>" workitemId="<%=data.workitemId%>" processId="<%=data.processId%>" subState="<%=data.subState%>" disAgreeOpinionPolicy="<%=data.disAgreeOpinionPolicy%>" />
+                    <div class="unselected img_click" style="display:none;"></div>
+                    <% if(data.affairState == 3 || data.affairState == 4){%>
+                    <div class="name"><%=data.startMemberName.escapeHTML() %></div>
+                    <% } %>
+                </div>
+                <div affairId="<%=data.affairId%>" data-bodyType="<%=data.bodyType%>" class="item-click-area text-wrap" style="padding-left: 2em">
+                    <ul class="list-item">
+                        <% if(data.subState == 11) {%>
+                        <li class="collabo-title bold">
+                            <%} else{ %>
+                        <li class="collabo-title">
+                            <%} %>
+                            <!-- 重要程度 -->
+                            <% if(data.importantLevel && data.importantLevel > 1){ %>
+                            <span style="color: #FF3B30;font-size:12px;top:-1px;" class="relative cmp-icon iconfont see-icon-v5-common-important-<%=(data.importantLevel-1)%>"></span>
+                            <% } %>
+                            <%=data.subject.escapeHTML() %>
+                        </li>
+                        <li class="collabo-time"  style="display:none;">
+                            <span class=""><%=data.startDate %></span>
+                            <% if(data.hasAttsFlag) {%>
+                            <span class="see-icon-accessory"></span>
+                            <%} %>
+                        </li>
+                        <!--当前节点名称-->
+                        <%
+                        if(data.affairState != 1){
+                        var rightPadding = "0px";
+                        if(data.state == 3 || data.state == 1
+                        || (data.affairState == 3 && data.subState == 13)){
+                        rightPadding = "16px";
+                        }
+                        %>
+                        <li>
+                            <div style="display:none;overflow:hidden;padding-right:<%=rightPadding%> " class="collabo-state">
+                                <span class="see-icon-v5-common-replies state-icon"></span><span class="state-numb"><%=data.replyCounts %></span>
+                                <% if(data.fromName != null && data.fromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-endorse endorse-icon"></span>
+                       <span><%=data.fromName %></span>
+                     </span>
+                                <%} %>
+                                <% if(data.backFromName != null && data.backFromName != ""){%>
+                     <span class="add">
+                       <span class="see-icon-v5-common-rollback endorse-icon"></span>
+                       <span><%=data.backFromName %></span>
+                     </span>
+                                <%} %>
+                            </div>
+                        </li>
+                        <%} %>
+                    </ul>
+                    <!--当前事项状态:mark未读 hold暂存 end结束-->
+                    <!-- 流程结束状态：终止和正常结束 -->
+                    <%if(data.summaryState == 3) { %>
+                    <span class="mark end m3-icon-status-seal end" style="display:none;"><em><%=cmp.i18n("collaboration.page.lable.button.end")%></em></span>
+                    <%} else if(data.summaryState == 1){%>
+                    <span class="mark end m3-icon-status-seal end" style="display:none;" ><em><%=cmp.i18n("collaboration.page.lable.button.stop")%></em></span>
+                    <%}else if(data.subState == 11) {%>
+                    <span class="mark m3-icon-status-seal stag hidden"><em><%=data.subStateName%></em></span>
+                    <!--暂存-->
+                    <%}else if(data.affairState == 3 && data.subState == 13){%>
+                    <span class="mark hold m3-icon-status-seal stag"><em><%=cmp.i18n("collaboration.page.lable.button.storage")%></em></span>
+                    <%}%>
+                </div>
+            </div>
+        </li>
+        <%} %>
+        <%} %>
+        </script>
+    <script type="text/html" id="list_li_tpl3">
+        <% for(var i = 0,len = this.length;i < len; i++){ %>
+        <%     var data = this[i]; %>
+
+        <li id="<%=data.id%>" class="cmp-table-view-cell">
+            <div class="collaboration-list">
+                <div class="img-wrap choice" style="display: none">
+                    <img class="img_setting" style="display: none"/>
+                    <div class="unselected img_click" style="display:none;"></div>
+                    <div class="name"></div>
+                </div>
+                <div affair_Id="<%=data.id%>" uniqueid="<%=data.uniqueid%>"  title="<%=data.title%>"  class="item-click-area nanlinyiban text-wrap" style="padding-left: 2em">
+                    <ul class="list-item">
+                        <li class="collabo-title"><%=data.title.escapeHTML()%></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    <% }%>
+
+
+
+</script>
+</body>
+</html>

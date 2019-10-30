@@ -1,0 +1,73 @@
+var officeApi = (function() {
+    
+    var officeApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/office";
+        var xxx1 = "/seeyon/m3/apps/v5/office";
+        var xxx2 = "";
+        var xxx3 = "";
+    };
+     /**
+	 * 打开审批页面(待办消息)
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]
+     * 			affairId: 待办id
+     *      	subApp: 0 车辆 ，1 办公用品 ，2 办公设备 ，3 图书
+	 * @param  {string} params   [其他可选参数]
+	 *{\"messageCategory\":\"26\",\"messageType\":\"0\",\"linkType\":\"message.link.office.autoN.audit\",\"id\":\"5200899962900463990\"}
+     */
+    officeApi.prototype.openApp = function(type, backUrl, option, params) {
+        if(!option) {
+            return false;
+        }
+        if(!option.id&&!option.subApp){
+            return false;
+        }
+    	var pageInfo = {"url":backUrl, "data":params};
+    	var paramData = {
+            'type' : type,
+            'pageInfo' : pageInfo
+        };
+        var id = "";
+        var subApp = "";
+        if(type == "message"){
+            var linkType = option.linkType;
+            if(linkType == "message.link.office.autoN.audit"){
+                subApp = 0;
+            }
+            if(linkType == "message.link.office.stockN.audit"){
+                subApp = 1;
+            }
+            if(linkType == "message.link.office.assetN.audit"){
+                subApp = 2;
+            }
+            if(linkType == "message.link.office.bookN.audit"){
+                subApp = 3;
+            }
+            id = option.id;
+        }else{
+            id = option.affairId;
+            subApp = option.subApp;
+        }
+    	if(subApp== 3){
+            paramData.applyId = id;
+    	}else{
+            paramData.affairId = id;
+    	}
+        var url = "";
+        if(subApp == 0){
+            url = "/html/audit_auto.html";
+        }else if(subApp == 1){
+            url = "/html/audit_stock.html";
+        }else if(subApp == 2){
+            url = "/html/audit_asset.html";
+        }else if(subApp == 3){
+            url = "/html/audit_book.html";
+        }else{
+            return false;
+        }
+        cmp.href.next(this.basePath + url, paramData);
+    };
+    return new officeApi();
+    
+})();

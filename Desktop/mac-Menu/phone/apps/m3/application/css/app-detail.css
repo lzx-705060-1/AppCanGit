@@ -1,0 +1,101 @@
+@charset "utf-8";
+p {
+    margin: 0;
+}
+body header {
+    position: fixed;
+}
+.cip-header {
+    padding: 10px;
+    background: #fff;
+}
+.header-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+}
+.cip-info {
+    margin-left: 10px;
+}
+.icon-default {
+    font-size: 36px;
+    text-align: center;
+    line-height: 80px;
+    background-color: #00bfcf;
+    color: #fff;
+}
+.text-over {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 160px;
+}
+.cip-info > span {
+    display: block;
+    font-size: 16px;
+    color: #999;
+}
+.cip-info > span.cip-app-name {
+    font-size: 18px;
+    color: #333;
+}
+.marg-10 {
+    margin: 10px 0;
+}
+.cip-btn > a {
+    display: block;
+    color: #fff;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 25px;
+    background: #3AADFB;
+    text-align: center;
+}
+.cip-btn > .close {
+    background: #F00;
+}
+.cip-btn > .grey {
+    background: #bbb;
+}
+.cip-btn > .open {
+    margin-bottom: 20px;
+}
+
+.cip-content {
+    padding: 0 10px 10px 10px;
+    background: #fff;
+    margin-top: 15px;
+}
+.cip-dest {
+    line-height: 50px;
+    font-size: 18px;
+    color: #333;
+}
+.cip-dest > span {
+    display: block;
+}
+.cip-dest > .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #3AADFB;
+    margin-right: 10px;
+}
+.cip-description {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+.img-des {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+.m3-content{
+    position: absolute;
+}

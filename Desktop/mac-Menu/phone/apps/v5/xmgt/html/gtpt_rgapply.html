@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1559547182958"/>
+    <!--导入cmp模块的样式文件，/seeyon/m3/cmp即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/appcan.control.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/appcan.icon.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-base.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-box.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/ui-color.css?buildversion=1559547182958">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/xmgt/css/gtpt_rgapply.css?buildversion=1559547182958">
+    <link rel="stylesheet"  href="/seeyon/m3/apps/v5/xmgt/fonts/iconfont.css?buildversion=1559547182958">
+    <title>认购</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<!--<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">-->
+<!--    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn">-->
+<!--        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>-->
+<!--        <span class="nav-text"><i18n key="xmgt.label.back"></i18n></span>-->
+<!--    </div>-->
+<!--    <div class="cmp-title">-->
+<!--        <i18n key="xmgt.label.home"></i18n>-->
+<!--    </div>-->
+<!--    <div class="cmp-header-right">-->
+<!--    </div>-->
+<!--</header>-->
+<!-- 内容-->
+<div id="content" style="display: none;   width: 100%;   min-height: 100%;background-color: #FFFFFF;"></div>
+<div style="height: 9em;position: fixed;width: 100%;z-index: 999;">
+    <div class="gt" id ='gt' style="display: none;">
+        <div style="width: 96%;height:100%;" class="gt_mount">
+            <div style="width: 49%;height:65%"  class="gt_mount1">
+                <div   class="gt_mount_yuan">
+                    <div class="gt_mount_yuan_content">
+                        <span style="font-size: 1.5em"  id ="z_apply_amount">0</span>万
+                    </div>
+                </div>
+                <div  style="width: 100% "class="gt_mount_text">
+                    <span style="font-size: 1.1em;color :#9D9D9D">认购合计</span>
+                </div>
+            </div>
+            <div style="width: 32%;height:65%" class="gt_mount2">
+                <div class="gt_mount_yuan">
+                    <div class="gt_mount_yuan_content">
+                        <span style="font-size:1.5em" id ="z_matchMount">0</span>万
+                    </div>
+                </div>
+                <div  style="width: 100% "class="gt_mount_text">
+                    <span style="font-size: 1.1em;color :#9D9D9D">配资合计</span>
+                </div>
+            </div>
+            <div style="width: 49%;height:65%;"  class="gt_mount3">
+                <div   class="gt_mount_yuan">
+                    <div class="gt_mount_yuan_content">
+                        <span style="font-size: 1.5em" id ='z_mounts'>0</span>万
+                    </div>
+                </div>
+                <div  style="width: 100% "class="gt_mount_text">
+                    <span style="font-size: 1.1em;color :#9D9D9D">需实缴合计</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  id ='time' style="width: 100%;height: 25%; background-color: #FFFFFF;display: none;border-bottom: 1px solid #E8E8E8;">
+        <div style="width: 70%;height:100%;display:inline-block" class ="gt_time">
+            <span style="color: #9D9D9D;">认购截止时间&nbsp;&nbsp;</span>
+            <span id="z_time" >0000-00-00 00:00</span>
+        </div>
+        <div style="width: 23%;display:inline-block ;display:none;" id ="qz" class="gt_xxjb">
+            <span  id ='qiangzhi' style="height:95%;  padding-top:0.3em;  padding-bottom:0.3em; bottom:0.2em;  position: relative;  background-color:#FFA500;font-size: 0.7em;color:#FFFFFF;" onclick="chakan()" >申请下限减半</span>
+        </div>
+
+    </div>
+</div>
+<div style="width: 100%;display: none;margin-top: 9.2em;" class ="gt_rgapply_content"  id ="gt_rgapply_content"></div>
+
+<div id = "jiewei" style="position: fixed;display:none;bottom: 0;height: 2.6em;background-color: #FFA500;width: 100%; ">
+    <div style="display:inline-block;width:49%;line-height:2.5em;text-align:center;border-right:1px solid #FFFFFF;color:#FFFFFF"onclick="saveApply()">
+        <span>保存</span>
+    </div>
+    <div style="display:inline-block;width:49%;line-height:2.5em;text-align:center;color:#FFFFFF" onclick="submitFormData()">
+        <span >提交</span>
+    </div>
+</div>
+<!-- <div style="width: 100%;height:25%" class="gt_mount">
+<div style="width: 30%;height:80%"  class="gt_mount1">
+<div  style="width: 100% "class="gt_mount_text">
+<span>认购合计</span>
+</div>
+<div   class="gt_mount_yuan">
+<div class="gt_mount_yuan_content">
+<span style="font-size: 1.2em">121.00</span><br/>
+<span style="font-size: 0.7em">万元</span>
+</div>
+</div>
+</div>
+<div style="width: 30%;height:80%" class="gt_mount2">
+<div  style="width: 100% "class="gt_mount_text">
+<span>配资合计</span>
+</div>
+<div class="gt_mount_yuan">
+<div class="gt_mount_yuan_content">
+<span style="font-size: 1.1em">121.00</span><br/>
+<span style="font-size: 0.7em">万元</span>
+</div>
+</div>
+</div>
+<div style="width: 30%;height:80%"  class="gt_mount3">
+<div  style="width: 100% "class="gt_mount_text">
+<span>需实缴合计</span>
+</div>
+<div   class="gt_mount_yuan">
+<div class="gt_mount_yuan_content">
+<span style="font-size: 1.2em">121.00</span><br/>
+<span style="font-size: 0.7em">万元</span>
+</div>
+</div>
+</div>
+</div>
+<div style="width: 95%" class ="gt_rgapply_content"  id ="gt_rgapply_content">
+
+</div>  -->
+
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/apps/v5/xmgt/i18n/xmgt_zh_CN.js?buildversion=1559547182958"></script><!--导入本应用的中文国际化资源-->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=1559547182958"></script><!--导入cmp国际化组件-->
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/xmgt/i18n/", "xmgt");
+    <!--初始化国际化资源-->
+    var xmgtBasePath = "/seeyon/m3/apps/v5/xmgt";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script>
+ <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/jquery-1.7.2.min.js?buildversion=1559547182958"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=1559547182958"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/gtpt_rgapply.js?buildversion=1559547182960"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/xmgt/js/yajule.js?buildversion=1559547182958"></script>
+</body>
+
+</html>

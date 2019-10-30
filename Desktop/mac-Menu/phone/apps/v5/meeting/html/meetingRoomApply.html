@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/cmp-meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/meeting/css/m3_meeting.css?buildversion=18121017266" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017266">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view:after{ left: 0px;background-color: #d4d4d4;height: 0;}
+		.cmp-table-view:before{ top: -1px; background-color: #d4d4d4;height: 0;}
+		.cmp-table-view-cell:after{ left: 0px; background-color: #d4d4d4; }
+		.apply_wrap:after{height: 0px;}
+		#meetingRoomName .title{
+			font-family: PingFangSC-Regular;
+			font-size: 16px;
+			color: #8F8F8F;
+			letter-spacing: 0;
+			width:100px;
+		}
+		#meetingRoomName .headline{
+			left:120px;
+		}
+		#meetingRoomName .content{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #333333;
+			letter-spacing: 0;
+		}
+		.meetingTimeRow{
+			display: flex;
+			display: -webkit-flex;
+			justify-content: flex-start;
+			-webkit-justify-content: flex-start;
+		}
+		.leftCell,.rightCell{
+			flex:2;
+			-webkit-flex:2;
+		}
+		.leftCell .titleLabel,.rightCell .titleLabel{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #999999;
+			letter-spacing: 0;
+		}
+		.leftCell .timeLabel,.rightCell .timeLabel{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #000000;
+		}
+		.leftCell input,.rightCell input{
+			font-family: ArialMT;
+			font-size: 16px;
+			color: #717171;
+		}
+		.startReq em{
+			color: red;
+		}
+		.centerCell{
+			flex:1;
+			-webkit-flex:1;
+			display: flex;
+			display: -webkit-flex;
+			justify-content: center;
+			-webkit-justify-content: center;
+			align-items: center;
+			-webkit-align-items: center;
+		}
+		.go-row{
+			height: 28px;
+	    	 line-height: 28px;
+		}
+		.go-row:first-child{
+			margin-top: 10px;
+			padding-left: 11px;
+		}
+
+		.go-row input{
+			height: 25px;
+			line-height: 25px;
+			padding-left: 12px;
+			border: 0;
+		}
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1 back_f4">
+	<div class="cmp-content relative back_f4 cmp-content-none">
+		<div style=" margin-top: 10px; ">
+			<form>
+				<ul class="cmp-table-view new_header_content">
+					<li id="meetingRoomName" class="cmp-table-view-cell">
+					<table class="table_wrap">
+						<tbody><tr>
+								<th class="left_name"><i18n key="meeting.meetingRoomDetail.name"></i18n></th>
+								<th id="romeName" class="right_text"></th>
+							</tr>
+						</tbody></table>
+					</li>
+				</ul>
+				<ul class="cmp-table-view new_header_content">
+					<div class="meetingTimeRow" style="height: 103px">
+						<div class="leftCell" id="showStartDate" style="width: 40%;">
+							<div class="go-row">
+								<span class="startReq">
+									<em>*</em>
+									<!--会议开始时间-->
+									<span class="titleLabel"><i18n key="meeting.meetingRoomApply.startTime"></i18n></span>
+								</span>
+							</div>
+							<div class="go-row">
+								<input style="color: #717171;" id="startDate" type="text" readonly="readonly">
+							</div>
+							<div class="go-row">
+								<input class="timeLabel" id="startDatetimeLabel" readonly="readonly">
+							</div>
+						</div>
+						<div class="centerCell">
+							<img style="height:80px;width:26px;" src="../img/rightDate.png"/>
+						</div>
+						<div class="rightCell" id="showEndDate">
+							<div class="go-row">
+								<span class="startReq">
+									<em>*</em>
+									<!--会议结束时间-->
+									<span class="titleLabel"><i18n key="meeting.meetingRoomApply.endTime"></i18n></span>
+								</span>
+							</div>
+							<div class="go-row">
+								<input style="color: #717171;" id="endDate" type="text" readonly="readonly">
+							</div>
+							<div class="go-row">
+								<input class="timeLabel" id="endDatetimeLabel" type="text" readonly="readonly">
+							</div>
+						</div>
+					</div>
+				</ul>
+			</form>
+		</div>
+		<div class="apply_wrap">
+			<textarea id="description" maxlength="80" rows="1" style="height:80px; border:none;"></textarea>
+		</div>
+	</div>
+	<footer class="cmp-bar cmp-bar-footer single_btn back_white">
+	    <div class="wh100 border_t relative">
+			<div class="btn_wrap">
+				<button id="applyBtn"><i18n key="meeting.meetingRoomApply.btn"></i18n></button>
+			</div>
+		</div>
+	</footer>
+</body>
+      
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017266"></script>
+	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meeting-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/js/meetingCommon.js?buildversion=18121017266" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/meeting/i18n/MeetingResources_zh_CN.js?buildversion=18121017266" type="text/javascript"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-emoji.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=18121017266"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=18121017266"></script>
+	<script type="text/javascript">
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+  var _collPath = "/seeyon/m3/apps/v5/collaboration";
+</script>    <script src="/seeyon/m3/apps/v5/meeting/js/meetingRoomApply.js?buildversion=18121017266"></script>
+</html>

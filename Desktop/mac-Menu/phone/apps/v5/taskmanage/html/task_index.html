@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+    <link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172627" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172627" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172627" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172627" rel="stylesheet" type="text/css" />
+    <link href="/seeyon/m3/apps/v5/taskmanage/css/taskmanage.css?buildversion=181210172627" rel="stylesheet" type="text/css" />
+    <title></title>
+</head>
+<body>
+<script>var _cmpPath = "/seeyon/m3/cmp"; var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";</script>
+<div id="body_content_div" class="cmp-content position_relative">
+	 <div class="th-wapper">
+	 	<div class="cmp-segmented_title_content" id="searchPlus">
+			<form action="#" onsubmit="return false;">
+				<div class="cmp-content-title-search cmp-content-search-add">
+					<div class="cmp-input-row see-icon-search cmp-search" id="task-search">
+						<input type="search"  placeholder="" class="cmp-input-clear " style="color: #A1B0C5;" disabled> 
+						<span class="cmp-icon cmp-hidden cmp-icon-clear"></span> 
+						<span class="cmp-placeholder" id="searchDom"> 
+							<span class="cmp-icon cmp-icon-search"></span> 
+							<span class="text-search">搜索</span>
+						</span>
+					</div>
+					<a id="task_new" class="search-title-cancel cmp-icon cmp-icon-plus"></a>
+				</div>
+			</form>
+		</div>
+			<!--          
+			<div class="cmp-segmented_title_content" id="searchPlus" style="flex-grow: 1;">
+			<form action="#" onsubmit="return false;">
+				<div class="cmp-input-row see-icon-search cmp-search">
+					<input type="search" id="task-search" placeholder="" class="cmp-input-clear ">
+					<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+					<span class="cmp-placeholder">
+	                 	<span class="cmp-icon cmp-icon-search"></span>
+	                 	<span class="text-search">搜索</span>
+	                 </span>
+				</div>
+			</form>
+		</div>
+        <div class="add-task-wapper">
+            <a id="task_new" class="cmp-icon iconfont see-icon-v5-common-add-circle" style=""></a>
+        </div> 
+        -->
+    </div>
+
+    <div style="background-color: #fefefe;">
+        <div id="contentAndWfTags" class="cmp-segmented-control cmp-segmented-control-inverted col new-tab-nav">
+            <a id="Personal" class="cmp-control-item" ><i18n key="Taskmanage.label.mine"></i18n></a>
+            <a id="TellMe" class="cmp-control-item" ><i18n key="Taskmanage.label.tellme"></i18n></a>
+            <a id="Sent" class="cmp-control-item" ><i18n key="Taskmanage.label.idispatched"></i18n></a>
+            <a id="TaskAudit" class="cmp-control-item"><i18n key="Taskmanage.label.audited"></i18n></a>
+        </div>
+    </div>
+    <div id="my_task" class="cmp-control-content cmp-active main-content white tab_selector">
+        <div class="task-top">
+        	<div class="task-top-shade"></div>
+			<div class="task-top-content">
+                <div class="task-top-content-need task-status-tab" id="weekunfinished">
+                    <div class="task-top-content-num">
+                        <span id="weekunfinished-num">-</span>
+                    </div>
+                    <div class="task-top-content-text cmp-ellipsis">
+                        <span><i18n key="Taskmanage.label.finishinweek")></i18n></span>
+                    </div>
+                </div>
+                <div class="task-top-content-undo task-status-tab" id="unfinished">
+                    <div class="task-top-content-num">
+                        <span id="unfinished-num">-</span>
+                    </div>
+                    <div class="task-top-content-text">
+                        <span><i18n key="Taskmanage.label.unfinished"></i18n></span>
+                    </div>
+                </div>
+                <div class="task-top-content-limit task-status-tab" id="overdue">
+                    <div class="task-top-content-num">
+                        <span id="overdue-num">-</span>
+                    </div>
+                    <div class="task-top-content-text">
+                        <span><i18n key="Taskmanage.label.overdue"></i18n></span>
+                    </div>
+                </div>
+                <div class="task-top-content-all task-status-tab" id="all">
+                    <div class="task-top-content-num">
+                        <span id="all-num">-</span>
+                    </div>
+                    <div class="task-top-content-text">
+                        <span><i18n key="Taskmanage.label.taskamount")></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="task-bottom">
+           	<div id="taskList" class="task-need-all" style="display: block;position:relative">
+	            <div class="cmp-scroll">
+                     <ul class="cmp-table-view"></ul>
+	            </div>
+	        </div>
+        </div>
+    </div>
+    <div id="auditing-container" class="cmp-control-content main-content white tab_selector">
+    	<div class="task-top">
+        	<div class="task-top-shade"></div>
+			<div class="task-top-content">
+                <div class="task-top-content-need task-status-tab" id="auditing-container-pending" data-status = "0" style="width: 45%;">
+                    <div class="task-top-content-num">
+                        <span id="auditing-num">0</span>
+                    </div>
+                    <div class="task-top-content-text cmp-ellipsis">
+                        <span><i18n key="Taskmanage.label.pendingAudit"></i18n></span>
+                    </div>
+                </div>
+                <div class="task-top-content-undo task-status-tab" id="auditing-container-all" data-status="all" style="width: 45%;">
+                    <div class="task-top-content-num">
+                        <span id="auiting-all-num">0</span>
+                    </div>
+                    <div class="task-top-content-text">
+                        <span><i18n key="Taskmanage.label.all"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="task-bottom">
+           	<div id="taskAuditList" class="task-need-all" style="display: block;position:relative">
+	            <div class="cmp-scroll">
+                     <ul class="cmp-table-view"></ul>
+	            </div>
+	        </div>
+        </div>
+    </div>
+</div>
+
+<!-- 来自待办  -->
+<div class="portalFooter cmp-hidden" >
+    <div class="block qywx navPending">
+        <div class="pIcon ">
+            <span class="see-icon-v5-common-Pendingwork"></span>
+        </div>
+        <div class="pName">
+            <span><i18n key="Taskmanage.label.todo"></i18n></span>
+        </div>
+    </div>
+    <div class="block qywx navWorktask">
+        <div class="pIcon pIconChoose">
+            <span class="see-icon-v5-common-mission-fill"></span>
+        </div>
+        <div class="pName pNameChoose">
+            <span><i18n key="Taskmanage.label.task"></i18n></span>
+        </div>
+    </div>
+    <div class="block qywx navSchedule">
+        <div class="pIcon">
+			<!-- <span class="see-icon-v5-common-workingaffair"></span> -->
+			<span class="see-icon-v5-common-schedule-fill"></span>
+        </div>
+        <div class="pName">
+            <span><i18n key="Taskmanage.label.calendar"></i18n></span>
+        </div>
+    </div>
+</div>
+<!-- 来自待办  -->
+
+
+<script type="text/html" id="task_index_tpl">
+<% var root = cmp.serverIp ? cmp.serverIp : ""; %> 
+<% for(var i = 0;i < this.length; i++){ %>
+	<% var data = this[i]; %>
+				<div class="task-item-list">
+                    <div class="task-item">
+						<%if(data.status == 6){%> 
+                        	<div class="task-item-limit"></div>
+						<% }else if(data.status == 5){ %>
+							<div class="task-item-aborded"></div>
+						<% }else if(data.status == 4){ %>
+							<div class="task-item-done"></div>
+						<% }else{ %>
+							<div class="task-item-doing"></div>
+						<% } %>
+                    </div>
+                    <div class="task-doing <%= (data.canView ? '' : 'task-disable') %>" taskId="<%= data.taskId%>">
+                        <div>
+                            <div class="task-detail" style="background-color: transparent;">
+                                <div class="task-detail-title cmp-ellipsis-2 cmp-ellipsis-2">
+									<% if(data.importantLevel == 2){ %>
+										<span class="cmp-icon iconfont see-icon-v5-common-important-1 task-detail-content-icon-light" style="color:#ff3b30;font-size:15px;"></span>
+									<% } %>
+									<% if(data.importantLevel == 3){ %>
+										<span class="cmp-icon iconfont see-icon-v5-common-important-2 task-detail-content-icon-light" style="color:#ff3b30;font-size:15px;"></span>
+									<% } %>
+                                    	<span><%= data.subject.escapeHTML() %></span>
+                                </div>
+
+                            </div>
+							<% if(data.canFeedback){ %>
+                            	<div class="task-checkbox">
+                                	<span class="cmp-icon see-icon-v5-common-pull-down"></span>
+                            	</div>
+							<% } %>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div class="task-detail-content">
+							<%if(data.status == 6){%> 
+                            	<div class="task-detail-content-time" style="background:#ff5900;color:white">
+									<span ><%= data.plannedEndTime %></span>
+                            	</div>
+							<% }else{ %>
+                            	<div class="task-detail-content-time">
+									<span ><%= data.plannedEndTime %></span>
+                            	</div>
+							<% } %>
+							<%if(data.auditStatusCode == "0"){%>
+								<span class="task-detail-content-duration" style="color: #3aadfb;" overtime="<%= data.overtime%>">
+									<%= data.taskProgressDisplay %>
+								</span>								
+							<%}else if(data.auditStatusCode == "2"){%>
+								<span class="task-detail-content-duration" style="color: red;" overtime="<%= data.overtime%>">
+									<%= data.taskProgressDisplay %>
+								</span>								
+							<%}else{%>
+								<span class="task-detail-content-duration" overtime="<%= data.overtime%>">
+									<%= data.taskProgressDisplay %>
+								</span>	
+							<%}%>
+
+							<%if(data.status == 1 || data.status == 2){%> 
+								<span class="task-detail-content-per" style="color:#3aadfb;">
+									<%= data.finishRate %>
+								</span>
+							<%}%>
+							<%if(data.status == 4){%> 
+								<span class="task-detail-content-per" style="color:#03b412;">
+									<%= data.finishRate %>
+								</span>
+							<%}%>
+							<%if(data.status == 6){%> 
+								<span class="task-detail-content-per" style="color:#ff5900;">
+									<%= data.finishRate %>
+								</span>
+							<%}%>
+							<%if(data.status == 5){%> 
+								<span class="task-detail-content-per" style="color:#a0a0a0;">
+									<%= data.finishRate %>
+								</span>
+							<%}%>
+							<% if(data.hasAttachments == true){ %>
+                            	<span class="cmp-icon iconfont see-icon-accessory"></span>
+							<% } %>
+							<% if(data.milestone == 1){ %>
+                            	<span class="cmp-icon iconfont see-icon-v5-common-milestone task-detail-content-icon"></span>
+							<% } %>
+							<% if(data.riskLevel == 1){ %>
+                            	<span class="cmp-icon iconfont see-icon-v5-common-risk task-detail-content-icon-light"></span>
+							<% } %>
+							<% if(data.riskLevel == 2){ %>
+                            	<span class="cmp-icon iconfont see-icon-v5-common-risk task-detail-content-icon-middle"></span>
+							<% } %>
+							<% if(data.riskLevel == 3){ %>
+                            	<span class="cmp-icon iconfont see-icon-v5-common-risk task-detail-content-icon-high"></span>
+							<% } %>
+                            <div class="task-detail-content-img" style="float: right;display: -webkit-box;">
+                                <% for(var j = 0,len = data.managersImgUrl.length;(j < len && j<3); j++){ %>
+                                  <% var imgUrl = data.managersImgUrl[j]; %>
+                                  <img src="<%= root %><%= imgUrl %>">
+                            	<% } %>
+								<% if(data.managersImgUrl.length >3){ %>
+                                <div class="task-detail-content-more">
+                                    <span class="icon m3-icon m3-icon-more-fill"></span>
+                                </div>
+								<% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<% } %>
+</script>
+
+<!--任务审核列表模版-->
+<script type="text/html" id="task_audit_tpl">
+<% var root = cmp.serverIp ? cmp.serverIp : ""; %> 
+<% for(var i = 0;i < this.length; i++){ %>
+	<% var data = this[i]; %>
+				<div class="task-item-list">
+                    <div class="task-item">
+						<%if(data.status == 6){%> 
+                        	<div class="task-item-limit"></div>
+						<% }else if(data.status == 5){ %>
+							<div class="task-item-aborded"></div>
+						<% }else if(data.status == 4){ %>
+							<div class="task-item-done"></div>
+						<% }else{ %>
+							<div class="task-item-doing"></div>
+						<% } %>
+                    </div>
+                    <div class="task-doing" taskId="<%= data.taskId%>" auditor="<%= data.auditorId%>">
+                        <div>
+                            <div class="task-detail">
+                                <div class="task-detail-title cmp-ellipsis-2 cmp-ellipsis-2">
+									<% if(data.importantLevel == 2){ %>
+										<span class="cmp-icon iconfont see-icon-v5-common-important-1 task-detail-content-icon-light" style="color:#ff3b30;font-size:15px;"></span>
+									<% } %>
+									<% if(data.importantLevel == 3){ %>
+										<span class="cmp-icon iconfont see-icon-v5-common-important-2 task-detail-content-icon-light" style="color:#ff3b30;font-size:15px;"></span>
+									<% } %>
+                                    	<span><%= data.subject.escapeHTML() %></span>
+                                </div>
+
+                            </div>
+							<% if(data.auditStatusCode == 0){ %>
+                            	<div class="task-checkbox">
+                                	<span class="cmp-icon see-icon-v5-common-pull-down"></span>
+                            	</div>
+							<% } %>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div class="task-detail-content">
+                        	<div class="task-detail-content-time">
+								<span ><%= data.auditApplyDate %></span>
+                        	</div>
+							<span class="task-detail-content-audit-applicant">
+								<%= data.auditApplicant %>
+							</span>
+							<span class="task-detail-content-audit-type">
+								<%= data.auditType %>
+							</span>
+							<%if(data.auditStatusCode == "2"){%>
+								<span class="task-detail-content-audit-status" style="color: red;">
+									<%= data.auditStatus %>
+								</span>
+							<%}else if(data.auditStatusCode == "1"){%>
+								<span class="task-detail-content-audit-status" style="color: green;">
+									<%= data.auditStatus %>
+								</span>								
+							<%}else{%>
+								<span class="task-detail-content-audit-status" style="color: #3aadfb;">
+									<%= data.auditStatus %>
+								</span>	
+							<%}%>
+                        </div>
+                    </div>
+                </div>
+<% } %>
+</script>
+
+<!-- 国际化资源文件引入 -->
+<script src="/seeyon/m3/apps/v5/taskmanage/i18n/taskmanage_zh_CN.js?buildversion=181210172627"></script>  
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172627"></script>
+<script type="text/javascript">
+	var isFromTodoList = window.location.href.match('weixinFrom=todo');
+	if(isFromTodoList){//来自待办
+		document.querySelector(".portalFooter").classList.remove("cmp-hidden");
+        document.querySelector(".navPending").addEventListener("tap",function () {
+            cmp.href.next("/seeyon/m3/apps/v5/portal/todo/html/todo-list.html?weixinFrom=app");
+        });
+        document.querySelector(".navSchedule").addEventListener("tap",function () {
+            cmp.href.next("/seeyon/m3/apps/v5/calendar/html/timeArrange.html?weixinFrom=todo");
+        });
+        document.querySelector(".task-bottom").style.height=(window.innerHeight - 204 ) + "px"; 
+	}
+    cmp.i18n.init("/seeyon/m3/apps/v5/taskmanage/i18n/","taskmanage",function(){
+    	if(isFromTodoList){
+	    	document.title = cmp.i18n("Taskmanage.label.todowork");
+    	}else{
+	    	document.title = cmp.i18n("Taskmanage.label.taskindex");
+    	}
+    });
+</script>
+<!-- 调试时候注释掉这个 -->
+
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172627" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172627" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172627" type="text/javascript"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172627"></script>
+<script  src="/seeyon/m3/apps/v5/taskmanage/js/taskmanage-jssdk.js?buildversion=181210172627"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172627" type="text/javascript" id="__jsdktag"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=181210172627"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=181210172627"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=181210172627"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172627"></script>
+<script  src="/seeyon/m3/apps/v5/taskmanage/js/taskCommon.js?buildversion=181210172627"></script>
+<script  src="/seeyon/m3/apps/v5/taskmanage/js/task_index.js?buildversion=181210172627"></script>
+<script type="text/javascript">
+    var $buildversion  = '?buildversion=181210172627';
+	var taskTabIndexCacheKey = "task_Tab_Index_Cache";
+	var taskSearchConCacheKey = "task_Search_Con_Cache";
+	var queryParams = {};
+	var queryCondition; //查询条件
+	
+	function initTabIndex(){
+		//默认当前页面选择的页签和状态
+		queryParams = cmp.storage.get(taskTabIndexCacheKey,true);
+		cmp.storage.delete(taskTabIndexCacheKey,true);
+		if(queryParams){
+			queryParams = JSON.parse(queryParams);
+		}else{
+			var hPram = cmp.href.getParam() || {};
+			queryParams = {listType : hPram.listType || 'Personal', status : hPram.status || 'weekunfinished'};
+		}
+		if(queryParams.listType == "TaskAudit"){
+			document.querySelector("#TaskAudit").classList.add("cmp-active");
+            document.querySelector("#my_task").classList.remove("cmp-active");
+            document.querySelector("#auditing-container").classList.add("cmp-active");
+            
+            if(queryParams.auditStatus == 0){
+            	document.querySelector("#auditing-container-pending").classList.add("task-top-content-choose");
+            }else{
+            	document.querySelector("#auditing-container-all").classList.add("task-top-content-choose");
+            }
+			TaskList.refreshAuditStastic();
+			TaskList.initAuditListView();
+		}else if(queryParams.listType == "MeetingTask"){
+			document.getElementById("Personal").classList.add("cmp-active");
+			var status = document.getElementById(queryParams.status);
+			if(status){
+				status.classList.add("task-top-content-choose");
+			}
+		}else{
+			var listType = document.getElementById(queryParams.listType);
+			var status = document.getElementById(queryParams.status);
+			if(listType){
+				listType.classList.add("cmp-active");
+			}
+			if(status){
+				status.classList.add("task-top-content-choose");
+			}
+		}
+
+		//获取查询条件
+		queryCondition = cmp.storage.get(taskSearchConCacheKey, true);
+		cmp.storage.delete(taskSearchConCacheKey,true);
+		if(queryCondition){
+			queryCondition = JSON.parse(queryCondition);
+			TaskList.renderQueryHeader();
+		}
+	}
+	/**
+	 * 记录当前页面选择的页签和状态
+	 */
+	function saveTabIndexCache(){
+		cmp.storage.save(taskTabIndexCacheKey,JSON.stringify(queryParams),true);
+		queryCondition && cmp.storage.save(taskSearchConCacheKey,JSON.stringify(queryCondition),true);
+	} 
+	/**
+	 *	初始化页面布局
+	 */
+	function initPageLayout(){
+	    //中间大主容器计算高度
+	    var cmp_content=document.querySelector('.cmp-content');
+	    var header=document.querySelector('header');
+	    var queryHeader = document.querySelector('.th-wapper');
+	    var windowH= window.innerHeight;
+	    var headerH,queryHeaderH;
+	    headerH = !header ? 0 : header.offsetHeight;
+	    queryHeaderH = !queryHeader ? 0 : queryHeader.offsetHeight;
+	   /*  if(cmp_content){
+	        cmp_content.style.height = windowH - headerH + "px";
+	    } */
+	    //首页listView容器高度
+	    var index_container=document.querySelector('#taskList');
+	    var task_audit_container = document.querySelector("#taskAuditList");
+	    if(index_container){
+	        var contentAndWfTags = document.querySelector('#contentAndWfTags').offsetHeight;
+	        var taskTop=document.querySelector('#my_task .task-top').offsetHeight;
+	        //中间按钮主容器计算高度
+	        index_container.style.height= (windowH -headerH-contentAndWfTags-taskTop - queryHeaderH - 10) + "px";
+	        task_audit_container.style.height = (windowH -headerH-contentAndWfTags-taskTop - queryHeaderH - 10) + "px";
+	    }
+	}
+
+	/**
+	 * 会议任务参数初始化
+	 */
+	var initBtnAuth = function(){
+		var pageParam = cmp.href.getParam();
+		if(pageParam)
+			cmp.extend(queryParams,pageParam);
+			
+		if(pageParam && pageParam.sourceType == 6){
+			queryParams.listType = 'MeetingTask';
+			queryParams.meetingId = pageParam.sourceId;
+			
+			document.title = cmp.i18n("Taskmanage.label.meetingTask");
+			document.querySelector("#contentAndWfTags").style.display = 'none';
+		}
+
+		if(pageParam && pageParam.sourceType == 6 && !pageParam.canRecord)
+			document.querySelector('#task_new').style.display = 'none';
+	}
+	
+	cmp.ready(function(){
+		cmp.dialog.loading();
+		
+		initTabIndex();//初始化页面布局
+		initBtnAuth();//按钮权限
+		initPageLayout();//初始化页面布局
+		
+		//是否从底导航打开
+		var isFromM3NavBar = window.location.href.match('m3from=navbar');
+		if(isFromM3NavBar){
+			cmp.backbutton();
+			cmp.backbutton.push(cmp.closeM3App);
+			addWebviewEvent(function(data){
+				if(data && data.isRefresh){
+					if(queryParams.listType == "TaskAudit"){
+						TaskList.refreshAuditStastic();
+						TaskList.initAuditListView();
+					}else{
+						TaskList.refreshStastic();
+						TaskList.initListView();
+					}
+				}
+			});
+		}else{
+			//返回按钮
+			/* cmp("body").on("tap","#goAheadBtn",function(){
+				cmp.href.back();
+			}); */
+			cmp.backbutton();
+	        cmp.backbutton.push(cmp.href.back);
+		}
+        
+		//加载统计数据(在回调函数中加载任务列表)
+		TaskList.refreshStastic();
+		//加载列表数据
+		TaskList.initListView();
+		//绑定事件
+		TaskList.bindTabEvent();
+	});
+</script>
+</body>
+</html>

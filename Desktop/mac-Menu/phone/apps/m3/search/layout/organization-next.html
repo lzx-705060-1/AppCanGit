@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="http://commons.m3.cmp/v/js/flexible.js"></script>
+    <title>找人</title>
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/base.css">
+    <link rel="stylesheet" href="http://search.m3.cmp/v/css/my-person.css" />
+    <link rel="stylesheet" href="http://search.m3.cmp/v/css/organization-next.css" />
+    <link rel="stylesheet" href="http://commons.m3.cmp/v/css/m3-template.css">
+</head>
+
+<body class="bg_gray">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar m3-cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+        <div class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="search.m3.h5.return"></i18n></span>
+        </div>
+        <div class="cmp-close"><i18n key="search.m3.h5.close"></i18n></div>
+        <div class="cmp-title">
+            <i18n key="search.m3.h5.organization"></i18n>
+        </div>
+        <div class="cmp-header-right organization-next-header-right">
+        </div>
+    </header>
+    <!--搜索框-->
+    <div class="cmp-bar m3-cmp-bar cmp-bar-nav m3-search">
+        <span class="search-btn">
+            <i class="cmp-icon cmp-icon-search"></i>
+            <i class="placeholder"><i18n key="search.m3.h5.inputPrompt"></i18n></i>
+        </span>
+    </div>
+    <div class="search-person">
+        <!-- 公司列表 -->
+        <ul class="cmp-table-view search-company">
+            <li class="cmp-table-view-cell m3-bg-transparent">
+            </li>
+        </ul>
+        <!--列表-->
+        
+        <div class="scroll">
+            <div class="scroll-move">
+                <div class="m3-refresh-bar"></div>
+                <div class="search-people-depart-warp">
+                    <ul class="cmp-table-view search-people"></ul>
+                    <ul class="cmp-table-view search-depart"></ul>
+                </div>
+
+                <div class="m3-more-bar">
+                    <div class="cmp-pull-loading cmp-spinner init">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="bar-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://search.m3.cmp/v/i18n/search_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://search.m3.cmp/v/i18n/", "search");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+    <script src="http://cmp/v/js/cmp.js"></script>
+    <script src="http://cmp/v/js/cmp-app.js"></script>
+    <script src="http://cmp/v/js/cmp-chat.js"></script>
+    <script src="http://cmp/v/js/cmp-server.js"></script>
+    <script src="http://cmp/v/js/cmp-telmail.js"></script>
+
+    <script src="http://commons.m3.cmp/v/js/m3-path.s3js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://search.m3.cmp/v/js/organization-next.js')</script>
+</body>
+
+</html>

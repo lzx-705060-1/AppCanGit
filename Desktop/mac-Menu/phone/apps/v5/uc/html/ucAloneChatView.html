@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>单人聊天页面</title>
+    <meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">  	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172652" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-accDoc.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/fonts/iconfont.css?buildversion=181210172652" />
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/uc/css/ucChatView.css?buildversion=181210172652" />
+    <script src="/seeyon/m3/apps/v5/uc/js/ucFlexible.js?buildversion=181210172652"></script>
+</head>
+<body>
+<header id="header" class="cmp-bar cmp-bar-nav cmp-flex-header">
+    <div class="cmp-header-left cmp-action-back" id="prev">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title" id="title">致信</div>
+    <div class="cmp-header-right nav-icon-one">
+        <span id="peopleCard" class="cmp-icon iconfont icon-username"></span>
+    </div>
+</header>
+<div class="cmp-content uc-gray position_relative">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <div id="all_chat" class="cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <div id="uc_chatAll">
+                    <ul class="cmp-table-view" id="chat_list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mask"></div>
+</div>
+<!-- 转发浮层 -->
+<div id="forwardDiv" class="GM_Alert_Content Animated-Container bottom-go animated">
+    <header id="header" class="cmp-bar cmp-bar-nav">
+        <h1 class="cmp-title" id="title">发送到</h1>
+        <button class="cmp-btn cmp-btn-blue cmp-btn-link cmp-pull-right" id="cancelDiv">取消
+        </button>
+    </header>
+    <div class="cmp-content position_relative">
+        <div id="uc-forward" class="cmp-scroll-wrapper">
+            <div class="cmp-scroll">
+                <ul class="cmp-table-view">
+                    <li class="cmp-table-view-cell uc-forward-li">
+                        <ul class="uc-sel-forward">
+                            <li class="cmp-table-view-cell">
+                                <a class="cmp-navigate-right">选择人员</a>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <a class="cmp-navigate-right">选择群组</a>
+                            </li>
+                        </ul>
+                        <p class="uc-recent">最近</p>
+                        <ul class="uc-recent-member">
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">程萌</div>
+                                </div>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">赵建革</div>
+                                </div>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">王文友</div>
+                                </div>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">淅哥</div>
+                                </div>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">付涛</div>
+                                </div>
+                            </li>
+                            <li class="cmp-table-view-cell">
+                                <div class="cmp-slider-handle cmp-table">
+                                    <div class="uc-head">
+                                        <img class="cmp-media-object" src="" />
+                                    </div>  
+                                    <div class="cmp-media-body username">李洪泽</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="cmp-bar cmp-bar-footer" style="border-top: 1px #dbdbdd solid;" id="footer_num1">
+    <div class="uc-input">
+        <textarea id="uc-input-text" class="uc-input-text" placeholder="请输入文字" onfocus="chat.focusInput(this)"></textarea>
+        <i class="iconfont icon-icon-send uc-send uc-send-gray"></i>
+    </div>
+    <div class="uc-chat-toolbar">
+        <span id="uc-voice" class="uc-voice iconfont icon-voice"></span>
+        <span id="uc-photo" class="uc-photo iconfont icon-uc-icon-photograph"></span>
+        <span id="uc-pic" class="uc-pic iconfont icon-uc-icon-picture"></span>
+        <span id="uc-file" class="uc-file iconfont icon-uc-icon-file"></span>
+        <span id="uc-look" class="uc-look iconfont icon-PC-look"></span>
+        <span id="uc-more" class="uc-more see-icon-more"></span>
+    </div>
+    <div class="uc-chat-tool-panel" style="display:none;"></div>
+</footer>
+
+<script src="/seeyon/m3/apps/v5/uc/js/im/uc_pub.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im/uc_org.js?buildversion=181210172652" ></script>
+<script  src="/seeyon/m3/apps/v5/commons/jquery/jquery-2.1.4.min.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172652" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/jssdk_wechat.js?buildversion=181210172652" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-camera.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-accDoc.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-chat.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172652"></script>
+<script type="text/javascript">
+    var ucPath = "/seeyon/m3/apps/v5/uc";
+</script><script src="/seeyon/m3/apps/v5/uc/js/im/jsjac.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_message.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/im_send_iq.js?buildversion=181210172652"></script>
+
+<script src="/seeyon/m3/apps/v5/uc/js/uc.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucDB.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/clipboard.min.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucCommonUtil-debug.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucChatCommonUtil-debug.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucEmojiUtil-debug.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucChatToolsTpl.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucMessageTypeTpl.js?buildversion=181210172652"></script>
+<script src="/seeyon/m3/apps/v5/uc/js/ucAloneChatView.js?buildversion=181210172652"></script>
+</body>
+</html>

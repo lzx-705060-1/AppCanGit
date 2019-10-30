@@ -1,0 +1,39 @@
+var bizApi = (function() {
+  var BizApi = function() {
+    this.basePath = "/seeyon/m3/apps/v5/biz";
+  }
+  
+  /**
+   * biz的消息穿透
+   * 
+   * @param {string} type    [todo:待办模块;message:消息模块]
+   * @param {string} backUrl [后退地址]
+   * @param {obj}    option  [待办/消息对象]
+   * @param {string} parms   [其他可选参数]
+   */
+  BizApi.prototype.openApp = function (type, backUrl, option, parms) {
+    var _basePath = this.basePath;
+    var paramData = {
+      'from' : 'message',
+      'bbsId' : option.id,
+      'pageInfo' : backUrl
+    };
+    cmp.href.next(_basePath + "/html/default.html?useNativebanner=1", paramData);
+  }
+  /**
+     * 跳转到biz二级菜单列表
+     *
+     * @param {string} backUrl [后退地址,需要传完整路径]
+     * @param {obj}    option  [一级菜单信息，包括name:菜单名称，menuId菜单编号]
+     */
+    BizApi.prototype.openBizInfo = function (fromUrl, option) {
+      var _basePath = this.basePath;
+      option.fromUrl=fromUrl;
+      if(fromUrl == 'application'){
+         cmp.href.next(_basePath + "/html/bizInfo.html?useNativebanner=1&date="+(new Date().getTime()), option,{openWebViewCatch:1});
+      }else{
+         cmp.href.next(_basePath + "/html/bizInfo.html?useNativebanner=1&date="+(new Date().getTime()), option);
+      }
+    }
+    return new BizApi();
+})();

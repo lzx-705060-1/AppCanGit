@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1559547182958"/>
+    <style type="text/css">
+        .cmp-fullscreen{
+          margin: 0;
+        }
+       .cmp-action-back{
+           width: 100%;
+           height:60px;
+           background-color: #00A1EA;
+       }
+         /*左边箭头上一级*/
+       .div-left{ 
+           margin-left:20px;
+           margin-top:10px;      
+           width:40px;
+           height:40px;
+           float: left;
+       }
+         i{
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 5px;
+            border-color: #FFFFFF;
+            margin: 15px;
+        }
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+       .div-center{
+           float:left;
+           margin-top:15px; 
+           margin-left:70px;
+           width: 110px;
+           height: 40px;
+           
+       }
+       span{
+           padding-top:20px;
+           color:#FFFFFF;
+           font-size: 150%;
+       }
+       .div-right{
+           float: left;
+           margin-top:20px; 
+           margin-left:70px;
+           width: 50px;
+           height:30px;
+           
+       }
+       .right-btn{
+           font-size: 100%;
+       }
+    </style>
+    <title>会议申请</title>  
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+    <div class="cmp-action-back">
+        <div class="div-left">
+             <i class="left"></i>
+        </div>
+         <div class="div-center">
+            <span>会议申请</span>
+        </div>
+         <div class="div-right">
+             <span class="right-btn">发起</span>
+        </div>
+    </div>
+    <div class="content"></div>
+</body>
+
+</html>

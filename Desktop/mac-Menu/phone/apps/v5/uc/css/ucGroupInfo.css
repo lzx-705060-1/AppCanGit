@@ -1,0 +1,44 @@
+/*该css和查看更多群成员页面的css使用同一个*/
+html,body{height: 100%;width: 100%;background-color: #efefef;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar {background: #fff;}
+header.cmp-bar .cmp-btn-link {color:#3AADFB;}
+header .see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-content {z-index: 1; background: #edf0f4;}
+.cmp-table-view {background: none;}
+.cmp-table-view-cell {padding: 0;}
+.cmp-table-view:after {height: 0;}
+.uc-group-top-wrap {width: 100%;height: 5.34rem;background: #fff;padding-top: 0.133rem;}
+.uc-group-top-wrap .uc-group-top {text-align: center;}
+.uc-group-top-wrap .uc-group-top .uc-group-top-name {font-size: 18px;margin: 0 30px;display: block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.uc-group-top-wrap .uc-group-top .uc-group-head {width: 1.92rem;height: 1.92rem; display: block;margin: 0 auto;margin-bottom: 0.134rem;border-radius: 50%;}
+.uc-group-top-wrap .uc-group-data {width: 100%;margin-top: 0.667rem;overflow: hidden;}
+.uc-group-top-wrap .uc-group-data > div {width: 33.3%;text-align: center;float: left;}
+.uc-group-top-wrap .uc-group-data > div i.iconfont {display: block;color: #3aadfb;font-size: 26px;line-height: 0.86rem;}
+.uc-group-top-wrap .uc-group-data > div span {font-size: 12px;color: #333;}
+.uc-group-name {width: 100%;height: 1.147rem;line-height:1.147rem;background: #fff;margin-top: 0.267rem;padding: 0 0.4rem;display: -webkit-box;-webkit-box-orient: horizontal;}
+.uc-group-name .uc-group-n {display: block; color: #999;font-size: 16px;padding-right: 0.4rem;}
+.uc-group-name .uc-group-input-name {display: block; padding-left: 0.4rem;text-align: right;-webkit-box-flex:1;border: none;font-size: 16px;color: #333;font-family: inherit;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.uc-group-member {width: 100%;background: #fff;margin-top: 0.267rem;padding: 0.267rem 0.4rem 0 0.267rem;overflow:hidden;}
+.uc-group-member .uc-group-m {font-size: 16px;color: #999;padding-bottom: 0.4rem;}
+.uc-group-member .uc-group-members,.uc-group-member .uc-fun-btn {overflow: hidden;display:inline;}
+.uc-group-member .uc-group-members li,.uc-group-member .uc-fun-btn li{width: 20%;height: 2.2rem;text-align: center;float: left;margin-bottom: 0.4rem;display: inline;}
+.uc-group-member .uc-group-members .uc-group-m-list .uc-m-head {width: 1.33rem;height: 1.33rem;border-radius: 50%;display: block;margin: 0 auto;margin-bottom: 3px;overflow:hidden;}
+.uc-group-member .uc-group-members .uc-group-m-list .uc-m-head .uc-group-m-head {width: 1.33rem;height: 1.33rem;}
+.uc-group-member .uc-group-members .uc-group-m-list .uc-group-m-name {width: 100%;display: block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.uc-group-member .uc-group-members .uc-group-m-add,.uc-group-member .uc-group-members .uc-group-m-sub {display:none;color: #e4dfec;}
+.uc-group-member .uc-group-members .uc-group-m-add {font-size: 1.33rem;}
+.uc-group-member .uc-group-members .uc-group-m-sub {font-size: 1.28rem;}
+.uc-group-member .more_member {clear:both;width:100%;text-align:center;font-size:14px;color:#666;padding-bottom: 0.37rem;}
+.uc-group-member .more_member span {font-size:14px;}
+.uc-group-btn {width: 100%;height: 1.147rem;line-height:1.147rem;background: #fff;margin: 0.267rem 0;;text-align: center;font-size: 18px;color: #c1382f;}
+.uc-group-btn .uc-group-m-add, .uc-group-btn .uc-group-m-sub {display:none;}
+.uc-group-recieve {width: 100%;height: 1.147rem;line-height:1.147rem;background: #fff;margin-top: 0.267rem;padding: 0 0.4rem;}
+.uc-group-recieve .uc-group-n {float: left; color: #999;font-size: 16px;padding-right: 0.4rem;}
+.uc-group-recieve .uc-group-check{display: -webkit-box;-webkit-box-align: center;min-height: 1.147rem;float: right;max-width: 70%;}
+/*查看更多群成员头像大小*/
+.cmp-table-view .cmp-media-object.uc-more-h {height: 1.33rem;max-width: 1.33rem;width: 1.33rem;line-height: 1.33rem;}
+.uc-group-m-list .uc-group-m-add,.uc-group-m-list .uc-group-m-sub {display:none;font-size: 1.33rem;color: #e4dfec;}
+
+
+

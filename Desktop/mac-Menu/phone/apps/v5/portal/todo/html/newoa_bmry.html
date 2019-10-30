@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css"/>
+    <!--导入cmp模块的样式文件，${data:dependencies.cmp}即构建任务中被替换成真实路径的标识-->
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.control.css">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/appcan.icon.css">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-base.css">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-box.css">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/todo/css/ui-color.css">
+    <title>待办选人（多选）列表页面</title>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body class="cmp-fullscreen mw">
+<header class="cmp-bar cmp-bar-nav cmp-flex-header after-line mw-header" style="position: fixed">
+    <div id="backBtn" class="cmp-action-back cmp-header-left  cmpCommonPageBackBtn">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text">返回</span>
+    </div>
+    <div class="cmp-title">
+        人员选择（多选）
+    </div>
+    <div class="cmp-header-right">
+        <div class="nav-btn nav-bt"><span id="nav-right" class="">提交</span></div>
+    </div>
+</header>
+<div class="uinput ub ub-f1  bc-border uba tab_tu01" style="position: fixed;top: 0;width: 100%;z-index: 2;background-color: #eeeeee">
+    <div class="uinn fa fa-search sc-text"></div>
+    <input placeholder="请输入姓名" type="text" class="ub-f1" id="infoName" />
+    <div class="btn ub ub-ac bc-text-head ub-pc sc-btn" style="padding: .2em 0.9em;min-height: 0em;font-size: 1em;text-align: center;" id="search">
+        搜索
+    </div>
+</div>
+<!-- 内容-->
+<div id="content">
+    <div class="ub">
+        <div id="column" class="sc-bg-active" style="width:6em">
+
+        </div>
+        <div id="listview" class="ub-f1">
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script><!--导入cmp国际化组件-->
+<script>
+    //var olddaibanBasePath = "http://todo.m3.cmp/v";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script> <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-webviewListener.js"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/newoa_bmry.js"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/todo/js/yajule.js"></script>
+</body>
+
+</html>

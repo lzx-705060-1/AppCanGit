@@ -1,0 +1,302 @@
+.v5file-read .v5file-delete{color: #999;display: inline-block;position: absolute;top:15px;right: 44px;}
+.cmp-ipad .v5file-read .v5file-delete{right: 75px;}
+/*附件样式-------------------------------------start---------------*/
+/*附件列表*/
+.cmp-accessory-content{ overflow: auto;  padding:6px 15px; position: relative;background-color: #fff; }
+.cmp-accessory-content .cmp-list-accessory {margin-bottom: 0;position: relative; overflow: inherit; height: 46px;  }
+.cmp-accessory-content .cmp-list-cell{padding: 0;border-bottom: none;}
+.cmp-accessory-content .cmp-list-cell .cmp-list-accessory .cmp-list-cell-info span{font-size: 14px;}
+.cmp-accessory-content .cmp-list-accessory {width: 100%;padding:5px; position: relative;
+  border: 0;border-radius: 0;background-color: transparent;
+}
+.cmp-accessory-content .cmp-list-accessory .download {font-size: 20px;color: #95A6B7;display: inline-block;
+  position: relative;bottom: 4px;vertical-align: middle;
+}
+.cmp-accessory-content .cmp-list-accessory .cmp-list-navigate.download span{ font-size: 20px;  }
+.cmp-accessory-content .cmp-list-cell{ margin-bottom: 6px;}
+.cmp-accessory-content .cmp-list-cell:last-child{margin-bottom: 0;}
+/* .cmp-accessory-content .cmp-list-accessory .cmp-list-cell-img{height: 36px;} */
+.cmp-accessory-content .cmp-list-accessory .cmp-list-cell-img .cmp-icon-document{width: 35px;height: 35px;}
+.cmp-accessory-content .cmp-list-accessory .cmp-list-navigate{text-align: center;width: 11%;}
+.cmp-accessory-content .cmp-list-accessory .cmp-list-cell-info{padding-left: 0;line-height: 18px;}
+.cmp-popover.cmp-popover-action.cmp-popover-bottom{margin-left: 0;}
+.cmp-accessory-file{background-color:transparent;overflow: hidden;border-top: 1px #d3d3d3 solid;}
+.cmp-accessory-file ul{background-color: rgba(255, 255, 255, 0.91);padding:25px 15px 10px 15px;}
+.cmp-accessory-file .item{width: 25%;text-align: center;display: inline-block;float: left; font-size: 12px;
+  overflow: hidden;margin-bottom: 15px;}
+.cmp-accessory-file .item p{margin: 0;padding: 0;font-size: 14px;color: #333;margin-top: 6px;}
+.cmp-accessory-file .item .box{border-radius:50%; width:60px;margin: 4px auto;height: 60px;
+    line-height: 60px;;background-color: #5DABE8; }
+.cmp-accessory-file .item:nth-child(1) .box{background-color: #F0B668;}
+.cmp-accessory-file .item:nth-child(2) .box{background-color: #F2725E;}
+.cmp-accessory-file .item:nth-child(4) .box{background-color: #57BA93;}
+
+.cmp-accessory-file .item .box span{font-size: 22px;color:#fff;}
+.cmp-accessory-file .item .box span.see-icon-record-fill{font-size: 27px;}
+.cmp-accessory-file .item .box p{line-height: 2;}
+.cmp-accessory-file .box .cmp-icon-synergy{width: 30px;height: 30px;}
+.cmp-accessory-file .cancel{width: 160px;height: 30px;font-size: 16px;color: #6f7378;line-height: 0; background-color: #dcdcdc;border-color: #aeb1b4;}
+.cmp-accessory-file .cmp-accessory-btn{text-align: center;padding: 14px;margin-top: 6px;background-color: rgba(255, 255, 255, 0.91);
+color: #666;font-size: 16px;}
+/*协同附件上传样式*/
+.cmp-fileupload-animate-content{background-color: #fff;height: 100%;padding: 0;}
+.cmp-fileupload-animate-content .cmp-fileupload-item{width: 100%; ;overflow: hidden;margin: 1px 0;
+  position: relative ; }
+.cmp-fileupload-animate-content .cmp-fileupload-item .v5Doc-read .cmp-fileupload-info{line-height: 36px;}
+.cmp-fileupload-animate-content .cmp-fileupload-item:after{left: 15px;}
+.cmp-fileupload-animate-content .cmp-fileupload-file-content{position: relative;margin: 5px 17px 5px 15px;
+padding: 5px 1px;}
+.cmp-fileupload-animate-content .cmp-fileupload-file{text-align: center;width: 36px;height: 40px;display: inline-block; }
+.cmp-fileupload-animate-content .cmp-fileupload-file div{display: inline-block;}
+.cmp-fileupload-animate-content .cmp-fileupload-file .cmp-icon-document{font-size: 41px; }
+.cmp-fileupload-animate-content .cmp-fileupload-file span{font-size: 30px;color: #666;}
+.cmp-fileupload-animate-content .cmp-fileupload-info{color: #333;margin: auto;height: 42px;    position: absolute;
+  right: 50px;left: 45px;top: 2px;display: inline-block;width: auto;  overflow: hidden;}
+.cmp-fileupload-animate-content .cmp-fileupload-info.item span{
+  display: block;width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 14px;
+}
+
+.cmp-fileupload-animate-content .cmp-fileupload-info.item small{font-size: 12px;color: #666;}
+.cmp-fileupload-animate-content .cmp-fileupload-animation{width:50px;position: absolute;height: 45px;
+  text-align: center;line-height: 45px;color: #333;right:0;top:0;}
+/*.cmp-fileupload-animate-content .cmp-fileupload-animation span{color: #999;font-size: 21px;color: #3aadfb;}*/
+.cmp-fileupload-animate-content .cmp-fileupload-animation .delete{
+    font-size: 18px;margin-left: 15px;color: #b7b8b9;right: 10px;
+}
+.cmp-fileupload-animate-content.cmp-accessory-content{padding: 0;}
+.cmp-fileupload-animate-content.cmp-accessory-content .cmp-list-cell{margin: 5px 15px;width: 91.5%;padding: 0;}
+.cmp-fileupload-animate-content.cmp-accessory-content .cmp-list-cell .cmp-list-accessory{padding: 1px;}
+/*附件上传动画效果*/
+.cmp-fileupload-animate-content .cmp-fileupload-item .circle {
+   transform: scale(0.74);
+}
+.cmp-fileupload-animation .pie_left, .cmp-fileupload-animation .pie_right {width: 38px;height: 38px;position: absolute;top: 0;left: 0;}
+.cmp-fileupload-animation .pie_left .left, .cmp-fileupload-animation .pie_right .right {display: block;width: 35px;height: 35px;
+    background: #fff;border-radius: 50%;    border-width: 1px;
+    border-style: solid;
+    border-color: #3aadfb;
+  position: absolute;top: 0;left: 0;
+  /*transform: rotate(30deg);*/
+}
+.cmp-fileupload-animation .pie_right, .cmp-fileupload-animation .right {clip: rect(0, auto, auto, 18px);}
+.cmp-fileupload-animation .pie_left, .cmp-fileupload-animation .left {clip: rect(0, 18px, auto, 0);}
+/*
+*当top和left取值为auto时，相当于0
+*当bottom和right取值为auto时，相当于100%
+*/
+.cmp-fileupload-animation .mask {width: 27px;height: 27px;border-radius: 50%;background: #fff;
+  position: absolute; top:4px;left: 4px;
+  text-align: center;line-height: 30px;font-size: 12px;}
+.cmp-fileupload-animation .mask .trigon{margin-left: 3px;font-size: 18px;
+    display: inline-block;}
+
+
+/*.cmp-fileupload-animate-contentblue{  *//*width:44px;height:44px;*//* position:relative;}*/
+.cmp-fileupload-animation .circle {
+    width: 40px;height: 40px;position: relative;left: 60%;top:49%;
+  margin-left: -20px;margin-top: -20px;border-radius: 50%;background: #3AADFB;
+  border: 1px solid #3AADFB;
+}
+ .cmp-fileupload-animation .pie_left .left,
+ .cmp-fileupload-animation .pie_right .right{
+  background: #fff;
+  width: 38px;height: 38px;
+}
+ .cmp-fileupload-animation .pie_right,
+ .cmp-fileupload-animation .right {
+  width: 38px;height: 38px;
+  clip: rect(0, auto, auto, 19px);
+}
+.cmp-fileupload-animation .pie_left, 
+.cmp-fileupload-animation .left {
+  clip: rect(0, 19px, auto, 0);
+}
+
+ .cmp-fileupload-animation .stop{
+  color: #3AADFB;
+  background: #3AADFB;
+  width:12px;
+  height:12px;
+  display: inline-block;
+  vertical-align: top;
+  overflow:hidden;
+  margin-top: 10px;
+}
+ .cmp-fileupload-animation .mask{
+  width:32px;
+  height: 32px;
+    top:3px;left: 3px;
+}
+
+
+/**条形进度条**/
+.cmp-content-progress{
+  width:200px;
+  height: 28px;
+  position: relative;
+  display: block;
+  clear: both;
+  margin:0 auto;
+
+}
+.cmp-content-progress .shade{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:2;
+}
+.cmp-content-progress .line-progress{
+    width:200px;
+    height:4px;
+    background-color: #ddd;
+    z-index:2;
+    border-radius: 3px;
+}
+.cmp-content-progress .line-progress>div{
+    background: -webkit-linear-gradient(right,#4e54e5,#00AEFF);
+    height:4px;
+    width:0px;
+    border-radius: 3px;
+}
+.cmp-content-progress .line-progress-number{
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    width: 100%;
+    line-height: 24px;
+    z-index:2;
+}
+.cmp-att-basicDiv-thisPage{position: absolute;top:100%;left: 0;transform: translateZ(0);z-index: 83;}
+.cmp-att-basicDiv{width:100%;height:100%;background:#e7e7e8;z-index: 85;}
+.cmp-att-ios-header{height:64px!important;padding-top: 20px!important;top:0;}
+.cmp-att-header{background-color: #fff!important;color: #fff;height: 44px!important;padding-top: 0!important;}
+.cmp-att-header .cmp-title{color: #fff!important;}
+.cmp-att-header .submit_text.att{font-size: 14px!important; line-height: 44px;color: #ffffff!important;}
+.vertical-top{vertical-align: top!important;}
+.cmp-att-body{background: #ffffff}
+.cmp-att-imgzoom-pack{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 85;
+    background: #1b1b1b;
+    visibility: hidden;
+}
+
+.cmp-att-imgzoom-pack.cmp-hide{
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0;
+    -webkit-transition:transform 0.3s;
+
+}
+.cmp-att-div-hidden {
+    animation-name : cmp-att-div-hidden;
+    animation-duration : 0.3s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-att-div-hidden;
+    -webkit-animation-duration : 0.3s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+    /*display: none;*/
+}
+@keyframes cmp-att-div-hidden{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes cmp-att-div-hidden{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.cmp-att-img-show {
+    animation-name : cmp-att-div-show;
+    animation-duration : 0.5s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-att-div-show;
+    -webkit-animation-duration : 0.5s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+    display: block;
+}
+@keyframes cmp-att-div-show{
+    0% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes cmp-att-div-show{
+    0% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+.cmp-att-imgzoom-img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+.cmp-att-imgzoom-pack .cmp-att-imgzoom-img img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+.cmp-att-imgzoom-pack .cmp-att-imgzoom-img div{
+    z-index: 99;
+}
+.cmp-att-imgzoom-pack.cmp-long-img .cmp-att-imgzoom-img img{
+    top:0;
+}
+.cmp-att-div-show {
+    animation-name : cmp-att-div-show;
+    animation-duration : 0.5s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-att-div-show;
+    -webkit-animation-duration : 0.5s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+    display: block;
+}
+@keyframes cmp-att-div-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes cmp-att-div-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.cmp-att-imgzoom-pack.cmp-active{
+    -webkit-transform: scale(1);
+    transform:scale(1) ;
+    -webkit-transition:transform 0.5s;
+    transition:transform 0.5s;
+    opacity: 1;
+}
+.cmp-att-footer{
+    text-align: center;
+    background-color: #fff;
+    z-index: 82;
+    height: 50px;
+    border-top: 1px solid #e6e6e6;
+}
+.cmp-att-footer_replay button{
+    width: 40%;
+    height: 34px;
+    top: 7px!important;
+    line-height: 0;
+    border-radius: 46px;
+}
+.cmp-att-footer button {
+    display: inline-block;
+    background-color: #3aadfb;
+    border-color: #3aadfb;
+}

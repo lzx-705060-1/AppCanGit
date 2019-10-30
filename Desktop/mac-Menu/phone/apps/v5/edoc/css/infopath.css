@@ -1,0 +1,206 @@
+@CHARSET "UTF-8";
+/** 公文单样式 **/
+
+.infopath{
+	 color:windowtext;
+     background-color:#ffffff;
+     layout-grid:none;
+}
+
+.infopath TABLE.xdLayout TD {
+        BORDER-RIGHT: medium none;
+        BORDER-TOP: medium none;
+        BORDER-LEFT: medium none; 
+        BORDER-BOTTOM: medium none;
+}
+.infopath TABLE {
+        BEHAVIOR: url (#default#urn::tables/NDTable)
+}
+
+.infopath strong input,.infopath  strong select ,.infopath  strong textarea{
+    font-weight: bold;
+}
+.infopath .xdListItem {
+        display:inline-block;width:100%;
+        vertical-align:text-top;
+}       
+.infopath .xdListBox,.xdComboBox{
+        margin:1px;
+}       
+.infopath .xdInlinePicture{
+        margin:1px; 
+        BEHAVIOR: url(#default#urn::xdPicture); 
+}       
+.infopath .xdLinkedPicture{
+        margin:1px; 
+        BEHAVIOR: url(#default#urn::xdPicture) url(#default#urn::controls/Binder); 
+}       
+.infopath .xdSection{
+        border:1pt solid #FFFFFF;
+        margin:6px 0px 6px 0px;
+        padding:1px 1px 1px 5px;
+}       
+.infopath .xdRepeatingSection{
+        border:1pt solid #FFFFFF;
+        margin:6px 0px 6px 0px;
+        padding:1px 1px 1px 5px;
+}       
+.infopath .xdBehavior_Formatting {
+        BEHAVIOR: url(#default#urn::controls/Binder) url(#default#Formatting);
+}    
+.infopath .xdBehavior_FormattingNoBUI{
+        BEHAVIOR: url(#default#CalPopup) url(#default#urn::controls/Binder) url(#default#Formatting);
+}   
+.infopath .xdExpressionBox{
+        margin: 1px;
+        padding:1px;
+        word-wrap: break-word;text-overflow: ellipsis;overflow-x:hidden;
+}
+.infopath .xdBehavior_GhostedText,.xdBehavior_GhostedTextNoBUI{
+        BEHAVIOR: url(#default#urn::controls/Binder) url(#default#TextField) url(#default#GhostedText);
+}   
+.infopath .xdBehavior_GTFormatting{
+        BEHAVIOR: url(#default#urn::controls/Binder) url(#default#Formatting) url(#default#GhostedText);
+}   
+.infopath .xdBehavior_GTFormattingNoBUI{
+        BEHAVIOR: url(#default#CalPopup) url(#default#urn::controls/Binder) url(#default#Formatting) url(#default#GhostedText);
+}   
+.infopath .xdBehavior_Boolean{
+        BEHAVIOR: url(#default#urn::controls/Binder) url(#default#BooleanHelper);
+}   
+.infopath .xdBehavior_Select{
+        BEHAVIOR: url(#default#urn::controls/Binder) url(#default#SelectHelper);
+        border: 1pt solid;
+}   
+.infopath .xdRepeatingTable{
+        BORDER-TOP-STYLE: none;
+        BORDER-RIGHT-STYLE: none; 
+        BORDER-LEFT-STYLE: none; 
+        BORDER-BOTTOM-STYLE: none; 
+        BORDER-COLLAPSE: collapse; 
+        WORD-WRAP: break-word;
+}
+.infopath .xdRichTextBox{
+        display:inline-block;
+        border: 1pt solid #dcdcdc;
+        color:windowtext;
+        background-color:window;
+        overflow-x:hidden;
+        word-wrap:break-word;
+        text-overflow:ellipsis;
+        text-align:left;
+    
+        font-style:normal;
+        text-decoration:none;
+        vertical-align:baseline;
+        padding:1px;margin:1px;
+}       
+.infopath .xdDTPicker{
+        display:inline;
+        margin:1px;
+        margin-bottom: 2px;
+        border: 1pt solid #dcdcdc;
+        color:windowtext;
+        background-color:window;
+        overflow:hidden;
+}       
+.infopath .xdDTText{
+        height:100%;
+        width:100%;
+        margin-right:22px;
+        overflow:hidden;
+        padding:0px;
+        white-space:nowrap;
+}       
+.infopath .xdDTButton{
+        margin-left:-21px;
+        height:18px;
+        width:20px;
+        behavior: url(#default#DTPicker);
+}
+
+.infopath .xdRepeatingTable TD {
+        VERTICAL-ALIGN: top;
+}
+
+.infopath TABLE,SELECT{
+        FONT-FAMILY: SimSun
+}
+.infopath DIV{
+    line-height: 1.5;
+}
+
+
+.infopath .optionalPlaceholder {
+        PADDING-LEFT: 20px; 
+        FONT-WEIGHT: normal; 
+        FONT-SIZE: 9pt; 
+        BEHAVIOR: url(#default#xOptional); 
+        COLOR: #333333; 
+        FONT-STYLE: normal; 
+        FONT-FAMILY: SimSun; 
+        TEXT-DECORATION: none
+}
+.infopath .langFont{
+        FONT-FAMILY: SimSun;
+}
+.infopath .input-noborder{
+BORDER-bottom-STYLE: none; 
+BORDER-LEFT-STYLE:none; 
+BORDER-RIGHT-STYLE: none; 
+BORDER-TOP-STYLE: none;
+background-color:#f6f6f6;
+}
+.infopath .input-noborder1{
+BORDER-bottom-STYLE: none; 
+BORDER-LEFT-STYLE:none; 
+BORDER-RIGHT-STYLE: none; 
+BORDER-TOP-STYLE: none;
+}
+.infopath .prestyle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    display:inline;
+}
+.infopath span, .infopath div[_nodetype='_formFieldNode_']{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.infopath .headcenter THEAD TD {
+    text-align: center;
+    white-space:nowrap;
+}
+
+
+
+.infopath td, .infopath th, .infopath input, .infopath textarea, .infopath div, .infopath select, .infopath p ,.infopath span{
+    font-family: SimSun,"Microsoft YaHei", Arial,Helvetica,sans-serif;
+}
+
+
+.infopath .xdLayout2{
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+
+.infopath .xdTextBox{
+    display:inline-block;
+    text-overflow:ellipsis;
+    padding-top:1px;
+    padding-bottom:1px;
+    padding-left:0px;
+    padding-right:0px;
+    margin:1px;
+    border: 1pt solid #dcdcdc;
+    color:windowtext;
+    background-color:window;
+    text-align:left;
+    white-space:normal;
+}

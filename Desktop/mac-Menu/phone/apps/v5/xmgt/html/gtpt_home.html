@@ -1,0 +1,1093 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+
+        <style type="text/css">
+            * {
+                -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+                -webkit-user-select: none; /*webkit浏览器*/
+                -khtml-user-select: none; /*早期浏览器*/
+                -moz-user-select: none;/*火狐*/
+                -ms-user-select: none; /*IE10*/
+                user-select: none;
+            }
+            input {
+                -webkit-user-select: auto; /*webkit浏览器*/
+            }
+            body {
+                background-color: #FFFFFF
+            }
+            .a {
+                height: 0.7em;
+            }
+            .box-text1 {
+                text-align: left;
+                font-size: 0.7em;
+            }
+            .box-text1-b {
+                text-align: left;
+                font-size: 0.8em;
+            }
+            .box-text1-3 {
+                margin-top: 0.8em;
+            }
+            .box-text2 {
+                color: #89A3A9;
+                text-align: center;
+                font-size: 0.7em;
+                margin-top: 0.6em;
+            }
+            .box-text3 {
+                color: #89A3A9;
+                text-align: left;
+                font-size: 0.7em;
+            }
+            .box-text3-b {
+                color: #89A3A9;
+                text-align: left;
+                font-size: 0.7em;
+            }
+            .box-text-rig {
+                display:none;
+                text-align: left;
+                color: #89A3A9;
+                font-size: 0.8em;
+            }
+
+            .box {
+                width: 33%;
+                height: 150px;
+                float: left;
+            }
+            .box1 {
+                display: inline-block;
+                width: 48%;
+                margin: auto;
+            }
+            .box2 {
+                width: 20%;
+                float: left;
+            }
+            .box-text {
+                color: #89A3A9;
+                text-align: center;
+                font-size: 0.8em;
+            }
+            .box-img {
+                width: 1.5em;
+                height: 1.5em;
+                display: block;
+                margin-bottom: 0.3em;
+                margin-top: 0.5em;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -0.75em;
+                margin-left: -0.75em;
+            }
+            
+            table tr td{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+             }
+         
+            #gx{
+                position: absolute;
+                height: 6em;
+                width: 70%;
+                margin-left: 15%;
+                margin-top:5em;
+                color:red;
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="gt_content">
+            
+        </div>
+        <!-- <div id="gx">
+                                        首页数据维护中             
+        </div> -->
+        <!-- <div style="width: 100%;position: relative;">
+        <img style="width: 100%;height: 13em;position: absolute;" src="./css/res/fangdichan_sucai-002.jpg" />
+        <div style="position: absolute;height: 6em;width: 70%;margin-left: 15%;margin-top:0.8em;background-color: black;opacity: 0.3;text-align: center;border-radius:0.5em;">
+        <div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.8em;letter-spacing: 0.15em;">
+       2018年第N度 
+        </div>
+        <div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;letter-spacing: 0.25em;">
+        集团跟投报名开始啦
+        </div>
+        <div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;font-size: 0.7em;">
+        认购截止时间：2016-6-26
+        </div>
+        </div>
+        <div style="position: absolute;margin-left: 40%;margin-top:7.5em;background-color: rgb(255, 165, 0);text-align: center;border-radius:0.4em;padding: 0.35em;color: white;">
+        我要报名
+        </div>
+        <div style="margin-left:2% ;width: 96%;height: 8.25em;position: absolute;margin-top: 10em;background-color: #FFFFFF;border-radius: 5px;box-shadow: 0px 3px 5px #888888;">
+        <div style="height: 100%;width: 100%;">
+        <div>
+        <div class="box" style="width: 33%">
+        <div  id  ="xiangmu" style="text-align: center;margin-top: 1em;font-weight: bold;font-size: 1.3em;color: #FC9002">
+        0
+        </div>
+        <div style="text-align: center;font-size: 0.8em;margin-top: 1em;color: gray;">
+        累计跟投项目
+        </div>
+        <div style="text-align: center;border: 1px solid #F4941D;border-radius: 1em;font-size: 0.6em;margin-top: 1em;padding: 0.2em;margin-left: 2.5em;margin-right: 2.5em;color: #F4941D;" onclick="show_rengouxiangqing()">
+        跟投详情
+        </div>
+        </div>
+        <div class="box" style="width: 65%">
+        <div>
+        <div class="box1" style="width: 43%;">
+        <img src="./css/res/gt-index-gentou2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />
+        <div style="display: inline-block;">
+        <div class="box-text1 box-text1-3" style="margin-top: 0.6em;color: #FF5A59;">
+        <span id ="gt_amount" style="font-size: 1.2em;">0</span>万
+        </div>
+        <div class="box-text3" style="font-size: 0.6em;">
+        跟投总额
+        </div>
+        </div>
+        </div>
+        <div class="box1" style="width: 53%;">
+        <img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.3em;" />
+        <div style="display: inline-block;">
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        投入<span style="color: #FF5A59;margin-left: 2em;font-size:1.2em;" id ="gt_touru">0</span>万
+        </div>
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        配资<span style="color: #FF5A59;margin-left: 2em;font-size:1.2em;" id ="gt_peizi">0</span>万
+        </div>
+        </div>
+        </div>
+        </div>
+        <div>
+        <div class="box1" style="width: 43%;">
+        <img src="./css/res/gt-index-benjin2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />
+        <div style="display: inline-block;">
+        <div class="box-text1 box-text1-3" style="color: #00AEE1;">
+        <span id="fb_amount" style="font-size: 1.2em;">0</span>万
+        </div>
+        <div class="box-text3" style="font-size: 0.6em;">
+        返本
+        </div>
+        </div>
+        </div>
+        <div class="box1" style="width: 53%;">
+        <img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.3em;" />
+        <div style="display: inline-block;">
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        投入<span style="color: #00AEE1;margin-left: 2em;font-size:1.2em;" id ="fb_touru">0</span>万
+        </div>
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        配资<span style="color: #00AEE1;margin-left: 2em;font-size:1.2em;" id = "fb_peizi">0</span>万
+        </div>
+        </div>
+        </div>
+        </div>
+        <div>
+        <div class="box1" style="width: 43%;">
+        <img src="./css/res/gt-index-shouyi.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />
+        <div style="display: inline-block;">
+        <div class="box-text1 box-text1-3" style="color: #00AEE1">
+        <span id="sy_amount" style="font-size: 1.2em;">0</span>万
+        </div>
+        <div class="box-text3" style="font-size: 0.6em;">
+        收益
+        </div>
+        </div>
+        </div>
+        <div class="box1" style="width: 53%;">
+        <img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.3em;" />
+        <div style="display: inline-block;">
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        预分红<span style="color: #00AEE1;margin-left: 1.2em;font-size:1.2em;" id="sy_yufenhong">0</span>万
+        </div>
+        <div class="box-text-rig" style="text-align: left;font-size: 0.6em;">
+        退出收益<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;">0</span>万
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div style="width: 100%;margin-top: 19.75em;position: absolute;">
+        <div class="box2" onclick="show_rengou()">
+        <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">
+        <img src="./css/res/gt-index-gongzi.png" class="box-img"/>
+        </div>
+        <div class="box-text">
+        认购
+        </div>
+        </div>
+        <div class="box2" >
+        <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">
+        <img src="./css/res/gt-index-daifukuan.png" class="box-img" />
+        </div>
+        <div class="box-text">
+        待实缴
+        </div>
+        </div>
+        <div class="box2" onclick="show_fanben()">
+        <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">
+        <img src="./css/res/gt-index-lirun.png" class="box-img" />
+        </div>
+        <div class="box-text">
+        已返本
+        </div>
+        </div>
+        <div class="box2" onclick="show_fenhong()">
+        <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">
+        <img src="./css/res/gt-index-fenhong.png" class="box-img" />
+        </div>
+        <div class="box-text">
+        已分红
+        </div>
+        </div>
+        <div class="box2">
+        <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">
+        <img src="./css/res/gt-index-tuichu.png" class="box-img" />
+        </div>
+        <div class="box-text">
+        已退出
+        </div>
+        </div>
+        </div>
+
+        <div style="position: absolute;height: 2.5em;width: 100%;margin-top: 24em;line-height: 2.5em;">
+        <div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>
+        <span>最新跟投项目</span>
+        <span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_rengouxiangqing()">查看更多</span>
+        </div>
+
+        <div id ="zuixingentou" style="position: absolute; margin-top: 25.25em;"></div> -->
+    </body>
+    <script src="js/appcan.js"></script>
+    <script src="js/appcan.control.js"></script>
+    <script src="js/yajule.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+        appcan.ready(function() {
+            // appcan.locStorage.setVal('serviceUrl', "http://10.1.9.144");
+            // appcan.locStorage.setVal('loginname', "A059571");
+            // appcan.locStorage.setVal('password', "asdf123");
+           
+           jiazai();
+        });
+        
+        function jiazai(){
+             var width = window.screen.width
+            if (width < 640) {
+                if(width<360){
+                    get_html3()
+                }else if (width<400){
+                    get_html2();
+                }else{
+                    get_html1(); 
+                }
+            } else{
+                if(width<=720){
+                    get_html3();
+                }else if(width<1200){
+                    get_html2();
+                }else{
+                    get_html1(); 
+                }
+            }
+            getGtApply0Data();
+            getGtHomeData();
+        };
+
+        function get_html1() {
+
+            var html = '';
+            html += '<div style="width: 100%;position: relative;">';
+            html += '<img style="width: 100%;height: 13em;position: absolute;" src="./css/res/fangdichan_sucai-002.jpg" />';
+            html += '<div style="position: absolute;height: 6em;width: 70%;margin-left: 15%;margin-top:0.8em;background-color: black;opacity: 0.3;text-align: center;border-radius:0.5em;" id="bk">';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.8em;letter-spacing: 0.15em; ">2019年首次 </div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;letter-spacing: 0.25em;" id ="bm"  >跟投项目认购开始啦</div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;font-size: 0.7em; display:none" id ="time" >认购截止时间：2016-6-26</div></div>';
+            html += '<div style="position: absolute;margin-left: 40%;margin-top:8.5em;font-size: 0.9em;background-color: rgb(255, 165, 0);text-align: center;border-radius:0.4em;padding: 0.35em 0.65em;color: white; display:none" id ="gt" onclick="show_rengou()">我要认购</div>';
+            html += '<div style="margin-left:2% ;width: 96%;height: 10em;position: absolute;margin-top: 10em;background-color: #FFFFFF;border-radius: 5px;box-shadow: 0px 3px 5px #888888;">';
+            html += '<div style="height: 100%;width: 100%;"><div>';
+            html += '<div class="box" style="width: 37%">';
+            html += '<div id="xiangmu" style="text-align: center;margin-top: 1em;font-weight: bold;font-size: 1.3em;color: #FC9002">0</div>';
+            html += '<div style="text-align: center;font-size: 0.8em;margin-top: 1em;color: gray;">累计跟投项目</div>';
+            html += '<div style="text-align: center;border: 1px solid #F4941D;border-radius: 1em;font-size: 0.8em;margin-top: 1em;padding: 0.3em;margin-left: 2em;margin-right: 2em;color: #F4941D;" onclick="show_rengouxiangqing()">跟投详情</div></div>';
+            html += '<div class="box" style="width: 61%"><div>';
+            html += '<div class="box1" style="width: 47%;">';
+            html += '<img src="./css/res/gt-index-gentou2.png" style="width: 1.5em;height: 1.5em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1-b box-text1-3" style="margin-top: 0.6em;color: #FF5A59;">';
+            html += '<span id="gt_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3-b">跟投总额</div></div></div>';
+            html += '<div class="box1" style="width: 51%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.5em;height: 0.8em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '投入金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id="gt_touru">0.0</span><span style="color:#FF5A59;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;display:none">';
+            html += '配资金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id="gt_peizi">0.0</span><span style="color:#FF5A59;">万</span></div></div></div></div><div>';
+            html += '<div class="box1" style="width: 47%;">';
+            html += '<img src="./css/res/gt-index-benjin2.png" style="width: 1.5em;height: 1.5em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1-b box-text1-3" style="color: #00AEE1;">';
+            html += '<span id="fb_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3-b">返本</div></div></div>';
+            html += '<div class="box1" style="width: 51%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.5em;height: 0.8em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '投入返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id="fb_touru">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;display:none">';
+            html += '配资返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id="fb_peizi">0.0</span><span style="color:#00AEE1;">万</span></div></div></div></div><div>';
+            html += '<div class="box1" style="width: 47%;">';
+            html += '<img src="./css/res/gt-index-shouyi.png" style="width: 1.5em;height: 1.5em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1-b box-text1-3" style="color: #00AEE1">';
+            html += '<span id="sy_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3-b">收益</div></div></div>';
+            html += '<div class="box1" style="width: 51%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.5em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '预分红<span style="color: #00AEE1;margin-left: 1.2em;font-size:1.2em;" id="sy_yufenhong">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '退出收益<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id="tcsy">0.0</span><span style="color:#00AEE1;">万</span>';
+            html += '</div></div></div></div></div></div></div></div></div>';
+
+            html += '<div style="width: 100%;margin-top: 21.5em;position: absolute;">';
+            html += '<div class="box2" onclick="show_rengou()">';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-gongzi.png" class="box-img" /></div>';
+            html += '<div class="box-text">认购</div></div>';
+            html += '<div class="box2"  onclick="show_daishijiao()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-daifukuan.png" class="box-img" /></div>';
+            html += '<div class="box-text">待实缴</div></div>';
+            html += '<div class="box2" onclick="show_fanben()"> <div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-lirun.png" class="box-img" /></div>';
+            html += '<div class="box-text" >已返本</div></div>';
+            html += '<div class="box2" onclick="show_fenhong()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-fenhong.png" class="box-img" /></div>';
+            html += '<div class="box-text">已分红</div></div>';
+            html += '<div class="box2" onclick="show_tuichu()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-tuichu.png" class="box-img" /></div>';
+            html += '<div class="box-text">已退出</div></div></div>';
+
+            html += '<div style="position: absolute;height: 2.5em;width: 100%;margin-top: 25.75em;line-height: 2.5em;" id = "ckgd">';
+            html += '<div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>';
+            html += '<span style="margin-left: 0.5em;font-fize:0.8em;">最新返本项目</span>';
+            html += '<span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_fanben()">查看更多</span></div>';
+
+            html += '<div id ="zuixingentou" style="position: absolute; margin-top: 27em;width: 100%;margin-bottom: 1em;padding-bottom:1.5em">';
+            html += '</div>';
+            $("#gt_content").html(html);
+        }
+
+        function get_html2() {
+
+            var html = '';
+            html += '<div style="width: 100%;position: relative;">';
+            html += '<img style="width: 100%;height: 13em;position: absolute;" src="./css/res/fangdichan_sucai-002.jpg" />';
+            html += '<div style="position: absolute;height: 6em;width: 70%;margin-left: 15%;margin-top:0.8em;background-color: black;opacity: 0.3;text-align: center;border-radius:0.5em;"id="bk">';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.8em;letter-spacing: 0.15em;">  2019年首次 </div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;letter-spacing: 0.25em;" id ="bm">跟投项目认购开始啦</div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;font-size: 0.7em;display:none" id ="time">认购截止时间：2016-6-26</div></div>';
+            html += '<div style="position: absolute;margin-left: 40%;margin-top:8.5em;font-size: 0.9em;background-color: rgb(255, 165, 0);text-align: center;border-radius:0.4em;padding: 0.35em 0.65em;color: white; display:none"id="gt" onclick="show_rengou()">我要认购</div>';
+            html += '<div style="margin-left:2% ;width: 96%;height: 8.25em;position: absolute;margin-top: 10em;background-color: #FFFFFF;border-radius: 5px;box-shadow: 0px 3px 5px #888888;">';
+            html += '<div style="height: 100%;width: 100%;"><div>';
+            html += '<div class="box" style="width: 33%">';
+            html += '<div  id  ="xiangmu" style="text-align: center;margin-top: 1em;font-weight: bold;font-size: 1.3em;color: #FC9002">0</div>';
+            html += '<div style="text-align: center;font-size: 0.8em;margin-top: 1em;color: gray;">累计跟投项目</div>';
+            html += '<div style="text-align: center;border: 1px solid #F4941D;border-radius: 1em;font-size: 0.7em;margin-top: 1em;padding: 0.2em;margin-left: 2em;margin-right: 2em;color: #F4941D;" onclick="show_rengouxiangqing()">跟投详情</div></div>';
+            html += '<div class="box" style="width: 65%"><div>';
+            html += '<div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-gentou2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="margin-top: 0.6em;color: #FF5A59;">';
+            html += '<span id ="gt_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3">跟投总额</div></div></div>';
+            html += '<div class="box1" style="width: 55%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '投入金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id ="gt_touru">0.0</span><span style="color:#FF5A59;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;display:none">';
+            html += '配资金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id ="gt_peizi">0.0</span><span style="color:#FF5A59;">万</span>';
+            html += '</div></div></div></div><div>';
+            html += '<div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-benjin2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="color: #00AEE1;">';
+            html += '<span id="fb_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3">返本</div></div></div>';
+            html += '<div class="box1" style="width: 55%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '投入返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id ="fb_touru">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;display:none">';
+            html += '配资返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id = "fb_peizi">0.0</span><span style="color:#00AEE1;">万</span>';
+            html += '</div></div></div></div><div>';
+            html += '<div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-shouyi.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="color: #00AEE1">';
+            html += '<span id="sy_amount" style="font-size: 1.3em;">0.0</span>万</div>';
+            html += '<div class="box-text3">收益</div></div></div>';
+            html += '<div class="box1" style="width: 55%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '预分红<span style="color: #00AEE1;margin-left: 1.2em;font-size:1.2em;" id="sy_yufenhong">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size:0.7em;">';
+            html += '退出收益<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id="tcsy">0.0</span><span style="color:#00AEE1;">万</span>';
+            html += '</div></div></div></div></div></div></div></div></div>';
+
+            html += '<div style="width: 100%;margin-top: 19.75em;position: absolute;">';
+            html += '<div class="box2" onclick="show_rengou()">';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-gongzi.png" class="box-img"/>';
+            html += '</div><div class="box-text">认购</div></div>';
+            html += '<div class="box2"  onclick="show_daishijiao()" >';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-daifukuan.png" class="box-img" />';
+            html += '</div><div class="box-text">待实缴</div></div>';
+            html += '<div class="box2" onclick="show_fanben()">';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-lirun.png" class="box-img" />';
+            html += '</div><div class="box-text">已返本</div></div>';
+            html += '<div class="box2" onclick="show_fenhong()">';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-fenhong.png" class="box-img" />';
+            html += '</div><div class="box-text">已分红</div></div>';
+            html += '<div class="box2" onclick="show_tuichu()">';
+            html += '<div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-tuichu.png" class="box-img" />';
+            html += '</div><div class="box-text">已退出</div></div></div>';
+
+            html += '<div style="position: absolute;height: 2.5em;width: 100%;margin-top: 24em;line-height: 2.5em;" id = "ckgd"> ';
+            html += '<div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>';
+            html += '<span style="margin-left: 0.5em;font-fize:0.8em;">最新返本项目</span>';
+            html += '<span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_fanben()">查看更多</span></div>';
+
+            html += '<div id ="zuixingentou" style="position: absolute; margin-top: 25.25em;width: 100%;margin-bottom: 1em;padding-bottom:1.5em">';
+            html += '</div>';
+            $("#gt_content").html(html);
+        }
+
+        function get_html3() {
+            var html = '';
+            html += '<div style="width: 100%;position: relative;">';
+            html += '<img style="width: 100%;height: 13em;position: absolute;" src="./css/res/fangdichan_sucai-002.jpg" />';
+            html += '<div style="position: absolute;height: 6em;width: 70%;margin-left: 15%;margin-top:0.8em;background-color: black;opacity: 0.3;text-align: center;border-radius:0.5em;" id="bk">';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.8em;letter-spacing: 0.15em;">  2019年首次 </div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;letter-spacing: 0.25em;" id ="bm">跟投项目认购开始啦</div>';
+            html += '<div style="opacity: 1;font-weight: bold;color: white;margin-top: 0.6em;font-size: 0.7em;display:none" id ="time" >认购截止时间：2016-6-26</div></div>';
+            html += '<div style="position: absolute;margin-left: 40%;margin-top:8.5em;font-size: 0.9em;background-color: rgb(255, 165, 0);text-align: center;border-radius:0.4em;padding: 0.35em 0.65em;color: white; display:none" id="gt" onclick="show_rengou()" >我要认购</div>';
+            html += '<div style="margin-left:2% ;width: 96%;height: 8.25em;position: absolute;margin-top: 10em;background-color: #FFFFFF;border-radius: 5px;box-shadow: 0px 3px 5px #888888;">';
+            html += '<div style="height: 100%;width: 100%;">';
+            html += '<div style="margin-top: 0.3em;"><div class="box" style="width: 33%">';
+            html += '<div  id  ="xiangmu" style="text-align: center;margin-top: 1em;font-weight: bold;font-size: 1.3em;color: #FC9002">0</div>';
+            html += '<div style="text-align: center;font-size: 0.8em;margin-top: 1em;color: gray;">累计跟投项目</div>';
+            html += '<div style="text-align: center;border: 1px solid #F4941D;border-radius: 1em;font-size: 0.6em;margin-top: 1em;padding: 0.2em;margin-left: 2em;margin-right: 2em;color: #F4941D;" onclick="show_rengouxiangqing()">跟投详情</div></div>';
+            html += '<div class="box" style="width: 65%">';
+            html += '<div><div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-gentou2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="margin-top: 0.6em;color: #FF5A59;">';
+            html += '<span id ="gt_amount" style="font-size: 1.2em;">0.0</span>万</div>';
+            html += '<div class="box-text3" style="font-size: 0.6em;">跟投总额</div></div></div>';
+            html += '<div class="box1" style="width: 53%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;">';
+            html += '投入金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id ="gt_touru">0.0</span><span style="color:#FF5A59;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;display:none">';
+            html += '配资金额<span style="color: #FF5A59;margin-left: 0.3em;font-size:1.2em;" id ="gt_peizi">0.0</span><span style="color:#FF5A59;">万</span>';
+            html += '</div></div></div></div>';
+            html += '<div><div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-benjin2.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="color: #00AEE1;">';
+            html += '<span id="fb_amount" style="font-size: 1.2em;">0.0</span>万</div>';
+            html += '<div class="box-text3" style="font-size: 0.6em;">返本</div></div></div>';
+            html += '<div class="box1" style="width: 53%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;">';
+            html += '投入返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id ="fb_touru">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;display:none">';
+            html += '配资返还<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id = "fb_peizi">0.0</span><span style="color:#00AEE1;">万</span>';
+            html += '</div></div></div></div>';
+            html += '<div><div class="box1" style="width: 43%;">';
+            html += '<img src="./css/res/gt-index-shouyi.png" style="width: 1.3em;height: 1.3em;display: inline-block;margin-right: 0.5em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text1 box-text1-3" style="color: #00AEE1">';
+            html += '<span id="sy_amount" style="font-size: 1.2em;">0.0</span>万</div>';
+            html += '<div class="box-text3" style="font-size: 0.6em;">收益</div></div></div>';
+            html += '<div class="box1" style="width: 53%;">';
+            html += '<img src="./css/res/gt-index-jiantou.png" style="width: 0.4em;height: 0.8em;display: inline-block;margin-bottom: 0.4em;margin-right: 0.3em;" />';
+            html += '<div style="display: inline-block;">';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;">';
+            html += '预分红<span style="color: #00AEE1;margin-left: 1.2em;font-size:1.2em;" id="sy_yufenhong">0.0</span><span style="color:#00AEE1;">万</span></div>';
+            html += '<div class="box-text-rig" style="text-align: left;font-size: 0.6em;">';
+            html += '退出收益<span style="color: #00AEE1;margin-left: 0.3em;font-size:1.2em;" id="tcsy">0.0</span><span style="color:#00AEE1;">万</span>';
+            html += '</div></div></div></div></div></div></div></div></div>';
+
+            html += '<div style="width: 100%;margin-top: 19.75em;position: absolute;">';
+            html += '<div class="box2" onclick="show_rengou()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-gongzi.png" class="box-img"/></div>';
+            html += '<div class="box-text">认购</div></div>';
+            html += '<div class="box2" onclick="show_daishijiao()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-daifukuan.png" class="box-img" /></div>';
+            html += '<div class="box-text">待实缴</div></div>';
+            html += '<div class="box2" onclick="show_fanben()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-lirun.png" class="box-img" /></div>';
+            html += '<div class="box-text">已返本</div></div>';
+            html += '<div class="box2" onclick="show_fenhong()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-fenhong.png" class="box-img" /></div>';
+            html += '<div class="box-text">已分红</div></div>';
+            html += '<div class="box2" onclick="show_tuichu()"><div style="width: 2.5em;height: 2.5em;border-radius: 50%;background-color: #F4941D;margin: auto;position: relative">';
+            html += '<img src="./css/res/gt-index-tuichu.png" class="box-img" /></div>';
+            html += '<div class="box-text">已退出</div></div></div>';
+
+            html += '<div style="position: absolute;height: 2.5em;width: 100%;margin-top: 24em;line-height: 2.5em;" id = "ckgd">';
+            html += '<div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>';
+            html += '<span style="margin-left: 0.5em;font-fize:0.8em;">最新返本项目</span>';
+            html += '<span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_fanben()">查看更多</span></div>';
+
+            html += '<div id ="zuixingentou" style="position: absolute; margin-top: 25.25em;width: 100%;margin-bottom: 1em; padding-bottom:1.5em"></div>';
+            $("#gt_content").html(html);
+        }
+
+        function getGtHomeData() {
+            var serviceUrl = appcan.locStorage.getVal('serviceUrl');
+            var loginname = appcan.locStorage.getVal('loginname');
+            var password = appcan.locStorage.getVal('password');
+            var obj = new Object();
+            obj.url = serviceUrl + "/servlet/PublicServiceServlet";
+            obj.data = {
+                'message_id' : 'gtpt',
+                'branch' : 'home',
+                'loginname' : loginname,
+                'password' : password
+            };
+            obj.successFun = 'homeDataSucess';
+            ajaxJson_v1(obj);
+        }
+
+        //首页跟投数据
+        function homeDataSucess(data) {
+            var gtpt_docArr = new Array();
+            console.log(data.login.DATA);
+            if (undefined != data.login.DATA && data.login.DATA.msg == '登录成功') {
+
+                var gtpt_userinfo = data.login.DATA.obj;
+                var gtpt_docArr = data.mainPage.DATA.rows;
+                appcan.locStorage.setVal('gtpt_userinfo', JSON.stringify(gtpt_userinfo));
+                appcan.locStorage.setVal('gtpt_docArr', JSON.stringify(gtpt_docArr));
+                var fanbenmx = data.fanben.DATA.rows;
+                var yufenhong = data.yufenhong.DATA.rows;
+                var mainArr = data.gtxq.DATA.rows;
+                var floor = data.querySum.FLOOR;
+                var fanben = data.querySum2.FANBEN;
+
+              //  console.log(fanbenmx)
+               // console.log(yufenhong)
+                console.log(mainArr)
+              //  console.log(floor)
+               // console.log(fanben)
+
+                // if(floor!=''&&fanben!=''){
+                appcan.locStorage.setVal('mainArr', mainArr);
+                appcan.locStorage.setVal('floor', floor);
+                appcan.locStorage.setVal('fanben', fanben);
+                //}
+                appcan.locStorage.setVal('fanbenmx', fanbenmx);
+                appcan.locStorage.setVal('yufenhong', yufenhong);
+                var xiangmu = 0;
+                var gt_amount = 0;
+                var fb_amount = 0;
+                var sy_amount = 0;
+                var gt_touru = 0;
+                var gt_peizi = 0;
+                var fb_touru = 0;
+                var fb_peizi = 0
+                var sy_yufenhong = 0;
+                var sy_tuichu = 0;
+                var yunxin = 0;
+                var aa=0;
+                var tcsy=data.tcsy.TCSY//退出收益
+                if(tcsy==null||tcsy==""){
+                    tcsy=0
+                }else{
+                    tcsy=Number(tcsy)
+                }
+                appcan.locStorage.setVal('tcsy', tcsy);
+                //去掉重复项目名 获取项目数量
+                    // var result = [],
+                    // isRepeated;
+                    // var touru = [];
+                    // for (var i = 0; i < mainArr.length; i++) {
+                        // if(mainArr[i].realamountTotal!=0){
+                            // isRepeated = false;
+                            // for (var j = 0; j < result.length; j++) {
+                                // if (mainArr[i].projectname == result[j]) {
+                                    // isRepeated = true;
+                                    // break;
+                                // }
+                            // }
+                            // if (!isRepeated) {
+                                // result.push(mainArr[i].projectname);
+                            // }
+                       // }
+                    // }
+                    
+                 for (var i = 0; i < mainArr.length; i++) {
+                    
+                    
+                    if ('运行中' == mainArr[i].status || '退出中' == mainArr[i].status || '退出关闭' == mainArr[i].status || '合伙人签订中' == mainArr[i].status || '跟投人签订中' == mainArr[i].status || '已退出' == mainArr[i].status) {
+                    
+                    xiangmu++;
+                    
+                    }
+                 };
+                
+                
+                for (var i = 0; i < mainArr.length; i++) {
+                        
+                        yunxin += 1;
+                        var realamount = Number(mainArr[i].realamountTotal);
+                       //投入
+                        var releaseamount = Number(mainArr[i].releaseamount);
+                        //返本
+                        var devidendamount = Number(mainArr[i].devidendamount);
+                        //预分红
+                       var matchMount = Number(mainArr[i].matchMount);//配资
+                        if (String(realamount) != 'NaN' && String(matchMount) != 'NaN') {
+                            /// gt_amount = realamount + matchMount ;
+                            gt_touru += realamount
+                            
+                            
+                             if (realamount !=null&&realamount!=''){
+                                      
+                                    console.log(matchMount)
+                                  
+                                 //跟投投入
+                                    gt_peizi += matchMount//跟投配资
+                             }
+                           
+                            gt_amount = gt_touru + gt_peizi;
+                            //跟投总额
+                        }
+
+
+                        //fb_amount +=  Number(mainArr[i].releaseamount); //投入返本
+                               fb_touru+=Number(mainArr[i].releaseamount); //投入返本
+                        for (var j = 0; j < fanbenmx.length; j++) {//返本明细
+
+                            if (fanbenmx[j].p_name == mainArr[i].projectname) {
+                                var proportion = fanbenmx[j].proportion;
+                                //返本比利
+                                proportion = proportion.substring(0, proportion.length);
+                                proportion = proportion / 100
+                              
+                                fb_peizi += Number((matchMount * proportion).toFixed(2));
+                                //配资返本
+                                 //fb_touru   = Number(fb_amount)- Number(fb_peizi)//返本总额
+                                 fb_amount   = Number(fb_touru)+Number(fb_peizi)//返本总额
+                            }
+                        }
+
+                        if (String(devidendamount) != 'NaN') {
+                            sy_yufenhong += devidendamount;
+                            sy_amount = sy_yufenhong + tcsy;
+                        }
+                    
+                }
+                
+                xiangmu = isxiaoshu(xiangmu);
+                gt_amount = isxiaoshu(gt_amount);
+                fb_amount = isxiaoshu(fb_amount);
+                sy_amount = isxiaoshu(sy_amount);
+                gt_touru = isxiaoshu(gt_touru);
+                gt_peizi = isxiaoshu(gt_peizi);
+                fb_touru = isxiaoshu(fb_touru);
+                fb_peizi = isxiaoshu(fb_peizi);
+                sy_yufenhong = isxiaoshu(sy_yufenhong);
+                
+                $("#xiangmu").text(xiangmu);
+                $("#gt_amount").text(gt_amount.toFixed(1));
+                $("#fb_amount").text(fb_amount.toFixed(1));
+                $("#sy_amount").text(sy_amount.toFixed(1));
+                $("#gt_touru").text(gt_touru.toFixed(1));
+                $("#gt_peizi").text(gt_peizi.toFixed(1));
+                $("#fb_touru").text(fb_touru.toFixed(1));
+                $("#fb_peizi").text(fb_peizi.toFixed(1));
+                $("#sy_yufenhong").text(sy_yufenhong.toFixed(1));
+                $("#tcsy").text(tcsy.toFixed(1));
+
+                var html = '';
+                var j = 0;
+                var k =0;
+                rengou();
+                zuixinFanben();
+                
+             
+            } else if (undefined == data.login.DATA.msg) {
+                appcan.window.alert({
+                    title : "提醒",
+                    content : '跟投管理平台连接失败，请重试。',
+                    buttons : '确定',
+                    callback : function(err, data, dataType, optId) {
+                        uexWindow.evaluateScript("gtpt_menu", 0, "doScript(appcan.window.close(-1))");
+                    }
+                });
+
+            } else {
+                appcan.window.alert({
+                    title : "提醒",
+                    content : data.login.DATA.msg,
+                    buttons : '确定',
+                    callback : function(err, data, dataType, optId) {
+                        uexWindow.evaluateScript("gtpt_menu", 0, "doScript(appcan.window.close(-1))");
+                    }
+                });
+            }
+        }
+        
+        //判断小数点后数字是否大于2位
+        function  isxiaoshu(obj){
+             if((obj.toString()).indexOf(".") !=-1 ){
+                 if (obj.toString().split(".")[1].length>2){
+                       obj=Math.round(obj*100)/100
+                      /// Number(obj).toFixed(2);
+                 }
+             }
+            return obj;
+            
+        }
+        
+        
+
+        //获取认购数据
+        function getGtApply0Data() {
+            $("#gt_apply_content #gt_listview2").addClass("uhide");
+            $("#gt_apply_content #gt_listview").removeClass("uhide");
+            var serviceUrl = appcan.locStorage.getVal('serviceUrl');
+            var loginname = appcan.locStorage.getVal('loginname');
+            var password = appcan.locStorage.getVal('password');
+            var obj = new Object();
+            obj.url = serviceUrl + "/servlet/PublicServiceServlet";
+            obj.data = {
+                'message_id' : 'gtpt',
+                'branch' : 'apply',
+                'loginname' : loginname,
+                'password' : password
+            };
+            obj.successFun = 'apply0DataSucess';
+            ajaxJson_v1(obj);
+        }
+
+        function apply0DataSucess(data) {
+            var rgArr = data.rgquery.DATA.rows;
+            appcan.locStorage.setVal('rgArr', rgArr);
+        }
+
+        function show_rengou() {
+            appcan.window.open('gtpt_rgapply', 'gtpt_rgapply.html', 10, 4);
+        }
+
+        function show_fanben() {
+            appcan.window.open('gtpt_fanben', 'gtpt_fanben.html', 10, 4);
+        }
+
+        function show_fenhong() {
+            appcan.window.open('gtpt_grfh', 'gtpt_grfh.html', 10, 4);
+        }
+        
+        function show_tuichu() {
+            appcan.window.open('gtpt_tuichu', 'gtpt_tuichu.html', 10, 4);
+        }
+        
+        function show_daishijiao() {
+            appcan.window.open('gtpt_zzxinxi', 'gtpt_zzxinxi.html', 10, 4);
+        }
+
+        function show_rengouxiangqing() {
+            appcan.window.open('gtpt_rgxiangqing', 'gtpt_rgxiangqing.html', 10, 4);
+        }
+        
+        function zuixinFanben(){
+            var fanben = appcan.locStorage.getVal('fanbenmx');
+            fanben = JSON.parse(fanben);
+            
+            html ='';
+            if(fanben.length!=0){
+                var date =fanben[0].returnDate;
+                html += '<div  style="width: 90%;margin-top:1.5em;margin-left: 5%;font-size: 0.8em;color: gray">';
+                
+                for (var i=0; i < fanben.length; i++) {
+                    if(fanben[i].returnDate==date){
+                        html+= "<div  style='width: 100%;BACKGROUND-COLOR: #DEEBF7;margin-top: 1%;padding-top: 1%;padding-bottom: 1%'>"
+                        html += '<span style="margin-left: 1.5%;position: absolute; ">'+fanben[i].p_name+'</span>';
+                        html +='<span style="margin-left: 45%;position: absolute;" >返本';
+                        html +=fanben[i].proportion == "" ? "" : fanben[i].proportion+"%</span>";
+                        html +='<span style="margin-left: 75%">'+fanben[i].returnDate+'</span>'
+                        html+= "</div>"
+                    }
+                };
+                html += '</div>';
+                
+                
+                var yfenhong = appcan.locStorage.getVal('yufenhong');
+                yfenhong = JSON.parse(yfenhong)
+                if(yfenhong.length!=0){
+                    html += '<div style="height: 2.5em;width: 100%;line-height: 2.5em;" id = "ckgd">';
+                    html += '<div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>';
+                    html += '<span style="margin-left: 0.5em;font-fize:0.8em;">最新预分红项目</span>';
+                    html += '<span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_fenhong()">查看更多</span></div>';
+                    html += '</div>';
+                    var date1=yfenhong[0].bonustime
+                        html += '<div  style=" width: 90%;margin-left: 5%;font-size: 0.8em;color: gray">';
+                    for (var i=0; i < yfenhong.length; i++) {
+                        if(yfenhong[i].bonustime==date1){
+                         html+= "<div style='width: 100%;BACKGROUND-COLOR: #DEEBF7;margin-top: 1%; padding-top: 1%;padding-bottom: 1%'>"
+                        html += '<span style="margin-left: 1.5%; position: absolute; ">'+yfenhong[i].p_name+'</span>';
+                         html += '<span style="margin-left: 45%;position: absolute;">预分红';
+                         html += yfenhong[i].rateMount == undefined ? "" : yfenhong[i].rateMount+'</span>';
+                         html +='<span style="margin-left: 75%">'+yfenhong[i].bonustime+'</span>'
+
+                        html+= "</div>" 
+                        }
+                            
+                    };
+                     html += '</div>';
+                }else{
+                     html += '<div style="height: 2.5em;width: 100%;line-height: 2.5em;" id = "ckgd">';
+                    html += '<div style="display: inline-block;width: 0.3em;height: 0.8em;background-color: rgb(255, 144, 144);margin-left: 1em;"></div>';
+                    html += '<span style="margin-left: 0.5em;font-fize:0.8em;">最新预分红项目</span>';
+                    html += '<span style="float: right;margin-right: 1em;font-size: 0.8em;color: gray;" onclick="show_fenhong()">查看更多</span></div>';
+                    html += '</div>';
+                    html += '<div  style=" width: 90%;margin-left: 5%;font-size: 0.8em;color: gray">';
+                    html+= "<div style='width: 100%;BACKGROUND-COLOR: #DEEBF7;margin-top: 1%; padding-top: 1%;padding-bottom: 1%'>"
+                    html += '<span style="margin-left: 1.5%; ">暂无预分红项目！</span>';
+                    html+= "</div>" 
+                    html+= "</div>" 
+                     html += '</div>';
+                }
+            }else{
+                html += '<div  style=" width: 90%;margin-top:1.5em;margin-left: 5%;font-size: 0.8em;color: gray">';
+                html+= "<div style='width: 100%;BACKGROUND-COLOR: #DEEBF7;margin-top: 1%; padding-top: 1%;padding-bottom: 1%'>"
+                html += '<span style="margin-left: 1.5%; ">暂无返本项目！</span>';
+                html+= "</div>" 
+                html+= "</div>"
+            }
+            $("#zuixingentou").html(html);
+        }
+        
+        
+        //获取认购截止时间
+          function rengou() {
+
+            var serviceUrl = appcan.locStorage.getVal('serviceUrl');
+            var loginname = appcan.locStorage.getVal('loginname');
+            var password = appcan.locStorage.getVal('password');
+            var obj = new Object();
+            obj.url = serviceUrl + "/servlet/PublicServiceServlet";
+            obj.data = {
+                'message_id' : 'gtpt',
+                'branch' : 'apply',
+                'loginname' : loginname,
+                'password' : password
+            };
+            obj.successFun = 'applyDataSucess';
+            ajaxJson_v1(obj);
+        }
+
+        var applyObj;
+        function applyDataSucess(data) {
+            applyObj = data.rgquery.DATA.rows;
+            console.log(applyObj)
+            if (applyObj.length == 0) {
+                 rengoujiezhi();
+   
+            }else{
+              var    end_time = getConvertTime(applyObj[0].end_time);
+              var date =getConvertTime(new Date().getTime());
+               
+              $("#time").text("认购截止时间："+end_time);
+                $("#time").show();
+                 $("#gt").show();
+               if(date>end_time){
+                    rengoujiezhi();
+               }
+            }
+        }
+
+             
+              //将时间戳转换方便阅读的时间
+        function getConvertTime(timestamp) {
+            if (undefined == timestamp || null == timestamp) {
+                return "";
+            } else {
+                var entrytime = new Date(timestamp);
+                var year = entrytime.getFullYear();
+                var month = entrytime.getMonth() + 1;
+                var date = entrytime.getDate();
+                var hours = entrytime.getHours();
+                var seconds = entrytime.getSeconds();
+                var minutes = entrytime.getMinutes();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (date < 10) {
+                    date = "0" + date;
+                }
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                return year + '-' + month + '-' + date + ' ' + hours + ':' + seconds;
+            }
+        }
+        
+        //获取实缴截止时间
+        function rengoujiezhi(){
+            
+             var serviceUrl = appcan.locStorage.getVal('serviceUrl');
+             var loginname = appcan.locStorage.getVal('loginname');
+             var password = appcan.locStorage.getVal('password');
+             var obj2 = new Object();
+             obj2.url = serviceUrl + "/servlet/PublicServiceServlet";
+             obj2.data = {
+                'type':'post',
+                'message_id' : 'gtpt',
+                'branch' : 'shoukuan',
+                'loginname' : loginname,
+                'password' : password
+             };
+             obj2.successFun = 'selectShoukuanSucess';
+             ajaxJson_v1(obj2);
+        }
+        
+         function selectShoukuanSucess(data){
+             var json =data.zhuanzhang.DATA ;
+             json =JSON.parse(json)
+             if(json.length!=0){
+                 console.log(json);
+                 var intmantime='';//实缴截止时间
+                 var endtime =  getConvertTime(json[0].end_time);//认购截止时间
+                 var a =false;
+                 var b =false;
+                 var   payBatch ;
+                 var intmantime2='';
+                 var m;
+                 for(var i =0;i<json.length;i++){
+                     payBatch = json[i].payBatch;
+                       
+                     if(payBatch!=undefined){
+                        m = payBatch.substring(4,6);
+                        if(m<10){
+                            m=m.substring(1,2);
+                         } 
+                     } 
+                    var confirm_amount =json[i].confirm_amount==undefined ?'0':json[i].confirm_amount 
+                    console.log(confirm_amount);
+                    
+                     if(payBatch>json[0].payBatch){
+                       b=true;
+                         if(confirm_amount!=0){
+                            intmantime2 =json[i-1].intmantime;
+                         }
+                     }
+                    
+                     if(json[i].intmantime!=undefined){
+                         a=true
+                         if(confirm_amount!=0&& b==false){
+                             intmantime  =json[i].intmantime;
+                         }
+                          
+                     }
+                     
+                    
+                  
+                    console.log(json.length);
+                 }
+                 
+                 console.log(a);
+                 var o= document.getElementById("gt");
+                  $("#gt").html("我要实缴");
+                 
+                  if(a==true){
+                      $("#gt").html("我要实缴");
+                      if(intmantime2!=''){
+                          intmantime2 =intmantime2.substring(0,10)
+                           intmantime= intmantime.substring(0,10)
+                          var yue = m-1;
+                          if(intmantime!=''){
+                             $("#time").text("实缴截止时间："+intmantime2+'/'+intmantime);   
+                          }else{
+                               $("#time").text("实缴截止时间："+intmantime2);   
+                          }
+                         
+                            $("#time").show();
+                      }else if(intmantime!=''){
+                          intmantime= intmantime.substring(0,10)
+                           $("#time").text("实缴截止时间："+intmantime);
+                            $("#time").show();
+                      }
+                       $("#gt").show();
+                  $("#bm").text("跟投项目额度已确认")
+                  gt.onclick  = show_daishijiao;     
+                      
+                 }else{
+                     
+                     
+                     var date =getConvertTime(new Date().getTime());
+                         $("#gt").show();
+                         $("#time").show();
+                         $("#time").text("认购截止时间："+endtime);
+                      
+                 }
+                
+                var date =getConvertTime(new Date().getTime());
+                
+               /* if(date>intmantime){
+                     $("#bm").html("跟投项目已结束");
+                     $("#gt").hide();
+                     $("#time").hide();
+                }  */
+            } 
+                
+         }
+        
+        
+    </script>
+</html>
+

@@ -1,0 +1,48 @@
+.cancle {
+    font-size: 18px;
+    color: #3AADFB;
+    margin: 1.173rem 0 1.066rem 0.373rem;
+}
+
+.cancle+div {
+    padding: 0 2.133rem;
+    text-align: center;
+}
+
+.tip1 {
+    font-size: 16px;
+    color: #999;
+}
+
+.content {
+    font-size: 44px;
+    color: #333;
+    margin: 1.013rem 0 2.346rem;
+}
+
+.tip2 {
+    font-size: 16px;
+    color: #ff3939;
+}
+
+.tip3 {
+    font-size: 14px;
+    color: #999;
+    margin: 3.04rem 0 0.426rem;
+}
+
+.recording_btn::after {
+    content: "\e66d";
+    font-size: 100px;
+    line-height: 100px;
+    top: 0;
+    border-radius: 50%;
+}
+
+.recording::after {
+    border: 8px solid rgba(58, 173, 251, .8);
+}
+
+.recording::before {
+    border: 16px solid rgba(58, 173, 251, .4);
+}

@@ -1,0 +1,195 @@
+﻿var vreportApi = (function(){
+	
+	var VreportApi = function(){
+		this.vreportPath = "/seeyon/m3/apps/v5/vreport";
+		this.cap3Path = "/seeyon/m3/apps/v5/formqueryreport";
+		this.cap4Path = "/seeyon/m3/apps/v5/cap4";
+		this.portalPath = "/seeyon/m3/apps/v5/portal";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         []
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    VreportApi.prototype.openApp = function(type,backUrl,option,obj) {
+		if("message" == type){
+			switch (option.linkType) {
+				case "message.link.vreport.schstats.report":
+					if(typeof option.linkParam4 != "undefined" && "true" === option.linkParam4){
+						if(typeof cap4Api != "undefined"){
+							cap4Api.openFormQueryReport({
+								type : 3,
+								appId : option.linkParam0,
+								schlogId:option.linkParam1,
+								bussId:option.linkParam3
+							});
+						}else{
+							cmp.asyncLoad.js([this.cap4Path + "/cap4_m_api.s3js"],function(){
+								cap4Api.openFormQueryReport({
+									type : 3,
+									appId : option.linkParam0,
+									schlogId:option.linkParam1,
+									bussId:option.linkParam3
+								});
+							});
+						}
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	
+	/**
+	 * 报表中心记录穿透
+	 * @param {Object} options
+	 * {
+	 * 	openWebView : true/false (是否打开webview)
+	 * 	rptInfo : {
+	 *	    relatedId : 报表id
+	 *      portalId : 门户id(报表模块为报表空间时,需要这个参数)
+	 *		name : 名称
+	 *		module : 模块(文件,cap3,cap4,报表空间)
+	 *		type : 类型(查询,统计)
+	 * 	}
+	 * }
+	 */
+	VreportApi.prototype.reportView = function(rptOptions){
+		//报表记录
+		var rptInfo = rptOptions.rptInfo;
+		
+		switch(rptInfo.module){
+			//文件报表
+			case "0" :  
+				var options = {};
+				if(rptOptions.openWebView){
+					options.openWebViewCatch = 1;
+				}
+				cmp.href.next(this.vreportPath + "/html/fileReportView.html",{reportId : rptInfo.relatedId},options);
+			    break;						   
+			//cap3报表
+			case "1" :  
+				var from = 'veport';
+				if(rptOptions.openWebView){
+					from = 'dashboard'
+				}
+				var args = {
+					listType : rptInfo.type,
+					itemType : "dostatistics",
+					id : rptInfo.relatedId
+			    }
+				if(formqApi){
+					formqApi.jumpToFormqueryreport(args,from);
+				}else{
+					cmp.asyncLoad.js([this.cap3Path + "/formqueryreport_m_api.s3js"],function(){
+						formqApi.jumpToFormqueryreport(args,from);
+					});
+				}
+			    break;
+			//cap4报表
+			case "2" :  
+			case "4" :  
+				if(cap4Api){
+					cap4Api.openFormQueryReport({
+						type : rptInfo.type == "0" ? 4 : 3,
+						appId : rptInfo.relatedId
+					});
+				}else{
+					cmp.asyncLoad.js([this.cap4Path + "/cap4_m_api.s3js"],function(){
+						cap4Api.openFormQueryReport({
+							type : rptInfo.type == "0" ? 4 : 3,
+							appId : rptInfo.relatedId
+						});
+					});
+				}
+			    break;
+			//帆软报表
+			case "3" :  
+				if (cmp.platform.CMPShell) {//M3:依然走以前方式
+					var url = cmp.seeyonbasepath + "/seeyonReport/seeyonReportController.do?method=redirectSeeyonReportH5&templateId=" + rptInfo.relatedId;
+					cmp.href.open(url+"&cmp_orientation=auto", "");
+				} else {//微协同
+					cmp.href.next(this.vreportPath + "/html/seeyonreportView.html",{reportId : rptInfo.relatedId}, {openWebViewCatch  : 1});
+				}
+			    break;
+			//报表空间
+			case "5" :  
+				if(vPortalApi){
+					vPortalApi.openPortalIndex({
+						'portalId' : rptInfo.portalId,
+						'spaceId' : rptInfo.relatedId,
+						'portalName' : rptInfo.name,
+						"m3from": "vreport",
+						'spaceBar':false
+					});
+				}else{
+					cmp.asyncLoad.js([this.portalPath + "/portal_m_api.s3js"],function(){
+						vPortalApi.openPortalIndex({
+							'portalId' : rptInfo.portalId,
+							'spaceId' : rptInfo.relatedId,
+							'portalName' : rptInfo.name,
+							"m3from": "vreport",
+							'spaceBar':false
+						});
+					});
+				}
+				break;
+			default : 
+				//打开第三方报表
+				if($s && $s.Vreport){
+					toExternalURL(rptInfo);
+				}else{
+					cmp.asyncLoad.js(["/seeyon/m3/apps/v5/vreport" + "/js/vreport-jssdk.js"],function(){
+						toExternalURL(rptInfo);
+					});
+				}
+				break;
+		}
+	}
+	
+	//到第三方报表
+	function toExternalURL(rptInfo){
+		$s.Vreport.getExternalURL(rptInfo.relatedId,{},{
+			success : function(result){
+				//以原生webview打开第三方报表
+				var url = result.data.url;
+				if(url.indexOf("https://") > -1 || url.indexOf("http://") > -1){
+					cmp.href.next(url + "&cmp_orientation=auto",null,{openWebViewCatch:true})
+				}else{
+					var serverIp = cmp.serverIp ? cmp.serverIp : "";
+					cmp.href.next(serverIp + url + "&cmp_orientation=auto",null,{openWebViewCatch:true})
+				}
+			},error : function(error){
+				var cmpHandled = cmp.errorHandler(error);
+				if(!cmpHandled){
+					console.log(error);
+					if(error.message){
+						cmp.notification.alert(error.message);
+					}else{
+						cmp.notification.alert(cmp.toJSON(error));
+					}
+				}
+			}
+		});
+	}
+	
+	/**
+	 * 报表中心记录穿透
+	 * @param {Object} options
+	 * {
+	 *	    moduleId : 数据的Id
+	 *      designId : 报表的ID
+	 *		excelId  : excel的Id
+	 * }
+	 */
+	VreportApi.prototype.viewExcelDetail = function(rptOptions){
+		cmp.href.next(this.vreportPath + "/html/excelDetail.html",rptOptions,{
+			openWebViewCatch:1
+		});
+	}
+	return new VreportApi();
+})();

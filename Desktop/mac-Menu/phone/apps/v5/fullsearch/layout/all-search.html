@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="/seeyon/m3/cmp/js/cmp-flexible.js?buildversion=181210172742"></script>
+    <title>全文检索</title>
+    <meta name = "cmp-screen-orientation" content = "all">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/fonts/iconfont.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/css/base.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172742">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/fullsearch/css/all-search.css?buildversion=181210172742" />
+    
+</head>
+
+<body>
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav m3-iosx">
+        <!--搜索框-->
+        <form onsubmit="return false" action="#" >
+            <div class="cmp-input-row cmp-search">
+                <input id="btn_a" type="search" class=" cmp-input-clear"  placeholder="搜索">
+                <!-- <span id="speech" class="cmp-icon cmp-icon-speech input-icon-rudio display_none"></span> -->
+            </div>
+        </form>
+        <span class="cancel level1"><i18n key="fullsearch.v5.h5.cancel"></i18n></span>
+        <span class="cancel level2 display_none"><i18n key="fullsearch.v5.h5.cancel"></i18n></span>
+    </header>
+    <div class="cmp-content message">
+        <div class="cmp-control-content cmp-active">
+            <div id="scroll-content">
+                <div id="slider" class="cmp-slider display_none">
+                    <div class="cmp-slider-group">
+                        <div class="cmp-slider-item cmp-slider-item-duplicate">
+                            <div class="flex flex-vc">
+                                <div class="flex_item" data-type="type62">
+                                    <span class="iconfont see-icon-m3-searchperson"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.searchPeople"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type39">
+                                    <span class="iconfont see-icon-m3-third"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.externalToDo"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type2">
+                                    <span class="iconfont see-icon-m3-form-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.form"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type11">
+                                    <span class="iconfont see-icon-m3-project"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.schedule"></i18n>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cmp-slider-item">
+                            <div class="flex flex-vc">
+                                <div class="flex_item" data-type="typeAll" id="searchAll">
+                                    <span class="iconfont see-icon-m3-app-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.all"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type1">
+                                    <span class="iconfont see-icon-m3-coordination-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.coordination"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type4">
+                                    <span class="iconfont see-icon-m3-document"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.document"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type6">
+                                    <span class="iconfont see-icon-m3-meeting-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.meeting"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type8">
+                                    <span class="iconfont see-icon-m3-new-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.news"></i18n>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cmp-slider-item">
+                            <div class="flex flex-vc">
+                                <div class="flex_item" data-type="type7">
+                                    <span class="iconfont see-icon-m3-notice-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.bulletin"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type10">
+                                    <span class="iconfont see-icon-m3-research"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.inquiry"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type9">
+                                    <span class="iconfont see-icon-m3-talk"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.discuss"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type3">
+                                    <span class="iconfont see-icon-m3-file"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.documentation"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type30">
+                                    <span class="iconfont see-icon-m3-mission-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.task"></i18n>
+                                    </p>
+                                </div>
+                                <!--<div class="flex_item" data-type="type5">
+                                <span class="iconfont see-icon-m3-plan"></span>
+                                <p><i18n key="fullsearch.v5.h5.planning"></i18n></p>
+                            </div>-->
+                            </div>
+                        </div>
+                        <div class="cmp-slider-item">
+                            <div class="flex flex-vc">
+                                <div class="flex_item" data-type="type62">
+                                    <span class="iconfont see-icon-m3-searchperson"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.searchPeople"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type39">
+                                    <span class="iconfont see-icon-m3-third"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.externalToDo"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type2">
+                                    <span class="iconfont see-icon-m3-form-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.form"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type11">
+                                    <span class="iconfont see-icon-m3-project"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.schedule"></i18n>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cmp-slider-item cmp-slider-item-duplicate">
+                            <div class="flex flex-vc">
+                                <div class="flex_item" data-type="typeAll">
+                                    <span class="iconfont see-icon-m3-app-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.all"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type1">
+                                    <span class="iconfont see-icon-m3-coordination-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.coordination"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type4">
+                                    <span class="iconfont see-icon-m3-document"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.document"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type6">
+                                    <span class="iconfont see-icon-m3-meeting-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.meeting"></i18n>
+                                    </p>
+                                </div>
+                                <div class="flex_item" data-type="type8">
+                                    <span class="iconfont see-icon-m3-new-fill"></span>
+                                    <p>
+                                        <i18n key="fullsearch.v5.h5.news"></i18n>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmp-slider-indicator">
+                        <div class="cmp-indicator cmp-active"></div>
+                        <div class="cmp-indicator"></div>
+                        <div class="cmp-indicator"></div>
+                    </div>
+                </div>
+                <div class="cansearch">
+                    <!-- 新增热门搜索关键词 -->
+                    <div class="title display_none" id="hosSearch">
+                        <i18n key="fullsearch.v5.h5.topsearch"></i18n>
+                    </div>
+                    <div class="Top-search-content" >
+                        <ul id="topsearch"></ul>
+                    </div>
+                    <div class="title">
+                        <i18n key="fullsearch.v5.h5.searchTip"></i18n>
+                    </div>
+                    <div class="candetail display-none">
+                        <div id="coordination">
+                            <span class="iconfont see-icon-m3-coordination-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.coordination"></i18n>
+                            </p>
+                        </div>
+                        <div id="document">
+                            <span class="iconfont see-icon-m3-document"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.document"></i18n>
+                            </p>
+                        </div>
+                        <div id="meeting">
+                            <span class="iconfont see-icon-m3-meeting-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.meeting"></i18n>
+                            </p>
+                        </div>
+                        <div id="news">
+                            <span class="iconfont see-icon-m3-new-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.news"></i18n>
+                            </p>
+                        </div>
+                        <div id="notice">
+                            <span class="iconfont see-icon-m3-notice-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.bulletin"></i18n>
+                            </p>
+                        </div>
+                        <div id="research">
+                            <span class="iconfont see-icon-m3-research"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.inquiry"></i18n>
+                            </p>
+                        </div>
+                        <div id="talk">
+                            <span class="iconfont see-icon-m3-talk"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.discuss"></i18n>
+                            </p>
+                        </div>
+                        <div id="file">
+                            <span class="iconfont see-icon-m3-file"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.documentation"></i18n>
+                            </p>
+                        </div>
+                        <div id="mission">
+                            <span class="iconfont see-icon-m3-mission-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.task"></i18n>
+                            </p>
+                        </div>
+                        <!--<div id="plan">
+                        <span class="iconfont see-icon-m3-plan"></span>
+
+                        <p><i18n key="fullsearch.v5.h5.planning"></i18n></p>
+                    </div>-->
+                        <div id="addressBook">
+                            <span class="iconfont see-icon-m3-searchperson"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.searchPeople"></i18n>
+                            </p>
+                        </div>
+                        <div id="form">
+                            <span class="iconfont see-icon-m3-form-fill"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.form"></i18n>
+                            </p>
+                        </div>
+                        <div id="project">
+                            <span class="iconfont see-icon-m3-project"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.schedule"></i18n>
+                            </p>
+                        </div>
+                        <div id="thirdTodo">
+                            <span class="iconfont see-icon-m3-third"></span>
+                            <p>
+                                <i18n key="fullsearch.v5.h5.externalToDo"></i18n>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="search display_none">
+                </div>
+                <div id="pullrefresh" class="cmp-scroll-wrapper display_none">
+                    <div class="cmp-scroll">
+                        <ul class="cmp-table-view search-people" id="content"></ul>
+                    </div>
+                </div>
+                <div class="none display_none">
+                    <span class="iconfont see-icon-m3-page-nodata"></span>
+                    <p>
+                        <i18n key="fullsearch.v5.h5.filterNull"></i18n>
+                    </p>
+                </div>
+
+                <!-- 新增搜索记录容器 -->
+                <div class="searchCache-content">
+                    <div class="searchCache">
+                        <div class="searchCache-scroll">
+                            <ul id="searchCacheItems" class="cmp-table-view">
+                            </ul>
+                        </div>
+                        
+                        <footer id="footer" class="cmp-bar cmp-bar-footer cmp-comment-footer searchCache-footer">
+                            <div id="clearSearchCache" class="item clearSearchBtn">
+                                <span><i18n key="fullsearch.v5.h5.clear"></i18n></span>
+                            </div>
+                            <div id="searchBack" class="item searchBack">
+                                <span><i18n key="fullsearch.v5.h5.return"></i18n></span>
+                            </div>
+                        </footer>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--语音按钮-->
+    <div class="record-wrap display_none" id="voice">
+        <div class="record-button">
+            <span class="iconfont see-icon-m3-voice-fill" id="voice-icon"></span>
+            <img src="/seeyon/m3/apps/v5/fullsearch/img/loading.gif" alt="" class="display_none" id="loading">
+        </div>
+    </div>
+
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/fullsearch_zh_TW.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/fullsearch_en.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/fullsearch_zh_CN.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/i18n/commons_zh_CN.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172742"></script>
+    <script type="text/javascript">
+
+		var $buildversion  = '?buildversion=181210172742';
+		var fullsearchPath = '/seeyon/m3/apps/v5/fullsearch'; 
+		var cmpPath = '/seeyon/m3/cmp'; 
+	    // cmp.i18n.init("/i18n/","show",function(){
+	    // 	document.title = cmp.i18n("Show.page.label.show");
+        // });
+        cmp.i18n.init("/seeyon/m3/apps/v5/fullsearch/i18n/", "fullsearch");
+        cmp.i18n.init("/seeyon/m3/apps/v5/fullsearch/i18n/", "commons");
+    </script>
+    
+              <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-chat.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-iat.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-gestureLock.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-speechRobot.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-footerAuto.js?buildversion=181210172742"></script>
+
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/js/m3-path.s3js?buildversion=181210172742"></script>
+
+    <!-- seajs -->
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/js/seajs-2.2.1.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/config.js?buildversion=181210172742"></script>
+    <script src="/seeyon/m3/apps/v5/fullsearch/js/m3-config.js?buildversion=181210172742"></script>
+    <!-- 模块api应用 -->
+    <script src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=181210172742" type="text/javascript"></script>
+    <script src="/seeyon/m3/apps/v5/edoc/edoc_m_api.s3js?buildversion=181210172742" type="text/javascript"></script>  
+    <script src="/seeyon/m3/apps/v5/doc/doc_m_api.s3js?buildversion=181210172742" type="text/javascript"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('/seeyon/m3/apps/v5/fullsearch/js/all_search.js?buildversion=181210172742')</script>
+</body>

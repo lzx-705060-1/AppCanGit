@@ -1,0 +1,59 @@
+
+body{
+    -webkit-text-size-adjust:none;
+}
+.about{
+    padding: 25px 0;
+    line-height: 25px;
+}
+
+.about .img {
+    text-align: center;
+    height: 2.15rem;
+}
+
+.about .img img {
+    display: none;
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 4px;
+    margin: 1.0rem 0 0.4rem;
+}
+
+.about .title {
+    font-size: 14px;
+    color: #666;
+/*    margin-bottom: 0.875rem;*/
+    text-align: center;
+}
+
+.cmp-table-view .cmp-table-view-cell {
+    background: #fff;
+    height: 1.25rem;
+    line-height: .66rem;
+    font-size: 16px;
+}
+
+.cmp-table-view-cell:after {
+    left: 0;
+}
+
+.cmp-table-view .cmp-table-view-cell .cmp-pull-left {
+    color: #333;
+}
+
+.see-icon-m3-arrow-right {
+    color: #bdbdbd;
+    font-size: 16px;
+}
+
+.window_alert_title {
+    padding: 20px 10px 0 10px!important;
+}
+
+.window_alert_cont {
+    padding: 10px 0 20px 0!important;
+}
+body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+body.cmp-ios-c .cmp-content{top:64px;}
+body.cmp-ios-x .cmp-content{top:88px;} 

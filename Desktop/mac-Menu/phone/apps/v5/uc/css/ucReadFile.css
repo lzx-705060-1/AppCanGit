@@ -1,0 +1,22 @@
+html,body{height: 100%;width: 100%;background-color: #efefef;overflow: hidden;font-family: 'Microsoft Yahei','Helvetica Neue', Helvetica, sans-serif;}
+a:hover{text-decoration:none !important;}
+header.cmp-bar {background: #fff;border-bottom: 1px solid #ddd}
+header.cmp-bar .cmp-btn-link {color:#3AADFB;}
+header.cmp-bar .cmp-icon {font-size: 18px;}
+header .see-icon-v5-common-arrow-back:before {font-size:18px;}
+.cmp-content {background: #fff;}
+.cmp-table-view:after {height: 0;background: #fff;}
+.cmp-table-view .cmp-icon-document {width: 1.86rem;height: 2.03rem;margin: 0 auto;}
+.cmp-table-view-cell:after {left:0.25rem;}
+.cmp-table-view-cell .cmp-media-body {-webkit-box-flex:1;}
+.cmp-table-view-cell > .cmp-slider-handle {display: -webkit-box;-webkit-box-orient: horizontal;-webkit-box-align: center;}
+.cmp-table-view-cell.uc-top {background: rgba(3,3,3,0.07);}
+.cmp-table-view-cell.uc-top > .cmp-slider-handle {background: transparent;}
+.cmp-table-view-cell > a:not(.cmp-btn) {margin: -0.27rem -0.25rem;}
+.cmp-table-view:before {height: 0;}
+.downloadFile,.openFile {text-align:center;display:none;}
+.downloadFile .cmp-icon-document,.openFile .cmp-icon-document{margin:3.33rem 0 0.48rem 0;}
+.downloadFile .file_title,.openFile .file_title{font-size:18px;color:#333;margin-bottom:0.32rem;text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.downloadFile .file_size,.openFile .file_size{font-size:14px;color:#999;margin-bottom:0.53rem;}
+.cmp-bar-footer {background:#fff;border-top:1px solid #f3f3f3;height:1.33rem;display:none;}
+.cmp-bar-footer .openfile {width:5.73rem;height:0.906rem;line-height:0.906rem;border-radius:2.66rem;margin:0 auto;background:#3aadfb;text-align:center;color:#fff;font-size:16px;margin-top:0.213rem;}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+    
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172434">
+<title></title>
+</head>
+<body class="cmp-fullscreen">
+
+<header class="cmp-bar cmp-bar-nav head-style" style="display:none;">
+ <a id="goBackBtn" href="javascript:void(0)" class="cmp-pull-left left-btn"><span class="see-icon-v5-common-arrow-back"></span><i18n key="collaboration.page.lable.goBack"></i18n></a>
+<h1 class="cmp-title">
+    <span><i18n key="collaboration.default.nodeDisposition"><!--节点详情--></span>
+</h1>
+<div class="add_border border_t"></div>
+</header>
+
+<div class="cmp-content position_relative cmp-col-content cmp-content-none" style="bottom:0px;background-color:white;">
+      <div class="cmp-control-content cmp-active">
+          <div id="colNodeContain" class="cmp-scroll-wrapper">
+              <div class="cmp-scroll">
+             <!--  <div class="cmp-pull-widget"><div class="test-button batch_wrap"><div class="batch_click batch_btn"><i18n key="collaboration.select.more.alert.hasten.data"></i18n></div></div></div> --><!--装载小部件的容器-->
+                <ul id="nodeUserList" class="cmp-list-content cmp-table-view nodeUserList">
+                  </ul>
+              </div>
+              <div class="cmp-scroll-parts test-parts all_btn cmp-input-row cmp-radio cmp-left">
+	            <div  class="batch_wrap">
+      				<div class="all_btn cmp-input-row cmp-radio cmp-left">
+              			<label class="lableBtn all_click">
+                 			<span class="all_btn all_click"></span>
+                  			<span class="lab_all_select all_click"><i18n key="collaboration.page.lable.button.allSelect"></i18n></span>
+                  			<span class="count" style="display:none;">0</span>
+              			</label>
+          			</div>
+      				<div class="cancelBtn cancel_click" ><i18n key="collaboration.page.lable.button.cancel"></i18n></div>
+  	  			</div>
+          	 </div>
+          </div>
+      </div> 
+  </div>
+  <footer class="cmp-bar cmp-bar-tab cmp-bar-footer  cmp-bar-tabview border_t footer_color" style="display:none;">
+  	<div id="handleBtns" class="cmp-block-with-btn conmmon-b handle_btn border_t">
+        <button  id="akeyHasten" style="top:8px;padding:6px 12px;" type="button" class="cmp-btn cmp-btn-primary2 cmp-btn-width40"><i18n key="collaboration.page.lable.button.hasten"></i18n></button>
+    </div>
+   </footer>
+</body>
+    <script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script type="text/javascript">
+ cmp.i18n.init('/seeyon/m3/apps/v5/collaboration/i18n/', 'Collaboration');
+</script>    
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/details/dealUser.js?buildversion=181210172434"></script>
+<script src="/seeyon/m3/cmp/js/cmp-visitingCard.js?buildversion=181210172434"></script>
+
+<!-- js模版 -->
+  <script  type="text/html" id="list_li_tpl">
+  <% for(var i = 0,len = this.length;i < len; i++){ %>
+      <% var data = this[i]; %>
+        <li>
+           <div class="handler-div relative img-wrap choice">
+               <img class="cmp-img-cache img_setting" menberId="<%=data.memberId%>" cmp-data="<%=data.memberId %>">
+			   <div class="unselected img_click" style="display:none;"></div>
+				<div class="read-states <%=data.bgcolor%>">
+                  <div class="state-bg">
+                     <span class="<%=data.stateIcon%> state-color"></span>
+                  </div>
+                </div>
+               <div class="handler-states common-state"><span class="<%=data.isHasten%>" id="<%=data.memberId%>"><%=data.nowState %></span></div>
+               <div class="handler-user">
+                  <div class="handle-user-name"><%=data.memberName %></div>
+                  <div class="handle-user-job"><%=data.gwName %></div>
+               </div>
+           </div>
+        </li>
+    <%} %>
+  </script>
+</html>
+<!--******************** auto import check  ****************--!>

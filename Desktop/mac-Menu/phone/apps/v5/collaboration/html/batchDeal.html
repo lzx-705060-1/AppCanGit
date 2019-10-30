@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/collaboration/css/cmp-col.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=181210172433" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-tab.css?buildversion=181210172433">
+<title></title>
+    <style type="text/css">
+            .cmp-content .replay_opinion_content {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                top: 0px;
+                background: white;
+                border-bottom-color: transparent;
+                font-size: 16px;
+            }
+    </style>
+</head>
+
+<body class="cmp-fullscreen">
+
+<div id="mainBodyArea" class="cmp-content cmp-col-content cmp-content-none" style="bottom:44px; position:fixed;">
+    
+    <div class="cmp-handle-btn-content col comment-states border_b" style="display: block;" id="button_list_nav"> 
+	</div>
+    
+    <div id="comment_div" class="replay_opinion_content col" style="top: 0px;">
+        <div class="information wh100" style=" overflow: hidden; ">
+            <textarea style="font-size: 16px;height: 100%" id="content" placeholder=""></textarea>
+        </div>
+    </div>
+</div>
+
+<!--IOS 模拟V5.6常用语弹出容器-->
+<div id="phrases_container" class="GM_Alert_Content Animated-Container bottom-go animated">
+    <div id="phrases_div" class="cmp-content GM_item_container cmp-content-none" >
+        <ul id="phrases_ul" class="cmp-table-view ba-fa">
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 处理后归档 -->
+<div class="text_and_accessory phrases_div col fixed" id="allBtns">
+    <div id="btns" class="cmp-badge cmp-pull-right replay_badge badge_custom handle-zan relative">
+     	<a id="phrasesBtn" href="javascript:void(0)" class="cmp-h6 useful"><i18n key="collaboration.page.lable.button.phrase"></i18n><!-- 常用语 --></a>
+    </div>
+    <h5 id="fontCount" class="handle-word-num">2000</h5>
+</div>
+
+<footer class="send-colla-div cmp-bar-footer ">
+    <div class="wh100 border_t">
+        <div class="single_btn">
+            <button id="submitBtn" class="send-colla"><i18n key="collaboration.page.dialog.OK"></i18n></button><!-- 发送 -->
+        </div>
+    </div>
+</footer>
+
+<script  src="/seeyon/m3/apps/v5/collaboration/i18n/Collaboration_zh_CN.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/common.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/cmp/s3utils.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/collaboration/js/collaboration-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/editContent-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/signet-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/template-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/user-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/dee/js/dee-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/commonPhrase-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/workflow/js/workflow-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/cmporgnization-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/news/js/news-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bulletin/js/bulletin-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172433" type="text/javascript"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/ArrayList.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/batch.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/workflow/js/wf.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/js/batchDeal.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-headerFixed.js?buildversion=181210172433"></script>
+<script src="/seeyon/m3/cmp/js/cmp-description.js?buildversion=181210172433"></script>
+
+
+<script type="text/html" id="attitude_templage">
+<%if(this.length > 0){%><ul class="cmp-tab-do"><%}
+for(var i = 0, len = this.length;i<len;i++){
+    var tempAttitude = this[i];
+%>
+<li class="li"><input value="<%=tempAttitude.value%>"  id="attitude<%=i%>" attitude="<%=tempAttitude.attitude%>" type="radio" class="cmp-radio2" name="att_btns" <%if(tempAttitude.state=="on"){%>checked="checked"<%}%> /><label for="attitude<%=i%>"><%=tempAttitude.lable%></label></li>
+<%
+}
+ if(this.length > 0){%></ul><%}%>
+</script>
+
+<script type="text/html" id="phrases_template">
+<%
+for(var i = 0, len = this.length;i<len;i++){
+%>
+<li class="cmp-table-view-cell li_height"><%=this[i]%></li>
+<%
+}
+%>
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name = "format-detection" content = "telephone=no">
+	    
+	    <!-- css -->
+	    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172358"/>
+	    <link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkin.css?buildversion=181210172358"/>
+    	<link rel="stylesheet" href="/seeyon/m3/apps/v5/attendance/css/checkinIcon.css?buildversion=181210172358"/>
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=181210172358">
+        <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172358">
+		<title></title>
+	</head>
+	<body class="cmp-fullscreen">
+		<script>var _attendancePath = "/seeyon/m3/apps/v5/attendance";</script>		
+		<div class="cmp-content position_relative">
+			<div class="index-map position_relative checkin-detail-map">
+				<div id="mapContainer" style="height:100%"></div>
+			</div>
+		
+			<div class="checkin-details-container height_auto">
+				<div class="checkin-details-content ">
+					<div class="">
+						<div class="user-date">
+							<div class="user-head">
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="" />
+							</div>
+							<div class="user-name">
+								<label></label>
+								<p></p>
+							</div>
+						</div>
+						<div class="user-address">
+							<div class="map-icon"><span class="see-icon-v5-common-location-fill"></span></div>
+							<div class="map-address">
+								<label></label>
+								<p></p>
+							</div>
+						</div>
+						<div class="user-info">
+							<ul>
+								<li class="user-talk">
+									<div class="talk"></div>
+								</li>
+								<li class="user-img"></li>
+								<li class="user-record"></li>
+							</ul>
+						</div>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+		
+		<!-- js引入 -->
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/i18n/attendance_zh_CN.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172358"></script>
+		<script>
+			var cmpPath = "/seeyon/m3/cmp";
+			var attendancePath = "/seeyon/m3/apps/v5/attendance";
+		    cmp.i18n.init("/seeyon/m3/apps/v5/attendance/i18n/","attendance");
+		</script>
+        		<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-lbs.js?buildversion=181210172358"></script> 
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172358"></script>
+        <script type="text/javascript" async="async" src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172358"></script>
+        <script type="text/javascript" async="async"  src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172358"></script>
+        <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-server.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendance-jssdk.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172358?buildversion=181210172358" id="__jsdktag"></script>
+ 		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=dced395ba47d88fd4dcf8ed6d846cbc7"></script> 
+ 		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/amapComponent.js?buildversion=181210172358"></script> 
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceCommon.js?buildversion=181210172358"></script>
+		<script type="text/javascript" src="/seeyon/m3/apps/v5/attendance/js/attendanceDetail.js?buildversion=181210172358"></script>
+	</body>
+</html>
+

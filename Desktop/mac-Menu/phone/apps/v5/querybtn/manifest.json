@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.0",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"querybtn",
+	"splashscreen":["",""],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.querybtn",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+    "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"LIB",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"htmls/test/main.html",
+		"jsapi":"querybtn_m_api.s3js",
+		"openAppMethod":"querybtnApi.openApp"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"73",
+	"urlSchemes":"querybtn.v5.cmp",
+	"bundleName":"querybtn",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":"querybtn"
+}

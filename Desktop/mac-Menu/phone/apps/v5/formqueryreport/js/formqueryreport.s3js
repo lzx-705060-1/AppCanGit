@@ -1,0 +1,1065 @@
+var formqueryreport;
+if (typeof formqueryreport=="undefined"){
+  formqueryreport={};
+}
+formqueryreport.FromList = function(aList,aSearchType){
+var result=new Array();
+result.push("\t\t\t<div id=\"home_wrapper\" class=\"wrapper\" >\r\n");
+result.push("\t\t\t\t<div id=\"scroller\" class=\"list-cell-content\">\r\n");
+result.push("\t\t\t\t\t<ul>\r\n");
+result.push("\r\n");
+   var fItem;var fItemIcon;var fRel;
+
+
+for (var i=0;i < aList.length;i++){
+result.push("\r\n");
+  fItem=aList[i];
+  fItemIcon=M1FormUtils.isDir(fItem.itemtype)?fItemIcon="finder_icon.png?buildversion=181210172537":"count_icon.png?buildversion=181210172537";
+
+  switch (fItem.itemtype) {
+   case M1FormUtils.C_iListType_Dir :
+      fRel="state/"+aSearchType+"/"+fItem.id;
+      break;
+   case M1FormUtils.C_iListType_Sreach :
+      fRel="dosearch/"+fItem.itemtype+"/"+fItem.id;
+      break;
+   case M1FormUtils.C_iListType_Statistics:
+      fRel="dostatistics/"+fItem.itemtype+"/"+fItem.id;
+      break;
+   default :
+      fRel="unkowntype_"+fItem.itemtype;
+      break;
+   } 
+
+
+result.push("\t\t\t\t\t\t<li class=\"list-cell-item link\" rel=\""+s3utils.c2v(fRel)+"\">\r\n");
+result.push("\t\t\t\t\t\t\t<div class=\"tent left\r\n");
+result.push("\t\t\t\t\t\t\t    ");
+ if (aSearchType==1){
+result.push("                                    see-icon-v5-common-search\">\r\n");
+result.push("                                ");
+}
+else {
+result.push("                                    see-icon-v5-common-statistics\">\r\n");
+result.push("                                ");
+ } //end if
+result.push("\t\t\t\t\t\t\t</div>\r\n");
+result.push("\t\t\t\t\t\t\t<div class=\"tent cont custom\" >"+s3utils.c2h(fItem.title)+"</div>\r\n");
+result.push("\t\t\t\t\t\t\t<div class=\"tent right custom\"><span class=\"see-icon-v5-common-arrow-right list-item-arrow-right\"></span></div>\r\n");
+result.push("\t\t\t\t\t\t</li>\r\n");
+ } //end for
+result.push("\t\t\t\t\t</ul>\r\n");
+result.push("\t\t\t\t</div>\r\n");
+result.push("\t\t\t</div>\r\n");
+return result.join("");
+};
+formqueryreport.ListTypeHead = function(aListType){
+var result=new Array();
+result.push("\r\n");
+  var  fh1,fh2;
+  if (aListType==null)
+    aListType=M1FormUtils.C_iListType_Statistics;
+  fh1= M1FormUtils.isStatistics(aListType)?"cmp-active":"";
+  fh2= !M1FormUtils.isStatistics(aListType)?"cmp-active":"";
+
+
+result.push("\t\t\t<div id=\"cmp-segmented-control\" class=\"form-query-header\" tabsel=\""+s3utils.c2v(aListType)+"\">\r\n");
+result.push("\t\t\t\t<a id=\"formControlSearch\" class=\"list-type-control-item "+s3utils.c2v(fh1)+"\"\r\n");
+result.push("                ");
+ if (fh1==""){
+result.push("\t\t\t\t    \r\n");
+result.push("                ");
+ } //end if
+result.push("\t\t\t\t>"+s3utils.c2h(cmp.i18n('formqueryreport.tab_statistics'))+"<hr/></a>\r\n");
+result.push("\t\t\t\t<a id=\"formControlStatistics\" class=\"list-type-control-item "+s3utils.c2v(fh2)+"\"\r\n");
+result.push("                ");
+ if (fh2==""){
+result.push("\t\t\t\t    \r\n");
+result.push("                ");
+ } //end if
+result.push("\t\t\t\t>"+s3utils.c2h(cmp.i18n('formqueryreport.tab_search'))+"<hr/></a>\r\n");
+result.push("\t\t\t</div>\r\n");
+return result.join("");
+};
+formqueryreport.Condition_Relationform = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+  var fCurrentValue=aCondition.cvalue;
+  var fCurrentType=aCondition.ctype;
+  fCurrentValue=fCurrentValue==null?"":fCurrentValue;
+
+
+result.push("      <div class=\"form_search_select\" >\r\n");
+result.push("        <label class=\"SearchLable\" >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t<div class=\"inline_block\">\r\n");
+result.push("\t    <input class=\"SearchCondition\" mtype=\""+s3utils.c2v(fCurrentType)+"\" style=\"width: 100%;height: 28px;\" type=\"text\" name=\""+s3utils.c2v(aCondition.cname)+"\"  value=\""+s3utils.c2v(fCurrentValue===undefined?"":fCurrentValue)+"\"/>\r\n");
+result.push("\t</div>\r\n");
+result.push("      </div>\r\n");
+return result.join("");
+};
+formqueryreport.Condition_DateTime = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+   var fCurrentValue=aCondition.cvalue==null?"":aCondition.cvalue;
+   var fCurrentType=aCondition.ctype;
+   dateControlList.push(aCondition);
+
+
+result.push("        <div class=\"list-content\" id=\"listContent\">\r\n");
+result.push("            <div>\r\n");
+result.push("                <label for=\""+s3utils.c2v(aCondition.cname)+"\">"+s3utils.c2v(aCondition.ctitle)+"</label> \r\n");
+result.push("                ");
+
+result.push("                <div class=\"inline_block input_delete\">\r\n");
+result.push("                    <input class=\"SearchCondition search-datetime conditionType-"+s3utils.c2v(fCurrentType)+"\" type=\"text\" name=\""+s3utils.c2v(aCondition.cname)+"\" mtype=\""+s3utils.c2v(fCurrentType)+"\" id=\"日期\" ctype=\"calendar\" value=\""+s3utils.c2v(fCurrentValue)+"\" readonly=\"\">\r\n");
+result.push("                    <span class=\"input_clear\" onclick=\"clearCondition('"+s3utils.c2v(aCondition.cname)+"',"+s3utils.c2v(M1FormUtils.C_iConditionType_Datetime)+","+s3utils.c2v(fCurrentType)+");\"></span>\r\n");
+result.push("                </div>\r\n");
+result.push("            </div>\r\n");
+result.push("        </div>\r\n");
+return result.join("");
+};
+formqueryreport.Condition_Select = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+var fCurrentValue = aCondition.cvalue;
+var fCurrentType=aCondition.ctype;
+var ftemp;
+ftemp = getArrayFirstChild(fCurrentValue, true);
+if (ftemp != null) 
+   fCurrentValue = ftemp;
+else if (typeof fCurrentValue == "string") {
+    if (!isBlank(fCurrentValue)) {
+        try {
+            ftemp = JSON.parse(fCurrentValue);
+            ftemp = getArrayFirstChild(ftemp, true);
+            if (ftemp != null) fCurrentValue = ftemp;
+
+        } catch(e) {}
+    }
+}
+
+
+
+
+result.push("    <div class=\"form_search_select\">\r\n");
+result.push("        <div class=\"select_content\">\r\n");
+result.push("\t<label >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t<div class=\"inline_block\">\r\n");
+result.push("\t\t\t\t<select class=\"SearchCondition conditionType-"+s3utils.c2v(fCurrentType)+"\" onchange=\"selectChange()\" name=\""+s3utils.c2v(aCondition.cname)+"\"  ctype=\""+s3utils.c2v(aCondition.ctype)+"\">\r\n");
+result.push("\r\n");
+var fList=aCondition.datalist.list;
+var fItem;
+fCurrentValue=(fCurrentValue===undefined?aCondition.datalist.defaultvalue:fCurrentValue);
+
+
+for (var i=0;i <fList.length;i++){
+fItem=fList[i];
+result.push("                                    <option value=\""+s3utils.c2v(fItem.value)+"\" "+s3utils.c2v(fItem.value==fCurrentValue?"selected":"")+" >"+s3utils.c2h(fItem.name)+"</option>\r\n");
+ } //end for
+result.push("\t\t\t\t</select>\r\n");
+result.push("        </div>\r\n");
+result.push("        </div>\r\n");
+result.push("    </div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchResultTitle_Vertical = function(aMetadata,aRecordHeightStr){
+var result=new Array();
+var fItem;
+result.push("    <div class=\"info FlowForm_Title\"\r\n");
+result.push("        ");
+ if (aRecordHeightStr!=""){
+result.push("\t        style=\""+s3utils.c2v(aRecordHeightStr)+"\"\r\n");
+result.push("        ");
+ } //end if
+result.push("    >\r\n");
+result.push("        ");
+for (var i=0;i < aMetadata.length;i++){
+result.push("            ");
+fItem=aMetadata[i];
+result.push("            <div class=\"list\">"+s3utils.c2h(fItem.title)+"</div>\r\n");
+result.push("        ");
+ } //end for
+
+result.push("    </div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchPageContainer = function(aPageData){
+var result=new Array();
+result.push("\r\n");
+    var fHasCondition,fHasData,fChartNameList,fScrollerwidth,isUEComponent=true;
+    var fIsHome;
+    var fSearchvertical;
+    var fIsRefreshList;
+    var aIsTableList;
+    var aListType=aPageData.listtype;
+    fSearchvertical=aPageData.searchvertical==null?aPageData.vertical:aPageData.searchvertical;
+    fHasCondition=(aPageData.conditon!=null && aPageData.conditon.length>0);
+    fHasData=(aPageData.data!=null);
+    aIsTableList=aPageData.isTableList;
+	aIsListView=aPageData.isListView;
+    if (aPageData.reportdata!=null)
+        fChartNameList=aPageData.reportdata.chartNameList;
+    else
+        fChartNameList=null;
+    fIsHome=aPageData.leftreturntype=="business";
+
+    fScrollerwidth=aPageData.scrollerwidth;
+    if (!fSearchvertical && aPageData.data!=null)
+        fScrollerwidth=aPageData.colunmwidth*aPageData.data.metadata.length;
+
+
+
+ if (!aPageData.isRefreshPart){
+
+result.push("<div id=\"pageframe\" class=\"frame\">\r\n");
+result.push("    <div class=\"FrameContent\">\r\n");
+result.push("        ");
+result.push(formqueryreport.SearchResultPageHead(aPageData.headtext,aPageData.listtype,fHasData,fChartNameList,fIsHome,aPageData.vertical,fSearchvertical));
+
+result.push("        <div class=\"cmp-content\">\r\n");
+result.push("            ");
+ if (fHasCondition){
+result.push("                ");
+ if (isUEComponent){
+result.push("                    ");
+result.push(formqueryreport.UEComponent(aPageData.id,aPageData.conditon,aPageData.listtype));
+result.push("                ");
+}
+else {
+result.push("                    ");
+result.push(formqueryreport.SearchCondition(aPageData.id,aPageData.conditon,aPageData.listtype));
+result.push("                ");
+ } //end if
+result.push("            ");
+ } //end if
+
+result.push("            <div id=\"refreshPart\">\r\n");
+result.push("                ");
+
+result.push("                ");
+ if (fHasData&&!aPageData.isCrossBack){
+result.push("                    ");
+result.push(formqueryreport.SortStatistics(fChartNameList,fSearchvertical,aPageData.data,aPageData.sortFields,aPageData.sortContent,aListType));
+result.push("                ");
+ } //end if
+result.push("\t\t\t    ");
+ if (aIsListView){
+result.push("\t\t\t\t    <div class=\"cmp-control-content cmp-active\">\r\n");
+result.push("\t\t\t    ");
+ } //end if
+result.push("                <div  id=\"table-content\" class=\"table-content cmp-scroll-wrapper\">\r\n");
+result.push("\t\t\t    <div id=\"wrapper\" class=\"wrapper cmp-scroll\" >\r\n");
+result.push("                    ");
+ if (!aIsTableList){
+
+result.push("                        ");
+
+result.push("\t\t\t\t\t\t    <div class=\"FlowForm_view  user_select\">\r\n");
+result.push("\t\t\t\t\t\t\t    <ul>\r\n");
+result.push("                    ");
+ } //end if
+
+result.push("                            ");
+ if (fHasData&&!aIsTableList&&!aPageData.isCrossBack){
+result.push("                                ");
+ if (fSearchvertical){
+result.push("                                    ");
+result.push(formqueryreport.SearchResultData_Vertical(aPageData.id,aPageData.data.result,aPageData.data.metadata,aPageData.colunmwidth,aPageData.data.moredata));
+result.push("                                ");
+}
+else {
+result.push("                                    ");
+result.push(formqueryreport.SearchResultHead(aPageData.data.metadata,aPageData.colunmwidth));
+result.push("                                    ");
+result.push(formqueryreport.SearchResultData(aPageData.id,aPageData.data.result,aPageData.data.metadata,aPageData.colunmwidth,aPageData.data.moredata));
+result.push("                                ");
+ } //end if
+
+result.push("                            ");
+ } //end if
+
+result.push("                        ");
+ if (!aIsTableList){
+result.push("\t\t\t\t\t\t\t    </ul>\r\n");
+result.push("\t\t\t\t\t\t    </div>\r\n");
+result.push("                    \r\n");
+result.push("                        ");
+
+result.push("                        ");
+ } //end if
+result.push("\t\t\t\t    </div>\r\n");
+result.push("                </div>\r\n");
+result.push("\t\t\t    ");
+ if (aIsListView){
+result.push("\t\t\t\t    </div>\r\n");
+result.push("                ");
+ } //end if
+result.push("            </div>\r\n");
+result.push("        </div>\r\n");
+result.push("    </div>\r\n");
+result.push("</div>\r\n");
+}
+else {
+
+result.push("    <div id=\"refreshPart\">\r\n");
+result.push("        ");
+
+result.push("        ");
+ if (fHasData&&aPageData.isRefreshsortStatistics){
+result.push("            ");
+result.push(formqueryreport.SortStatistics(fChartNameList,fSearchvertical,aPageData.data,aPageData.sortFields,aPageData.sortContent,aListType,aIsTableList));
+result.push("        ");
+ } //end if
+
+result.push("        <div  id=\"table-content\" class=\"table-content cmp-scroll-wrapper\">\r\n");
+result.push("            ");
+ if (!aIsTableList){
+result.push("                <div id=\"wrapper\" class=\"wrapper cmp-scroll\" >\r\n");
+result.push("                \r\n");
+result.push("            ");
+ } //end if
+
+result.push("                ");
+ if (fHasData&&!aIsTableList){
+
+result.push("                        ");
+ if (fSearchvertical){
+result.push("                            ");
+result.push(formqueryreport.SearchResultData_Vertical(aPageData.id,aPageData.data.result,aPageData.data.metadata,aPageData.colunmwidth,aPageData.data.moredata));
+result.push("                        ");
+}
+else {
+result.push("                            ");
+result.push(formqueryreport.SearchResultHead(aPageData.data.metadata,aPageData.colunmwidth));
+result.push("                            ");
+result.push(formqueryreport.SearchResultData(aPageData.id,aPageData.data.result,aPageData.data.metadata,aPageData.colunmwidth,aPageData.data.moredata));
+result.push("                        ");
+ } //end if
+
+result.push("                ");
+ } //end if
+
+result.push("            ");
+ if (!aIsTableList){
+result.push("                \r\n");
+result.push("                </div>\r\n");
+result.push("            ");
+ } //end if
+result.push("        </div>\r\n");
+result.push("    </div>\r\n");
+ } //end if
+return result.join("");
+};
+formqueryreport.Condition_Input = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+    var fCurrentType=aCondition.ctype;
+
+
+
+var fCurrentValue=aCondition.cvalue;
+result.push("      <div class=\"form-select-content\">\r\n");
+result.push("          <label class=\"SearchLable\" >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("      \t  <div class=\"inline_block\">\r\n");
+result.push("\t          <input class=\"SearchCondition conditionType-"+s3utils.c2v(fCurrentType)+"\" type=\"text\" name=\""+s3utils.c2v(aCondition.cname)+"\" value=\""+s3utils.c2v(fCurrentValue===undefined?"":fCurrentValue)+"\"/>\r\n");
+result.push("          </div>\r\n");
+result.push("      </div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchResultHead = function(aMetadata,aColunmWidth){
+var result=new Array();
+result.push("                <div id=\"table_headdiv\" class=\"table_head\" >\r\n");
+result.push("                    <table id=\"head_table\" class=\"table-th\" cellpadding=\"0\" cellspacing=\"0\">\r\n");
+result.push("                        <tbody>\r\n");
+result.push("                        <tr>\r\n");
+var fItem;
+for (var i=0;i < aMetadata.length;i++){
+fItem=aMetadata[i];
+result.push("                            <td class=\"th-item\" style=\"width: "+s3utils.c2v(aColunmWidth)+"px;\">"+s3utils.c2h(fItem.title)+"</td>\r\n");
+ } //end for
+result.push("                        </tr>\r\n");
+result.push("                        </tbody>\r\n");
+result.push("                    </table>\r\n");
+result.push("                </div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchInput = function(aInputValue){
+var result=new Array();
+result.push("\t\t<div id=\"cmp-segmented_title_content\" class=\"formquery cmp-segmented_title_content\">\r\n");
+result.push(" \t\t\t<form action=\"#\" onsubmit=\"return false;\"> \r\n");
+result.push("\t\t\t\t<div class=\"cmp-content-title-search\">\r\n");
+result.push("\t\t\t\t\t<div id=\"cmpinputrow\" class=\"cmp-input-row see-icon-search cmp-search\">\r\n");
+result.push("\t\t\t\t\t\t<input id=\"searchvalueinput\" type=\"search\" placeholder class=\"cmp-input-clear \"\r\n");
+result.push("                            ");
+ if (aInputValue==null){
+result.push("                                >\r\n");
+result.push("                            ");
+}
+else {
+result.push("                                value=\""+s3utils.c2v(aInputValue)+"\">\r\n");
+result.push("                            ");
+ } //end if
+result.push("\t\t\t\t\t\t<span class=\"cmp-icon cmp-icon-clear clear \"></span>\r\n");
+result.push("\t\t\t\t\t\t<span class=\"cmp-placeholder\">\r\n");
+result.push("                        \t<span class=\"cmp-icon cmp-icon-search\"></span>\r\n");
+result.push("                        \t<span class=\"text-search\">"+s3utils.c2h(cmp.i18n('formqueryreport.string_search'))+"</span>\r\n");
+result.push("                        </span>\r\n");
+result.push("\t\t\t\t\t</div>\r\n");
+result.push("\t\t\t\t\t\r\n");
+result.push("\t\t\t\t\t<span class=\"search-title-cancel\">"+s3utils.c2h(cmp.i18n('formqueryreport.string_Btn_Canncel'))+"</span>\r\n");
+result.push("\t\t\t\t</div>\r\n");
+result.push(" \t\t\t</form> \r\n");
+result.push("\t\t</div>\r\n");
+return result.join("");
+};
+formqueryreport.HomePageContainer = function(aPageData){
+var result=new Array();
+result.push("\r\n");
+  var fIsHome;
+  fIsHome=M1FormUtils.isHome(aPageData.pagetype);
+  if (fIsHome)
+    fIsHome=(aPageData.id==null);
+
+
+result.push("<div id=\"pageframe\" class=\"frame\">\r\n");
+result.push("\t<div class=\"FrameContent\">\r\n");
+result.push("        ");
+result.push(formqueryreport.PageHead(aPageData.headtext,fIsHome,aPageData.isM3Navbar));
+
+result.push("\t\t<div class=\"cmp-content\">\r\n");
+result.push("\t\t\t");
+ if (fIsHome){
+result.push("\t\t\t\t");
+result.push(formqueryreport.SearchInput(aPageData.inputvalue));
+result.push("\t\t\t");
+ } //end if
+result.push("\t\t\t<div class=\"content\">\r\n");
+result.push("\t\t\t\t");
+ if (fIsHome){
+result.push("\t\t\t\t\t");
+result.push(formqueryreport.ListTypeHead(aPageData.listtype));
+result.push("\t\t\t\t");
+ } //end if
+result.push("\t\t\t\t");
+result.push(formqueryreport.FromList(aPageData.formlist,aPageData.listtype));
+result.push("\t\t\t</div>\r\n");
+result.push("\t\t</div>\t\r\n");
+result.push("    </div>\r\n");
+result.push("</div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchCondition = function(aId,aCondition,aListType){
+var result=new Array();
+result.push("<div id=\"searchcondition\">\r\n");
+result.push("    ");
+result.push("\r\n");
+      var fButtonTitle;
+      var fConditionError="";
+      var fConditionarrayHeight;
+      fConditionarrayHeight=85;
+      if (aCondition.length==1)
+        fConditionarrayHeight=50;
+      fButtonTitle=(aListType==M1FormUtils.C_iListType_Statistics?cmp.i18n('formqueryreport.string_btstatistics'):cmp.i18n('formqueryreport.string_btsreach'));
+    
+
+
+result.push("    <div id=\"conditionarray\"  class=\"container\" style=\"height: "+s3utils.c2v(fConditionarrayHeight)+"px;\">\r\n");
+result.push("        ");
+for (var i=0;i < aCondition.length;i++){
+result.push("            ");
+result.push("\r\n");
+                if (!M1FormUtils.canSupportConditionName(aCondition[i].ctype)){
+                    fConditionError+=M1FormUtils.getConditionName(aCondition[i].ctype)+"\r\n";
+                }
+            
+
+result.push("            ");
+result.push(formqueryreport.ConditionComponent(aCondition[i]));
+result.push("        ");
+ } //end for
+result.push("    </div>\r\n");
+result.push("    <div  class=\"text-align-center submit\">\r\n");
+result.push("        ");
+ if (aCondition.length<=2){
+result.push("            <button class=\"btn-block\" >"+s3utils.c2h(fButtonTitle)+"</button>\r\n");
+result.push("        ");
+}
+else {
+result.push("            <div style=\"width: 80%;text-align: center;display: inline-block;\">\r\n");
+result.push("                <button class=\"btn-block\" >"+s3utils.c2h(fButtonTitle)+"</button>\r\n");
+result.push("            </div>\r\n");
+result.push("            <div id=\"formqueryreport_expendid\" style=\" width: 13%;display: inline-block;text-align: center;\" >\r\n");
+result.push("                <span id=\"formqueryreport_expendid_span\" class=\"see-icon-v5-common-arrow-down\"></span>\r\n");
+result.push("            </div>\r\n");
+result.push("        ");
+ } //end if
+result.push("    </div>\r\n");
+result.push("</div>\r\n");
+return result.join("");
+};
+formqueryreport.ConditionComponent = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+    if(typeof aCondition.cvalue=="string"){
+        aCondition.ctype=parseInt(aCondition.ctype);
+    }
+
+
+
+var fCurrentValue=aCondition.cvalue;
+ switch (aCondition.ctype)
+ {
+case M1FormUtils.C_iConditionType_Input:
+result.push("     ");
+result.push(formqueryreport.Condition_Input(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Checkbox:
+result.push("     ");
+
+result.push("     ");
+result.push(formqueryreport.Condition_Select(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Select:
+result.push("     ");
+result.push(formqueryreport.Condition_Select(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Radio:
+result.push("     ");
+result.push(formqueryreport.Condition_Radio(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Textarea:
+result.push("     ");
+result.push(formqueryreport.Condition_TextArea(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Date:
+result.push("     ");
+result.push(formqueryreport.Condition_DateTime(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Datetime:
+result.push("     ");
+result.push(formqueryreport.Condition_DateTime(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Persion:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Member', false,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Account:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Account', false,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Department:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Department', false,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Post:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Post', false,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Level:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Level', false,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Multipersion:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Member', true,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Multiaccount:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Account', true,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Multidepartment:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Department', true,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Multipost:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Post', true,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Multilevel:
+result.push("     ");
+result.push(formqueryreport.Condition_People('Level', true,aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Project:
+result.push("     ");
+result.push(formqueryreport.Condition_Project(aCondition));
+result.push("   ");
+ break;
+case M1FormUtils.C_iConditionType_Relationform:
+result.push("     ");
+result.push(formqueryreport.Condition_Relationform(aCondition));
+result.push("   ");
+ break;
+ default:
+result.push(" \r\n");
+result.push("   ");
+ break;
+} // end switch
+result.push(" \r\n");
+return result.join("");
+};
+formqueryreport.Condition_TextArea = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+  var fCurrentValue=aCondition.cvalue;
+  var fCurrentType=aCondition.ctype;
+  fCurrentValue=fCurrentValue==null?"":fCurrentValue;
+
+
+result.push("    <div class=\"form_search_select\">\r\n");
+result.push("        <label class=\"SearchLable\" >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t    <div class=\"inline_block\">\r\n");
+result.push("\t        <textarea class=\"SearchCondition SearchData conditionType-"+s3utils.c2v(fCurrentType)+"\" name=\""+s3utils.c2v(aCondition.cname)+"\" placeholder=\""+s3utils.c2v(aCondition.ctitle)+"\" rows=\"2\" >"+s3utils.c2v(fCurrentValue)+"</textarea>\r\n");
+result.push("        </div>\r\n");
+result.push("    </div>\r\n");
+return result.join("");
+};
+formqueryreport.SortStatistics = function(aChartNameList,fSearchvertical,resultData,sortFields,sortContent,aListType,aIsTableList,currentListCount){
+var result=new Array();
+result.push("\r\n");
+  var testItem=1,
+      dataAmount=currentListCount||resultData.result.length,
+      fRightIcon = fSearchvertical ? "see-icon-v5-common-switch-light-form" : "see-icon-v5-common-transverse-switch";
+
+
+
+result.push("    ");
+ if (aIsTableList){
+result.push("\t\t");
+
+result.push("\t");
+ } //end if
+result.push("        <div class=\"sortStatisticsBar\">\r\n");
+result.push("            <div id=\"statisticsData\">\r\n");
+result.push("                <span>"+s3utils.c2h(cmp.i18n('formqueryreport.string_total_before'))+""+s3utils.c2h(dataAmount)+""+s3utils.c2h(cmp.i18n('formqueryreport.string_total_after'))+"</span>\r\n");
+result.push("            </div>\r\n");
+result.push("            ");
+ if (sortFields&&sortFields.length>0&&aListType=="1"){
+result.push("                <div id=\"sortOption\" sAfieldname=\"\" sOrdertype=\"\">\r\n");
+result.push("                    ");
+ if (sortContent){
+result.push("                        <span class=\"sort\">"+s3utils.c2h(sortContent.sort)+"</span>\r\n");
+result.push("                        ");
+ if (sortContent.sortArrows){
+result.push("                            <span class=\"arrows\">"+s3utils.c2h(sortContent.sortArrows)+"</span>\r\n");
+result.push("                        ");
+}
+else {
+result.push("                            <span class=\"arrows\"></span>\r\n");
+result.push("                        ");
+ } //end if
+result.push("                    ");
+}
+else {
+result.push("                        ");
+ if (sortFields.length<=1){
+result.push("                            <span class=\"sort\">"+s3utils.c2h(sortFields[0].display)+"</span>\r\n");
+result.push("                            ");
+ if (sortFields[0].type=="desc"){
+result.push("                                <span class=\"arrows\">↓</span>\r\n");
+result.push("                            ");
+}
+else {
+result.push("                                <span class=\"arrows\">↑</span>\r\n");
+result.push("                            ");
+ } //end if
+result.push("                        ");
+}
+else {
+result.push("                            <span class=\"sort\">"+s3utils.c2h(cmp.i18n('formqueryreport.default_sort'))+"</span>\r\n");
+result.push("                            <span class=\"arrows\"></span>\r\n");
+result.push("                        ");
+ } //end if
+result.push("                    ");
+ } //end if
+result.push("                </div>\r\n");
+result.push("            ");
+ } //end if
+result.push("            ");
+ if (aListType == 1){
+result.push("                ");
+ if (resultData.vertical || cmp.storage.get(M1FormUtils.hasMobileViewKey, true)){
+result.push("                    <div class=\"header_right right_list_link cmp-header-right nav-icon-one\" onclick=\"showsearchFlip();\">\r\n");
+result.push("                        <span class=\"icon cmp-icon iconfont_blue "+s3utils.c2v(fRightIcon)+"\"></span>\r\n");
+result.push("                    </div>\r\n");
+result.push("                ");
+ } //end if
+result.push("            ");
+}
+else {
+result.push("                ");
+ if (aChartNameList!=null && aChartNameList.length>0){
+result.push("\t\t            <div class=\"header_right right_list_link cmp-header-right nav-icon-one\">\r\n");
+result.push("\t\t                <span class=\"iconfont_blue see-icon-v5-common-summaryGraph\"></span>\r\n");
+result.push("\t                    <div class=\"chart_select\" style=\"width:150px;\">\r\n");
+result.push("                            ");
+for (var i=0;i < aChartNameList.length;i++){
+result.push("                                <div class=\"chart_select_item\" rel=\"reportChart/"+s3utils.c2v(i)+"\">"+s3utils.c2h(aChartNameList[i])+"</div>\r\n");
+result.push("                            ");
+ } //end for
+result.push("                        </div>\r\n");
+result.push("\t\t\t        </div>\r\n");
+result.push("                ");
+ } //end if
+result.push("            ");
+ } //end if
+result.push("        </div>\r\n");
+result.push("        ");
+ if (sortFields.length>1&&aListType=="1"){
+result.push("            <div class=\"sortList\" style=\"display: none\">\r\n");
+result.push("                <div class=\"sortFieldList defaultSort\">\r\n");
+result.push("                    <span class=\"sortListSpan defaultSortSpan\" aFieldName=\"\">"+s3utils.c2h(cmp.i18n('formqueryreport.default_sort'))+"</span>\r\n");
+result.push("                    <span class=\"arrows\" orderType=\"\"></span>\r\n");
+result.push("                </div>\r\n");
+result.push("                ");
+for (var i=0;i < sortFields.length;i++){
+
+result.push("                    <div class=\"sortFieldList\">\r\n");
+result.push("                        <span class=\"sortListSpan\" aFieldName="+s3utils.c2v(sortFields[i].fieldName)+">"+s3utils.c2h(sortFields[i].display)+"</span>\r\n");
+result.push("                        ");
+ if (sortFields[i].type=="desc"){
+result.push("                            <span class=\"arrows\" orderType="+s3utils.c2v(sortFields[i].type)+"></span>\r\n");
+result.push("                        ");
+}
+else {
+result.push("                            <span class=\"arrows\" orderType="+s3utils.c2v(sortFields[i].type)+"></span>\r\n");
+result.push("                        ");
+ } //end if
+result.push("                    </div>\r\n");
+result.push("                ");
+ } //end for
+result.push("            </div>\r\n");
+result.push("        ");
+ } //end if
+result.push("\t");
+ if (aIsTableList){
+result.push("\t\r\n");
+result.push("\t\t");
+
+result.push("    ");
+ } //end if
+return result.join("");
+};
+formqueryreport.Condition_Radio = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+var fCurrentValue=aCondition.cvalue;
+var fHasDataList;
+   fHasDataList=false;
+   if (aCondition.datalist!=null)
+     if (aCondition.datalist.list!=null)
+        if (isArray(aCondition.datalist.list))
+	fHasDataList=aCondition.datalist.list.length>0;
+
+
+ if (fHasDataList){
+result.push(formqueryreport.Condition_Select(aCondition));
+result.push(" \r\n");
+}
+else {
+result.push("      <div class=\"form_search_select\">\r\n");
+result.push("        <label >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t<div class=\"inline_block\">\r\n");
+result.push("        <input class=\"SearchCondition\"  id=\""+s3utils.c2v(aCondition.cname+"_Y")+"\" name=\""+s3utils.c2v(aCondition.cname)+"\" "+s3utils.c2v((fCurrentValue && fCurrentValue!=null)?"checked":"")+" cvalue=\"1\" type=\"radio\"/><label for=\""+s3utils.c2v(aCondition.cname+"_Y")+"\" >"+s3utils.c2h(cmp.i18n('formqueryreport.radio_checked'))+"</label>\r\n");
+result.push("        <input class=\"SearchCondition\"  id=\""+s3utils.c2v(aCondition.cname+"_N")+"\" name=\""+s3utils.c2v(aCondition.cname)+"\" "+s3utils.c2v((!fCurrentValue && fCurrentValue!=null)?"checked":"")+" cvalue=\"0\" type=\"radio\"/><label for=\""+s3utils.c2v(aCondition.cname+"_N")+"\" >"+s3utils.c2h(cmp.i18n('formqueryreport.radio_uncheck'))+"</label>\r\n");
+result.push("      </div>\r\n");
+result.push("      </div>\r\n");
+ } //end if
+return result.join("");
+};
+formqueryreport.PageHead = function(aHeadText,aIsHome,isM3Navbar){
+var result=new Array();
+result.push("\t\t");
+
+
+
+return result.join("");
+};
+formqueryreport.Condition_People = function(aSelectType,aIsMulti,aCondition){
+var result=new Array();
+result.push("\r\n");
+  var fCurrentValue=aCondition.cvalue;
+  var fCurrentType=aCondition.ctype;
+  var fSValue,fIdValue;
+  fCurrentValue=decodePersonInfo(fCurrentValue);
+  if (aCondition.cvalue==null)
+    fIdValue="";
+  else
+    fIdValue=aCondition.cvalue;
+  fSValue=getPeopleShowValue(fCurrentValue);
+
+
+result.push("      <div class=\"form_search_select\" >\r\n");
+result.push("        <label class=\"SearchLable\" >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t<div class=\"inline_block border input_delete\">\r\n");
+result.push("\t       <span\r\n");
+result.push("\t\t\t\t class=\"SearchCondition SearchData select_member conditionType-"+s3utils.c2v(fCurrentType)+"\"\r\n");
+result.push("\t             name=\""+s3utils.c2v(aCondition.cname)+"\"\r\n");
+result.push("\t             mtype=\""+s3utils.c2v(fCurrentType)+"\"\r\n");
+result.push("\t\t\t     cvalue=\""+s3utils.c2v(fIdValue)+"\"\r\n");
+result.push("\t\t\t\t >"+s3utils.c2h(fSValue)+"\r\n");
+result.push("\t\t   </span>\r\n");
+result.push("        <span class=\"input_clear\" onclick=\"clearCondition('"+s3utils.c2v(aCondition.cname)+"',"+s3utils.c2v(M1FormUtils.C_iConditionType_Datetime)+","+s3utils.c2v(fCurrentType)+");\"></span>\r\n");
+result.push("\t</div>\r\n");
+result.push("      </div>\r\n");
+return result.join("");
+};
+formqueryreport.Condition_Project = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+  var fCurrentValue=aCondition.cvalue;
+  var fCurrentType=aCondition.ctype;
+  var fShowTitle=aCondition.showtitle;
+  fCurrentValue=fCurrentValue==null?"":fCurrentValue;
+  fShowTitle=fShowTitle==null?"":fShowTitle;
+
+
+result.push("      <div class=\"form_search_select\" >\r\n");
+result.push("        <label class=\"SearchLable\" >"+s3utils.c2v(aCondition.ctitle)+"</label>\r\n");
+result.push("\t<div class=\"inline_block border input_delete\">\r\n");
+result.push("\t<span class=\"SearchCondition SearchData conditionType-"+s3utils.c2v(fCurrentType)+"\"  mtype=\""+s3utils.c2v(fCurrentType)+"\" name=\""+s3utils.c2v(aCondition.cname)+"\" cvalue=\""+s3utils.c2v(fCurrentValue)+"\" showtitle=\""+s3utils.c2v(fShowTitle)+"\">"+s3utils.c2v(fShowTitle)+"&nbsp</span>\r\n");
+result.push("        <span class=\"input_clear\" onclick=\"clearCondition('"+s3utils.c2v(aCondition.cname)+"',"+s3utils.c2v(M1FormUtils.C_iConditionType_Datetime)+","+s3utils.c2v(fCurrentType)+");\"></span>\r\n");
+result.push("\t</div>\r\n");
+result.push("      </div>\r\n");
+return result.join("");
+};
+formqueryreport.UEComponent = function(aId,aCondition,aListType){
+var result=new Array();
+result.push("        <div id=\"formqueryreport-filter\">\r\n");
+result.push("\t\t</div>\r\n");
+result.push("\r\n");
+
+
+return result.join("");
+};
+formqueryreport.Condition_Checkbox = function(aCondition){
+var result=new Array();
+result.push("\r\n");
+   var fCurrentValue=decodePersonInfo(aCondition.cvalue);
+   var fList=aCondition.datalist.list;
+   fList=[];
+   if (aCondition.datalist!=null)
+     if (aCondition.datalist.list!=null)
+        if (isArray(aCondition.datalist.list))
+	     fList=aCondition.datalist.list;
+var fItem;
+
+
+result.push("      <div class=\"form_search_select\">\r\n");
+result.push("        <label for=\""+s3utils.c2v(aCondition.cname)+"\">"+s3utils.c2v(aCondition.ctitle)+"</label> \r\n");
+result.push("\t<div class=\"inline_block\">\r\n");
+for (var i=0;i <fList.length;i++){
+fItem=fList[i];
+result.push("\t<div class=\"block\">\r\n");
+result.push("         <input class=\"SearchCondition\"  id=\""+s3utils.c2v(aCondition.cname)+"\" name=\""+s3utils.c2v(aCondition.cname)+"\"  cvalue=\""+s3utils.c2v(fItem.value)+"\" "+s3utils.c2v(isCheckedValue(fCurrentValue,fItem.value)?"checked":"")+" type=\"checkbox\"/><span class=\"people\">"+s3utils.c2h(fItem.name)+"&nbsp&nbsp</span>\r\n");
+result.push("        </div>\r\n");
+ } //end for
+result.push("      </div>\r\n");
+result.push("    </div>\r\n");
+return result.join("");
+};
+formqueryreport.SearchResultPageHead = function(aHeadText,aListType,aHasData,aChartNameList,aIsHome,aAllowFlip,aSearchvertical){
+var result=new Array();
+result.push("\r\n");
+  var fRightIcon;
+  fRightIcon=aSearchvertical?"see-icon-v5-common-switch-light-form":"see-icon-v5-common-transverse-switch";
+
+
+result.push("\t\t");
+
+return result.join("");
+};
+formqueryreport.SearchResultData_Vertical = function(aId,aData,aMetadata,aColunmWidth,aMoreCount,aIsTableList,haveNotCondition){
+var result=new Array();
+ 
+   var fItem,fTextAlign,fMoreStr,fTitleHtml,fId,fRecordHeight,fShowMore,fRecordHeightStr;
+   fMoreStr=null;
+   if (aMoreCount!=null){
+      if (aMoreCount!=0)
+         fMoreStr=aMoreCount+cmp.i18n('formqueryreport.more_data');
+   }
+   fShowMore=aMetadata.length>4;
+   fRecordHeightStr="";
+   if (!fShowMore){
+	    fRecordHeight=25*aMetadata.length;
+	        if (fRecordHeight<=0)
+ 	        fRecordHeight=25;
+            fRecordHeightStr="height: "+fRecordHeight+'px;';
+   }
+   fTitleHtml=formqueryreport.SearchResultTitle_Vertical(aMetadata,fRecordHeightStr);
+   
+
+
+result.push("    ");
+ if (!aIsTableList){
+result.push("\t\t");
+
+result.push("\t");
+ } //end if
+
+result.push("\t");
+ if (haveNotCondition){
+result.push("        <ul>\r\n");
+result.push("    ");
+ } //end if
+result.push("        \r\n");
+result.push("            ");
+for (var i=0;i < aData.length;i++){
+result.push("            ");
+result.push("\r\n");
+                if(aData[i] instanceof Array){
+                    fItem=aData[i];
+                }else if(typeof aData[i]=="string"){
+                    fItem=aData[i].split(" ");
+                };
+            
+
+result.push("                <li class=\"FlowForm_List\" style=\"height:100%\">\r\n");
+result.push("\t\t            ");
+result.push(fTitleHtml)
+
+result.push("                    <div class=\"info FlowForm_Cont\"\r\n");
+result.push("                         pId=\""+s3utils.c2v(aData[i][0])+"\"\r\n");
+result.push("                        ");
+ if (fRecordHeightStr!=""){
+result.push("\t                        style=\""+s3utils.c2v(fRecordHeightStr)+"\"\r\n");
+result.push("                        ");
+ } //end if
+result.push("                    >\r\n");
+result.push("                        ");
+for (var j=1;j <= aMetadata.length;j++){
+result.push("                            ");
+result.push("\r\n");
+                                switch (aMetadata[j-1].align) {
+                                    case M1FormUtils.C_iAlign_Left :
+	                                    fTextAlign="text-align:left";
+	                                    break;
+                                    case M1FormUtils.C_iAlign_Right :
+	                                    fTextAlign="text-align:right";
+	                                    break;
+                                    default :
+	                                    fTextAlign="text-align:center";
+	                                break;
+                                }
+                                fId="record_"+i;
+                            
+
+result.push("                            <div class=\"list\" style=\""+s3utils.c2v(fTextAlign)+"\">"+s3utils.c2h(fItem[j])+"</div>\r\n");
+result.push("                        ");
+ } //end for
+result.push("                    </div>\r\n");
+result.push("                    ");
+ if (fShowMore){
+result.push("                        <div id=\""+s3utils.c2v(fId)+"\" class=\"more active\" >\r\n");
+result.push("                            <span class=\"iconfont icon-fanhui\"></span>\r\n");
+result.push("                        </div>\r\n");
+result.push("                    ");
+ } //end if
+result.push("                </li>\r\n");
+result.push("            ");
+ } //end for
+
+result.push("    ");
+ if (haveNotCondition){
+result.push("        </ul>\r\n");
+result.push("    ");
+ } //end if
+
+result.push("    ");
+ if (!aIsTableList){
+result.push("\t\t");
+
+result.push("\t");
+ } //end if
+result.push("\t\r\n");
+result.push("    ");
+ if (fMoreStr!=null){
+result.push("        ");
+
+result.push("            ");
+
+result.push("        ");
+
+result.push("    ");
+ } //end if
+
+return result.join("");
+};
+formqueryreport.SearchResultData = function(aId,aData,aMetadata,aColunmWidth,aMoreCount){
+var result=new Array();
+result.push("                    <table id=\"body_table\" class=\"table-content-data\" cellpadding=\"0\" cellspacing=\"0\">\r\n");
+result.push("                        <tbody>\r\n");
+ 
+   var fItem;var fTrBkColor;var fTextAlign;var fTdHeight;var fTdHeightStr,fMoreStr;
+   fMoreStr=null;
+   if (aMoreCount!=null){
+      if (aMoreCount!=0)
+         fMoreStr=aMoreCount+cmp.i18n('formqueryreport.more_data');
+   }
+
+
+result.push("    ");
+for (var i=0;i < aData.length;i++){
+result.push("        ");
+result.push("\r\n");
+            if(aData[i] instanceof Array){
+                fItem=aData[i];
+            }else if(typeof aData[i]=="string"){
+                fItem=aData[i].split(" ");
+            };
+            //fTrBkColor=(i%2==0?"#f1f1f1":"#fafafa");
+            fTrBkColor="#FFFFFF"
+        
+
+result.push("        <tr style=\"background-color:"+s3utils.c2v(fTrBkColor)+"\" >\r\n");
+result.push("            ");
+for (var j=1;j <= aMetadata.length;j++){
+result.push("                ");
+result.push("\r\n");
+                    switch (aMetadata[j-1].align) {
+                        case M1FormUtils.C_iAlign_Left :
+	                        fTextAlign="text-align:center";
+	                        break;
+                        case M1FormUtils.C_iAlign_Right :
+	                        fTextAlign="text-align:center";
+	                        break;
+                        default :
+	                        fTextAlign="text-align:center";
+	                        break;
+                    }
+                    fTdHeight=getDataTDHeight(dataLength(fItem[j]));
+                    fTdHeightStr=(fTdHeight==50?"":"line-height:"+fTdHeight+"px;");
+                
+
+result.push("                <td class=\"th-item\" style=\"width: "+s3utils.c2v(aColunmWidth)+"px;"+s3utils.c2v(fTdHeightStr)+""+s3utils.c2v(fTextAlign)+"\">"+s3utils.c2h(fItem[j])+"</td>\r\n");
+result.push("            ");
+ } //end for
+result.push("        </tr>\r\n");
+result.push("    ");
+ } //end for
+result.push("                        </tbody>\r\n");
+result.push("                    </table>\r\n");
+ if (fMoreStr!=null){
+result.push("                    <div style=\"background-color: #449aba;height: 30px;text-align: center;align-items: center;\">\r\n");
+result.push("<span>"+s3utils.c2h(fMoreStr)+"</span>\r\n");
+result.push("                    </div>\r\n");
+ } //end if
+
+return result.join("");
+};

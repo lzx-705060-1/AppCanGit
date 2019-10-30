@@ -1,0 +1,50 @@
+var formqApi = (function() {
+    
+    var formqueryreportApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/formqueryreport";
+    }
+	
+	/**
+	 * 跳转到查询统计查看页面
+	 * @param formqueryreportArgs : 查询统计是单页面，是通过URL来连接到指定页面的。
+	 * formqueryreportArgs 对象包含"itemType","listType"和"id"三个个属性，
+	 *      1.itemType的值为列表中图标代表的文件类型，有"state","dosearch","dostatistics"三种类型;
+	 *      2.listType的值为"1"或"2",分别代表查询模块或统计模块;
+	 *      3.id代表具体每个查询或统计的详细页.
+	 *
+	 */
+    formqueryreportApi.prototype.jumpToFormqueryreport=function(formqueryreportArgs,from,templateIds){
+		var nextPageData = {
+			'templeteIds' : templateIds,
+			'from' : from
+		};
+	
+		var behindPath="";
+		if(formqueryreportArgs.itemType){
+			behindPath="#"+formqueryreportArgs.itemType+"/"+formqueryreportArgs.listType+"/"+formqueryreportArgs.id;
+		}
+		
+		if(from=="dashboard" && typeof(cmp.platform.CMPShell) != 'undefined' && cmp.platform.CMPShell){
+            cmp.href.open(this.basePath + "/html/index.html"+behindPath+"?from="+nextPageData.from);
+        }else{
+            cmp.href.next(this.basePath + "/html/index.html"+behindPath+"?from="+nextPageData.from, nextPageData);
+        }
+	}
+	
+	/**
+	 * 打开应用
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]
+	 * @param  {string} parms   [其他可选参数]
+	 */
+    formqueryreportApi.prototype.openApp = function(type, backUrl, option, parms) {
+        var paramData = {
+            'pageInfo' : backUrl
+        };
+        cmp.href.next(this.basePath + "/html/index.html", paramData);
+    } 	
+	
+	return new formqueryreportApi();
+    
+})();

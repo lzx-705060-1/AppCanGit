@@ -1,0 +1,86 @@
+#bul_header{padding-top:20px;height: 64px;}
+#bul-type{width: 100%;height: 100%;background-color: #fff;top: 0px;}
+#bul-type .bul-exe{position: relative;height: 50px;line-height: 50px;margin-left: 16px;}
+#bul-type .bul-exe:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#bul-type .bul-exe .bul-exe-name{font-size: 16px;color: #333;margin-left: 3px;}
+#bul-type .bul-exe-detail{position: relative;width: 100%;height: 50px;line-height: 50px;display: none;background-color: #f8f8f8;}
+#bul-type .bul-exe-detail-block{position: relative;height: 50px;}
+#bul-type .bul-exe-detail-block:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#bul-choose{position: fixed;bottom: 0;width: 100%;height: 58px;z-index: 11;background-color: #fff;}
+#bul-choose .bul-choose-btn{width: 200px;height: 30px;border-radius: 20px;background-color: #3aadfb;line-height: 30px;margin: 0 auto;text-align: center;}
+#bul-choose #bul-choose-name{font-size: 16px;color: #fff;}
+.bul-name{font-size: 14px;color: #333;display: inline-block;float: left;}
+.bul-icon{display: inline-block;float: left;margin-left: 5px;font-size: 18px;color: #c9c9c9;}
+
+/*2017年2月22日10:57:46*/
+.bul-exe .bul-radio{font-size: 20px;color: #c9c9c9;}
+#bul_header:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+#bul_header a{font-size: 16px;}
+#bul-choose .footer_block{
+    width: 100%;
+    height: 8px;
+    background-color: #f4f4f4;
+    position: relative;
+}
+#bul-choose .footer_block:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+#bul-choose .footer_block:after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}

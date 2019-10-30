@@ -1,0 +1,26 @@
+var vPortalApi = (function(){
+	
+	var vPortalApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/portal";
+	}
+	/**
+   * 跳转到指定门户
+   * @param {Object} option 里面必须包括 portalId 
+   * spaceId 指定空间ID，不传的话默认进入第一个空间
+   * portalName 门户的名字 其他应用进入必传
+   * m3from是来源 e.g. "vreport"
+   * spaceBar 是否显示空间列表 默认true
+   */
+  vPortalApi.prototype.openPortalIndex = function(option){
+    var params = {
+        'portalId' : option.portalId,
+        'spaceId' : option.spaceId || "",
+        'portalName' : option.portalName || "",
+        'm3from' : option.m3from || "",
+        'spaceBar': (typeof(option.spaceBar) == "undefined" || option.spaceBar == true) ?true:option.spaceBar
+    };
+    cmp.href.next(this.basePath + "/html/portalIndex.html?cmp_orientation=auto",params,{openWebViewCatch : cmp.platform.CMPShell ? 1 : undefined});
+  }
+	return new vPortalApi();
+  
+})();

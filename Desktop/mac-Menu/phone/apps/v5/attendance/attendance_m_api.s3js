@@ -1,0 +1,32 @@
+var attendanceApi = (function(){
+	
+	var AttendanceApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/attendance";
+	}
+	
+	/**
+	 * [打开应用]
+	 * @param  {string} type           [message代表消息模块,todo代表待办模块]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option         [attendanceId:签到记录id]
+	 * @param  {string} obj            [其他可选参数]
+ 	*/
+    AttendanceApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	var _basePath = this.basePath;
+		var param = {
+           'attendanceId' : option.id,
+           'openType' : type,
+           'backUrl' : backUrl,
+           'obj' : obj
+        };
+        if(option.linkType == "message.link.attendance.view"){
+        	//提醒签到或者签退时跳转到首页
+        	cmp.href.next(_basePath + "/html/attendanceIndex.html", param);
+        }else{
+        	//@信息跳转到详细页面
+        	cmp.href.next(_basePath + "/html/attendanceDetail.html", param);
+        }
+	}
+	return new AttendanceApi();
+	
+})();

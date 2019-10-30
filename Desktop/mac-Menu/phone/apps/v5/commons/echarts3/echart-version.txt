@@ -1,0 +1,3 @@
+echarts.common.min.js ------ 3.8.5常用
+echarts.min.js ----- 3.8.5完整
+echarts.simple.min.js ------ 3.8.5精简

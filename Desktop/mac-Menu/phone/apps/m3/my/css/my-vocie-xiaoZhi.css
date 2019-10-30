@@ -1,0 +1,44 @@
+/*
+* @Author: 光
+* @Date:   2016-02-16 12:20:42
+* @Last Modified by:   光
+* @Last Modified time: 2016-02-21 14:49:21
+*/
+.blue {
+    color: #3AADFB!important;
+}
+body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+body.cmp-ios-c .cmp-content{top:64px;}
+body.cmp-ios-x .cmp-content{top:88px;} 
+.cmp-switch-blue.cmp-active {
+    border: 2px solid #3AADFB;
+    background-color: #3AADFB;
+}
+
+.cover_switch {
+    position: absolute;
+    top: 0%;
+    right: 15px;
+    width: 54px;
+    height: 42px;
+    opacity: 0;
+    z-index: 1;
+}
+.btnn .result{color: #bdbdbd;font-size: 14px;}
+.xiaozhiServerStop{margin-top: 10px;}
+p.pl_0375{margin-top: 5px;padding-left: 15px;}
+.cmp-table-view{background-color: inherit;}
+.cmp-table-view-cell{background-color: #fff;font-size: 16px;}
+.cmp-table-view:after{display:none;}
+.cmp-table-view-cell:after{display:none;}
+.xiaozhiServerStop-text{font-size: 14px;padding: 15px;}
+.cmp-table-view-cell .cell-title{font-size: 16px;font-family:initial;}
+.message-sub-li{
+    margin-top: 10px;
+}
+.xiaozhi-common-content{
+    overflow-y: auto;
+}
+.xiaozhi-common-content::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,51 @@
+var newsApi = (function() {
+    
+    var NewsApi = function() {
+        this.basePath = "/seeyon/m3/apps/v5/news";
+    }
+    
+     /**
+     * 跳转到新闻查看页面
+     * @param newsId : 新闻ID
+     * @param comeFrom : 来源	0	>>>	新闻列表 	
+     *							1	>>>	文档中心
+     * @param 页面的返回信息，即打开新闻页面以后，点返回按钮的跳转页面信息，backPageInfo对象包含"url","data"两个属性，跳转的时候采用（ cmp.href.next（url,data）的方式跳转，如果没传递
+     *         该参数，则默认采用cmp.href.back()的方式跳转）
+     * @param isNav : 是否是新开页面
+     */
+    NewsApi.prototype.jumpToNews = function(newsId, comeFrom, backPageInfo, fromXz, isNav) {
+    	var  _backPageInfo = typeof(backPageInfo) == 'undefined' ? ''  : backPageInfo;
+        var paramData = {
+            'comeFrom' : comeFrom,
+            'fromXz' : typeof(fromXz) == 'undefined' ? false  : fromXz,
+            'newsId' : newsId,
+            'isNav' : isNav
+        };
+        var option = {};
+        if(isNav === true){
+            option.openWebViewCatch = true;
+        }
+        cmp.href.next(this.basePath + "/html/newsView.html?cmp_orientation=auto", paramData, option);
+    }    
+    
+     /**
+	 * 打开新闻(消息穿透)
+	 * @param  {string} type    [todo:待办模块;message:消息模块]
+	 * @param  {string} backUrl [后退地址]
+	 * @param  {obj}    option  [消息对象]	option.id		新闻id									
+	 * @param  {string} parms   [其他可选参数]
+	 */
+    NewsApi.prototype.openApp = function(type, backUrl, option, obj) {
+        var comeFrom = type == "todo" ? 2 : 0;
+        var affairId = typeof(option.affairId) == 'undefined' ? false  : option.affairId;
+        var paramData = {
+            'comeFrom' : comeFrom,
+            'newsId' : option.id,
+            'affairId': affairId
+        };
+        cmp.href.next(this.basePath + "/html/newsView.html?cmp_orientation=auto", paramData);
+    } 
+    
+    return new NewsApi();
+    
+})();

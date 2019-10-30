@@ -1,0 +1,126 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:29:58
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>账号与安全</title>
+    <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-person.css">
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp-listView.css">
+    <style>
+        body.cmp-dd .cmp-content{top:44px;}/*android content样式*/
+        body.cmp-ios-c .cmp-content{top:64px;}
+        body.cmp-ios-x .cmp-content{top:88px;} 
+    </style>
+</head>
+
+<body class="bg_gray overflow-y-auto">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+    <header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx position-fixed">
+        <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+            <span class="nav-text"><i18n key="my.m3.h5.back"></i18n></span>
+        </div>
+        <div class="cmp-title">
+            <i18n key="my.m3.h5.accountAndSecurity"></i18n>
+        </div>
+        <div class="cmp-header-right">
+        </div>
+    </header>
+    <div class="cmp-content margin_top15 my_module">
+        <ul class="cmp-table-view">
+            <!-- 手势密码 -->
+            <li class="cmp-table-view-cell">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.gesturePassword"></i18n>
+                </div>
+                <div class="cmp-pull-right cmp-switch cmp-switch-blue cmp-switch-mini" id="gesturePwd">
+                    <div class="cmp-switch-handle"></div>
+                </div>
+                <div class="cover_switch"></div>
+            </li>
+            <!-- <li class="cmp-table-view-cell display_none" id="soundLock">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.soundLock"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li> -->
+            <!-- 关联帐号--新增 -->
+            <li class="cmp-table-view-cell accountNumber">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.accountNumber"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+            <!-- 帐号在线管理 -->
+            <li class="cmp-table-view-cell onlineManager">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.accountOnlineManagement"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+        </ul>
+        <!-- 修改密码 -->
+        <ul class="cmp-table-view margin_top15">
+            <li class="cmp-table-view-cell officenumber" id="revisePwd">
+                <div class="cmp-pull-left">
+                    <i18n key="my.m3.h5.modifyPassword"></i18n>
+                </div>
+                <div class="cmp-pull-right"><span class="iconfont see-icon-m3-arrow-right"></span></div>
+            </li>
+        </ul>
+    </div>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>  
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-headerFixed.js"></script>
+<!--
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3Route.s3js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3Ajax.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3DB.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3i18n.js"></script>
+    <script src="http://my.m3.cmp/v1.0.0/js/my-account.js"></script>
+-->
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-account.js')</script>
+</body>
+
+</html>

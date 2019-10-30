@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+#background{
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#wrapper{
+    display: none;
+    position: relative;
+    width: 270px;
+    height: 104px;
+    background: #fff;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 1px 1px 14px #d0d0d0;
+}
+#progressbar{
+    height: 3px;
+    width:239px;
+    background: #C8C8C9;
+    margin: auto;
+    margin-top: 25px;
+}
+#progressInfo{
+    width: 239px;
+    height: 40px;
+    margin: auto;
+    margin-top: 12px;
+    font-family: STHeitiSC-Medium;
+    font-size: 12px;
+    color: #4A4A4A;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 20px;
+}
+/*在进度条元素上调用动画*/
+#fill{
+    width: 0;
+    height: 3px;
+    max-width: 239px;
+    background-image: linear-gradient(-90deg,#514DC3  0%, #2B9BDD 100%);
+    text-align: center;
+}

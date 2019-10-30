@@ -1,0 +1,94 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:29:38
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>绑定邮箱</title>
+    <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+    <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+    <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-person-update.css">
+</head>
+
+<body class="bg_gray cmp-fullscreen">
+<script>
+    /**
+        * @description 优化IphoneX的头部交互，组织去抖动
+        */
+    ;(function() {
+        var ua = window.navigator.userAgent.toUpperCase();
+        if (ua.match(/IPHONEX/)) {
+            document.body.className += ' cmp-ios-x ';
+        }
+    })();
+</script>
+
+<header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx">
+    <div id="backBtn" class="cmp-action-back cmp-header-left ">
+            <!-- see-icon-v5-common-arrow-back -->
+        <span class="cmp-icon "></span>
+        <span class="nav-text"><i18n key="my.m3.h5.cancel"></i18n></span>
+    </div>
+    <div class="cmp-title">
+        <span id="headerTitle" class="headerTitle"></span>
+    </div>
+    <div class="cmp-header-right">
+        <span id="binding" class="complete nav-text"><i18n key="my.m3.h5.binding"></i18n></span>
+    </div>
+</header>
+<div class="cmp-content position_relative height_auto">
+    <div class="qrcode-content isEmailbind">
+        <div class="content emailCode" id="content">
+            <div class="title">
+                <span class="iconfont see-icon-mark"></span>
+                <span><i18n key="my.m3.h5.sentEmail"></i18n></span>
+                <span id="emailValue"></span>
+            </div>
+            <div class='cmp-input-row'>
+                <!-- <label class="label"><i18n key="my.m3.h5.VerificationCode"></i18n></label> -->
+                <input id="codeValue" type='text' class='cmp-input-clear'>
+                <span id="codeTime" class='codeTime'></span>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+<script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+<script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script>
+    cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+    cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+</script>
+<script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+<script src="http://commons.m3.cmp/v1.0.0/js/zepto-1.2.0.js"></script>
+<script src="http://cmp/v1.0.0/js/cmp.js"></script>
+<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+<!-- cmp组件 -->
+<!-- <script src="http://cmp/v1.0.0/js/cmp-att.js"></script> -->
+<!-- seajs -->
+<script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+<script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+<!-- 模块入口 -->
+<script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-person-email-bind.js')</script>
+
+
+
+</body>
+
+</html>

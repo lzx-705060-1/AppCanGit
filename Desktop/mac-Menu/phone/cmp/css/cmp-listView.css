@@ -1,0 +1,383 @@
+@-webkit-keyframes loadingCircleSize {
+    0% {
+        border-width: 3px;
+        -webkit-transform: scale(1,1);
+        transform: scale(1,1);
+    }
+    50% {
+        -webkit-transform: scale(0.7, 0.7);
+        transform: scale(0.7, 0.7);
+        border-width: 8px;
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        border-width: 3px;
+    }
+}
+@keyframes loadingCircleSize {
+    0% {
+        border-width: 3px;
+        -webkit-transform: scale(1,1);
+        transform: scale(1, 1);
+    }
+    50% {
+        -webkit-transform: scale(0.7, 0.7);
+        transform: scale(0.7, 0.7);
+        border-width: 8px;
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1,1);
+        border-width: 3px;
+    }
+}
+.cmp-scroll-wrapper {
+  position: absolute;
+  /*z-index: 1;*/
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+}
+.cmp-scroll {
+  position: absolute;
+  /*z-index: 0;*/
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+.cmp-scrollbar {
+  position: absolute;
+  z-index: 95;
+  overflow: hidden;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  transform: translateZ(0px);
+  pointer-events: none;
+  opacity: 0;
+}
+.cmp-scrollbar-vertical {
+  top: 0;
+  right: 1px;
+  bottom: 2px;
+  width: 4px;
+}
+.cmp-scrollbar-vertical .cmp-scrollbar-indicator {
+  width: 100%;
+}
+.cmp-scrollbar-horizontal {
+  right: 2px;
+  bottom: 0;
+  left: 2px;
+  height: 4px;
+}
+.cmp-scrollbar-horizontal .cmp-scrollbar-indicator {
+  height: 100%;
+}
+.cmp-scrollbar-indicator {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  -webkit-transition: 0.01s cubic-bezier(0.1, 0.57, 0.1, 1);
+  transition: 0.01s cubic-bezier(0.1, 0.57, 0.1, 1);
+  transform: translate(0px, 0px) translateZ(0px);
+  border: 1px solid rgba(255, 255, 255, 0.80196);
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.39804);
+}
+.cmp-pull-top-pocket,
+.cmp-pull-bottom-pocket {
+  position: absolute;
+  left: 0;
+  display: block;
+  visibility: hidden;
+  overflow: hidden;
+  width: 100%;
+  height: 50px;
+    padding-top: 7px;
+}
+.cmp-plus-pullrefresh .cmp-pull-top-pocket,
+.cmp-plus-pullrefresh .cmp-pull-bottom-pocket {
+  display: none;
+  visibility: visible;
+}
+.cmp-pull-top-pocket {
+  top: 5px;
+}
+.cmp-pull-top-pocket.sleep{
+    /*background: #ECF6FF;*/
+    color: #999;
+    opacity: 0.8;
+}
+.cmp-pull-top-pocket.dialog{
+  background-color: rgba(58, 173, 251, 0.81);
+  color: #fff;  top:0;
+}
+.cmp-pull-top-pocket.dialog .cmp-pull-caption{
+    color: #fff;
+}
+.cmp-pull-top-pocket.sleep.failed{
+    background: #ea5e56;
+    color: #ffffff;
+    opacity: 0.8;
+}
+.cmp-pull-top-pocket.awaken{
+    background: transparent;
+    color: #777;
+    opacity: 1;
+}
+.cmp-pull-top-pocket.awaken .cmp-pull-loading .pull-push-circle-loading{
+    -webkit-animation: loadingCircleSize 0.8s ease-in-out infinite;
+    -o-animation: loadingCircleSize 0.8s ease-in-out infinite;
+    animation: loadingCircleSize 0.8s ease-in-out infinite;
+}
+.cmp-pull-bottom-pocket .pull-push-circle-loading{
+    -webkit-animation: loadingCircleSize 0.8s ease-in-out infinite;
+    -o-animation: loadingCircleSize 0.8s ease-in-out infinite;
+    animation: loadingCircleSize 0.8s ease-in-out infinite;
+}
+.cmp-bar-nav ~ .cmp-bar-header-secondary ~ .cmp-content .cmp-pull-top-pocket {
+  top: 88px;
+}
+.cmp-pull-bottom-pocket {
+  position: relative;
+  bottom: 0;
+  height: 50px;
+}
+/*//.cmp-pull-bottom-pocket .cmp-pull-loading {*/
+/*//  visibility: hidden;*/
+/*//}*/
+.cmp-pull-bottom-pocket .cmp-pull-loading.cmp-in {
+  display: inline-block;
+}
+
+.cmp-pull {
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+    line-height: 34px;
+  /*color: #777;*/
+
+}
+.cmp-pull-loading {
+    display: inline-block;
+  margin-right: 1px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: transform .4s;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  vertical-align: middle;
+  -webkit-backface-visibility: hidden;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+}
+.cmp-pull-loading.cmp-spinner.init > span{background-color: #999;}
+.cmp-pull-loading.cmp-reverse {
+  -webkit-transform: rotate(180deg) translateZ(0);
+  transform: rotate(180deg) translateZ(0);
+}
+.cmp-pull-loading .pull-push-circle-loading{
+    width: 22px;
+    height: 22px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    border: 3px solid #E4E4E4;
+}
+.cmp-pull-caption {
+  font-size: 15px;
+  line-height: 24px;
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  margin-top: 0;
+  vertical-align: middle;
+  color: #B6B6B6;
+}
+.cmp-pull-caption span {
+  display: none;
+}
+.cmp-pull-caption span.cmp-in {
+  display: inline;
+}
+.cmp-plus-pullrefresh .cmp-fullscreen .cmp-scroll-wrapper .cmp-scroll-wrapper,
+.cmp-plus-pullrefresh .cmp-fullscreen .cmp-slider-group .cmp-scroll-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+.cmp-plus-pullrefresh .cmp-fullscreen .cmp-scroll-wrapper .cmp-scroll{
+  position: absolute;
+  width: 100%;
+}
+.cmp-plus-pullrefresh .cmp-scroll-wrapper {
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  overflow: auto;
+  width: auto;
+}
+.cmp-plus-pullrefresh .cmp-scroll {
+  position: static;
+  width: auto;
+}
+/*============有页签的scroll======================*/
+.cmp-segmented-control.cmp-scroll-wrapper {
+  height: 38px;
+}
+.cmp-segmented-control.cmp-scroll-wrapper .cmp-scroll {
+  width: auto;
+  height: 40px;
+  white-space: nowrap;
+}
+.cmp-segmented-control.cmp-scroll-wrapper .cmp-control-item {
+  display: inline-block;
+  width: auto;
+  padding: 0 20px;
+  border: 0;
+}
+.cmp-bar-nav ~ .cmp-content .cmp-pull-top-pocket{
+  overflow: initial!important;
+    line-height: 36px;
+}
+.cmp-bar-nav ~ .cmp-content .cmp-pull-top-pocket .cmp-pull{
+  position: relative!important;
+  bottom:0!important;
+}
+.cmp-bar-nav ~ .cmp-content .cmp-pull-top-pocket .cmp-pull .cmp-pull-caption p{
+  margin-bottom: 0!important;
+}
+.cmp-pull-caption{font-size: 12px;font-weight: normal!important;}
+.cmp-pull-bottom-pocket .cmp-pull{
+  position: relative!important;
+  bottom:0!important;
+    color: #777;
+}
+.cmp-pull-bottom-pocket .cmp-pull .cmp-pull-caption p{
+  margin-bottom: 0!important;
+}
+.cmp-pull .cmp-pull-caption p.little-text{font-size: 10px;}
+.cmp-pull .cmp-pull-caption p.tablelist{font-weight: bolder;}
+.cmp-pull .cmp-pull-caption p.subtitle{margin: -9px;}
+
+
+.wrapper{overflow-x: auto;}
+
+.container{ width: 100%;top:0;overflow: hidden;}
+p.haveNum,p.totalNum,p.updateTime{font-size: 10px;}
+
+/*=================================listView组件翻页样式===========================================*/
+/*底部下一页样式*/
+.cmp-pull-bottom-pocket.cmp-next-page{background-color: #eee;padding: 10px;}
+.cmp-pull-bottom-pocket.cmp-next-page .cmp-pull{background-color: #fff;height: 100%;line-height: 30px;}
+.cmp-pull-bottom-pocket.cmp-next-page .cmp-spinner{
+    /*background: url("../img/PageLogo.png")no-repeat 50%;*/
+    margin-right: 0;
+    background-size: 65%;-moz-background-size: 65%;-webkit-background-size: 65%;
+    /*width: 35px;*/
+    animation: none;
+    -webkit-animation: none;-moz-animation: none;display: none;}
+.cmp-pull-bottom-pocket.cmp-next-page .cmp-pull-loading.cmp-spinner:after{display: none;}
+.cmp-pull-bottom-pocket.cmp-next-page .cmp-pull-caption{line-height: 30px;}
+.cmp-pull-bottom-pocket.cmp-replace-loading{background-color: #eee}
+/*顶部上一页样式*/
+.cmp-pull-top-btn.cmp-prev-page{background-color: #eee;padding: 10px;visibility: visible!important;width: 100%;height: 50px;}
+.cmp-pull-top-btn.cmp-prev-page .cmp-pull-wrapper{background-color: #fff;height: 100%;font-weight: bold;  right: 0;  bottom: 10px;  left: 0;  text-align: center;  color: #777;}
+.cmp-pull-top-btn.cmp-prev-page .cmp-pull-loading{
+    /*background: url("../img/PageLogo.png")no-repeat 50%;*/
+    margin-right: 0;
+    background-size: 65%;-moz-background-size: 65%;-webkit-background-size: 65%;
+    /*width: 35px;*/
+    animation: none;height: 25px;
+    -webkit-animation: none;-moz-animation: none;}
+.cmp-pull-top-btn.cmp-prev-page .cmp-pull-loading:before{content: "";}
+.cmp-pull-top-btn.cmp-prev-page .cmp-pull-loading.cmp-spinner:after{display: none;}
+.cmp-pull-top-btn.cmp-prev-page .cmp-pull-caption{line-height: 30px;}
+
+.cmp-cache-img-show {
+    animation-name : cmp-cache-img-show;
+    animation-duration : 0.3s;
+    animation-iteration-count:1;
+    animation-fill-mode : forwards;
+    -webkit-animation-name : cmp-cache-img-show;
+    -webkit-animation-duration : 0.3s;
+    -webkit-animation-iteration-count : 1;
+    -webkit-animation-fill-mode : forwards;
+}
+@keyframes cmp-cache-img-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes cmp-cache-img-show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+/*======================用于存放listview数据为空的样式容器==========*/
+/* .StatusContainer{width: 100%;text-align: center;position: relative;top:0;} */
+/* 新增兼容横屏样式 */
+.StatusContainer{
+    width: 400px;text-align: center; position: absolute;
+    height: 200px; left: calc(50% - 200px);top: calc(50% - 150px);
+}
+/*横屏*/
+@media all and (orientation : landscape) {
+    .StatusContainer{
+        width: 400px;text-align: center; position: absolute;
+        height: 200px; left: calc(50% - 200px);top: calc(50% - 100px);
+    }
+}
+.StatusContainer span{font-size: 47px;color: #b6b6b6;display: block;}
+.StatusContainer .text{font-size: 16px;line-height: 40px;}
+.StatusContainer.tablelist{position: absolute;left: 0;top: 135px;z-index: 1;}
+.StatusContainer .nocontent{
+    background-image: url("../img/nocontent2.png");background-repeat: no-repeat;
+    background-size: 100% 100%;width: 350px;
+    height: 190px;
+    position: relative;
+    left: calc(50% - 170px);
+}
+
+.StatusContainer .text.nocontent_text{margin-top: -30px;color:#b7b7b7;display: inline-block;}
+.bg_auto{height: 100%;background-color: #fff;}
+.cmp-pull-widget{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+}
+.cmp-pull-widget.active{
+    opacity: 1;
+}
+.cmp-pull-widget.hiddenState{
+    opacity: 0;
+}
+.cmp-scroll-parts{
+    position: relative;
+    z-index: 1;
+    display: none;
+}
+.cmp-scroll-item{
+    overflow: hidden;
+    width: 100%;
+}
+

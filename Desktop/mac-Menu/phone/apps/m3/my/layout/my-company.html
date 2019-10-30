@@ -1,0 +1,170 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-29 06:29:29
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:30:04
+-->
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="telephone=no,email=no" name="format-detection">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <title>我的企业</title>
+        <script src="http://commons.m3.cmp/v1.0.0/js/flexible.js"></script>
+        <link rel="stylesheet" href="http://cmp/v1.0.0/css/cmp.css">
+        <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/fonts/iconfont.css">
+        <link rel="stylesheet" href="http://commons.m3.cmp/v1.0.0/css/base.css">
+        <link rel="stylesheet" href="http://my.m3.cmp/v1.0.0/css/my-person.css">
+    </head>
+    <style>
+        /* .cmp-ios .cmp-content,
+        .cmp-android .cmp-content {
+            top: 0!important;
+        } */
+        .person_head {
+            border: none;
+            border-radius: 0;
+            width: 80%!important;
+        }
+        header.cmp-bar:before{display:none;}
+        body{background-color: #F8F9FB;}
+        .cmp-content.my_module{margin-top: 14px;}
+        ul.cmp-table-view::after{display: none;}
+        /* header.cmp-bar.cmp-bar-nav.bg_none{background-color: #fff;}
+        .person_header{background: inherit;} */
+    </style>
+
+<body class="body_mycompany">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase();
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x ';
+            }
+        })();
+    </script>
+
+<header class="cmp-bar cmp-bar-nav cmp-flex-header m3-iosx cmp-after-line">
+    <div id="backBtn" class="cmp-action-back cmp-header-left ">
+        <span class="cmp-icon see-icon-v5-common-arrow-back"></span>
+        <span class="nav-text"><i18n key="my.m3.h5.my"></i18n></span>
+    </div>
+    <div class="cmp-title">
+        <i18n key="my.m3.h5.myEnterprise"></i18n>
+    </div>
+    <div class="cmp-header-right">
+    </div>
+</header>
+
+    <!-- <header class="cmp-bar cmp-bar-nav bg_none"></header>
+    <div class="person_header m3-iosx">
+        <div class="cmp-pull-left cmp-icon" id="backBtn">
+            <span class="see-icon-v5-common-arrow-back"></span>
+            <span class="left_word"><i18n key="my.m3.h5.my"></i18n></span>
+        </div>
+        <h1><i18n key="my.m3.h5.myEnterprise"></i18n></h1>
+        <!--头像-->
+        <!-- <div class="person_info">
+            <div class="person_head">
+                <img id="logo">
+            </div>
+            <div class="name"></div>
+        </div>
+    </div> --> 
+    <!-- <div class="mask_wt"></div>
+    <div class="blur_bg"></div> -->
+    <div class="cmp-content my_module">
+        <!--列表-->
+        <ul class="cmp-table-view new_list userDefined company-list">
+            <!-- 企业名称 -->
+            <li class="cmp-table-view-cell" >
+                <div class="cmp-pull-left">
+                    <div class="datainfo name" id="name"></div>
+                    <div class="text"><i18n key="my.m3.h5.enterpriseName"></i18n></div>
+                </div>
+           </li>
+           <!-- 企业简称 -->
+           <li class="cmp-table-view-cell" >
+                <div class="cmp-pull-left">
+                    <div class="datainfo shortName" id="shortName"></div>
+                    <div class="text"><i18n key="my.m3.h5.enterpriseShortName"></i18n></div>
+                </div>
+           </li>
+           <!-- 企业编码 -->
+           <li class="cmp-table-view-cell" >
+                <div class="cmp-pull-left">
+                    <div class="datainfo code" id="code"></div>
+                    <div class="text"><i18n key="my.m3.h5.enterpriseCode"></i18n></div>
+                </div>
+           </li>
+        </ul>
+        <!-- 服务器二维码 -->
+        <ul class="cmp-table-view qrcode-ul">
+            <li class="cmp-table-view-cell flex-h" id="serverQrcode">
+                <div class="cmp-pull-left left_word ellipsis_p">
+                    <i18n key="my.m3.h5.serverQrcode"></i18n>
+                </div>
+                <div class="cmp-pull-left right_word flex-1 ellipsis_p">
+                    <span class="see-icon-v5-common-qrcode qrcode_icon"></span>
+                </div>
+            </li>
+        </ul>
+        <!-- 发票抬头 -->
+        <ul class="cmp-table-view invoicetil-ul">
+            <li class="cmp-table-view-cell " id="invoicetil">
+                <div class="cmp-pull-left left_word ellipsis_p">
+                    <i18n key="my.m3.h5.invoicetil"></i18n>
+                </div>
+                <div class="cmp-pull-right arrow-right">
+                    <span class="invoiceNum"></span>
+                    <span class="iconfont see-icon-m3-arrow-right arrow-icon"></span>
+                </div>
+            </li>
+        </ul>
+        
+        <!-- <ul class="cmp-table-view new_list" style="margin-top:10px;">
+            <li class="cmp-table-view-cell flex-h">
+                <div class="cmp-pull-left left_word ellipsis_p">
+                    <i18n key="my.m3.h5.enterpriseMotto"></i18n>
+                </div>
+                <div class="cmp-pull-left right_word flex-1 ellipsis_p">
+                    <span><i18n key="my.m3.h5.CorporateMottoText"></i18n></span>
+                </div>
+            </li>
+        </ul> -->
+       
+
+    </div>
+    <script src="http://my.m3.cmp/v/i18n/my_zh_CN.js"></script>
+    <script src="http://commons.m3.cmp/v/i18n/commons_zh_CN.js"></script>
+    <script src="http://cmp/v/js/cmp-i18n.js"></script>
+    <script>
+        cmp.i18n.init("http://my.m3.cmp/v/i18n/", "my");
+        cmp.i18n.load("http://commons.m3.cmp/v/i18n/", "commons");
+    </script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/m3-path.s3js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+    <script src="http://cmp/v1.0.0/js/cordova/cordova-plugins.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/js/zepto-1.2.0.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-server.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-app.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-chat.js"></script>
+    <script src="http://cmp/v1.0.0/js/cmp-gestureLock.js"></script>
+    <!-- seajs -->
+    <script src="http://commons.m3.cmp/v1.0.0/lib/seajs-2.2.1.js"></script>
+    <script src="http://commons.m3.cmp/v1.0.0/config.js"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('http://my.m3.cmp/v1.0.0/js/my-company.js')</script>
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id="title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/cmp/css/cmp.css?buildversion=18121017247">
+    <link rel="stylesheet" type="text/css" href="/seeyon/m3/apps/v5/bbs/css/bbsCenter.css?buildversion=18121017247">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=18121017247">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-picker.css?buildversion=18121017247">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-search.css?buildversion=18121017247">
+    <style type="text/css">
+    .cmp-scroll.bg_auto {
+        background-color: #FFFFFF !important;
+    }
+    </style>
+</head>
+<body>
+<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+<div class="createFilter display_none"></div>
+<div class="cmp-content cmp-content-none position_relative">
+    <div class="cmp-control-content cmp-active" id="cmp-control">
+        <div id="bbs_list_search">
+            <div class="position_relative boder_bottom" style="background-color: white;" id="searchDivTop">
+                <div class="cmp-segmented_title_content">
+                    <div class="cmp-content-title-search cmp-content-search-add">
+                        <div id="search" class="cmp-input-row see-icon-search cmp-search">
+                            <form action="#" onsubmit="return false;"></form>
+                            <input type="search" disabled placeholder="" class="cmp-input-clear ">
+                            <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+                            <span class="cmp-placeholder">
+                                <span class="cmp-icon cmp-icon-search"></span>
+                                <span class="text-search"><i18n key="bbs.h5.search"></i18n></span>
+                            </span>
+                        </div>
+                        <div id="bbs_wechat_add" class="search-title-cancel cmp-icon cmp-icon-plus"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="reSearch" class="position_relative cmp-search-content" style="display: none;">
+                <div class="cmp-segmented-control cmp-search-title ">
+                    <div class="cmp-search-item">
+                        <span class="title" id="cmp_search_title"></span>
+                        <span class="cmp-icon cmp-icon-arrowdown icon_select"></span>
+                    </div>
+                    <div id="toSearch" class="cmp-search-item">
+                        <div id="searchText" class="item text cmp-active">
+                            <input id="searchTextValue" type="text" readonly="readonly">
+                            <span id="searchResultSpan" style="display:none;"></span>
+                        </div>
+                        <div id="searchDate" class="item date">
+                            <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+                            <span>-</span>
+                            <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="cmp-search-item">
+                        <span id="cancelSearch" class="gotoSearch"><i18n key="bbs.h5.cancel"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表展示的 -->
+        <div class="bbsBoardNav position_relative" >
+            <div class="cmp-pull-left">
+                <div id="option" class="option">
+                </div>
+                <span class="sort-btn display_none"><i18n key="bbs.h5.choose.type.label"></i18n></span>
+            </div>
+            <div id="showBoardBtn" class="cmp-pull-right">
+                <span class="see-icon-v5-common-setting setIcon"></span>
+            </div>
+        </div>
+        <div id="bbsBoardDiv" class="display_none"></div>
+        <div id="all_bbs" class="cmp-scroll-wrapper" style="top: 83px;">
+            <div class="cmp-scroll" style="background-color: #f1f1f1;">
+                <div class="bbs-list" id="bbs_listAll" style="">
+                    <ul class="cmp-table-view cmp-table-view-striped cmp-table-view-condensed" id="bbs_list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="bbs_list_li">
+    <% for(var i = 0,len = this.length;i < len; i++){ %>
+    <% var obj = this[i], searchTitle = page.condition && page.condition == "title" ? page.textfield1 : null, searchUser = page.condition && page.condition == "publishUser" ? page.textfield1 : null;  %>
+    <li class="cmp-table-view-cell" bbsId="<%=obj.id.toString() %>">
+        <div class="cmp-table">
+            <div class="cmp-table-cell cmp-col-xs-10">
+                <div style="float: left;margin-top: 10px;width: 65%;height: 25px;line-height: 25px;">
+                    <div style="width: 25px;float:left;">
+                        <img style="width: 25px;height: 25px;border-radius: 100%;" class="cmp-img-cache" cmp-data="<%=obj.issueUser %>">
+                    </div>
+                    <div class="cmp-ellipsis" style="width: 70%;float:left;text-align:left;padding-left: 10px;color: #333333;">
+                        <span style="font-size: 14px;"><%=txtRemind(searchUser,obj.issueName)%></span>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="float: right;width: 35%;height: 25px;line-height: 20px;margin-top: 10px;text-align: right">
+                    <span class="cmp-ellipsis bbs-board-name"><%=escapeStringToHTML(obj.boardName) %></span>
+                </div>
+                <h4 class="title bbsTitle" id="bbs_list_title"><% if(obj.topSequence==1){ %><span class="title-sign sign-top"><%=cmp.i18n("bbs.h5.top") %></span><% } if(obj.eliteFlag){ %><span class="title-sign sign-fine"><%=cmp.i18n("bbs.h5.fine") %></span><% } if(obj.state==2){ %><span class="title-sign sign-close"><%=cmp.i18n("bbs.h5.close") %></span><% } %> <%=txtRemind(searchTitle,obj.articleName) %>
+                </h4>
+                <!--h=100&w=100 h=180&w=320-->
+                <%if(escapeStringToHTML(obj.content) && !obj.imgUrl){%>
+                <div class="cmp-h6 cmp-ellipsis-2 bbs-content" >
+                <%= escapeStringToHTML(obj.content)%>
+                </div>
+                <%}%>
+
+                <%if(!escapeStringToHTML(obj.content) && obj.imgUrl){%>
+                <% var wh="&h=180&w=320"; %>
+                <div style="width:100%">
+                    <img class="img cmp-img-cache" style="width:100%;border-radius: 4px" src="<%=cmp.origin+obj.imgUrl+wh %>" alt=""  src-data="<%=cmp.origin+obj.imgUrl %>"/>
+                </div>
+                <%}%>
+
+                <%if(escapeStringToHTML(obj.content) && obj.imgUrl){%>
+                <% var wh="&h=100&w=100"; %>
+                <div style="position: relative;min-height: 80px" >
+                    <div class="cmp-h6 cmp-ellipsis-2 bbs-content " style="margin-right: 100px">
+                    <%= escapeStringToHTML(obj.content)%>
+                    </div>
+                    <div style="position: absolute;top:0;right:0;width: 80px;height: 80px">
+                        <img class="img cmp-img-cache" style="width: 80px;border-radius: 4px" src="<%=cmp.origin+obj.imgUrl %>" alt=""  src-data="<%=cmp.origin+obj.imgUrl %>"/>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+        <div class="list-item-bottom" style="height: 40px;position: relative;">
+            <h5 class="time_sector" >
+                <span class="bbs-time" ><%=obj.issueTimeM3 %></span>
+                <span class="bbs-read" >
+                    <% if((obj.clickNumber > 9999)){ %>
+                    9999+
+                    <% } else { %>
+                    <%=obj.clickNumber %>
+                    <% } %>
+                    阅读
+                </span>
+                <% if(obj.attachmentFlag){ %><span class="cmp-icon see-icon-accessory"></span><% } %>
+            </h5>
+            <div class="setView" style="max-width: 235px;min-width:130px;float: right;font-size: 10px;text-align: left;margin-top: 10px;">
+                <div style="float: right;margin-left: 4%;">
+                    <span style="color: #AFBAD7;font-size: 12px;"><% if(obj.praiseSum > 9999){ %>
+                        <span>9999+</span><% } else { %>
+                        <span><%=obj.praiseSum %></span><% } %>
+                    </span>
+                </div>
+                <div style="float: right;padding-top: 2px;">
+                    <%if(obj.userPraiseState){%>
+                    <span class="cmp-icon iconfont see-icon-v5-common-praise-fill" style="color: #AFBAD7;"></span>
+                    <% } else { %>
+                    <span class="cmp-icon iconfont see-icon-v5-common-praise" style="color: #AFBAD7;"></span>
+                    <% } %>
+                </div>
+                <div style="float: right;margin-left: 4%;;margin-right: 6.3%;">
+                    <span style="color: #AFBAD7;font-size: 12px;"><% if(obj.replyNumber > 9999){ %>
+                        <span>9999+</span><% } else { %>
+                        <span><%=obj.replyNumber %></span><% } %>
+                    </span>
+                </div>
+                <div style="float: right;padding-top: 1px;">
+                    <span class="cmp-icon iconfont see-icon-v5-common-comment" style="color: #AFBAD7;"></span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script type="text/html" id="bbsBoardList">
+<div class="detail">
+    <ul class="boardUl">
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="-1">
+                        <span class="isChoose" ></span>
+                        <span><i18n key="bbs.h5.type.all"></i18n></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<% for (var _board in this){
+    if(_board != "group" &&  _board != "account"){
+        continue;
+    }
+    var list = this[_board];
+    var titleName = _board;
+    if(_board == "group"){
+        titleName = cmp.i18n("bbs.h5.type.group");
+    }else if(_board == "account"){
+        titleName = cmp.i18n("bbs.h5.type.account");
+    }
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="boardUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var _bbsBoard = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=_bbsBoard.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(_bbsBoard.name) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+<% for (_board in this){
+    if(_board == "all" || _board == "group" || _board == "account"){
+      continue;
+    }
+    var list = this[_board];
+    var titleName = _board;
+%>
+<div class="title">
+    <span class="head"><%=titleName %></span>
+</div>
+<div class="detail">
+    <ul class="boardUl">
+        <% for(var i = 0,l = list.length; l > i; i ++){ 
+            var _bbsBoard = list[i];
+        %>
+        <li class="item">
+            <div style="width: 100%;">
+                <div class="operateArea">
+                    <div class="name"  id="<%=_bbsBoard.id %>">
+                        <span class="isChoose" ></span>
+                        <span><%=escapeStringToHTML(_bbsBoard.name) %></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+<% }　%>
+</script>
+
+<script src="/seeyon/m3/apps/v5/bbs/i18n/Bbs_zh_CN.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=18121017247"></script>
+<script type="text/javascript">
+	cmp.i18n.init("/seeyon/m3/apps/v5/bbs/i18n/","Bbs",null,"?buildversion=18121017247");
+  	var bbsPath = "/seeyon/m3/apps/v5/bbs";
+</script>
+<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/bbs/js/bbs-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=18121017247" type="text/javascript"></script>
+                     
+<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-picker.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-dtPicker.js?buildversion=18121017247"></script>
+<script src="/seeyon/m3/cmp/js/cmp-search.js?buildversion=18121017247"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/bbs/js/bbsIndex.js?buildversion=18121017247"></script>
+</body>
+</html>

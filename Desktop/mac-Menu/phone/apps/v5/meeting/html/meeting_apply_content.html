@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <!--固定meta写法-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- css样式 -->
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=1559547182958"/>
+    <title>员工自助个人信息页面</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+        }
+         /*头部*/
+        .cmp-action-back{
+           width: 100%;
+           height:60px;
+           background-color: #00A1EA;
+       }
+          /*左边箭头上一级*/
+       .div-left{ 
+           margin-left:20px;
+           margin-top:10px;      
+           width:40px;
+           height:40px;
+           float: left;
+       }
+         i{
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 5px;
+            border-color: #FFFFFF;
+            margin: 15px;
+        }
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+        /*会议申请*/
+        .div-center{
+           float:left;
+           margin-top:15px; 
+           margin-left:70px;
+           width: 110px;
+           height: 40px;
+           
+       }
+       .center-span{
+            padding-top:20px;
+           color:#FFFFFF;
+           font-size: 150%;
+       }
+       /*发起*/
+       .div-right{
+           float: left;
+           margin-top:20px; 
+           margin-left:70px;
+           width: 50px;
+           height:30px;
+           
+       }
+       .right-span{
+           font-size: 100%;
+           color:#FFFFFF;
+       } 
+        /*头部上面*/
+       /*内容部下面*/
+        #meeting_apply_div{
+          background-color:#F7F7F7;
+        }
+         .mui-checkbox {
+                -webkit-appearance: none;
+                position: relative;
+                width: 2em;
+                height: 2em;
+                margin-right: 10px;
+                vertical-align: middle;
+                background-color: #FFFFFF;
+                border: solid 1px #d9d9d9;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                background-clip: padding-box;
+                display: inline-block;
+            }
+
+            .mui-checkbox:checked {
+                background-color: #18b4ed;
+                border: solid 1px #FFFFFF;
+            }
+
+            .mui-checkbox-anim {
+                -webkit-transition: background-color ease 0.2s;
+                transition: background-color ease 0.2s;
+            }
+
+            td {
+                white-space: nowrap;
+            }
+            .default-input {
+                outline: none;
+                border: none;
+                font-size: 1em;
+                background-color: #FFFFFF;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                border-bottom: none;
+            }
+            .numinput {
+                border-bottom: 1px solid #177FC7;
+                float:right
+                z-index: 1;
+                font-size: 1em;
+                text-align: right;
+                margin-right: 1em;
+                width: 1.2em;
+            }
+
+            .default-gt {
+                float: right;
+                font-size: 1.2em;
+                color: #888888;
+            }
+            .default-info {
+                float: right;
+                position: absolute;
+                z-index: 1;
+                font-size: 1em;
+                margin-top: 0.8em;
+                text-align: right;
+                width: 40%;
+                margin-left: 45%;
+            }
+            .default-info2 {
+                float: right;
+                position: absolute;
+                z-index: 1;
+                font-size: 1em;
+                margin-top: 0.8em;
+                text-align: right;
+                width: 30%;
+                margin-left: 55%;
+            }
+            .default-div {
+                background-color: #FFFFFF;
+                line-height: 2.5em;
+            }
+            .default-top {
+                margin-top: 0.3em;
+            }
+            .default-font {
+                font-family: Microsoft YaHei, Arial, Helvetica, sans-serif, SimSun;
+            }
+            .margin1 {
+                margin-left: 1em;
+            }
+            .margin2 {
+                margin-left: 1.8em;
+            }
+            .line-link {
+                width: 88%;
+                margin-left: 10%;
+                color: #FFF3F3;
+            }
+            .checkbox-titlef {
+                margin-left: 30%
+            }
+            .checkbox-titlet {
+                position: absolute;
+            }
+            .textarea-div {
+                line-height: 1em;
+                height: 4em;
+                text-indent: 1.2em;
+                overflow-y: auto;
+                color: #8D8D8D;
+            }
+            .textinput {
+                border-bottom: 1px solid #177FC7;
+                text-align: right;
+                width: 7em;
+                z-index: 1
+            }
+            .input-edit-long {
+                border-bottom: 1px solid #177FC7;
+                margin-left: 10%;
+                float: right;
+                position: absolute;
+                z-index: 1;
+                font-size: 1em;
+                margin-top: 0.8em;
+                text-align: right;
+                width: 50%;
+                margin-left: 40%;
+            }
+            .input-edit-little {
+                border-bottom: 1px solid #177FC7;
+                margin-left: 10%;
+                float: right;
+                position: absolute;
+                z-index: 1;
+                font-size: 1em;
+                margin-top: 0.8em;
+                text-align: right;
+                width: 20%;
+                margin-left: 45%;
+            }
+
+            .ub-circle {
+                position: absolute;
+                margin-top: -4em;
+                z-index: 999;
+                margin-left: 1em;
+            }
+            .up-circle {
+                color: #fff;
+                font-family: calibri;
+                text-align: center;
+                height: 0.5em;
+                width: 0.5em;
+                border-radius: 0.2em;
+                background: #007AFF;
+            }
+            .up-circle .circle {
+                color: #FFFFFF;
+                font-family: calibri;
+                text-align: center;
+                height: 0.35em;
+                width: 0.35em;
+                border-radius: 0.2em;
+                background: #FFFFFF;
+                margin-left: 0.075em;
+                position: absolute;
+                margin-top: 0.075em;
+            }
+            .link-circle {
+                width: 0.1em;
+                height: 2em;
+                background-color: #D8D8D8;
+                margin-left: 0.18em;
+            }
+            .down-circle {
+                color: #fff;
+                font-family: calibri;
+                text-align: center;
+                height: 0.5em;
+                width: 0.5em;
+                border-radius: 0.2em;
+                background: #FD482C;
+            }
+            .down-circle .circle {
+                position: absolute;
+                color: #FFFFFF;
+                font-family: calibri;
+                text-align: center;
+                height: 0.35em;
+                width: 0.35em;
+                border-radius: 0.2em;
+                background: #FFFFFF;
+                margin-left: 0.075em;
+                margin-top: 0.075em;
+            }
+
+    </style>
+</head>
+<!--页面的标准布局，包括header标签头部、cmp-content内容区和<footer>标签页脚-->
+<body>
+<div class="cmp-fullscree">
+   <div class="cmp-action-back">
+        <div class="div-left" id="backBtn">
+             <i class="left" ></i>
+        </div>
+         <div class="div-center">
+            <span class="center-span">会议申请</span>
+        </div>
+         <div class="div-right">
+             <span class="right-span">发起</span>
+        </div>
+</div>
+<div id="meeting_apply_div" >
+    <div class="default-div">
+        <input class="default-input default-info" id="field0042" disabled="disabled" readonly="readonly"/>
+        <span class="default-font margin1"> 会议室所在地：</span>
+    </div>
+
+    <div class="default-div default-top">
+        <input class="default-input input-edit-long" id='field0005' type="text"/>
+        <span class="default-font margin1">会议主题：</span>
+    </div>
+    <div class="default-div default-top" data-cls="field0003" onclick="selectPeopleSingle(this)">
+        <input id='field0003' class="default-input default-info" selectId="" type="text" readonly="readonly"/>
+        <span class="default-font margin1">申请人：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top">
+        <input id='field0006' class="default-input default-info" onclick="selectDept(this)" type="text" selectId=""
+               readonly="readonly"/>
+        <span class="default-font margin1">申请部门：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" onclick="timeEventSelect(this,'dates')" data-cls="field0004" data-name="申请日期">
+        <input id="field0004" class="default-input default-info" type="text" readonly="readonly"/>
+        <span class="default-font margin1">申请日期：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top">
+        <input id='field0010' class=" default-input input-edit-long" type="tel"/>
+        <span class="default-font margin1">申请人联系电话：</span>
+    </div>
+
+    <div class="default-div default-top" onclick="timeEventSelect(this,'datetimes')" data-cls="field0007"
+         data-name="会议开始时间">
+        <input id='field0007' class="default-input default-info" readonly="readonly" type="text"/>
+        <span class="default-font margin2"> 会议开始时间：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+    </div>
+
+    <div class="default-div" onclick="timeEventSelect(this,'datetimes')" data-cls="field0030" data-name="会议结束时间">
+        <hr class="line-link"/>
+        <input id='field0030' class="default-input default-info" readonly="readonly" type="text"/>
+        <span class="default-font margin2"> 会议结束时间：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div id="ub-circle" class="ub-circle">
+        <div id="up-circle" class="up-circle">
+            <div class="circle"></div>
+        </div>
+        <div id="link-circle" class="link-circle"></div>
+        <div id="down-circle" class="down-circle">
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <div class="default-div default-top" onclick="selectPeopleSingle(this)" data-cls="field0009">
+        <input id='field0009' class="default-input default-info" selectId="" readonly="readonly"/>
+        <span class="default-font margin1"> 会议组织者：</span>
+
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" onclick="selectPeopleSingle(this)" data-cls="field0040">
+        <input id='field0040' class="default-input default-info" selectId="" type="text" readonly="readonly"/>
+        <span class="default-font margin1"> 会议主持者：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class="default-div default-top" onclick="selectPeopleSingle(this)" data-cls="field0038">
+        <input id='field0038' class="default-input default-info" selectId="" type="text" readonly="readonly"/>
+        <span class="default-font margin1"> 会议记录者：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" data-cls="field0008" data-name="是否有外单位参加" onclick="booleanSelectEvent(this)">
+        <input id="field0008" type="hidden" readonly="readonly"/>
+        <input id="field0008show" class="default-input default-info" readonly="readonly"/>
+        <span class="default-font">是否有外单位参加：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top">
+        <input class=" default-input input-edit-little" id='field0011' type="number" pattern="[0-9]*"/>
+        <span class="default-font margin1">会议出席人数：</span>
+
+    </div>
+    <div class="default-div default-top" data-cls="field0039" data-name="会议类型" onclick="meetingtypeEvent(this)">
+        <input id="field0039" type="hidden" readonly="readonly"/>
+        <input id="field0039show" class="default-input default-info" type="text" readonly="readonly"/>
+        <span class="default-font margin1">会议类型：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" data-cls="field0031" data-name="是否邀请控股L1领导" onclick="booleanSelectEvent(this)">
+        <input id="field0031" type="hidden" readonly="readonly"/>
+        <input id="field0031show" class="default-input default-info2" readonly="readonly"/>
+        <span class="default-font">是否邀请控股L1领导：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" data-cls="field0044" data-name="控股领导会议审核人" onclick="leadSelectEvent(this)">
+        <input id='field0044' type="hidden" readonly="readonly"/>
+        <input id='field0044show' class="default-input default-info2" readonly="readonly"/>
+        <span class="default-font">控股领导会议审核人：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top" data-cls="field0058" data-name="会议形式" onclick="meetingformEvent(this)">
+        <input id="field0058" type="hidden" readonly="readonly"/>
+        <input id="field0058show" class="default-input default-info" type="text" readonly="readonly"/>
+        <span class="default-font margin1">会议形式：</span>
+        <span class="default-gt">&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="default-div default-top">
+        <span class="default-font margin1">议程/议题：</span>
+        <div contenteditable="true" class="textarea-div" id='field0046'></div>
+    </div>
+
+    <div class="default-div default-top" onclick="selectPeople(this)">
+        <span class="default-font margin1">参会人员：</span>
+        <div contenteditable="true" class="textarea-div" id='field0032' selectId="" readonly="readonly"></div>
+    </div>
+
+    <div class="default-div default-top">
+        <span class="checkbox-titlet default-font">IT协助事项：</span>
+        <span class="checkbox-titlef default-font">L1层领导参会</span>
+        <input class="mui-checkbox" id='field0043' type="checkbox"/>
+    </div>
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font">投影</span>
+        <input class="mui-checkbox" id='field0013' type="checkbox"/>
+        <span class="">电话会议</span>
+        <input class="mui-checkbox" id='field0014' type="checkbox"/>
+    </div>
+
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font">视频</span>
+        <input class="mui-checkbox" id='field0015' type="checkbox"/>
+        <span class="">云视频会议</span>
+        <input class="mui-checkbox" id='field0033' type="checkbox"/>
+    </div>
+
+
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font"> 其他</span>
+        <input class="mui-checkbox" id='field0016' type="checkbox"/>
+        <input id='field0017' class="default-input textinput" type="text"/>
+    </div>
+
+    <div class="default-div default-top">
+        <span class="checkbox-titlet default-font">行政协助事项：</span>
+        <span class="checkbox-titlef default-font"/>茶水<span class="checkbox-titletf default-font"/>
+        <input class="mui-checkbox" id='field0018' type="checkbox"/>
+                      ( 数量：
+         <input id='field0019' class=" default-input numinput" type="number" pattern="[0-9]*"/>)
+    </div>
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font">瓶装水</span>
+        <input class="mui-checkbox" id='field0020' type="checkbox" />
+           ( 数量：
+         <input id='field0021' class="default-input numinput" type="number" pattern="[0-9]*" />
+         )
+    </div>
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font">夹台</span>
+        <input class="mui-checkbox" id='field0022' type="checkbox" />
+          ( 数量：
+        <input id='field0023' class="default-input numinput" type="number" pattern="[0-9]*" />
+        )
+    </div>
+    <div class="default-div">
+        <span class="checkbox-titlet default-font"></span>
+        <span class="checkbox-titlef default-font">其它</span>
+        <input class="mui-checkbox" id='field0024' type="checkbox" />
+        <input id='field0025' class="default-input textinput" type="text"/>
+    </div>
+
+    <div class="default-div default-top">
+        <span class="default-font margin1">备注：</span>
+        <div class="textarea-div" contenteditable="true" id='field0012'></div>
+    </div>
+
+</div>
+</div>
+<!-- 导入国际化资源 -->
+<script src="/seeyon/m3/apps/v5/xmgt/i18n/xmgt_zh_CN.js?buildversion=1559547182958"></script><!--导入本应用的中文国际化资源-->
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=1559547182958"></script><!--导入cmp国际化组件-->
+<script>
+    cmp.i18n.init("/seeyon/m3/apps/v5/xmgt/i18n/", "xmgt");
+    <!--初始化国际化资源-->
+    var xmgtBasePath = "/seeyon/m3/apps/v5/xmgt";
+    <!--定义本模块的路径作为一个全局变量，用于在js文件中对本模块资源的调用路径拼接-->
+</script>
+ <!--导入cordova相关-->
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=1559547182958"></script>
+<!--导入cmp平台的基础js-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/js/meeting.js?buildversion=1559547182958"></script>
+<!--导入本页面的业务js文件-->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/js/jquery-1.7.2.min.js?buildversion=1559547182958"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/meeting/js/yajule.js?buildversion=1559547182958"></script>
+</body>
+
+</html>

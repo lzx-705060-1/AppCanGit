@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"签到",
+	"splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.attendance",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  	"cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"html/attendanceIndex.html?useNativebanner=1",
+		"jsapi":"attendance_m_api.s3js",
+        "openAppMethod":"attendanceApi.openApp"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"36",
+	"urlSchemes":"attendance.v5.cmp",
+	"bundleName":"attendance",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

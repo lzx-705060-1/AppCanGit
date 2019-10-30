@@ -1,0 +1,25 @@
+{
+	"buildVersion":"1.0.2",
+	"iconFiles":{"default":"","multi":[]},
+	"appName":"致信",
+	"splashscreen":["img/spashscreen1.png","img/splashscreen2.png"],
+	"update":{"checkUpdateUrl":""},
+	"bundleIdentifier":"com.seeyon.v5.uc",
+	"serviceProvidear":"seeyon",
+	"team":"v5",
+  "cmpShellVersion":{"ios":"1.0.0","android":"1.0.0"},
+	"packageType":"APP",
+	"version":"1.0.0",
+	"entry":{
+		"phone":"html/ucIndex.html",
+		"jsapi":"uc_m_api.s3js",
+        "openAppMethod":"ucApi.openApp"
+	},
+	"compatibleVersion":["1.0.0","1.0.1","2.0.0"],
+	"appType":"default",
+	"appId":"61",
+	"urlSchemes":"uc.v5.cmp",
+	"bundleName":"uc",
+	"supportedPlatforms":["iOS_6.0","android_4.0"],
+	"desc":""
+}

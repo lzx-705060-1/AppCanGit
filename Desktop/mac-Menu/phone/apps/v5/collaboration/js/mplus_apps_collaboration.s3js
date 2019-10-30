@@ -1,0 +1,312 @@
+var mplus_apps_collaboration;
+if (typeof mplus_apps_collaboration=="undefined"){
+  mplus_apps_collaboration={};
+}
+mplus_apps_collaboration.comment_template = function(pDatas){
+var result=new Array();
+result.push("\r\n");
+   for(var i = 0,len=pDatas.comments.length; i < len; i++){
+      var comment = pDatas.comments[i];
+      var _replyColUser="replyColUser_"+i;
+
+
+
+result.push("<li class=\"attach-lisy-li white\">\r\n");
+result.push(" <div class=\"opinion-wrap-div\">\r\n");
+result.push("   <div class=\"user-info\">\r\n");
+result.push("      <div id=\""+s3utils.c2vb(_replyColUser)+"\">\r\n");
+result.push("      \t<img class=\"cmp-img-cache cmp-pull-left img_setting\" cmp-data=\""+s3utils.c2vb(comment.createId)+"\"/>\r\n");
+result.push("      </div>\r\n");
+result.push("      ");
+if(comment.attitude){
+result.push("<span class=\"states\">"+s3utils.c2hb(comment.attitude)+"</span>");
+}
+result.push("   \r\n");
+result.push("      ");
+if(comment.action){
+result.push("<span class=\"states\">"+s3utils.c2hb(comment.action)+"</span>");
+}
+
+result.push("       <div class=\"user-name\">"+s3utils.c2hb(comment.createName)+"\r\n");
+result.push("           <span style=\"color:#ff0000;\">"+s3utils.c2hb(comment.agent)+"</span>\r\n");
+result.push("       </div>\r\n");
+result.push("   </div>\r\n");
+result.push("   <div class=\"opinion-div\" style=\"white-space:normal;word-break: break-word;word-wrap: break-word;\">\r\n");
+result.push("      ");
+if(comment.praiseToSummary){
+
+result.push("          <span class=\"cmp-icon  m3-icon-support blue-color cmp-active\"></span>\r\n");
+result.push("       ");
+}
+
+result.push("       <div id=\"commentStyle\">\r\n");
+result.push("       ");
+result.push(comment.content)
+
+result.push("       </div>\r\n");
+result.push("   </div>\r\n");
+result.push("<ul id=\""+s3utils.c2vb(pDatas.containerId)+"_commentAttr"+s3utils.c2vb(comment.id)+"\" class=\"cmp-list-content cmp-accessory-content margin_top-1\"></ul>\r\n");
+result.push("<div class=\"opinion-time-div\">\r\n");
+result.push("        <div class=\"zan-div\">\r\n");
+result.push("           ");
+ if(pDatas.canPraise) { 
+
+result.push("               <span likeNum=\""+s3utils.c2vb(comment.praiseNumber)+"\" commentId=\""+s3utils.c2vb(comment.id)+"\" style=\"padding:0px 0px 5px 5px;height:100%;line-height:26px;\" class=\"cmp-icon comment_like_btn comment_like_btn_"+s3utils.c2vb(comment.id)+" ");
+if(comment.praiseToComment){
+result.push("m3-icon-support cmp-active");
+}else{
+result.push("m3-icon-support");
+}
+result.push("\"></span>\r\n");
+result.push("               <span class=\"comment_like_num_"+s3utils.c2vb(comment.id)+"\" style=\"margin:0px;");
+ if(!pDatas.replyFlag){
+result.push(" padding-right:15px; ");
+}
+result.push(" ");
+ if(comment.praiseToComment){
+result.push("color:#3AADFB;");
+}
+result.push("\">"+s3utils.c2hb(comment.praiseNumber)+"</span>\r\n");
+result.push("            ");
+ } 
+
+result.push("            ");
+if(pDatas.replyFlag){
+
+result.push("                <span commentId=\""+s3utils.c2vb(comment.id)+"\" style=\"padding: 0px 15px 0px 8px;height:100%;line-height:33px;\" class=\"cmp-icon m3-icon-revert-fill replay_btn\"></span>\r\n");
+result.push("            ");
+}
+result.push(" \r\n");
+result.push("        </div>\r\n");
+result.push("       \r\n");
+result.push("       <div class=\"opinion-time\">\r\n");
+result.push("           <p><span>"+s3utils.c2hb(comment.createDate)+"</span><span>"+s3utils.c2hb(comment.m1Info)+"</span></p>\r\n");
+result.push("       </div>\r\n");
+result.push("</div>\r\n");
+result.push("\r\n");
+   if(comment.subReplys && comment.subReplys.length > 0){
+
+
+result.push("<div class=\"comment-div\">\r\n");
+result.push(" <div class=\"comment-body\">\r\n");
+result.push("   \r\n");
+result.push("        ");
+result.push("\r\n");
+             for(var j = 0; j < comment.subReplys.length; j++){
+                var subComment = comment.subReplys[j];
+       
+
+result.push("        <ul>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment-p\">\r\n");
+result.push("          <span class=\"name-mark\"></span>\r\n");
+result.push("          \t"+s3utils.c2hb(subComment.createName)+"\r\n");
+result.push("          \t<span style=\"color:#ff0000;\">"+s3utils.c2hb(subComment.agent)+"</span>\r\n");
+result.push("          </p>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment\">");
+result.push(subComment.content)
+result.push("</p>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <ul id=\""+s3utils.c2vb(pDatas.containerId)+"_subCommentAttr"+s3utils.c2vb(subComment.id)+"\" class=\"cmp-list-content cmp-accessory-content margin_top-1\"></ul>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment-t\">\r\n");
+result.push("              <span>"+s3utils.c2hb(subComment.createDate)+"</span>\r\n");
+result.push("              <span>"+s3utils.c2hb(subComment.m1Info)+"</span>\r\n");
+result.push("          </p>\r\n");
+result.push("      </li>\r\n");
+result.push("       </ul>\r\n");
+result.push("        ");
+}
+
+result.push("   </div>\r\n");
+result.push("</div>\r\n");
+}
+
+
+result.push("</div>\r\n");
+result.push("</li>\r\n");
+}
+
+return result.join("");
+};
+mplus_apps_collaboration.form_comment_template = function(pDatas){
+var result=new Array();
+result.push("\r\n");
+    
+   var rightWidth = "";
+   if(pDatas.width && pDatas.width != "100%"){
+       rightWidth = "width:" + (pDatas.width - 70) + "px";
+   }
+   for(var i = 0,len=pDatas.comments.length; i < len; i++){
+      var comment = pDatas.comments[i];
+      var _replyColUser="replyColUser_"+i;
+
+
+
+result.push("<li class=\"attach-lisy-li flexbox\">\r\n");
+result.push(" <div class=\"form-attitude\">\r\n");
+result.push("    <div class=\"form-attitude-line\"></div>\r\n");
+result.push("    ");
+result.push("\r\n");
+        var attiIconClass = "";
+        var attiColor = ""; 
+        var attitudeCode = comment.attitudeCode;
+        switch(attitudeCode){
+           case "collaboration.dealAttitude.agree":
+               attiIconClass = "m3-icon-agree";
+               attiColor = "agree";
+               break;
+           case "collaboration.dealAttitude.haveRead":
+               attiIconClass = "m3-icon-read";
+               break;
+           case "collaboration.dealAttitude.disagree":
+               attiIconClass = "m3-icon-disagree";
+               attiColor = "disagree";
+               break;
+           case "collaboration.dealAttitude.termination":
+               attiIconClass = "m3-icon-termination";
+               attiColor = "termination";
+               break;
+           default:
+               attiIconClass = "m3-icon-read";
+               break;
+        }
+    
+
+result.push("    <div class=\"form-attitude-wrap "+s3utils.c2vb(attiColor)+"\"><span class=\""+s3utils.c2vb(attiIconClass)+"\"></span>");
+if(comment.attitude){
+result.push("<br/><span class=\"font_14\">"+s3utils.c2hb(comment.attitude)+"</span>");
+}
+result.push("  \r\n");
+result.push("    </div>\r\n");
+result.push(" </div>\r\n");
+result.push(" <div style=\""+s3utils.c2vb(rightWidth)+"\" class=\"opinion-wrap-div white flex-1 form-opinion\">\r\n");
+result.push("   <div class=\"user-info\">\r\n");
+result.push("      <div id=\""+s3utils.c2vb(_replyColUser)+"\">\r\n");
+result.push("      \t<img class=\"cmp-img-cache cmp-pull-left img_setting\" cmp-data=\""+s3utils.c2vb(comment.createId)+"\"/>\r\n");
+result.push("      </div>\r\n");
+result.push("      ");
+if(comment.action){
+result.push("<span class=\"states\">"+s3utils.c2hb(comment.action)+"</span>");
+}
+
+result.push("       <div class=\"user-name\">"+s3utils.c2hb(comment.createName)+"\r\n");
+result.push("           <span style=\"color:#ff0000;\">"+s3utils.c2hb(comment.agent)+"</span>\r\n");
+result.push("       </div>\r\n");
+result.push("   </div>\r\n");
+result.push("   <div class=\"opinion-div\" style=\"white-space:normal;word-break: break-word;word-wrap: break-word;\">\r\n");
+result.push("      ");
+if(comment.praiseToSummary){
+
+result.push("          <span class=\"cmp-icon m3-icon-support blue-color cmp-active\"></span>\r\n");
+result.push("       ");
+}
+
+result.push("       <div id=\"commentStyle\">\r\n");
+result.push("       ");
+result.push(comment.content)
+
+result.push("       </div>\r\n");
+result.push("   </div>\r\n");
+result.push("<ul id=\""+s3utils.c2vb(pDatas.containerId)+"_commentAttr"+s3utils.c2vb(comment.id)+"\" class=\"cmp-list-content cmp-accessory-content margin_top-1\"></ul>\r\n");
+result.push("\r\n");
+   var m1InfoHTML = "", opinionDivHeight = "", m1InfoLineheight="";
+   if(comment.m1Info){
+       m1InfoHTML = '<br/><span>' + s3utils.c2hb(comment.m1Info) + '</span>';
+       opinionDivHeight = "height:auto;";
+       m1InfoLineheight = "line-height:1.5;"
+   }
+
+
+result.push("<div class=\"opinion-time-div\" style=\""+s3utils.c2vb(opinionDivHeight)+"\">\r\n");
+result.push("        <div class=\"zan-div\">\r\n");
+result.push("           ");
+ if(pDatas.canPraise) { 
+
+result.push("               <span likeNum=\""+s3utils.c2vb(comment.praiseNumber)+"\" commentId=\""+s3utils.c2vb(comment.id)+"\" style=\"padding:0px 0px 5px 5px;height:100%;line-height:26px;\" class=\"cmp-icon comment_like_btn comment_like_btn_"+s3utils.c2vb(comment.id)+" ");
+if(comment.praiseToComment){
+result.push("m3-icon-support cmp-active");
+}else{
+result.push("m3-icon-support");
+}
+result.push("\"></span>\r\n");
+result.push("               <span class=\"comment_like_num_"+s3utils.c2vb(comment.id)+"\" style=\"margin:0px;");
+ if(!pDatas.replyFlag){
+result.push(" padding-right:15px; ");
+}
+result.push(" ");
+ if(comment.praiseToComment){
+result.push("color:#3AADFB;");
+}
+result.push("\">"+s3utils.c2hb(comment.praiseNumber)+"</span>\r\n");
+result.push("            ");
+ } 
+
+result.push("            ");
+if(pDatas.replyFlag){
+
+result.push("                <span commentId=\""+s3utils.c2vb(comment.id)+"\" style=\"padding: 0px 15px 0px 8px;height:100%;line-height:33px;\" class=\"cmp-icon m3-icon-revert-fill replay_btn\"></span>\r\n");
+result.push("            ");
+}
+result.push(" \r\n");
+result.push("        </div>\r\n");
+result.push("       <div class=\"opinion-time\">\r\n");
+result.push("           <p style=\""+s3utils.c2vb(m1InfoLineheight)+"\"><span>"+s3utils.c2hb(comment.createDate)+"</span>");
+result.push(m1InfoHTML)
+result.push("</p>\r\n");
+result.push("       </div>\r\n");
+result.push("</div>\r\n");
+result.push("\r\n");
+   if(comment.subReplys && comment.subReplys.length > 0){
+
+
+result.push("<div class=\"comment-div\">\r\n");
+result.push(" <div class=\"comment-body\">\r\n");
+result.push("   \r\n");
+result.push("        ");
+result.push("\r\n");
+             for(var j = 0; j < comment.subReplys.length; j++){
+                var subComment = comment.subReplys[j];
+       
+
+result.push("        <ul>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment-p\">\r\n");
+result.push("          <span class=\"name-mark\"></span>\r\n");
+result.push("          \t"+s3utils.c2hb(subComment.createName)+"\r\n");
+result.push("          \t<span style=\"color:#ff0000;\">"+s3utils.c2hb(subComment.agent)+"</span>\r\n");
+result.push("          </p>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment\">");
+result.push(subComment.content)
+result.push("</p>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <ul id=\""+s3utils.c2vb(pDatas.containerId)+"_subCommentAttr"+s3utils.c2vb(subComment.id)+"\" class=\"cmp-list-content cmp-accessory-content margin_top-1\"></ul>\r\n");
+result.push("      </li>\r\n");
+result.push("      <li>\r\n");
+result.push("          <p class=\"comment-t\">\r\n");
+result.push("              <span>"+s3utils.c2hb(subComment.createDate)+"</span>\r\n");
+result.push("              <span>"+s3utils.c2hb(subComment.m1Info)+"</span>\r\n");
+result.push("          </p>\r\n");
+result.push("      </li>\r\n");
+result.push("       </ul>\r\n");
+result.push("        ");
+}
+
+result.push("   </div>\r\n");
+result.push("</div>\r\n");
+}
+
+
+result.push("</div>\r\n");
+result.push("</li>\r\n");
+}
+
+return result.join("");
+};

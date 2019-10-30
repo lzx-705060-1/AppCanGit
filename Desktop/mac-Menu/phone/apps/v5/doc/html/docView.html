@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+	<link href="/seeyon/m3/cmp/css/cmp.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/commons/cmp-resources/M1H5.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+<link href="/seeyon/m3/apps/v5/doc/css/doc.css?buildversion=181210172443" rel="stylesheet" type="text/css" />
+	<!-- 正文组件样式css -->
+<link rel="stylesheet" href="/seeyon/m3/apps/v5/commons/cmp-resources/content.css?buildversion=181210172443">
+    
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-att.css?buildversion=181210172443">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-audio.css?buildversion=181210172443">
+<link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-listView.css?buildversion=181210172443">
+    <title id="title"></title>
+    <style>
+        #docView_header:after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #d4d4d4;
+            -webkit-transform: scale(1,0.5);
+            transform: scale(1,0.5);
+            -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        .ct-inner-container{
+            text-align: justify;
+            padding: 10px 14px;
+        }
+        .ct-inner-container #content p{
+        	word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+	<div id="shadow" style="position: fixed;width: 100%;height: 100%;z-index: 49;top: 0;left: 0;background-color: white;"></div>
+    <!-- <header id="docView_header" class="cmp-bar cmp-bar-nav">
+        <div id="prev" style="display:inline-block;">
+			<a class="cmp-action-back cmp-icon see-icon-v5-common-arrow-back cmp-pull-left cmpCommonPageBackBtn"></a>
+			<div class="doc-back">
+				<span><i18n key="doc.h5.back"></i18n></span>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	    <h1 class="cmp-title" id="docView_itle" style="font-size:18px;"><i18n key="doc.h5.doc"></i18n></h1>
+    </header> -->
+    <div class="cmp-content position_relative cmp-content-none" style="background: #fff;">
+        <div class="cmp-segmented_title_content" id="segmented_title_content"></div>
+        <div class="cmp-control-content cmp-active">
+            <div style="background: #eee;">
+                <div id="content" class="document_center_content textContainer" style="margin: 0 5px;"></div>
+            </div>
+            <div class="cmp-scroll-wrapper" id="scroll" style="background-color: white;">
+                <div class="cmp-scroll"  style="min-height: 100%;">
+                    <!--<div id="content" class="document_center_content textContainer"></div>-->
+                    <div id="att_list" style="width: 100%;background-color: #f0f0f0;line-height: 38px;font-size: 14px;">
+                        <span style="margin-left: 10px;">
+                            <span><i18n key="doc.h5.attachment"></i18n></span><span>&#40;</span><span id="att_file_count">0</span><span>&#41;</span><span>&amp;</span>
+                            <span><i18n key="doc.h5.relateDoc"></i18n></span><span>&#40;</span><span id="att_ass_count">0</span><span>&#41;</span><span>:</span>
+                        </span>
+                        <span class="see-icon-v5-common-arrow-down att-icon" style="float: right;margin-right: 10px;font-size: 14px;color: #ccc;"></span>
+                    </div>
+                    <ul id="attchemntFileList" class="cmp-list-content accessory"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer id="doc-view-operate">
+        <div style="margin-top: 17px;">
+            <div class="doc-view-operate-store" id="collection">
+                <span class="doc-view-operate-store-icon"></span>
+                <span class="doc-view-operate-store-name"></span>
+                <div class="doc-view-operate-border"></div>
+            </div>
+            <div class="doc-view-operate-share" id="share">
+                <span class="doc-view-operate-share-icon see-icon-v5-common-transmit"></span>
+                <span class="doc-view-operate-share-name"><i18n key="doc.h5.share"></i18n></span>
+                <div class="doc-view-operate-border"></div>
+            </div>
+            <div class="doc-view-operate-comment" id="comment">
+                <div style="position: relative;display: inline-block;">
+                    <span class="doc-view-operate-comment-icon see-icon-v5-common-comment"></span>
+                    <div class="doc-view-operate-comment-num" id="commentNum">
+                        <span style="color: #fff;font-size: 12px;" ></span>
+                    </div>
+                </div>
+                <span class="doc-view-operate-comment-name" id="realCnt"></span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </footer>
+
+
+    <div id="view_shade">
+        <div class="view_shade_back"></div>
+        <div id="view_shade_tag"></div>
+        <div id="doc_view_detail">
+            <div class="doc_view_content">
+                <span id="doc_view_name"></span>
+            </div>
+            <div class="doc_view_content_time">
+                <span id="doc_view_time"></span>
+            </div>
+            <div class="doc_view_content_size">
+                <span id="doc_view_size"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/html" id="pageContent_tpl">
+    <%
+        var doc = "cmp-icon-document doc";
+    var xls = "cmp-icon-document xls";
+    var ppt = "cmp-icon-document ppt";
+    var pdf = "cmp-icon-document pdf";
+    var wps = "cmp-icon-document wps";
+    var html = "cmp-icon-document html";
+    var rar = "cmp-icon-document rar";
+    var et = "cmp-icon-document et";
+    var img = "cmp-icon-document img";
+    var emptyfile = "cmp-icon-document emptyfile";
+    var calender = "cmp-icon-document calender";
+    var link = "cmp-icon-document link";
+    var squares = "cmp-icon-document squares";
+    var synergy = "cmp-icon-document synergy";
+    var flag = "cmp-icon-document flag";
+    var meet = "cmp-icon-document meet";
+    var txt = "cmp-icon-document txt";
+    var music = "cmp-icon-document music";
+    var video = "cmp-icon-document video";
+    var news = "cmp-icon-document news";
+    var confirm = "cmp-icon-document confirm";
+    var minvideo = "cmp-icon-document minvideo";
+    var message = "cmp-icon-document message";
+    %>
+        <ul class="cmp-list-content">
+            <li class="cmp-list-cell ">
+                <div class="cmp-list-cell-info cmp-ellipsis document_width">
+                    <div class="cmp-list-cell-img cmp-left"  style="float: left;">
+                        <%if(this.fr_mine_type==101||this.fr_mine_type==23||this.fr_mine_type==25){%>
+                            <div class="<%=doc%>"></div>
+                        <%}else if(this.fr_mine_type==102||this.fr_mine_type==24||this.fr_mine_type==26){%>
+                            <div class="<%=xls%>"></div>
+                        <%}else if(this.fr_mine_type==103){%>
+                            <div class="<%=pdf%>"></div>
+						<%}else if(this.fr_mine_type==104){%>
+                            <div class="<%=ppt%>"></div>
+						<%}else if(this.fr_mine_type==120){%>
+                            <div class="<%=et%>"></div>
+						<%}else if(this.fr_mine_type==119){%>
+                            <div class="<%=rar%>"></div>
+						<%}else if(this.fr_mine_type==109||this.fr_mine_type==110||this.fr_mine_type==111||this.fr_mine_type==112||this.fr_mine_type==117||this.fr_mine_type==118){%>
+                			<div class="<%=img%>"></div>
+						<%}else if(this.fr_mine_type==51){%>
+                            <div class="<%=link%>"></div>
+						<%}else if(this.fr_mine_type==9){%>
+                            <div class="<%=squares%>"></div>
+						<%}else if(this.fr_mine_type==1){%>
+                            <div class="<%=synergy%>"></div>
+						<%}else if(this.fr_mine_type==2){%>
+                            <div class="<%=flag%>"></div>
+						<%}else if(this.fr_mine_type==4){%>
+                            <div class="<%=meet%>"></div>
+						<%}else if(this.fr_mine_type==105){%>
+                            <div class="<%=txt%>"></div>
+						<%}else if(canOpen(escapeStringToHTML(this.fr_name),true)==".mp3"){%>
+                			<div class="<%=music%>"></div>
+                		<%}else if(canOpen(escapeStringToHTML(this.fr_name),true)==".mp4"){%>
+                			<div class="<%=video%>"></div>
+                		<%}else if(canOpen(escapeStringToHTML(this.fr_name),true)==".arm"){%>
+                			<div class="<%=video%>"></div>
+						<%}else if(this.fr_mine_type==5){%>
+                            <div class="<%=news%>"></div>
+						<%}else if(this.fr_mine_type==7){%>
+                            <div class="<%=confirm%>"></div>
+						<%}else if(this.fr_mine_type==6){%>
+                            <div class="<%=minvideo%>"></div>
+						<%}else if(this.fr_mine_type==8){%>
+                            <div class="<%=message%>"></div>
+                        <%}else if(this.fr_mine_type==107||this.fr_mine_type==22||this.fr_mine_type==108){%>
+                            <div class="<%=html%>"></div>
+						<%}else{%>
+                			<div class="<%=emptyfile%>"></div>
+                        <%}%>
+                    </div>
+                    <span class="cmp-ellipsis cmp-h5"><i18n key="doc.h5.docName"></i18n>：<%=this.fr_name%></span>
+                    <br>
+                    <span class="cmp-ellipsis cmp-h5" id="_shareName"><i18n key="doc.h5.from"></i18n>：<%=this.fr_create_username%></span>
+                    <% if(this.attSize>0){ %>
+                       <button style="border:none;background:none;padding:0px;" class="cmp-btn cmp-pull-right" id="attchmentFile" >
+                       <span class="cmp-icon cmp-icon-paperclip link_to"><%=this.attSize%></span>   
+                       </button>
+                    <%}%>
+					<input type="hidden" value="<%=this.forumCount%>" id="tmpCnt"/>
+					<input type="hidden" value="<%=this.commentEnabled%>" id="commentEnabled"/>
+                </div>
+            </li>
+        </ul>
+    </script>
+        <script src="/seeyon/m3/apps/v5/doc/i18n/Doc_zh_CN.js"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js"></script>
+<script>cmp.i18n.init("/seeyon/m3/apps/v5/doc/i18n/","Doc",null,"?buildversion=181210172443");</script>
+<script type="text/javascript">
+    var _docPath = "/seeyon/m3/apps/v5/doc";
+  var _cmpPath = "/seeyon/m3/cmp";
+  var _colPath = "/seeyon/m3/apps/v5/collaboration";
+</script>	<script  src="/seeyon/m3/cmp/js/cmp.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/doc-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/doc/js/common.js?buildversion=181210172443" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/js/share-jssdk.js?buildversion=181210172443" type="text/javascript"></script>
+    <script type="text/javascript">
+        var _buildversion = "?buildversion=181210172443";
+    </script>
+	<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-push.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-audio.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-imgCache.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-listView.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-share.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/cmp/js/cmp-watermark.js?buildversion=181210172443"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=181210172443"></script>
+    <script src="/seeyon/m3/apps/v5/commons/widget/SeeyonAttachment.s3js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/apps/v5/commons/widget/SeeyonContent.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/apps/v5/doc/js/docView.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/apps/v5/doc/js/flexible.js?buildversion=181210172443"></script>
+	<script src="/seeyon/m3/apps/v5/commons/widget/ShareRecord.js?buildversion=181210172443"></script>
+</body>
+</html>
+
+<!--******************** auto import check  ****************-->

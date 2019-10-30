@@ -1,0 +1,69 @@
+﻿var capQRCodeApi = (function() {
+  var CapQRCodeApi = function() {
+    this.basePath = "/seeyon/m3/apps/v5/capqrcode";
+  }
+  
+  /**
+   * CapQRCode的消息穿透
+   * 
+   * @param {string} type    [todo:待办模块;message:消息模块]
+   * @param {string} backUrl [后退地址]
+   * @param {obj}    option  [待办/消息对象]
+   * @param {string} parms   [其他可选参数]
+   */
+  CapQRCodeApi.prototype.openApp = function (type, backUrl, option, obj) {
+    console.log(option);
+    debugger;
+    if(option.codeType!="cap4url"){
+      capQRCodeApi.alert("暂不支持此类型的二维码！");
+      return;
+    }
+    var content = JSON.parse(option.content.replace("/1.0/", ""));
+    if(content.formType == "1"){//打开协同表单
+        var url = cmp.origin + "/rest/barcode/decodeUrl?option.n_a_s=1";
+            cmp.ajax({
+                headers:{"Accept": "application/json; charset=utf-8", "Accept-Language": "zh-CN", "Content-Type": "application/json; charset=utf-8", "token": cmp.token},
+                url: url,
+                type: "post",
+                data: cmp.toJSON({ "codeStr": JSON.stringify(option) }),
+                dataType : "json",
+                success: function(ret) {
+                   if(ret.code=="200"){
+                        var barcodeOptions=ret.barcodeOptions;
+                        var paramData = {
+                            "openFrom" : "listPending",
+                            "affairId" : barcodeOptions.affairId,
+                            "summaryId" : barcodeOptions.summaryId,
+                            "operationId" : barcodeOptions.operationId || "",
+                            "newWebView" : true
+                        };
+                        var collaborationPath="/seeyon/m3/apps/v5/collaboration";
+                        cmp.asyncLoad.js([
+                        		        collaborationPath + '/collaboration_m_api.s3js'
+                        	        ], function() {
+                                        collApi.openSummary(paramData);
+                                        cmp.event.trigger("CMPScanEvent",document, {type: 'close'});
+                        	        });
+                   }else{
+                        capQRCodeApi.alert(ret.error_msg);
+                   }
+                },
+                error: function(msg) {
+                    var cmpHandled = cmp.errorHandler(e);
+                    if(cmpHandled) {
+                    }else{
+                        capQRCodeApi.alert(e.message);
+                    }
+                }
+            });
+        //collApi.jumpToColSummary(content.moduleId,"","");
+    }else {//打开无流程选择权限页面
+        cmp.href.next(this.basePath + "/html/selectRight.html?date="+(new Date().getTime()), content,{openWebViewCatch:true});
+        cmp.event.trigger("CMPScanEvent",document, {type: 'close'});
+    }
+  },
+  CapQRCodeApi.prototype.alert = function (message) {
+     cmp.event.trigger("CMPScanEvent",document, {type: 'alert', msg: message});
+  }
+    return new CapQRCodeApi();
+})();

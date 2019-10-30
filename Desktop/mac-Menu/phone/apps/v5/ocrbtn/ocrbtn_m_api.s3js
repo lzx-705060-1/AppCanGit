@@ -1,0 +1,13 @@
+var ocrbtnApi = (function(){
+	
+	var ocrbtnApi = function(){
+		this.basePath = "/seeyon/m3/apps/v5/ocrbtn";
+	}
+	
+    ocrbtnApi.prototype.openApp = function(type,backUrl,option,obj) {
+    	
+	}
+    
+	return new ocrbtnApi();
+	
+})();
